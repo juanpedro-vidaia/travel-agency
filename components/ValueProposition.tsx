@@ -1,0 +1,69 @@
+import { Compass, Heart, Leaf, Users } from 'lucide-react';
+
+const values = [
+  {
+    icon: Compass,
+    title: 'Viajes únicos',
+    description:
+      'Nada de catálogos ni paquetes de agencia. Cada itinerario nace de una conversación contigo y se construye desde cero.',
+  },
+  {
+    icon: Heart,
+    title: 'Totalmente personalizados',
+    description:
+      'Tu ritmo, tus intereses, tu presupuesto. Diseñamos el viaje que encaja con tu forma de viajar, no al revés.',
+  },
+  {
+    icon: Leaf,
+    title: 'Turismo sostenible',
+    description:
+      'Viajamos con respeto por los ecosistemas y las comunidades. Huella mínima, experiencia máxima y conciencia en cada paso.',
+  },
+  {
+    icon: Users,
+    title: 'Apoyo local',
+    description:
+      'Trabajamos con guías, hospedajes y operadores locales de confianza. Tu viaje impulsa directamente a las personas del lugar.',
+  },
+];
+
+export default function ValueProposition() {
+  return (
+    <section className="py-24 bg-vidaia-sand">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="max-w-2xl mx-auto text-center mb-16">
+          <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
+            Por qué Vidaia
+          </span>
+          <h2 className="font-heading text-4xl sm:text-5xl font-bold text-vidaia-dark mb-4 leading-tight">
+            Viajamos diferente.
+            <br />
+            <span className="text-vidaia-primary">Contigo.</span>
+          </h2>
+          <p className="text-gray-500 text-lg leading-relaxed">
+            En Vidaia no te vendemos un destino — te ayudamos a vivir una experiencia que de verdad te cambia.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map(({ icon: Icon, title, description }) => (
+            <div
+              key={title}
+              className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow duration-300 border border-vidaia-light/60 group"
+            >
+              <div className="w-12 h-12 flex items-center justify-center bg-vidaia-light rounded-xl mb-5 group-hover:bg-vidaia-primary transition-colors duration-300">
+                <Icon className="w-6 h-6 text-vidaia-primary group-hover:text-white transition-colors duration-300" strokeWidth={1.8} />
+              </div>
+              <h3 className="font-heading text-lg font-semibold text-vidaia-dark mb-2">
+                {title}
+              </h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
