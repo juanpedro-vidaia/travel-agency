@@ -6,22 +6,22 @@ import { Check, ChevronRight, ChevronLeft, Plus, Minus, AlertCircle } from 'luci
 // ─── Constants ───────────────────────────────────────────────────────────────
 
 const DESTINOS = [
-  { id: 'Argentina', label: 'Argentina', flag: '🇦🇷' },
-  { id: 'Chile', label: 'Chile', flag: '🇨🇱' },
-  { id: 'Bolivia', label: 'Bolivia', flag: '🇧🇴' },
-  { id: 'Otros', label: 'Otros destinos', flag: '🌎' },
+  { id: 'argentina', label: 'Argentina', flag: '🇦🇷' },
+  { id: 'chile',     label: 'Chile',     flag: '🇨🇱' },
+  { id: 'bolivia',   label: 'Bolivia',   flag: '🇧🇴' },
+  { id: 'otros',     label: 'Otros destinos', flag: '🌎' },
 ];
 
 const DESTINO_FLAGS: Record<string, string> = {
-  Argentina: '🇦🇷',
-  Chile: '🇨🇱',
-  Bolivia: '🇧🇴',
+  argentina: '🇦🇷',
+  chile:     '🇨🇱',
+  bolivia:   '🇧🇴',
 };
 
 const ZONAS: Record<string, string[]> = {
-  Argentina: ['Buenos Aires', 'Iguazú', 'Patagonia', 'Mendoza', 'Norte Argentino', 'Otros'],
-  Chile: ['Santiago', 'Patagonia', 'Isla de Pascua', 'Carretera Austral', 'Lagos', 'Atacama'],
-  Bolivia: ['Uyuni', 'La Paz', 'Sucre y Potosí', 'Lago Titicaca', 'Chiquitanía', 'Otros'],
+  argentina: ['Buenos Aires', 'Iguazú', 'Patagonia', 'Mendoza', 'Norte Argentino', 'Otros'],
+  chile:     ['Santiago', 'Patagonia', 'Isla de Pascua', 'Carretera Austral', 'Lagos', 'Atacama'],
+  bolivia:   ['Uyuni', 'La Paz', 'Sucre y Potosí', 'Lago Titicaca', 'Chiquitanía', 'Otros'],
 };
 
 const MESES = [
@@ -29,14 +29,20 @@ const MESES = [
   'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
 ];
 const ANIOS = ['2026', '2027', '2028', '2029'];
-const TIPOS_GRUPO = ['Solo/a', 'Pareja', 'Amigos', 'Familia'];
+
+const TIPOS_GRUPO = [
+  { id: 'solo',    label: 'Solo/a'  },
+  { id: 'pareja',  label: 'Pareja'  },
+  { id: 'amigos',  label: 'Amigos'  },
+  { id: 'familia', label: 'Familia' },
+];
 
 const EXPERIENCIAS = [
-  { id: 'aventura', label: 'Aventura y trekking', emoji: '🥾' },
-  { id: 'naturaleza', label: 'Naturaleza y vida salvaje', emoji: '🦁' },
-  { id: 'cultura', label: 'Cultura y gastronomía', emoji: '🍷' },
-  { id: 'relax', label: 'Relax y desconexión', emoji: '🌅' },
-  { id: 'combinado', label: 'Viaje combinado', emoji: '✨' },
+  { id: 'aventura',   label: 'Aventura y trekking',       emoji: '🥾' },
+  { id: 'naturaleza', label: 'Naturaleza y vida salvaje',  emoji: '🦁' },
+  { id: 'cultura',    label: 'Cultura y gastronomía',      emoji: '🍷' },
+  { id: 'relax',      label: 'Relax y desconexión',        emoji: '🌅' },
+  { id: 'combinado',  label: 'Viaje combinado',            emoji: '✨' },
 ];
 
 const PRESUPUESTOS = [
@@ -50,45 +56,45 @@ const PRESUPUESTOS = [
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface FormData {
-  destinos: string[];
-  otroDestino: string;
-  zonas: string[];
-  mesInicio: string;
-  anioInicio: string;
-  duracion: string;
-  adultos: number;
-  menores: number;
+  destinos:      string[];
+  otroDestino:   string;
+  zonas:         string[];
+  mesInicio:     string;
+  anioInicio:    string;
+  duracion:      string;
+  adultos:       number;
+  menores:       number;
   edadesMenores: string;
-  tipoGrupo: string;
-  experiencias: string[];
-  presupuesto: string;
-  descripcion: string;
-  nombre: string;
-  apellidos: string;
-  email: string;
-  telefono: string;
+  tipoGrupo:     string;
+  experiencias:  string[];
+  presupuesto:   string;
+  descripcion:   string;
+  nombre:        string;
+  apellidos:     string;
+  email:         string;
+  telefono:      string;
 }
 
 type Errors = Partial<Record<keyof FormData, string>>;
 
 const INITIAL: FormData = {
-  destinos: [],
-  otroDestino: '',
-  zonas: [],
-  mesInicio: '',
-  anioInicio: '',
-  duracion: '',
-  adultos: 2,
-  menores: 0,
+  destinos:      [],
+  otroDestino:   '',
+  zonas:         [],
+  mesInicio:     '',
+  anioInicio:    '',
+  duracion:      '',
+  adultos:       2,
+  menores:       0,
   edadesMenores: '',
-  tipoGrupo: '',
-  experiencias: [],
-  presupuesto: '',
-  descripcion: '',
-  nombre: '',
-  apellidos: '',
-  email: '',
-  telefono: '',
+  tipoGrupo:     '',
+  experiencias:  [],
+  presupuesto:   '',
+  descripcion:   '',
+  nombre:        '',
+  apellidos:     '',
+  email:         '',
+  telefono:      '',
 };
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -249,16 +255,12 @@ export default function PresupuestoForm() {
     setTimeout(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
 
   const goToStep2 = () => {
-    if (validateStep1()) {
-      setStep(2);
-      scrollTop();
-    }
+    if (validateStep1()) { setStep(2); scrollTop(); }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateStep2()) {
-      // TODO: enviar a Supabase / webhook
       console.log('Solicitud enviada:', form);
       setSubmitted(true);
       scrollTop();
@@ -270,7 +272,7 @@ export default function PresupuestoForm() {
       err ? 'border-red-300 focus:border-red-400' : 'border-gray-200 focus:border-vidaia-primary'
     }`;
 
-  const mainDestinos = form.destinos.filter((d) => d !== 'Otros');
+  const mainDestinos = form.destinos.filter((d) => d !== 'otros');
 
   // ── Success ──────────────────────────────────────────────────────────────────
   if (submitted) {
@@ -319,26 +321,38 @@ export default function PresupuestoForm() {
       </div>
 
       <form onSubmit={handleSubmit} noValidate>
+        {/* Hidden: origen del formulario */}
+        <input type="hidden" name="form_source" value="presupuesto" />
+
         {/* ══ STEP 1 ══════════════════════════════════════════════════════════ */}
         {step === 1 && (
           <div className="space-y-8">
-            {/* 1 · Destinos */}
-            <div>
+
+            {/* 1 · Destinos — checkboxes con name="destinations" */}
+            <fieldset>
               <SectionLabel text="1 · ¿A dónde quieres ir?" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {DESTINOS.map(({ id, label, flag }) => {
                   const checked = form.destinos.includes(id);
                   return (
-                    <button
+                    <label
                       key={id}
-                      type="button"
-                      onClick={() => toggleArray('destinos', id)}
-                      className={`flex items-center gap-3 p-4 rounded-2xl border-2 text-left transition-all ${
+                      htmlFor={`dest_${id}`}
+                      className={`flex items-center gap-3 p-4 rounded-2xl border-2 text-left transition-all cursor-pointer ${
                         checked
                           ? 'border-vidaia-primary bg-vidaia-light/60 text-vidaia-dark'
                           : 'border-gray-200 hover:border-vidaia-mid text-gray-700 bg-white'
                       }`}
                     >
+                      <input
+                        type="checkbox"
+                        id={`dest_${id}`}
+                        name="destinations"
+                        value={id}
+                        checked={checked}
+                        onChange={() => toggleArray('destinos', id)}
+                        className="sr-only"
+                      />
                       <div
                         className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
                           checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'
@@ -348,15 +362,17 @@ export default function PresupuestoForm() {
                       </div>
                       <span className="text-xl leading-none">{flag}</span>
                       <span className="text-sm font-semibold">{label}</span>
-                    </button>
+                    </label>
                   );
                 })}
               </div>
 
-              {form.destinos.includes('Otros') && (
+              {form.destinos.includes('otros') && (
                 <div className="mt-3">
                   <input
                     type="text"
+                    id="other_destination"
+                    name="other_destination"
                     value={form.otroDestino}
                     onChange={(e) => update('otroDestino', e.target.value)}
                     placeholder="¿Qué destino tienes en mente?"
@@ -365,7 +381,7 @@ export default function PresupuestoForm() {
                 </div>
               )}
               <FieldError msg={errors.destinos} />
-            </div>
+            </fieldset>
 
             {/* 2 · Zonas — solo si hay destinos principales */}
             {mainDestinos.length > 0 && (
@@ -376,7 +392,7 @@ export default function PresupuestoForm() {
                     <div key={dest}>
                       <p className="flex items-center gap-2 text-sm font-semibold text-gray-500 mb-2.5">
                         <span className="text-base">{DESTINO_FLAGS[dest]}</span>
-                        {dest}
+                        {dest.charAt(0).toUpperCase() + dest.slice(1)}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {ZONAS[dest].map((zona) => (
@@ -399,27 +415,27 @@ export default function PresupuestoForm() {
               <SectionLabel text="3 · Fecha de inicio aproximada" />
               <div className="grid grid-cols-2 gap-3">
                 <select
+                  id="start_month"
+                  name="start_month"
                   value={form.mesInicio}
-                  onChange={(e) => { update('mesInicio', e.target.value); if (errors.mesInicio) setErrors(p => ({...p, mesInicio: undefined})); }}
+                  onChange={(e) => { update('mesInicio', e.target.value); if (errors.mesInicio) setErrors(p => ({ ...p, mesInicio: undefined })); }}
                   className={inputCls(errors.mesInicio)}
                 >
                   <option value="">Mes</option>
                   {MESES.map((m, i) => (
-                    <option key={m} value={String(i + 1)}>
-                      {m}
-                    </option>
+                    <option key={m} value={String(i + 1)}>{m}</option>
                   ))}
                 </select>
                 <select
+                  id="start_year"
+                  name="start_year"
                   value={form.anioInicio}
-                  onChange={(e) => { update('anioInicio', e.target.value); if (errors.mesInicio) setErrors(p => ({...p, mesInicio: undefined})); }}
+                  onChange={(e) => { update('anioInicio', e.target.value); if (errors.mesInicio) setErrors(p => ({ ...p, mesInicio: undefined })); }}
                   className={inputCls(errors.mesInicio)}
                 >
                   <option value="">Año</option>
                   {ANIOS.map((a) => (
-                    <option key={a} value={a}>
-                      {a}
-                    </option>
+                    <option key={a} value={a}>{a}</option>
                   ))}
                 </select>
               </div>
@@ -432,6 +448,8 @@ export default function PresupuestoForm() {
               <div className="flex items-center gap-3">
                 <input
                   type="number"
+                  id="duration"
+                  name="duration"
                   min={1}
                   max={365}
                   value={form.duracion}
@@ -444,7 +462,7 @@ export default function PresupuestoForm() {
               <FieldError msg={errors.duracion} />
             </div>
 
-            {/* 5 · Viajeros */}
+            {/* 5 · Viajeros — NumberStepper + hidden inputs */}
             <div>
               <SectionLabel text="5 · ¿Cuántos viajeros sois?" />
               <div className="bg-gray-50 rounded-2xl px-5 divide-y divide-gray-100">
@@ -461,13 +479,18 @@ export default function PresupuestoForm() {
                   onChange={(v) => update('menores', v)}
                 />
               </div>
+              {/* Hidden inputs so Clientify capture the stepper values */}
+              <input type="hidden" name="adults"   value={form.adultos} />
+              <input type="hidden" name="children" value={form.menores} />
               {form.menores > 0 && (
                 <div className="mt-3">
-                  <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
+                  <label htmlFor="children_ages" className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
                     ¿Qué edades tienen los menores?
                   </label>
                   <input
                     type="text"
+                    id="children_ages"
+                    name="children_ages"
                     value={form.edadesMenores}
                     onChange={(e) => update('edadesMenores', e.target.value)}
                     placeholder="Ej: 5, 8 años"
@@ -477,45 +500,61 @@ export default function PresupuestoForm() {
               )}
             </div>
 
-            {/* 6 · Tipo de grupo */}
-            <div>
+            {/* 6 · Tipo de grupo — radios con name="group_type" */}
+            <fieldset>
               <SectionLabel text="6 · Tipo de grupo" />
               <div className="flex flex-wrap gap-2">
-                {TIPOS_GRUPO.map((t) => (
-                  <button
-                    key={t}
-                    type="button"
-                    onClick={() => { update('tipoGrupo', t); if (errors.tipoGrupo) setErrors(p => ({...p, tipoGrupo: undefined})); }}
-                    className={`px-5 py-2.5 rounded-full border-2 text-sm font-semibold transition-all ${
-                      form.tipoGrupo === t
+                {TIPOS_GRUPO.map(({ id, label }) => (
+                  <label
+                    key={id}
+                    htmlFor={`group_${id}`}
+                    className={`px-5 py-2.5 rounded-full border-2 text-sm font-semibold transition-all cursor-pointer ${
+                      form.tipoGrupo === id
                         ? 'border-vidaia-primary bg-vidaia-primary text-white'
                         : 'border-gray-200 text-gray-600 hover:border-vidaia-mid'
                     }`}
                   >
-                    {t}
-                  </button>
+                    <input
+                      type="radio"
+                      id={`group_${id}`}
+                      name="group_type"
+                      value={id}
+                      checked={form.tipoGrupo === id}
+                      onChange={() => { update('tipoGrupo', id); if (errors.tipoGrupo) setErrors(p => ({ ...p, tipoGrupo: undefined })); }}
+                      className="sr-only"
+                    />
+                    {label}
+                  </label>
                 ))}
               </div>
               <FieldError msg={errors.tipoGrupo} />
-            </div>
+            </fieldset>
 
-            {/* 7 · Tipo de experiencia */}
-            <div>
+            {/* 7 · Tipo de experiencia — checkboxes con name="experience_type" */}
+            <fieldset>
               <SectionLabel text="7 · Tipo de experiencia (opcional)" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {EXPERIENCIAS.map(({ id, label, emoji }) => {
                   const checked = form.experiencias.includes(id);
                   return (
-                    <button
+                    <label
                       key={id}
-                      type="button"
-                      onClick={() => toggleArray('experiencias', id)}
-                      className={`flex items-center gap-3 p-3.5 rounded-xl border-2 text-left transition-all ${
+                      htmlFor={`exp_${id}`}
+                      className={`flex items-center gap-3 p-3.5 rounded-xl border-2 text-left transition-all cursor-pointer ${
                         checked
                           ? 'border-vidaia-primary bg-vidaia-light/60 text-vidaia-dark'
                           : 'border-gray-200 hover:border-vidaia-mid text-gray-700 bg-white'
                       }`}
                     >
+                      <input
+                        type="checkbox"
+                        id={`exp_${id}`}
+                        name="experience_type"
+                        value={id}
+                        checked={checked}
+                        onChange={() => toggleArray('experiencias', id)}
+                        className="sr-only"
+                      />
                       <div
                         className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
                           checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'
@@ -525,25 +564,25 @@ export default function PresupuestoForm() {
                       </div>
                       <span className="text-xl leading-none">{emoji}</span>
                       <span className="text-sm font-medium">{label}</span>
-                    </button>
+                    </label>
                   );
                 })}
               </div>
-            </div>
+            </fieldset>
 
             {/* 8 · Presupuesto */}
             <div>
               <SectionLabel text="8 · Presupuesto orientativo por persona (opcional)" />
               <select
+                id="budget"
+                name="budget"
                 value={form.presupuesto}
                 onChange={(e) => update('presupuesto', e.target.value)}
                 className={inputCls()}
               >
                 <option value="">Selecciona una opción</option>
                 {PRESUPUESTOS.map((p) => (
-                  <option key={p} value={p}>
-                    {p}
-                  </option>
+                  <option key={p} value={p}>{p}</option>
                 ))}
               </select>
             </div>
@@ -552,6 +591,8 @@ export default function PresupuestoForm() {
             <div>
               <SectionLabel text="9 · Cuéntanos tu viaje soñado (opcional)" />
               <textarea
+                id="message"
+                name="message"
                 rows={4}
                 value={form.descripcion}
                 onChange={(e) => update('descripcion', e.target.value)}
@@ -574,13 +615,16 @@ export default function PresupuestoForm() {
         {/* ══ STEP 2 ══════════════════════════════════════════════════════════ */}
         {step === 2 && (
           <div className="space-y-5">
+
             {/* Nombre */}
             <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-2">
+              <label htmlFor="first_name" className="block text-sm font-semibold text-vidaia-dark mb-2">
                 Nombre <span className="text-red-400">*</span>
               </label>
               <input
                 type="text"
+                id="first_name"
+                name="first_name"
                 autoComplete="given-name"
                 value={form.nombre}
                 onChange={(e) => update('nombre', e.target.value)}
@@ -592,11 +636,13 @@ export default function PresupuestoForm() {
 
             {/* Apellidos */}
             <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-2">
+              <label htmlFor="last_name" className="block text-sm font-semibold text-vidaia-dark mb-2">
                 Apellidos <span className="text-red-400">*</span>
               </label>
               <input
                 type="text"
+                id="last_name"
+                name="last_name"
                 autoComplete="family-name"
                 value={form.apellidos}
                 onChange={(e) => update('apellidos', e.target.value)}
@@ -608,11 +654,13 @@ export default function PresupuestoForm() {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-2">
+              <label htmlFor="email" className="block text-sm font-semibold text-vidaia-dark mb-2">
                 Email <span className="text-red-400">*</span>
               </label>
               <input
                 type="email"
+                id="email"
+                name="email"
                 autoComplete="email"
                 value={form.email}
                 onChange={(e) => update('email', e.target.value)}
@@ -624,11 +672,13 @@ export default function PresupuestoForm() {
 
             {/* Teléfono */}
             <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-2">
+              <label htmlFor="phone" className="block text-sm font-semibold text-vidaia-dark mb-2">
                 Teléfono <span className="text-red-400">*</span>
               </label>
               <input
                 type="tel"
+                id="phone"
+                name="phone"
                 autoComplete="tel"
                 value={form.telefono}
                 onChange={(e) => update('telefono', e.target.value)}
@@ -651,10 +701,7 @@ export default function PresupuestoForm() {
             <div className="flex flex-col-reverse sm:flex-row gap-3 pt-2">
               <button
                 type="button"
-                onClick={() => {
-                  setStep(1);
-                  scrollTop();
-                }}
+                onClick={() => { setStep(1); scrollTop(); }}
                 className="flex items-center justify-center gap-2 px-6 py-3.5 border-2 border-gray-200 hover:border-vidaia-mid text-gray-500 hover:text-vidaia-dark font-medium rounded-2xl transition-all"
               >
                 <ChevronLeft className="w-5 h-5" />

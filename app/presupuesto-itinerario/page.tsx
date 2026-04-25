@@ -12,16 +12,16 @@ const MONTHS = [
 ]
 
 const OPCIONALES = [
-  'Cataratas Brasileñas',
-  'Estancia Nibepo Aike',
-  'Catamarán Canal Beagle (tarde)',
-  'Espectáculo de Tango con cena',
+  { id: 'opt_cataratas',  value: 'cataratas_brasilenas',   label: 'Cataratas Brasileñas' },
+  { id: 'opt_estancia',   value: 'estancia_nibepo_aike',   label: 'Estancia Nibepo Aike' },
+  { id: 'opt_catamaran',  value: 'catamaran_canal_beagle', label: 'Catamarán Canal Beagle (tarde)' },
+  { id: 'opt_tango',      value: 'tango_show',             label: 'Espectáculo de Tango con cena' },
 ]
 
 const CATEGORIES = [
-  { value: '3', label: '3★', sublabel: 'Económico' },
-  { value: '4', label: '4★', sublabel: 'Confort' },
-  { value: '5', label: '5★', sublabel: 'Lujo' },
+  { value: '3', id: 'cat_3', label: '3★', sublabel: 'Económico' },
+  { value: '4', id: 'cat_4', label: '4★', sublabel: 'Confort' },
+  { value: '5', id: 'cat_5', label: '5★', sublabel: 'Lujo' },
 ]
 
 interface FormState {
@@ -38,7 +38,7 @@ interface FormState {
 
 function PresupuestoItinerarioContent() {
   const searchParams = useSearchParams()
-  const titulo = searchParams.get('titulo') ?? ''
+  const titulo    = searchParams.get('titulo')    ?? ''
   const subtitulo = searchParams.get('subtitulo') ?? ''
 
   const [submitted, setSubmitted] = useState(false)
@@ -57,12 +57,12 @@ function PresupuestoItinerarioContent() {
   const set = (field: keyof FormState, value: string) =>
     setForm((prev) => ({ ...prev, [field]: value }))
 
-  const toggleOpcional = (opt: string) => {
+  const toggleOpcional = (value: string) => {
     setForm((prev) => ({
       ...prev,
-      opcionales: prev.opcionales.includes(opt)
-        ? prev.opcionales.filter((o) => o !== opt)
-        : [...prev.opcionales, opt],
+      opcionales: prev.opcionales.includes(value)
+        ? prev.opcionales.filter((o) => o !== value)
+        : [...prev.opcionales, value],
     }))
   }
 
@@ -71,7 +71,10 @@ function PresupuestoItinerarioContent() {
     setSubmitted(true)
   }
 
-  const backHref = titulo ? `/destinos/argentina` : '/itinerarios/paisajes-naturales-argentina'
+  const backHref = titulo ? '/destinos/argentina' : '/itinerarios/paisajes-naturales-argentina'
+  const heroTitle    = titulo    ? `Me interesa: ${titulo}` : 'Me interesa este itinerario'
+  const heroSubtitle = subtitulo || 'Paisajes naturales de Argentina · 13 días'
+  const itineraryRef = titulo    || 'Paisajes naturales de Argentina'
 
   if (submitted) {
     return (
@@ -96,12 +99,6 @@ function PresupuestoItinerarioContent() {
       </main>
     )
   }
-
-  const heroTitle = titulo
-    ? `Me interesa: ${titulo}`
-    : 'Me interesa este itinerario'
-
-  const heroSubtitle = subtitulo || 'Paisajes naturales de Argentina · 13 días'
 
   return (
     <main className="min-h-screen bg-vidaia-sand">
@@ -135,12 +132,18 @@ function PresupuestoItinerarioContent() {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Hidden fields para Clientify */}
+            <input type="hidden" name="form_source"          value="presupuesto-itinerario" />
+            <input type="hidden" name="itinerary_reference"  value={itineraryRef} />
+
             {/* Nombre */}
             <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-1.5">
+              <label htmlFor="full_name" className="block text-sm font-semibold text-vidaia-dark mb-1.5">
                 Nombre y apellidos <span className="text-red-500">*</span>
               </label>
               <input
+                id="full_name"
+                name="full_name"
                 type="text"
                 required
                 value={form.nombre}
@@ -152,10 +155,12 @@ function PresupuestoItinerarioContent() {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-1.5">
+              <label htmlFor="email" className="block text-sm font-semibold text-vidaia-dark mb-1.5">
                 Email <span className="text-red-500">*</span>
               </label>
               <input
+                id="email"
+                name="email"
                 type="email"
                 required
                 value={form.email}
@@ -167,10 +172,12 @@ function PresupuestoItinerarioContent() {
 
             {/* Teléfono */}
             <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-1.5">
+              <label htmlFor="phone" className="block text-sm font-semibold text-vidaia-dark mb-1.5">
                 Teléfono <span className="text-red-500">*</span>
               </label>
               <input
+                id="phone"
+                name="phone"
                 type="tel"
                 required
                 value={form.telefono}
@@ -183,10 +190,12 @@ function PresupuestoItinerarioContent() {
             {/* Personas */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-vidaia-dark mb-1.5">
+                <label htmlFor="adults" className="block text-sm font-semibold text-vidaia-dark mb-1.5">
                   Adultos <span className="text-red-500">*</span>
                 </label>
                 <select
+                  id="adults"
+                  name="adults"
                   required
                   value={form.adultos}
                   onChange={(e) => set('adultos', e.target.value)}
@@ -200,10 +209,12 @@ function PresupuestoItinerarioContent() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-vidaia-dark mb-1.5">
+                <label htmlFor="children" className="block text-sm font-semibold text-vidaia-dark mb-1.5">
                   Menores
                 </label>
                 <select
+                  id="children"
+                  name="children"
                   value={form.menores}
                   onChange={(e) => set('menores', e.target.value)}
                   className="w-full border border-vidaia-light rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
@@ -219,10 +230,12 @@ function PresupuestoItinerarioContent() {
 
             {/* Mes */}
             <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-1.5">
+              <label htmlFor="start_month" className="block text-sm font-semibold text-vidaia-dark mb-1.5">
                 Mes de inicio preferido <span className="text-red-500">*</span>
               </label>
               <select
+                id="start_month"
+                name="start_month"
                 required
                 value={form.mes}
                 onChange={(e) => set('mes', e.target.value)}
@@ -235,15 +248,16 @@ function PresupuestoItinerarioContent() {
               </select>
             </div>
 
-            {/* Categoría */}
-            <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-3">
+            {/* Categoría — radio buttons con id/name correctos */}
+            <fieldset>
+              <legend className="block text-sm font-semibold text-vidaia-dark mb-3">
                 Categoría de hoteles preferida <span className="text-red-500">*</span>
-              </label>
+              </legend>
               <div className="grid grid-cols-3 gap-3">
-                {CATEGORIES.map(({ value, label, sublabel }) => (
+                {CATEGORIES.map(({ value, id, label, sublabel }) => (
                   <label
                     key={value}
+                    htmlFor={id}
                     className={`flex flex-col items-center gap-0.5 px-3 py-3 rounded-xl border-2 cursor-pointer transition-all text-center ${
                       form.categoria === value
                         ? 'border-vidaia-primary bg-vidaia-light'
@@ -252,7 +266,8 @@ function PresupuestoItinerarioContent() {
                   >
                     <input
                       type="radio"
-                      name="categoria"
+                      id={id}
+                      name="hotel_category"
                       value={value}
                       required
                       checked={form.categoria === value}
@@ -270,19 +285,20 @@ function PresupuestoItinerarioContent() {
                   </label>
                 ))}
               </div>
-            </div>
+            </fieldset>
 
-            {/* Opcionales */}
-            <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-3">
+            {/* Opcionales — todos con name="optionals", value distinto */}
+            <fieldset>
+              <legend className="block text-sm font-semibold text-vidaia-dark mb-3">
                 Opcionales que te interesan
-              </label>
+              </legend>
               <div className="space-y-2">
-                {OPCIONALES.map((opt) => {
-                  const checked = form.opcionales.includes(opt)
+                {OPCIONALES.map(({ id, value, label }) => {
+                  const checked = form.opcionales.includes(value)
                   return (
                     <label
-                      key={opt}
+                      key={value}
+                      htmlFor={id}
                       className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-all ${
                         checked
                           ? 'border-amber-400 bg-amber-50 text-amber-800'
@@ -291,24 +307,29 @@ function PresupuestoItinerarioContent() {
                     >
                       <input
                         type="checkbox"
+                        id={id}
+                        name="optionals"
+                        value={value}
                         checked={checked}
-                        onChange={() => toggleOpcional(opt)}
+                        onChange={() => toggleOpcional(value)}
                         className="w-4 h-4 accent-amber-500 shrink-0"
                       />
-                      <span className="text-sm">⭐ {opt}</span>
+                      <span className="text-sm">⭐ {label}</span>
                     </label>
                   )
                 })}
               </div>
-            </div>
+            </fieldset>
 
             {/* Comentarios */}
             <div>
-              <label className="block text-sm font-semibold text-vidaia-dark mb-1.5">
+              <label htmlFor="message" className="block text-sm font-semibold text-vidaia-dark mb-1.5">
                 ¿Algo más que quieras contarnos?{' '}
                 <span className="font-normal text-vidaia-charcoal/45">(opcional)</span>
               </label>
               <textarea
+                id="message"
+                name="message"
                 rows={4}
                 value={form.comentarios}
                 onChange={(e) => set('comentarios', e.target.value)}
