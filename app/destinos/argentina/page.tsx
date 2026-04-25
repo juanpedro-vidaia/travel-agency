@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Calendar } from 'lucide-react'
+import { getTripsByCountry } from '@/lib/services/tripsService'
 
 export const metadata: Metadata = {
   title: 'Viajes a Argentina — Viajes Vidaia',
@@ -9,74 +10,9 @@ export const metadata: Metadata = {
     'Desde las Cataratas del Iguazú hasta el Fin del Mundo. Diseñamos tu aventura argentina a medida: Patagonia, Buenos Aires, Iguazú, glaciares y más.',
 }
 
-interface Trip {
-  title: string
-  subtitle: string
-  days: number
-  price: string
-  img: string
-  href: string
-  cta: string
-}
-
-const trips: Trip[] = [
-  {
-    title: 'Paisajes naturales de Argentina: ballenas, glaciares, cataratas y el Fin del Mundo',
-    subtitle: 'Iguazú · Península de Valdés · Buenos Aires · El Calafate · Ushuaia',
-    days: 13,
-    price: 'Desde 4.412€',
-    img: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',
-    href: '/itinerarios/paisajes-naturales-argentina',
-    cta: 'Ver itinerario',
-  },
-  {
-    title: 'Latitudes Australes: Patagonia Argentina & Chilena',
-    subtitle: 'El Calafate · Torres del Paine · Ushuaia · Puerto Natales',
-    days: 14,
-    price: 'Desde 3.900€',
-    img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
-    href: '/presupuesto-itinerario?titulo=Latitudes+Australes%3A+Patagonia+Argentina+%26+Chilena&subtitulo=El+Calafate+·+Torres+del+Paine+·+Ushuaia',
-    cta: 'Solicitar información',
-  },
-  {
-    title: 'Patagonia de sur a norte, con Iguazú opcional',
-    subtitle: 'Ushuaia · El Chaltén · El Calafate · Buenos Aires',
-    days: 12,
-    price: 'Desde 3.500€',
-    img: 'https://images.unsplash.com/photo-1531761399323-e5f7e7f98816?w=800&q=80',
-    href: '/presupuesto-itinerario?titulo=Patagonia+de+sur+a+norte%2C+con+Igua z%C3%BA+opcional&subtitulo=Ushuaia+·+El+Chalten+·+El+Calafate+·+Buenos+Aires',
-    cta: 'Solicitar información',
-  },
-  {
-    title: 'Fin de año de esencia argentina: cataratas, glaciares y Buenos Aires',
-    subtitle: 'Buenos Aires · Iguazú · El Calafate · Ushuaia',
-    days: 13,
-    price: 'Desde 4.200€',
-    img: 'https://images.unsplash.com/photo-1589993624-d5e0e6a27fd8?w=800&q=80',
-    href: '/presupuesto-itinerario?titulo=Fin+de+a%C3%B1o+de+esencia+argentina&subtitulo=Buenos+Aires+·+Igua z%C3%BA+·+El+Calafate+·+Ushuaia',
-    cta: 'Solicitar información',
-  },
-  {
-    title: 'Argentina Esencial de Norte a Sur',
-    subtitle: 'Salta · Jujuy · Buenos Aires · El Calafate · Ushuaia',
-    days: 15,
-    price: 'Desde 3.800€',
-    img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80',
-    href: '/presupuesto-itinerario?titulo=Argentina+Esencial+de+Norte+a+Sur&subtitulo=Salta+·+Jujuy+·+Buenos+Aires+·+El+Calafate+·+Ushuaia',
-    cta: 'Solicitar información',
-  },
-  {
-    title: 'Contrastes Argentinos: Salares, selva y hielo',
-    subtitle: 'Jujuy · Salta · Iguazú · Buenos Aires · Patagonia',
-    days: 14,
-    price: 'Desde 4.100€',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-    href: '/presupuesto-itinerario?titulo=Contrastes+Argentinos%3A+Salares%2C+selva+y+hielo&subtitulo=Jujuy+·+Salta+·+Igua z%C3%BA+·+Buenos+Aires+·+Patagonia',
-    cta: 'Solicitar información',
-  },
-]
-
 export default function ArgentinaPage() {
+  const trips = getTripsByCountry('argentina')
+
   return (
     <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
@@ -129,54 +65,58 @@ export default function ArgentinaPage() {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {trips.map((trip) => (
-              <article
-                key={trip.title}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col"
-              >
-                {/* Image */}
-                <div className="relative h-52 overflow-hidden">
-                  <Image
-                    src={trip.img}
-                    alt={trip.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  {/* Duration badge */}
-                  <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
-                    <Calendar className="w-3 h-3" />
-                    {trip.days} días
-                  </span>
-                </div>
+            {trips.map((trip) => {
+              const href = trip.hasItinerary
+                ? `/itinerarios/${trip.slug}`
+                : `/presupuesto-itinerario?titulo=${encodeURIComponent(trip.title)}&subtitulo=${encodeURIComponent(trip.subtitle)}`
+              const cta = trip.hasItinerary ? 'Ver itinerario' : 'Solicitar información'
 
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-1">
-                  <p className="text-xs text-vidaia-charcoal/50 mb-2 leading-snug">
-                    {trip.subtitle}
-                  </p>
-                  <h3 className="font-heading font-bold text-vidaia-dark text-base leading-snug mb-4 flex-1">
-                    {trip.title}
-                  </h3>
-                  <div className="flex items-center justify-between mt-auto pt-3 border-t border-vidaia-light/60">
-                    <span className="text-vidaia-primary font-bold text-base">
-                      {trip.price}
+              return (
+                <article
+                  key={trip.id}
+                  className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col"
+                >
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={trip.image}
+                      alt={trip.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
+                      <Calendar className="w-3 h-3" />
+                      {trip.days} días
                     </span>
-                    <Link
-                      href={trip.href}
-                      className={`inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full transition-colors ${
-                        trip.cta === 'Ver itinerario'
-                          ? 'bg-vidaia-primary hover:bg-vidaia-dark text-white'
-                          : 'bg-vidaia-earth hover:bg-vidaia-brown text-white'
-                      }`}
-                    >
-                      {trip.cta}
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
                   </div>
-                </div>
-              </article>
-            ))}
+
+                  <div className="p-5 flex flex-col flex-1">
+                    <p className="text-xs text-vidaia-charcoal/50 mb-2 leading-snug">
+                      {trip.subtitle}
+                    </p>
+                    <h3 className="font-heading font-bold text-vidaia-dark text-base leading-snug mb-4 flex-1">
+                      {trip.title}
+                    </h3>
+                    <div className="flex items-center justify-between mt-auto pt-3 border-t border-vidaia-light/60">
+                      <span className="text-vidaia-primary font-bold text-base">
+                        Desde {trip.priceFrom.toLocaleString('es-ES')}€
+                      </span>
+                      <Link
+                        href={href}
+                        className={`inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full transition-colors ${
+                          trip.hasItinerary
+                            ? 'bg-vidaia-primary hover:bg-vidaia-dark text-white'
+                            : 'bg-vidaia-earth hover:bg-vidaia-brown text-white'
+                        }`}
+                      >
+                        {cta}
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              )
+            })}
           </div>
         </div>
       </section>
