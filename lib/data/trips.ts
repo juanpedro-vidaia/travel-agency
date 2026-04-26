@@ -101,6 +101,19 @@ const trips: Trip[] = [
   },
   // ── Chile ────────────────────────────────────────────────────────────────────
   // Añadir viajes de Chile aquí cuando estén disponibles.
+  {
+    id: 'esencias-chile-isla-pascua',
+    slug: 'esencias-chile-isla-pascua',
+    title: 'Esencias de Chile con Isla de Pascua: viñas, moáis y salares',
+    subtitle: 'Santiago · San Pedro de Atacama · Isla de Pascua',
+    country: 'chile',
+    days: 13,
+    priceFrom: 4699,
+    image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+  },
   // ── Bolivia ──────────────────────────────────────────────────────────────────
   // Añadir viajes de Bolivia aquí cuando estén disponibles.
 ]

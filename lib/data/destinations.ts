@@ -103,6 +103,33 @@ const destinations: Destination[] = [
     image: 'https://images.unsplash.com/photo-1548919219-32a0d9e83b80?w=800&q=80',
     active: false,
   },
+  {
+    id: 'santiago-chile',
+    slug: 'santiago-chile',
+    name: 'Santiago de Chile',
+    country: 'chile',
+    description: 'Capital cosmopolita de Chile, rodeada por los Andes y puerta de entrada a las viñas del valle central.',
+    image: 'https://images.unsplash.com/photo-1601053999937-7fb74e2c552d?w=1200&q=80',
+    active: true,
+  },
+  {
+    id: 'san-pedro-atacama',
+    slug: 'san-pedro-atacama',
+    name: 'San Pedro de Atacama',
+    country: 'chile',
+    description: 'Pueblo de adobe en el desierto más árido del mundo. Salares, géiseres, lagunas altiplánicas y cielos infinitos.',
+    image: 'https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=1200&q=80',
+    active: true,
+  },
+  {
+    id: 'isla-pascua',
+    slug: 'isla-pascua',
+    name: 'Isla de Pascua (Rapa Nui)',
+    country: 'chile',
+    description: 'La isla habitada más remota del planeta, cuna de los moáis y la enigmática cultura Rapa Nui.',
+    image: 'https://images.unsplash.com/photo-1565073624497-7e91b5cc3843?w=1200&q=80',
+    active: true,
+  },
   // ── Bolivia ──────────────────────────────────────────────────────────────────
   {
     id: 'uyuni',
