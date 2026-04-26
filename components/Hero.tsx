@@ -8,8 +8,8 @@ export default function Hero() {
       {/* Fondo Patagonia */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=90"
-          alt="Torres del Paine, Patagonia"
+          src="https://images.unsplash.com/photo-1598162480222-b2c3d92548d5?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Bariloche, Patagonia"
           fill
           className="object-cover"
           priority

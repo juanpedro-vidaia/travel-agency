@@ -6,29 +6,32 @@ import { Check, ChevronRight, ChevronLeft, Plus, Minus, AlertCircle } from 'luci
 // ─── Constants ───────────────────────────────────────────────────────────────
 
 const DESTINOS = [
-  { id: 'argentina', label: 'Argentina', flag: '🇦🇷' },
-  { id: 'chile',     label: 'Chile',     flag: '🇨🇱' },
-  { id: 'bolivia',   label: 'Bolivia',   flag: '🇧🇴' },
-  { id: 'otros',     label: 'Otros destinos', flag: '🌎' },
+  { id: 'argentina', label: 'Argentina',      code: 'ar' },
+  { id: 'chile',     label: 'Chile',          code: 'cl' },
+  { id: 'bolivia',   label: 'Bolivia',        code: 'bo' },
+  { id: 'otros',     label: 'Otros destinos', code: null },
 ];
 
-const DESTINO_FLAGS: Record<string, string> = {
-  argentina: '🇦🇷',
-  chile:     '🇨🇱',
-  bolivia:   '🇧🇴',
+const DESTINO_CODES: Record<string, string> = {
+  argentina: 'ar',
+  chile:     'cl',
+  bolivia:   'bo',
 };
+
+const MOTIVOS = [
+  { value: 'vacaciones',          label: 'Vacaciones' },
+  { value: 'luna_de_miel',        label: 'Luna de Miel' },
+  { value: 'aniversario',         label: 'Aniversario' },
+  { value: 'celebracion_familiar', label: 'Celebración familiar' },
+  { value: 'incentivo_empresa',   label: 'Incentivo empresa' },
+  { value: 'otros',               label: 'Otros' },
+];
 
 const ZONAS: Record<string, string[]> = {
   argentina: ['Buenos Aires', 'Iguazú', 'Patagonia', 'Mendoza', 'Norte Argentino', 'Otros'],
   chile:     ['Santiago', 'Patagonia', 'Isla de Pascua', 'Carretera Austral', 'Lagos', 'Atacama'],
   bolivia:   ['Uyuni', 'La Paz', 'Sucre y Potosí', 'Lago Titicaca', 'Chiquitanía', 'Otros'],
 };
-
-const MESES = [
-  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
-];
-const ANIOS = ['2026', '2027', '2028', '2029'];
 
 const TIPOS_GRUPO = [
   { id: 'solo',    label: 'Solo/a'  },
@@ -59,18 +62,17 @@ interface FormData {
   destinos:      string[];
   otroDestino:   string;
   zonas:         string[];
-  mesInicio:     string;
-  anioInicio:    string;
+  startDate:     string;
   duracion:      string;
   adultos:       number;
   menores:       number;
   edadesMenores: string;
   tipoGrupo:     string;
   experiencias:  string[];
+  motivo:        string[];
   presupuesto:   string;
   descripcion:   string;
   nombre:        string;
-  apellidos:     string;
   email:         string;
   telefono:      string;
 }
@@ -81,18 +83,17 @@ const INITIAL: FormData = {
   destinos:      [],
   otroDestino:   '',
   zonas:         [],
-  mesInicio:     '',
-  anioInicio:    '',
+  startDate:     '',
   duracion:      '',
   adultos:       2,
   menores:       0,
   edadesMenores: '',
   tipoGrupo:     '',
   experiencias:  [],
+  motivo:        ['vacaciones'],
   presupuesto:   '',
   descripcion:   '',
   nombre:        '',
-  apellidos:     '',
   email:         '',
   telefono:      '',
 };
@@ -215,7 +216,7 @@ export default function PresupuestoForm() {
     if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
   };
 
-  const toggleArray = (field: 'destinos' | 'zonas' | 'experiencias', item: string) => {
+  const toggleArray = (field: 'destinos' | 'zonas' | 'experiencias' | 'motivo', item: string) => {
     setForm((prev) => {
       const current = prev[field] as string[];
       const has = current.includes(item);
@@ -233,7 +234,7 @@ export default function PresupuestoForm() {
   const validateStep1 = (): boolean => {
     const e: Errors = {};
     if (form.destinos.length === 0) e.destinos = 'Selecciona al menos un destino.';
-    if (!form.mesInicio || !form.anioInicio) e.mesInicio = 'Indica mes y año aproximados.';
+    if (!form.startDate) e.startDate = 'Indica una fecha aproximada de inicio.';
     if (!form.duracion || Number(form.duracion) < 1) e.duracion = 'Indica la duración del viaje.';
     if (!form.tipoGrupo) e.tipoGrupo = 'Selecciona el tipo de grupo.';
     setErrors(e);
@@ -242,8 +243,7 @@ export default function PresupuestoForm() {
 
   const validateStep2 = (): boolean => {
     const e: Errors = {};
-    if (!form.nombre.trim()) e.nombre = 'El nombre es obligatorio.';
-    if (!form.apellidos.trim()) e.apellidos = 'Los apellidos son obligatorios.';
+    if (!form.nombre.trim()) e.nombre = 'El nombre y apellidos son obligatorios.';
     if (!form.email.trim()) e.email = 'El email es obligatorio.';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'El email no tiene un formato válido.';
     if (!form.telefono.trim()) e.telefono = 'El teléfono es obligatorio.';
@@ -322,7 +322,7 @@ export default function PresupuestoForm() {
 
       <form onSubmit={handleSubmit} noValidate>
         {/* Hidden: origen del formulario */}
-        <input type="hidden" name="form_source" value="presupuesto" />
+        <input type="hidden" name="form_source" value="presupuesto-web" />
 
         {/* ══ STEP 1 ══════════════════════════════════════════════════════════ */}
         {step === 1 && (
@@ -332,7 +332,7 @@ export default function PresupuestoForm() {
             <fieldset>
               <SectionLabel text="1 · ¿A dónde quieres ir?" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {DESTINOS.map(({ id, label, flag }) => {
+                {DESTINOS.map(({ id, label, code }) => {
                   const checked = form.destinos.includes(id);
                   return (
                     <label
@@ -360,7 +360,10 @@ export default function PresupuestoForm() {
                       >
                         {checked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
                       </div>
-                      <span className="text-xl leading-none">{flag}</span>
+                      {code
+                        ? <img src={`https://flagcdn.com/20x15/${code}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
+                        : <span className="text-xl leading-none">🌎</span>
+                      }
                       <span className="text-sm font-semibold">{label}</span>
                     </label>
                   );
@@ -391,7 +394,7 @@ export default function PresupuestoForm() {
                   {mainDestinos.map((dest) => (
                     <div key={dest}>
                       <p className="flex items-center gap-2 text-sm font-semibold text-gray-500 mb-2.5">
-                        <span className="text-base">{DESTINO_FLAGS[dest]}</span>
+                        <img src={`https://flagcdn.com/20x15/${DESTINO_CODES[dest]}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
                         {dest.charAt(0).toUpperCase() + dest.slice(1)}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -412,34 +415,18 @@ export default function PresupuestoForm() {
 
             {/* 3 · Fecha de inicio */}
             <div>
-              <SectionLabel text="3 · Fecha de inicio aproximada" />
-              <div className="grid grid-cols-2 gap-3">
-                <select
-                  id="start_month"
-                  name="start_month"
-                  value={form.mesInicio}
-                  onChange={(e) => { update('mesInicio', e.target.value); if (errors.mesInicio) setErrors(p => ({ ...p, mesInicio: undefined })); }}
-                  className={inputCls(errors.mesInicio)}
-                >
-                  <option value="">Mes</option>
-                  {MESES.map((m, i) => (
-                    <option key={m} value={String(i + 1)}>{m}</option>
-                  ))}
-                </select>
-                <select
-                  id="start_year"
-                  name="start_year"
-                  value={form.anioInicio}
-                  onChange={(e) => { update('anioInicio', e.target.value); if (errors.mesInicio) setErrors(p => ({ ...p, mesInicio: undefined })); }}
-                  className={inputCls(errors.mesInicio)}
-                >
-                  <option value="">Año</option>
-                  {ANIOS.map((a) => (
-                    <option key={a} value={a}>{a}</option>
-                  ))}
-                </select>
-              </div>
-              <FieldError msg={errors.mesInicio} />
+              <SectionLabel text="3 · Fecha aproximada de inicio del viaje" />
+              <input
+                type="date"
+                id="start_date"
+                name="start_date"
+                required
+                value={form.startDate}
+                min={new Date().toISOString().split('T')[0]}
+                onChange={(e) => { update('startDate', e.target.value); if (errors.startDate) setErrors(p => ({ ...p, startDate: undefined })); }}
+                className={inputCls(errors.startDate)}
+              />
+              <FieldError msg={errors.startDate} />
             </div>
 
             {/* 4 · Duración */}
@@ -570,9 +557,48 @@ export default function PresupuestoForm() {
               </div>
             </fieldset>
 
-            {/* 8 · Presupuesto */}
+            {/* 8 · Motivo del viaje */}
+            <fieldset>
+              <SectionLabel text="8 · Motivo del viaje (opcional)" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {MOTIVOS.map(({ value, label }) => {
+                  const checked = form.motivo.includes(value);
+                  return (
+                    <label
+                      key={value}
+                      htmlFor={`mot_${value}`}
+                      className={`flex items-center gap-3 p-3.5 rounded-xl border-2 text-left transition-all cursor-pointer ${
+                        checked
+                          ? 'border-vidaia-primary bg-vidaia-light/60 text-vidaia-dark'
+                          : 'border-gray-200 hover:border-vidaia-mid text-gray-700 bg-white'
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        id={`mot_${value}`}
+                        name="trip_reason"
+                        value={value}
+                        checked={checked}
+                        onChange={() => toggleArray('motivo', value)}
+                        className="sr-only"
+                      />
+                      <div
+                        className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
+                          checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'
+                        }`}
+                      >
+                        {checked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
+                      </div>
+                      <span className="text-sm font-medium">{label}</span>
+                    </label>
+                  );
+                })}
+              </div>
+            </fieldset>
+
+            {/* 9 · Presupuesto */}
             <div>
-              <SectionLabel text="8 · Presupuesto orientativo por persona (opcional)" />
+              <SectionLabel text="9 · Presupuesto orientativo por persona (opcional)" />
               <select
                 id="budget"
                 name="budget"
@@ -587,9 +613,9 @@ export default function PresupuestoForm() {
               </select>
             </div>
 
-            {/* 9 · Descripción libre */}
+            {/* 10 · Descripción libre */}
             <div>
-              <SectionLabel text="9 · Cuéntanos tu viaje soñado (opcional)" />
+              <SectionLabel text="10 · Cuéntanos tu viaje soñado (opcional)" />
               <textarea
                 id="message"
                 name="message"
@@ -616,40 +642,22 @@ export default function PresupuestoForm() {
         {step === 2 && (
           <div className="space-y-5">
 
-            {/* Nombre */}
+            {/* Nombre y apellidos */}
             <div>
-              <label htmlFor="first_name" className="block text-sm font-semibold text-vidaia-dark mb-2">
-                Nombre <span className="text-red-400">*</span>
+              <label htmlFor="full_name" className="block text-sm font-semibold text-vidaia-dark mb-2">
+                Nombre y apellidos <span className="text-red-400">*</span>
               </label>
               <input
                 type="text"
-                id="first_name"
-                name="first_name"
-                autoComplete="given-name"
+                id="full_name"
+                name="full_name"
+                autoComplete="name"
                 value={form.nombre}
                 onChange={(e) => update('nombre', e.target.value)}
-                placeholder="Tu nombre"
+                placeholder="Tu nombre y apellidos"
                 className={inputCls(errors.nombre)}
               />
               <FieldError msg={errors.nombre} />
-            </div>
-
-            {/* Apellidos */}
-            <div>
-              <label htmlFor="last_name" className="block text-sm font-semibold text-vidaia-dark mb-2">
-                Apellidos <span className="text-red-400">*</span>
-              </label>
-              <input
-                type="text"
-                id="last_name"
-                name="last_name"
-                autoComplete="family-name"
-                value={form.apellidos}
-                onChange={(e) => update('apellidos', e.target.value)}
-                placeholder="Tus apellidos"
-                className={inputCls(errors.apellidos)}
-              />
-              <FieldError msg={errors.apellidos} />
             </div>
 
             {/* Email */}

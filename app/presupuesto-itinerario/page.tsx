@@ -6,9 +6,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, CheckCircle, MapPin } from 'lucide-react'
 
-const MONTHS = [
-  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
+const MOTIVOS = [
+  { value: 'vacaciones',           label: 'Vacaciones' },
+  { value: 'luna_de_miel',         label: 'Luna de Miel' },
+  { value: 'aniversario',          label: 'Aniversario' },
+  { value: 'celebracion_familiar', label: 'Celebración familiar' },
+  { value: 'incentivo_empresa',    label: 'Incentivo empresa' },
+  { value: 'otros',                label: 'Otros' },
 ]
 
 const OPCIONALES = [
@@ -30,7 +34,8 @@ interface FormState {
   telefono: string
   adultos: string
   menores: string
-  mes: string
+  startDate: string
+  motivo: string[]
   categoria: string
   opcionales: string[]
   comentarios: string
@@ -48,7 +53,8 @@ function PresupuestoItinerarioContent() {
     telefono: '',
     adultos: '2',
     menores: '0',
-    mes: '',
+    startDate: '',
+    motivo: ['vacaciones'],
     categoria: '',
     opcionales: [],
     comentarios: '',
@@ -66,6 +72,15 @@ function PresupuestoItinerarioContent() {
     }))
   }
 
+  const toggleMotivo = (value: string) => {
+    setForm((prev) => ({
+      ...prev,
+      motivo: prev.motivo.includes(value)
+        ? prev.motivo.filter((m) => m !== value)
+        : [...prev.motivo, value],
+    }))
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitted(true)
@@ -73,7 +88,7 @@ function PresupuestoItinerarioContent() {
 
   const backHref = titulo ? '/destinos/argentina' : '/itinerarios/paisajes-naturales-argentina'
   const heroTitle    = titulo    ? `Me interesa: ${titulo}` : 'Me interesa este itinerario'
-  const heroSubtitle = subtitulo || 'Paisajes naturales de Argentina · 13 días'
+  const heroSubtitle = subtitulo || null
   const itineraryRef = titulo    || 'Paisajes naturales de Argentina'
 
   if (submitted) {
@@ -113,11 +128,13 @@ function PresupuestoItinerarioContent() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-vidaia-dark/65" />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4">
-          <p className="text-vidaia-earth text-xs font-semibold uppercase tracking-widest mb-3 flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 shrink-0" />
-            <span className="truncate max-w-xs sm:max-w-none">{heroSubtitle}</span>
-          </p>
+        <div className="relative z-10 h-full flex flex-col items-center justify-end pb-10 text-white text-center px-4 sm:px-8">
+          {heroSubtitle && (
+            <p className="text-vidaia-earth text-xs font-semibold uppercase tracking-widest mb-3 flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 shrink-0" />
+              <span className="truncate max-w-xs sm:max-w-none">{heroSubtitle}</span>
+            </p>
+          )}
           <h1 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold max-w-2xl text-balance">
             {heroTitle}
           </h1>
@@ -133,7 +150,7 @@ function PresupuestoItinerarioContent() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Hidden fields para Clientify */}
-            <input type="hidden" name="form_source"          value="presupuesto-itinerario" />
+            <input type="hidden" name="form_source"          value="presupuesto-itinerario-web" />
             <input type="hidden" name="itinerary_reference"  value={itineraryRef} />
 
             {/* Nombre */}
@@ -228,25 +245,56 @@ function PresupuestoItinerarioContent() {
               </div>
             </div>
 
-            {/* Mes */}
+            {/* Fecha de inicio */}
             <div>
-              <label htmlFor="start_month" className="block text-sm font-semibold text-vidaia-dark mb-1.5">
-                Mes de inicio preferido <span className="text-red-500">*</span>
+              <label htmlFor="start_date" className="block text-sm font-semibold text-vidaia-dark mb-1.5">
+                Fecha aproximada de inicio del viaje <span className="text-red-500">*</span>
               </label>
-              <select
-                id="start_month"
-                name="start_month"
+              <input
+                type="date"
+                id="start_date"
+                name="start_date"
                 required
-                value={form.mes}
-                onChange={(e) => set('mes', e.target.value)}
+                value={form.startDate}
+                min={new Date().toISOString().split('T')[0]}
+                onChange={(e) => set('startDate', e.target.value)}
                 className="w-full border border-vidaia-light rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
-              >
-                <option value="">Selecciona un mes</option>
-                {MONTHS.map((m) => (
-                  <option key={m} value={m}>{m}</option>
-                ))}
-              </select>
+              />
             </div>
+
+            {/* Motivo del viaje */}
+            <fieldset>
+              <legend className="block text-sm font-semibold text-vidaia-dark mb-3">
+                Motivo del viaje <span className="font-normal text-vidaia-charcoal/45">(opcional)</span>
+              </legend>
+              <div className="grid grid-cols-2 gap-2">
+                {MOTIVOS.map(({ value, label }) => {
+                  const checked = form.motivo.includes(value)
+                  return (
+                    <label
+                      key={value}
+                      htmlFor={`mot_${value}`}
+                      className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl border cursor-pointer transition-all text-sm ${
+                        checked
+                          ? 'border-vidaia-primary bg-vidaia-light text-vidaia-dark font-medium'
+                          : 'border-vidaia-light hover:border-vidaia-primary/40 text-vidaia-charcoal'
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        id={`mot_${value}`}
+                        name="trip_reason"
+                        value={value}
+                        checked={checked}
+                        onChange={() => toggleMotivo(value)}
+                        className="w-4 h-4 accent-vidaia-primary shrink-0"
+                      />
+                      {label}
+                    </label>
+                  )
+                })}
+              </div>
+            </fieldset>
 
             {/* Categoría — radio buttons con id/name correctos */}
             <fieldset>

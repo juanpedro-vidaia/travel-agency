@@ -6,9 +6,9 @@ import Image from 'next/image'
 import { Menu, X, ChevronDown, Heart } from 'lucide-react'
 
 const destinations = [
-  { label: 'Argentina', href: '/destinos/argentina', flag: '🇦🇷', desc: 'Patagonia, Iguazú, Buenos Aires' },
-  { label: 'Chile', href: '/destinos/chile', flag: '🇨🇱', desc: 'Atacama, Torres del Paine, Chiloé' },
-  { label: 'Bolivia', href: '/destinos/bolivia', flag: '🇧🇴', desc: 'Salar de Uyuni, La Paz, Sucre' },
+  { label: 'Argentina', href: '/destinos/argentina', code: 'ar', desc: 'Patagonia, Iguazú, Buenos Aires' },
+  { label: 'Chile', href: '/destinos/chile', code: 'cl', desc: 'Atacama, Torres del Paine, Chiloé' },
+  { label: 'Bolivia', href: '/destinos/bolivia', code: 'bo', desc: 'Salar de Uyuni, La Paz, Sucre' },
 ]
 
 export default function Header() {
@@ -81,7 +81,7 @@ export default function Header() {
                     className="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-vidaia-light transition-colors group/item"
                     onClick={() => setDestinosOpen(false)}
                   >
-                    <span className="text-xl mt-0.5">{d.flag}</span>
+                    <img src={`https://flagcdn.com/20x15/${d.code}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-semibold text-vidaia-dark group-hover/item:text-vidaia-primary">
                         {d.label}
@@ -168,7 +168,7 @@ export default function Header() {
                   className="flex items-center gap-2.5 pl-6 pr-4 py-2.5 text-sm text-vidaia-charcoal hover:bg-vidaia-light rounded-xl"
                   onClick={() => setMobileOpen(false)}
                 >
-                  <span>{d.flag}</span>
+                  <img src={`https://flagcdn.com/20x15/${d.code}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
                   <span>{d.label}</span>
                 </Link>
               ))}
