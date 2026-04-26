@@ -39,8 +39,7 @@ export default function PresupuestoPage() {
           </p>
 
           <p className="text-white/65 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            Cuéntanos en solo <strong className="text-white/90">2 minutos</strong> vuestro
-            viaje deseado para poder diseñar una experiencia personalizada.
+            Cuéntanos vuestro viaje deseado para poder diseñar una experiencia personalizada.
             Creamos recuerdos inolvidables, diseñados a medida para vosotros.
           </p>
         </div>
@@ -48,9 +47,7 @@ export default function PresupuestoPage() {
 
       {/* ── Formulario ────────────────────────────────────────────────────── */}
       <div className="max-w-2xl mx-auto px-4 sm:px-6 -mt-12 pb-24 relative z-10">
-        <div className="bg-white rounded-3xl shadow-2xl p-7 sm:p-10">
-          <PresupuestoForm />
-        </div>
+        <PresupuestoForm />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { Check, ChevronRight, ChevronLeft, Plus, Minus, AlertCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Check, Plus, Minus, Globe, User } from 'lucide-react';
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -18,15 +18,6 @@ const DESTINO_CODES: Record<string, string> = {
   bolivia:   'bo',
 };
 
-const MOTIVOS = [
-  { value: 'vacaciones',          label: 'Vacaciones' },
-  { value: 'luna_de_miel',        label: 'Luna de Miel' },
-  { value: 'aniversario',         label: 'Aniversario' },
-  { value: 'celebracion_familiar', label: 'Celebración familiar' },
-  { value: 'incentivo_empresa',   label: 'Incentivo empresa' },
-  { value: 'otros',               label: 'Otros' },
-];
-
 const ZONAS: Record<string, string[]> = {
   argentina: ['Buenos Aires', 'Iguazú', 'Patagonia', 'Mendoza', 'Norte Argentino', 'Otros'],
   chile:     ['Santiago', 'Patagonia', 'Isla de Pascua', 'Carretera Austral', 'Lagos', 'Atacama'],
@@ -41,11 +32,20 @@ const TIPOS_GRUPO = [
 ];
 
 const EXPERIENCIAS = [
-  { id: 'aventura',   label: 'Aventura y trekking',       emoji: '🥾' },
-  { id: 'naturaleza', label: 'Naturaleza y vida salvaje',  emoji: '🦁' },
-  { id: 'cultura',    label: 'Cultura y gastronomía',      emoji: '🍷' },
-  { id: 'relax',      label: 'Relax y desconexión',        emoji: '🌅' },
-  { id: 'combinado',  label: 'Viaje combinado',            emoji: '✨' },
+  { id: 'aventura',   label: 'Aventura y trekking',      emoji: '🥾' },
+  { id: 'naturaleza', label: 'Naturaleza y vida salvaje', emoji: '🦁' },
+  { id: 'cultura',    label: 'Cultura y gastronomía',     emoji: '🍷' },
+  { id: 'relax',      label: 'Relax y desconexión',       emoji: '🌅' },
+  { id: 'combinado',  label: 'Viaje combinado',           emoji: '✨' },
+];
+
+const MOTIVOS = [
+  { value: 'vacaciones',           label: 'Vacaciones' },
+  { value: 'luna_de_miel',         label: 'Luna de Miel' },
+  { value: 'aniversario',          label: 'Aniversario' },
+  { value: 'celebracion_familiar', label: 'Celebración familiar' },
+  { value: 'incentivo_empresa',    label: 'Incentivo empresa' },
+  { value: 'otros',                label: 'Otros' },
 ];
 
 const PRESUPUESTOS = [
@@ -77,8 +77,6 @@ interface FormData {
   telefono:      string;
 }
 
-type Errors = Partial<Record<keyof FormData, string>>;
-
 const INITIAL: FormData = {
   destinos:      [],
   otroDestino:   '',
@@ -100,50 +98,19 @@ const INITIAL: FormData = {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-function ProgressBar({ step }: { step: number }) {
-  return (
-    <div className="flex items-center gap-4 mb-8">
-      <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-        <div
-          className="h-full bg-vidaia-primary rounded-full transition-all duration-500 ease-out"
-          style={{ width: step === 1 ? '50%' : '100%' }}
-        />
-      </div>
-      <span className="text-sm font-semibold text-gray-400 whitespace-nowrap">
-        Paso {step} de 2
-      </span>
-    </div>
-  );
-}
-
-function SectionLabel({ text }: { text: string }) {
+function FieldLabel({ text, required }: { text: string; required?: boolean }) {
   return (
     <p className="flex items-center gap-2.5 mb-4">
       <span className="w-1.5 h-4 rounded-full bg-vidaia-primary flex-shrink-0" />
-      <span className="text-sm font-bold text-vidaia-dark uppercase tracking-wide">{text}</span>
+      <span className="text-sm font-bold text-vidaia-dark uppercase tracking-wide">
+        {text}
+        {required && <span className="text-red-400 ml-1">*</span>}
+      </span>
     </p>
   );
 }
 
-function FieldError({ msg }: { msg?: string }) {
-  if (!msg) return null;
-  return (
-    <p className="mt-2 flex items-center gap-1.5 text-sm text-red-500">
-      <AlertCircle className="w-4 h-4 flex-shrink-0" />
-      {msg}
-    </p>
-  );
-}
-
-function CheckPill({
-  checked,
-  onChange,
-  label,
-}: {
-  checked: boolean;
-  onChange: () => void;
-  label: string;
-}) {
+function CheckPill({ checked, onChange, label }: { checked: boolean; onChange: () => void; label: string }) {
   return (
     <button
       type="button"
@@ -160,17 +127,9 @@ function CheckPill({
 }
 
 function NumberStepper({
-  label,
-  sublabel,
-  value,
-  onChange,
-  min = 0,
+  label, sublabel, value, onChange, min = 0,
 }: {
-  label: string;
-  sublabel?: string;
-  value: number;
-  onChange: (v: number) => void;
-  min?: number;
+  label: string; sublabel?: string; value: number; onChange: (v: number) => void; min?: number;
 }) {
   return (
     <div className="flex items-center justify-between py-3.5">
@@ -187,9 +146,7 @@ function NumberStepper({
         >
           <Minus className="w-4 h-4" />
         </button>
-        <span className="w-8 text-center text-xl font-bold text-vidaia-dark tabular-nums">
-          {value}
-        </span>
+        <span className="w-8 text-center text-xl font-bold text-vidaia-dark tabular-nums">{value}</span>
         <button
           type="button"
           onClick={() => onChange(value + 1)}
@@ -205,15 +162,11 @@ function NumberStepper({
 // ─── Main Form ────────────────────────────────────────────────────────────────
 
 export default function PresupuestoForm() {
-  const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormData>(INITIAL);
-  const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
-  const topRef = useRef<HTMLDivElement>(null);
 
   const update = <K extends keyof FormData>(key: K, value: FormData[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }));
-    if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
   };
 
   const toggleArray = (field: 'destinos' | 'zonas' | 'experiencias' | 'motivo', item: string) => {
@@ -226,58 +179,22 @@ export default function PresupuestoForm() {
       }
       return { ...prev, [field]: next };
     });
-    if (field === 'destinos' && errors.destinos) {
-      setErrors((prev) => ({ ...prev, destinos: undefined }));
-    }
-  };
-
-  const validateStep1 = (): boolean => {
-    const e: Errors = {};
-    if (form.destinos.length === 0) e.destinos = 'Selecciona al menos un destino.';
-    if (!form.startDate) e.startDate = 'Indica una fecha aproximada de inicio.';
-    if (!form.duracion || Number(form.duracion) < 1) e.duracion = 'Indica la duración del viaje.';
-    if (!form.tipoGrupo) e.tipoGrupo = 'Selecciona el tipo de grupo.';
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
-
-  const validateStep2 = (): boolean => {
-    const e: Errors = {};
-    if (!form.nombre.trim()) e.nombre = 'El nombre y apellidos son obligatorios.';
-    if (!form.email.trim()) e.email = 'El email es obligatorio.';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'El email no tiene un formato válido.';
-    if (!form.telefono.trim()) e.telefono = 'El teléfono es obligatorio.';
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
-
-  const scrollTop = () =>
-    setTimeout(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
-
-  const goToStep2 = () => {
-    if (validateStep1()) { setStep(2); scrollTop(); }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateStep2()) {
-      console.log('Solicitud enviada:', form);
-      setSubmitted(true);
-      scrollTop();
-    }
+    setSubmitted(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const inputCls = (err?: string) =>
-    `w-full px-4 py-3 border-2 rounded-xl text-sm text-vidaia-charcoal placeholder-gray-400 focus:outline-none transition-colors bg-white ${
-      err ? 'border-red-300 focus:border-red-400' : 'border-gray-200 focus:border-vidaia-primary'
-    }`;
+  const inp = 'w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-sm text-vidaia-charcoal placeholder-gray-400 focus:outline-none focus:border-vidaia-primary transition-colors bg-white';
 
   const mainDestinos = form.destinos.filter((d) => d !== 'otros');
 
   // ── Success ──────────────────────────────────────────────────────────────────
   if (submitted) {
     return (
-      <div ref={topRef} className="text-center py-10">
+      <div className="text-center py-10">
         <div className="w-20 h-20 bg-vidaia-light rounded-full flex items-center justify-center mx-auto mb-6">
           <Check className="w-10 h-10 text-vidaia-primary" strokeWidth={2.5} />
         </div>
@@ -298,39 +215,33 @@ export default function PresupuestoForm() {
 
   // ── Form ─────────────────────────────────────────────────────────────────────
   return (
-    <div ref={topRef}>
-      <ProgressBar step={step} />
+    <div className="pb-24 md:pb-0">
+      <form onSubmit={handleSubmit} id="presupuesto-form">
 
-      {/* Step title */}
-      <div className="mb-8">
-        {step === 1 ? (
-          <>
-            <h2 className="font-heading text-2xl font-bold text-vidaia-dark">Tu viaje soñado</h2>
-            <p className="text-gray-400 text-sm mt-1">
-              Cuéntanos lo que imaginas — cuanto más detalle, mejor podremos diseñarlo.
-            </p>
-          </>
-        ) : (
-          <>
-            <h2 className="font-heading text-2xl font-bold text-vidaia-dark">Casi listo</h2>
-            <p className="text-gray-400 text-sm mt-1">
-              Solo necesitamos saber a quién le mandamos la propuesta 😊
-            </p>
-          </>
-        )}
-      </div>
-
-      <form onSubmit={handleSubmit} noValidate>
-        {/* Hidden: origen del formulario */}
+        {/* Campos ocultos globales */}
         <input type="hidden" name="form_source" value="presupuesto-web" />
+        <input type="hidden" name="adults"   value={form.adultos} />
+        <input type="hidden" name="children" value={form.menores} />
 
-        {/* ══ STEP 1 ══════════════════════════════════════════════════════════ */}
-        {step === 1 && (
+        {/* ══ SECCIÓN 1: Tu viaje soñado ══════════════════════════════════════ */}
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8 mb-6">
+
+          <div className="flex items-center gap-3 mb-1">
+            <div className="w-10 h-10 bg-vidaia-light rounded-xl flex items-center justify-center flex-shrink-0">
+              <Globe className="w-5 h-5 text-vidaia-primary" />
+            </div>
+            <div>
+              <h2 className="font-heading text-xl font-bold text-vidaia-dark">Tu viaje soñado</h2>
+              <p className="text-sm text-gray-400 mt-0.5">Cuéntanos cómo lo imaginas</p>
+            </div>
+          </div>
+          <hr className="border-vidaia-light my-6" />
+
           <div className="space-y-8">
 
-            {/* 1 · Destinos — checkboxes con name="destinations" */}
+            {/* Destinos */}
             <fieldset>
-              <SectionLabel text="1 · ¿A dónde quieres ir?" />
+              <FieldLabel text="¿A dónde quieres ir?" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {DESTINOS.map(({ id, label, code }) => {
                   const checked = form.destinos.includes(id);
@@ -353,11 +264,7 @@ export default function PresupuestoForm() {
                         onChange={() => toggleArray('destinos', id)}
                         className="sr-only"
                       />
-                      <div
-                        className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
-                          checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'
-                        }`}
-                      >
+                      <div className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'}`}>
                         {checked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
                       </div>
                       {code
@@ -369,7 +276,6 @@ export default function PresupuestoForm() {
                   );
                 })}
               </div>
-
               {form.destinos.includes('otros') && (
                 <div className="mt-3">
                   <input
@@ -379,17 +285,16 @@ export default function PresupuestoForm() {
                     value={form.otroDestino}
                     onChange={(e) => update('otroDestino', e.target.value)}
                     placeholder="¿Qué destino tienes en mente?"
-                    className={inputCls()}
+                    className={inp}
                   />
                 </div>
               )}
-              <FieldError msg={errors.destinos} />
             </fieldset>
 
-            {/* 2 · Zonas — solo si hay destinos principales */}
+            {/* Zonas (dinámico) */}
             {mainDestinos.length > 0 && (
               <div>
-                <SectionLabel text="2 · ¿Qué zonas te interesan? (opcional)" />
+                <FieldLabel text="¿Qué zonas te interesan? (opcional)" />
                 <div className="space-y-5">
                   {mainDestinos.map((dest) => (
                     <div key={dest}>
@@ -413,9 +318,9 @@ export default function PresupuestoForm() {
               </div>
             )}
 
-            {/* 3 · Fecha de inicio */}
+            {/* Fecha */}
             <div>
-              <SectionLabel text="3 · Fecha aproximada de inicio del viaje" />
+              <FieldLabel text="Fecha aproximada de inicio" required />
               <input
                 type="date"
                 id="start_date"
@@ -423,15 +328,14 @@ export default function PresupuestoForm() {
                 required
                 value={form.startDate}
                 min={new Date().toISOString().split('T')[0]}
-                onChange={(e) => { update('startDate', e.target.value); if (errors.startDate) setErrors(p => ({ ...p, startDate: undefined })); }}
-                className={inputCls(errors.startDate)}
+                onChange={(e) => update('startDate', e.target.value)}
+                className={inp}
               />
-              <FieldError msg={errors.startDate} />
             </div>
 
-            {/* 4 · Duración */}
+            {/* Duración */}
             <div>
-              <SectionLabel text="4 · Duración aproximada" />
+              <FieldLabel text="Duración aproximada" required />
               <div className="flex items-center gap-3">
                 <input
                   type="number"
@@ -439,32 +343,22 @@ export default function PresupuestoForm() {
                   name="duration"
                   min={1}
                   max={365}
+                  required
                   value={form.duracion}
                   onChange={(e) => update('duracion', e.target.value)}
                   placeholder="—"
-                  className={`${inputCls(errors.duracion)} w-28 text-center text-lg font-semibold`}
+                  className={`${inp} w-28 text-center text-lg font-semibold`}
                 />
                 <span className="text-sm text-gray-500 font-medium">días</span>
               </div>
-              <FieldError msg={errors.duracion} />
             </div>
 
-            {/* 5 · Viajeros — NumberStepper + hidden inputs */}
+            {/* Viajeros */}
             <div>
-              <SectionLabel text="5 · ¿Cuántos viajeros sois?" />
+              <FieldLabel text="¿Cuántos viajeros sois?" />
               <div className="bg-gray-50 rounded-2xl px-5 divide-y divide-gray-100">
-                <NumberStepper
-                  label="Adultos"
-                  value={form.adultos}
-                  min={1}
-                  onChange={(v) => update('adultos', v)}
-                />
-                <NumberStepper
-                  label="Menores"
-                  sublabel="Menores de 18 años"
-                  value={form.menores}
-                  onChange={(v) => update('menores', v)}
-                />
+                <NumberStepper label="Adultos" value={form.adultos} min={1} onChange={(v) => update('adultos', v)} />
+                <NumberStepper label="Menores" sublabel="Menores de 18 años" value={form.menores} onChange={(v) => update('menores', v)} />
               </div>
               {form.menores > 0 && (
                 <div className="mt-3">
@@ -478,15 +372,15 @@ export default function PresupuestoForm() {
                     value={form.edadesMenores}
                     onChange={(e) => update('edadesMenores', e.target.value)}
                     placeholder="Ej: 5, 8 años"
-                    className={inputCls()}
+                    className={inp}
                   />
                 </div>
               )}
             </div>
 
-            {/* 6 · Tipo de grupo — radios con name="group_type" */}
+            {/* Tipo de grupo */}
             <fieldset>
-              <SectionLabel text="6 · Tipo de grupo" />
+              <FieldLabel text="Tipo de grupo" required />
               <div className="flex flex-wrap gap-2">
                 {TIPOS_GRUPO.map(({ id, label }) => (
                   <label
@@ -503,20 +397,20 @@ export default function PresupuestoForm() {
                       id={`group_${id}`}
                       name="group_type"
                       value={id}
+                      required
                       checked={form.tipoGrupo === id}
-                      onChange={() => { update('tipoGrupo', id); if (errors.tipoGrupo) setErrors(p => ({ ...p, tipoGrupo: undefined })); }}
+                      onChange={() => update('tipoGrupo', id)}
                       className="sr-only"
                     />
                     {label}
                   </label>
                 ))}
               </div>
-              <FieldError msg={errors.tipoGrupo} />
             </fieldset>
 
-            {/* 7 · Tipo de experiencia — checkboxes con name="experience_type" */}
+            {/* Tipo de experiencia */}
             <fieldset>
-              <SectionLabel text="7 · Tipo de experiencia (opcional)" />
+              <FieldLabel text="Tipo de experiencia (opcional)" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {EXPERIENCIAS.map(({ id, label, emoji }) => {
                   const checked = form.experiencias.includes(id);
@@ -539,11 +433,7 @@ export default function PresupuestoForm() {
                         onChange={() => toggleArray('experiencias', id)}
                         className="sr-only"
                       />
-                      <div
-                        className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
-                          checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'
-                        }`}
-                      >
+                      <div className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'}`}>
                         {checked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
                       </div>
                       <span className="text-xl leading-none">{emoji}</span>
@@ -554,9 +444,9 @@ export default function PresupuestoForm() {
               </div>
             </fieldset>
 
-            {/* 8 · Motivo del viaje */}
+            {/* Motivo del viaje */}
             <fieldset>
-              <SectionLabel text="8 · Motivo del viaje (opcional)" />
+              <FieldLabel text="Motivo del viaje (opcional)" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {MOTIVOS.map(({ value, label }) => {
                   const checked = form.motivo.includes(value);
@@ -579,11 +469,7 @@ export default function PresupuestoForm() {
                         onChange={() => toggleArray('motivo', value)}
                         className="sr-only"
                       />
-                      <div
-                        className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
-                          checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'
-                        }`}
-                      >
+                      <div className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'}`}>
                         {checked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
                       </div>
                       <span className="text-sm font-medium">{label}</span>
@@ -593,15 +479,15 @@ export default function PresupuestoForm() {
               </div>
             </fieldset>
 
-            {/* 9 · Presupuesto */}
+            {/* Presupuesto */}
             <div>
-              <SectionLabel text="9 · Presupuesto orientativo por persona (opcional)" />
+              <FieldLabel text="Presupuesto orientativo por persona (opcional)" />
               <select
                 id="budget"
                 name="budget"
                 value={form.presupuesto}
                 onChange={(e) => update('presupuesto', e.target.value)}
-                className={inputCls()}
+                className={inp}
               >
                 <option value="">Selecciona una opción</option>
                 {PRESUPUESTOS.map((p) => (
@@ -610,51 +496,39 @@ export default function PresupuestoForm() {
               </select>
             </div>
 
-            {/* 10 · Descripción libre */}
+            {/* Mensaje libre */}
             <div>
-              <SectionLabel text="10 · Cuéntanos tu viaje soñado (opcional)" />
+              <FieldLabel text="Cuéntanos tu viaje soñado (opcional)" />
               <textarea
                 id="message"
                 name="message"
                 rows={4}
                 value={form.descripcion}
                 onChange={(e) => update('descripcion', e.target.value)}
-                placeholder="Cualquier detalle que quieras contarnos: ocasión especial, preferencias, cosas que no queréis perderos..."
-                className={`${inputCls()} resize-none leading-relaxed`}
+                placeholder="Ocasión especial, preferencias, cosas que no queréis perderos..."
+                className={`${inp} resize-none leading-relaxed`}
               />
             </div>
 
-            <button
-              type="button"
-              onClick={goToStep2}
-              className="w-full flex items-center justify-center gap-2 py-4 bg-vidaia-primary hover:bg-vidaia-dark text-white font-bold text-base rounded-2xl transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.98]"
-            >
-              Siguiente
-              <ChevronRight className="w-5 h-5" />
-            </button>
           </div>
-        )}
+        </div>
 
-        {/* ══ STEP 2 ══════════════════════════════════════════════════════════ */}
-        {step === 2 && (
+        {/* ══ SECCIÓN 2: Tus datos de contacto ════════════════════════════════ */}
+        <div className="bg-vidaia-sand rounded-2xl border border-vidaia-light p-6 sm:p-8 mb-8">
+
+          <div className="flex items-center gap-3 mb-1">
+            <div className="w-10 h-10 bg-vidaia-earth/15 rounded-xl flex items-center justify-center flex-shrink-0">
+              <User className="w-5 h-5 text-vidaia-earth" />
+            </div>
+            <div>
+              <h2 className="font-heading text-xl font-bold text-vidaia-dark">Tus datos de contacto</h2>
+              <p className="text-sm text-gray-400 mt-0.5">Para enviarte tu propuesta personalizada</p>
+            </div>
+          </div>
+          <hr className="border-vidaia-light my-6" />
+
           <div className="space-y-5">
 
-            {/* Mirror oculto de todos los campos del paso 1 — el CRM los captura al hacer submit */}
-            {form.destinos.map((d) => <input key={`hd_${d}`} type="hidden" name="destinations" value={d} />)}
-            {form.otroDestino && <input type="hidden" name="other_destination" value={form.otroDestino} />}
-            {form.zonas.map((z) => <input key={`hz_${z}`} type="hidden" name="zones" value={z} />)}
-            <input type="hidden" name="start_date" value={form.startDate} />
-            <input type="hidden" name="duration" value={form.duracion} />
-            <input type="hidden" name="adults" value={form.adultos} />
-            <input type="hidden" name="children" value={form.menores} />
-            {form.edadesMenores && <input type="hidden" name="children_ages" value={form.edadesMenores} />}
-            <input type="hidden" name="group_type" value={form.tipoGrupo} />
-            {form.experiencias.map((e) => <input key={`he_${e}`} type="hidden" name="experience_type" value={e} />)}
-            {form.motivo.map((m) => <input key={`hm_${m}`} type="hidden" name="trip_reason" value={m} />)}
-            {form.presupuesto && <input type="hidden" name="budget" value={form.presupuesto} />}
-            {form.descripcion && <input type="hidden" name="message" value={form.descripcion} />}
-
-            {/* Nombre y apellidos */}
             <div>
               <label htmlFor="full_name" className="block text-sm font-semibold text-vidaia-dark mb-2">
                 Nombre y apellidos <span className="text-red-400">*</span>
@@ -664,15 +538,14 @@ export default function PresupuestoForm() {
                 id="full_name"
                 name="full_name"
                 autoComplete="name"
+                required
                 value={form.nombre}
                 onChange={(e) => update('nombre', e.target.value)}
                 placeholder="Tu nombre y apellidos"
-                className={inputCls(errors.nombre)}
+                className={inp}
               />
-              <FieldError msg={errors.nombre} />
             </div>
 
-            {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-semibold text-vidaia-dark mb-2">
                 Email <span className="text-red-400">*</span>
@@ -682,15 +555,14 @@ export default function PresupuestoForm() {
                 id="email"
                 name="email"
                 autoComplete="email"
+                required
                 value={form.email}
                 onChange={(e) => update('email', e.target.value)}
                 placeholder="tu@email.com"
-                className={inputCls(errors.email)}
+                className={inp}
               />
-              <FieldError msg={errors.email} />
             </div>
 
-            {/* Teléfono */}
             <div>
               <label htmlFor="phone" className="block text-sm font-semibold text-vidaia-dark mb-2">
                 Teléfono <span className="text-red-400">*</span>
@@ -700,16 +572,15 @@ export default function PresupuestoForm() {
                 id="phone"
                 name="phone"
                 autoComplete="tel"
+                required
                 value={form.telefono}
                 onChange={(e) => update('telefono', e.target.value)}
                 placeholder="+34 600 000 000"
-                className={inputCls(errors.telefono)}
+                className={inp}
               />
-              <FieldError msg={errors.telefono} />
             </div>
 
-            {/* Disclaimer */}
-            <p className="text-xs text-gray-400 leading-relaxed pt-2">
+            <p className="text-xs text-gray-400 leading-relaxed pt-1">
               Al enviar este formulario aceptas nuestra{' '}
               <a href="/privacidad" className="underline hover:text-vidaia-primary transition-colors">
                 política de privacidad
@@ -717,26 +588,30 @@ export default function PresupuestoForm() {
               . Tus datos se usarán únicamente para preparar tu propuesta de viaje personalizada.
             </p>
 
-            {/* Buttons */}
-            <div className="flex flex-col-reverse sm:flex-row gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => { setStep(1); scrollTop(); }}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 border-2 border-gray-200 hover:border-vidaia-mid text-gray-500 hover:text-vidaia-dark font-medium rounded-2xl transition-all"
-              >
-                <ChevronLeft className="w-5 h-5" />
-                Volver
-              </button>
-              <button
-                type="submit"
-                className="flex-1 flex items-center justify-center gap-2 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-bold text-base rounded-2xl transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
-              >
-                Quiero mi viaje a medida 🌍
-              </button>
-            </div>
           </div>
-        )}
+        </div>
+
+        {/* ── Botón envío — desktop ── */}
+        <button
+          type="submit"
+          id="submit-presupuesto"
+          className="hidden md:flex w-full items-center justify-center gap-2 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-bold text-base rounded-2xl transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
+        >
+          Enviar mi solicitud 🌍
+        </button>
+
       </form>
+
+      {/* ── Botón sticky — móvil ── */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-sm border-t border-vidaia-light px-4 py-3 shadow-2xl">
+        <button
+          form="presupuesto-form"
+          type="submit"
+          className="w-full flex items-center justify-center gap-2 py-3.5 bg-vidaia-earth hover:bg-vidaia-brown text-white font-bold text-base rounded-2xl transition-colors"
+        >
+          Enviar mi solicitud 🌍
+        </button>
+      </div>
     </div>
   );
 }
