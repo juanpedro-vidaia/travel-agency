@@ -466,9 +466,6 @@ export default function PresupuestoForm() {
                   onChange={(v) => update('menores', v)}
                 />
               </div>
-              {/* Hidden inputs so Clientify capture the stepper values */}
-              <input type="hidden" name="adults"   value={form.adultos} />
-              <input type="hidden" name="children" value={form.menores} />
               {form.menores > 0 && (
                 <div className="mt-3">
                   <label htmlFor="children_ages" className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
@@ -641,6 +638,21 @@ export default function PresupuestoForm() {
         {/* ══ STEP 2 ══════════════════════════════════════════════════════════ */}
         {step === 2 && (
           <div className="space-y-5">
+
+            {/* Mirror oculto de todos los campos del paso 1 — el CRM los captura al hacer submit */}
+            {form.destinos.map((d) => <input key={`hd_${d}`} type="hidden" name="destinations" value={d} />)}
+            {form.otroDestino && <input type="hidden" name="other_destination" value={form.otroDestino} />}
+            {form.zonas.map((z) => <input key={`hz_${z}`} type="hidden" name="zones" value={z} />)}
+            <input type="hidden" name="start_date" value={form.startDate} />
+            <input type="hidden" name="duration" value={form.duracion} />
+            <input type="hidden" name="adults" value={form.adultos} />
+            <input type="hidden" name="children" value={form.menores} />
+            {form.edadesMenores && <input type="hidden" name="children_ages" value={form.edadesMenores} />}
+            <input type="hidden" name="group_type" value={form.tipoGrupo} />
+            {form.experiencias.map((e) => <input key={`he_${e}`} type="hidden" name="experience_type" value={e} />)}
+            {form.motivo.map((m) => <input key={`hm_${m}`} type="hidden" name="trip_reason" value={m} />)}
+            {form.presupuesto && <input type="hidden" name="budget" value={form.presupuesto} />}
+            {form.descripcion && <input type="hidden" name="message" value={form.descripcion} />}
 
             {/* Nombre y apellidos */}
             <div>
