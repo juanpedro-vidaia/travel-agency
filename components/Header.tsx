@@ -1,40 +1,41 @@
-'use client';
+'use client'
 
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { Menu, X, ChevronDown, Mountain, Heart } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { Menu, X, ChevronDown, Heart } from 'lucide-react'
 
 const destinations = [
   { label: 'Argentina', href: '/destinos/argentina', flag: '🇦🇷', desc: 'Patagonia, Iguazú, Buenos Aires' },
   { label: 'Chile', href: '/destinos/chile', flag: '🇨🇱', desc: 'Atacama, Torres del Paine, Chiloé' },
   { label: 'Bolivia', href: '/destinos/bolivia', flag: '🇧🇴', desc: 'Salar de Uyuni, La Paz, Sucre' },
-];
+]
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [destinosOpen, setDestinosOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [destinosOpen, setDestinosOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    const onScroll = () => setScrolled(window.scrollY > 30)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDestinosOpen(false);
+        setDestinosOpen(false)
       }
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, []);
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
 
   const linkClass = scrolled
     ? 'text-vidaia-charcoal hover:text-vidaia-primary hover:bg-vidaia-light'
-    : 'text-white/90 hover:text-white hover:bg-white/10';
+    : 'text-white/90 hover:text-white hover:bg-white/10'
 
   return (
     <header
@@ -44,21 +45,15 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div
-            className={`p-1.5 rounded-lg transition-colors ${
-              scrolled ? 'bg-vidaia-primary' : 'bg-white/15'
-            }`}
-          >
-            <Mountain className="w-5 h-5 text-white" strokeWidth={1.8} />
-          </div>
-          <span
-            className={`text-xl font-heading font-bold tracking-wide transition-colors ${
-              scrolled ? 'text-vidaia-dark' : 'text-white'
-            }`}
-          >
-            Vidaia
-          </span>
+        <Link href="/" className="flex items-center group">
+          <Image
+            src="/images/logo/viajes-vidaia-logo.png"
+            alt="Viajes Vidaia"
+            width={160}
+            height={44}
+            className="h-10 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -74,9 +69,7 @@ export default function Header() {
               onClick={() => setDestinosOpen((v) => !v)}
             >
               Destinos
-              <ChevronDown
-                className={`w-4 h-4 transition-transform duration-200 ${destinosOpen ? 'rotate-180' : ''}`}
-              />
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${destinosOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {destinosOpen && (
@@ -101,6 +94,7 @@ export default function Header() {
             )}
           </div>
 
+          {/* Lunas de Miel — destacado con icono corazón */}
           <Link
             href="/lunas-de-miel"
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
@@ -221,5 +215,5 @@ export default function Header() {
         </div>
       )}
     </header>
-  );
+  )
 }

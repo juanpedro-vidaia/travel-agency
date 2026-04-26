@@ -1,30 +1,37 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 
 const team = [
   {
     name: 'Lau',
     role: 'Fundadora & Travel Designer',
-    bio: 'Llevo más de diez años recorriendo Argentina y Chile con la mochila al hombro. Me enamoré de la Patagonia en un viaje que iba a durar dos semanas y se convirtió en dos meses. Desde entonces sé que los mejores viajes son los que no tienen fecha de vuelta.',
+    bio: [
+      'Hola, soy Lau! Madrileña de nacimiento y mañica de corazón. Ingeniera de profesión y cabra loca de hobbie! No recuerdo desde cuándo me gusta tanto viajar… Empecé a viajar cuando cobré mi primer sueldo y creo que nunca me cansaré de esto!',
+      'He viajado por más de 25 países y cada viaje tiene un hueco en mi corazoncito pero… la experiencia que viví en Argentina y Chile, unido a mi amor por la montaña, la naturaleza y mi pasión por la organización de viajes hizo que me animase a emprender esta aventura!',
+      'Llevo organizando viajes toda mi vida y en particular planificando y coordinando viajes de aventura y montaña los últimos años junto con Jupe y sin duda, poner todo nuestro cariño en que se haga realidad tu sueño y que puedas vivir una experiencia inolvidable es algo que me hace muy feliz!',
+    ],
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80',
   },
   {
     name: 'Jupe',
-    role: 'Co-fundador & Experto en Bolivia',
-    bio: 'Bolivia me cambió la perspectiva. Después de cruzar el Salar de Uyuni a pie, entendí que viajar bien no es ver muchos sitios — es conectar de verdad con uno solo. Eso es lo que intentamos hacer con cada persona que confía en nosotros.',
+    role: 'Fundador & Travel Designer',
+    bio: [
+      'Y yo Jupe! Viajando solo por el mundo desde hace más de 20 años, y durante 14 meses seguidos alrededor del mundo entre 2019 y 2020. Tengo pasión por construir viajes.',
+      'Recorrí Chile y Argentina durante 5 meses, y quedé prendado de decenas de lugares. Ahora junto con Lau os ayudaré a definir vuestro viaje soñado por allí y lo prepararé con cariño para que lo disfrutéis.',
+    ],
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
   },
-];
+]
 
 export default function QuienesSomos() {
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section id="quienes-somos" className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-xl mb-16">
           <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
-            El equipo
+            ¿Quiénes somos?
           </span>
           <h2 className="font-heading text-4xl sm:text-5xl font-bold text-vidaia-dark mb-4 leading-tight">
             Hola, somos
@@ -55,12 +62,18 @@ export default function QuienesSomos() {
               </div>
 
               {/* Text */}
-              <div>
+              <div className="min-w-0">
                 <p className="font-heading text-xl font-bold text-vidaia-dark">{person.name}</p>
                 <p className="text-vidaia-primary text-xs font-semibold uppercase tracking-wider mb-3">
                   {person.role}
                 </p>
-                <p className="text-gray-500 text-sm leading-relaxed">{person.bio}</p>
+                <div className="space-y-2">
+                  {person.bio.map((paragraph, i) => (
+                    <p key={i} className="text-gray-500 text-sm leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -93,5 +106,5 @@ export default function QuienesSomos() {
         </div>
       </div>
     </section>
-  );
+  )
 }
