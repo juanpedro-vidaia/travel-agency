@@ -10,15 +10,15 @@ const config: Config = {
     extend: {
       colors: {
         vidaia: {
-          dark: '#1B4332',
-          primary: '#2D6A4F',
-          mid: '#52B788',
-          light: '#D8F3DC',
-          cream: '#F5EDD7',
-          sand: '#FAF6EE',
-          earth: '#C8A96E',
-          brown: '#8B5A2B',
-          charcoal: '#1C2B22',
+          dark: '#1a4a52',     // teal muy oscuro — fondos oscuros, headings
+          primary: '#5ea6ae',  // teal corporativo principal — CTAs, precios, estados activos
+          mid: '#70cad4',      // teal claro — acentos secundarios
+          light: '#c0e8ec',    // teal muy claro — bordes, chips
+          cream: '#faf3f6',    // rosa muy claro — fondos alternativos de sección
+          sand: '#f0f8f9',     // teal muy claro — fondo acordeón y secciones suaves
+          earth: '#c891a6',    // malva — CTAs secundarios, acentos cálidos
+          brown: '#c36689',    // rosa intenso — hover sobre earth
+          charcoal: '#1c2e32', // casi negro con tono teal — texto de cuerpo
         },
       },
       fontFamily: {

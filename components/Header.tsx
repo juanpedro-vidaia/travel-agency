@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, Mountain } from 'lucide-react';
+import { Menu, X, ChevronDown, Mountain, Heart } from 'lucide-react';
 
 const destinations = [
   { label: 'Argentina', href: '/destinos/argentina', flag: '🇦🇷', desc: 'Patagonia, Iguazú, Buenos Aires' },
@@ -101,6 +101,18 @@ export default function Header() {
             )}
           </div>
 
+          <Link
+            href="/lunas-de-miel"
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              scrolled
+                ? 'text-vidaia-earth hover:text-vidaia-brown hover:bg-vidaia-cream'
+                : 'text-vidaia-earth hover:bg-white/10'
+            }`}
+          >
+            <Heart className="w-3.5 h-3.5" />
+            Lunas de Miel
+          </Link>
+
           <Link href="/viajes" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
             Viajes
           </Link>
@@ -167,6 +179,15 @@ export default function Header() {
                 </Link>
               ))}
             </div>
+
+            <Link
+              href="/lunas-de-miel"
+              className="flex items-center gap-2 px-4 py-3 text-vidaia-earth hover:bg-vidaia-cream rounded-xl font-medium text-sm"
+              onClick={() => setMobileOpen(false)}
+            >
+              <Heart className="w-4 h-4" />
+              Lunas de Miel
+            </Link>
 
             {['Viajes', 'Blog'].map((item) => (
               <Link

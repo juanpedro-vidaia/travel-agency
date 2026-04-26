@@ -17,6 +17,9 @@ export interface Trip {
   featured: boolean         // shown in FeaturedDestinations on home page
   active: boolean
   hasItinerary: boolean     // true = full itinerary page exists at /itinerarios/[slug]
+  honeymoonFeatured?: boolean   // shown in /lunas-de-miel ideas section
+  honeymoonTitle?: string       // short display title for the honeymoon card
+  honeymoonTagline?: string     // romantic tagline shown under the title
 }
 
 const trips: Trip[] = [
@@ -33,6 +36,9 @@ const trips: Trip[] = [
     featured: true,
     active: true,
     hasItinerary: true,
+    honeymoonFeatured: true,
+    honeymoonTitle: 'Luna de Miel Patagonia e Iguazú',
+    honeymoonTagline: 'Naturaleza en estado puro',
   },
   {
     id: 'latitudes-australes',
@@ -85,6 +91,9 @@ const trips: Trip[] = [
     featured: false,
     active: true,
     hasItinerary: false,
+    honeymoonFeatured: true,
+    honeymoonTitle: 'Luna de Miel Argentina',
+    honeymoonTagline: 'Cultura, gastronomía y aventura',
   },
   {
     id: 'contrastes-argentinos',
@@ -100,7 +109,22 @@ const trips: Trip[] = [
     hasItinerary: false,
   },
   // ── Chile ────────────────────────────────────────────────────────────────────
-  // Añadir viajes de Chile aquí cuando estén disponibles.
+  {
+    id: 'chile-bolivia-salares',
+    slug: 'chile-bolivia-salares',
+    title: 'Chile y Bolivia: Desiertos, salares y paisajes únicos',
+    subtitle: 'Santiago · San Pedro de Atacama · Salar de Uyuni · La Paz',
+    country: 'chile',
+    days: 12,
+    priceFrom: 3800,
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    featured: false,
+    active: true,
+    hasItinerary: false,
+    honeymoonFeatured: true,
+    honeymoonTitle: 'Luna de Miel Chile y Bolivia',
+    honeymoonTagline: 'Desiertos, salares y paisajes de otro planeta',
+  },
   {
     id: 'esencias-chile-isla-pascua',
     slug: 'esencias-chile-isla-pascua',

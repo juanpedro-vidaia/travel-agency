@@ -14,6 +14,7 @@ const navGroups = [
   {
     title: 'Vidaia',
     links: [
+      { label: '💍 Lunas de Miel', href: '/lunas-de-miel' },
       { label: 'Viajes', href: '/viajes' },
       { label: 'Blog', href: '/blog' },
       { label: 'Quiénes somos', href: '/sobre-nosotros' },

@@ -17,3 +17,7 @@ export function getFeaturedTrips(): Trip[] {
 export function getTripBySlug(slug: string): Trip | undefined {
   return trips.find(t => t.slug === slug && t.active)
 }
+
+export function getHoneymoonTrips(): Trip[] {
+  return trips.filter(t => t.honeymoonFeatured && t.active)
+}
