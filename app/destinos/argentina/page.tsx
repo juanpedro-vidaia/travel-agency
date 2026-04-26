@@ -18,8 +18,8 @@ export default function ArgentinaPage() {
       {/* ── HERO ── */}
       <section className="relative h-[70vh] min-h-[480px] flex items-end overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&q=80"
-          alt="Glaciar Perito Moreno, Patagonia argentina"
+          src="https://images.unsplash.com/photo-1610680224983-f9759ce81c7a?q=80&w=1920"
+          alt="El Chaltén, Patagonia argentina"
           fill
           className="object-cover"
           priority

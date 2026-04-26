@@ -81,11 +81,11 @@ const itineraries: Itinerary[] = [
     totalNights: 12,
     priceFrom: 4412,
     heroImages: [
-      { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80', alt: 'Cataratas del Iguazú, Argentina', location: 'Cataratas del Iguazú' },
-      { src: 'https://images.unsplash.com/photo-1499343628900-f45a080d42d4?w=1920&q=80', alt: 'Ballena franca austral · Península de Valdés', location: 'Península de Valdés' },
-      { src: 'https://images.unsplash.com/photo-1589993624-d5e0e6a27fd8?w=1920&q=80', alt: 'Buenos Aires', location: 'Buenos Aires' },
-      { src: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&q=80', alt: 'Glaciar Perito Moreno', location: 'Glaciar Perito Moreno · El Calafate' },
-      { src: 'https://images.unsplash.com/photo-1531761399323-e5f7e7f98816?w=1920&q=80', alt: 'Canal Beagle, Ushuaia', location: 'Canal Beagle · Ushuaia' },
+      { src: 'https://images.unsplash.com/photo-1682597465277-ffffd1341731?q=80&w=1920', alt: 'Cataratas del Iguazú, Argentina', location: 'Cataratas del Iguazú' },
+      { src: 'https://images.unsplash.com/photo-1568430462989-44163eb1752f?q=80&w=1920', alt: 'Ballena Franca Austral · Península de Valdés', location: 'Península de Valdés' },
+      { src: 'https://images.unsplash.com/photo-1706170421190-48b12aa10f5e?q=80&w=1920', alt: 'Buenos Aires', location: 'Buenos Aires' },
+      { src: 'https://images.unsplash.com/photo-1552751753-0fc84ae5b6c8?q=80&w=1920', alt: 'Glaciar Perito Moreno', location: 'Glaciar Perito Moreno · El Calafate' },
+      { src: 'https://images.unsplash.com/photo-1553363437-e236983485c2?q=80&w=1920', alt: 'Canal Beagle, Ushuaia', location: 'Canal Beagle · Ushuaia' },
     ],
     description:
       'Argentina tiene una capacidad única para dejarte sin palabras. Este viaje lo demuestra en cada etapa: las cataratas más impresionantes del mundo, ballenas francas australes, el glaciar Perito Moreno en movimiento y el mítico Fin del Mundo en Ushuaia. 13 días de naturaleza pura y experiencias únicas.',
@@ -297,11 +297,10 @@ const itineraries: Itinerary[] = [
     totalNights: 11,
     priceFrom: 4699,
     heroImages: [
-      { src: 'https://images.unsplash.com/photo-1565073624497-7e91b5cc3843?w=1920&q=80', alt: 'Moáis de Isla de Pascua', location: 'Ahu Tongariki · Isla de Pascua' },
-      { src: 'https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=1920&q=80', alt: 'Desierto de Atacama', location: 'San Pedro de Atacama' },
-      { src: 'https://images.unsplash.com/photo-1601053999937-7fb74e2c552d?w=1920&q=80', alt: 'Santiago de Chile', location: 'Santiago de Chile' },
-      { src: 'https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=1920&q=80', alt: 'Viñas del valle del Maipo', location: 'Valle del Maipo · Viñas' },
-      { src: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1920&q=80', alt: 'Valle de la Luna', location: 'Valle de la Luna · Atacama' },
+      { src: 'https://images.unsplash.com/photo-1671155282127-a23795b7b46a?w=1920&q=80', alt: 'Moáis de Isla de Pascua', location: 'Ahu Tongariki · Isla de Pascua' },
+      { src: 'https://images.unsplash.com/photo-1620824175623-930d7a980da8?w=1920&q=80', alt: 'Desierto de Atacama', location: 'San Pedro de Atacama' },
+      { src: 'https://images.unsplash.com/photo-1631850033735-b4c7853b16df?w=1920&q=80', alt: 'Santiago de Chile', location: 'Santiago de Chile' },
+      { src: 'https://images.unsplash.com/photo-1662239091066-51f01a402516?w=1920&q=80', alt: 'Valle de la Luna', location: 'Valle de la Luna · Atacama' },
     ],
     description:
       'Chile en su máxima esencia: la energía cosmopolita de Santiago, las viñas del valle del Maipo, el desierto más árido del planeta con sus salares y géiseres, y el misterio milenario de los moáis en Isla de Pascua. 13 días recorriendo tres mundos completamente distintos en un solo viaje.',

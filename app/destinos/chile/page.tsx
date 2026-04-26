@@ -18,7 +18,7 @@ export default function ChilePage() {
       {/* ── HERO ── */}
       <section className="relative h-[70vh] min-h-[480px] flex items-end overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1558517286-6b7b81953cb5?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Torres del Paine, Chile"
           fill
           className="object-cover"
