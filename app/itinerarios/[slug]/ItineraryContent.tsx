@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -36,65 +36,11 @@ export default function ItineraryContent({ slug }: { slug: string }) {
   const itinerary = getItineraryWithDetails(slug)
   const optionalActivities = getItineraryOptionals(slug)
 
-  if (!itinerary) return null
-
-  const slides = itinerary.heroImages
-
-  const itineraryDays = itinerary.days.map((day) => {
-    const destination = day.destinationId ? getDestinationById(day.destinationId) : undefined
-    const hotel = day.referenceHotel
-    const hotelLabel = hotel
-      ? `${hotel.name} ${hotel.category}★${hotel.categoryLabel ? ' ' + hotel.categoryLabel : ''}`
-      : undefined
-    const optionals = day.activities.filter((da) => da.status === 'optional')
-    const optionalLabel =
-      optionals.length > 0
-        ? optionals.map((da) => da.activity.name).join(' · ')
-        : undefined
-
-    return {
-      day: day.dayNumber,
-      title: day.title,
-      cities: destination?.name ?? '',
-      hotel: hotelLabel,
-      schedule: day.schedule,
-      duration: day.duration,
-      description: day.description,
-      flights: day.flights,
-      highlights: day.highlights,
-      isOptionalDay: day.dayType === 'free',
-      optionalLabel,
-      includes: day.includes,
-      notIncludes: day.notIncludes,
-    }
-  })
-
-  const hotelCards = itinerary.hotelStops
-    .map((stop) => {
-      const hotel = stop.defaultHotel
-      if (!hotel) return null
-      const destination = getDestinationById(hotel.destinationId)
-      return {
-        name: hotel.name,
-        stars: stop.defaultCategory,
-        category: hotel.categoryLabel,
-        nights: stop.nights,
-        dates: stop.dates,
-        city: destination?.name ?? hotel.destinationId,
-        img: hotel.image,
-      }
-    })
-    .filter((h): h is NonNullable<typeof h> => h !== null)
-
-  const optionals = optionalActivities.map((activity) => ({
-    Icon: OPTIONAL_ICONS[activity.id] ?? Star,
-    title: activity.name,
-    description: activity.description,
-  }))
-
   const [currentSlide, setCurrentSlide] = useState(0)
   const [openDays, setOpenDays] = useState<Set<number>>(new Set([1]))
   const [isPaused, setIsPaused] = useState(false)
+
+  const slides = useMemo(() => itinerary?.heroImages ?? [], [itinerary])
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
@@ -105,19 +51,83 @@ export default function ItineraryContent({ slug }: { slug: string }) {
   }, [slides.length])
 
   useEffect(() => {
-    if (isPaused) return
+    if (isPaused || slides.length === 0) return
     const timer = setInterval(nextSlide, 5000)
     return () => clearInterval(timer)
-  }, [isPaused, nextSlide])
+  }, [isPaused, nextSlide, slides.length])
 
-  const toggleDay = (day: number) => {
+  const toggleDay = useCallback((day: number) => {
     setOpenDays((prev) => {
       const next = new Set(prev)
       if (next.has(day)) next.delete(day)
       else next.add(day)
       return next
     })
-  }
+  }, [])
+
+  const itineraryDays = useMemo(() => {
+    if (!itinerary) return []
+    return itinerary.days.map((day) => {
+      const destination = day.destinationId ? getDestinationById(day.destinationId) : undefined
+      const hotel = day.referenceHotel
+      const hotelLabel = hotel
+        ? `${hotel.name} ${hotel.category}★${hotel.categoryLabel ? ' ' + hotel.categoryLabel : ''}`
+        : undefined
+      const dayOptionals = day.activities.filter((da) => da.status === 'optional')
+      const optionalLabel =
+        dayOptionals.length > 0
+          ? dayOptionals.map((da) => da.activity.name).join(' · ')
+          : undefined
+
+      return {
+        day: day.dayNumber,
+        title: day.title,
+        cities: destination?.name ?? '',
+        hotel: hotelLabel,
+        schedule: day.schedule,
+        duration: day.duration,
+        description: day.description,
+        flights: day.flights,
+        highlights: day.highlights,
+        isOptionalDay: day.dayType === 'free',
+        optionalLabel,
+        includes: day.includes,
+        notIncludes: day.notIncludes,
+      }
+    })
+  }, [itinerary])
+
+  const hotelCards = useMemo(() => {
+    if (!itinerary) return []
+    return itinerary.hotelStops
+      .map((stop) => {
+        const hotel = stop.defaultHotel
+        if (!hotel) return null
+        const destination = getDestinationById(hotel.destinationId)
+        return {
+          name: hotel.name,
+          stars: stop.defaultCategory,
+          category: hotel.categoryLabel,
+          nights: stop.nights,
+          dates: stop.dates,
+          city: destination?.name ?? hotel.destinationId,
+          img: hotel.image,
+        }
+      })
+      .filter((h): h is NonNullable<typeof h> => h !== null)
+  }, [itinerary])
+
+  const optionals = useMemo(
+    () =>
+      optionalActivities.map((activity) => ({
+        Icon: OPTIONAL_ICONS[activity.id] ?? Star,
+        title: activity.name,
+        description: activity.description,
+      })),
+    [optionalActivities]
+  )
+
+  if (!itinerary) return null
 
   return (
     <main className="min-h-screen bg-white pb-20 lg:pb-0">

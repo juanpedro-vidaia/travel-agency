@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { ArrowRight, Calendar } from 'lucide-react'
 import { getTripsByCountry } from '@/lib/services/tripsService'
 import { getCountryBySlug, getCountries } from '@/lib/services/countriesService'
+import type { Country } from '@/lib/data/destinations'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -38,7 +39,7 @@ export default async function CountryPage({ params }: Props) {
   }
 
   // Cast country.id to any because the tripsService might be using a narrow type
-  const trips = getTripsByCountry(country.id as any)
+  const trips = getTripsByCountry(country.id as Country)
 
   return (
     <main className="min-h-screen bg-white">
