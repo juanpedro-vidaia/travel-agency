@@ -2,8 +2,10 @@ import itineraries from '../data/itineraries'
 import type { Itinerary, ItineraryDay, HotelStopDef } from '../data/itineraries'
 import type { Activity } from '../data/activities'
 import type { Hotel } from '../data/hotels'
+import type { Trip } from '../data/trips'
 import { getActivityById } from './activitiesService'
 import { getHotelById } from './hotelsService'
+import { getTripBySlug } from './tripsService'
 
 export interface ResolvedDayActivity {
   activity: Activity
@@ -23,6 +25,11 @@ export interface ResolvedHotelStop extends HotelStopDef {
 export interface ResolvedItinerary extends Omit<Itinerary, 'days' | 'hotelStops'> {
   days: ResolvedDay[]
   hotelStops: ResolvedHotelStop[]
+}
+
+export interface ItineraryWithTrip {
+  itinerary: ResolvedItinerary
+  trip: Trip
 }
 
 export function getItinerary(slug: string): Itinerary | undefined {
@@ -67,6 +74,14 @@ export function getItineraryWithDetails(slug: string): ResolvedItinerary | undef
   })
 
   return { ...itinerary, days, hotelStops }
+}
+
+/** Returns the resolved itinerary paired with its matching Trip (same slug). */
+export function getItineraryWithTrip(slug: string): ItineraryWithTrip | undefined {
+  const itinerary = getItineraryWithDetails(slug)
+  const trip = getTripBySlug(slug)
+  if (!itinerary || !trip) return undefined
+  return { itinerary, trip }
 }
 
 export function getItineraryOptionals(slug: string): Activity[] {

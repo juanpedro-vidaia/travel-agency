@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getItinerary, getAllItineraries } from '@/lib/services/itinerariesService'
+import { getTripBySlug } from '@/lib/services/tripsService'
 import ItineraryContent from './ItineraryContent'
 
 interface Props {
@@ -12,9 +13,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const itinerary = getItinerary(slug)
   if (!itinerary) return {}
 
+  const trip = getTripBySlug(slug)
+
   return {
     title: `${itinerary.title} — Viajes Vidaia`,
-    description: itinerary.subtitle,
+    description: trip?.subtitle ?? itinerary.title,
   }
 }
 

@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import { ArrowRight, Calendar } from 'lucide-react'
 import { getTripsByCountry } from '@/lib/services/tripsService'
 import { getCountryBySlug, getCountries } from '@/lib/services/countriesService'
-import type { Country } from '@/lib/data/destinations'
+import { TAG_CONFIG } from '@/lib/data/trips'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -39,7 +39,7 @@ export default async function CountryPage({ params }: Props) {
   }
 
   // Cast country.id to any because the tripsService might be using a narrow type
-  const trips = getTripsByCountry(country.id as Country)
+  const trips = getTripsByCountry(country.id)
 
   return (
     <main className="min-h-screen bg-white">
@@ -113,7 +113,7 @@ export default async function CountryPage({ params }: Props) {
                       />
                       <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
                         <Calendar className="w-3 h-3" />
-                        {trip.days} días
+                        {trip.days} días / {trip.nights} noches
                       </span>
                     </div>
 
@@ -121,9 +121,21 @@ export default async function CountryPage({ params }: Props) {
                       <p className="text-xs text-vidaia-charcoal/50 mb-2 leading-snug">
                         {trip.subtitle}
                       </p>
-                      <h3 className="font-heading font-bold text-vidaia-dark text-base leading-snug mb-4 flex-1">
+                      <h3 className="font-heading font-bold text-vidaia-dark text-base leading-snug mb-3">
                         {trip.title}
                       </h3>
+                      {trip.tags && trip.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          {trip.tags.slice(0, 3).map(tag => (
+                            <span
+                              key={tag}
+                              className="text-xs bg-vidaia-light text-vidaia-dark px-2 py-0.5 rounded-full"
+                            >
+                              {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].label}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                       <div className="flex items-center justify-between mt-auto pt-3 border-t border-vidaia-light/60">
                         <span className="text-vidaia-primary font-bold text-base">
                           Desde {trip.priceFrom.toLocaleString('es-ES')}€

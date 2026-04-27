@@ -1,5 +1,3 @@
-import type { Country } from './destinations'
-
 export type DayType = 'transit' | 'free' | 'activity'
 
 /** Reference to an activity within a day, with the context-specific status. */
@@ -47,24 +45,20 @@ export interface ItineraryDay {
   notIncludes?: string
 }
 
+/**
+ * Itinerary: full day-by-day content for /itinerarios/[slug].
+ * Commercial data (subtitle, priceFrom, days, nights) lives in the
+ * matching Trip entry in trips.ts (same slug).
+ */
 export interface Itinerary {
   id: string
   slug: string
   title: string
-  subtitle: string
-  country: Country
-  totalDays: number
-  totalNights: number
-  priceFrom: number
   heroImages: { src: string; alt: string; location: string }[]
   description: string
   featured: boolean
   active: boolean
   days: ItineraryDay[]
-  /**
-   * Explicit hotel stop definitions for the hotel-cards section.
-   * Each stop = one destination / accommodation cluster.
-   */
   hotelStops: HotelStopDef[]
 }
 
@@ -75,11 +69,6 @@ const itineraries: Itinerary[] = [
     id: 'paisajes-naturales-argentina',
     slug: 'paisajes-naturales-argentina',
     title: 'Paisajes naturales de Argentina: ballenas, glaciares, cataratas y el Fin del Mundo',
-    subtitle: 'Iguazú · Península de Valdés · Buenos Aires · El Calafate · Ushuaia',
-    country: 'argentina',
-    totalDays: 13,
-    totalNights: 12,
-    priceFrom: 4412,
     heroImages: [
       { src: 'https://images.unsplash.com/photo-1682597465277-ffffd1341731?q=80&w=1920', alt: 'Cataratas del Iguazú, Argentina', location: 'Cataratas del Iguazú' },
       { src: 'https://images.unsplash.com/photo-1568430462989-44163eb1752f?q=80&w=1920', alt: 'Ballena Franca Austral · Península de Valdés', location: 'Península de Valdés' },
@@ -291,11 +280,6 @@ const itineraries: Itinerary[] = [
     id: 'esencias-chile-isla-pascua',
     slug: 'esencias-chile-isla-pascua',
     title: 'Esencias de Chile con Isla de Pascua: viñas, moáis y salares',
-    subtitle: 'Santiago · San Pedro de Atacama · Isla de Pascua',
-    country: 'chile',
-    totalDays: 13,
-    totalNights: 11,
-    priceFrom: 4699,
     heroImages: [
       { src: 'https://images.unsplash.com/photo-1671155282127-a23795b7b46a?w=1920&q=80', alt: 'Moáis de Isla de Pascua', location: 'Ahu Tongariki · Isla de Pascua' },
       { src: 'https://images.unsplash.com/photo-1620824175623-930d7a980da8?w=1920&q=80', alt: 'Desierto de Atacama', location: 'San Pedro de Atacama' },

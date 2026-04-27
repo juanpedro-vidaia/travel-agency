@@ -5,17 +5,20 @@
 ```
 lib/data/
   countries.ts      → países (Argentina, Chile, Bolivia)
-  trips.ts          → tarjetas de viaje (listing por país)
-  itineraries.ts    → itinerarios completos día a día
-  destinations.ts   → destinos/ciudades
+  trips.ts          → tarjetas de viaje + tipos TripTag, TAG_CONFIG, RelatedTrip
+  itineraries.ts    → itinerarios completos día a día (solo contenido)
+  destinations.ts   → destinos/ciudades + tipo Country
   hotels.ts         → hoteles por destino
   activities.ts     → actividades por destino
   testimonials.ts   → testimonios de clientes
 
 lib/services/
   countriesService.ts    → getCountries(), getCountryBySlug()
-  tripsService.ts        → getTripsByCountry(), getFeaturedTrips(), getHoneymoonTrips()
-  itinerariesService.ts  → getItinerary(), getItineraryWithDetails(), getAllItineraries()
+  tripsService.ts        → getTripsByCountry(), getFeaturedTrips(),
+                           getHoneymoonTrips(), getTripBySlug(),
+                           getRelatedTripsBySlug()
+  itinerariesService.ts  → getItinerary(), getItineraryWithDetails(),
+                           getItineraryWithTrip(), getAllItineraries()
   destinationsService.ts → getDestinationById()
   hotelsService.ts       → getHotelById()
   activitiesService.ts   → getActivityById()
@@ -52,35 +55,78 @@ El país aparece en el menú, el footer y el sitemap sin tocar ningún otro arch
 
 ## Añadir un viaje (tarjeta)
 
-### Caso 1 — Solo tarjeta de listing (lo más común)
-
-Edita **`lib/data/trips.ts`** y añade un objeto al array:
+### Campos obligatorios de Trip
 
 ```ts
 {
-  id: 'mi-nuevo-viaje',           // kebab-case, único
-  slug: 'mi-nuevo-viaje',         // igual que el id
+  id: 'mi-nuevo-viaje',                 // kebab-case, único
+  slug: 'mi-nuevo-viaje',               // igual que el id
   title: 'Título del viaje',
   subtitle: 'Ciudad A · Ciudad B · Ciudad C',
-  country: 'argentina',           // debe coincidir con un country.id activo
-  days: 10,
-  priceFrom: 3200,                // precio referencia por persona en hab. doble
+  country: 'argentina',                 // un país o array: ['argentina', 'chile']
+  days: 10,                             // días totales
+  nights: 9,                            // noches totales
+  priceFrom: 3200,                      // precio referencia por persona en hab. doble
   image: 'https://images.unsplash.com/...',
-  featured: false,                // true = aparece en FeaturedDestinations (home)
+  featured: false,                      // true = aparece en FeaturedDestinations (home)
   active: true,
-  hasItinerary: false,            // sin página propia de itinerario
-  honeymoonFeatured: false,       // true = aparece en /lunas-de-miel
-  // honeymoonTitle: 'Luna de Miel ...',
-  // honeymoonTagline: 'Tagline romántico...',
+  hasItinerary: false,                  // sin página propia de itinerario
+  tags: ['naturaleza', 'aventura'],     // ver TRIP_TAGS en trips.ts
+  includesFlightsInternational: true,
+  includesFlightsInternal: false,
+  relatedTrips: [],                     // array vacío si no hay relacionados
 }
 ```
 
-La tarjeta aparece en `/destinos/[country]` y el botón enlaza a
-`/presupuesto-itinerario?titulo=...`. **No hay que tocar ningún otro archivo.**
+**Tags disponibles** (`TripTag`):
+`naturaleza` · `vida-salvaje` · `aventura` · `relax` · `cultura` · `gastronomia`
+
+**Campos opcionales**:
+```ts
+  honeymoonFeatured: true,              // aparece en /lunas-de-miel
+  honeymoonTitle: 'Luna de Miel ...',
+  honeymoonTagline: 'Tagline romántico...',
+  season: 'all-year',                  // future — no se renderiza aún
+  bestMonths: [3, 4, 10, 11],          // future — meses 1-12, no se renderiza aún
+```
+
+La tarjeta aparece en `/destinos/[country]` con tags y botón.
+**No hay que tocar ningún otro archivo.**
 
 ---
 
-### Caso 2 — Viaje con página de itinerario completa
+### Viajes multi-país
+
+Si el viaje recorre varios países, usa un array en `country`:
+
+```ts
+country: ['argentina', 'chile'],
+```
+
+El viaje aparece automáticamente en **ambas** páginas de país
+(`/destinos/argentina` y `/destinos/chile`).
+
+---
+
+### Viajes relacionados
+
+Cada viaje puede apuntar a otros viajes relacionados que se muestran
+al final de la página de itinerario:
+
+```ts
+relatedTrips: [
+  { slug: 'esencias-chile-isla-pascua', reason: 'Combina con paisajes únicos del Cono Sur' },
+  { slug: 'patagonia-sur-a-norte',      reason: 'Profundiza en la Patagonia argentina' },
+],
+```
+
+- `slug` debe coincidir con el `slug` de otro Trip activo.
+- `reason` es el texto que aparece en la card con el icono 💡.
+- Si el slug no existe o el trip está inactivo, la card se omite silenciosamente.
+
+---
+
+### Caso — Viaje con página de itinerario completa
 
 Requiere dos pasos:
 
@@ -93,26 +139,25 @@ Requiere dos pasos:
   id: 'mi-nuevo-viaje',
   slug: 'mi-nuevo-viaje',         // debe coincidir con trips.ts
   title: 'Título completo del itinerario',
-  subtitle: 'Ciudad A · Ciudad B · Ciudad C',
-  country: 'argentina',
-  totalDays: 10,
-  totalNights: 9,
-  priceFrom: 3200,
   description: 'Descripción del itinerario...',
-  heroImages: ['https://...', 'https://...'],
+  featured: true,                 // true = aparece en secciones "featured"
   active: true,
+  heroImages: [
+    { src: 'https://...', alt: 'Alt text', location: 'Nombre del lugar' },
+  ],
   hotelStops: [
     {
-      destinationId: 'el-calafate',
-      nights: 3,
       hotelByCategory: { '3': 'hotel-id-3', '4': 'hotel-id-4', '5': 'hotel-id-5' },
+      nights: 3,
+      dates: '17-20 sep',         // opcional, solo para display
+      defaultCategory: 4,         // categoría base para el precio de referencia
     },
   ],
   days: [
     {
       dayNumber: 1,
       destinationId: 'el-calafate',
-      dayType: 'transit',       // 'transit' | 'activity' | 'free'
+      dayType: 'transit',         // 'transit' | 'activity' | 'free'
       title: 'Llegada a El Calafate',
       description: 'Descripción del día...',
       schedule: 'Tarde libre',
@@ -124,6 +169,9 @@ Requiere dos pasos:
   ],
 }
 ```
+
+> **Nota**: `subtitle`, `priceFrom`, `days` y `nights` ya **no** van en `itineraries.ts`
+> — vienen del Trip con el mismo slug.
 
 La página `/itinerarios/mi-nuevo-viaje` se genera automáticamente.
 **No hay que crear ningún archivo nuevo.**
