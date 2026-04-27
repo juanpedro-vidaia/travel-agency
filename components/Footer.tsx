@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Instagram, Facebook, Mail, MapPin } from 'lucide-react'
+import { getCountries } from '@/lib/services/countriesService'
 
 export default function Footer() {
+  const countries = getCountries()
   return (
     <footer className="bg-vidaia-charcoal text-gray-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -65,14 +67,11 @@ export default function Footer() {
               Destinos
             </h3>
             <ul className="space-y-3">
-              {[
-                { label: '🇦🇷 Argentina', href: '/destinos/argentina' },
-                { label: '🇨🇱 Chile', href: '/destinos/chile' },
-                { label: '🇧🇴 Bolivia', href: '/destinos/bolivia' },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
-                    {link.label}
+              {countries.map((c) => (
+                <li key={c.slug}>
+                  <Link href={`/destinos/${c.slug}`} className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                    <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
+                    {c.name}
                   </Link>
                 </li>
               ))}

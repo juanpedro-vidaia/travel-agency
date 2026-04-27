@@ -1,25 +1,52 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { ArrowRight, Calendar } from 'lucide-react'
 import { getTripsByCountry } from '@/lib/services/tripsService'
+import { getCountryBySlug, getCountries } from '@/lib/services/countriesService'
 
-export const metadata: Metadata = {
-  title: 'Viajes a Bolivia — Viajes Vidaia',
-  description:
-    'Salar de Uyuni, La Paz, Sucre y el Lago Titicaca. Diseñamos tu viaje a Bolivia a medida.',
+interface Props {
+  params: Promise<{ slug: string }>
 }
 
-export default function BoliviaPage() {
-  const trips = getTripsByCountry('bolivia')
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const country = getCountryBySlug(slug)
+
+  if (!country) return {}
+
+  return {
+    title: country.metaTitle,
+    description: country.metaDescription,
+  }
+}
+
+export async function generateStaticParams() {
+  const countries = getCountries()
+  return countries.map((country) => ({
+    slug: country.slug,
+  }))
+}
+
+export default async function CountryPage({ params }: Props) {
+  const { slug } = await params
+  const country = getCountryBySlug(slug)
+
+  if (!country) {
+    notFound()
+  }
+
+  // Cast country.id to any because the tripsService might be using a narrow type
+  const trips = getTripsByCountry(country.id as any)
 
   return (
     <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-[70vh] min-h-[480px] flex items-end overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1641234332283-af77dfe995c7?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Salar de Uyuni, Bolivia"
+          src={country.heroImage}
+          alt={country.heroAlt}
           fill
           className="object-cover"
           priority
@@ -27,15 +54,15 @@ export default function BoliviaPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
-          <p className="text-vidaia-earth font-semibold uppercase tracking-widest text-xs mb-3">
-            🇧🇴 Viajes Vidaia · Bolivia
+          <p className="flex items-center gap-2 text-vidaia-earth font-semibold uppercase tracking-widest text-xs mb-3">
+            <img src={`https://flagcdn.com/20x15/${country.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
+            Viajes Vidaia · {country.name}
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 text-balance max-w-2xl">
-            Viajes a Bolivia
+            Viajes a {country.name}
           </h1>
           <p className="text-white/80 text-base sm:text-lg max-w-xl leading-relaxed text-balance">
-            Salar de Uyuni, La Paz, el Lago Titicaca y los valles andinos —
-            diseñamos tu aventura boliviana a medida.
+            {country.metaDescription.split('. ')[0]} — diseñamos tu aventura a medida.
           </p>
         </div>
       </section>
@@ -44,9 +71,7 @@ export default function BoliviaPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-vidaia-charcoal/80 text-lg sm:text-xl leading-relaxed">
-            Bolivia guarda algunos de los paisajes más sorprendentes de Sudamérica:
-            el mayor desierto de sal del mundo, ciudades coloniales y una cultura viva
-            que te dejará sin palabras.{' '}
+            {country.description}{' '}
             <strong className="text-vidaia-dark">
               Cada viaje que diseñamos nace de escucharte a ti.
             </strong>
@@ -55,11 +80,11 @@ export default function BoliviaPage() {
       </section>
 
       {/* ── GRID DE VIAJES ── */}
-      {trips.length > 0 ? (
+      {trips.length > 0 && (
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-              Itinerarios por Bolivia
+              Itinerarios por {country.name}
             </h2>
             <p className="text-center text-vidaia-charcoal/55 text-sm mb-14">
               Todos son puntos de partida — los adaptamos a tus fechas, ritmo y presupuesto
@@ -121,7 +146,7 @@ export default function BoliviaPage() {
             </div>
           </div>
         </section>
-      ) : null}
+      )}
 
       {/* ── CTA FINAL ── */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
@@ -130,7 +155,7 @@ export default function BoliviaPage() {
             ¿No encuentras lo que buscas?
           </h2>
           <p className="text-white/65 text-lg mb-10 leading-relaxed">
-            Diseñamos cualquier ruta boliviana a medida para ti.
+            Diseñamos cualquier ruta por {country.name} a medida para ti.
           </p>
           <Link
             href="/presupuesto"

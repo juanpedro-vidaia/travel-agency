@@ -25,8 +25,6 @@ import {
 import { getItineraryWithDetails, getItineraryOptionals } from '@/lib/services/itinerariesService'
 import { getDestinationById } from '@/lib/services/destinationsService'
 
-const SLUG = 'esencias-chile-isla-pascua'
-
 const OPTIONAL_ICONS: Record<string, LucideIcon> = {
   'cataratas-brasilenas': Waves,
   'estancia-nibepo-aike': UtensilsCrossed,
@@ -34,9 +32,11 @@ const OPTIONAL_ICONS: Record<string, LucideIcon> = {
   'tango-show-la-ventana': Music,
 }
 
-export default function PaisajesNaturalesArgentina() {
-  const itinerary = getItineraryWithDetails(SLUG)!
-  const optionalActivities = getItineraryOptionals(SLUG)
+export default function ItineraryContent({ slug }: { slug: string }) {
+  const itinerary = getItineraryWithDetails(slug)
+  const optionalActivities = getItineraryOptionals(slug)
+
+  if (!itinerary) return null
 
   const slides = itinerary.heroImages
 
@@ -163,7 +163,7 @@ export default function PaisajesNaturalesArgentina() {
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8">
             {[
               { Icon: Calendar, text: `${itinerary.totalDays} días · ${itinerary.totalNights} noches` },
-              { Icon: MapPin, text: 'Argentina completa' },
+              { Icon: MapPin, text: itinerary.subtitle },
               { Icon: Leaf, text: 'Naturaleza y aventura' },
               { Icon: Plane, text: 'Vuelos internos incluidos' },
             ].map(({ Icon, text }) => (

@@ -4,14 +4,10 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, ChevronDown, Heart } from 'lucide-react'
-
-const destinations = [
-  { label: 'Argentina', href: '/destinos/argentina', code: 'ar', desc: 'Patagonia, Iguazú, Buenos Aires' },
-  { label: 'Chile', href: '/destinos/chile', code: 'cl', desc: 'Atacama, Torres del Paine, Chiloé' },
-  { label: 'Bolivia', href: '/destinos/bolivia', code: 'bo', desc: 'Salar de Uyuni, La Paz, Sucre' },
-]
+import { getCountries } from '@/lib/services/countriesService'
 
 export default function Header() {
+  const countries = getCountries()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [destinosOpen, setDestinosOpen] = useState(false)
@@ -74,19 +70,19 @@ export default function Header() {
 
             {destinosOpen && (
               <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 p-2 overflow-hidden">
-                {destinations.map((d) => (
+                {countries.map((c) => (
                   <Link
-                    key={d.href}
-                    href={d.href}
+                    key={c.slug}
+                    href={`/destinos/${c.slug}`}
                     className="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-vidaia-light transition-colors group/item"
                     onClick={() => setDestinosOpen(false)}
                   >
-                    <img src={`https://flagcdn.com/20x15/${d.code}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0 mt-0.5" />
+                    <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-semibold text-vidaia-dark group-hover/item:text-vidaia-primary">
-                        {d.label}
+                        {c.name}
                       </p>
-                      <p className="text-xs text-gray-400 mt-0.5">{d.desc}</p>
+                      <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{c.description.split('. ')[0]}</p>
                     </div>
                   </Link>
                 ))}
@@ -161,15 +157,15 @@ export default function Header() {
               <p className="px-4 pt-3 pb-1 text-xs font-bold text-gray-400 uppercase tracking-widest">
                 Destinos
               </p>
-              {destinations.map((d) => (
+              {countries.map((c) => (
                 <Link
-                  key={d.href}
-                  href={d.href}
+                  key={c.slug}
+                  href={`/destinos/${c.slug}`}
                   className="flex items-center gap-2.5 pl-6 pr-4 py-2.5 text-sm text-vidaia-charcoal hover:bg-vidaia-light rounded-xl"
                   onClick={() => setMobileOpen(false)}
                 >
-                  <img src={`https://flagcdn.com/20x15/${d.code}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
-                  <span>{d.label}</span>
+                  <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
+                  <span>{c.name}</span>
                 </Link>
               ))}
             </div>

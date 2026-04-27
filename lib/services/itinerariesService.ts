@@ -92,3 +92,7 @@ export function getItineraryOptionals(slug: string): Activity[] {
 export function getFeaturedItineraries(): Itinerary[] {
   return itineraries.filter(i => i.featured && i.active)
 }
+
+export function getAllItineraries(): Itinerary[] {
+  return itineraries.filter(i => i.active)
+}

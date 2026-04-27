@@ -1,8 +1,58 @@
 # Gestión de contenido — Viajes Vidaia
 
-## Añadir un nuevo viaje
+## Arquitectura de datos
 
-### Caso 1 — Solo tarjeta de viaje (lo más común)
+```
+lib/data/
+  countries.ts      → países (Argentina, Chile, Bolivia)
+  trips.ts          → tarjetas de viaje (listing por país)
+  itineraries.ts    → itinerarios completos día a día
+  destinations.ts   → destinos/ciudades
+  hotels.ts         → hoteles por destino
+  activities.ts     → actividades por destino
+  testimonials.ts   → testimonios de clientes
+
+lib/services/
+  countriesService.ts    → getCountries(), getCountryBySlug()
+  tripsService.ts        → getTripsByCountry(), getFeaturedTrips(), getHoneymoonTrips()
+  itinerariesService.ts  → getItinerary(), getItineraryWithDetails(), getAllItineraries()
+  destinationsService.ts → getDestinationById()
+  hotelsService.ts       → getHotelById()
+  activitiesService.ts   → getActivityById()
+  testimonialsService.ts → getFeaturedTestimonials()
+```
+
+---
+
+## Añadir un país nuevo
+
+Edita **`lib/data/countries.ts`** y añade un objeto al array:
+
+```ts
+{
+  id: 'peru',
+  slug: 'peru',
+  name: 'Perú',
+  flag: '🇵🇪',
+  flagCode: 'pe',           // código ISO 3166-1 alpha-2 (para la imagen de bandera)
+  description: 'Descripción del país...',
+  heroImage: 'https://images.unsplash.com/...',
+  heroAlt: 'Machu Picchu, Perú',
+  active: true,             // false = no aparece en menú ni sitemap
+  order: 4,                 // orden en el menú de destinos
+  metaTitle: 'Viajes a Perú — Viajes Vidaia',
+  metaDescription: 'Descripción SEO del país...',
+}
+```
+
+La página `/destinos/peru` se genera automáticamente desde `app/destinos/[slug]/page.tsx`.
+El país aparece en el menú, el footer y el sitemap sin tocar ningún otro archivo.
+
+---
+
+## Añadir un viaje (tarjeta)
+
+### Caso 1 — Solo tarjeta de listing (lo más común)
 
 Edita **`lib/data/trips.ts`** y añade un objeto al array:
 
@@ -12,113 +62,77 @@ Edita **`lib/data/trips.ts`** y añade un objeto al array:
   slug: 'mi-nuevo-viaje',         // igual que el id
   title: 'Título del viaje',
   subtitle: 'Ciudad A · Ciudad B · Ciudad C',
-  country: 'argentina',           // 'argentina' | 'chile' | 'bolivia'
+  country: 'argentina',           // debe coincidir con un country.id activo
   days: 10,
-  priceFrom: 3200,                // precio por persona en hab. doble
+  priceFrom: 3200,                // precio referencia por persona en hab. doble
   image: 'https://images.unsplash.com/...',
   featured: false,                // true = aparece en FeaturedDestinations (home)
   active: true,
   hasItinerary: false,            // sin página propia de itinerario
   honeymoonFeatured: false,       // true = aparece en /lunas-de-miel
-  // honeymoonTitle: 'Luna de Miel ...',    // solo si honeymoonFeatured: true
-  // honeymoonTagline: 'Tagline ...',       // solo si honeymoonFeatured: true
+  // honeymoonTitle: 'Luna de Miel ...',
+  // honeymoonTagline: 'Tagline romántico...',
 }
 ```
 
-La tarjeta aparece automáticamente en `/destinos/[country]` y el botón
-enlaza a `/presupuesto-itinerario?titulo=...`. **No hay que tocar ningún otro archivo.**
+La tarjeta aparece en `/destinos/[country]` y el botón enlaza a
+`/presupuesto-itinerario?titulo=...`. **No hay que tocar ningún otro archivo.**
 
 ---
 
 ### Caso 2 — Viaje con página de itinerario completa
 
-Requiere tres pasos:
+Requiere dos pasos:
 
 **1.** Añade la entrada en `trips.ts` con `hasItinerary: true`.
 
 **2.** Añade el itinerario en **`lib/data/itineraries.ts`**:
-- `hotelStops[]` — un stop por destino, con `hotelByCategory` y `nights`
-- `days[]` — un objeto por día con `activities[]` referenciando IDs del catálogo
-- Si necesitas hoteles o actividades nuevas, añádelos antes en `hotels.ts` / `activities.ts`
-
-**3.** Crea la página:
-```
-app/itinerarios/[slug]/page.tsx
-```
-Copia `app/itinerarios/paisajes-naturales-argentina/page.tsx` y cambia solo:
-```ts
-const SLUG = 'mi-nuevo-viaje'
-```
-Todo (carrusel, acordeón, hoteles, opcionales, precio) se genera automáticamente.
-
----
-
-## Añadir un testimonio
-
-Edita **`lib/data/testimonials.ts`** y añade un objeto al array:
 
 ```ts
 {
-  id: '4',                         // número siguiente en secuencia
-  name: 'Nombre Apellido',
-  location: 'Ciudad, España',
-  trip: 'Nombre del viaje realizado',
-  rating: 5,                       // 1-5
-  image: '/images/testimonials/cliente-4.jpg',  // foto real o URL Unsplash
-  text: 'Texto del testimonio...',
-  date: '2025-06',                 // YYYY-MM
+  id: 'mi-nuevo-viaje',
+  slug: 'mi-nuevo-viaje',         // debe coincidir con trips.ts
+  title: 'Título completo del itinerario',
+  subtitle: 'Ciudad A · Ciudad B · Ciudad C',
+  country: 'argentina',
+  totalDays: 10,
+  totalNights: 9,
+  priceFrom: 3200,
+  description: 'Descripción del itinerario...',
+  heroImages: ['https://...', 'https://...'],
   active: true,
-  featured: true,                  // true = aparece en la home
+  hotelStops: [
+    {
+      destinationId: 'el-calafate',
+      nights: 3,
+      hotelByCategory: { '3': 'hotel-id-3', '4': 'hotel-id-4', '5': 'hotel-id-5' },
+    },
+  ],
+  days: [
+    {
+      dayNumber: 1,
+      destinationId: 'el-calafate',
+      dayType: 'transit',       // 'transit' | 'activity' | 'free'
+      title: 'Llegada a El Calafate',
+      description: 'Descripción del día...',
+      schedule: 'Tarde libre',
+      referenceHotelId: 'hotel-id-4',
+      activities: [
+        { activityId: 'id-actividad', status: 'included' },  // 'included' | 'optional'
+      ],
+    },
+  ],
 }
 ```
 
-Las fotos de clientes van en **`/public/images/testimonials/`**.
+La página `/itinerarios/mi-nuevo-viaje` se genera automáticamente.
+**No hay que crear ningún archivo nuevo.**
 
-Los testimonios con `featured: true` aparecen en la sección de la home.
-Los testimonios con `active: false` están ocultos sin borrarlos.
-
----
-
-## Añadir un hotel nuevo
-
-Edita **`lib/data/hotels.ts`**:
-
-```ts
-{
-  id: 'mi-hotel',           // kebab-case, único
-  destinationId: 'el-calafate',   // debe existir en destinations.ts
-  name: 'Nombre del Hotel',
-  category: 4,              // 3, 4 o 5 estrellas
-  categoryLabel: 'Boutique',      // opcional: Superior, Boutique, Lujo...
-  image: 'https://images.unsplash.com/...',
-  active: true,
-}
-```
+> Si necesitas hoteles o actividades nuevas, añádelos antes en `hotels.ts` / `activities.ts`.
 
 ---
 
-## Añadir una actividad nueva
-
-Edita **`lib/data/activities.ts`**:
-
-```ts
-{
-  id: 'mi-actividad',
-  destinationId: 'ushuaia',
-  name: 'Nombre de la actividad',
-  description: 'Descripción detallada.',
-  duration: '4 horas · Salida 09:00 hs',
-  priceFrom: 85,          // solo para opcionales; omitir si es incluida
-  active: true,
-}
-```
-
-El campo `status` (`included` / `optional`) **no** va aquí —
-se asigna por itinerario en `itineraries.ts` dentro de `days[].activities[]`.
-
----
-
-## Añadir un destino nuevo
+## Añadir un destino (ciudad)
 
 Edita **`lib/data/destinations.ts`**:
 
@@ -133,3 +147,95 @@ Edita **`lib/data/destinations.ts`**:
   active: true,
 }
 ```
+
+Los destinos se referencian desde `itineraries.ts` (`destinationId`) y desde
+`hotels.ts` / `activities.ts` (`destinationId`).
+
+---
+
+## Añadir un hotel
+
+Edita **`lib/data/hotels.ts`**:
+
+```ts
+{
+  id: 'mi-hotel',
+  destinationId: 'el-calafate',   // debe existir en destinations.ts
+  name: 'Nombre del Hotel',
+  category: 4,                    // 3, 4 o 5
+  categoryLabel: 'Boutique',      // opcional: Superior, Boutique, Lujo...
+  image: 'https://images.unsplash.com/...',
+  active: true,
+}
+```
+
+---
+
+## Añadir una actividad
+
+Edita **`lib/data/activities.ts`**:
+
+```ts
+{
+  id: 'mi-actividad',
+  destinationId: 'ushuaia',
+  name: 'Nombre de la actividad',
+  description: 'Descripción detallada.',
+  duration: '4 horas · Salida 09:00 hs',
+  priceFrom: 85,    // solo para opcionales; omitir si es incluida
+  active: true,
+}
+```
+
+El campo `status` (`included` / `optional`) **no** va aquí — se asigna
+por itinerario en `itineraries.ts` dentro de `days[].activities[]`.
+
+---
+
+## Añadir un testimonio
+
+Edita **`lib/data/testimonials.ts`**:
+
+```ts
+{
+  id: '4',
+  name: 'Nombre Apellido',
+  location: 'Ciudad, España',
+  trip: 'Nombre del viaje realizado',
+  rating: 5,
+  image: '/images/testimonials/cliente-4.jpg',
+  text: 'Texto del testimonio...',
+  date: '2025-06',      // YYYY-MM
+  active: true,
+  featured: true,       // true = aparece en la home
+}
+```
+
+Las fotos de clientes van en **`/public/images/testimonials/`**.
+
+---
+
+## Publicar / despublicar contenido
+
+| Campo | Efecto |
+|-------|--------|
+| `country.active = false` | El país desaparece del menú, footer y sitemap |
+| `trip.active = false` | El viaje no aparece en el listing del país |
+| `itinerary.active = false` | La página del itinerario devuelve 404 |
+| `trip.featured = false` | No aparece en FeaturedDestinations (home) |
+| `trip.honeymoonFeatured = false` | No aparece en /lunas-de-miel |
+| `testimonial.featured = false` | No aparece en la home |
+
+---
+
+## Rutas generadas automáticamente
+
+| URL | Fuente de datos |
+|-----|----------------|
+| `/destinos/[slug]` | `countries.ts` → `generateStaticParams` |
+| `/itinerarios/[slug]` | `itineraries.ts` → `generateStaticParams` |
+| `/sitemap.xml` | `app/sitemap.ts` lee countries + itineraries activos |
+
+Para añadir un país o itinerario y que aparezca en el sitemap, menú y footer,
+solo hay que añadir la entrada en el archivo de datos con `active: true`.
+No hay que crear páginas ni tocar rutas.

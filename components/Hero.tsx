@@ -23,13 +23,13 @@ export default function Hero() {
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Región */}
         <p className="inline-flex flex-wrap justify-center items-center gap-2 text-vidaia-earth text-sm font-semibold uppercase tracking-wide sm:tracking-[0.25em] mb-7">
-          <span>🇦🇷</span>
+          <img src="https://flagcdn.com/20x15/ar.png" alt="" width={20} height={15} className="rounded-sm" />
           <span>Argentina</span>
           <span className="opacity-40">·</span>
-          <span>🇨🇱</span>
+          <img src="https://flagcdn.com/20x15/cl.png" alt="" width={20} height={15} className="rounded-sm" />
           <span>Chile</span>
           <span className="opacity-40">·</span>
-          <span>🇧🇴</span>
+          <img src="https://flagcdn.com/20x15/bo.png" alt="" width={20} height={15} className="rounded-sm" />
           <span>Bolivia</span>
         </p>
 
