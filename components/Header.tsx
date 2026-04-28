@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, ChevronDown, Heart } from 'lucide-react'
 import { getCountries } from '@/lib/services/countriesService'
+import { useContactModal } from '@/lib/context/ContactModalContext'
 
 export default function Header() {
   const countries = getCountries()
@@ -12,6 +13,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [destinosOpen, setDestinosOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const { openContactModal } = useContactModal()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
@@ -109,9 +111,12 @@ export default function Header() {
           <Link href="/blog" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
             Blog
           </Link>
-          <Link href="/contacto" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
+          <button
+            onClick={openContactModal}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}
+          >
             ¿Hablamos?
-          </Link>
+          </button>
         </nav>
 
         {/* CTA + mobile toggle */}
@@ -190,13 +195,12 @@ export default function Header() {
               </Link>
             ))}
 
-            <Link
-              href="/contacto"
-              className="block px-4 py-3 text-vidaia-charcoal hover:bg-vidaia-light rounded-xl font-medium text-sm"
-              onClick={() => setMobileOpen(false)}
+            <button
+              onClick={() => { setMobileOpen(false); openContactModal() }}
+              className="block w-full text-left px-4 py-3 text-vidaia-charcoal hover:bg-vidaia-light rounded-xl font-medium text-sm"
             >
               ¿Hablamos?
-            </Link>
+            </button>
 
             <div className="pt-3 border-t border-gray-100">
               <Link

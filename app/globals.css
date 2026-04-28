@@ -24,3 +24,14 @@
     text-wrap: balance;
   }
 }
+
+/* FAB periodic pulse ring — subtle attention cue every ~8 seconds */
+@keyframes fab-ring {
+  0%, 16%, 100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45); }
+  4%            { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45), 0 0 0 4px rgba(37, 211, 102, 0.35); }
+  10%           { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.25), 0 0 0 18px rgba(37, 211, 102, 0); }
+}
+
+.fab-pulse {
+  animation: fab-ring 8s ease-out infinite;
+}

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import ContactModalTrigger from '@/components/ContactModalTrigger';
 
 export default function Hero() {
   return (
@@ -52,12 +53,9 @@ export default function Hero() {
             Solicitar mi viaje a medida
             <ArrowRight className="w-5 h-5" />
           </Link>
-          <Link
-            href="/contacto"
-            className="inline-flex items-center gap-2 px-8 py-4 border border-white/40 text-white hover:bg-white/10 font-medium rounded-full text-base transition-all duration-200"
-          >
+          <ContactModalTrigger className="inline-flex items-center gap-2 px-8 py-4 border border-white/40 text-white hover:bg-white/10 font-medium rounded-full text-base transition-all duration-200">
             ¿Hablamos?
-          </Link>
+          </ContactModalTrigger>
         </div>
       </div>
 

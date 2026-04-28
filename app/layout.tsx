@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
-import Script from 'next/script'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ContactModal from '@/components/ContactModal'
+import ContactFAB from '@/components/ContactFAB'
+import { ContactModalProvider } from '@/lib/context/ContactModalContext'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -21,15 +23,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className={`${inter.variable} ${playfair.variable}`}>
-        <Header />
-        {children}
-        <Footer />
-
-        {/* Clientify — Widget de WhatsApp (esquina inferior derecha) */}
-        <Script
-          src="https://apps.clientify.net/widget-whatsapp2.0/app/assets/index-5yccDyx4.js?id=59083710-7ba9-4bff-b034-1cf1d2046e6d&path=https://plus.clientify.com"
-          strategy="afterInteractive"
-        />
+        <ContactModalProvider>
+          <Header />
+          {children}
+          <Footer />
+          <ContactFAB />
+          <ContactModal />
+        </ContactModalProvider>
       </body>
     </html>
   )

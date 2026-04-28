@@ -1,10 +1,14 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { Instagram, Facebook, Mail, MapPin } from 'lucide-react'
 import { getCountries } from '@/lib/services/countriesService'
+import { useContactModal } from '@/lib/context/ContactModalContext'
 
 export default function Footer() {
   const countries = getCountries()
+  const { openContactModal } = useContactModal()
   return (
     <footer className="bg-vidaia-charcoal text-gray-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -89,7 +93,6 @@ export default function Footer() {
                 { label: 'Viajes', href: '/viajes' },
                 { label: 'Blog', href: '/blog' },
                 { label: 'Quiénes somos', href: '/#quienes-somos' },
-                { label: '¿Hablamos?', href: '/contacto' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
@@ -97,6 +100,14 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  onClick={openContactModal}
+                  className="text-sm text-gray-400 hover:text-white transition-colors"
+                >
+                  ¿Hablamos?
+                </button>
+              </li>
             </ul>
           </div>
 
