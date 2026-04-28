@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getCountries } from '@/lib/services/countriesService'
 import { getAllItineraries } from '@/lib/services/itinerariesService'
+import { getAllPosts } from '@/lib/services/postsService'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://viajesvidaia.com' // Cambiar por la URL real si es diferente
@@ -39,5 +40,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...countries, ...itineraries]
+  // Blog posts dinámicos
+  const blogPosts = getAllPosts().map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  return [...staticPages, ...countries, ...itineraries, ...blogPosts]
 }
