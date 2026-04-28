@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, Clock, Calendar, Share2, Twitter, Facebook, Link2, ArrowRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import ReadingProgress from '@/components/ReadingProgress'
 import NewsletterForm from '@/components/NewsletterForm'
 import { CATEGORY_CONFIG } from '@/lib/data/posts'
@@ -51,8 +53,8 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
       <ReadingProgress />
 
       <article className="pt-24 pb-16">
-        {/* Hero */}
-        <header className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+        {/* Hero & Header */}
+        <header className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
           <Link
             href="/blog"
             className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-vidaia-primary transition-colors mb-8"
@@ -60,6 +62,18 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
             <ArrowLeft className="w-4 h-4" />
             Volver al blog
           </Link>
+
+          {/* Cover image (within max-w-3xl for symmetry) */}
+          <div className="relative h-72 sm:h-96 lg:h-[450px] rounded-3xl overflow-hidden shadow-xl mb-12">
+            <Image
+              src={post.image}
+              alt={post.imageAlt}
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+          </div>
 
           <div className="mb-5">
             <span className={`px-3 py-1 text-xs font-semibold rounded-full ${CATEGORY_CONFIG[post.category].color}`}>
@@ -85,27 +99,38 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
           </div>
         </header>
 
-        {/* Cover image */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-          <div className="relative h-72 sm:h-96 lg:h-[500px] rounded-3xl overflow-hidden">
-            <Image
-              src={post.image}
-              alt={post.imageAlt}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 1280px) 100vw, 1280px"
-            />
-          </div>
-        </div>
-
-        {/* Body */}
+        {/* Body content centered with same max-w as header */}
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {post.content ? (
-            <div
-              className="prose prose-lg prose-vidaia max-w-none text-vidaia-charcoal"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <div className="prose prose-lg prose-vidaia max-w-none
+              [&_ul]:list-disc 
+              [&_ul]:pl-6 
+              [&_ul]:my-6
+              [&_ol]:list-decimal 
+              [&_ol]:pl-6 
+              [&_ol]:my-6
+              [&_li]:my-2
+              [&_li]:pl-2
+              [&_li::marker]:text-vidaia-primary
+              prose-h2:text-4xl 
+              prose-h2:font-bold
+              prose-h2:mt-16 
+              prose-h2:mb-6 
+              prose-h2:pb-3
+              prose-h2:border-b
+              prose-h2:border-vidaia-light
+              prose-h3:text-2xl 
+              prose-h3:font-semibold
+              prose-h3:mt-10 
+              prose-h3:mb-4
+              prose-p:mb-6 
+              prose-p:leading-relaxed
+              prose-p:text-base
+              [&_p+p]:mt-6">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {post.content}
+              </ReactMarkdown>
+            </div>
           ) : (
             <div className="text-center py-16 bg-vidaia-light/30 rounded-3xl">
               <p className="text-gray-500 text-lg mb-2">Este artículo está siendo redactado.</p>

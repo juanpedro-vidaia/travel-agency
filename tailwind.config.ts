@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import typography from '@tailwindcss/typography';
 
 const config: Config = {
   content: [
@@ -25,9 +26,43 @@ const config: Config = {
         heading: ['var(--font-playfair)', 'Georgia', 'serif'],
         sans: ['var(--font-inter)', 'sans-serif'],
       },
+      typography: (theme: (path: string) => string) => ({
+        vidaia: {
+          css: {
+            '--tw-prose-body': theme('colors.vidaia.charcoal'),
+            '--tw-prose-headings': theme('colors.vidaia.dark'),
+            '--tw-prose-links': theme('colors.vidaia.primary'),
+            '--tw-prose-bold': theme('colors.vidaia.dark'),
+            '--tw-prose-counters': theme('colors.vidaia.primary'),
+            '--tw-prose-bullets': theme('colors.vidaia.primary'),
+            '--tw-prose-hr': theme('colors.vidaia.light'),
+            '--tw-prose-quotes': theme('colors.vidaia.dark'),
+            '--tw-prose-quote-borders': theme('colors.vidaia.primary'),
+            '--tw-prose-captions': theme('colors.gray.500'),
+            '--tw-prose-code': theme('colors.vidaia.dark'),
+            '--tw-prose-pre-code': theme('colors.vidaia.light'),
+            '--tw-prose-pre-bg': theme('colors.vidaia.dark'),
+            '--tw-prose-th-borders': theme('colors.vidaia.light'),
+            '--tw-prose-td-borders': theme('colors.vidaia.light'),
+            'h2': { fontFamily: 'var(--font-playfair), Georgia, serif' },
+            'h3': { fontFamily: 'var(--font-playfair), Georgia, serif' },
+            'h4': { fontFamily: 'var(--font-playfair), Georgia, serif' },
+            'a': { textDecoration: 'underline', textUnderlineOffset: '2px' },
+            'a:hover': { color: theme('colors.vidaia.mid') },
+            'blockquote': {
+              borderLeftColor: theme('colors.vidaia.primary'),
+              backgroundColor: theme('colors.vidaia.sand'),
+              borderRadius: '0 0.5rem 0.5rem 0',
+              padding: '0.75rem 1.25rem',
+            },
+            'blockquote p:first-of-type::before': { content: 'none' },
+            'blockquote p:last-of-type::after': { content: 'none' },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
 
 export default config;
