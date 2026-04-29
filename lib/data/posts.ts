@@ -138,24 +138,51 @@ Con sus múltiples beneficios para la salud y su capacidad para unir a las perso
       'Descubre la cultura del mate en Argentina: su historia desde los guaraníes, cómo se prepara, los tipos de yerba y el ritual de compartirlo. Una tradición que define la identidad argentina.',
   },
   {
-    slug: 'salar-uyuni-cuando-ir',
-    title: 'Salar de Uyuni: cuándo ir, qué esperar y cómo no arruinarlo',
+    slug: 'desierto-de-atacama-en-chile',
+    title: 'Viaje a Chile: el desierto de Atacama',
     excerpt:
-      'El espejo natural más grande del mundo tiene sus secretos. Temporada de lluvias o de seca, la foto del coche en el reflejo, el amanecer sobre la sal…',
-    content: '',
+      'El desierto de Atacama, uno de los lugares más extremos y fascinantes del planeta, combina paisajes únicos, leyendas ancestrales y escenarios que parecen de otro mundo. Un destino imprescindible en Chile para quienes buscan naturaleza, misterio y aventura.',
+    content: `¿Sabes que Atacama es tan especial que hasta la NASA lo utiliza para probar sus instrumentos para las misiones en Marte?
+
+Atacama no es solo un desierto, es uno de los lugares más áridos del planeta, es una de las mayores fuentes naturales de nitrato de sodio, el desierto de niebla más grande del mundo y por supuesto es un lugar mágico que merece la pena visitar.
+
+>Por situaros, Atacama se encuentra al norte de Chile, ocupa más de 100.000 km2 y es el desierto más antiguo de la tierra, increíble, ¿no?
+
+A este gran “mar” seco se le conoce como el **desierto no polar más seco del mundo**.
+
+## La magia y sus leyendas
+
+Lo que más me encanta de sitios así es la magia que le rodea… Atacama no destaca únicamente por todo lo que ya os he comentado, si no que además son muchas las leyendas que rondan este lugar tan increíble.
+
+La maldición del tesoro del Inca que cuenta que la codicia de las personas que buscaban el tesoro les hacía perder el juicio y tener mala suerte hasta el final de sus días… o la famosa leyenda de Licancabur y Kimal, que narra la historia de amor entre un joven guerrero y una joven doncella.
+
+Estas no son las únicas leyendas que rodean este paraje tan enigmático pero os invitamos a disfrutar de ellas viajando directamente a este lugar.
+
+Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este increíble lugar, visitando lugares como…
+
+… el **salar de Atacama** para descubrir las 3 especies de flamencos de la Laguna Chaxa siendo este el depósito salino más grande de Chile cuya superficie, blanca y rugosa, oculta a simple vista un gran lago salobre. Su tamaño es de 300.000 kilómetros cuadrados y puede ser apreciado en su totalidad gracias a que el aire está completamente seco,
+
+… el **Valle de la Luna** donde te adentraras en un territorio cuyo proceso de formación comenzó hace aproximadamente 33 millones de años con la formación de un conjunto de rocas que con el paso de los años han sido testigos de la gran capacidad de resiliencia de la Patta Hoiri,
+
+… los **Geysers del Tatios**, un campo geotérmico ubicado en la Cordillera de los Andes, siendo el más alto del mundo (4.200 mts de altura) y ubicado a 89 kilómetros de San Pedro. Este último presenta a tempranas horas de la mañana una impresionante actividad de fumarolas de vapor producidas por las altas temperaturas de sus acuosos cráteres. ¡Se encuentra rodeado por cerros que alcanzan los 5900 metros de altura!
+
+… así como contemplar el contraste de las aguas turquesas de las lagunas de Baltinache o las famosas lagunas altiplánicas (**Miscanti** y **Miñiques** a 4000m de altura!).
+
+¿De verdad te vas a quedar sin visitarlo?`,
     image:
-      'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Salar de Uyuni al amanecer, Bolivia',
-    date: '2026-04-04',
-    category: 'bolivia',
-    tags: ['salar-uyuni', 'bolivia', 'altiplano', 'cuando-ir'],
-    readingTime: 6,
-    featured: false,
+      'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg',
+    imageAlt: 'Laguna Miscanti en el Desierto de Atacama, Chile',
+    date: '2024-12-04',
+    category: 'chile',
+    tags: ['desierto de atacama', 'chile', 'lagunas altiplánicas', 'San Pedro de Atacama'],
+    readingTime: 4,
+    featured: true,
     active: true,
     relatedTrips: ['chile-bolivia-salares'],
-    metaTitle: 'Salar de Uyuni: cuándo ir y qué esperar — Viajes Vidaia',
+    metaTitle: 'Viaje al Desierto de Atacama (Chile) — Guía completa | Viajes Vidaia',
+
     metaDescription:
-      'Todo lo que necesitas saber antes de viajar al Salar de Uyuni: mejor época, fotos del efecto espejo, excursiones y consejos que no encontrarás en las guías.',
+      'Descubre el Desierto de Atacama: lagunas altiplánicas, geysers del Tatio, Valle de la Luna y sus leyendas. Consejos prácticos y todo lo necesario para organizar tu viaje.'  
   },
   {
     slug: 'patagonia-argentina-w-circuit',
