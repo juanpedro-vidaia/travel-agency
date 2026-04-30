@@ -5,21 +5,27 @@ import Image from 'next/image'
 import { Instagram, Facebook, Mail, MapPin } from 'lucide-react'
 import { getCountries } from '@/lib/services/countriesService'
 import { useContactModal } from '@/lib/context/ContactModalContext'
+import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
+import { getAsset } from '@/lib/data/assets'
+import React from 'react'
 
 export default function Footer() {
   const countries = getCountries()
   const { openContactModal } = useContactModal()
+  const footerContent = STATIC_CONTENT.es.footer
+  const logoColorAsset = getAsset('LOGO.COLOR')
+
   return (
     <footer className="bg-vidaia-charcoal text-gray-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-          {/* ── Columna 1: Marca ── */}
+          {/* ── Column 1: Brand ── */}
           <div>
             <Link href="/" className="inline-block mb-5">
               <Image
-                src="/images/logo/viajes-vidaia-logo-color.jpg"
-                alt="Viajes Vidaia"
+                src={logoColorAsset.url}
+                alt={logoColorAsset.alt}
                 width={160}
                 height={44}
                 className="h-10 w-auto object-contain"
@@ -27,21 +33,20 @@ export default function Footer() {
             </Link>
 
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
-              Agencia de viajes personalizados especializada en Argentina, Chile y Bolivia.
-              Diseñamos cada itinerario desde cero — para que sea tuyo de verdad.
+              {footerContent.brand.description}
             </p>
 
             <div className="space-y-2.5 mb-7">
               <a
-                href="mailto:info@viajesvidaia.com"
+                href={`mailto:${footerContent.brand.email}`}
                 className="flex items-center gap-2.5 text-sm hover:text-white transition-colors"
               >
                 <Mail className="w-4 h-4 text-vidaia-earth flex-shrink-0" />
-                info@viajesvidaia.com
+                {footerContent.brand.email}
               </a>
               <div className="flex items-center gap-2.5 text-sm">
                 <MapPin className="w-4 h-4 text-vidaia-earth flex-shrink-0" />
-                España · Argentina · Chile
+                {footerContent.brand.location}
               </div>
             </div>
 
@@ -50,89 +55,104 @@ export default function Footer() {
                 href="https://www.instagram.com/viajesvidaia"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram de Viajes Vidaia"
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-white/8 hover:bg-vidaia-primary text-gray-400 hover:text-white transition-all duration-200"
+                aria-label={footerContent.brand.instagramAriaLabel}
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 hover:bg-vidaia-primary text-gray-400 hover:text-white transition-all duration-200"
               >
                 <Instagram className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                aria-label="Facebook de Viajes Vidaia"
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-white/8 hover:bg-vidaia-primary text-gray-400 hover:text-white transition-all duration-200"
+                aria-label={footerContent.brand.facebookAriaLabel}
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 hover:bg-vidaia-primary text-gray-400 hover:text-white transition-all duration-200"
               >
                 <Facebook className="w-4 h-4" />
               </a>
             </div>
           </div>
 
-          {/* ── Columna 2: Destinos ── */}
+          {/* ── Column 2: Destinations ── */}
           <div>
             <h3 className="text-white text-xs font-bold uppercase tracking-widest mb-5">
-              Destinos
+              {footerContent.columns.destinations}
             </h3>
             <ul className="space-y-3">
               {countries.map((c) => (
                 <li key={c.slug}>
                   <Link href={`/destinos/${c.slug}`} className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
                     <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
-                    {c.name}
+                    {c.content.es.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* ── Columna 3: Viajes Vidaia ── */}
+          {/* ── Column 3: Viajes Vidaia ── */}
           <div>
             <h3 className="text-white text-xs font-bold uppercase tracking-widest mb-5">
-              Viajes Vidaia
+              {footerContent.columns.brandName}
             </h3>
             <ul className="space-y-3">
-              {[
-                { label: '💍 Lunas de Miel', href: '/lunas-de-miel' },
-                { label: 'Viajes', href: '/viajes' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Quiénes somos', href: '/#quienes-somos' },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/lunas-de-miel" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  {footerContent.nav.honeymoons}
+                </Link>
+              </li>
+              <li>
+                <Link href="/viajes" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  {footerContent.nav.trips}
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  {footerContent.nav.blog}
+                </Link>
+              </li>
+              <li>
+                <Link href="/#quienes-somos" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  {footerContent.nav.aboutUs}
+                </Link>
+              </li>
               <li>
                 <button
                   onClick={openContactModal}
                   className="text-sm text-gray-400 hover:text-white transition-colors"
                 >
-                  ¿Hablamos?
+                  {footerContent.nav.talkToUs}
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* ── Columna 4: Legal ── */}
+          {/* ── Column 4: Legal ── */}
           <div>
             <h3 className="text-white text-xs font-bold uppercase tracking-widest mb-5">
-              Legal
+              {footerContent.columns.legal}
             </h3>
             <ul className="space-y-3">
-              {[
-                { label: 'Aviso legal', href: '/aviso-legal' },
-                { label: 'Política de privacidad', href: '/privacidad' },
-                { label: 'Política de cookies', href: '/cookies' },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/aviso-legal" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  {footerContent.legal.legalNotice}
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacidad" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  {footerContent.legal.privacyPolicy}
+                </Link>
+              </li>
+              <li>
+                <Link href="/cookies" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  {footerContent.legal.cookiesPolicy}
+                </Link>
+              </li>
             </ul>
             <p className="text-xs text-gray-500 mt-6 leading-relaxed">
-              Agencia de viajes oficial<br />
-              CICMA n.º 4641<br />
-              Comunidad de Madrid
+              {footerContent.legal.officialAgencyInfo.split('{br}').map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
             </p>
           </div>
 
@@ -143,7 +163,7 @@ export default function Footer() {
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-center">
           <p className="text-xs text-gray-500">
-            © 2026 Viajes Vidaia · Todos los derechos reservados
+            {footerContent.copyright}
           </p>
         </div>
       </div>

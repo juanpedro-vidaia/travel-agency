@@ -2,13 +2,13 @@ import activities from '../data/activities'
 import type { Activity } from '../data/activities'
 
 export function getActivities(): Activity[] {
-  return activities.filter(a => a.active)
+  return activities.filter(activity => activity.active)
 }
 
 export function getActivitiesByDestination(destinationId: string): Activity[] {
-  return activities.filter(a => a.destinationId === destinationId && a.active)
+  return activities.filter(activity => activity.destinationId === destinationId && activity.active)
 }
 
 export function getActivityById(id: string): Activity | undefined {
-  return activities.find(a => a.id === id && a.active)
+  return activities.find(activity => activity.id === id && activity.active)
 }

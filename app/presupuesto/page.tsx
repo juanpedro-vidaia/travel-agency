@@ -1,22 +1,27 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import PresupuestoForm from '@/components/PresupuestoForm';
+import { STATIC_CONTENT } from '@/lib/data/staticContent';
+import { getAsset } from '@/lib/data/assets';
+import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'Solicitar presupuesto — Viajes Vidaia',
-  description:
-    'Cuéntanos tu viaje soñado en solo 2 minutos y diseñamos un itinerario personalizado para ti. Especialistas en Argentina, Chile y Bolivia.',
+  title: STATIC_CONTENT.es.quotePage.metadata.title,
+  description: STATIC_CONTENT.es.quotePage.metadata.description,
 };
 
 export default function PresupuestoPage() {
+  const content = STATIC_CONTENT.es.quotePage;
+  const heroBg = getAsset('QUOTE_HERO_BG');
+
   return (
     <div className="min-h-screen bg-vidaia-sand">
-      {/* ── Cabecera con foto ──────────────────────────────────────────────── */}
+      {/* ── Header with photo ──────────────────────────────────────────────── */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=85"
-            alt="Patagonia — paisaje"
+            src={heroBg.url}
+            alt={heroBg.alt}
             fill
             className="object-cover object-center"
             priority
@@ -26,26 +31,29 @@ export default function PresupuestoPage() {
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32 pb-24">
           <span className="inline-block px-4 py-1.5 bg-white/10 border border-white/20 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-7">
-            Viajes únicos · A tu medida
+            {content.header.overline}
           </span>
 
           <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5 text-balance">
-            Expertos en Diseñar Viajes Únicos en Sudamérica
+            {content.header.title}
           </h1>
 
           <p className="font-heading text-lg sm:text-xl text-vidaia-earth/90 italic mb-5">
-            &ldquo;Como no hay dos personas o grupos iguales,
-            <br className="hidden sm:block" /> tampoco hay dos viajes iguales.&rdquo;
+            {content.header.quote.split('{br}').map((line, i) => (
+              <React.Fragment key={i}>
+                {line}
+                {i === 0 && <br className="hidden sm:block" />}
+              </React.Fragment>
+            ))}
           </p>
 
           <p className="text-white/65 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            Cuéntanos vuestro viaje deseado para poder diseñar una experiencia personalizada.
-            Creamos recuerdos inolvidables, diseñados a medida para vosotros.
+            {content.header.description}
           </p>
         </div>
       </div>
 
-      {/* ── Formulario ────────────────────────────────────────────────────── */}
+      {/* ── Form ────────────────────────────────────────────────────── */}
       <div className="max-w-2xl mx-auto px-4 sm:px-6 -mt-12 pb-24 relative z-10">
         <PresupuestoForm />
       </div>

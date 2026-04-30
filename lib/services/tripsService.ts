@@ -2,32 +2,32 @@ import trips from '../data/trips'
 import type { Trip } from '../data/trips'
 
 export function getTrips(): Trip[] {
-  return trips.filter(t => t.active)
+  return trips.filter(trip => trip.active)
 }
 
 export function getTripsByCountry(country: string): Trip[] {
-  return trips.filter(t => {
-    const countries = (Array.isArray(t.country) ? t.country : [t.country]) as string[]
-    return countries.includes(country) && t.active
+  return trips.filter(trip => {
+    const countries = (Array.isArray(trip.country) ? trip.country : [trip.country]) as string[]
+    return countries.includes(country) && trip.active
   })
 }
 
 export function getFeaturedTrips(): Trip[] {
-  return trips.filter(t => t.featured && t.active)
+  return trips.filter(trip => trip.featured && trip.active)
 }
 
 export function getTripBySlug(slug: string): Trip | undefined {
-  return trips.find(t => t.slug === slug && t.active)
+  return trips.find(trip => trip.slug === slug && trip.active)
 }
 
 export function getHoneymoonTrips(): Trip[] {
-  return trips.filter(t => t.honeymoonFeatured && t.active)
+  return trips.filter(trip => trip.honeymoonFeatured && trip.active)
 }
 
 export function getRelatedTripsBySlug(slug: string): Trip[] {
   const trip = trips.find(t => t.slug === slug)
   if (!trip || !trip.relatedTrips.length) return []
   return trip.relatedTrips
-    .map(r => trips.find(t => t.slug === r.slug && t.active))
+    .map(relatedTrip => trips.find(t => t.slug === relatedTrip.slug && t.active))
     .filter((t): t is Trip => t !== undefined)
 }

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Clock, ArrowRight, BookOpen } from 'lucide-react'
 import { getAllPosts, getFeaturedPost, getPostsByCategory, formatDate } from '@/lib/services/postsService'
 import { CATEGORY_CONFIG, type PostCategory } from '@/lib/data/posts'
+import { getAsset } from '@/lib/data/assets'
 
 export const metadata: Metadata = {
   title: 'Blog de viajes — Viajes Vidaia',
@@ -22,7 +23,7 @@ export default async function BlogPage({ searchParams }: Props) {
   const allPosts = getAllPosts()
   const featured = getFeaturedPost()
   const posts = activeCategory ? getPostsByCategory(activeCategory) : allPosts
-  const categories = Object.entries(CATEGORY_CONFIG) as [PostCategory, { label: string; color: string }][]
+  const categories = Object.entries(CATEGORY_CONFIG) as Array<[PostCategory, typeof CATEGORY_CONFIG[PostCategory]]>
 
   return (
     <>
@@ -52,8 +53,8 @@ export default async function BlogPage({ searchParams }: Props) {
             <Link href={`/blog/${featured.slug}`} className="group grid md:grid-cols-2 gap-8 rounded-3xl overflow-hidden bg-vidaia-light/40 hover:bg-vidaia-light/70 transition-colors">
               <div className="relative h-72 md:h-auto min-h-[300px] overflow-hidden rounded-3xl md:rounded-r-none">
                 <Image
-                  src={featured.image}
-                  alt={featured.imageAlt}
+                  src={getAsset(featured.imageKey).url}
+                  alt={featured.content.es.imageAlt}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -61,7 +62,7 @@ export default async function BlogPage({ searchParams }: Props) {
                 />
                 <div className="absolute top-4 left-4">
                   <span className={`px-3 py-1 text-xs font-semibold rounded-full ${CATEGORY_CONFIG[featured.category].color}`}>
-                    {CATEGORY_CONFIG[featured.category].label}
+                    {CATEGORY_CONFIG[featured.category].es.label}
                   </span>
                 </div>
               </div>
@@ -75,9 +76,9 @@ export default async function BlogPage({ searchParams }: Props) {
                   </span>
                 </div>
                 <h2 className="font-heading text-2xl sm:text-3xl font-bold text-vidaia-dark leading-snug mb-4 group-hover:text-vidaia-primary transition-colors text-balance">
-                  {featured.title}
+                  {featured.content.es.title}
                 </h2>
-                <p className="text-gray-500 leading-relaxed mb-6 line-clamp-3">{featured.excerpt}</p>
+                <p className="text-gray-500 leading-relaxed mb-6 line-clamp-3">{featured.content.es.excerpt}</p>
                 <span className="inline-flex items-center gap-1.5 text-vidaia-primary font-semibold text-sm">
                   Leer artículo <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </span>
@@ -112,7 +113,7 @@ export default async function BlogPage({ searchParams }: Props) {
                     : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
                 }`}
               >
-                {cfg.label}
+                {cfg.es.label}
               </Link>
             ))}
           </div>
@@ -135,15 +136,15 @@ export default async function BlogPage({ searchParams }: Props) {
                 >
                   <div className="relative h-52 overflow-hidden flex-shrink-0">
                     <Image
-                      src={post.image}
-                      alt={post.imageAlt}
+                      src={getAsset(post.imageKey).url}
+                      alt={post.content.es.imageAlt}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute top-4 left-4">
                       <span className={`px-3 py-1 text-xs font-semibold rounded-full ${CATEGORY_CONFIG[post.category].color}`}>
-                        {CATEGORY_CONFIG[post.category].label}
+                        {CATEGORY_CONFIG[post.category].es.label}
                       </span>
                     </div>
                   </div>
@@ -159,11 +160,11 @@ export default async function BlogPage({ searchParams }: Props) {
                     </div>
 
                     <h2 className="font-heading text-lg font-semibold text-vidaia-dark leading-snug mb-3 group-hover:text-vidaia-primary transition-colors line-clamp-2">
-                      {post.title}
+                      {post.content.es.title}
                     </h2>
 
                     <p className="text-gray-500 text-sm leading-relaxed mb-5 flex-1 line-clamp-3">
-                      {post.excerpt}
+                      {post.content.es.excerpt}
                     </p>
 
                     <Link
@@ -197,7 +198,8 @@ export default async function BlogPage({ searchParams }: Props) {
             href="#newsletter"
             className="inline-flex items-center gap-2 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl"
           >
-            Suscribirme gratis
+            Suscribirme al newsletter
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>

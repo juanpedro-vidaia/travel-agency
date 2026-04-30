@@ -27,26 +27,32 @@ import { getTripBySlug, getRelatedTripsBySlug } from '@/lib/services/tripsServic
 import { TAG_CONFIG } from '@/lib/data/trips'
 import { getCountryBySlug } from '@/lib/services/countriesService'
 import { getDestinationById } from '@/lib/services/destinationsService'
+import { getAsset } from '@/lib/data/assets'
+import { formatPrice, renderTemplate } from '@/lib/helpers/contentHelpers'
+import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
 
 const OPTIONAL_ICONS: Record<string, LucideIcon> = {
-  'cataratas-brasilenas':       Waves,
-  'estancia-nibepo-aike':       UtensilsCrossed,
+  'cataratas-brasilenas':         Waves,
+  'estancia-nibepo-aike':         UtensilsCrossed,
   'catamaran-canal-beagle-tarde': Waves,
-  'tango-show-la-ventana':      Music,
+  'tango-show-la-ventana':        Music,
 }
 
 export default function ItineraryContent({ slug }: { slug: string }) {
-  const itinerary        = getItineraryWithDetails(slug)
-  const trip             = getTripBySlug(slug)
+  const itinerary          = getItineraryWithDetails(slug)
+  const trip               = getTripBySlug(slug)
   const optionalActivities = getItineraryOptionals(slug)
-  const relatedTrips     = getRelatedTripsBySlug(slug)
+  const relatedTrips       = getRelatedTripsBySlug(slug)
+
+  const content = STATIC_CONTENT.es.itineraryPage
+  const ui      = COMMON_UI.es
 
   // ── Hooks (all before any conditional return) ─────────────────────────────
   const [currentSlide, setCurrentSlide] = useState(0)
   const [openDays,     setOpenDays]     = useState<Set<number>>(new Set([1]))
   const [isPaused,     setIsPaused]     = useState(false)
 
-  const slides = useMemo(() => itinerary?.heroImages ?? [], [itinerary])
+  const slides = useMemo(() => itinerary?.content.es.heroImages ?? [], [itinerary])
 
   const nextSlide = useCallback(() => {
     setCurrentSlide(prev => (prev + 1) % slides.length)
@@ -85,46 +91,46 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       const destination = day.destinationId ? getDestinationById(day.destinationId) : undefined
       const hotel = day.referenceHotel
       const hotelLabel = hotel
-        ? `${hotel.name} ${hotel.category}★${hotel.categoryLabel ? ' ' + hotel.categoryLabel : ''}`
+        ? `${hotel.content.es.name} ${hotel.category}★${hotel.content.es.categoryLabel ? ' ' + hotel.content.es.categoryLabel : ''}`
         : undefined
       const dayOptionals = day.activities.filter(da => da.status === 'optional')
       const optionalLabel = dayOptionals.length > 0
-        ? dayOptionals.map(da => da.activity.name).join(' · ')
+        ? dayOptionals.map(da => da.activity.content.es.name).join(' · ')
         : undefined
 
       return {
-        day: day.dayNumber,
-        title: day.title,
-        cities: destination?.name ?? '',
-        hotel: hotelLabel,
-        schedule: day.schedule,
-        duration: day.duration,
-        description: day.description,
-        flights: day.flights,
-        highlights: day.highlights,
+        day:          day.dayNumber,
+        title:        day.content.es.title,
+        cities:       destination?.content.es.name ?? '',
+        hotel:        hotelLabel,
+        schedule:     day.content.es.schedule,
+        duration:     day.content.es.duration,
+        description:  day.content.es.description,
+        flights:      day.flights,
+        highlights:   day.content.es.highlights,
         isOptionalDay: day.dayType === 'free',
         optionalLabel,
-        includes: day.includes,
-        notIncludes: day.notIncludes,
+        includes:     day.content.es.included,
+        notIncludes:  day.content.es.excluded,
       }
     })
   }, [itinerary])
 
   const hotelCards = useMemo(() => {
     if (!itinerary) return []
-    return itinerary.hotelStops
+    return itinerary.accommodationStops
       .map(stop => {
         const hotel = stop.defaultHotel
         if (!hotel) return null
         const destination = getDestinationById(hotel.destinationId)
         return {
-          name: hotel.name,
-          stars: stop.defaultCategory,
-          category: hotel.categoryLabel,
-          nights: stop.nights,
-          dates: stop.dates,
-          city: destination?.name ?? hotel.destinationId,
-          img: hotel.image,
+          name:     hotel.content.es.name,
+          stars:    stop.defaultCategory,
+          category: hotel.content.es.categoryLabel,
+          nights:   stop.nights,
+          dates:    stop.dates,
+          city:     destination?.content.es.name ?? hotel.destinationId,
+          img:      getAsset(hotel.imageKey).url,
         }
       })
       .filter((h): h is NonNullable<typeof h> => h !== null)
@@ -132,14 +138,16 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
   const optionals = useMemo(
     () => optionalActivities.map(activity => ({
-      Icon: OPTIONAL_ICONS[activity.id] ?? Star,
-      title: activity.name,
-      description: activity.description,
+      Icon:        OPTIONAL_ICONS[activity.id] ?? Star,
+      title:       activity.content.es.name,
+      description: activity.content.es.description,
     })),
     [optionalActivities]
   )
 
   if (!itinerary || !trip) return null
+
+  const requestHref = `/presupuesto-itinerario?titulo=${encodeURIComponent(trip.content.es.title)}&subtitulo=${encodeURIComponent(trip.content.es.subtitle)}`
 
   const PILL_CLASS =
     'flex items-center gap-1.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-sm font-medium text-white'
@@ -174,55 +182,49 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
         {/* Content */}
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4 sm:px-8">
-          {/* Eyebrow */}
           <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-5">
-            Viajes Vidaia · Itinerario a medida
+            {content.hero.eyebrowPrefix}
             {tripCountries.length > 0 && (
-              <> · {tripCountries.map(c => c.name).join(' + ')}</>
+              <> · {tripCountries.map(c => c.content.es.name).join(' + ')}</>
             )}
           </p>
 
-          {/* H1 */}
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-3 text-balance">
-            {trip.title}
+            {trip.content.es.title}
           </h1>
 
-          {/* Subtitle */}
           <p className="text-lg sm:text-xl text-white/90 max-w-2xl mb-2">
-            {trip.subtitle}
+            {trip.content.es.subtitle}
           </p>
 
-          {/* Meta info */}
           <p className="text-white/65 text-base mb-8">
-            🗓 {trip.days} días · 🌙 {trip.nights} noches
+            🗓 {trip.days} {ui.labels.days} · 🌙 {trip.nights} {content.labels.nights}
           </p>
 
-          {/* Feature pills */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 max-w-2xl">
             {trip.tags.map(tag => (
               <span key={tag} className={PILL_CLASS}>
-                {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].label}
+                {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].es.label}
               </span>
             ))}
-            {trip.includesFlightsInternational && (
-              <span className={PILL_CLASS}>✈️ Vuelos internacionales incluidos</span>
+            {trip.includesInternationalFlights && (
+              <span className={PILL_CLASS}>✈️ {content.hero.internationalFlightsLabel}</span>
             )}
-            {trip.includesFlightsInternal && (
-              <span className={PILL_CLASS}>✈️ Vuelos internos incluidos</span>
+            {trip.includesDomesticFlights && (
+              <span className={PILL_CLASS}>✈️ {content.hero.domesticFlightsLabel}</span>
             )}
           </div>
 
-          {/* CTA — desktop only */}
           <Link
-            href={`/presupuesto-itinerario?titulo=${encodeURIComponent(trip.title)}&subtitulo=${encodeURIComponent(trip.subtitle)}`}
+            href={requestHref}
             className="hidden lg:inline-flex items-center gap-2 mt-10 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
           >
-            Quiero este viaje a medida
+            {content.hero.ctaButton}
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
 
-        {/* Location label — bottom right */}
+        {/* Location label */}
         <div className="absolute bottom-8 right-6 sm:right-8 z-10 pointer-events-none">
           <span className="flex items-center gap-1.5 text-white/70 text-xs sm:text-sm">
             <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -234,14 +236,14 @@ export default function ItineraryContent({ slug }: { slug: string }) {
         <button
           onClick={prevSlide}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors"
-          aria-label="Imagen anterior"
+          aria-label={content.hero.ariaLabelPrev}
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={nextSlide}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors"
-          aria-label="Imagen siguiente"
+          aria-label={content.hero.ariaLabelNext}
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -274,7 +276,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                 className="inline-flex items-center gap-2 text-sm font-medium text-vidaia-charcoal/65 hover:text-vidaia-primary border border-gray-200 hover:border-vidaia-primary rounded-full px-4 py-2 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Ver más viajes a {country.name}
+                {renderTemplate(content.backToCountryTemplate, { country: country.content.es.name })}
               </Link>
             ))}
           </div>
@@ -285,13 +287,13 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg sm:text-xl text-vidaia-charcoal/80 leading-relaxed">
-            {itinerary.description}
+            {itinerary.content.es.description}
           </p>
           <Link
-            href={`/presupuesto-itinerario?titulo=${encodeURIComponent(trip.title)}&subtitulo=${encodeURIComponent(trip.subtitle)}`}
+            href={requestHref}
             className="inline-flex items-center gap-2 mt-8 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base sm:text-lg"
           >
-            Quiero este viaje a medida
+            {content.hero.ctaButton}
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
@@ -301,10 +303,10 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-            Itinerario día a día
+            {content.accordion.title}
           </h2>
           <p className="text-center text-vidaia-charcoal/55 mb-10 text-sm">
-            Haz clic en cada día para ver los detalles
+            {content.accordion.subtitle}
           </p>
 
           <div className="space-y-2">
@@ -354,9 +356,9 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                         <div className="flex gap-3 bg-amber-50 border border-amber-200 rounded-xl p-3.5">
                           <span className="text-amber-500 text-lg leading-none mt-0.5">⭐</span>
                           <p className="text-sm text-amber-800">
-                            <span className="font-semibold">DÍA LIBRE</span>
+                            <span className="font-semibold">{content.accordion.freeDayLabel}</span>
                             {day.optionalLabel && (
-                              <> — <span className="font-semibold">OPCIONAL:</span> {day.optionalLabel}</>
+                              <> — <span className="font-semibold">{content.accordion.optionalLabel}</span> {day.optionalLabel}</>
                             )}
                           </p>
                         </div>
@@ -366,7 +368,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                         <div className="flex gap-3 bg-amber-50 border border-amber-200 rounded-xl p-3.5">
                           <span className="text-amber-500 text-lg leading-none mt-0.5">⭐</span>
                           <p className="text-sm text-amber-800">
-                            <span className="font-semibold">OPCIONAL:</span> {day.optionalLabel}
+                            <span className="font-semibold">{content.accordion.optionalLabel}</span> {day.optionalLabel}
                           </p>
                         </div>
                       )}
@@ -382,7 +384,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                           {day.duration && (
                             <span className="flex items-center gap-1.5">
                               <Clock className="w-4 h-4 text-vidaia-primary" />
-                              Duración: {day.duration}
+                              {content.accordion.durationLabel} {day.duration}
                             </span>
                           )}
                         </div>
@@ -419,13 +421,13 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                           {day.includes && (
                             <span className="flex items-start gap-1.5 text-sm text-green-700">
                               <CheckCircle className="w-4 h-4 shrink-0 mt-0.5" />
-                              <span><strong>Incluye:</strong> {day.includes}</span>
+                              <span><strong>{content.accordion.includesLabel}</strong> {day.includes}</span>
                             </span>
                           )}
                           {day.notIncludes && (
                             <span className="flex items-start gap-1.5 text-sm text-red-600">
                               <XCircle className="w-4 h-4 shrink-0 mt-0.5" />
-                              <span><strong>No incluye:</strong> {day.notIncludes}</span>
+                              <span><strong>{content.accordion.excludesLabel}</strong> {day.notIncludes}</span>
                             </span>
                           )}
                         </div>
@@ -450,10 +452,10 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-            Alojamientos recomendados
+            {content.hotels.title}
           </h2>
           <p className="text-center text-vidaia-charcoal/55 text-sm mb-12">
-            Seleccionados por su calidad, ubicación y relación calidad-precio
+            {content.hotels.subtitle}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -491,7 +493,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                   <div className="flex items-center justify-between text-xs text-vidaia-charcoal/55 pt-3 border-t border-vidaia-light/50 mt-1">
                     <span className="flex items-center gap-1">
                       <Bed className="w-3.5 h-3.5" />
-                      {hotel.nights} {hotel.nights === 1 ? 'noche' : 'noches'}
+                      {hotel.nights} {hotel.nights === 1 ? content.labels.night : content.labels.nights}
                     </span>
                     {hotel.dates && (
                       <span className="flex items-center gap-1">
@@ -506,7 +508,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           </div>
 
           <p className="text-center text-sm text-vidaia-charcoal/45 mt-10 italic">
-            *Los hoteles mostrados son orientativos. Adaptamos el alojamiento a tu presupuesto y preferencias.
+            {content.hotels.disclaimer}
           </p>
         </div>
       </section>
@@ -516,10 +518,10 @@ export default function ItineraryContent({ slug }: { slug: string }) {
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-amber-50">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-amber-700 font-semibold tracking-widest uppercase text-xs mb-3">
-              Actividades opcionales
+              {content.optionals.overline}
             </p>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-12">
-              ¿Quieres enriquecer tu viaje?
+              {content.optionals.title}
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -545,19 +547,19 @@ export default function ItineraryContent({ slug }: { slug: string }) {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-              También te pueden interesar
+              {content.relatedTrips.title}
             </h2>
             <p className="text-center text-vidaia-charcoal/55 text-sm mb-12">
-              Viajes con experiencias similares o complementarias
+              {content.relatedTrips.subtitle}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedTrips.map(related => {
-                const reason = trip.relatedTrips.find(r => r.slug === related.slug)?.reason
+                const reason = trip.relatedTrips.find(r => r.slug === related.slug)?.es.reason
                 const href = related.hasItinerary
                   ? `/itinerarios/${related.slug}`
-                  : `/presupuesto-itinerario?titulo=${encodeURIComponent(related.title)}&subtitulo=${encodeURIComponent(related.subtitle)}`
-                const cta = related.hasItinerary ? 'Ver itinerario' : 'Solicitar información'
+                  : `/presupuesto-itinerario?titulo=${encodeURIComponent(related.content.es.title)}&subtitulo=${encodeURIComponent(related.content.es.subtitle)}`
+                const cta = related.hasItinerary ? ui.buttons.viewItinerary : ui.buttons.requestInfo
 
                 return (
                   <article
@@ -566,8 +568,8 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                   >
                     <div className="relative h-44 overflow-hidden">
                       <Image
-                        src={related.image}
-                        alt={related.title}
+                        src={getAsset(related.imageKey).url}
+                        alt={related.content.es.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -578,7 +580,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                         <p className="text-xs text-amber-700 font-medium mb-2">💡 {reason}</p>
                       )}
                       <h3 className="font-heading font-bold text-vidaia-dark text-sm leading-snug mb-2 flex-1">
-                        {related.title}
+                        {related.content.es.title}
                       </h3>
                       {related.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mb-3">
@@ -587,7 +589,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                               key={tag}
                               className="text-xs bg-vidaia-light text-vidaia-dark px-2 py-0.5 rounded-full"
                             >
-                              {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].label}
+                              {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].es.label}
                             </span>
                           ))}
                         </div>
@@ -595,10 +597,10 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                       <div className="flex items-center justify-between pt-3 border-t border-vidaia-light/60 mt-auto">
                         <div>
                           <p className="text-vidaia-primary font-bold text-sm">
-                            Desde {related.priceFrom.toLocaleString('es-ES')}€
+                            {renderTemplate(content.price.fromTemplate, { price: formatPrice(related.priceFrom) })}
                           </p>
                           <p className="text-xs text-vidaia-charcoal/50">
-                            {related.days} días
+                            {related.days} {ui.labels.days}
                           </p>
                         </div>
                         <Link
@@ -626,20 +628,20 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
         <div className="max-w-2xl mx-auto">
           <p className="text-vidaia-earth uppercase tracking-widest text-xs font-semibold mb-4">
-            Precio orientativo
+            {content.price.overline}
           </p>
           <p className="font-heading text-6xl sm:text-7xl font-bold mb-1">
-            Desde {trip.priceFrom.toLocaleString('es-ES')}€
+            {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom) })}
           </p>
-          <p className="text-white/55 text-sm mb-2">por persona</p>
+          <p className="text-white/55 text-sm mb-2">{content.price.perPersonLabel}</p>
           <p className="text-white/40 text-xs mb-12">
-            En habitación doble · Vuelos internos incluidos · Alojamiento incluido
+            {content.price.priceNote}
           </p>
           <Link
-            href={`/presupuesto-itinerario?titulo=${encodeURIComponent(trip.title)}&subtitulo=${encodeURIComponent(trip.subtitle)}`}
+            href={requestHref}
             className="inline-flex items-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
           >
-            Solicitar mi presupuesto personalizado
+            {content.price.ctaButton}
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
@@ -648,10 +650,10 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       {/* ── STICKY CTA (mobile) ───────────────────────────────────────────────── */}
       <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white/95 backdrop-blur-sm border-t border-vidaia-light px-4 py-3 shadow-2xl">
         <Link
-          href={`/presupuesto-itinerario?titulo=${encodeURIComponent(trip.title)}&subtitulo=${encodeURIComponent(trip.subtitle)}`}
+          href={requestHref}
           className="flex items-center justify-center gap-2 w-full bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-6 py-3.5 rounded-full transition-colors text-base"
         >
-          Quiero este viaje a medida
+          {content.hero.ctaButton}
           <ArrowRight className="w-5 h-5" />
         </Link>
       </div>

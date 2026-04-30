@@ -12,6 +12,7 @@ import { CATEGORY_CONFIG } from '@/lib/data/posts'
 import type { Post } from '@/lib/data/posts'
 import type { Trip } from '@/lib/data/trips'
 import { formatDate } from '@/lib/services/postsService'
+import { getAsset } from '@/lib/data/assets'
 
 interface Props {
   post: Post
@@ -21,6 +22,8 @@ interface Props {
 
 export default function PostContent({ post, relatedPosts, relatedTrips }: Props) {
   const [copied, setCopied] = useState(false)
+  const es = post.content.es
+  const postImageUrl = getAsset(post.imageKey).url
 
   useEffect(() => {
     if (copied) {
@@ -38,7 +41,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
   const shareOnTwitter = () => {
     if (typeof window === 'undefined') return
     const url = encodeURIComponent(window.location.href)
-    const text = encodeURIComponent(post.title)
+    const text = encodeURIComponent(es.title)
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'noopener')
   }
 
@@ -63,11 +66,10 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
             Volver al blog
           </Link>
 
-          {/* Cover image (within max-w-3xl for symmetry) */}
           <div className="relative h-72 sm:h-96 lg:h-[450px] rounded-3xl overflow-hidden shadow-xl mb-12">
             <Image
-              src={post.image}
-              alt={post.imageAlt}
+              src={postImageUrl}
+              alt={es.imageAlt}
               fill
               className="object-cover"
               priority
@@ -77,15 +79,15 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
 
           <div className="mb-5">
             <span className={`px-3 py-1 text-xs font-semibold rounded-full ${CATEGORY_CONFIG[post.category].color}`}>
-              {CATEGORY_CONFIG[post.category].label}
+              {CATEGORY_CONFIG[post.category].es.label}
             </span>
           </div>
 
           <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-vidaia-dark leading-tight mb-6 text-balance">
-            {post.title}
+            {es.title}
           </h1>
 
-          <p className="text-gray-500 text-lg leading-relaxed mb-8">{post.excerpt}</p>
+          <p className="text-gray-500 text-lg leading-relaxed mb-8">{es.excerpt}</p>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 pb-8 border-b border-gray-100">
             <span className="flex items-center gap-1.5">
@@ -99,36 +101,36 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
           </div>
         </header>
 
-        {/* Body content centered with same max-w as header */}
+        {/* Body content */}
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {post.content ? (
+          {es.content ? (
             <div className="prose prose-lg prose-vidaia max-w-none
-              [&_ul]:list-disc 
-              [&_ul]:pl-6 
+              [&_ul]:list-disc
+              [&_ul]:pl-6
               [&_ul]:my-6
-              [&_ol]:list-decimal 
-              [&_ol]:pl-6 
+              [&_ol]:list-decimal
+              [&_ol]:pl-6
               [&_ol]:my-6
               [&_li]:my-2
               [&_li]:pl-2
               [&_li::marker]:text-vidaia-primary
-              prose-h2:text-4xl 
+              prose-h2:text-4xl
               prose-h2:font-bold
-              prose-h2:mt-16 
-              prose-h2:mb-6 
+              prose-h2:mt-16
+              prose-h2:mb-6
               prose-h2:pb-3
               prose-h2:border-b
               prose-h2:border-vidaia-light
-              prose-h3:text-2xl 
+              prose-h3:text-2xl
               prose-h3:font-semibold
-              prose-h3:mt-10 
+              prose-h3:mt-10
               prose-h3:mb-4
-              prose-p:mb-6 
+              prose-p:mb-6
               prose-p:leading-relaxed
               prose-p:text-base
               [&_p+p]:mt-6">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {post.content}
+                {es.content}
               </ReactMarkdown>
             </div>
           ) : (
@@ -190,24 +192,28 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
               Viajes relacionados
             </h2>
             <div className="space-y-4">
-              {relatedTrips.map((trip) => (
-                <Link
-                  key={trip.slug}
-                  href={`/itinerarios/${trip.slug}`}
-                  className="group flex items-center gap-4 p-4 bg-vidaia-light/40 hover:bg-vidaia-light rounded-2xl transition-colors"
-                >
-                  <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
-                    <Image src={trip.image} alt={trip.title} fill className="object-cover" sizes="64px" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-vidaia-dark group-hover:text-vidaia-primary transition-colors text-sm truncate">
-                      {trip.title}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-0.5">{trip.days} días · desde {trip.priceFrom.toLocaleString('es-ES')} €</p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-vidaia-primary flex-shrink-0 transition-colors" />
-                </Link>
-              ))}
+              {relatedTrips.map((trip) => {
+                const tripImage = getAsset(trip.imageKey)
+                const tripTitle = trip.content.es.title
+                return (
+                  <Link
+                    key={trip.slug}
+                    href={`/itinerarios/${trip.slug}`}
+                    className="group flex items-center gap-4 p-4 bg-vidaia-light/40 hover:bg-vidaia-light rounded-2xl transition-colors"
+                  >
+                    <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
+                      <Image src={tripImage.url} alt={tripImage.alt} fill className="object-cover" sizes="64px" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-vidaia-dark group-hover:text-vidaia-primary transition-colors text-sm truncate">
+                        {tripTitle}
+                      </p>
+                      <p className="text-xs text-gray-500 mt-0.5">{trip.days} días · desde {trip.priceFrom.toLocaleString('es-ES')} €</p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-vidaia-primary flex-shrink-0 transition-colors" />
+                  </Link>
+                )
+              })}
             </div>
           </section>
         )}
@@ -237,8 +243,8 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
                 >
                   <div className="relative h-44 overflow-hidden flex-shrink-0">
                     <Image
-                      src={related.image}
-                      alt={related.imageAlt}
+                      src={getAsset(related.imageKey).url}
+                      alt={related.content.es.imageAlt}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -246,10 +252,10 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <span className={`self-start px-2.5 py-0.5 text-xs font-semibold rounded-full mb-3 ${CATEGORY_CONFIG[related.category].color}`}>
-                      {CATEGORY_CONFIG[related.category].label}
+                      {CATEGORY_CONFIG[related.category].es.label}
                     </span>
                     <h3 className="font-heading text-base font-semibold text-vidaia-dark leading-snug mb-3 group-hover:text-vidaia-primary transition-colors line-clamp-2 flex-1">
-                      {related.title}
+                      {related.content.es.title}
                     </h3>
                     <Link
                       href={`/blog/${related.slug}`}

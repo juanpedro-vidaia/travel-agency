@@ -1,11 +1,18 @@
+export interface HotelContent {
+  name: string
+  categoryLabel?: string   // e.g. "Superior", "Boutique", "Lodge"
+  description?: string
+}
+
 export interface Hotel {
   id: string
   destinationId: string
-  name: string
+  content: {
+    es: HotelContent
+    en?: HotelContent
+  }
   category: 3 | 4 | 5
-  categoryLabel?: string   // e.g. "Superior", "Boutique", "Lodge"
-  description?: string
-  image: string
+  imageKey: string
   active: boolean
 }
 
@@ -14,223 +21,323 @@ const hotels: Hotel[] = [
   {
     id: 'city-falls-iguazu',
     destinationId: 'iguazu',
-    name: 'City Falls Iguazú',
+    content: {
+      es: {
+        name: 'City Falls Iguazú',
+        categoryLabel: 'Superior',
+      }
+    },
     category: 3,
-    categoryLabel: 'Superior',
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80',
+    imageKey: 'HOTELS.CITY_FALLS_IGUAZU',
     active: true,
   },
   {
     id: 'panoramic-iguazu',
     destinationId: 'iguazu',
-    name: 'Panoramic Hotel Iguazú',
+    content: {
+      es: {
+        name: 'Panoramic Hotel Iguazú',
+      }
+    },
     category: 4,
-    image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80',
+    imageKey: 'HOTELS.PANORAMIC_IGUAZU',
     active: true,
   },
   {
     id: 'gran-melia-iguazu',
     destinationId: 'iguazu',
-    name: 'Gran Meliá Iguazú',
+    content: {
+      es: {
+        name: 'Gran Meliá Iguazú',
+        categoryLabel: 'Lujo',
+      }
+    },
     category: 5,
-    categoryLabel: 'Lujo',
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80',
+    imageKey: 'HOTELS.GRAN_MELIA_IGUAZU',
     active: true,
   },
   // ── Puerto Madryn ────────────────────────────────────────────────────────────
   {
     id: 'hotel-muelle-viejo',
     destinationId: 'puerto-madryn',
-    name: 'Hotel Muelle Viejo',
+    content: {
+      es: {
+        name: 'Hotel Muelle Viejo',
+      }
+    },
     category: 3,
-    image: 'https://images.unsplash.com/photo-1578774204375-826dc5d996ed?w=800&q=80',
+    imageKey: 'HOTELS.MUELLE_VIEJO',
     active: true,
   },
   {
     id: 'yene-hue',
     destinationId: 'puerto-madryn',
-    name: 'Yene Hue',
+    content: {
+      es: {
+        name: 'Yene Hue',
+      }
+    },
     category: 4,
-    image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80',
+    imageKey: 'HOTELS.YENE_HUE',
     active: true,
   },
   {
     id: 'hotel-territorio',
     destinationId: 'puerto-madryn',
-    name: 'Hotel Territorio',
+    content: {
+      es: {
+        name: 'Hotel Territorio',
+      }
+    },
     category: 5,
-    image: 'https://images.unsplash.com/photo-1596413038447-f0a9e6ecefff?w=800&q=80',
+    imageKey: 'HOTELS.TERRITORIO',
     active: true,
   },
   // ── Buenos Aires ─────────────────────────────────────────────────────────────
   {
     id: 'merit-san-telmo',
     destinationId: 'buenos-aires',
-    name: 'Mérit San Telmo',
+    content: {
+      es: {
+        name: 'Mérit San Telmo',
+      }
+    },
     category: 3,
-    image: 'https://images.unsplash.com/photo-1578774204375-826dc5d996ed?w=800&q=80',
+    imageKey: 'HOTELS.MERIT_SAN_TELMO',
     active: true,
   },
   {
     id: 'hotel-madero',
     destinationId: 'buenos-aires',
-    name: 'Hotel Madero Buenos Aires',
+    content: {
+      es: {
+        name: 'Hotel Madero Buenos Aires',
+      }
+    },
     category: 4,
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80',
+    imageKey: 'HOTELS.HOTEL_MADERO',
     active: true,
   },
   {
     id: 'alvear-palace',
     destinationId: 'buenos-aires',
-    name: 'Alvear Palace Hotel',
+    content: {
+      es: {
+        name: 'Alvear Palace Hotel',
+      }
+    },
     category: 5,
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80',
+    imageKey: 'HOTELS.ALVEAR_PALACE',
     active: true,
   },
   // ── El Calafate ──────────────────────────────────────────────────────────────
   {
     id: 'hotel-los-alamos',
     destinationId: 'el-calafate',
-    name: 'Hotel Los Álamos',
+    content: {
+      es: {
+        name: 'Hotel Los Álamos',
+      }
+    },
     category: 3,
-    image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80',
+    imageKey: 'HOTELS.LOS_ALAMOS',
     active: true,
   },
   {
     id: 'rh-rochester-calafate',
     destinationId: 'el-calafate',
-    name: 'RH Rochester Calafate',
+    content: {
+      es: {
+        name: 'RH Rochester Calafate',
+      }
+    },
     category: 4,
-    image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80',
+    imageKey: 'HOTELS.ROCHESTER_CALAFATE',
     active: true,
   },
   {
     id: 'eolo-patagonia',
     destinationId: 'el-calafate',
-    name: "Eolo Patagonia's Spirit",
+    content: {
+      es: {
+        name: "Eolo Patagonia's Spirit",
+        categoryLabel: 'Relais & Châteaux',
+      }
+    },
     category: 5,
-    categoryLabel: 'Relais & Châteaux',
-    image: 'https://images.unsplash.com/photo-1596413038447-f0a9e6ecefff?w=800&q=80',
+    imageKey: 'HOTELS.EOLO_PATAGONIA',
     active: true,
   },
   // ── Ushuaia ──────────────────────────────────────────────────────────────────
   {
     id: 'altos-ushuaia',
     destinationId: 'ushuaia',
-    name: 'Altos Ushuaia Hotel & Resto',
+    content: {
+      es: {
+        name: 'Altos Ushuaia Hotel & Resto',
+        categoryLabel: 'Superior',
+      }
+    },
     category: 3,
-    categoryLabel: 'Superior',
-    image: 'https://images.unsplash.com/photo-1596413038447-f0a9e6ecefff?w=800&q=80',
+    imageKey: 'HOTELS.ALTOS_USHUAIA',
     active: true,
   },
   {
     id: 'los-cauquenes',
     destinationId: 'ushuaia',
-    name: 'Los Cauquenes Resort & Spa',
+    content: {
+      es: {
+        name: 'Los Cauquenes Resort & Spa',
+      }
+    },
     category: 4,
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80',
+    imageKey: 'HOTELS.LOS_CAUQUENES',
     active: true,
   },
   {
     id: 'arakur-ushuaia',
     destinationId: 'ushuaia',
-    name: 'Arakur Ushuaia Resort & Spa',
+    content: {
+      es: {
+        name: 'Arakur Ushuaia Resort & Spa',
+      }
+    },
     category: 5,
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80',
+    imageKey: 'HOTELS.ARAKUR_USHUAIA',
     active: true,
   },
   // Santiago — categoría 3, 4, 5
   {
     id: 'hotel-plaza-san-francisco-santiago',
     destinationId: 'santiago-chile',
-    name: 'Hotel Plaza San Francisco',
+    content: {
+      es: {
+        name: 'Hotel Plaza San Francisco',
+        categoryLabel: 'Superior',
+      }
+    },
     category: 3,
-    categoryLabel: 'Superior',
-    image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&q=80',
+    imageKey: 'HOTELS.PLAZA_SAN_FRANCISCO',
     active: true,
   },
   {
     id: 'cumbres-lastarria',
     destinationId: 'santiago-chile',
-    name: 'Cumbres Lastarria',
+    content: {
+      es: {
+        name: 'Cumbres Lastarria',
+        categoryLabel: 'Boutique',
+      }
+    },
     category: 4,
-    categoryLabel: 'Boutique',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80',
+    imageKey: 'HOTELS.CUMBRES_LASTARRIA',
     active: true,
   },
   {
     id: 'mandarin-oriental-santiago',
     destinationId: 'santiago-chile',
-    name: 'Mandarin Oriental Santiago',
+    content: {
+      es: {
+        name: 'Mandarin Oriental Santiago',
+        categoryLabel: 'Lujo',
+      }
+    },
     category: 5,
-    categoryLabel: 'Lujo',
-    image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80',
+    imageKey: 'HOTELS.MANDARIN_ORIENTAL',
     active: true,
   },
   // Santiago Aeropuerto (escalas)
   {
     id: 'holiday-inn-santiago-airport',
     destinationId: 'santiago-chile',
-    name: 'Holiday Inn Santiago Airport',
+    content: {
+      es: {
+        name: 'Holiday Inn Santiago Airport',
+        categoryLabel: 'Aeropuerto',
+      }
+    },
     category: 3,
-    categoryLabel: 'Aeropuerto',
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80',
+    imageKey: 'HOTELS.HOLIDAY_INN_SCL',
     active: true,
   },
   // San Pedro de Atacama
   {
     id: 'hotel-poblado-kimal',
     destinationId: 'san-pedro-atacama',
-    name: 'Hotel Poblado Kimal',
+    content: {
+      es: {
+        name: 'Hotel Poblado Kimal',
+        categoryLabel: 'Boutique',
+      }
+    },
     category: 3,
-    categoryLabel: 'Boutique',
-    image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80',
+    imageKey: 'HOTELS.POBLADO_KIMAL',
     active: true,
   },
   {
     id: 'cumbres-san-pedro',
     destinationId: 'san-pedro-atacama',
-    name: 'Cumbres San Pedro de Atacama',
+    content: {
+      es: {
+        name: 'Cumbres San Pedro de Atacama',
+        categoryLabel: 'Superior',
+      }
+    },
     category: 4,
-    categoryLabel: 'Superior',
-    image: 'https://images.unsplash.com/photo-1455587734955-081b22074882?w=800&q=80',
+    imageKey: 'HOTELS.CUMBRES_SAN_PEDRO',
     active: true,
   },
   {
     id: 'tierra-atacama',
     destinationId: 'san-pedro-atacama',
-    name: 'Tierra Atacama Hotel & Spa',
+    content: {
+      es: {
+        name: 'Tierra Atacama Hotel & Spa',
+        categoryLabel: 'Lujo',
+      }
+    },
     category: 5,
-    categoryLabel: 'Lujo',
-    image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80',
+    imageKey: 'HOTELS.TIERRA_ATACAMA',
     active: true,
   },
   // Isla de Pascua
   {
     id: 'hotel-otai-rapa-nui',
     destinationId: 'isla-pascua',
-    name: 'Hotel Otai',
+    content: {
+      es: {
+        name: 'Hotel Otai',
+        categoryLabel: 'Tradicional',
+      }
+    },
     category: 3,
-    categoryLabel: 'Tradicional',
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80',
+    imageKey: 'HOTELS.OTAI_RAPA_NUI',
     active: true,
   },
   {
     id: 'takarua',
     destinationId: 'isla-pascua',
-    name: 'Hotel Takarua',
+    content: {
+      es: {
+        name: 'Hotel Takarua',
+        categoryLabel: 'Boutique',
+      }
+    },
     category: 4,
-    categoryLabel: 'Boutique',
-    image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80',
+    imageKey: 'HOTELS.TAKARUA',
     active: true,
   },
   {
     id: 'explora-rapa-nui',
     destinationId: 'isla-pascua',
-    name: 'Explora Rapa Nui',
+    content: {
+      es: {
+        name: 'Explora Rapa Nui',
+        categoryLabel: 'Lujo todo incluido',
+      }
+    },
     category: 5,
-    categoryLabel: 'Lujo todo incluido',
-    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80',
+    imageKey: 'HOTELS.EXPLORA_RAPA_NUI',
     active: true,
   },
 ]

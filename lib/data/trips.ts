@@ -3,23 +3,23 @@ import type { Country } from './destinations'
 // ── Tags ──────────────────────────────────────────────────────────────────────
 
 export const TRIP_TAGS = {
-  NATURALEZA: 'naturaleza',
-  VIDA_SALVAJE: 'vida-salvaje',
-  AVENTURA: 'aventura',
+  NATURE: 'nature',
+  WILDLIFE: 'wildlife',
+  ADVENTURE: 'adventure',
   RELAX: 'relax',
-  CULTURA: 'cultura',
-  GASTRONOMIA: 'gastronomia',
+  CULTURE: 'culture',
+  GASTRONOMY: 'gastronomy',
 } as const
 
 export type TripTag = typeof TRIP_TAGS[keyof typeof TRIP_TAGS]
 
-export const TAG_CONFIG: Record<TripTag, { icon: string; label: string }> = {
-  naturaleza:     { icon: '🌿', label: 'Naturaleza' },
-  'vida-salvaje': { icon: '🐋', label: 'Vida salvaje' },
-  aventura:       { icon: '🏔', label: 'Aventura' },
-  relax:          { icon: '🌅', label: 'Relax' },
-  cultura:        { icon: '🏛', label: 'Cultura' },
-  gastronomia:    { icon: '🍷', label: 'Gastronomía' },
+export const TAG_CONFIG: Record<TripTag, { icon: string; es: { label: string }; en?: { label: string } }> = {
+  nature:     { icon: '🌿', es: { label: 'Naturaleza' } },
+  wildlife: { icon: '🐋', es: { label: 'Vida salvaje' } },
+  adventure:       { icon: '🏔', es: { label: 'Aventura' } },
+  relax:          { icon: '🌅', es: { label: 'Relax' } },
+  culture:        { icon: '🏛', es: { label: 'Cultura' } },
+  gastronomy:    { icon: '🍷', es: { label: 'Gastronomía' } },
 }
 
 // ── Season & best months (future use — not rendered) ──────────────────────────
@@ -32,42 +32,50 @@ export type TripSeason =
   | 'winter'
   | 'avoid-summer'
 
-export const MONTHS: Record<number, string> = {
-  1: 'Enero',  2: 'Febrero',   3: 'Marzo',     4: 'Abril',
-  5: 'Mayo',   6: 'Junio',     7: 'Julio',     8: 'Agosto',
-  9: 'Septiembre', 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre',
+export const MONTHS: Record<number, { es: string; en?: string }> = {
+  1: { es: 'Enero' },  2: { es: 'Febrero' },   3: { es: 'Marzo' },     4: { es: 'Abril' },
+  5: { es: 'Mayo' },   6: { es: 'Junio' },     7: { es: 'Julio' },     8: { es: 'Agosto' },
+  9: { es: 'Septiembre' }, 10: { es: 'Octubre' }, 11: { es: 'Noviembre' }, 12: { es: 'Diciembre' },
 }
 
 // ── Related trips ─────────────────────────────────────────────────────────────
 
-export type RelatedTrip = {
+export interface RelatedTrip {
   slug: string
-  reason: string
+  es: { reason: string }
+  en?: { reason: string }
 }
 
 // ── Trip ──────────────────────────────────────────────────────────────────────
 
+export interface TripContent {
+  title: string
+  subtitle: string
+  honeymoonTitle?: string
+  honeymoonTagline?: string
+}
+
 export interface Trip {
   id: string
   slug: string
-  title: string
-  subtitle: string
+  content: {
+    es: TripContent
+    en?: TripContent
+  }
   /** Single country or multiple for multi-country itineraries. */
   country: Country | Country[]
   days: number
   nights: number
   priceFrom: number
-  image: string
+  imageKey: string
   featured: boolean
   active: boolean
   hasItinerary: boolean
   tags: TripTag[]
-  includesFlightsInternational: boolean
-  includesFlightsInternal: boolean
+  includesInternationalFlights: boolean
+  includesDomesticFlights: boolean
   relatedTrips: RelatedTrip[]
   honeymoonFeatured?: boolean
-  honeymoonTitle?: string
-  honeymoonTagline?: string
   /** Future use — best season to travel. */
   season?: TripSeason
   /** Future use — best months (1-12). */
@@ -79,86 +87,102 @@ const trips: Trip[] = [
   {
     id: 'paisajes-naturales-argentina',
     slug: 'paisajes-naturales-argentina',
-    title: 'Paisajes naturales de Argentina: ballenas, glaciares, cataratas y el Fin del Mundo',
-    subtitle: 'Iguazú · Península de Valdés · Buenos Aires · El Calafate · Ushuaia',
+    content: {
+      es: {
+        title: 'Paisajes naturales de Argentina: ballenas, glaciares, cataratas y el Fin del Mundo',
+        subtitle: 'Iguazú · Península de Valdés · Buenos Aires · El Calafate · Ushuaia',
+        honeymoonTitle: 'Luna de Miel Patagonia e Iguazú',
+        honeymoonTagline: 'Naturaleza en estado puro',
+      }
+    },
     country: 'argentina',
     days: 13,
     nights: 12,
     priceFrom: 4412,
-    image: 'https://images.unsplash.com/photo-1615656637621-5aa19f1ef847?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageKey: 'TRIPS.ARGENTINA_NATURAL_PAISAJES',
     featured: true,
     active: true,
     hasItinerary: true,
-    tags: ['naturaleza', 'vida-salvaje', 'aventura'],
-    includesFlightsInternational: true,
-    includesFlightsInternal: true,
+    tags: ['nature', 'wildlife', 'adventure'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
     relatedTrips: [
-      { slug: 'esencias-chile-isla-pascua', reason: 'Combina con paisajes únicos del Cono Sur' },
-      { slug: 'patagonia-sur-a-norte',      reason: 'Profundiza en la Patagonia argentina' },
+      { slug: 'esencias-chile-isla-pascua', es: { reason: 'Combina con paisajes únicos del Cono Sur' } },
+      { slug: 'patagonia-sur-a-norte',      es: { reason: 'Profundiza en la Patagonia argentina' } },
     ],
     honeymoonFeatured: true,
-    honeymoonTitle: 'Luna de Miel Patagonia e Iguazú',
-    honeymoonTagline: 'Naturaleza en estado puro',
     bestMonths: [3, 4, 9, 10, 11],
   },
   {
     id: 'latitudes-australes',
     slug: 'latitudes-australes',
-    title: 'Latitudes Australes: Patagonia Argentina & Chilena',
-    subtitle: 'El Calafate · Torres del Paine · Ushuaia · Puerto Natales',
+    content: {
+      es: {
+        title: 'Latitudes Australes: Patagonia Argentina & Chilena',
+        subtitle: 'El Calafate · Torres del Paine · Ushuaia · Puerto Natales',
+      }
+    },
     country: ['argentina', 'chile'],
     days: 14,
     nights: 13,
     priceFrom: 3900,
-    image: 'https://images.unsplash.com/photo-1684790761209-a49f6d6ef7df?q=80&w=800',
+    imageKey: 'TRIPS.LATITUDES_AUSTRALES',
     featured: true,
     active: true,
     hasItinerary: false,
-    tags: ['naturaleza', 'aventura'],
-    includesFlightsInternational: true,
-    includesFlightsInternal: true,
+    tags: ['nature', 'adventure'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
     relatedTrips: [
-      { slug: 'paisajes-naturales-argentina', reason: 'Patagonia argentina con ballenas e Iguazú' },
+      { slug: 'paisajes-naturales-argentina', es: { reason: 'Patagonia argentina con ballenas e Iguazú' } },
     ],
   },
   {
     id: 'patagonia-sur-a-norte',
     slug: 'patagonia-sur-a-norte',
-    title: 'Patagonia de sur a norte, con Iguazú opcional',
-    subtitle: 'Ushuaia · El Chaltén · El Calafate · Buenos Aires',
+    content: {
+      es: {
+        title: 'Patagonia de sur a norte, con Iguazú opcional',
+        subtitle: 'Ushuaia · El Chaltén · El Calafate · Buenos Aires',
+      }
+    },
     country: 'argentina',
     days: 12,
     nights: 11,
     priceFrom: 3500,
-    image: 'https://images.unsplash.com/photo-1520641082665-df9ec00b0953?q=80&w=800',
+    imageKey: 'TRIPS.PATAGONIA_SUR_NORTE',
     featured: true,
     active: true,
     hasItinerary: false,
-    tags: ['naturaleza', 'aventura'],
-    includesFlightsInternational: true,
-    includesFlightsInternal: true,
+    tags: ['nature', 'adventure'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
     relatedTrips: [
-      { slug: 'paisajes-naturales-argentina', reason: 'Añade ballenas e Iguazú a la misma ruta' },
+      { slug: 'paisajes-naturales-argentina', es: { reason: 'Añade ballenas e Iguazú a la misma ruta' } },
     ],
   },
   {
     id: 'fin-de-ano-argentina',
     slug: 'fin-de-ano-argentina',
-    title: 'Fin de año de esencia argentina: cataratas, glaciares y Buenos Aires',
-    subtitle: 'Buenos Aires · Iguazú · El Calafate · Ushuaia',
+    content: {
+      es: {
+        title: 'Fin de año de esencia argentina: cataratas, glaciares y Buenos Aires',
+        subtitle: 'Buenos Aires · Iguazú · El Calafate · Ushuaia',
+      }
+    },
     country: 'argentina',
     days: 13,
     nights: 12,
     priceFrom: 4200,
-    image: 'https://images.unsplash.com/photo-1709426197175-ea5577067e5d?q=80&w=800',
+    imageKey: 'TRIPS.FIN_DE_ANO_ARGENTINA',
     featured: false,
     active: true,
     hasItinerary: false,
-    tags: ['naturaleza', 'cultura', 'aventura'],
-    includesFlightsInternational: true,
-    includesFlightsInternal: true,
+    tags: ['nature', 'culture', 'adventure'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
     relatedTrips: [
-      { slug: 'paisajes-naturales-argentina', reason: 'Ruta similar con avistaje de ballenas' },
+      { slug: 'paisajes-naturales-argentina', es: { reason: 'Ruta similar con avistaje de ballenas' } },
     ],
     season: 'summer',
     bestMonths: [12, 1],
@@ -166,89 +190,105 @@ const trips: Trip[] = [
   {
     id: 'argentina-esencial',
     slug: 'argentina-esencial',
-    title: 'Argentina Esencial de Norte a Sur',
-    subtitle: 'Salta · Jujuy · Buenos Aires · El Calafate · Ushuaia',
+    content: {
+      es: {
+        title: 'Argentina Esencial de Norte a Sur',
+        subtitle: 'Salta · Jujuy · Buenos Aires · El Calafate · Ushuaia',
+        honeymoonTitle: 'Luna de Miel Argentina',
+        honeymoonTagline: 'Cultura, gastronomía y aventura',
+      }
+    },
     country: 'argentina',
     days: 15,
     nights: 14,
     priceFrom: 3800,
-    image: 'https://images.unsplash.com/photo-1582727867856-46e3951fd3ff?q=80&w=800',
+    imageKey: 'TRIPS.ARGENTINA_ESENCIAL',
     featured: false,
     active: true,
     hasItinerary: false,
-    tags: ['naturaleza', 'cultura', 'gastronomia'],
-    includesFlightsInternational: true,
-    includesFlightsInternal: true,
+    tags: ['nature', 'culture', 'gastronomy'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
     relatedTrips: [
-      { slug: 'contrastes-argentinos', reason: 'Similar ruta norte-sur con más Patagonia' },
+      { slug: 'contrastes-argentinos', es: { reason: 'Similar ruta norte-sur con más Patagonia' } },
     ],
     honeymoonFeatured: true,
-    honeymoonTitle: 'Luna de Miel Argentina',
-    honeymoonTagline: 'Cultura, gastronomía y aventura',
   },
   {
     id: 'contrastes-argentinos',
     slug: 'contrastes-argentinos',
-    title: 'Contrastes Argentinos: Salares, selva y hielo',
-    subtitle: 'Jujuy · Salta · Iguazú · Buenos Aires · Patagonia',
+    content: {
+      es: {
+        title: 'Contrastes Argentinos: Salares, selva y hielo',
+        subtitle: 'Jujuy · Salta · Iguazú · Buenos Aires · Patagonia',
+      }
+    },
     country: 'argentina',
     days: 14,
     nights: 13,
     priceFrom: 4100,
-    image: 'https://images.unsplash.com/photo-1603155376270-6ad9b9b4fa59?q=80&w=800',
+    imageKey: 'TRIPS.CONTRASTES_ARGENTINOS',
     featured: false,
     active: true,
     hasItinerary: false,
-    tags: ['naturaleza', 'cultura', 'aventura'],
-    includesFlightsInternational: true,
-    includesFlightsInternal: true,
+    tags: ['nature', 'culture', 'adventure'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
     relatedTrips: [
-      { slug: 'argentina-esencial', reason: 'Misma esencia norte-sur con variante Patagonia' },
+      { slug: 'argentina-esencial', es: { reason: 'Misma esencia norte-sur con variante Patagonia' } },
     ],
   },
   // ── Chile ─────────────────────────────────────────────────────────────────────
   {
     id: 'chile-bolivia-salares',
     slug: 'chile-bolivia-salares',
-    title: 'Chile y Bolivia: Desiertos, salares y paisajes únicos',
-    subtitle: 'Santiago · San Pedro de Atacama · Salar de Uyuni · La Paz',
+    content: {
+      es: {
+        title: 'Chile y Bolivia: Desiertos, salares y paisajes únicos',
+        subtitle: 'Santiago · San Pedro de Atacama · Salar de Uyuni · La Paz',
+        honeymoonTitle: 'Luna de Miel Chile y Bolivia',
+        honeymoonTagline: 'Desiertos, salares y paisajes de otro planeta',
+      }
+    },
     country: ['chile', 'bolivia'],
     days: 12,
     nights: 11,
     priceFrom: 3800,
-    image: 'https://images.unsplash.com/photo-1573502059387-0848782c6956',
+    imageKey: 'TRIPS.CHILE_BOLIVIA_SALARES',
     featured: false,
     active: true,
     hasItinerary: false,
-    tags: ['naturaleza', 'aventura', 'cultura'],
-    includesFlightsInternational: true,
-    includesFlightsInternal: true,
+    tags: ['nature', 'adventure', 'culture'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
     relatedTrips: [
-      { slug: 'esencias-chile-isla-pascua', reason: 'Más Chile con el misterio de Isla de Pascua' },
+      { slug: 'esencias-chile-isla-pascua', es: { reason: 'Más Chile con el misterio de Isla de Pascua' } },
     ],
     honeymoonFeatured: true,
-    honeymoonTitle: 'Luna de Miel Chile y Bolivia',
-    honeymoonTagline: 'Desiertos, salares y paisajes de otro planeta',
   },
   {
     id: 'esencias-chile-isla-pascua',
     slug: 'esencias-chile-isla-pascua',
-    title: 'Esencias de Chile con Isla de Pascua: viñas, moáis y salares',
-    subtitle: 'Santiago · San Pedro de Atacama · Isla de Pascua',
+    content: {
+      es: {
+        title: 'Esencias de Chile con Isla de Pascua: viñas, moáis y salares',
+        subtitle: 'Santiago · San Pedro de Atacama · Isla de Pascua',
+      }
+    },
     country: 'chile',
     days: 13,
     nights: 11,
     priceFrom: 4699,
-    image: 'https://images.unsplash.com/photo-1600754047212-0cf91397fbc6',
+    imageKey: 'TRIPS.CHILE_ISLA_PASCUA',
     featured: true,
     active: true,
     hasItinerary: true,
-    tags: ['naturaleza', 'cultura', 'aventura'],
-    includesFlightsInternational: true,
-    includesFlightsInternal: true,
+    tags: ['nature', 'culture', 'adventure'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
     relatedTrips: [
-      { slug: 'paisajes-naturales-argentina', reason: 'Combina con la Patagonia argentina' },
-      { slug: 'chile-bolivia-salares',        reason: 'Amplía la ruta con el Salar de Uyuni' },
+      { slug: 'paisajes-naturales-argentina', es: { reason: 'Combina con la Patagonia argentina' } },
+      { slug: 'chile-bolivia-salares',        es: { reason: 'Amplía la ruta con el Salar de Uyuni' } },
     ],
   },
   // ── Bolivia ───────────────────────────────────────────────────────────────────
@@ -256,3 +296,4 @@ const trips: Trip[] = [
 ]
 
 export default trips
+

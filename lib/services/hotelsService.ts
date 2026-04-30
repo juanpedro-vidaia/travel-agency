@@ -1,24 +1,24 @@
 import hotels from '../data/hotels'
 import type { Hotel } from '../data/hotels'
-import type { HotelStopDef } from '../data/itineraries'
+import type { AccommodationStop } from '../data/itineraries'
 
 export function getHotels(): Hotel[] {
-  return hotels.filter(h => h.active)
+  return hotels.filter(hotel => hotel.active)
 }
 
 export function getHotelsByDestination(destinationId: string): Hotel[] {
-  return hotels.filter(h => h.destinationId === destinationId && h.active)
+  return hotels.filter(hotel => hotel.destinationId === destinationId && hotel.active)
 }
 
 export function getHotelById(id: string): Hotel | undefined {
-  return hotels.find(h => h.id === id && h.active)
+  return hotels.find(hotel => hotel.id === id && hotel.active)
 }
 
 export function getHotelByStopAndCategory(
-  stop: HotelStopDef,
+  stop: AccommodationStop,
   category: 3 | 4 | 5
 ): Hotel | undefined {
-  const id = stop.hotelByCategory[String(category) as '3' | '4' | '5']
+  const id = stop.hotelsByCategory[String(category) as '3' | '4' | '5']
   if (!id) return undefined
   return getHotelById(id)
 }

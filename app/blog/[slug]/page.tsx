@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/services/postsService'
 import { getTripBySlug } from '@/lib/services/tripsService'
 import type { Trip } from '@/lib/data/trips'
+import { getAsset } from '@/lib/data/assets'
 import PostContent from './PostContent'
 
 interface Props {
@@ -18,8 +19,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug)
   if (!post) return {}
 
-  const title = post.metaTitle ?? `${post.title} — Viajes Vidaia`
-  const description = post.metaDescription ?? post.excerpt
+  const es = post.content.es
+  const title = es.metaTitle ?? `${es.title} — Viajes Vidaia`
+  const description = es.metaDescription ?? es.excerpt
+  const imageUrl = getAsset(post.imageKey).url
   const url = `https://viajesvidaia.com/blog/${post.slug}`
 
   return {
@@ -31,13 +34,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       type: 'article',
       publishedTime: post.date,
-      images: [{ url: post.image, alt: post.imageAlt }],
+      images: [{ url: imageUrl, alt: es.imageAlt }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [post.image],
+      images: [imageUrl],
     },
     alternates: { canonical: url },
   }
@@ -49,17 +52,19 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound()
 
   const relatedPosts = getRelatedPosts(slug)
-  const relatedTrips: Trip[] = (post.relatedTrips ?? [])
+  const relatedTrips: Trip[] = (post.relatedTripSlugs ?? [])
     .map((s) => getTripBySlug(s))
     .filter((t): t is Trip => t !== undefined)
 
-  // JSON-LD
+  const es = post.content.es
+  const imageUrl = getAsset(post.imageKey).url
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: post.title,
-    description: post.excerpt,
-    image: post.image,
+    headline: es.title,
+    description: es.excerpt,
+    image: imageUrl,
     datePublished: post.date,
     author: { '@type': 'Organization', name: 'Viajes Vidaia' },
     publisher: {

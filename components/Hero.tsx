@@ -1,48 +1,76 @@
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import ContactModalTrigger from '@/components/ContactModalTrigger';
+import { getAsset } from '@/lib/data/assets';
+import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent';
 
 export default function Hero() {
+  const heroContent = STATIC_CONTENT.es.home.hero;
+  const regionContent = {
+    es: [
+      { flagKey: 'FLAGS.AR', countryName: 'Argentina' },
+      { flagKey: 'FLAGS.CL', countryName: 'Chile' },
+      { flagKey: 'FLAGS.BO', countryName: 'Bolivia' },
+    ],
+    // Add en: [...] if internationalization is implemented
+  };
+
+  const heroBgAsset = getAsset('HOME.HERO_BG');
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Fondo Patagonia */}
+      {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1598162480222-b2c3d92548d5?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Bariloche, Patagonia"
+          src={heroBgAsset.url}
+          alt={heroBgAsset.alt}
           fill
           className="object-cover"
           priority
           quality={90}
         />
-        {/* Gradiente oscuro para legibilidad */}
+        {/* Dark gradient for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/65" />
       </div>
 
-      {/* Contenido */}
+      {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Región */}
+        {/* Region */}
         <p className="inline-flex flex-wrap justify-center items-center gap-2 text-vidaia-earth text-sm font-semibold uppercase tracking-wide sm:tracking-[0.25em] mb-7">
-          <img src="https://flagcdn.com/20x15/ar.png" alt="" width={20} height={15} className="rounded-sm" />
-          <span>Argentina</span>
-          <span className="opacity-40">·</span>
-          <img src="https://flagcdn.com/20x15/cl.png" alt="" width={20} height={15} className="rounded-sm" />
-          <span>Chile</span>
-          <span className="opacity-40">·</span>
-          <img src="https://flagcdn.com/20x15/bo.png" alt="" width={20} height={15} className="rounded-sm" />
-          <span>Bolivia</span>
+          {regionContent.es.map((region, index) => {
+            const flagAsset = getAsset(region.flagKey);
+            return (
+              <span key={index} className="inline-flex items-center gap-1">
+                <Image 
+                  src={flagAsset.url}
+                  alt={flagAsset.alt}
+                  width={20}
+                  height={15}
+                  className="rounded-sm"
+                />
+                <span>{region.countryName}</span>
+              </span>
+            );
+          })}
         </p>
 
         <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6 text-balance">
-          El viaje de tu vida
-          <br />
-          <em className="not-italic text-vidaia-earth">hecho realidad</em>
+          {heroContent.title.split('{br}').map((part, index) => (
+            <React.Fragment key={index}>
+              {part.split('{span}').map((subPart, subIndex) => (
+                <span key={subIndex} className={subIndex === 1 ? 'text-vidaia-earth' : ''}>
+                  {subPart}
+                </span>
+              ))}
+              {index === 0 && <br />}
+            </React.Fragment>
+          ))}
         </h1>
 
         <p className="text-white/75 text-base sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed text-balance px-2">
-          Diseñamos cada itinerario desde cero — sin paquetes estándar, sin prisas.
-          Solo tú, el paisaje y una experiencia que no olvidarás.
+          {heroContent.description}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -50,11 +78,11 @@ export default function Hero() {
             href="/presupuesto"
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
           >
-            Solicitar mi viaje a medida
+            {COMMON_UI.es.buttons.requestQuote}
             <ArrowRight className="w-5 h-5" />
           </Link>
           <ContactModalTrigger className="inline-flex items-center gap-2 px-8 py-4 border border-white/40 text-white hover:bg-white/10 font-medium rounded-full text-base transition-all duration-200">
-            ¿Hablamos?
+            {COMMON_UI.es.buttons.talkToUs}
           </ContactModalTrigger>
         </div>
       </div>

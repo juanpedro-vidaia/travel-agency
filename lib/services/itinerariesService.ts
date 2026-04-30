@@ -1,5 +1,5 @@
 import itineraries from '../data/itineraries'
-import type { Itinerary, ItineraryDay, HotelStopDef } from '../data/itineraries'
+import type { Itinerary, ItineraryDay, AccommodationStop } from '../data/itineraries'
 import type { Activity } from '../data/activities'
 import type { Hotel } from '../data/hotels'
 import type { Trip } from '../data/trips'
@@ -12,19 +12,21 @@ export interface ResolvedDayActivity {
   status: 'included' | 'optional'
 }
 
-export interface ResolvedDay extends Omit<ItineraryDay, 'activities'> {
+export interface ResolvedDay extends Omit<ItineraryDay, 'activities' | 'content'> {
+  content: ItineraryDay['content']
   activities: ResolvedDayActivity[]
   referenceHotel?: Hotel
 }
 
-export interface ResolvedHotelStop extends HotelStopDef {
+export interface ResolvedAccommodationStop extends AccommodationStop {
   hotels: { category: 3 | 4 | 5; hotel: Hotel }[]
   defaultHotel: Hotel | undefined
 }
 
-export interface ResolvedItinerary extends Omit<Itinerary, 'days' | 'hotelStops'> {
+export interface ResolvedItinerary extends Omit<Itinerary, 'days' | 'accommodationStops' | 'content'> {
+  content: Itinerary['content']
   days: ResolvedDay[]
-  hotelStops: ResolvedHotelStop[]
+  accommodationStops: ResolvedAccommodationStop[]
 }
 
 export interface ItineraryWithTrip {
@@ -42,6 +44,7 @@ export function getItineraryWithDetails(slug: string): ResolvedItinerary | undef
 
   const days: ResolvedDay[] = itinerary.days.map(day => ({
     ...day,
+    content: day.content,
     activities: day.activities
       .map(da => {
         const activity = getActivityById(da.activityId)
@@ -52,11 +55,11 @@ export function getItineraryWithDetails(slug: string): ResolvedItinerary | undef
     referenceHotel: day.referenceHotelId ? getHotelById(day.referenceHotelId) : undefined,
   }))
 
-  const hotelStops: ResolvedHotelStop[] = itinerary.hotelStops.map(stop => {
+  const accommodationStops: ResolvedAccommodationStop[] = itinerary.accommodationStops.map(stop => {
     const categories: (3 | 4 | 5)[] = [3, 4, 5]
     const hotels = categories
       .map(cat => {
-        const id = stop.hotelByCategory[String(cat) as '3' | '4' | '5']
+        const id = stop.hotelsByCategory[String(cat) as '3' | '4' | '5']
         if (!id) return null
         const hotel = getHotelById(id)
         if (!hotel) return null
@@ -68,12 +71,12 @@ export function getItineraryWithDetails(slug: string): ResolvedItinerary | undef
       ...stop,
       hotels,
       defaultHotel: getHotelById(
-        stop.hotelByCategory[String(stop.defaultCategory) as '3' | '4' | '5'] ?? ''
+        stop.hotelsByCategory[String(stop.defaultCategory) as '3' | '4' | '5'] ?? ''
       ),
     }
   })
 
-  return { ...itinerary, days, hotelStops }
+  return { ...itinerary, days, accommodationStops }
 }
 
 /** Returns the resolved itinerary paired with its matching Trip (same slug). */

@@ -1,7 +1,7 @@
 import posts, { type Post, type PostCategory } from '@/lib/data/posts'
 
 function activePosts(): Post[] {
-  return posts.filter((p) => p.active)
+  return posts.filter((post) => post.active)
 }
 
 export function getAllPosts(): Post[] {
@@ -11,7 +11,7 @@ export function getAllPosts(): Post[] {
 }
 
 export function getPostBySlug(slug: string): Post | undefined {
-  return activePosts().find((p) => p.slug === slug)
+  return activePosts().find((post) => post.slug === slug)
 }
 
 export function getRecentPosts(count: number): Post[] {
@@ -19,15 +19,15 @@ export function getRecentPosts(count: number): Post[] {
 }
 
 export function getFeaturedPost(): Post | undefined {
-  return activePosts().find((p) => p.featured)
+  return activePosts().find((post) => post.featured)
 }
 
 export function getPostsByCategory(category: PostCategory): Post[] {
-  return getAllPosts().filter((p) => p.category === category)
+  return getAllPosts().filter((post) => post.category === category)
 }
 
 export function getPostsByTag(tag: string): Post[] {
-  return getAllPosts().filter((p) => p.tags.includes(tag))
+  return getAllPosts().filter((post) => post.tags.includes(tag))
 }
 
 export function getRelatedPosts(slug: string, count = 3): Post[] {
@@ -42,3 +42,4 @@ export function formatDate(iso: string): string {
   const d = new Date(iso)
   return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
 }
+

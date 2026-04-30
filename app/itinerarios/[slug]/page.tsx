@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const trip = getTripBySlug(slug)
 
   return {
-    title: `${itinerary.title} — Viajes Vidaia`,
-    description: trip?.subtitle ?? itinerary.title,
+    title: `${itinerary.content.es.title} — Viajes Vidaia`,
+    description: trip?.content.es.subtitle ?? itinerary.content.es.title,
   }
 }
 

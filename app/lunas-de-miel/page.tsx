@@ -4,77 +4,27 @@ import Link from 'next/link'
 import { ArrowRight, Heart, Calendar } from 'lucide-react'
 import { getHoneymoonTrips } from '@/lib/services/tripsService'
 import HoneymoonFaq from '@/components/HoneymoonFaq'
+import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
+import { getAsset } from '@/lib/data/assets'
+import React from 'react'
 
 export const metadata: Metadata = {
-  title: 'Lunas de Miel a medida en Sudamérica | Viajes Vidaia',
-  description:
-    'Diseñamos lunas de miel únicas y personalizadas en Argentina, Chile, Bolivia y Sudamérica. Sin paquetes cerrados, sin itinerarios estándar.',
+  title: STATIC_CONTENT.es.honeymoonPage.metadata.title,
+  description: STATIC_CONTENT.es.honeymoonPage.metadata.description,
 }
 
-const features = [
-  {
-    emoji: '💛',
-    title: 'Diseño 100% a medida',
-    description:
-      'Cada viaje empieza con vosotros. Entendemos cómo sois, qué os emociona y qué tipo de experiencia queréis vivir. A partir de ahí, lo creamos todo desde cero.',
-  },
-  {
-    emoji: '🌍',
-    title: 'Destinos con sentido',
-    description:
-      'Argentina, Chile, Bolivia y otros destinos de Sudamérica o combinaciones únicas. No solo os llevamos a lugares increíbles, sino a vivirlos de forma especial.',
-  },
-  {
-    emoji: '🧭',
-    title: 'Equilibrio perfecto',
-    description:
-      'Aventura, relax, momentos únicos… Diseñamos el viaje para que fluya, sin prisas pero sin perderos nada importante.',
-  },
-  {
-    emoji: '🤍',
-    title: 'Experiencias que marcan',
-    description:
-      'Una cena especial, un hotel con vistas únicas o un momento sorpresa. Cuidamos los detalles que convierten un viaje en algo inolvidable.',
-  },
-]
-
-const steps = [
-  {
-    title: 'Os conocemos',
-    description:
-      'Queremos saber cómo sois, qué os gusta, qué no… y qué esperáis de este viaje tan especial.',
-  },
-  {
-    title: 'Creamos vuestra propuesta',
-    description: 'Diseñamos un itinerario único, pensado solo para vosotros.',
-  },
-  {
-    title: 'Lo ajustamos juntos',
-    description: 'Refinamos cada detalle hasta que sea perfecto.',
-  },
-  {
-    title: 'Solo queda disfrutar',
-    description: 'Nos encargamos de todo para que vosotros solo viváis el viaje.',
-  },
-]
-
-const reasons = [
-  'Porque es vuestro viaje.',
-  'Porque es un viaje que solo se hace una vez.',
-  'Porque no queréis algo genérico.',
-  'Porque queréis recordar cada momento.',
-]
-
-export default function LunasDeМielPage() {
+export default function LunasDeMielPage() {
   const honeymoonTrips = getHoneymoonTrips()
+  const content = STATIC_CONTENT.es.honeymoonPage
+  const heroBg = getAsset('HONEYMOON_HERO_BG')
 
   return (
     <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-screen overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1664271987414-15b38d834357?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Salar de Uyuni — Luna de miel en Sudamérica"
+          src={heroBg.url}
+          alt={heroBg.alt}
           fill
           className="object-cover"
           priority
@@ -84,15 +34,18 @@ export default function LunasDeМielPage() {
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4 sm:px-8">
           <p className="text-vidaia-earth font-medium tracking-widest uppercase text-sm mb-5">
-            💍 Viajes Vidaia · Lunas de Miel
+            {content.hero.overline}
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-5 text-balance">
-            Viajes de novios a medida por Sudamérica
+            {content.hero.title}
           </h1>
           <p className="text-xl sm:text-2xl text-white/80 max-w-xl font-light italic">
-            Tu luna de miel, sin plantillas.
-            <br />
-            Solo vuestra historia.
+            {content.hero.subtitle.split('{br}').map((line, i) => (
+              <React.Fragment key={i}>
+                {line}
+                {i === 0 && <br />}
+              </React.Fragment>
+            ))}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-10">
             <Link
@@ -101,13 +54,13 @@ export default function LunasDeМielPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
             >
-              Reservar reunión gratuita 💕
+              {COMMON_UI.es.buttons.freeMeeting}
             </Link>
             <Link
               href="/presupuesto"
               className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
             >
-              Cuéntanos vuestro viaje
+              {COMMON_UI.es.buttons.tellUsYourTrip}
             </Link>
           </div>
         </div>
@@ -118,13 +71,12 @@ export default function LunasDeМielPage() {
         <div className="max-w-3xl mx-auto text-center">
           <Heart className="w-8 h-8 text-vidaia-earth mx-auto mb-6" fill="currentColor" />
           <p className="text-vidaia-charcoal/80 text-lg sm:text-xl leading-relaxed">
-            No hay dos parejas iguales, ¿por qué debería serlo vuestro viaje?
-            <br className="hidden sm:block" />
-            <br className="hidden sm:block" />
-            En Viajes Vidaia diseñamos lunas de miel completamente personalizadas, pensadas desde
-            cero para vosotros. Sin paquetes cerrados, sin itinerarios estándar. Solo experiencias
-            que encajen con vuestra forma de viajar, vuestro ritmo y lo que realmente os hace
-            ilusión.
+            {content.introSection.paragraph.split('{br}').map((line, i) => (
+              <React.Fragment key={i}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
           </p>
         </div>
       </section>
@@ -133,14 +85,14 @@ export default function LunasDeМielPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-            ✨ ¿Qué hace diferente vuestra luna de miel con nosotros?
+            {content.whatMakesUsDifferent.title}
           </h2>
           <p className="text-center text-vidaia-charcoal/55 text-sm mb-14">
-            Cada detalle pensado para vosotros, desde el primer día hasta el último
+            {content.whatMakesUsDifferent.subtitle}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {features.map((feature) => (
+            {content.whatMakesUsDifferent.features.map((feature) => (
               <div
                 key={feature.title}
                 className="bg-vidaia-sand rounded-2xl p-7 border border-vidaia-light hover:border-vidaia-earth hover:shadow-md transition-all"
@@ -162,18 +114,17 @@ export default function LunasDeМielPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-            💬 ¿Cómo lo diseñamos?
+            {content.howWeDesignIt.title}
           </h2>
           <p className="text-center text-vidaia-charcoal/55 text-sm mb-16">
-            Un proceso sencillo y pensado para que todo sea fácil
+            {content.howWeDesignIt.subtitle}
           </p>
 
           {/* Desktop timeline */}
           <div className="hidden md:block relative">
-            {/* Connector line */}
             <div className="absolute top-5 left-[calc(12.5%-1px)] right-[calc(12.5%-1px)] h-px border-t-2 border-dashed border-vidaia-light" />
             <div className="grid grid-cols-4 gap-6">
-              {steps.map((step, i) => (
+              {content.howWeDesignIt.steps.map((step, i) => (
                 <div key={i} className="flex flex-col items-center text-center">
                   <div className="relative z-10 w-10 h-10 rounded-full bg-vidaia-primary text-white flex items-center justify-center font-heading font-bold text-lg mb-5 shadow-sm">
                     {i + 1}
@@ -189,13 +140,13 @@ export default function LunasDeМielPage() {
 
           {/* Mobile timeline */}
           <div className="md:hidden space-y-0">
-            {steps.map((step, i) => (
+            {content.howWeDesignIt.steps.map((step, i) => (
               <div key={i} className="flex gap-5">
                 <div className="flex flex-col items-center">
                   <div className="w-10 h-10 rounded-full bg-vidaia-primary text-white flex items-center justify-center font-heading font-bold text-lg shrink-0 shadow-sm">
                     {i + 1}
                   </div>
-                  {i < steps.length - 1 && (
+                  {i < content.howWeDesignIt.steps.length - 1 && (
                     <div className="w-px flex-1 bg-vidaia-light my-2 min-h-[2rem]" />
                   )}
                 </div>
@@ -217,10 +168,10 @@ export default function LunasDeМielPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-12">
-            💎 ¿Por qué una luna de miel a medida?
+            {content.whyCustomHoneymoon.title}
           </h2>
           <ul className="space-y-5 text-left">
-            {reasons.map((reason, i) => (
+            {content.whyCustomHoneymoon.reasons.map((reason, i) => (
               <li key={i} className="flex items-center gap-4">
                 <Heart
                   className="w-5 h-5 text-vidaia-earth shrink-0"
@@ -238,18 +189,19 @@ export default function LunasDeМielPage() {
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
           <div className="max-w-6xl mx-auto">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-              🌎 Ideas de lunas de miel
+              {content.honeymoonIdeas.title}
             </h2>
             <p className="text-center text-vidaia-charcoal/55 text-sm mb-14">
-              Todos nuestros viajes se adaptan completamente — esto es solo el punto de partida
+              {content.honeymoonIdeas.subtitle}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {honeymoonTrips.map((trip) => {
-                const infoHref = `/presupuesto-itinerario?titulo=${encodeURIComponent(trip.honeymoonTitle ?? trip.title)}`
+                const infoHref = `/presupuesto-itinerario?titulo=${encodeURIComponent(trip.content.es.honeymoonTitle ?? trip.content.es.title)}`
                 const itineraryHref = `/itinerarios/${trip.slug}`
-                const displayTitle = trip.honeymoonTitle ?? trip.title
-                const displayTagline = trip.honeymoonTagline ?? trip.subtitle
+                const displayTitle = trip.content.es.honeymoonTitle ?? trip.content.es.title
+                const displayTagline = trip.content.es.honeymoonTagline ?? trip.content.es.subtitle
+                const tripImage = getAsset(trip.imageKey)
 
                 return (
                   <article
@@ -258,7 +210,7 @@ export default function LunasDeМielPage() {
                   >
                     <div className="relative h-52 overflow-hidden">
                       <Image
-                        src={trip.image}
+                        src={tripImage.url}
                         alt={displayTitle}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -266,7 +218,7 @@ export default function LunasDeМielPage() {
                       />
                       <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
                         <Calendar className="w-3 h-3" />
-                        {trip.days} días
+                        {trip.days} {COMMON_UI.es.labels.days}
                       </span>
                     </div>
 
@@ -284,7 +236,7 @@ export default function LunasDeМielPage() {
                             href={itineraryHref}
                             className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-vidaia-primary hover:bg-vidaia-dark text-white transition-colors"
                           >
-                            Ver itinerario
+                            {COMMON_UI.es.buttons.itinerary}
                             <ArrowRight className="w-4 h-4" />
                           </Link>
                         )}
@@ -292,7 +244,7 @@ export default function LunasDeМielPage() {
                           href={infoHref}
                           className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-vidaia-earth hover:bg-vidaia-brown text-white transition-colors"
                         >
-                          Solicitar información
+                          {COMMON_UI.es.buttons.requestInfo}
                           <ArrowRight className="w-4 h-4" />
                         </Link>
                       </div>
@@ -309,10 +261,10 @@ export default function LunasDeМielPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-            ¿Qué dudas os pueden surgir?
+            {content.faqSection.title}
           </h2>
           <p className="text-center text-vidaia-charcoal/55 text-sm mb-12">
-            Las preguntas más habituales de las parejas que nos escriben
+            {content.faqSection.subtitle}
           </p>
           <HoneymoonFaq />
         </div>
@@ -323,10 +275,10 @@ export default function LunasDeМielPage() {
         <div className="max-w-2xl mx-auto">
           <Heart className="w-10 h-10 text-vidaia-earth mx-auto mb-6" fill="currentColor" />
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Empieza a diseñar vuestra luna de miel
+            {content.finalCta.title}
           </h2>
           <p className="text-white/70 text-lg mb-10">
-            Primera reunión gratuita y sin compromiso
+            {content.finalCta.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -335,13 +287,13 @@ export default function LunasDeМielPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
             >
-              Reservar reunión gratuita 💕
+              {COMMON_UI.es.buttons.freeMeeting}
             </Link>
             <Link
               href="/presupuesto"
               className="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
             >
-              Cuéntanos vuestro viaje
+              {COMMON_UI.es.buttons.tellUsYourTrip}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>

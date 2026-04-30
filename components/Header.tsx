@@ -6,6 +6,8 @@ import Image from 'next/image'
 import { Menu, X, ChevronDown, Heart } from 'lucide-react'
 import { getCountries } from '@/lib/services/countriesService'
 import { useContactModal } from '@/lib/context/ContactModalContext'
+import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
+import { getAsset } from '@/lib/data/assets'
 
 export default function Header() {
   const countries = getCountries()
@@ -14,6 +16,12 @@ export default function Header() {
   const [destinosOpen, setDestinosOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const { openContactModal } = useContactModal()
+  const headerContent = STATIC_CONTENT.es.header
+  const logoAsset = getAsset('LOGO.DEFAULT')
+  const navItems = [
+    { key: 'trips', label: headerContent.nav.trips },
+    { key: 'blog', label: headerContent.nav.blog }
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
@@ -45,8 +53,8 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <Image
-            src="/images/logo/viajes-vidaia-logo.png"
-            alt="Viajes Vidaia"
+            src={logoAsset.url}
+            alt={logoAsset.alt}
             width={160}
             height={44}
             className="h-10 w-auto object-contain"
@@ -57,7 +65,7 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-0.5">
           <Link href="/" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
-            Inicio
+            {headerContent.nav.home}
           </Link>
 
           {/* Destinos dropdown */}
@@ -66,7 +74,7 @@ export default function Header() {
               className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}
               onClick={() => setDestinosOpen((v) => !v)}
             >
-              Destinos
+              {headerContent.nav.destinations}
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${destinosOpen ? 'rotate-180' : ''}`} />
             </button>
 
@@ -82,9 +90,9 @@ export default function Header() {
                     <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-semibold text-vidaia-dark group-hover/item:text-vidaia-primary">
-                        {c.name}
+                        {c.content.es.name}
                       </p>
-                      <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{c.description.split('. ')[0]}</p>
+                      <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{c.content.es.description.split('. ')[0]}</p>
                     </div>
                   </Link>
                 ))}
@@ -102,20 +110,20 @@ export default function Header() {
             }`}
           >
             <Heart className="w-3.5 h-3.5" />
-            Lunas de Miel
+            {headerContent.nav.honeymoons}
           </Link>
 
           <Link href="/viajes" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
-            Viajes
+            {headerContent.nav.trips}
           </Link>
           <Link href="/blog" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
-            Blog
+            {headerContent.nav.blog}
           </Link>
           <button
             onClick={openContactModal}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}
           >
-            ¿Hablamos?
+            {headerContent.nav.talkToUs}
           </button>
         </nav>
 
@@ -129,13 +137,13 @@ export default function Header() {
                 : 'bg-vidaia-earth/90 text-white hover:bg-vidaia-earth'
             }`}
           >
-            Solicitar mi viaje a medida
+            {COMMON_UI.es.buttons.requestQuote}
           </Link>
 
           <button
             className="md:hidden p-2 rounded-lg"
             onClick={() => setMobileOpen((v) => !v)}
-            aria-label="Abrir menú"
+            aria-label={headerContent.mobileMenu.openLabel}
           >
             {mobileOpen ? (
               <X className={`w-6 h-6 ${scrolled ? 'text-vidaia-dark' : 'text-white'}`} />
@@ -155,12 +163,12 @@ export default function Header() {
               className="block px-4 py-3 text-vidaia-charcoal hover:bg-vidaia-light rounded-xl font-medium text-sm"
               onClick={() => setMobileOpen(false)}
             >
-              Inicio
+              {headerContent.nav.home}
             </Link>
 
             <div>
               <p className="px-4 pt-3 pb-1 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                Destinos
+                {headerContent.nav.destinations}
               </p>
               {countries.map((c) => (
                 <Link
@@ -170,7 +178,7 @@ export default function Header() {
                   onClick={() => setMobileOpen(false)}
                 >
                   <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
-                  <span>{c.name}</span>
+                  <span>{c.content.es.name}</span>
                 </Link>
               ))}
             </div>
@@ -181,17 +189,17 @@ export default function Header() {
               onClick={() => setMobileOpen(false)}
             >
               <Heart className="w-4 h-4" />
-              Lunas de Miel
+              {headerContent.nav.honeymoons}
             </Link>
 
-            {['Viajes', 'Blog'].map((item) => (
+            {navItems.map((item) => (
               <Link
-                key={item}
-                href={`/${item.toLowerCase()}`}
+                key={item.key}
+                href={`/${item.key}`}
                 className="block px-4 py-3 text-vidaia-charcoal hover:bg-vidaia-light rounded-xl font-medium text-sm"
                 onClick={() => setMobileOpen(false)}
               >
-                {item}
+                {item.label}
               </Link>
             ))}
 
@@ -199,7 +207,7 @@ export default function Header() {
               onClick={() => { setMobileOpen(false); openContactModal() }}
               className="block w-full text-left px-4 py-3 text-vidaia-charcoal hover:bg-vidaia-light rounded-xl font-medium text-sm"
             >
-              ¿Hablamos?
+              {headerContent.nav.talkToUs}
             </button>
 
             <div className="pt-3 border-t border-gray-100">
@@ -208,7 +216,7 @@ export default function Header() {
                 className="block w-full text-center px-4 py-3.5 bg-vidaia-earth text-white font-semibold rounded-xl text-sm"
                 onClick={() => setMobileOpen(false)}
               >
-                Solicitar mi viaje a medida
+                {COMMON_UI.es.buttons.requestQuote}
               </Link>
             </div>
           </div>

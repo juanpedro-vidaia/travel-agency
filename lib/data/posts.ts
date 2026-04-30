@@ -4,41 +4,48 @@ export const POST_CATEGORIES = {
   ARGENTINA:    'argentina',
   CHILE:        'chile',
   BOLIVIA:      'bolivia',
-  INSPIRACION:  'inspiracion',
-  LUNA_DE_MIEL: 'luna-de-miel',
-  CONSEJOS:     'consejos',
+  INSPIRATION:  'inspiration',
+  HONEYMOON: 'honeymoon',
+  TIPS:     'tips',
 } as const
 
 export type PostCategory = typeof POST_CATEGORIES[keyof typeof POST_CATEGORIES]
 
-export const CATEGORY_CONFIG: Record<PostCategory, { label: string; color: string }> = {
-  argentina:    { label: 'Argentina',          color: 'bg-sky-50 text-sky-700' },
-  chile:        { label: 'Chile',              color: 'bg-red-50 text-red-700' },
-  bolivia:      { label: 'Bolivia',            color: 'bg-amber-50 text-amber-700' },
-  inspiracion:  { label: 'Inspiración',        color: 'bg-purple-50 text-purple-700' },
-  'luna-de-miel':{ label: 'Lunas de Miel',    color: 'bg-rose-50 text-rose-700' },
-  consejos:     { label: 'Consejos de viaje',  color: 'bg-green-50 text-green-700' },
+export const CATEGORY_CONFIG: Record<PostCategory, { es: { label: string }; en?: { label: string }; color: string }> = {
+  argentina:    { es: { label: 'Argentina' },          color: 'bg-sky-50 text-sky-700' },
+  chile:        { es: { label: 'Chile' },              color: 'bg-red-50 text-red-700' },
+  bolivia:      { es: { label: 'Bolivia' },            color: 'bg-amber-50 text-amber-700' },
+  inspiration:  { es: { label: 'Inspiración' },        color: 'bg-purple-50 text-purple-700' },
+  honeymoon: { es: { label: 'Lunas de Miel' },    color: 'bg-rose-50 text-rose-700' },
+  tips:     { es: { label: 'Consejos de viaje' },  color: 'bg-green-50 text-green-700' },
 }
 
 // ── Post ──────────────────────────────────────────────────────────────────────
 
-export interface Post {
-  slug: string
+export interface PostContent {
   title: string
   excerpt: string
   content: string
-  image: string
   imageAlt: string
+  metaTitle?: string
+  metaDescription?: string
+}
+
+export interface Post {
+  slug: string
+  content: {
+    es: PostContent
+    en?: PostContent
+  }
+  imageKey: string
   date: string           // ISO: "2026-04-18"
   category: PostCategory
   tags: string[]
   readingTime: number    // minutes
   featured: boolean
   active: boolean
-  relatedTrips?: string[] // trip slugs
+  relatedTripSlugs?: string[] // trip slugs
   author?: string
-  metaTitle?: string
-  metaDescription?: string
 }
 
 // ── Posts ─────────────────────────────────────────────────────────────────────
@@ -46,10 +53,12 @@ export interface Post {
 const posts: Post[] = [
   {
     slug: 'mate-alma-tradicion-argentina',
-    title: 'El mate, alma y tradición de Argentina.',
-    excerpt:
-      'Más que una bebida, una forma de vida. Te contamos la historia, los rituales y los secretos de la infusión que une a los argentinos.',
-    content: `El mate es mucho más que una bebida en Argentina; es un ritual, una tradición y un símbolo de identidad nacional. Desde el norte hasta el sur del país, el mate se comparte entre amigos y familiares, creando lazos y fortaleciendo relaciones. Esta infusión de yerba mate, servida en una calabaza y bebida a través de una bombilla, es tan común en Argentina que resulta imposible imaginar la vida cotidiana sin ella.
+    content: {
+      es: {
+        title: 'El mate, alma y tradición de Argentina.',
+        excerpt:
+          'Más que una bebida, una forma de vida. Te contamos la historia, los rituales y los secretos de la infusión que une a los argentinos.',
+        content: `El mate es mucho más que una bebida en Argentina; es un ritual, una tradición y un símbolo de identidad nacional. Desde el norte hasta el sur del país, el mate se comparte entre amigos y familiares, creando lazos y fortaleciendo relaciones. Esta infusión de yerba mate, servida en una calabaza y bebida a través de una bombilla, es tan común en Argentina que resulta imposible imaginar la vida cotidiana sin ella.
 
 Aunque Uruguay y Paraguay también tienen una profunda relación con el mate, en este artículo nos centraremos en su papel en la cultura argentina y exploraremos su historia, cómo se prepara, los tipos de mate, su significado social y sus beneficios para la salud.
 
@@ -123,26 +132,29 @@ El mate se consume prácticamente en cualquier lugar y momento en Argentina. Des
 El mate es, sin lugar a dudas, un símbolo de identidad en Argentina. Más allá de ser una simple bebida, representa el compañerismo, la tradición y la conexión entre las personas. Su historia, rituales y costumbres lo han consolidado como parte fundamental de la cultura argentina, y su influencia se extiende también a países como Uruguay y Paraguay.
 
 Con sus múltiples beneficios para la salud y su capacidad para unir a las personas, **el mate sigue siendo una costumbre arraigada que acompaña a los argentinos en su vida cotidiana**, manteniendo viva una tradición que trasciende generaciones.`,
-    image:
-      'https://images.unsplash.com/photo-1523642456391-c597480dbdb6?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Foto de Jorge Zapata en Unsplash',
+        imageAlt: 'Foto de Jorge Zapata en Unsplash',
+        metaTitle: 'El mate, alma y tradición de Argentina. — Viajes Vidaia',
+        metaDescription:
+          'Descubre la cultura del mate en Argentina: su historia desde los guaraníes, cómo se prepara, los tipos de yerba y el ritual de compartirlo. Una tradición que define la identidad argentina.',
+      }
+    },
+    imageKey: 'BLOG.MATE_ARGENTINA',
     date: '2024-09-27',
     category: 'argentina',
     tags: ['argentina', 'inspiracion'],
     readingTime: 5,
     featured: true,
     active: true,
-    relatedTrips: ['paisajes-naturales-argentina', 'argentina-esencial'],
-    metaTitle: 'El mate, alma y tradición de Argentina. — Viajes Vidaia',
-    metaDescription:
-      'Descubre la cultura del mate en Argentina: su historia desde los guaraníes, cómo se prepara, los tipos de yerba y el ritual de compartirlo. Una tradición que define la identidad argentina.',
+    relatedTripSlugs: ['paisajes-naturales-argentina', 'argentina-esencial'],
   },
   {
     slug: 'desierto-de-atacama-en-chile',
-    title: 'Viaje a Chile: el desierto de Atacama',
-    excerpt:
-      'El desierto de Atacama, uno de los lugares más extremos y fascinantes del planeta, combina paisajes únicos, leyendas ancestrales y escenarios que parecen de otro mundo. Un destino imprescindible en Chile para quienes buscan naturaleza, misterio y aventura.',
-    content: `¿Sabes que Atacama es tan especial que hasta la NASA lo utiliza para probar sus instrumentos para las misiones en Marte?
+    content: {
+      es: {
+        title: 'Viaje a Chile: el desierto de Atacama',
+        excerpt:
+          'El desierto de Atacama, uno de los lugares más extremos y fascinantes del planeta, combina paisajes únicos, leyendas ancestrales y escenarios que parecen de otro mundo. Un destino imprescindible en Chile para quienes buscan naturaleza, misterio y aventura.',
+        content: `¿Sabes que Atacama es tan especial que hasta la NASA lo utiliza para probar sus instrumentos para las misiones en Marte?
 
 Atacama no es solo un desierto, es uno de los lugares más áridos del planeta, es una de las mayores fuentes naturales de nitrato de sodio, el desierto de niebla más grande del mundo y por supuesto es un lugar mágico que merece la pena visitar.
 
@@ -169,100 +181,112 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
 … así como contemplar el contraste de las aguas turquesas de las lagunas de Baltinache o las famosas lagunas altiplánicas (**Miscanti** y **Miñiques** a 4000m de altura!).
 
 ¿De verdad te vas a quedar sin visitarlo?`,
-    image:
-      'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg',
-    imageAlt: 'Laguna Miscanti en el Desierto de Atacama, Chile',
+        imageAlt: 'Laguna Miscanti en el Desierto de Atacama, Chile',
+        metaTitle: 'Viaje al Desierto de Atacama (Chile) — Guía completa | Viajes Vidaia',
+        metaDescription:
+          'Descubre el Desierto de Atacama: lagunas altiplánicas, geysers del Tatio, Valle de la Luna y sus leyendas. Consejos prácticos y todo lo necesario para organizar tu viaje.'  
+      }
+    },
+    imageKey: 'BLOG.ATACAMA_CHILE',
     date: '2024-12-04',
     category: 'chile',
     tags: ['desierto de atacama', 'chile', 'lagunas altiplánicas', 'San Pedro de Atacama'],
     readingTime: 4,
     featured: true,
     active: true,
-    relatedTrips: ['chile-bolivia-salares'],
-    metaTitle: 'Viaje al Desierto de Atacama (Chile) — Guía completa | Viajes Vidaia',
-
-    metaDescription:
-      'Descubre el Desierto de Atacama: lagunas altiplánicas, geysers del Tatio, Valle de la Luna y sus leyendas. Consejos prácticos y todo lo necesario para organizar tu viaje.'  
+    relatedTripSlugs: ['chile-bolivia-salares'],
   },
   {
     slug: 'patagonia-argentina-w-circuit',
-    title: 'W Circuit en Torres del Paine: todo lo que necesitas saber',
-    excerpt:
-      'Uno de los trekkings más míticos del planeta. Campamentos, refugios, el Glaciar Grey y esas torres que emergen entre nubes. Paso a paso.',
-    content: '',
-    image:
-      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Torres del Paine, Patagonia',
+    content: {
+      es: {
+        title: 'W Circuit en Torres del Paine: todo lo que necesitas saber',
+        excerpt:
+          'Uno de los trekkings más míticos del planeta. Campamentos, refugios, el Glaciar Grey y esas torres que emergen entre nubes. Paso a paso.',
+        content: '',
+        imageAlt: 'Torres del Paine, Patagonia',
+        metaTitle: 'Circuito W Torres del Paine: guía paso a paso — Viajes Vidaia',
+        metaDescription:
+          'Cómo hacer el Circuito W en Torres del Paine: campamentos, refugios, cuánto cuesta, cuándo ir y cómo reservar. La guía más completa en español.',
+      }
+    },
+    imageKey: 'BLOG.PATAGONIA_W_CIRCUIT',
     date: '2026-03-28',
     category: 'chile',
     tags: ['torres-del-paine', 'trekking', 'patagonia', 'circuito-w'],
     readingTime: 10,
     featured: false,
     active: true,
-    relatedTrips: ['latitudes-australes'],
-    metaTitle: 'Circuito W Torres del Paine: guía paso a paso — Viajes Vidaia',
-    metaDescription:
-      'Cómo hacer el Circuito W en Torres del Paine: campamentos, refugios, cuánto cuesta, cuándo ir y cómo reservar. La guía más completa en español.',
+    relatedTripSlugs: ['latitudes-australes'],
   },
   {
     slug: 'buenos-aires-primera-vez',
-    title: 'Buenos Aires por primera vez: el barrio a barrio que te falta leer',
-    excerpt:
-      'Palermo, San Telmo, La Boca, Recoleta… Buenos Aires no se entiende sin sus barrios. Aquí va el mapa mental que necesitas antes de aterrizar.',
-    content: '',
-    image:
-      'https://images.unsplash.com/photo-1612294037637-ec328d0e075e?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Buenos Aires, Argentina',
+    content: {
+      es: {
+        title: 'Buenos Aires por primera vez: el barrio a barrio que te falta leer',
+        excerpt:
+          'Palermo, San Telmo, La Boca, Recoleta… Buenos Aires no se entiende sin sus barrios. Aquí va el mapa mental que necesitas antes de aterrizar.',
+        content: '',
+        imageAlt: 'Buenos Aires, Argentina',
+        metaTitle: 'Buenos Aires por primera vez: guía de barrios — Viajes Vidaia',
+        metaDescription:
+          'De Palermo a San Telmo: cómo orientarte en Buenos Aires, qué ver en cada barrio, dónde comer y los errores que no debes cometer en tu primera visita.',
+      }
+    },
+    imageKey: 'BLOG.BUENOS_AIRES_FIRST_TIME',
     date: '2026-03-10',
     category: 'argentina',
     tags: ['buenos-aires', 'ciudad', 'argentina', 'primera-vez'],
     readingTime: 7,
     featured: false,
     active: true,
-    relatedTrips: [],
-    metaTitle: 'Buenos Aires por primera vez: guía de barrios — Viajes Vidaia',
-    metaDescription:
-      'De Palermo a San Telmo: cómo orientarte en Buenos Aires, qué ver en cada barrio, dónde comer y los errores que no debes cometer en tu primera visita.',
+    relatedTripSlugs: [],
   },
   {
     slug: 'luna-de-miel-patagonia',
-    title: 'Luna de miel en Patagonia: romanticismo en el fin del mundo',
-    excerpt:
-      'Pocos escenarios en el mundo combinan tanta grandeza con tanta intimidad. Te contamos cómo organizar una luna de miel que jamás olvidaréis.',
-    content: '',
-    image:
-      'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Patagonia al atardecer',
+    content: {
+      es: {
+        title: 'Luna de miel en Patagonia: romanticismo en el fin del mundo',
+        excerpt:
+          'Pocos escenarios en el mundo combinan tanta grandeza con tanta intimidad. Te contamos cómo organizar una luna de miel que jamás olvidaréis.',
+        content: '',
+        imageAlt: 'Patagonia al atardecer',
+        metaTitle: 'Luna de miel en Patagonia: guía romántica — Viajes Vidaia',
+        metaDescription:
+          'Glaciares, lagos y silencio. Todo lo que necesitas para planificar una luna de miel inolvidable en la Patagonia argentina y chilena.',
+      }
+    },
+    imageKey: 'BLOG.HONEYMOON_PATAGONIA',
     date: '2026-02-14',
-    category: 'luna-de-miel',
+    category: 'honeymoon',
     tags: ['luna-de-miel', 'patagonia', 'argentina', 'chile', 'romantico'],
     readingTime: 6,
     featured: false,
     active: true,
-    relatedTrips: ['latitudes-australes'],
-    metaTitle: 'Luna de miel en Patagonia: guía romántica — Viajes Vidaia',
-    metaDescription:
-      'Glaciares, lagos y silencio. Todo lo que necesitas para planificar una luna de miel inolvidable en la Patagonia argentina y chilena.',
+    relatedTripSlugs: ['latitudes-australes'],
   },
   {
     slug: 'mejores-epocas-viajar-argentina',
-    title: 'Cuándo viajar a Argentina: mes a mes, destino a destino',
-    excerpt:
-      'Argentina es el país de los contrastes climáticos. Lo que es perfecto en Bariloche puede ser un infierno en Buenos Aires. Aquí te lo aclaramos todo.',
-    content: '',
-    image:
-      'https://images.unsplash.com/photo-1591177335318-eb7de5c24f86?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Patagonia argentina en otoño',
+    content: {
+      es: {
+        title: 'Cuándo viajar a Argentina: mes a mes, destino a destino',
+        excerpt:
+          'Argentina es el país de los contrastes climáticos. Lo que es perfecto en Bariloche puede ser un infierno en Buenos Aires. Aquí te lo aclaramos todo.',
+        content: '',
+        imageAlt: 'Patagonia argentina en otoño',
+        metaTitle: 'Cuándo viajar a Argentina: guía mes a mes — Viajes Vidaia',
+        metaDescription:
+          'La mejor época para viajar a cada región de Argentina: Patagonia, Buenos Aires, Iguazú, Mendoza y el norte. Clima, temporadas y cuándo reservar.',
+      }
+    },
+    imageKey: 'BLOG.BEST_TIME_ARGENTINA',
     date: '2026-01-20',
-    category: 'consejos',
+    category: 'tips',
     tags: ['argentina', 'cuando-ir', 'temporadas', 'planificacion'],
     readingTime: 5,
     featured: false,
     active: true,
-    relatedTrips: [],
-    metaTitle: 'Cuándo viajar a Argentina: guía mes a mes — Viajes Vidaia',
-    metaDescription:
-      'La mejor época para viajar a cada región de Argentina: Patagonia, Buenos Aires, Iguazú, Mendoza y el norte. Clima, temporadas y cuándo reservar.',
+    relatedTripSlugs: [],
   },
 ]
 

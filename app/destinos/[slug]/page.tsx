@@ -6,6 +6,9 @@ import { ArrowRight, Calendar } from 'lucide-react'
 import { getTripsByCountry } from '@/lib/services/tripsService'
 import { getCountryBySlug, getCountries } from '@/lib/services/countriesService'
 import { TAG_CONFIG } from '@/lib/data/trips'
+import { STATIC_CONTENT } from '@/lib/data/staticContent'
+import { getAsset } from '@/lib/data/assets'
+import { renderTemplate, formatPrice } from '@/lib/helpers/contentHelpers'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -18,8 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!country) return {}
 
   return {
-    title: country.metaTitle,
-    description: country.metaDescription,
+    title: country.content.es.metaTitle,
+    description: country.content.es.metaDescription,
   }
 }
 
@@ -38,16 +41,19 @@ export default async function CountryPage({ params }: Props) {
     notFound()
   }
 
-  // Cast country.id to any because the tripsService might be using a narrow type
   const trips = getTripsByCountry(country.id)
+  const content = STATIC_CONTENT.es.destinationPage
+  const countryName = country.content.es.name
+  const heroAsset = getAsset(country.heroImageKey)
+  const flagAsset = getAsset(`FLAGS.${country.flagCode.toUpperCase()}`)
 
   return (
     <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-[70vh] min-h-[480px] flex items-end overflow-hidden">
         <Image
-          src={country.heroImage}
-          alt={country.heroAlt}
+          src={heroAsset.url}
+          alt={heroAsset.alt}
           fill
           className="object-cover"
           priority
@@ -56,14 +62,14 @@ export default async function CountryPage({ params }: Props) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
           <p className="flex items-center gap-2 text-vidaia-earth font-semibold uppercase tracking-widest text-xs mb-3">
-            <img src={`https://flagcdn.com/20x15/${country.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
-            Viajes Vidaia · {country.name}
+            <img src={flagAsset.url} alt={flagAsset.alt} width={20} height={15} className="rounded-sm flex-shrink-0" />
+            {renderTemplate(content.hero.taglineTemplate, { country: countryName })}
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 text-balance max-w-2xl">
-            Viajes a {country.name}
+            {renderTemplate(content.hero.titleTemplate, { country: countryName })}
           </h1>
           <p className="text-white/80 text-base sm:text-lg max-w-xl leading-relaxed text-balance">
-            {country.metaDescription.split('. ')[0]} — diseñamos tu aventura a medida.
+            {country.content.es.metaDescription.split('. ')[0]}{content.hero.descriptionSuffix}
           </p>
         </div>
       </section>
@@ -72,9 +78,9 @@ export default async function CountryPage({ params }: Props) {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-vidaia-charcoal/80 text-lg sm:text-xl leading-relaxed">
-            {country.description}{' '}
+            {country.content.es.description}{' '}
             <strong className="text-vidaia-dark">
-              Cada viaje que diseñamos nace de escucharte a ti.
+              {content.hero.quote}
             </strong>
           </p>
         </div>
@@ -85,18 +91,23 @@ export default async function CountryPage({ params }: Props) {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-              Itinerarios por {country.name}
+              {renderTemplate(content.section.titleTemplate, { country: countryName })}
             </h2>
             <p className="text-center text-vidaia-charcoal/55 text-sm mb-14">
-              Todos son puntos de partida — los adaptamos a tus fechas, ritmo y presupuesto
+              {content.section.subtitle}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {trips.map((trip) => {
+                const tripTitle = trip.content.es.title
+                const tripSubtitle = trip.content.es.subtitle
+                const tripImage = getAsset(trip.imageKey)
+                const cta = trip.hasItinerary
+                  ? content.tripCard.ctaHasItinerary
+                  : content.tripCard.ctaNoItinerary
                 const href = trip.hasItinerary
                   ? `/itinerarios/${trip.slug}`
-                  : `/presupuesto-itinerario?titulo=${encodeURIComponent(trip.title)}&subtitulo=${encodeURIComponent(trip.subtitle)}`
-                const cta = trip.hasItinerary ? 'Ver itinerario' : 'Solicitar información'
+                  : `/presupuesto-itinerario?titulo=${encodeURIComponent(tripTitle)}&subtitulo=${encodeURIComponent(tripSubtitle)}`
 
                 return (
                   <article
@@ -105,24 +116,24 @@ export default async function CountryPage({ params }: Props) {
                   >
                     <div className="relative h-52 overflow-hidden">
                       <Image
-                        src={trip.image}
-                        alt={trip.title}
+                        src={tripImage.url}
+                        alt={tripImage.alt}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
                         <Calendar className="w-3 h-3" />
-                        {trip.days} días / {trip.nights} noches
+                        {renderTemplate(content.tripCard.durationTemplate, { days: trip.days, nights: trip.nights })}
                       </span>
                     </div>
 
                     <div className="p-5 flex flex-col flex-1">
                       <p className="text-xs text-vidaia-charcoal/50 mb-2 leading-snug">
-                        {trip.subtitle}
+                        {tripSubtitle}
                       </p>
                       <h3 className="font-heading font-bold text-vidaia-dark text-base leading-snug mb-3">
-                        {trip.title}
+                        {tripTitle}
                       </h3>
                       {trip.tags && trip.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mb-3">
@@ -131,14 +142,14 @@ export default async function CountryPage({ params }: Props) {
                               key={tag}
                               className="text-xs bg-vidaia-light text-vidaia-dark px-2 py-0.5 rounded-full"
                             >
-                              {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].label}
+                              {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].es.label}
                             </span>
                           ))}
                         </div>
                       )}
                       <div className="flex items-center justify-between mt-auto pt-3 border-t border-vidaia-light/60">
                         <span className="text-vidaia-primary font-bold text-base">
-                          Desde {trip.priceFrom.toLocaleString('es-ES')}€
+                          {renderTemplate(content.tripCard.priceTemplate, { price: formatPrice(trip.priceFrom) })}
                         </span>
                         <Link
                           href={href}
@@ -165,16 +176,16 @@ export default async function CountryPage({ params }: Props) {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
         <div className="max-w-xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">
-            ¿No encuentras lo que buscas?
+            {content.cta.title}
           </h2>
           <p className="text-white/65 text-lg mb-10 leading-relaxed">
-            Diseñamos cualquier ruta por {country.name} a medida para ti.
+            {renderTemplate(content.cta.descriptionTemplate, { country: countryName })}
           </p>
           <Link
             href="/presupuesto"
             className="inline-flex items-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
           >
-            Cuéntanos tu viaje soñado
+            {content.cta.button}
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

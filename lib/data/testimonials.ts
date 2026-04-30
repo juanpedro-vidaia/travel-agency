@@ -1,11 +1,18 @@
-export interface Testimonial {
-  id: string
+export interface TestimonialContent {
   name: string
   location: string
   trip: string
-  rating: 1 | 2 | 3 | 4 | 5
-  image: string
   text: string
+}
+
+export interface Testimonial {
+  id: string
+  content: {
+    es: TestimonialContent
+    en?: TestimonialContent
+  }
+  rating: 1 | 2 | 3 | 4 | 5
+  imageKey: string
   date: string   // YYYY-MM
   active: boolean
   featured: boolean
@@ -16,36 +23,48 @@ export interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: '1',
-    name: 'María García',
-    location: 'Madrid, España',
-    trip: 'Paisajes naturales de Argentina',
+    content: {
+      es: {
+        name: 'María García',
+        location: 'Madrid, España',
+        trip: 'Paisajes naturales de Argentina',
+        text: 'Una experiencia que supera cualquier expectativa. Lau y Jupe se encargaron de absolutamente todo, desde los vuelos internos hasta los detalles más pequeños. Cada día era una sorpresa. Volvería mañana mismo.',
+      }
+    },
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80',
-    text: 'Una experiencia que supera cualquier expectativa. Lau y Jupe se encargaron de absolutamente todo, desde los vuelos internos hasta los detalles más pequeños. Cada día era una sorpresa. Volvería mañana mismo.',
+    imageKey: 'TESTIMONIALS.MARIA_GARCIA',
     date: '2024-12',
     active: true,
     featured: true,
   },
   {
     id: '2',
-    name: 'Carlos Martínez',
-    location: 'Barcelona, España',
-    trip: 'Patagonia de sur a norte',
+    content: {
+      es: {
+        name: 'Carlos Martínez',
+        location: 'Barcelona, España',
+        trip: 'Patagonia de sur a norte',
+        text: 'Llevábamos años queriendo hacer este viaje y no nos atrevíamos a organizarlo solos. Viajes Vidaia lo hizo sencillo, emocionante y absolutamente memorable. 100% recomendables.',
+      }
+    },
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80',
-    text: 'Llevábamos años queriendo hacer este viaje y no nos atrevíamos a organizarlo solos. Viajes Vidaia lo hizo sencillo, emocionante y absolutamente memorable. 100% recomendables.',
+    imageKey: 'TESTIMONIALS.CARLOS_MARTINEZ',
     date: '2025-02',
     active: true,
     featured: true,
   },
   {
     id: '3',
-    name: 'Ana Rodríguez',
-    location: 'Valencia, España',
-    trip: 'Luna de Miel Argentina e Iguazú',
+    content: {
+      es: {
+        name: 'Ana Rodríguez',
+        location: 'Valencia, España',
+        trip: 'Luna de Miel Argentina e Iguazú',
+        text: 'Nuestro viaje de novios fue perfecto. Cada hotel, cada excursión, cada momento estaba pensado con mucho cariño. Si buscáis una agencia que de verdad os escuche y os cuide, esta es la vuestra.',
+      }
+    },
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=200&q=80',
-    text: 'Nuestro viaje de novios fue perfecto. Cada hotel, cada excursión, cada momento estaba pensado con mucho cariño. Si buscáis una agencia que de verdad os escuche y os cuide, esta es la vuestra.',
+    imageKey: 'TESTIMONIALS.ANA_RODRIGUEZ',
     date: '2025-04',
     active: true,
     featured: true,
