@@ -55,7 +55,7 @@ export interface ItineraryDay {
 export interface ItineraryContent {
   title: string
   description: string
-  heroImages: { src: string; alt: string; location: string }[]
+  heroImages: { imageKey: string; location: string }[]
 }
 
 /**
@@ -88,11 +88,11 @@ const itineraries: Itinerary[] = [
         description:
           'Argentina tiene una capacidad única para dejarte sin palabras. Este viaje lo demuestra en cada etapa: las cataratas más impresionantes del mundo, ballenas francas australes, el glaciar Perito Moreno en movimiento y el mítico Fin del Mundo en Ushuaia. 13 días de naturaleza pura y experiencias únicas.',
         heroImages: [
-          { src: 'https://images.unsplash.com/photo-1682597465277-ffffd1341731?q=80&w=1920', alt: 'Cataratas del Iguazú, Argentina', location: 'Cataratas del Iguazú' },
-          { src: 'https://images.unsplash.com/photo-1568430462989-44163eb1752f?q=80&w=1920', alt: 'Ballena Franca Austral · Península de Valdés', location: 'Península de Valdés' },
-          { src: 'https://images.unsplash.com/photo-1706170421190-48b12aa10f5e?q=80&w=1920', alt: 'Buenos Aires', location: 'Buenos Aires' },
-          { src: 'https://images.unsplash.com/photo-1552751753-0fc84ae5b6c8?q=80&w=1920', alt: 'Glaciar Perito Moreno', location: 'Glaciar Perito Moreno · El Calafate' },
-          { src: 'https://images.unsplash.com/photo-1553363437-e236983485c2?q=80&w=1920', alt: 'Canal Beagle, Ushuaia', location: 'Canal Beagle · Ushuaia' },
+          { imageKey: 'ITINERARIES.PAISAJES_NATURALES_IGUAZU', location: 'Cataratas del Iguazú' },
+          { imageKey: 'ITINERARIES.PAISAJES_NATURALES_VALDES',  location: 'Península de Valdés' },
+          { imageKey: 'ITINERARIES.PAISAJES_NATURALES_BA',      location: 'Buenos Aires' },
+          { imageKey: 'ITINERARIES.PAISAJES_NATURALES_MORENO',  location: 'Glaciar Perito Moreno · El Calafate' },
+          { imageKey: 'ITINERARIES.PAISAJES_NATURALES_BEAGLE',  location: 'Canal Beagle · Ushuaia' },
         ],
       }
     },
@@ -363,10 +363,10 @@ const itineraries: Itinerary[] = [
         description:
           'Chile en su máxima esencia: la energía cosmopolita de Santiago, las viñas del valle del Maipo, el desierto más árido del planeta con sus salares y géiseres, y el misterio milenario de los moáis en Isla de Pascua. 13 días recorriendo tres mundos completamente distintos en un solo viaje.',
         heroImages: [
-          { src: 'https://images.unsplash.com/photo-1671155282127-a23795b7b46a?w=1920&q=80', alt: 'Moáis de Isla de Pascua', location: 'Ahu Tongariki · Isla de Pascua' },
-          { src: 'https://images.unsplash.com/photo-1620824175623-930d7a980da8?w=1920&q=80', alt: 'Desierto de Atacama', location: 'San Pedro de Atacama' },
-          { src: 'https://images.unsplash.com/photo-1631850033735-b4c7853b16df?w=1920&q=80', alt: 'Santiago de Chile', location: 'Santiago de Chile' },
-          { src: 'https://images.unsplash.com/photo-1662239091066-51f01a402516?w=1920&q=80', alt: 'Valle de la Luna', location: 'Valle de la Luna · Atacama' },
+          { imageKey: 'ITINERARIES.ESENCIAS_CHILE_MOAIS',      location: 'Ahu Tongariki · Isla de Pascua' },
+          { imageKey: 'ITINERARIES.ESENCIAS_CHILE_ATACAMA',    location: 'San Pedro de Atacama' },
+          { imageKey: 'ITINERARIES.ESENCIAS_CHILE_SANTIAGO',   location: 'Santiago de Chile' },
+          { imageKey: 'ITINERARIES.ESENCIAS_CHILE_VALLE_LUNA', location: 'Valle de la Luna · Atacama' },
         ],
       }
     },

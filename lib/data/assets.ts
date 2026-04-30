@@ -98,6 +98,18 @@ export const ASSETS = {
   'HOTELS.TAKARUA':             { url: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80', alt: 'Takarua' },
   'HOTELS.EXPLORA_RAPA_NUI':    { url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80', alt: 'explora Rapa Nui' },
 
+  // ── Itinerary hero images ─────────────────────────────────────────────────────
+  'ITINERARIES.PAISAJES_NATURALES_IGUAZU':    { url: 'https://images.unsplash.com/photo-1682597465277-ffffd1341731?q=80&w=1920', alt: 'Cataratas del Iguazú, Argentina' },
+  'ITINERARIES.PAISAJES_NATURALES_VALDES':    { url: 'https://images.unsplash.com/photo-1568430462989-44163eb1752f?q=80&w=1920', alt: 'Ballena Franca Austral · Península de Valdés' },
+  'ITINERARIES.PAISAJES_NATURALES_BA':        { url: 'https://images.unsplash.com/photo-1706170421190-48b12aa10f5e?q=80&w=1920', alt: 'Buenos Aires' },
+  'ITINERARIES.PAISAJES_NATURALES_MORENO':    { url: 'https://images.unsplash.com/photo-1552751753-0fc84ae5b6c8?q=80&w=1920', alt: 'Glaciar Perito Moreno' },
+  'ITINERARIES.PAISAJES_NATURALES_BEAGLE':    { url: 'https://images.unsplash.com/photo-1553363437-e236983485c2?q=80&w=1920', alt: 'Canal Beagle, Ushuaia' },
+
+  'ITINERARIES.ESENCIAS_CHILE_MOAIS':         { url: 'https://images.unsplash.com/photo-1671155282127-a23795b7b46a?w=1920&q=80', alt: 'Moáis de Isla de Pascua' },
+  'ITINERARIES.ESENCIAS_CHILE_ATACAMA':       { url: 'https://images.unsplash.com/photo-1620824175623-930d7a980da8?w=1920&q=80', alt: 'Desierto de Atacama' },
+  'ITINERARIES.ESENCIAS_CHILE_SANTIAGO':      { url: 'https://images.unsplash.com/photo-1631850033735-b4c7853b16df?w=1920&q=80', alt: 'Santiago de Chile' },
+  'ITINERARIES.ESENCIAS_CHILE_VALLE_LUNA':    { url: 'https://images.unsplash.com/photo-1662239091066-51f01a402516?w=1920&q=80', alt: 'Valle de la Luna · Atacama' },
+
   // ── Instagram grid ────────────────────────────────────────────────────────────
   'INSTAGRAM_PHOTOS.PERITO_MORENO':         { url: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80', alt: 'Glaciar Perito Moreno, Argentina' },
   'INSTAGRAM_PHOTOS.IGUAZU_FALLS':          { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',   alt: 'Cataratas del Iguazú' },
