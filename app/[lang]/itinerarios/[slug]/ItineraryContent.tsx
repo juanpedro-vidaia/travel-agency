@@ -51,7 +51,13 @@ export default function ItineraryContent({ slug }: { slug: string }) {
   const [openDays,     setOpenDays]     = useState<Set<number>>(new Set([1]))
   const [isPaused,     setIsPaused]     = useState(false)
 
-  const slides = useMemo(() => itinerary?.content.es.heroImages ?? [], [itinerary])
+  const slides = useMemo(
+    () => (itinerary?.content.es.heroImages ?? []).map(h => {
+      const asset = getAsset(h.imageKey)
+      return { src: asset.url, alt: asset.alt || h.location, location: h.location }
+    }),
+    [itinerary]
+  )
 
   const nextSlide = useCallback(() => {
     setCurrentSlide(prev => (prev + 1) % slides.length)
