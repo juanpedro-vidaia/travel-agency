@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Mail, CheckCircle, Loader2 } from 'lucide-react'
+import LangLink from '@/components/LangLink'
 
 const STORAGE_KEY = 'vidaia_newsletter_subscribed'
 
@@ -105,7 +106,7 @@ export default function NewsletterForm() {
         </div>
         <span className="text-xs text-gray-500 leading-relaxed">
           He leído y acepto la{' '}
-          <a href="/privacidad" className="text-vidaia-primary hover:underline">política de privacidad</a>.
+          <LangLink href="/privacidad" className="text-vidaia-primary hover:underline">política de privacidad</LangLink>.
           Mis datos se usarán únicamente para enviarme actualizaciones del blog.
         </span>
       </label>

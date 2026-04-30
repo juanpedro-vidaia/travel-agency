@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import LangLink from '@/components/LangLink'

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Check, Plus, Minus, Globe, User } from 'lucide-react';
+import LangLink from '@/components/LangLink';
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -582,9 +583,9 @@ export default function PresupuestoForm() {
 
             <p className="text-xs text-gray-400 leading-relaxed pt-1">
               Al enviar este formulario aceptas nuestra{' '}
-              <a href="/privacidad" className="underline hover:text-vidaia-primary transition-colors">
+              <LangLink href="/privacidad" className="underline hover:text-vidaia-primary transition-colors">
                 política de privacidad
-              </a>
+              </LangLink>
               . Tus datos se usarán únicamente para preparar tu propuesta de viaje personalizada.
             </p>
 
