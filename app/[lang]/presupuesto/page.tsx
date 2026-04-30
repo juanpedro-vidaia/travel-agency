@@ -1,22 +1,35 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import PresupuestoForm from '@/components/PresupuestoForm';
-import { STATIC_CONTENT } from '@/lib/data/staticContent';
-import { getAsset } from '@/lib/data/assets';
-import React from 'react';
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import PresupuestoForm from '@/components/PresupuestoForm'
+import { getStaticContent } from '@/lib/helpers/contentHelpers'
+import { getAsset } from '@/lib/data/assets'
+import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
+import React from 'react'
 
-export const metadata: Metadata = {
-  title: STATIC_CONTENT.es.quotePage.metadata.title,
-  description: STATIC_CONTENT.es.quotePage.metadata.description,
-};
+interface Props {
+  params: Promise<{ lang: string }>
+}
 
-export default function PresupuestoPage() {
-  const content = STATIC_CONTENT.es.quotePage;
-  const heroBg = getAsset('QUOTE_HERO_BG');
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params
+  const content = getStaticContent(lang)
+  return {
+    title: content.quotePage.metadata.title,
+    description: content.quotePage.metadata.description,
+  }
+}
+
+export function generateStaticParams() {
+  return ENABLED_LANGUAGES.map(lang => ({ lang }))
+}
+
+export default async function PresupuestoPage({ params }: Props) {
+  const { lang } = await params
+  const content = getStaticContent(lang).quotePage
+  const heroBg = getAsset('QUOTE_HERO_BG')
 
   return (
     <div className="min-h-screen bg-vidaia-sand">
-      {/* ── Header with photo ──────────────────────────────────────────────── */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -53,10 +66,9 @@ export default function PresupuestoPage() {
         </div>
       </div>
 
-      {/* ── Form ────────────────────────────────────────────────────── */}
       <div className="max-w-2xl mx-auto px-4 sm:px-6 -mt-12 pb-24 relative z-10">
         <PresupuestoForm />
       </div>
     </div>
-  );
+  )
 }

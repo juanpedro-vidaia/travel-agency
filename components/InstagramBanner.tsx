@@ -1,23 +1,26 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { Instagram } from 'lucide-react'
-import { STATIC_CONTENT } from '@/lib/data/staticContent'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'
 
 // Photos placeholder from Unsplash — replace when Elfsight or SnapWidget is integrated.
 // To integrate the actual widget, replace the entire grid with the provider's script
 // and place it inside the div id="instagram-widget" (see comment below).
 const photos = [
-  { imageKey: 'INSTAGRAM_PHOTOS.PERITO_MORENO'},
-  { imageKey: 'INSTAGRAM_PHOTOS.IGUAZU_FALLS'},
-  { imageKey: 'INSTAGRAM_PHOTOS.TORRES_DEL_PAINE_INSTA'},
-  { imageKey: 'INSTAGRAM_PHOTOS.BUENOS_AIRES_INSTA'},
-  { imageKey: 'INSTAGRAM_PHOTOS.JUJUY_HUMAHUACA'},
-  { imageKey: 'INSTAGRAM_PHOTOS.USHUAIA_BEAGLE'},
+  { imageKey: 'INSTAGRAM_PHOTOS.PERITO_MORENO' },
+  { imageKey: 'INSTAGRAM_PHOTOS.IGUAZU_FALLS' },
+  { imageKey: 'INSTAGRAM_PHOTOS.TORRES_DEL_PAINE_INSTA' },
+  { imageKey: 'INSTAGRAM_PHOTOS.BUENOS_AIRES_INSTA' },
+  { imageKey: 'INSTAGRAM_PHOTOS.JUJUY_HUMAHUACA' },
+  { imageKey: 'INSTAGRAM_PHOTOS.USHUAIA_BEAGLE' },
 ]
 
 export default function InstagramBanner() {
-  const sectionContent = STATIC_CONTENT.es.instagramBanner;
+  const { content } = useLanguage()
+  const sectionContent = content.instagramBanner
 
   return (
     <section className="py-20 bg-white">
@@ -32,12 +35,11 @@ export default function InstagramBanner() {
           >
             <Instagram className="w-6 h-6" />
             <h2 className="font-heading text-2xl sm:text-3xl font-bold">
-              {sectionContent.header.title.split('{span}').map((part, index) => (
+              {sectionContent.header.title.split('{span}').map((part: string, index: number) => (
                 <span key={index} className={index === 1 ? 'text-vidaia-primary' : ''}>
                   {part}
                 </span>
               ))}
-              {/* <span className="text-vidaia-primary">{sectionContent.header.instagramHandle}</span> */}
             </h2>
           </Link>
           <p className="text-gray-400 mt-2 text-base">
@@ -58,7 +60,7 @@ export default function InstagramBanner() {
         {/* Grid placeholder */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
           {photos.map((photo, i) => {
-            const instaAsset = getAsset(photo.imageKey);
+            const instaAsset = getAsset(photo.imageKey)
             return (
               <Link
                 key={i}
@@ -78,7 +80,7 @@ export default function InstagramBanner() {
                   <Instagram className="w-7 h-7 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </Link>
-            );
+            )
           })}
         </div>
 
@@ -95,5 +97,5 @@ export default function InstagramBanner() {
         </div>
       </div>
     </section>
-  );
+  )
 }

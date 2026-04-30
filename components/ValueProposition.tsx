@@ -1,69 +1,51 @@
-import React from 'react';
-import { Compass, Heart, Leaf, Users } from 'lucide-react';
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent';
+'use client'
 
-// Define the structure for value proposition items, including i18n content
-interface ValuePropositionItem {
-  icon: React.ElementType; // Using React.ElementType for the icon component
-  content: {
-    es: {
-      title: string;
-      description: string;
-    };
-    en?: {
-      title: string;
-      description: string;
-    };
-  };
-}
+import React from 'react'
+import { Compass, Heart, Leaf, Users } from 'lucide-react'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
-// Populate the value proposition data using the refactored structure
-const valuePropositionItems: ValuePropositionItem[] = [
+const valuePropositionItems = [
   {
     icon: Compass,
-    content: {
-      es: {
-        title: 'Viajes únicos',
-        description:
-          'Nada de catálogos ni paquetes de agencia. Cada itinerario nace de una conversación contigo y se construye desde cero.',
-      },
+    contentKey: 0,
+    es: {
+      title: 'Viajes únicos',
+      description:
+        'Nada de catálogos ni paquetes de agencia. Cada itinerario nace de una conversación contigo y se construye desde cero.',
     },
   },
   {
     icon: Heart,
-    content: {
-      es: {
-        title: 'Totalmente personalizados',
-        description:
-          'Tu ritmo, tus intereses, tu presupuesto. Diseñamos el viaje que encaja con tu forma de viajar, no al revés.',
-      }
+    contentKey: 1,
+    es: {
+      title: 'Totalmente personalizados',
+      description:
+        'Tu ritmo, tus intereses, tu presupuesto. Diseñamos el viaje que encaja con tu forma de viajar, no al revés.',
     },
   },
   {
     icon: Leaf,
-    content: {
-      es: {
-        title: 'Turismo sostenible',
-        description:
-          'Viajamos con respeto por los ecosistemas y las comunidades. Huella mínima, experiencia máxima y conciencia en cada paso.',
-      }
+    contentKey: 2,
+    es: {
+      title: 'Turismo sostenible',
+      description:
+        'Viajamos con respeto por los ecosistemas y las comunidades. Huella mínima, experiencia máxima y conciencia en cada paso.',
     },
   },
   {
     icon: Users,
-    content: {
-      es: {
-        title: 'Apoyo local',
-        description:
-          'Trabajamos con guías, hospedajes y operadores locales de confianza. Tu viaje impulsa directamente a las personas del lugar.',
-      }
+    contentKey: 3,
+    es: {
+      title: 'Apoyo local',
+      description:
+        'Trabajamos con guías, hospedajes y operadores locales de confianza. Tu viaje impulsa directamente a las personas del lugar.',
     },
   },
-];
+]
 
 export default function ValueProposition() {
-  // Accessing the relevant content for the Value Proposition section
-  const sectionContent = STATIC_CONTENT.es.valueProposition; 
+  const { content } = useLanguage()
+  const sectionContent = content.valueProposition
 
   return (
     <section className="py-24 bg-vidaia-sand">
@@ -74,7 +56,7 @@ export default function ValueProposition() {
             {sectionContent.header.overline}
           </span>
           <h2 className="font-heading text-4xl sm:text-5xl font-bold text-vidaia-dark mb-4 leading-tight">
-            {sectionContent.header.title.split('{br}').map((part, index) => (
+            {sectionContent.header.title.split('{br}').map((part: string, index: number) => (
               <React.Fragment key={index}>
                 {part}
                 {index === 0 && <br />}
@@ -88,22 +70,22 @@ export default function ValueProposition() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {valuePropositionItems.map(({ icon: Icon, content }) => (
+          {valuePropositionItems.map(({ icon: Icon, es }) => (
             <div
-              key={content.es.title}
+              key={es.title}
               className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow duration-300 border border-vidaia-light/60 group"
             >
               <div className="w-12 h-12 flex items-center justify-center bg-vidaia-light rounded-xl mb-5 group-hover:bg-vidaia-primary transition-colors duration-300">
                 <Icon className="w-6 h-6 text-vidaia-primary group-hover:text-white transition-colors duration-300" strokeWidth={1.8} />
               </div>
               <h3 className="font-heading text-lg font-semibold text-vidaia-dark mb-2">
-                {content.es.title}
+                {es.title}
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{content.es.description}</p>
+              <p className="text-gray-500 text-sm leading-relaxed">{es.description}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }

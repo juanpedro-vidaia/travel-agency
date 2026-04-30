@@ -4,32 +4,40 @@ import Link from 'next/link'
 import { ArrowRight, Heart, Calendar } from 'lucide-react'
 import { getHoneymoonTrips } from '@/lib/services/tripsService'
 import HoneymoonFaq from '@/components/HoneymoonFaq'
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
+import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
 import { getAsset } from '@/lib/data/assets'
+import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import React from 'react'
 
-export const metadata: Metadata = {
-  title: STATIC_CONTENT.es.honeymoonPage.metadata.title,
-  description: STATIC_CONTENT.es.honeymoonPage.metadata.description,
+interface Props {
+  params: Promise<{ lang: string }>
 }
 
-export default function LunasDeMielPage() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params
+  const content = getStaticContent(lang)
+  return {
+    title: content.honeymoonPage.metadata.title,
+    description: content.honeymoonPage.metadata.description,
+  }
+}
+
+export function generateStaticParams() {
+  return ENABLED_LANGUAGES.map(lang => ({ lang }))
+}
+
+export default async function LunasDeMielPage({ params }: Props) {
+  const { lang } = await params
   const honeymoonTrips = getHoneymoonTrips()
-  const content = STATIC_CONTENT.es.honeymoonPage
+  const content = getStaticContent(lang).honeymoonPage
+  const ui = getCommonUI(lang)
   const heroBg = getAsset('HONEYMOON_HERO_BG')
 
   return (
     <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-screen overflow-hidden">
-        <Image
-          src={heroBg.url}
-          alt={heroBg.alt}
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
+        <Image src={heroBg.url} alt={heroBg.alt} fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/65" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4 sm:px-8">
@@ -54,13 +62,13 @@ export default function LunasDeMielPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
             >
-              {COMMON_UI.es.buttons.freeMeeting}
+              {ui.buttons.freeMeeting}
             </Link>
             <Link
-              href="/presupuesto"
+              href={`/${lang}/presupuesto`}
               className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
             >
-              {COMMON_UI.es.buttons.tellUsYourTrip}
+              {ui.buttons.tellUsYourTrip}
             </Link>
           </div>
         </div>
@@ -90,20 +98,12 @@ export default function LunasDeMielPage() {
           <p className="text-center text-vidaia-charcoal/55 text-sm mb-14">
             {content.whatMakesUsDifferent.subtitle}
           </p>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {content.whatMakesUsDifferent.features.map((feature) => (
-              <div
-                key={feature.title}
-                className="bg-vidaia-sand rounded-2xl p-7 border border-vidaia-light hover:border-vidaia-earth hover:shadow-md transition-all"
-              >
+              <div key={feature.title} className="bg-vidaia-sand rounded-2xl p-7 border border-vidaia-light hover:border-vidaia-earth hover:shadow-md transition-all">
                 <span className="text-3xl mb-4 block">{feature.emoji}</span>
-                <h3 className="font-heading font-bold text-vidaia-dark text-lg mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-vidaia-charcoal/70 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
+                <h3 className="font-heading font-bold text-vidaia-dark text-lg mb-3">{feature.title}</h3>
+                <p className="text-vidaia-charcoal/70 text-sm leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -119,8 +119,6 @@ export default function LunasDeMielPage() {
           <p className="text-center text-vidaia-charcoal/55 text-sm mb-16">
             {content.howWeDesignIt.subtitle}
           </p>
-
-          {/* Desktop timeline */}
           <div className="hidden md:block relative">
             <div className="absolute top-5 left-[calc(12.5%-1px)] right-[calc(12.5%-1px)] h-px border-t-2 border-dashed border-vidaia-light" />
             <div className="grid grid-cols-4 gap-6">
@@ -130,15 +128,11 @@ export default function LunasDeMielPage() {
                     {i + 1}
                   </div>
                   <h3 className="font-heading font-bold text-vidaia-dark mb-2">{step.title}</h3>
-                  <p className="text-sm text-vidaia-charcoal/65 leading-relaxed">
-                    {step.description}
-                  </p>
+                  <p className="text-sm text-vidaia-charcoal/65 leading-relaxed">{step.description}</p>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Mobile timeline */}
           <div className="md:hidden space-y-0">
             {content.howWeDesignIt.steps.map((step, i) => (
               <div key={i} className="flex gap-5">
@@ -151,12 +145,8 @@ export default function LunasDeMielPage() {
                   )}
                 </div>
                 <div className="pb-8">
-                  <h3 className="font-heading font-bold text-vidaia-dark mb-1 mt-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-vidaia-charcoal/65 leading-relaxed">
-                    {step.description}
-                  </p>
+                  <h3 className="font-heading font-bold text-vidaia-dark mb-1 mt-2">{step.title}</h3>
+                  <p className="text-sm text-vidaia-charcoal/65 leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -173,10 +163,7 @@ export default function LunasDeMielPage() {
           <ul className="space-y-5 text-left">
             {content.whyCustomHoneymoon.reasons.map((reason, i) => (
               <li key={i} className="flex items-center gap-4">
-                <Heart
-                  className="w-5 h-5 text-vidaia-earth shrink-0"
-                  fill="currentColor"
-                />
+                <Heart className="w-5 h-5 text-vidaia-earth shrink-0" fill="currentColor" />
                 <span className="text-lg text-vidaia-charcoal/80">{reason}</span>
               </li>
             ))}
@@ -194,20 +181,17 @@ export default function LunasDeMielPage() {
             <p className="text-center text-vidaia-charcoal/55 text-sm mb-14">
               {content.honeymoonIdeas.subtitle}
             </p>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {honeymoonTrips.map((trip) => {
-                const infoHref = `/presupuesto-itinerario?titulo=${encodeURIComponent(trip.content.es.honeymoonTitle ?? trip.content.es.title)}`
-                const itineraryHref = `/itinerarios/${trip.slug}`
-                const displayTitle = trip.content.es.honeymoonTitle ?? trip.content.es.title
-                const displayTagline = trip.content.es.honeymoonTagline ?? trip.content.es.subtitle
+                const tc = (trip.content[lang as keyof typeof trip.content] ?? trip.content.es)
+                const displayTitle = tc.honeymoonTitle ?? tc.title
+                const displayTagline = tc.honeymoonTagline ?? tc.subtitle
+                const infoHref = `/${lang}/presupuesto-itinerario?titulo=${encodeURIComponent(displayTitle)}`
+                const itineraryHref = `/${lang}/itinerarios/${trip.slug}`
                 const tripImage = getAsset(trip.imageKey)
 
                 return (
-                  <article
-                    key={trip.id}
-                    className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col"
-                  >
+                  <article key={trip.id} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col">
                     <div className="relative h-52 overflow-hidden">
                       <Image
                         src={tripImage.url}
@@ -218,33 +202,21 @@ export default function LunasDeMielPage() {
                       />
                       <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
                         <Calendar className="w-3 h-3" />
-                        {trip.days} {COMMON_UI.es.labels.days}
+                        {trip.days} {ui.labels.days}
                       </span>
                     </div>
-
                     <div className="p-5 flex flex-col flex-1">
-                      <p className="text-xs text-vidaia-earth font-medium mb-1.5">
-                        {displayTagline}
-                      </p>
-                      <h3 className="font-heading font-bold text-vidaia-dark text-base leading-snug mb-5 flex-1">
-                        {displayTitle}
-                      </h3>
-
+                      <p className="text-xs text-vidaia-earth font-medium mb-1.5">{displayTagline}</p>
+                      <h3 className="font-heading font-bold text-vidaia-dark text-base leading-snug mb-5 flex-1">{displayTitle}</h3>
                       <div className="flex flex-col gap-2 mt-auto pt-3 border-t border-vidaia-light/60">
                         {trip.hasItinerary && (
-                          <Link
-                            href={itineraryHref}
-                            className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-vidaia-primary hover:bg-vidaia-dark text-white transition-colors"
-                          >
-                            {COMMON_UI.es.buttons.itinerary}
+                          <Link href={itineraryHref} className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-vidaia-primary hover:bg-vidaia-dark text-white transition-colors">
+                            {ui.buttons.itinerary}
                             <ArrowRight className="w-4 h-4" />
                           </Link>
                         )}
-                        <Link
-                          href={infoHref}
-                          className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-vidaia-earth hover:bg-vidaia-brown text-white transition-colors"
-                        >
-                          {COMMON_UI.es.buttons.requestInfo}
+                        <Link href={infoHref} className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-vidaia-earth hover:bg-vidaia-brown text-white transition-colors">
+                          {ui.buttons.requestInfo}
                           <ArrowRight className="w-4 h-4" />
                         </Link>
                       </div>
@@ -274,12 +246,8 @@ export default function LunasDeMielPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-vidaia-dark via-[#2a5060] to-vidaia-primary text-white text-center">
         <div className="max-w-2xl mx-auto">
           <Heart className="w-10 h-10 text-vidaia-earth mx-auto mb-6" fill="currentColor" />
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            {content.finalCta.title}
-          </h2>
-          <p className="text-white/70 text-lg mb-10">
-            {content.finalCta.subtitle}
-          </p>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{content.finalCta.title}</h2>
+          <p className="text-white/70 text-lg mb-10">{content.finalCta.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="https://reuniones.clientify.com/#/viajesvidaia/hablemos30min?v2=true"
@@ -287,13 +255,13 @@ export default function LunasDeMielPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
             >
-              {COMMON_UI.es.buttons.freeMeeting}
+              {ui.buttons.freeMeeting}
             </Link>
             <Link
-              href="/presupuesto"
+              href={`/${lang}/presupuesto`}
               className="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
             >
-              {COMMON_UI.es.buttons.tellUsYourTrip}
+              {ui.buttons.tellUsYourTrip}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>

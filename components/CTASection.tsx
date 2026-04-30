@@ -1,16 +1,19 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight, Mail } from 'lucide-react';
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent';
-import { getAsset } from '@/lib/data/assets';
+'use client'
+
+import Image from 'next/image'
+import LangLink from '@/components/LangLink'
+import { ArrowRight, Mail } from 'lucide-react'
+import { useLanguage } from '@/lib/hooks/useLanguage'
+import { getAsset } from '@/lib/data/assets'
 
 export default function CTASection() {
-  const sectionContent = STATIC_CONTENT.es.ctaSection;
-  const ctaBgAsset = getAsset('CTA_SECTION_BG');
+  const { content, ui } = useLanguage()
+  const sectionContent = content.ctaSection
+  const ctaBgAsset = getAsset('CTA_SECTION_BG')
 
   return (
     <section className="relative py-28 overflow-hidden">
-      {/* Background — Atacama or salt flat landscape */}
+      {/* Background */}
       <div className="absolute inset-0">
         <Image
           src={ctaBgAsset.url}
@@ -49,13 +52,13 @@ export default function CTASection() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
+          <LangLink
             href="/presupuesto"
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
           >
-            {COMMON_UI.es.buttons.requestQuote}
+            {ui.buttons.requestQuote}
             <ArrowRight className="w-5 h-5" />
-          </Link>
+          </LangLink>
 
           <a
             href={`mailto:${sectionContent.email}`}
@@ -67,5 +70,5 @@ export default function CTASection() {
         </div>
       </div>
     </section>
-  );
+  )
 }

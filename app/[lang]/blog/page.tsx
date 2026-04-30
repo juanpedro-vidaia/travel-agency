@@ -5,6 +5,7 @@ import { Clock, ArrowRight, BookOpen } from 'lucide-react'
 import { getAllPosts, getFeaturedPost, getPostsByCategory, formatDate } from '@/lib/services/postsService'
 import { CATEGORY_CONFIG, type PostCategory } from '@/lib/data/posts'
 import { getAsset } from '@/lib/data/assets'
+import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 
 export const metadata: Metadata = {
   title: 'Blog de viajes — Viajes Vidaia',
@@ -13,10 +14,16 @@ export const metadata: Metadata = {
 }
 
 interface Props {
+  params: Promise<{ lang: string }>
   searchParams: Promise<{ category?: string }>
 }
 
-export default async function BlogPage({ searchParams }: Props) {
+export function generateStaticParams() {
+  return ENABLED_LANGUAGES.map(lang => ({ lang }))
+}
+
+export default async function BlogPage({ params, searchParams }: Props) {
+  const { lang } = await params
   const { category } = await searchParams
   const activeCategory = category as PostCategory | undefined
 
@@ -45,12 +52,12 @@ export default async function BlogPage({ searchParams }: Props) {
         </div>
       </section>
 
-      {/* Featured post (only shown when no filter active) */}
+      {/* Featured post */}
       {!activeCategory && featured && (
         <section className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-xs font-bold text-vidaia-primary uppercase tracking-widest mb-6">Artículo destacado</p>
-            <Link href={`/blog/${featured.slug}`} className="group grid md:grid-cols-2 gap-8 rounded-3xl overflow-hidden bg-vidaia-light/40 hover:bg-vidaia-light/70 transition-colors">
+            <Link href={`/${lang}/blog/${featured.slug}`} className="group grid md:grid-cols-2 gap-8 rounded-3xl overflow-hidden bg-vidaia-light/40 hover:bg-vidaia-light/70 transition-colors">
               <div className="relative h-72 md:h-auto min-h-[300px] overflow-hidden rounded-3xl md:rounded-r-none">
                 <Image
                   src={getAsset(featured.imageKey).url}
@@ -91,10 +98,9 @@ export default async function BlogPage({ searchParams }: Props) {
       {/* Category filter + grid */}
       <section className="py-16 bg-vidaia-light/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Filter pills */}
           <div className="flex flex-wrap gap-2 mb-10">
             <Link
-              href="/blog"
+              href={`/${lang}/blog`}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 !activeCategory
                   ? 'bg-vidaia-charcoal text-white'
@@ -106,7 +112,7 @@ export default async function BlogPage({ searchParams }: Props) {
             {categories.map(([slug, cfg]) => (
               <Link
                 key={slug}
-                href={`/blog?category=${slug}`}
+                href={`/${lang}/blog?category=${slug}`}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   activeCategory === slug
                     ? 'bg-vidaia-charcoal text-white'
@@ -118,22 +124,18 @@ export default async function BlogPage({ searchParams }: Props) {
             ))}
           </div>
 
-          {/* Grid */}
           {posts.length === 0 ? (
             <div className="text-center py-20">
               <BookOpen className="w-12 h-12 text-gray-300 mx-auto mb-4" />
               <p className="text-gray-500">No hay artículos en esta categoría todavía.</p>
-              <Link href="/blog" className="mt-4 inline-block text-vidaia-primary text-sm font-medium hover:underline">
+              <Link href={`/${lang}/blog`} className="mt-4 inline-block text-vidaia-primary text-sm font-medium hover:underline">
                 Ver todos los artículos
               </Link>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {posts.map((post) => (
-                <article
-                  key={post.slug}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex flex-col"
-                >
+                <article key={post.slug} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex flex-col">
                   <div className="relative h-52 overflow-hidden flex-shrink-0">
                     <Image
                       src={getAsset(post.imageKey).url}
@@ -148,7 +150,6 @@ export default async function BlogPage({ searchParams }: Props) {
                       </span>
                     </div>
                   </div>
-
                   <div className="p-6 flex flex-col flex-1">
                     <div className="flex items-center gap-3 text-xs text-gray-400 mb-3">
                       <span>{formatDate(post.date)}</span>
@@ -158,17 +159,14 @@ export default async function BlogPage({ searchParams }: Props) {
                         {post.readingTime} min
                       </span>
                     </div>
-
                     <h2 className="font-heading text-lg font-semibold text-vidaia-dark leading-snug mb-3 group-hover:text-vidaia-primary transition-colors line-clamp-2">
                       {post.content.es.title}
                     </h2>
-
                     <p className="text-gray-500 text-sm leading-relaxed mb-5 flex-1 line-clamp-3">
                       {post.content.es.excerpt}
                     </p>
-
                     <Link
-                      href={`/blog/${post.slug}`}
+                      href={`/${lang}/blog/${post.slug}`}
                       className="inline-flex items-center gap-1.5 text-vidaia-primary hover:text-vidaia-dark font-semibold text-sm transition-colors group/link mt-auto"
                     >
                       Leer más

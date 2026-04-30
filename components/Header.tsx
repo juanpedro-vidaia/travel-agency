@@ -1,13 +1,14 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, ChevronDown, Heart } from 'lucide-react'
 import { getCountries } from '@/lib/services/countriesService'
 import { useContactModal } from '@/lib/context/ContactModalContext'
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'
+import LangLink from '@/components/LangLink'
+import LanguageSwitch from '@/components/LanguageSwitch'
 
 export default function Header() {
   const countries = getCountries()
@@ -16,12 +17,13 @@ export default function Header() {
   const [destinosOpen, setDestinosOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const { openContactModal } = useContactModal()
-  const headerContent = STATIC_CONTENT.es.header
+  const { content, ui, language } = useLanguage()
+  const headerContent = content.header
   const logoAsset = getAsset('LOGO.DEFAULT')
   const navItems = [
-    { key: 'trips', label: headerContent.nav.trips },
+    { key: 'viajes', label: headerContent.nav.trips },
     { key: 'blog', label: headerContent.nav.blog }
-  ];
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
@@ -51,7 +53,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center group">
+        <LangLink href="/" className="flex items-center group">
           <Image
             src={logoAsset.url}
             alt={logoAsset.alt}
@@ -60,13 +62,13 @@ export default function Header() {
             className="h-10 w-auto object-contain"
             priority
           />
-        </Link>
+        </LangLink>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-0.5">
-          <Link href="/" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
+          <LangLink href="/" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
             {headerContent.nav.home}
-          </Link>
+          </LangLink>
 
           {/* Destinos dropdown */}
           <div className="relative" ref={dropdownRef}>
@@ -81,7 +83,7 @@ export default function Header() {
             {destinosOpen && (
               <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 p-2 overflow-hidden">
                 {countries.map((c) => (
-                  <Link
+                  <LangLink
                     key={c.slug}
                     href={`/destinos/${c.slug}`}
                     className="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-vidaia-light transition-colors group/item"
@@ -90,18 +92,18 @@ export default function Header() {
                     <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-semibold text-vidaia-dark group-hover/item:text-vidaia-primary">
-                        {c.content.es.name}
+                        {(c.content[language as keyof typeof c.content] ?? c.content.es).name}
                       </p>
-                      <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{c.content.es.description.split('. ')[0]}</p>
+                      <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{(c.content[language as keyof typeof c.content] ?? c.content.es).description.split('. ')[0]}</p>
                     </div>
-                  </Link>
+                  </LangLink>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Lunas de Miel — destacado con icono corazón */}
-          <Link
+          {/* Lunas de Miel */}
+          <LangLink
             href="/lunas-de-miel"
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               scrolled
@@ -111,14 +113,14 @@ export default function Header() {
           >
             <Heart className="w-3.5 h-3.5" />
             {headerContent.nav.honeymoons}
-          </Link>
+          </LangLink>
 
-          <Link href="/viajes" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
+          <LangLink href="/viajes" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
             {headerContent.nav.trips}
-          </Link>
-          <Link href="/blog" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
+          </LangLink>
+          <LangLink href="/blog" className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}>
             {headerContent.nav.blog}
-          </Link>
+          </LangLink>
           <button
             onClick={openContactModal}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${linkClass}`}
@@ -127,9 +129,10 @@ export default function Header() {
           </button>
         </nav>
 
-        {/* CTA + mobile toggle */}
+        {/* CTA + language switch + mobile toggle */}
         <div className="flex items-center gap-3">
-          <Link
+          <LanguageSwitch />
+          <LangLink
             href="/presupuesto"
             className={`hidden md:inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
               scrolled
@@ -137,8 +140,8 @@ export default function Header() {
                 : 'bg-vidaia-earth/90 text-white hover:bg-vidaia-earth'
             }`}
           >
-            {COMMON_UI.es.buttons.requestQuote}
-          </Link>
+            {ui.buttons.requestQuote}
+          </LangLink>
 
           <button
             className="md:hidden p-2 rounded-lg"
@@ -158,49 +161,49 @@ export default function Header() {
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
           <div className="px-4 py-4 space-y-1">
-            <Link
+            <LangLink
               href="/"
               className="block px-4 py-3 text-vidaia-charcoal hover:bg-vidaia-light rounded-xl font-medium text-sm"
               onClick={() => setMobileOpen(false)}
             >
               {headerContent.nav.home}
-            </Link>
+            </LangLink>
 
             <div>
               <p className="px-4 pt-3 pb-1 text-xs font-bold text-gray-400 uppercase tracking-widest">
                 {headerContent.nav.destinations}
               </p>
               {countries.map((c) => (
-                <Link
+                <LangLink
                   key={c.slug}
                   href={`/destinos/${c.slug}`}
                   className="flex items-center gap-2.5 pl-6 pr-4 py-2.5 text-sm text-vidaia-charcoal hover:bg-vidaia-light rounded-xl"
                   onClick={() => setMobileOpen(false)}
                 >
                   <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
-                  <span>{c.content.es.name}</span>
-                </Link>
+                  <span>{(c.content[language as keyof typeof c.content] ?? c.content.es).name}</span>
+                </LangLink>
               ))}
             </div>
 
-            <Link
+            <LangLink
               href="/lunas-de-miel"
               className="flex items-center gap-2 px-4 py-3 text-vidaia-earth hover:bg-vidaia-cream rounded-xl font-medium text-sm"
               onClick={() => setMobileOpen(false)}
             >
               <Heart className="w-4 h-4" />
               {headerContent.nav.honeymoons}
-            </Link>
+            </LangLink>
 
             {navItems.map((item) => (
-              <Link
+              <LangLink
                 key={item.key}
                 href={`/${item.key}`}
                 className="block px-4 py-3 text-vidaia-charcoal hover:bg-vidaia-light rounded-xl font-medium text-sm"
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}
-              </Link>
+              </LangLink>
             ))}
 
             <button
@@ -211,13 +214,13 @@ export default function Header() {
             </button>
 
             <div className="pt-3 border-t border-gray-100">
-              <Link
+              <LangLink
                 href="/presupuesto"
                 className="block w-full text-center px-4 py-3.5 bg-vidaia-earth text-white font-semibold rounded-xl text-sm"
                 onClick={() => setMobileOpen(false)}
               >
-                {COMMON_UI.es.buttons.requestQuote}
-              </Link>
+                {ui.buttons.requestQuote}
+              </LangLink>
             </div>
           </div>
         </div>

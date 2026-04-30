@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+import LangLink from '@/components/LangLink'
 import {
   ChevronLeft,
   ChevronRight,
@@ -29,7 +29,7 @@ import { getCountryBySlug } from '@/lib/services/countriesService'
 import { getDestinationById } from '@/lib/services/destinationsService'
 import { getAsset } from '@/lib/data/assets'
 import { formatPrice, renderTemplate } from '@/lib/helpers/contentHelpers'
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
 const OPTIONAL_ICONS: Record<string, LucideIcon> = {
   'cataratas-brasilenas':         Waves,
@@ -44,10 +44,9 @@ export default function ItineraryContent({ slug }: { slug: string }) {
   const optionalActivities = getItineraryOptionals(slug)
   const relatedTrips       = getRelatedTripsBySlug(slug)
 
-  const content = STATIC_CONTENT.es.itineraryPage
-  const ui      = COMMON_UI.es
+  const { content: pageContent, ui } = useLanguage()
+  const content = pageContent.itineraryPage
 
-  // ── Hooks (all before any conditional return) ─────────────────────────────
   const [currentSlide, setCurrentSlide] = useState(0)
   const [openDays,     setOpenDays]     = useState<Set<number>>(new Set([1]))
   const [isPaused,     setIsPaused]     = useState(false)
@@ -180,7 +179,6 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           </div>
         ))}
 
-        {/* Content */}
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4 sm:px-8">
           <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-5">
             {content.hero.eyebrowPrefix}
@@ -215,16 +213,15 @@ export default function ItineraryContent({ slug }: { slug: string }) {
             )}
           </div>
 
-          <Link
+          <LangLink
             href={requestHref}
             className="hidden lg:inline-flex items-center gap-2 mt-10 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
           >
             {content.hero.ctaButton}
             <ArrowRight className="w-5 h-5" />
-          </Link>
+          </LangLink>
         </div>
 
-        {/* Location label */}
         <div className="absolute bottom-8 right-6 sm:right-8 z-10 pointer-events-none">
           <span className="flex items-center gap-1.5 text-white/70 text-xs sm:text-sm">
             <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -232,7 +229,6 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           </span>
         </div>
 
-        {/* Arrows */}
         <button
           onClick={prevSlide}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors"
@@ -248,7 +244,6 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           <ChevronRight className="w-6 h-6" />
         </button>
 
-        {/* Dots */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2">
           {slides.map((_, index) => (
             <button
@@ -270,14 +265,14 @@ export default function ItineraryContent({ slug }: { slug: string }) {
         <section className="py-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto flex flex-wrap gap-3">
             {tripCountries.map(country => (
-              <Link
+              <LangLink
                 key={country.slug}
                 href={`/destinos/${country.slug}`}
                 className="inline-flex items-center gap-2 text-sm font-medium text-vidaia-charcoal/65 hover:text-vidaia-primary border border-gray-200 hover:border-vidaia-primary rounded-full px-4 py-2 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
                 {renderTemplate(content.backToCountryTemplate, { country: country.content.es.name })}
-              </Link>
+              </LangLink>
             ))}
           </div>
         </section>
@@ -289,13 +284,13 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           <p className="text-lg sm:text-xl text-vidaia-charcoal/80 leading-relaxed">
             {itinerary.content.es.description}
           </p>
-          <Link
+          <LangLink
             href={requestHref}
             className="inline-flex items-center gap-2 mt-8 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base sm:text-lg"
           >
             {content.hero.ctaButton}
             <ArrowRight className="w-5 h-5" />
-          </Link>
+          </LangLink>
         </div>
       </section>
 
@@ -313,23 +308,16 @@ export default function ItineraryContent({ slug }: { slug: string }) {
             {itineraryDays.map(day => {
               const isOpen = openDays.has(day.day)
               return (
-                <div
-                  key={day.day}
-                  className="border border-vidaia-light rounded-2xl overflow-hidden shadow-sm"
-                >
+                <div key={day.day} className="border border-vidaia-light rounded-2xl overflow-hidden shadow-sm">
                   <button
                     onClick={() => toggleDay(day.day)}
                     className={`w-full flex items-center gap-4 px-4 sm:px-5 py-4 text-left transition-colors ${
                       isOpen ? 'bg-vidaia-dark' : 'bg-white hover:bg-vidaia-sand'
                     }`}
                   >
-                    <span
-                      className={`shrink-0 font-heading font-bold text-lg w-11 h-11 rounded-full flex items-center justify-center ${
-                        isOpen
-                          ? 'bg-vidaia-earth text-white'
-                          : 'bg-vidaia-light text-vidaia-dark'
-                      }`}
-                    >
+                    <span className={`shrink-0 font-heading font-bold text-lg w-11 h-11 rounded-full flex items-center justify-center ${
+                      isOpen ? 'bg-vidaia-earth text-white' : 'bg-vidaia-light text-vidaia-dark'
+                    }`}>
                       {day.day}
                     </span>
                     <div className="flex-1 min-w-0">
@@ -343,11 +331,9 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                         </p>
                       )}
                     </div>
-                    <ChevronDown
-                      className={`w-5 h-5 shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 text-white/70' : 'text-vidaia-primary'
-                      }`}
-                    />
+                    <ChevronDown className={`w-5 h-5 shrink-0 transition-transform duration-300 ${
+                      isOpen ? 'rotate-180 text-white/70' : 'text-vidaia-primary'
+                    }`} />
                   </button>
 
                   {isOpen && (
@@ -454,21 +440,14 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
             {content.hotels.title}
           </h2>
-          <p className="text-center text-vidaia-charcoal/55 text-sm mb-12">
-            {content.hotels.subtitle}
-          </p>
+          <p className="text-center text-vidaia-charcoal/55 text-sm mb-12">{content.hotels.subtitle}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {hotelCards.map((hotel, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
-              >
+              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src={hotel.img}
-                    alt={hotel.name}
-                    fill
+                    src={hotel.img} alt={hotel.name} fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
@@ -523,13 +502,9 @@ export default function ItineraryContent({ slug }: { slug: string }) {
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-12">
               {content.optionals.title}
             </h2>
-
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {optionals.map(({ Icon, title, description }) => (
-                <div
-                  key={title}
-                  className="bg-white rounded-2xl p-6 shadow-sm border border-amber-100 text-left hover:border-amber-300 hover:shadow-md transition-all"
-                >
+                <div key={title} className="bg-white rounded-2xl p-6 shadow-sm border border-amber-100 text-left hover:border-amber-300 hover:shadow-md transition-all">
                   <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-amber-700" />
                   </div>
@@ -549,9 +524,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
               {content.relatedTrips.title}
             </h2>
-            <p className="text-center text-vidaia-charcoal/55 text-sm mb-12">
-              {content.relatedTrips.subtitle}
-            </p>
+            <p className="text-center text-vidaia-charcoal/55 text-sm mb-12">{content.relatedTrips.subtitle}</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedTrips.map(related => {
@@ -562,33 +535,23 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                 const cta = related.hasItinerary ? ui.buttons.viewItinerary : ui.buttons.requestInfo
 
                 return (
-                  <article
-                    key={related.id}
-                    className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 flex flex-col"
-                  >
+                  <article key={related.id} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 flex flex-col">
                     <div className="relative h-44 overflow-hidden">
                       <Image
-                        src={getAsset(related.imageKey).url}
-                        alt={related.content.es.title}
-                        fill
+                        src={getAsset(related.imageKey).url} alt={related.content.es.title} fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     </div>
                     <div className="p-4 sm:p-5 flex flex-col flex-1">
-                      {reason && (
-                        <p className="text-xs text-amber-700 font-medium mb-2">💡 {reason}</p>
-                      )}
+                      {reason && <p className="text-xs text-amber-700 font-medium mb-2">💡 {reason}</p>}
                       <h3 className="font-heading font-bold text-vidaia-dark text-sm leading-snug mb-2 flex-1">
                         {related.content.es.title}
                       </h3>
                       {related.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mb-3">
                           {related.tags.slice(0, 3).map(tag => (
-                            <span
-                              key={tag}
-                              className="text-xs bg-vidaia-light text-vidaia-dark px-2 py-0.5 rounded-full"
-                            >
+                            <span key={tag} className="text-xs bg-vidaia-light text-vidaia-dark px-2 py-0.5 rounded-full">
                               {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].es.label}
                             </span>
                           ))}
@@ -599,11 +562,9 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                           <p className="text-vidaia-primary font-bold text-sm">
                             {renderTemplate(content.price.fromTemplate, { price: formatPrice(related.priceFrom) })}
                           </p>
-                          <p className="text-xs text-vidaia-charcoal/50">
-                            {related.days} {ui.labels.days}
-                          </p>
+                          <p className="text-xs text-vidaia-charcoal/50">{related.days} {ui.labels.days}</p>
                         </div>
-                        <Link
+                        <LangLink
                           href={href}
                           className={`inline-flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-full transition-colors ${
                             related.hasItinerary
@@ -613,7 +574,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                         >
                           {cta}
                           <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
+                        </LangLink>
                       </div>
                     </div>
                   </article>
@@ -634,28 +595,26 @@ export default function ItineraryContent({ slug }: { slug: string }) {
             {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom) })}
           </p>
           <p className="text-white/55 text-sm mb-2">{content.price.perPersonLabel}</p>
-          <p className="text-white/40 text-xs mb-12">
-            {content.price.priceNote}
-          </p>
-          <Link
+          <p className="text-white/40 text-xs mb-12">{content.price.priceNote}</p>
+          <LangLink
             href={requestHref}
             className="inline-flex items-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
           >
             {content.price.ctaButton}
             <ArrowRight className="w-5 h-5" />
-          </Link>
+          </LangLink>
         </div>
       </section>
 
       {/* ── STICKY CTA (mobile) ───────────────────────────────────────────────── */}
       <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white/95 backdrop-blur-sm border-t border-vidaia-light px-4 py-3 shadow-2xl">
-        <Link
+        <LangLink
           href={requestHref}
           className="flex items-center justify-center gap-2 w-full bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-6 py-3.5 rounded-full transition-colors text-base"
         >
           {content.hero.ctaButton}
           <ArrowRight className="w-5 h-5" />
-        </Link>
+        </LangLink>
       </div>
     </main>
   )

@@ -1,18 +1,19 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
 import { Instagram, Facebook, Mail, MapPin } from 'lucide-react'
 import { getCountries } from '@/lib/services/countriesService'
 import { useContactModal } from '@/lib/context/ContactModalContext'
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'
+import LangLink from '@/components/LangLink'
 import React from 'react'
 
 export default function Footer() {
   const countries = getCountries()
   const { openContactModal } = useContactModal()
-  const footerContent = STATIC_CONTENT.es.footer
+  const { content, language } = useLanguage()
+  const footerContent = content.footer
   const logoColorAsset = getAsset('LOGO.COLOR')
 
   return (
@@ -22,7 +23,7 @@ export default function Footer() {
 
           {/* ── Column 1: Brand ── */}
           <div>
-            <Link href="/" className="inline-block mb-5">
+            <LangLink href="/" className="inline-block mb-5">
               <Image
                 src={logoColorAsset.url}
                 alt={logoColorAsset.alt}
@@ -30,7 +31,7 @@ export default function Footer() {
                 height={44}
                 className="h-10 w-auto object-contain"
               />
-            </Link>
+            </LangLink>
 
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
               {footerContent.brand.description}
@@ -78,10 +79,10 @@ export default function Footer() {
             <ul className="space-y-3">
               {countries.map((c) => (
                 <li key={c.slug}>
-                  <Link href={`/destinos/${c.slug}`} className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                  <LangLink href={`/destinos/${c.slug}`} className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
                     <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
-                    {c.content.es.name}
-                  </Link>
+                    {(c.content[language as keyof typeof c.content] ?? c.content.es).name}
+                  </LangLink>
                 </li>
               ))}
             </ul>
@@ -94,24 +95,24 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/lunas-de-miel" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <LangLink href="/lunas-de-miel" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {footerContent.nav.honeymoons}
-                </Link>
+                </LangLink>
               </li>
               <li>
-                <Link href="/viajes" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <LangLink href="/viajes" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {footerContent.nav.trips}
-                </Link>
+                </LangLink>
               </li>
               <li>
-                <Link href="/blog" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <LangLink href="/blog" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {footerContent.nav.blog}
-                </Link>
+                </LangLink>
               </li>
               <li>
-                <Link href="/#quienes-somos" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <LangLink href="/#quienes-somos" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {footerContent.nav.aboutUs}
-                </Link>
+                </LangLink>
               </li>
               <li>
                 <button
@@ -131,19 +132,19 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/aviso-legal" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <LangLink href="/aviso-legal" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {footerContent.legal.legalNotice}
-                </Link>
+                </LangLink>
               </li>
               <li>
-                <Link href="/privacidad" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <LangLink href="/privacidad" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {footerContent.legal.privacyPolicy}
-                </Link>
+                </LangLink>
               </li>
               <li>
-                <Link href="/cookies" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <LangLink href="/cookies" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {footerContent.legal.cookiesPolicy}
-                </Link>
+                </LangLink>
               </li>
             </ul>
             <p className="text-xs text-gray-500 mt-6 leading-relaxed">

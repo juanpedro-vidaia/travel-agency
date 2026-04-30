@@ -1,26 +1,40 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
-import React from 'react'
+import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
+import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 
-export const metadata: Metadata = {
-  title: STATIC_CONTENT.es.cookiesPage.metadata.title,
-  description: STATIC_CONTENT.es.cookiesPage.metadata.description,
+interface Props {
+  params: Promise<{ lang: string }>
 }
 
-export default function CookiesPage() {
-  const content = STATIC_CONTENT.es.cookiesPage
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params
+  const content = getStaticContent(lang)
+  return {
+    title: content.cookiesPage.metadata.title,
+    description: content.cookiesPage.metadata.description,
+  }
+}
+
+export function generateStaticParams() {
+  return ENABLED_LANGUAGES.map(lang => ({ lang }))
+}
+
+export default async function CookiesPage({ params }: Props) {
+  const { lang } = await params
+  const content = getStaticContent(lang).cookiesPage
+  const ui = getCommonUI(lang)
 
   return (
     <main className="min-h-screen bg-white pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
-          href="/"
+          href={`/${lang}`}
           className="inline-flex items-center gap-2 text-sm text-vidaia-charcoal/55 hover:text-vidaia-primary mb-10 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          {COMMON_UI.es.labels.backToHome}
+          {ui.labels.backToHome}
         </Link>
 
         <h1 className="font-heading text-4xl sm:text-5xl font-bold text-vidaia-dark mb-10">

@@ -1,12 +1,15 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'
 
 export default function QuienesSomos() {
-  const sectionContent = STATIC_CONTENT.es.quienesSomos;
+  const { content, ui } = useLanguage()
+  const sectionContent = content.quienesSomos;
   const landscapePhotoAsset = getAsset('TEAM.LANDSCAPE_PHOTO');
 
   return (
@@ -88,7 +91,7 @@ export default function QuienesSomos() {
                 href="/sobre-nosotros"
                 className="inline-flex items-center gap-2 text-vidaia-earth hover:text-vidaia-cream font-semibold text-sm transition-colors"
               >
-                {COMMON_UI.es.buttons.readMore}
+                {ui.buttons.readMore}
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

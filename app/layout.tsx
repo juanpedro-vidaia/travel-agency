@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import ContactModal from '@/components/ContactModal'
 import ContactFAB from '@/components/ContactFAB'
 import { ContactModalProvider } from '@/lib/context/ContactModalContext'
+import { LanguageProvider } from '@/lib/context/LanguageContext'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -23,13 +24,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className={`${inter.variable} ${playfair.variable}`}>
-        <ContactModalProvider>
-          <Header />
-          {children}
-          <Footer />
-          <ContactFAB />
-          <ContactModal />
-        </ContactModalProvider>
+        <LanguageProvider>
+          <ContactModalProvider>
+            <Header />
+            {children}
+            <Footer />
+            <ContactFAB />
+            <ContactModal />
+          </ContactModalProvider>
+        </LanguageProvider>
       </body>
     </html>
   )

@@ -1,23 +1,26 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import ContactModalTrigger from '@/components/ContactModalTrigger';
-import { getAsset } from '@/lib/data/assets';
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent';
+'use client'
+
+import React from 'react'
+import Image from 'next/image'
+import LangLink from '@/components/LangLink'
+import { ArrowRight } from 'lucide-react'
+import ContactModalTrigger from '@/components/ContactModalTrigger'
+import { getAsset } from '@/lib/data/assets'
+import { useLanguage } from '@/lib/hooks/useLanguage'
+
+const regionContent: Record<string, { flagKey: string; countryName: string }[]> = {
+  es: [
+    { flagKey: 'FLAGS.AR', countryName: 'Argentina' },
+    { flagKey: 'FLAGS.CL', countryName: 'Chile' },
+    { flagKey: 'FLAGS.BO', countryName: 'Bolivia' },
+  ],
+}
 
 export default function Hero() {
-  const heroContent = STATIC_CONTENT.es.home.hero;
-  const regionContent = {
-    es: [
-      { flagKey: 'FLAGS.AR', countryName: 'Argentina' },
-      { flagKey: 'FLAGS.CL', countryName: 'Chile' },
-      { flagKey: 'FLAGS.BO', countryName: 'Bolivia' },
-    ],
-    // Add en: [...] if internationalization is implemented
-  };
-
-  const heroBgAsset = getAsset('HOME.HERO_BG');
+  const { content, ui, language } = useLanguage()
+  const heroContent = content.home.hero
+  const heroBgAsset = getAsset('HOME.HERO_BG')
+  const regions = regionContent[language] ?? regionContent.es
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -31,7 +34,6 @@ export default function Hero() {
           priority
           quality={90}
         />
-        {/* Dark gradient for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/65" />
       </div>
 
@@ -39,11 +41,11 @@ export default function Hero() {
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Region */}
         <p className="inline-flex flex-wrap justify-center items-center gap-2 text-vidaia-earth text-sm font-semibold uppercase tracking-wide sm:tracking-[0.25em] mb-7">
-          {regionContent.es.map((region, index) => {
-            const flagAsset = getAsset(region.flagKey);
+          {regions.map((region, index) => {
+            const flagAsset = getAsset(region.flagKey)
             return (
               <span key={index} className="inline-flex items-center gap-1">
-                <Image 
+                <Image
                   src={flagAsset.url}
                   alt={flagAsset.alt}
                   width={20}
@@ -52,14 +54,14 @@ export default function Hero() {
                 />
                 <span>{region.countryName}</span>
               </span>
-            );
+            )
           })}
         </p>
 
         <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6 text-balance">
-          {heroContent.title.split('{br}').map((part, index) => (
+          {heroContent.title.split('{br}').map((part: string, index: number) => (
             <React.Fragment key={index}>
-              {part.split('{span}').map((subPart, subIndex) => (
+              {part.split('{span}').map((subPart: string, subIndex: number) => (
                 <span key={subIndex} className={subIndex === 1 ? 'text-vidaia-earth' : ''}>
                   {subPart}
                 </span>
@@ -74,15 +76,15 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
+          <LangLink
             href="/presupuesto"
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
           >
-            {COMMON_UI.es.buttons.requestQuote}
+            {ui.buttons.requestQuote}
             <ArrowRight className="w-5 h-5" />
-          </Link>
+          </LangLink>
           <ContactModalTrigger className="inline-flex items-center gap-2 px-8 py-4 border border-white/40 text-white hover:bg-white/10 font-medium rounded-full text-base transition-all duration-200">
-            {COMMON_UI.es.buttons.talkToUs}
+            {ui.buttons.talkToUs}
           </ContactModalTrigger>
         </div>
       </div>
@@ -94,5 +96,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,17 +1,20 @@
+'use client'
+
 import Image from 'next/image'
-import Link from 'next/link'
+import LangLink from '@/components/LangLink'
 import { ArrowRight, Clock } from 'lucide-react'
 import { getRecentPosts, formatDate } from '@/lib/services/postsService'
 import { CATEGORY_CONFIG } from '@/lib/data/posts'
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'
 
 export default function BlogSection() {
+  const { content, ui, language } = useLanguage()
   const posts = getRecentPosts(3)
 
   if (posts.length === 0) return null
 
-  const sectionContent = STATIC_CONTENT.es.blogSection;
+  const sectionContent = content.blogSection
 
   return (
     <section className="py-24 bg-vidaia-light/30">
@@ -26,19 +29,20 @@ export default function BlogSection() {
               {sectionContent.header.title}
             </h2>
           </div>
-          <Link
+          <LangLink
             href="/blog"
             className="inline-flex items-center gap-1.5 text-vidaia-primary hover:text-vidaia-dark font-semibold text-sm transition-colors self-start sm:self-auto pb-1"
           >
             {sectionContent.callToAction}
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </LangLink>
         </div>
 
         {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {posts.map((post) => {
-            const postImage = getAsset(post.imageKey);
+            const postImage = getAsset(post.imageKey)
+            const p = post.content[language as keyof typeof post.content] ?? post.content.es
             return (
               <article
                 key={post.slug}
@@ -48,7 +52,7 @@ export default function BlogSection() {
                 <div className="relative h-52 overflow-hidden flex-shrink-0">
                   <Image
                     src={postImage.url}
-                    alt={post.content.es.imageAlt}
+                    alt={p.imageAlt}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
@@ -67,31 +71,31 @@ export default function BlogSection() {
                     <span>·</span>
                     <span className="flex items-center gap-1">
                       <Clock className="w-3.5 h-3.5" />
-                      {post.readingTime} {COMMON_UI.es.labels.minutes}
+                      {post.readingTime} {ui.labels.minutes}
                     </span>
                   </div>
 
                   <h3 className="font-heading text-lg font-semibold text-vidaia-dark leading-snug mb-3 group-hover:text-vidaia-primary transition-colors line-clamp-2">
-                    {post.content.es.title}
+                    {p.title}
                   </h3>
 
                   <p className="text-gray-500 text-sm leading-relaxed mb-5 flex-1 line-clamp-3">
-                    {post.content.es.excerpt}
+                    {p.excerpt}
                   </p>
 
-                  <Link
+                  <LangLink
                     href={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-1.5 text-vidaia-primary hover:text-vidaia-dark font-semibold text-sm transition-colors group/link mt-auto"
                   >
-                    {COMMON_UI.es.buttons.readMore}
+                    {ui.buttons.readMore}
                     <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                  </Link>
+                  </LangLink>
                 </div>
               </article>
-            );
+            )
           })}
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,26 +1,41 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import { STATIC_CONTENT, COMMON_UI } from '@/lib/data/staticContent'
+import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
+import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import React from 'react'
 
-export const metadata: Metadata = {
-  title: STATIC_CONTENT.es.privacyPage.metadata.title,
-  description: STATIC_CONTENT.es.privacyPage.metadata.description,
+interface Props {
+  params: Promise<{ lang: string }>
 }
 
-export default function PrivacidadPage() {
-  const content = STATIC_CONTENT.es.privacyPage
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params
+  const content = getStaticContent(lang)
+  return {
+    title: content.privacyPage.metadata.title,
+    description: content.privacyPage.metadata.description,
+  }
+}
+
+export function generateStaticParams() {
+  return ENABLED_LANGUAGES.map(lang => ({ lang }))
+}
+
+export default async function PrivacidadPage({ params }: Props) {
+  const { lang } = await params
+  const content = getStaticContent(lang).privacyPage
+  const ui = getCommonUI(lang)
 
   return (
     <main className="min-h-screen bg-white pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
-          href="/"
+          href={`/${lang}`}
           className="inline-flex items-center gap-2 text-sm text-vidaia-charcoal/55 hover:text-vidaia-primary mb-10 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          {COMMON_UI.es.labels.backToHome}
+          {ui.labels.backToHome}
         </Link>
 
         <h1 className="font-heading text-4xl sm:text-5xl font-bold text-vidaia-dark mb-10">
@@ -49,9 +64,7 @@ export default function PrivacidadPage() {
           </p>
 
           <h3>{content.policyContent.heading2}</h3>
-          <p>
-            {content.policyContent.registrationPurpose}
-          </p>
+          <p>{content.policyContent.registrationPurpose}</p>
           <ul>
             {content.policyContent.registrationPoints.map((point, i) => (
               <li key={i}>{point}</li>
@@ -59,19 +72,13 @@ export default function PrivacidadPage() {
           </ul>
 
           <h3>{content.policyContent.accuracyHeading}</h3>
-          <p>
-            {content.policyContent.accuracyText}
-          </p>
+          <p>{content.policyContent.accuracyText}</p>
 
           <h3>{content.policyContent.rightsHeading}</h3>
-          <p>
-            {content.policyContent.rightsText}
-          </p>
+          <p>{content.policyContent.rightsText}</p>
 
           <h3>{content.policyContent.thirdPartyServicesHeading}</h3>
-          <p>
-            {content.policyContent.thirdPartyServicesText}
-          </p>
+          <p>{content.policyContent.thirdPartyServicesText}</p>
           <ul>
             {content.policyContent.thirdPartyServicesList.map((service, i) => (
               <li key={i}><strong>{service.name}:</strong> {service.description}</li>
@@ -79,9 +86,7 @@ export default function PrivacidadPage() {
           </ul>
 
           <h3>{content.policyContent.securityMeasuresHeading}</h3>
-          <p>
-            {content.policyContent.securityMeasuresText}
-          </p>
+          <p>{content.policyContent.securityMeasuresText}</p>
         </div>
       </div>
     </main>

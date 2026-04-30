@@ -4,18 +4,22 @@ import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/services/post
 import { getTripBySlug } from '@/lib/services/tripsService'
 import type { Trip } from '@/lib/data/trips'
 import { getAsset } from '@/lib/data/assets'
+import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import PostContent from './PostContent'
 
 interface Props {
-  params: Promise<{ slug: string }>
+  params: Promise<{ lang: string; slug: string }>
 }
 
-export async function generateStaticParams() {
-  return getAllPosts().map((post) => ({ slug: post.slug }))
+export function generateStaticParams() {
+  const posts = getAllPosts()
+  return ENABLED_LANGUAGES.flatMap(lang =>
+    posts.map(post => ({ lang, slug: post.slug }))
+  )
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const { lang, slug } = await params
   const post = getPostBySlug(slug)
   if (!post) return {}
 
@@ -23,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = es.metaTitle ?? `${es.title} — Viajes Vidaia`
   const description = es.metaDescription ?? es.excerpt
   const imageUrl = getAsset(post.imageKey).url
-  const url = `https://viajesvidaia.com/blog/${post.slug}`
+  const url = `https://viajesvidaia.com/${lang}/blog/${post.slug}`
 
   return {
     title,
@@ -47,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const { slug } = await params
+  const { lang, slug } = await params
   const post = getPostBySlug(slug)
   if (!post) notFound()
 
@@ -72,8 +76,8 @@ export default async function BlogPostPage({ params }: Props) {
       name: 'Viajes Vidaia',
       logo: { '@type': 'ImageObject', url: 'https://viajesvidaia.com/images/logo/viajes-vidaia-logo-color.jpg' },
     },
-    url: `https://viajesvidaia.com/blog/${post.slug}`,
-    mainEntityOfPage: `https://viajesvidaia.com/blog/${post.slug}`,
+    url: `https://viajesvidaia.com/${lang}/blog/${post.slug}`,
+    mainEntityOfPage: `https://viajesvidaia.com/${lang}/blog/${post.slug}`,
   }
 
   return (

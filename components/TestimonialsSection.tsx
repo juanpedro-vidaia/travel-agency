@@ -1,15 +1,18 @@
+'use client'
+
 import Image from 'next/image'
 import { Star } from 'lucide-react'
 import { getFeaturedTestimonials } from '@/lib/services/testimonialsService'
-import { STATIC_CONTENT } from '@/lib/data/staticContent'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'
 
 export default function TestimonialsSection() {
+  const { content, language } = useLanguage()
   const testimonials = getFeaturedTestimonials()
 
   if (testimonials.length === 0) return null
 
-  const sectionContent = STATIC_CONTENT.es.testimonialsSection;
+  const sectionContent = content.testimonialsSection
 
   return (
     <section className="py-24 bg-vidaia-cream">
@@ -30,7 +33,8 @@ export default function TestimonialsSection() {
         {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {testimonials.map((testimonial) => {
-            const testimonialImage = getAsset(testimonial.imageKey);
+            const testimonialImage = getAsset(testimonial.imageKey)
+            const t = testimonial.content[language as keyof typeof testimonial.content] ?? testimonial.content.es
             return (
               <article
                 key={testimonial.id}
@@ -45,7 +49,7 @@ export default function TestimonialsSection() {
 
                 {/* Quote */}
                 <p className="text-vidaia-charcoal/80 text-sm leading-relaxed flex-1 mb-6">
-                  &ldquo;{testimonial.content.es.text}&rdquo;
+                  &ldquo;{t.text}&rdquo;
                 </p>
 
                 {/* Author */}
@@ -53,23 +57,23 @@ export default function TestimonialsSection() {
                   <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0">
                     <Image
                       src={testimonialImage.url}
-                      alt={testimonial.content.es.name}
+                      alt={t.name}
                       fill
                       className="object-cover"
                       sizes="44px"
                     />
                   </div>
                   <div>
-                    <p className="font-semibold text-vidaia-dark text-sm">{testimonial.content.es.name}</p>
-                    <p className="text-xs text-gray-400">{testimonial.content.es.location}</p>
-                    <p className="text-xs text-vidaia-primary font-medium mt-0.5">{testimonial.content.es.trip}</p>
+                    <p className="font-semibold text-vidaia-dark text-sm">{t.name}</p>
+                    <p className="text-xs text-gray-400">{t.location}</p>
+                    <p className="text-xs text-vidaia-primary font-medium mt-0.5">{t.trip}</p>
                   </div>
                 </div>
               </article>
-            );
+            )
           })}
         </div>
       </div>
     </section>
-  );
+  )
 }
