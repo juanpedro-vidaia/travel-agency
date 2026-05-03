@@ -6,16 +6,21 @@ import { getAllPosts, getFeaturedPost, getPostsByCategory, formatDate } from '@/
 import { CATEGORY_CONFIG, type PostCategory } from '@/lib/data/posts'
 import { getAsset } from '@/lib/data/assets'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
-
-export const metadata: Metadata = {
-  title: 'Blog de viajes — Viajes Vidaia',
-  description:
-    'Guías de viaje, consejos prácticos e inspiración para descubrir Argentina, Chile y Bolivia. Escritos por quienes los han recorrido de verdad.',
-}
+import { buildMetadata } from '@/lib/helpers/seo'
 
 interface Props {
   params: Promise<{ lang: string }>
   searchParams: Promise<{ category?: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params
+  return buildMetadata({
+    title: 'Blog de viajes — Viajes Vidaia',
+    description: 'Guías de viaje, consejos prácticos e inspiración para descubrir Argentina, Chile y Bolivia. Escritos por quienes los han recorrido de verdad.',
+    path: `/${lang}/blog`,
+    lang,
+  })
 }
 
 export function generateStaticParams() {

@@ -25,6 +25,33 @@
   }
 }
 
+/* Dual range slider — overlapping inputs share the same track */
+.dual-range-thumb {
+  pointer-events: none;
+}
+.dual-range-thumb::-webkit-slider-thumb {
+  pointer-events: all;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #5ea6ae; /* vidaia-primary */
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  cursor: pointer;
+}
+.dual-range-thumb::-moz-range-thumb {
+  pointer-events: all;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #5ea6ae;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  cursor: pointer;
+}
+
 /* FAB periodic pulse ring — subtle attention cue every ~8 seconds */
 @keyframes fab-ring {
   0%, 16%, 100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45); }

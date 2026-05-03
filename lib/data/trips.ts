@@ -80,6 +80,11 @@ export interface Trip {
   season?: TripSeason
   /** Future use — best months (1-12). */
   bestMonths?: number[]
+  /**
+   * Sort order for the /viajes grid (higher = first).
+   * Trips without a value are treated as 0.
+   */
+  ranking?: number
 }
 
 const trips: Trip[] = [
@@ -112,6 +117,7 @@ const trips: Trip[] = [
     ],
     honeymoonFeatured: true,
     bestMonths: [3, 4, 9, 10, 11],
+    ranking: 100,
   },
   {
     id: 'latitudes-australes',
@@ -136,6 +142,7 @@ const trips: Trip[] = [
     relatedTrips: [
       { slug: 'paisajes-naturales-argentina', es: { reason: 'Patagonia argentina con ballenas e Iguazú' } },
     ],
+    ranking: 90,
   },
   {
     id: 'patagonia-sur-a-norte',
@@ -160,6 +167,7 @@ const trips: Trip[] = [
     relatedTrips: [
       { slug: 'paisajes-naturales-argentina', es: { reason: 'Añade ballenas e Iguazú a la misma ruta' } },
     ],
+    ranking: 80,
   },
   {
     id: 'fin-de-ano-argentina',
@@ -186,6 +194,7 @@ const trips: Trip[] = [
     ],
     season: 'summer',
     bestMonths: [12, 1],
+    ranking: 40,
   },
   {
     id: 'argentina-esencial',
@@ -213,6 +222,7 @@ const trips: Trip[] = [
       { slug: 'contrastes-argentinos', es: { reason: 'Similar ruta norte-sur con más Patagonia' } },
     ],
     honeymoonFeatured: true,
+    ranking: 60,
   },
   {
     id: 'contrastes-argentinos',
@@ -237,6 +247,7 @@ const trips: Trip[] = [
     relatedTrips: [
       { slug: 'argentina-esencial', es: { reason: 'Misma esencia norte-sur con variante Patagonia' } },
     ],
+    ranking: 50,
   },
   // ── Chile ─────────────────────────────────────────────────────────────────────
   {
@@ -265,6 +276,7 @@ const trips: Trip[] = [
       { slug: 'esencias-chile-isla-pascua', es: { reason: 'Más Chile con el misterio de Isla de Pascua' } },
     ],
     honeymoonFeatured: true,
+    ranking: 70,
   },
   {
     id: 'esencias-chile-isla-pascua',
@@ -290,6 +302,7 @@ const trips: Trip[] = [
       { slug: 'paisajes-naturales-argentina', es: { reason: 'Combina con la Patagonia argentina' } },
       { slug: 'chile-bolivia-salares',        es: { reason: 'Amplía la ruta con el Salar de Uyuni' } },
     ],
+    ranking: 95,
   },
   // ── Bolivia ───────────────────────────────────────────────────────────────────
   // Añadir viajes de Bolivia aquí cuando estén disponibles.

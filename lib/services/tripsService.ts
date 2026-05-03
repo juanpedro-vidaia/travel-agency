@@ -24,6 +24,12 @@ export function getHoneymoonTrips(): Trip[] {
   return trips.filter(trip => trip.honeymoonFeatured && trip.active)
 }
 
+export function getActiveTrips(): Trip[] {
+  return trips
+    .filter(trip => trip.active)
+    .sort((a, b) => (b.ranking ?? 0) - (a.ranking ?? 0))
+}
+
 export function getRelatedTripsBySlug(slug: string): Trip[] {
   const trip = trips.find(t => t.slug === slug)
   if (!trip || !trip.relatedTrips.length) return []

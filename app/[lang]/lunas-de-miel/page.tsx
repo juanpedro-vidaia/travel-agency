@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Heart, Calendar } from 'lucide-react'
+import { ArrowRight, Heart } from 'lucide-react'
 import { getHoneymoonTrips } from '@/lib/services/tripsService'
 import HoneymoonFaq from '@/components/HoneymoonFaq'
+import TripCard from '@/components/TripCard'
 import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
+import { buildMetadata } from '@/lib/helpers/seo'
 import { getAsset } from '@/lib/data/assets'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import React from 'react'
@@ -16,10 +18,13 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
   const content = getStaticContent(lang)
-  return {
-    title: content.honeymoonPage.metadata.title,
-    description: content.honeymoonPage.metadata.description,
-  }
+  const { metadata } = content.honeymoonPage
+  return buildMetadata({
+    title: metadata.title,
+    description: metadata.description,
+    path: `/${lang}/lunas-de-miel`,
+    lang,
+  })
 }
 
 export function generateStaticParams() {
@@ -182,48 +187,19 @@ export default async function LunasDeMielPage({ params }: Props) {
               {content.honeymoonIdeas.subtitle}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {honeymoonTrips.map((trip) => {
-                const tc = (trip.content[lang as keyof typeof trip.content] ?? trip.content.es)
-                const displayTitle = tc.honeymoonTitle ?? tc.title
-                const displayTagline = tc.honeymoonTagline ?? tc.subtitle
-                const infoHref = `/${lang}/presupuesto-itinerario?titulo=${encodeURIComponent(displayTitle)}`
-                const itineraryHref = `/${lang}/itinerarios/${trip.slug}`
-                const tripImage = getAsset(trip.imageKey)
-
-                return (
-                  <article key={trip.id} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col">
-                    <div className="relative h-52 overflow-hidden">
-                      <Image
-                        src={tripImage.url}
-                        alt={displayTitle}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                      <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
-                        <Calendar className="w-3 h-3" />
-                        {trip.days} {ui.labels.days}
-                      </span>
-                    </div>
-                    <div className="p-5 flex flex-col flex-1">
-                      <p className="text-xs text-vidaia-earth font-medium mb-1.5">{displayTagline}</p>
-                      <h3 className="font-heading font-bold text-vidaia-dark text-base leading-snug mb-5 flex-1">{displayTitle}</h3>
-                      <div className="flex flex-col gap-2 mt-auto pt-3 border-t border-vidaia-light/60">
-                        {trip.hasItinerary && (
-                          <Link href={itineraryHref} className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-vidaia-primary hover:bg-vidaia-dark text-white transition-colors">
-                            {ui.buttons.itinerary}
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        )}
-                        <Link href={infoHref} className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-vidaia-earth hover:bg-vidaia-brown text-white transition-colors">
-                          {ui.buttons.requestInfo}
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
-                      </div>
-                    </div>
-                  </article>
-                )
-              })}
+              {honeymoonTrips.map((trip) => (
+                <TripCard
+                  key={trip.id}
+                  trip={trip}
+                  lang={lang}
+                  strings={{
+                    variant: 'honeymoon',
+                    daysLabel: ui.labels.days,
+                    itineraryLabel: ui.buttons.itinerary,
+                    requestInfoLabel: ui.buttons.requestInfo,
+                  }}
+                />
+              ))}
             </div>
           </div>
         </section>

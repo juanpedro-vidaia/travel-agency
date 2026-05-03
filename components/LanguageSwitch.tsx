@@ -3,6 +3,26 @@
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { LANGUAGES_CONFIG, getEnabledLanguages } from '@/lib/config/languages.config'
 
+// Maps language code → flagcdn.com country code (Windows doesn't render flag emojis)
+const LANG_FLAG_CODES: Record<string, string> = {
+  es: 'es',
+  en: 'gb',
+  cat: 'es-ct',
+}
+
+function FlagImg({ langCode, alt }: { langCode: string; alt: string }) {
+  const code = LANG_FLAG_CODES[langCode] ?? langCode
+  return (
+    <img
+      src={`https://flagcdn.com/20x15/${code}.png`}
+      alt={alt}
+      width={20}
+      height={15}
+      className="rounded-sm inline-block flex-shrink-0"
+    />
+  )
+}
+
 export default function LanguageSwitch() {
   const { language, setLanguage } = useLanguage()
   const allLanguages = Object.values(LANGUAGES_CONFIG)
@@ -15,9 +35,10 @@ export default function LanguageSwitch() {
     return (
       <span
         title={current.nativeName}
-        className="px-2.5 py-1 rounded-full text-xs font-semibold bg-vidaia-primary text-white select-none"
+        className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-vidaia-primary text-white select-none"
       >
-        {current.flag} {current.code.toUpperCase()}
+        <FlagImg langCode={current.code} alt={current.nativeName} />
+        {current.code.toUpperCase()}
       </span>
     )
   }
@@ -35,7 +56,7 @@ export default function LanguageSwitch() {
             onClick={() => isEnabled ? setLanguage(lang.code) : undefined}
             title={isEnabled ? lang.nativeName : `${lang.nativeName} — próximamente`}
             disabled={!isEnabled}
-            className={`px-2.5 py-1 rounded-full text-xs font-semibold transition-colors ${
+            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold transition-colors ${
               isActive
                 ? 'bg-vidaia-primary text-white'
                 : isEnabled
@@ -43,7 +64,8 @@ export default function LanguageSwitch() {
                   : 'text-vidaia-charcoal/25 cursor-not-allowed'
             }`}
           >
-            {lang.flag} {lang.code.toUpperCase()}
+            <FlagImg langCode={lang.code} alt={lang.nativeName} />
+            {lang.code.toUpperCase()}
           </button>
         )
       })}

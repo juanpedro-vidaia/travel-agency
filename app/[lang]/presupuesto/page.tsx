@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import PresupuestoForm from '@/components/PresupuestoForm'
 import { getStaticContent } from '@/lib/helpers/contentHelpers'
+import { buildMetadata } from '@/lib/helpers/seo'
 import { getAsset } from '@/lib/data/assets'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import React from 'react'
@@ -13,10 +14,13 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
   const content = getStaticContent(lang)
-  return {
-    title: content.quotePage.metadata.title,
-    description: content.quotePage.metadata.description,
-  }
+  const { metadata } = content.quotePage
+  return buildMetadata({
+    title: metadata.title,
+    description: metadata.description,
+    path: `/${lang}/presupuesto`,
+    lang,
+  })
 }
 
 export function generateStaticParams() {

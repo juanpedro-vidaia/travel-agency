@@ -41,6 +41,11 @@ export const ASSETS = {
   'TRIPS.CHILE_BOLIVIA_SALARES':      { url: 'https://images.unsplash.com/photo-1573502059387-0848782c6956?q=80&w=800',                       alt: 'Chile y Bolivia: salares y desierto' },
   'TRIPS.CHILE_ISLA_PASCUA':          { url: 'https://images.unsplash.com/photo-1600754047212-0cf91397fbc6?q=80&w=800',                       alt: 'Chile e Isla de Pascua' },
 
+  // ── Viajes hero carousel ─────────────────────────────────────────────────────
+  'VIAJES_HERO_CHILE':     { url: 'https://images.unsplash.com/photo-1558518986-a7def81b3b73?q=80&w=1920', alt: 'Torres del Paine, Chile' },
+  'VIAJES_HERO_ARGENTINA': { url: 'https://images.unsplash.com/photo-1615656637621-5aa19f1ef847?q=80&w=1920', alt: 'Perito Moreno, Argentina' },
+  'VIAJES_HERO_BOLIVIA':   { url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1920', alt: 'Salar de Uyuni, Bolivia' },
+
   // ── Blog posts ────────────────────────────────────────────────────────────────
   'BLOG.MATE_ARGENTINA':          { url: 'https://images.unsplash.com/photo-1523642456391-c597480dbdb6?auto=format&fit=crop&w=1200&q=80', alt: 'Mate argentino' },
   'BLOG.ATACAMA_CHILE':           { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg',          alt: 'Desierto de Atacama, Chile' },

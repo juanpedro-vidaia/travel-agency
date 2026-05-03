@@ -337,6 +337,92 @@ export const STATIC_CONTENT = {
       },
       title: 'Aviso Legal',
     },
+    viajesPage: {
+      metadata: {
+        title: 'Viajes a Sudamérica a medida | Viajes Vidaia',
+        description:
+          'Viajes personalizados a Argentina, Chile y Bolivia. Diseñamos cada itinerario desde cero adaptado a tus gustos, fechas y presupuesto. Sin paquetes estándar.',
+      },
+      hero: {
+        overline: 'Argentina · Chile · Bolivia',
+        title: 'Viajes Vidaia',
+        subtitle: 'Si sueñas con viajar a nuestros destinos Vidaia de América del Sur pero no sabes por dónde empezar, nosotros te ayudamos.',
+        ctaPrimary: 'Solicitar viaje a medida',
+        ctaSecondary: 'Buscar viajes',
+        slides: [
+          { imageKey: 'VIAJES_HERO_CHILE',     location: 'Torres del Paine, Chile' },
+          { imageKey: 'VIAJES_HERO_ARGENTINA', location: 'Perito Moreno, Argentina' },
+          { imageKey: 'VIAJES_HERO_BOLIVIA',   location: 'Salar de Uyuni, Bolivia' },
+        ],
+      },
+      servicios: {
+        // TODO: revisar copy — pendiente de redacción definitiva
+        missionTitle: 'Nuestra misión',
+        missionText:
+          'Nuestra misión es hacer realidad el viaje ideal de cada persona. Somos una agencia boutique especializada en Sudamérica: conocemos los destinos desde adentro, hemos recorrido cada ruta que ofrecemos y ponemos ese conocimiento al servicio de tu aventura.',
+        cardsTitle: '¿Por qué viajar con Vidaia?',
+        cards: [
+          {
+            emoji: '🧭',
+            title: 'Planificación personalizada',
+            description:
+              'Cada viaje será único y exclusivo pensando siempre en tus necesidades, gustos y preferencias.',
+          },
+          {
+            emoji: '⭐',
+            title: 'Excelencia e innovación',
+            description:
+              'Amplio conocimiento especializado en los destinos que ofrecemos y acceso a destinos exclusivos. Búsqueda continua de nuevos destinos.',
+          },
+          {
+            emoji: '🤝',
+            title: 'Compromiso y mejora continua',
+            description:
+              'Asesoramiento profesional y soporte continuo a nuestros clientes. Aprendemos de nuestros clientes.',
+          },
+        ],
+      },
+      buscador: {
+        searchPlaceholder: 'Buscar por destino, duración, actividad…',
+        advancedFilters: 'Filtros avanzados',
+        resetFilters: 'Limpiar filtros',
+        durationLabel: 'Duración (días)',
+        destinationsLabel: 'Destinos',
+        tagsLabel: 'Tipo de viaje',
+        budgetLabel: 'Presupuesto (desde)',
+        resultsCount: '{count} viaje encontrado',
+        resultsCountPlural: '{count} viajes encontrados',
+        emptyTitle: 'No hemos encontrado viajes con esos criterios',
+        emptyDescription: '¿No ves lo que buscas? Diseñamos cualquier ruta a medida para ti.',
+        emptyCta: 'Solicitar presupuesto a medida',
+      },
+      comoTrabajamos: {
+        title: '¿Cómo trabajamos?',
+        subtitle: 'Solicita tu presupuesto o agenda una llamada con nosotros y nos encargamos del resto.',
+        steps: [
+          {
+            title: '¡Nuestra primera cita!',
+            description:
+              'Una vez que recibimos tu solicitud, la estudiaremos y tendremos una reunión online de 30 minutos contigo para conocerte mejor. Queremos entender qué es lo que te hace feliz cuando viajas, tus imprescindibles, tu presupuesto, la duración de tu viaje, etc. Al ser nuestra primera cita, nos tenemos que conocer. El objetivo es entender tus necesidades y que nos conozcas. Si te gusta nuestra manera de trabajar pasaremos a la siguiente fase.',
+          },
+          {
+            title: 'Segunda ronda, ¡empieza la magia!',
+            description:
+              'Ya te conocemos y hemos entendido tu viaje soñado, así que ahora nos toca a nosotros. En una semana, te pasaremos una propuesta de viaje con un presupuesto por persona, además del itinerario día a día con alojamientos y actividades.',
+          },
+          {
+            title: 'La hora de decidir, ¿te hemos conquistado?',
+            description:
+              'Si la propuesta te encaja, revisamos contigo aquellos aspectos del viaje que quieras mejorar, te asesoramos para cerrar un viaje único adaptado completamente a tus deseos. Cuando cerremos el plan te enviaremos el contrato del viaje combinado con el itinerario acordado y el calendario de pagos. Nuestro equipo de soporte trabajará en las reservas para hacer realidad el viaje.',
+          },
+          {
+            title: 'La mejor parte de todas…',
+            description:
+              'Ya tienes los billetes, te hemos entregado la ruta, se han reservado las excursiones, los alojamientos y ahora sólo queda lo mejor de todo: ¡que disfrutes de tu viaje por Argentina, Chile, Bolivia o el próximo destino Vidaia que diseñemos juntos!',
+          },
+        ],
+      },
+    },
     destinationPage: {
       hero: {
         taglineTemplate: 'Viajes Vidaia · {country}',

@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, Calendar } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { getTripsByCountry } from '@/lib/services/tripsService'
 import { getCountryBySlug, getCountries } from '@/lib/services/countriesService'
-import { TAG_CONFIG } from '@/lib/data/trips'
+import TripCard from '@/components/TripCard'
 import { getStaticContent } from '@/lib/helpers/contentHelpers'
+import { buildMetadata } from '@/lib/helpers/seo'
 import { getAsset } from '@/lib/data/assets'
-import { renderTemplate, formatPrice } from '@/lib/helpers/contentHelpers'
+import { renderTemplate } from '@/lib/helpers/contentHelpers'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 
 interface Props {
@@ -16,13 +17,16 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
+  const { lang, slug } = await params
   const country = getCountryBySlug(slug)
   if (!country) return {}
-  return {
-    title: country.content.es.metaTitle,
-    description: country.content.es.metaDescription,
-  }
+  const c = (country.content[lang as keyof typeof country.content] ?? country.content.es)
+  return buildMetadata({
+    title: c.metaTitle,
+    description: c.metaDescription,
+    path: `/${lang}/destinos/${slug}`,
+    lang,
+  })
 }
 
 export function generateStaticParams() {
@@ -84,63 +88,20 @@ export default async function CountryPage({ params }: Props) {
             <p className="text-center text-vidaia-charcoal/55 text-sm mb-14">{content.section.subtitle}</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {trips.map((trip) => {
-                const tripT = (trip.content[lang as keyof typeof trip.content] ?? trip.content.es)
-                const tripTitle = tripT.title
-                const tripSubtitle = tripT.subtitle
-                const tripImage = getAsset(trip.imageKey)
-                const cta = trip.hasItinerary ? content.tripCard.ctaHasItinerary : content.tripCard.ctaNoItinerary
-                const href = trip.hasItinerary
-                  ? `/${lang}/itinerarios/${trip.slug}`
-                  : `/${lang}/presupuesto-itinerario?titulo=${encodeURIComponent(tripTitle)}&subtitulo=${encodeURIComponent(tripSubtitle)}`
-
-                return (
-                  <article key={trip.id} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col">
-                    <div className="relative h-52 overflow-hidden">
-                      <Image
-                        src={tripImage.url}
-                        alt={tripImage.alt}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                      <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
-                        <Calendar className="w-3 h-3" />
-                        {renderTemplate(content.tripCard.durationTemplate, { days: trip.days, nights: trip.nights })}
-                      </span>
-                    </div>
-                    <div className="p-5 flex flex-col flex-1">
-                      <p className="text-xs text-vidaia-charcoal/50 mb-2 leading-snug">{tripSubtitle}</p>
-                      <h3 className="font-heading font-bold text-vidaia-dark text-base leading-snug mb-3">{tripTitle}</h3>
-                      {trip.tags && trip.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 mb-3">
-                          {trip.tags.slice(0, 3).map(tag => (
-                            <span key={tag} className="text-xs bg-vidaia-light text-vidaia-dark px-2 py-0.5 rounded-full">
-                              {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].es.label}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      <div className="flex items-center justify-between mt-auto pt-3 border-t border-vidaia-light/60">
-                        <span className="text-vidaia-primary font-bold text-base">
-                          {renderTemplate(content.tripCard.priceTemplate, { price: formatPrice(trip.priceFrom) })}
-                        </span>
-                        <Link
-                          href={href}
-                          className={`inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full transition-colors ${
-                            trip.hasItinerary
-                              ? 'bg-vidaia-primary hover:bg-vidaia-dark text-white'
-                              : 'bg-vidaia-earth hover:bg-vidaia-brown text-white'
-                          }`}
-                        >
-                          {cta}
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
-                      </div>
-                    </div>
-                  </article>
-                )
-              })}
+              {trips.map((trip) => (
+                <TripCard
+                  key={trip.id}
+                  trip={trip}
+                  lang={lang}
+                  strings={{
+                    variant: 'default',
+                    durationTemplate: content.tripCard.durationTemplate,
+                    priceTemplate: content.tripCard.priceTemplate,
+                    ctaHasItinerary: content.tripCard.ctaHasItinerary,
+                    ctaNoItinerary: content.tripCard.ctaNoItinerary,
+                  }}
+                />
+              ))}
             </div>
           </div>
         </section>
