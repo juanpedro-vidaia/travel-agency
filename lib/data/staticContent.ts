@@ -22,7 +22,11 @@ export const COMMON_UI = {
       optional: 'Opcional',
       minutes: 'min',
       backToHome: 'Volver al inicio',
-    }
+    },
+    map: {
+      title: 'Recorrido en el mapa',
+      subtitle: 'Haz clic en cada destino para ver los detalles de la estancia',
+    },
   },
   en: {
     buttons: {
@@ -47,7 +51,11 @@ export const COMMON_UI = {
       optional: 'Optional',
       minutes: 'min',
       backToHome: 'Back to home',
-    }
+    },
+    map: {
+      title: 'Route on the map',
+      subtitle: 'Click on each destination to see the stay details',
+    },
   }
 }
 

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useMemo } from 'react'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import LangLink from '@/components/LangLink'
 import {
@@ -30,6 +31,8 @@ import { getDestinationById } from '@/lib/services/destinationsService'
 import { getAsset } from '@/lib/data/assets'
 import { formatPrice, renderTemplate } from '@/lib/helpers/contentHelpers'
 import { useLanguage } from '@/lib/hooks/useLanguage'
+
+const ItineraryMap = dynamic(() => import('@/components/ItineraryMap'), { ssr: false })
 
 const OPTIONAL_ICONS: Record<string, LucideIcon> = {
   'cataratas-brasilenas':         Waves,
@@ -437,6 +440,23 @@ export default function ItineraryContent({ slug }: { slug: string }) {
               )
             })}
           </div>
+        </div>
+      </section>
+
+      {/* ── MAPA DEL ITINERARIO ───────────────────────────────────────────────── */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
+            {ui.map.title}
+          </h2>
+          <p className="text-center text-vidaia-charcoal/55 text-sm mb-8">
+            {ui.map.subtitle}
+          </p>
+          <ItineraryMap
+            accommodationStops={itinerary.accommodationStops}
+            nightLabel={content.labels.night}
+            nightsLabel={content.labels.nights}
+          />
         </div>
       </section>
 

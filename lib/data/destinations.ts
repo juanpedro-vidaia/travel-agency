@@ -15,6 +15,8 @@ export interface Destination {
   }
   imageKey: string
   active: boolean
+  lat?: number
+  lng?: number
 }
 
 const destinations: Destination[] = [
@@ -31,6 +33,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.BUENOS_AIRES',
     active: true,
+    lat: -34.6037,
+    lng: -58.3816,
   },
   {
     id: 'iguazu',
@@ -44,6 +48,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.IGUAZU',
     active: true,
+    lat: -25.6953,
+    lng: -54.4367,
   },
   {
     id: 'peninsula-valdes',
@@ -57,6 +63,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.PENINSULA_VALDES',
     active: true,
+    lat: -42.4286,
+    lng: -63.6028,
   },
   {
     id: 'puerto-madryn',
@@ -70,6 +78,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.PUERTO_MADRYN',
     active: true,
+    lat: -42.7682,
+    lng: -65.0333,
   },
   {
     id: 'el-calafate',
@@ -83,6 +93,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.EL_CALAFATE',
     active: true,
+    lat: -50.3379,
+    lng: -72.2648,
   },
   {
     id: 'ushuaia',
@@ -96,6 +108,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.USHUAIA',
     active: true,
+    lat: -54.8019,
+    lng: -68.3030,
   },
   {
     id: 'salta',
@@ -109,6 +123,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.SALTA',
     active: true,
+    lat: -24.7884,
+    lng: -65.4116,
   },
   {
     id: 'jujuy',
@@ -122,6 +138,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.JUJUY',
     active: true,
+    lat: -24.1858,
+    lng: -65.2995,
   },
   // ── Chile ────────────────────────────────────────────────────────────────────
   {
@@ -136,6 +154,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.TORRES_DEL_PAINE',
     active: true,
+    lat: -51.0,
+    lng: -73.0,
   },
   {
     id: 'atacama',
@@ -149,6 +169,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.ATACAMA',
     active: false,
+    lat: -23.5,
+    lng: -68.0,
   },
   {
     id: 'santiago-chile',
@@ -162,6 +184,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.SANTIAGO',
     active: true,
+    lat: -33.4569,
+    lng: -70.6483,
   },
   {
     id: 'san-pedro-atacama',
@@ -175,6 +199,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.SAN_PEDRO_ATACAMA',
     active: true,
+    lat: -22.9087,
+    lng: -68.2003,
   },
   {
     id: 'isla-pascua',
@@ -188,6 +214,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.ISLA_PASCUA',
     active: true,
+    lat: -27.1127,
+    lng: -109.3497,
   },
   // ── Bolivia ──────────────────────────────────────────────────────────────────
   {
@@ -202,6 +230,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.UYUNI',
     active: false,
+    lat: -20.1338,
+    lng: -67.4891,
   },
   {
     id: 'la-paz',
@@ -215,6 +245,8 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.LA_PAZ',
     active: false,
+    lat: -16.4897,
+    lng: -68.1193,
   },
 ]
 
