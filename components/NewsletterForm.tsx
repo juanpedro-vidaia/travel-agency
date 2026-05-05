@@ -56,6 +56,8 @@ export default function NewsletterForm() {
           <label className="block text-sm font-medium text-vidaia-dark mb-1.5">Nombre</label>
           <input
             type="text"
+            id="first-name"
+            name="first-name"
             required
             value={form.first_name}
             onChange={(e) => setForm((f) => ({ ...f, first_name: e.target.value }))}
@@ -67,6 +69,8 @@ export default function NewsletterForm() {
           <label className="block text-sm font-medium text-vidaia-dark mb-1.5">Apellido</label>
           <input
             type="text"
+            id="last-name"
+            name="last-name"
             required
             value={form.last_name}
             onChange={(e) => setForm((f) => ({ ...f, last_name: e.target.value }))}
@@ -83,6 +87,8 @@ export default function NewsletterForm() {
         </label>
         <input
           type="email"
+          id="email"
+          name="email"
           required
           value={form.email}
           onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
