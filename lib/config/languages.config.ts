@@ -37,17 +37,27 @@ export const LANGUAGES_CONFIG: Record<string, LanguageConfig> = {
   //   flag: '🇬🇧',
   //   enabled: false,
   //   default: false,
-  //   locale: 'en-US',
+  //   locale: 'en-GB',
   // },
 
+    // en: {
+  //   code: 'fr',
+  //   name: 'Français',
+  //   nativeName: 'Français',
+  //   flag: '🇫🇷',
+  //   enabled: false,
+  //   default: false,
+  //   locale: 'fr-FR',
+  // },
+  
   // cat: {
   //   code: 'cat',
   //   name: 'Català',
   //   nativeName: 'Català',
-  //   flag: '🏴',
+  //   flag: '🏴󠁥󠁳󠁣󠁴󠁿',
   //   enabled: false,
   //   default: false,
-  //   locale: 'ca-ES',
+  //   locale: 'cat-CAT',
   // },
 }
 

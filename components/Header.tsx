@@ -48,7 +48,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm py-3' : 'bg-transparent py-5'
+        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm py-4' : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -59,7 +59,7 @@ export default function Header() {
             alt={logoAsset.alt}
             width={160}
             height={44}
-            className="h-10 w-auto object-contain"
+            className="h-12 md:h-16 w-auto object-contain"
             priority
           />
         </LangLink>

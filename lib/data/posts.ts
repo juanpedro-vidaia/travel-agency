@@ -56,8 +56,7 @@ const posts: Post[] = [
     content: {
       es: {
         title: 'El mate, alma y tradición de Argentina.',
-        excerpt:
-          'Más que una bebida, una forma de vida. Te contamos la historia, los rituales y los secretos de la infusión que une a los argentinos.',
+        excerpt: 'Más que una bebida, una forma de vida. Te contamos la historia, los rituales y los secretos de la infusión que une a los argentinos.',
         content: `El mate es mucho más que una bebida en Argentina; es un ritual, una tradición y un símbolo de identidad nacional. Desde el norte hasta el sur del país, el mate se comparte entre amigos y familiares, creando lazos y fortaleciendo relaciones. Esta infusión de yerba mate, servida en una calabaza y bebida a través de una bombilla, es tan común en Argentina que resulta imposible imaginar la vida cotidiana sin ella.
 
 Aunque Uruguay y Paraguay también tienen una profunda relación con el mate, en este artículo nos centraremos en su papel en la cultura argentina y exploraremos su historia, cómo se prepara, los tipos de mate, su significado social y sus beneficios para la salud.
@@ -134,8 +133,7 @@ El mate es, sin lugar a dudas, un símbolo de identidad en Argentina. Más allá
 Con sus múltiples beneficios para la salud y su capacidad para unir a las personas, **el mate sigue siendo una costumbre arraigada que acompaña a los argentinos en su vida cotidiana**, manteniendo viva una tradición que trasciende generaciones.`,
         imageAlt: 'Foto de Jorge Zapata en Unsplash',
         metaTitle: 'El mate, alma y tradición de Argentina. — Viajes Vidaia',
-        metaDescription:
-          'Descubre la cultura del mate en Argentina: su historia desde los guaraníes, cómo se prepara, los tipos de yerba y el ritual de compartirlo. Una tradición que define la identidad argentina.',
+        metaDescription: 'Descubre la cultura del mate en Argentina: su historia desde los guaraníes, cómo se prepara, los tipos de yerba y el ritual de compartirlo. Una tradición que define la identidad argentina.',
       }
     },
     imageKey: 'BLOG.MATE_ARGENTINA',
@@ -152,8 +150,7 @@ Con sus múltiples beneficios para la salud y su capacidad para unir a las perso
     content: {
       es: {
         title: 'Viaje a Chile: el desierto de Atacama',
-        excerpt:
-          'El desierto de Atacama, uno de los lugares más extremos y fascinantes del planeta, combina paisajes únicos, leyendas ancestrales y escenarios que parecen de otro mundo. Un destino imprescindible en Chile para quienes buscan naturaleza, misterio y aventura.',
+        excerpt: 'El desierto de Atacama, uno de los lugares más extremos y fascinantes del planeta, combina paisajes únicos, leyendas ancestrales y escenarios que parecen de otro mundo. Un destino imprescindible en Chile para quienes buscan naturaleza, misterio y aventura.',
         content: `¿Sabes que Atacama es tan especial que hasta la NASA lo utiliza para probar sus instrumentos para las misiones en Marte?
 
 Atacama no es solo un desierto, es uno de los lugares más áridos del planeta, es una de las mayores fuentes naturales de nitrato de sodio, el desierto de niebla más grande del mundo y por supuesto es un lugar mágico que merece la pena visitar.
@@ -183,8 +180,7 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
 ¿De verdad te vas a quedar sin visitarlo?`,
         imageAlt: 'Laguna Miscanti en el Desierto de Atacama, Chile',
         metaTitle: 'Viaje al Desierto de Atacama (Chile) — Guía completa | Viajes Vidaia',
-        metaDescription:
-          'Descubre el Desierto de Atacama: lagunas altiplánicas, geysers del Tatio, Valle de la Luna y sus leyendas. Consejos prácticos y todo lo necesario para organizar tu viaje.'  
+        metaDescription: 'Descubre el Desierto de Atacama: lagunas altiplánicas, geysers del Tatio, Valle de la Luna y sus leyendas. Consejos prácticos y todo lo necesario para organizar tu viaje.',
       }
     },
     imageKey: 'BLOG.ATACAMA_CHILE',
@@ -197,17 +193,70 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
     relatedTripSlugs: ['chile-bolivia-salares'],
   },
   {
+    slug: 'carretera-austral-chile',
+    content: {
+      es: {
+        title: 'Carretera Austral: Un recorrido imprescindible por la Patagonia chilena',
+        excerpt: 'La Carretera Austral recorre más de 1.200 km entre Puerto Montt y Villa O’Higgins, atravesando algunos de los paisajes más salvajes de la Patagonia. Glaciares, fiordos y lugares únicos como las Catedrales de Mármol la convierten en una ruta imprescindible para los amantes de la aventura.',
+        content: `La región de la Patagonia chilena es una de las áreas más remotas y salvajes del mundo. Durante siglos, su acceso fue casi imposible debido a la presencia de densos bosques, fiordos, ríos caudalosos y campos de hielo, que dificultaban la conexión entre sus comunidades. Los primeros habitantes de esta zona fueron los pueblos originarios **Chonos, Kawésqar y Tehuelches**, quienes se adaptaron a la vida nómada, navegando por los fiordos y sobreviviendo en un entorno hostil.
+
+A partir de la **segunda mitad del siglo XIX**, se inició la colonización europea, con la llegada de colonos europeos (principalmente alemanes) que buscaban aprovechar los recursos naturales de la región, especialmente la madera y la ganadería ovina. Las estancias ganaderas comenzaron a poblar los valles, mientras que los navegantes exploraban los canales y fiordos. Las comunidades estaban separadas por ríos, lagos y montañas, y el único acceso posible era por vía marítima o aérea. Fue así como surgió la necesidad de una carretera que uniera el corazón de la Patagonia con el resto de Chile.
+
+Su creación se impulsó durante la dictadura militar de **Augusto Pinochet**, bajo la dirección del **Cuerpo Militar del Trabajo (CMT)**, una división del ejército chileno. La obra comenzó en **1976** y se extendió por más de dos décadas. Fue un verdadero desafío de ingeniería, ya que la construcción tuvo que enfrentar terrenos escarpados, densos bosques, ríos de gran caudal y condiciones climáticas extremas, con lluvias constantes, nevadas y terrenos inestables. No había maquinaria moderna ni tecnología avanzada para abrir caminos; gran parte del trabajo se realizó de forma manual, con explosivos.
+
+> La vía conecta la localidad de **Puerto Montt**, en la región de Los Lagos, con la localidad de **Villa O’Higgins**, en la región de Aysén. Su extensión total supera los **1,240 kilómetros**, y su recorrido atraviesa paisajes de ensueño, que incluyen fiordos, lagos, glaciares, bosques y montañas.
+
+A lo largo de los años, la Carretera Austral ha sido constantemente ampliada, modernizada y reparada. En la actualidad, algunos tramos son de ripio y otros están asfaltados, pero la esencia aventurera de esta ruta se mantiene intacta.
+
+### Chaitén
+El volcán Chaitén hizo erupción en 2008, destruyendo gran parte del pueblo, pero la comunidad se levantó y reconstruyó el lugar. Hoy se ha convertido en un símbolo de resistencia. Se pueden realizar caminatas hacia el cráter del volcán para observar el impacto de la erupción.
+
+### Puyuhuapi: Termas y relajación patagónica
+Fundada por colonos alemanes, Puyuhuapi se ha convertido en un refugio de tranquilidad. Aquí, los visitantes pueden disfrutar de las termas naturales ubicadas a orillas del mar. Las aguas termales ofrecen la combinación perfecta de naturaleza y bienestar.
+
+### Catedrales de mármol: La Joya del Lago General Carrera
+Ubicadas en el Lago General Carrera, las Catedrales de Mármol son formaciones de roca calcárea esculpidas por la erosión del agua. Este fenómeno natural ha creado una serie de cuevas y pasadizos con tonos turquesas, blancos y azules. Navegar en kayak o en bote entre estas formaciones es una experiencia mágica.
+
+### Glaciar San Rafael: La inmensidad del hielo milenario
+El glaciar San Rafael es una de las maravillas naturales más impactantes de la Carretera Austral. Se accede a través de un recorrido en barco desde Puerto Chacabuco, donde podrás observar el imponente campo de hielo y los desprendimientos de hielo que caen a la laguna.
+
+### Ventisquero colgante: Un glaciar diferente
+A diferencia de los glaciares blancos y azulados, el Ventisquero Colgante se distingue por sus tonos oscuros debido a la mezcla de sedimentos y tierra. Este glaciar se encuentra en el Parque Nacional Queulat, y para llegar a él, se debe hacer una caminata por un sendero rodeado de frondosa vegetación.
+
+### Chile Chico: La Ciudad del Sol de la Patagonia
+Conocida como la «Ciudad del Sol», Chile Chico tiene un microclima más cálido en comparación con el resto de la Patagonia. Desde aquí se puede acceder a la Reserva Nacional Jeinimeni, que cuenta con paisajes desérticos, formaciones rocosas y la icónica Cueva de las Manos, famosa por sus pinturas rupestres prehistóricas.
+
+### Trekking de Cerro Castillo: La joya del senderismo patagónico
+El trekking del Parque Nacional de Cerro Castillo se ha ganado la fama de ser una de las rutas de trekking más desafiantes y espectaculares de la Patagonia. Su imponente forma de castillo de piedra se alza entre glaciares y lagunas turquesas.
+
+### Caleta Tortel: La Ciudad de Pasarelas
+Caleta Tortel es única en el mundo por su sistema de pasarelas de madera que conectan cada rincón del pueblo. No hay calles ni autos, solo senderos elevados de madera que permiten recorrer esta pintoresca localidad enclavada entre fiordos y bosques.
+
+> La Carretera Austral es mucho más que una carretera; es un testimonio de la historia, la naturaleza y la perseverancia humana. Conectando algunos de los paisajes más remotos y asombrosos de la Patagonia, esta ruta es un viaje que todo amante de la aventura debe realizar al menos una vez en la vida. ¿Te animas a recorrer la Carretera Austral en coche o en bicicleta? Empaca tu mochila, prepárate para la aventura y descubre por qué esta ruta es uno de los tesoros más valiosos de Chile.`,
+        imageAlt: 'Catedrales de Marmol en el Lago General Carrera, Chile',
+        metaTitle: 'Viaje a la Carretera Austral de Chile — Guía completa | Viajes Vidaia',
+        metaDescription: 'Descubre la Carretera Austral en Chile: Caleta Tortel, Catedrales de Marmol, Trekking de Cerro Castillo, Glaciar San Rafael, Ventisquero Colgante en Queulat, Puyuhapi, Coyahique y Chaiten. Consejos prácticos y todo lo necesario para organizar tu viaje.',
+      }
+    },
+    imageKey: 'BLOG.CARRETERA_AUSTRAL',
+    date: '2024-12-12',
+    category: 'chile',
+    tags: ['carretera austral', 'chile', 'catedrales de marmol', 'glaciar san rafael', 'trekking cerro castillo'],
+    readingTime: 7,
+    featured: true,
+    active: true,
+    relatedTripSlugs: ['latitudes-australes'],
+  },
+  {
     slug: 'patagonia-argentina-w-circuit',
     content: {
       es: {
         title: 'W Circuit en Torres del Paine: todo lo que necesitas saber',
-        excerpt:
-          'Uno de los trekkings más míticos del planeta. Campamentos, refugios, el Glaciar Grey y esas torres que emergen entre nubes. Paso a paso.',
-        content: '',
+        excerpt: 'Uno de los trekkings más míticos del planeta. Campamentos, refugios, el Glaciar Grey y esas torres que emergen entre nubes. Paso a paso.',
+        content: ``,
         imageAlt: 'Torres del Paine, Patagonia',
         metaTitle: 'Circuito W Torres del Paine: guía paso a paso — Viajes Vidaia',
-        metaDescription:
-          'Cómo hacer el Circuito W en Torres del Paine: campamentos, refugios, cuánto cuesta, cuándo ir y cómo reservar. La guía más completa en español.',
+        metaDescription: 'Cómo hacer el Circuito W en Torres del Paine: campamentos, refugios, cuánto cuesta, cuándo ir y cómo reservar. La guía más completa en español.',
       }
     },
     imageKey: 'BLOG.PATAGONIA_W_CIRCUIT',
@@ -224,13 +273,11 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
     content: {
       es: {
         title: 'Buenos Aires por primera vez: el barrio a barrio que te falta leer',
-        excerpt:
-          'Palermo, San Telmo, La Boca, Recoleta… Buenos Aires no se entiende sin sus barrios. Aquí va el mapa mental que necesitas antes de aterrizar.',
-        content: '',
+        excerpt: 'Palermo, San Telmo, La Boca, Recoleta… Buenos Aires no se entiende sin sus barrios. Aquí va el mapa mental que necesitas antes de aterrizar.',
+        content: ``,
         imageAlt: 'Buenos Aires, Argentina',
         metaTitle: 'Buenos Aires por primera vez: guía de barrios — Viajes Vidaia',
-        metaDescription:
-          'De Palermo a San Telmo: cómo orientarte en Buenos Aires, qué ver en cada barrio, dónde comer y los errores que no debes cometer en tu primera visita.',
+        metaDescription: 'De Palermo a San Telmo: cómo orientarte en Buenos Aires, qué ver en cada barrio, dónde comer y los errores que no debes cometer en tu primera visita.',
       }
     },
     imageKey: 'BLOG.BUENOS_AIRES_FIRST_TIME',
@@ -247,13 +294,11 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
     content: {
       es: {
         title: 'Luna de miel en Patagonia: romanticismo en el fin del mundo',
-        excerpt:
-          'Pocos escenarios en el mundo combinan tanta grandeza con tanta intimidad. Te contamos cómo organizar una luna de miel que jamás olvidaréis.',
-        content: '',
+        excerpt: 'Pocos escenarios en el mundo combinan tanta grandeza con tanta intimidad. Te contamos cómo organizar una luna de miel que jamás olvidaréis.',
+        content: ``,
         imageAlt: 'Patagonia al atardecer',
         metaTitle: 'Luna de miel en Patagonia: guía romántica — Viajes Vidaia',
-        metaDescription:
-          'Glaciares, lagos y silencio. Todo lo que necesitas para planificar una luna de miel inolvidable en la Patagonia argentina y chilena.',
+        metaDescription: 'Glaciares, lagos y silencio. Todo lo que necesitas para planificar una luna de miel inolvidable en la Patagonia argentina y chilena.',
       }
     },
     imageKey: 'BLOG.HONEYMOON_PATAGONIA',
@@ -270,13 +315,11 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
     content: {
       es: {
         title: 'Cuándo viajar a Argentina: mes a mes, destino a destino',
-        excerpt:
-          'Argentina es el país de los contrastes climáticos. Lo que es perfecto en Bariloche puede ser un infierno en Buenos Aires. Aquí te lo aclaramos todo.',
-        content: '',
+        excerpt: 'Argentina es el país de los contrastes climáticos. Lo que es perfecto en Bariloche puede ser un infierno en Buenos Aires. Aquí te lo aclaramos todo.',
+        content: ``,
         imageAlt: 'Patagonia argentina en otoño',
         metaTitle: 'Cuándo viajar a Argentina: guía mes a mes — Viajes Vidaia',
-        metaDescription:
-          'La mejor época para viajar a cada región de Argentina: Patagonia, Buenos Aires, Iguazú, Mendoza y el norte. Clima, temporadas y cuándo reservar.',
+        metaDescription: 'La mejor época para viajar a cada región de Argentina: Patagonia, Buenos Aires, Iguazú, Mendoza y el norte. Clima, temporadas y cuándo reservar.',
       }
     },
     imageKey: 'BLOG.BEST_TIME_ARGENTINA',
