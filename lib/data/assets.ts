@@ -47,6 +47,7 @@ export const ASSETS = {
   'VIAJES_HERO_BOLIVIA':   { url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1920', alt: 'Salar de Uyuni, Bolivia' },
 
   // ── Blog posts ────────────────────────────────────────────────────────────────
+  'BLOG.ENCUENTRO_IGUAZU':        { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777991216/IMG_1651_1_apzpg6.jpg', alt: 'Vista de las Cataratas del Iguazú desde un mirador del Lago Brasileño.' },
   'BLOG.MATE_ARGENTINA':          { url: 'https://images.unsplash.com/photo-1523642456391-c597480dbdb6?auto=format&fit=crop&w=1200&q=80', alt: 'Mate argentino' },
   'BLOG.ATACAMA_CHILE':           { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg', alt: 'Desierto de Atacama, Chile' },
   'BLOG.CARRETERA_AUSTRAL':       { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777938578/DSCF5578_2_ofnz1j.jpg', alt: 'Catedrales de Mármol en el Lago General Carrera, Chile' },

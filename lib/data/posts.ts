@@ -52,6 +52,53 @@ export interface Post {
 
 const posts: Post[] = [
   {
+    slug: 'nuestro-encuentro-en-iguazu',
+    content: {
+      es: {
+        title: 'Nuestro encuentro en Iguazú',
+        excerpt: 'Entre la majestuosidad de la Garganta del Diablo, anécdotas compartidas y el deseo de aventura, este encuentro no solo reforzó nuestra amistad, sino que sembró la semilla de lo que hoy conocemos como Viajes Vidaia.',
+        content: `Cuando decimos que **Argentina y Chile** son especiales para nosotros viene de lejos.
+
+Ya os hemos contado ese viaje de Laura por Argentina con un fin solidario, pero no os hemos contado que Jupe casualmente estaba allí viajando y viviendo en Argentina desde hacía unos meses y, claro, ¡aprovechamos esa oportunidad para vernos!
+
+## El encuentro según Laura…
+
+Yo tenía claro que como parte de mi corta estancia en Argentina quería ir a **Iguazú**, así que no dudé en llamar a Jupe para ver si podíamos coincidir! Jupe acababa de entrar a Argentina e iba a recorrer el norte del país. Resultó que tenía previsto pasar por Iguazú en fechas similares a las mías, y decidimos vernos y aprovechar a disfrutar de esa maravilla de entorno juntos.
+
+Fue un encuentro especial, no sólo por Iguazú como fondo natural si no porque Jupe llevaba mucho tiempo fuera de casa y era la primera persona que conocía previamente con la que coincidía en su viaje. Aún recuerdo el abrazo cuando nos vimos en el hotel 🙂 
+
+Los días siguientes fueron espectaculares, siempre recordaré ese bocata en frente de la garganta del diablo disfrutando de su majestuosidad, de su fuerza increíble y rodeados de los graciosos coatíes que no paraban de ofrecernos su compañía, o las risas en el hostal conociendo y tomando mate con nuevos amigos pero sobre todo ver a Jupe feliz, contándome sus anécdotas e imaginándome a mi misma en algún momento siendo tan valiente como él.
+
+Y qué decir de Iguazú… es increíble, la fuerza y la belleza de sus cascadas es inexplicable y solo se puede entender si se visita, pero visitarlo al lado de un amigo hace que esa experiencia sea inolvidable. Siempre he estado un poco en contra de los lugares “super turísticos” porque creo que pierden encanto al estar masificados pero Iguazú hace que todo eso pase a un segundo plano. Aun se me eriza la piel cada vez que recuerdo la magia de esas cascadas y la sensación de sentirme tan pequeñita ante algo tan impresionante.  
+
+## El encuentro según Jupe…
+
+No estaba en mis planes encontrarme con Laura durante mi viaje por Sudamérica. Había terminado mi periplo por Bolivia y, tras cruzar por La Quiaca, planeaba recorrer el norte andino de Argentina, desde la provincia de Jujuy hasta Mendoza. Fue entonces cuando Laura me comentó que estaba en Buenos Aires haciendo voluntariado, y que un mes después tenía pensado viajar por la provincia de Salta y también visitar las Cataratas del Iguazú. Como en el norte no íbamos a coincidir —pues yo llegaría a Salta en tres días—, decidimos ajustar nuestros planes aventureros y vernos en las cataratas más caudalosas del mundo.
+
+Llegué a **Puerto Iguazú** un mes después, un día antes de la llegada de Laura. Ella fue la primera amiga de mi vida anterior con la que me crucé en este viaje. Cuando escuché su voz en la recepción del hostel, me levanté corriendo para abrazarla. Tras meses de conocer a nuevos amigos, compartir el camino y disfrutar de las despedidas, sentía la necesidad de conectarme con alguien cercano, alguien con quien pudiera compartir mis vivencias con la visión de la amistad
+
+El reencuentro fue maravilloso…por una vez no me organicé el viaje, ella lo llevaba todo preparado, primero visitamos la zona argentina y el segundo día la zona brasileña. Disfrutar con tu amiga las sensaciones del ruido que generan las cascadas, del mojarte en aquella experiencia en la lancha, fue mágico. En las noches en el hostel intercambiamos experiencias con otros viajeros argentinos e internacionales, ella pudo vivir la experiencia viajera durante dos días, el conocer gente diversa y compartir alegrías y emociones. Todo lo que pasó aquellos días reforzó nuestra amistad.
+
+La última tarde juntos, después de visitar la parte brasileña, disfrutamos de un rato de carcajadas con los chicos que habíamos conocido esos días. Con tristeza, llegó el momento de despedirnos. Yo debía partir hacia mi próximo destino, la provincia de Misiones, mientras Laura iniciaba su regreso a Madrid.
+
+> Cenas, cervezas, risas y dos días increíbles en Iguazú fueron suficientes para recargar mis pilas (Jupe) y para cerrar el viaje (Laura) de manera increíble!
+
+Puede que en parte la conexión **Vidaia** naciera allí…`,
+        imageAlt: 'Cataratas del Iguazú, desde un mirador del Lado Brasileño',
+        metaTitle: 'Nuestro encuentro en Iguazú — Inspiración viajeros | Viajes Vidaia',
+        metaDescription: 'Descubre el encuentro en las Cataratas del Iguazú de los fundadores de Viajes Vidaia. Un encuentro inspiracional que no llevó a fundar esta empresa para crear viajes a Argentina para vosotros.',
+      }
+    },
+    imageKey: 'BLOG.ENCUENTRO_IGUAZU',
+    date: '2024-11-15',
+    category: 'argentina',
+    tags: ['argentina', 'inspiracion', 'cataratas-iguazu', 'viajes-vidaia'],
+    readingTime: 3,
+    featured: true,
+    active: true,
+    relatedTripSlugs: ['paisajes-naturales-argentina', 'argentina-esencial'],
+  },
+  {
     slug: 'mate-alma-tradicion-argentina',
     content: {
       es: {
@@ -137,7 +184,7 @@ Con sus múltiples beneficios para la salud y su capacidad para unir a las perso
       }
     },
     imageKey: 'BLOG.MATE_ARGENTINA',
-    date: '2024-09-27',
+    date: '2024-11-27',
     category: 'argentina',
     tags: ['argentina', 'inspiracion'],
     readingTime: 5,
@@ -186,7 +233,7 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
     imageKey: 'BLOG.ATACAMA_CHILE',
     date: '2024-12-04',
     category: 'chile',
-    tags: ['desierto de atacama', 'chile', 'lagunas altiplánicas', 'San Pedro de Atacama'],
+    tags: ['desierto-de-atacama', 'chile', 'lagunas-altiplánicas', 'san-pedro-de-atacama'],
     readingTime: 4,
     featured: true,
     active: true,
@@ -241,7 +288,7 @@ Caleta Tortel es única en el mundo por su sistema de pasarelas de madera que co
     imageKey: 'BLOG.CARRETERA_AUSTRAL',
     date: '2024-12-12',
     category: 'chile',
-    tags: ['carretera austral', 'chile', 'catedrales de marmol', 'glaciar san rafael', 'trekking cerro castillo'],
+    tags: ['carretera-austral', 'chile', 'catedrales-de-marmol', 'glaciar-san-rafael', 'trekking-cerro-castillo'],
     readingTime: 7,
     featured: true,
     active: true,
