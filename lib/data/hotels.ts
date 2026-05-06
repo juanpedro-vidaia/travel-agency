@@ -17,83 +17,18 @@ export interface Hotel {
 }
 
 const hotels: Hotel[] = [
-  // ── Iguazú ───────────────────────────────────────────────────────────────────
   {
-    id: 'city-falls-iguazu',
-    destinationId: 'iguazu',
+    id: 'nahuel-huapi-bariloche',
+    destinationId: 'bariloche',
     content: {
       es: {
-        name: 'City Falls Iguazú',
-        categoryLabel: 'Superior',
+        name: 'Nahuel Huapi',
       }
     },
     category: 3,
-    imageKey: 'HOTELS.CITY_FALLS_IGUAZU',
+    imageKey: 'HOTELS.NAHUEL_HUAPI_BARILOCHE',
     active: true,
   },
-  {
-    id: 'panoramic-iguazu',
-    destinationId: 'iguazu',
-    content: {
-      es: {
-        name: 'Panoramic Hotel Iguazú',
-      }
-    },
-    category: 4,
-    imageKey: 'HOTELS.PANORAMIC_IGUAZU',
-    active: true,
-  },
-  {
-    id: 'gran-melia-iguazu',
-    destinationId: 'iguazu',
-    content: {
-      es: {
-        name: 'Gran Meliá Iguazú',
-        categoryLabel: 'Lujo',
-      }
-    },
-    category: 5,
-    imageKey: 'HOTELS.GRAN_MELIA_IGUAZU',
-    active: true,
-  },
-  // ── Puerto Madryn ────────────────────────────────────────────────────────────
-  {
-    id: 'hotel-muelle-viejo',
-    destinationId: 'puerto-madryn',
-    content: {
-      es: {
-        name: 'Hotel Muelle Viejo',
-      }
-    },
-    category: 3,
-    imageKey: 'HOTELS.MUELLE_VIEJO',
-    active: true,
-  },
-  {
-    id: 'yene-hue',
-    destinationId: 'puerto-madryn',
-    content: {
-      es: {
-        name: 'Yene Hue',
-      }
-    },
-    category: 4,
-    imageKey: 'HOTELS.YENE_HUE',
-    active: true,
-  },
-  {
-    id: 'hotel-territorio',
-    destinationId: 'puerto-madryn',
-    content: {
-      es: {
-        name: 'Hotel Territorio',
-      }
-    },
-    category: 5,
-    imageKey: 'HOTELS.TERRITORIO',
-    active: true,
-  },
-  // ── Buenos Aires ─────────────────────────────────────────────────────────────
   {
     id: 'merit-san-telmo',
     destinationId: 'buenos-aires',
@@ -130,7 +65,6 @@ const hotels: Hotel[] = [
     imageKey: 'HOTELS.ALVEAR_PALACE',
     active: true,
   },
-  // ── El Calafate ──────────────────────────────────────────────────────────────
   {
     id: 'hotel-los-alamos',
     destinationId: 'el-calafate',
@@ -141,6 +75,18 @@ const hotels: Hotel[] = [
     },
     category: 3,
     imageKey: 'HOTELS.LOS_ALAMOS',
+    active: true,
+  },
+  {
+    id: 'sierra-nevada-el-calafate',
+    destinationId: 'el-calafate',
+    content: {
+      es: {
+        name: 'Sierra Nevada',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.SIERRA_NEVADA_CALAFATE',
     active: true,
   },
   {
@@ -168,99 +114,143 @@ const hotels: Hotel[] = [
     imageKey: 'HOTELS.EOLO_PATAGONIA',
     active: true,
   },
-  // ── Ushuaia ──────────────────────────────────────────────────────────────────
   {
-    id: 'altos-ushuaia',
-    destinationId: 'ushuaia',
+    id: 'senderos-aparts-suites-el-chalten',
+    destinationId: 'el-chalten',
     content: {
       es: {
-        name: 'Altos Ushuaia Hotel & Resto',
-        categoryLabel: 'Superior',
+        name: 'Senderos Aparts & Suites',
       }
     },
     category: 3,
-    imageKey: 'HOTELS.ALTOS_USHUAIA',
+    imageKey: 'HOTELS.SENDEROS_APARTS_SUITES',
     active: true,
   },
   {
-    id: 'los-cauquenes',
-    destinationId: 'ushuaia',
+    id: 'city-falls-iguazu',
+    destinationId: 'iguazu',
     content: {
       es: {
-        name: 'Los Cauquenes Resort & Spa',
-      }
-    },
-    category: 4,
-    imageKey: 'HOTELS.LOS_CAUQUENES',
-    active: true,
-  },
-  {
-    id: 'arakur-ushuaia',
-    destinationId: 'ushuaia',
-    content: {
-      es: {
-        name: 'Arakur Ushuaia Resort & Spa',
-      }
-    },
-    category: 5,
-    imageKey: 'HOTELS.ARAKUR_USHUAIA',
-    active: true,
-  },
-  // Santiago — categoría 3, 4, 5
-  {
-    id: 'hotel-plaza-san-francisco-santiago',
-    destinationId: 'santiago-chile',
-    content: {
-      es: {
-        name: 'Hotel Plaza San Francisco',
-        categoryLabel: 'Superior',
+        name: 'City Falls Iguazú',
       }
     },
     category: 3,
-    imageKey: 'HOTELS.PLAZA_SAN_FRANCISCO',
+    imageKey: 'HOTELS.CITY_FALLS_IGUAZU',
     active: true,
   },
   {
-    id: 'cumbres-lastarria',
-    destinationId: 'santiago-chile',
+    id: 'panoramic-iguazu',
+    destinationId: 'iguazu',
     content: {
       es: {
-        name: 'Cumbres Lastarria',
-        categoryLabel: 'Boutique',
+        name: 'Panoramic Hotel Iguazú',
       }
     },
     category: 4,
-    imageKey: 'HOTELS.CUMBRES_LASTARRIA',
+    imageKey: 'HOTELS.PANORAMIC_IGUAZU',
     active: true,
   },
   {
-    id: 'mandarin-oriental-santiago',
-    destinationId: 'santiago-chile',
+    id: 'gran-melia-iguazu',
+    destinationId: 'iguazu',
     content: {
       es: {
-        name: 'Mandarin Oriental Santiago',
+        name: 'Gran Meliá Iguazú',
         categoryLabel: 'Lujo',
       }
     },
     category: 5,
-    imageKey: 'HOTELS.MANDARIN_ORIENTAL',
+    imageKey: 'HOTELS.GRAN_MELIA_IGUAZU',
     active: true,
   },
-  // Santiago Aeropuerto (escalas)
   {
-    id: 'holiday-inn-santiago-airport',
-    destinationId: 'santiago-chile',
+    id: 'hotel-otai-rapa-nui',
+    destinationId: 'isla-pascua',
     content: {
       es: {
-        name: 'Holiday Inn Santiago Airport',
-        categoryLabel: 'Aeropuerto',
+        name: 'Hotel Otai',
+        categoryLabel: 'Tradicional',
       }
     },
     category: 3,
-    imageKey: 'HOTELS.HOLIDAY_INN_SCL',
+    imageKey: 'HOTELS.OTAI_RAPA_NUI',
     active: true,
   },
-  // San Pedro de Atacama
+  {
+    id: 'takarua',
+    destinationId: 'isla-pascua',
+    content: {
+      es: {
+        name: 'Hotel Takarua',
+        categoryLabel: 'Boutique',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.TAKARUA',
+    active: true,
+  },
+  {
+    id: 'explora-rapa-nui',
+    destinationId: 'isla-pascua',
+    content: {
+      es: {
+        name: 'Explora Rapa Nui',
+        categoryLabel: 'Lujo todo incluido',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.EXPLORA_RAPA_NUI',
+    active: true,
+  },
+  {
+    id: 'hotel-muelle-viejo',
+    destinationId: 'puerto-madryn',
+    content: {
+      es: {
+        name: 'Hotel Muelle Viejo',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.MUELLE_VIEJO',
+    active: true,
+  },
+  {
+    id: 'yene-hue',
+    destinationId: 'puerto-madryn',
+    content: {
+      es: {
+        name: 'Yene Hue',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.YENE_HUE',
+    active: true,
+  },
+  {
+    id: 'hotel-territorio',
+    destinationId: 'puerto-madryn',
+    content: {
+      es: {
+        name: 'Hotel Territorio',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.TERRITORIO',
+    active: true,
+  },
+  {
+    id: 'hosteria-casa-eugenia-san-martin',
+    destinationId: 'san-martin-de-los-andes',
+    content: {
+      es: {
+        name: 'Hostería La Casa de Eugenia Boutique',
+        categoryLabel: 'Boutique',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.HOSTERIA_CASA_EUGENIA',
+    active: true,
+  },
   {
     id: 'hotel-poblado-kimal',
     destinationId: 'san-pedro-atacama',
@@ -300,44 +290,92 @@ const hotels: Hotel[] = [
     imageKey: 'HOTELS.TIERRA_ATACAMA',
     active: true,
   },
-  // Isla de Pascua
   {
-    id: 'hotel-otai-rapa-nui',
-    destinationId: 'isla-pascua',
+    id: 'hotel-plaza-san-francisco-santiago',
+    destinationId: 'santiago-chile',
     content: {
       es: {
-        name: 'Hotel Otai',
-        categoryLabel: 'Tradicional',
+        name: 'Hotel Plaza San Francisco',
+        categoryLabel: 'Superior',
       }
     },
     category: 3,
-    imageKey: 'HOTELS.OTAI_RAPA_NUI',
+    imageKey: 'HOTELS.PLAZA_SAN_FRANCISCO',
     active: true,
   },
   {
-    id: 'takarua',
-    destinationId: 'isla-pascua',
+    id: 'holiday-inn-santiago-airport',
+    destinationId: 'santiago-chile',
     content: {
       es: {
-        name: 'Hotel Takarua',
+        name: 'Holiday Inn Santiago Airport',
+        categoryLabel: 'Aeropuerto',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.HOLIDAY_INN_SCL',
+    active: true,
+  },
+  {
+    id: 'cumbres-lastarria',
+    destinationId: 'santiago-chile',
+    content: {
+      es: {
+        name: 'Cumbres Lastarria',
         categoryLabel: 'Boutique',
       }
     },
     category: 4,
-    imageKey: 'HOTELS.TAKARUA',
+    imageKey: 'HOTELS.CUMBRES_LASTARRIA',
     active: true,
   },
   {
-    id: 'explora-rapa-nui',
-    destinationId: 'isla-pascua',
+    id: 'mandarin-oriental-santiago',
+    destinationId: 'santiago-chile',
     content: {
       es: {
-        name: 'Explora Rapa Nui',
-        categoryLabel: 'Lujo todo incluido',
+        name: 'Mandarin Oriental Santiago',
+        categoryLabel: 'Lujo',
       }
     },
     category: 5,
-    imageKey: 'HOTELS.EXPLORA_RAPA_NUI',
+    imageKey: 'HOTELS.MANDARIN_ORIENTAL',
+    active: true,
+  },
+  {
+    id: 'altos-ushuaia',
+    destinationId: 'ushuaia',
+    content: {
+      es: {
+        name: 'Altos Ushuaia Hotel & Resto',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.ALTOS_USHUAIA',
+    active: true,
+  },
+  {
+    id: 'los-cauquenes',
+    destinationId: 'ushuaia',
+    content: {
+      es: {
+        name: 'Los Cauquenes Resort & Spa',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.LOS_CAUQUENES',
+    active: true,
+  },
+  {
+    id: 'arakur-ushuaia',
+    destinationId: 'ushuaia',
+    content: {
+      es: {
+        name: 'Arakur Ushuaia Resort & Spa',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.ARAKUR_USHUAIA',
     active: true,
   },
 ]

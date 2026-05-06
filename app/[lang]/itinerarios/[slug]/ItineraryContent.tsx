@@ -34,11 +34,10 @@ import { useLanguage } from '@/lib/hooks/useLanguage'
 
 const ItineraryMap = dynamic(() => import('@/components/ItineraryMap'), { ssr: false })
 
-const OPTIONAL_ICONS: Record<string, LucideIcon> = {
-  'cataratas-brasilenas':         Waves,
-  'estancia-nibepo-aike':         UtensilsCrossed,
-  'catamaran-canal-beagle-tarde': Waves,
-  'tango-show-la-ventana':        Music,
+const ACTIVITY_ICON_MAP: Record<string, LucideIcon> = {
+  Waves,
+  UtensilsCrossed,
+  Music,
 }
 
 export default function ItineraryContent({ slug }: { slug: string }) {
@@ -106,6 +105,14 @@ export default function ItineraryContent({ slug }: { slug: string }) {
         ? dayOptionals.map(da => da.activity.content.es.name).join(' · ')
         : undefined
 
+      const includedActivities = day.activities
+        .filter(da => da.status === 'included')
+        .map(da => ({
+          title:       da.activity.content.es.name,
+          description: da.activity.content.es.description,
+          Icon:        ACTIVITY_ICON_MAP[da.activity.icon ?? ''] ?? MapPin,
+        }))
+
       return {
         day:          day.dayNumber,
         title:        day.content.es.title,
@@ -120,6 +127,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
         optionalLabel,
         includes:     day.content.es.included,
         notIncludes:  day.content.es.excluded,
+        includedActivities,
       }
     })
   }, [itinerary])
@@ -127,6 +135,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
   const hotelCards = useMemo(() => {
     if (!itinerary) return []
     return itinerary.accommodationStops
+      .filter(stop => stop.featured)
       .map(stop => {
         const hotel = stop.defaultHotel
         if (!hotel) return null
@@ -146,7 +155,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
   const optionals = useMemo(
     () => optionalActivities.map(activity => ({
-      Icon:        OPTIONAL_ICONS[activity.id] ?? Star,
+      Icon:        ACTIVITY_ICON_MAP[activity.icon ?? ''] ?? Star,
       title:       activity.content.es.name,
       description: activity.content.es.description,
     })),
@@ -400,15 +409,36 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                         <p className="text-vidaia-charcoal/80 text-sm sm:text-base">{day.description}</p>
                       )}
 
+                      {day.includedActivities.length > 0 && (
+                        <div className="space-y-2.5">
+                          {day.includedActivities.map((act, i) => {
+                            const Icon = act.Icon
+                            return (
+                              <div key={i} className="flex gap-3 bg-vidaia-sand rounded-xl p-3.5 border border-vidaia-light/60">
+                                <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center shrink-0 border border-vidaia-light/70">
+                                  <Icon className="w-4 h-4 text-vidaia-primary" />
+                                </div>
+                                <div className="min-w-0">
+                                  <p className="font-semibold text-vidaia-dark text-sm leading-snug">{act.title}</p>
+                                  {act.description && (
+                                    <p className="text-vidaia-charcoal/65 text-xs mt-1 leading-relaxed">{act.description}</p>
+                                  )}
+                                </div>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      )}
+
                       {day.highlights && day.highlights.length > 0 && (
-                        <ul className="space-y-2">
+                        <div className="flex flex-wrap gap-2">
                           {day.highlights.map((h, i) => (
-                            <li key={i} className="flex items-start gap-2.5 text-sm text-vidaia-charcoal/80">
-                              <span className="w-1.5 h-1.5 rounded-full bg-vidaia-primary mt-2 shrink-0" />
+                            <span key={i} className="flex items-center gap-1.5 text-sm text-vidaia-charcoal/80 bg-amber-50 border border-amber-100 rounded-full px-3 py-1">
+                              <Star className="w-3 h-3 fill-vidaia-earth text-vidaia-earth shrink-0" />
                               {h}
-                            </li>
+                            </span>
                           ))}
-                        </ul>
+                        </div>
                       )}
 
                       {(day.includes || day.notIncludes) && (
@@ -461,6 +491,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       </section>
 
       {/* ── HOTELES ───────────────────────────────────────────────────────────── */}
+      {hotelCards.length > 0 && (
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
@@ -517,6 +548,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           </p>
         </div>
       </section>
+      )}
 
       {/* ── OPCIONALES ────────────────────────────────────────────────────────── */}
       {optionals.length > 0 && (
@@ -528,7 +560,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-12">
               {content.optionals.title}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {optionals.map(({ Icon, title, description }) => (
                 <div key={title} className="bg-white rounded-2xl p-6 shadow-sm border border-amber-100 text-left hover:border-amber-300 hover:shadow-md transition-all">
                   <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">

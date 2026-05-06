@@ -14,12 +14,12 @@ export const TRIP_TAGS = {
 export type TripTag = typeof TRIP_TAGS[keyof typeof TRIP_TAGS]
 
 export const TAG_CONFIG: Record<TripTag, { icon: string; es: { label: string }; en?: { label: string } }> = {
-  nature:     { icon: '🌿', es: { label: 'Naturaleza' } },
+  nature: { icon: '🌿', es: { label: 'Naturaleza' } },
   wildlife: { icon: '🐋', es: { label: 'Vida salvaje' } },
-  adventure:       { icon: '🏔', es: { label: 'Aventura' } },
-  relax:          { icon: '🌅', es: { label: 'Relax' } },
-  culture:        { icon: '🏛', es: { label: 'Cultura' } },
-  gastronomy:    { icon: '🍷', es: { label: 'Gastronomía' } },
+  adventure: { icon: '🏔', es: { label: 'Aventura' } },
+  relax: { icon: '🌅', es: { label: 'Relax' } },
+  culture: { icon: '🏛', es: { label: 'Cultura' } },
+  gastronomy: { icon: '🍷', es: { label: 'Gastronomía' } },
 }
 
 // ── Season & best months (future use — not rendered) ──────────────────────────
@@ -88,7 +88,6 @@ export interface Trip {
 }
 
 const trips: Trip[] = [
-  // ── Argentina ────────────────────────────────────────────────────────────────
   {
     id: 'paisajes-naturales-argentina',
     slug: 'paisajes-naturales-argentina',
@@ -108,12 +107,12 @@ const trips: Trip[] = [
     featured: true,
     active: true,
     hasItinerary: true,
-    tags: ['nature', 'wildlife', 'adventure'],
+    tags: ['nature', 'wildlife'],
     includesInternationalFlights: true,
     includesDomesticFlights: true,
     relatedTrips: [
       { slug: 'esencias-chile-isla-pascua', es: { reason: 'Combina con paisajes únicos del Cono Sur' } },
-      { slug: 'patagonia-sur-a-norte',      es: { reason: 'Profundiza en la Patagonia argentina' } },
+      { slug: 'patagonia-sur-a-norte', es: { reason: 'Profundiza en la Patagonia argentina' } },
     ],
     honeymoonFeatured: true,
     bestMonths: [3, 4, 9, 10, 11],
@@ -249,7 +248,6 @@ const trips: Trip[] = [
     ],
     ranking: 50,
   },
-  // ── Chile ─────────────────────────────────────────────────────────────────────
   {
     id: 'chile-bolivia-salares',
     slug: 'chile-bolivia-salares',
@@ -300,13 +298,35 @@ const trips: Trip[] = [
     includesDomesticFlights: true,
     relatedTrips: [
       { slug: 'paisajes-naturales-argentina', es: { reason: 'Combina con la Patagonia argentina' } },
-      { slug: 'chile-bolivia-salares',        es: { reason: 'Amplía la ruta con el Salar de Uyuni' } },
+      { slug: 'chile-bolivia-salares', es: { reason: 'Amplía la ruta con el Salar de Uyuni' } },
     ],
     ranking: 95,
   },
-  // ── Bolivia ───────────────────────────────────────────────────────────────────
-  // Añadir viajes de Bolivia aquí cuando estén disponibles.
+  {
+    id: 'grandes-escenarios-argentina',
+    slug: 'grandes-escenarios-argentina',
+    content: {
+      es: {
+        title: 'Grandes Escenarios de Argentina: del Fin del Mundo a las Cataratas del Iguazú',
+        subtitle: 'Buenos Aires · Ushuaia · El Calafate · El Chaltén · Bariloche · San Martín de los Andes · Iguazú',
+      }
+    },
+    country: 'argentina',
+    days: 22,
+    nights: 21,
+    priceFrom: 4628,
+    imageKey: 'TRIPS.GRANDES_ESCENARIOS_ARGENTINA',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+    tags: ['nature', 'adventure', 'wildlife'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
+    relatedTrips: [],
+    season: 'summer',
+    bestMonths: [1, 2, 3, 10, 11, 12],
+    ranking: 95,
+  },
 ]
 
 export default trips
-

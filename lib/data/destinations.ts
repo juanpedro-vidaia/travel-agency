@@ -109,7 +109,7 @@ const destinations: Destination[] = [
     imageKey: 'DESTINATIONS.USHUAIA',
     active: true,
     lat: -54.8019,
-    lng: -68.3030,
+    lng: -68.303,
   },
   {
     id: 'salta',
@@ -140,6 +140,118 @@ const destinations: Destination[] = [
     active: true,
     lat: -24.1858,
     lng: -65.2995,
+  },
+  {
+    id: 'mendoza',
+    slug: 'mendoza',
+    country: 'argentina',
+    content: {
+      es: {
+        name: 'Mendoza',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.MENDOZA',
+    active: true,
+    lat: -32.8895,
+    lng: -68.8458,
+  },
+  {
+    id: 'bariloche',
+    slug: 'bariloche',
+    country: 'argentina',
+    content: {
+      es: {
+        name: 'San Carlos de Bariloche',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.BARILOCHE',
+    active: true,
+    lat: -41.1335,
+    lng: -71.3103,
+  },
+  {
+    id: 'purmamarca',
+    slug: 'purmamarca',
+    country: 'argentina',
+    content: {
+      es: {
+        name: 'Purmamarca',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.PURMAMARCA',
+    active: true,
+  },
+  {
+    id: 'tucuman',
+    slug: 'tucuman',
+    country: 'argentina',
+    content: {
+      es: {
+        name: 'San Miguel de Tucumán',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.TUCUMAN',
+    active: true,
+  },
+  {
+    id: 'cafayate',
+    slug: 'cafayate',
+    country: 'argentina',
+    content: {
+      es: {
+        name: 'Cafayate',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.CAFAYATE',
+    active: true,
+  },
+  {
+    id: 'el-chalten',
+    slug: 'el-chalten',
+    country: 'argentina',
+    content: {
+      es: {
+        name: 'El Chaltén',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.ELCHALTEN',
+    active: true,
+    lat: -49.3315,
+    lng: -72.886,
+  },
+  {
+    id: 'san-martin-de-los-andes',
+    slug: 'san-martin-de-los-andes',
+    country: 'argentina',
+    content: {
+      es: {
+        name: 'San Martín de los Andes',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.SANMARTIN',
+    active: true,
+    lat: -40.1541,
+    lng: -71.3411,
+  },
+  {
+    id: 'catamarca',
+    slug: 'catamarca',
+    country: 'argentina',
+    content: {
+      es: {
+        name: 'Catamarca',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.CATAMARCA',
+    active: true,
   },
   // ── Chile ────────────────────────────────────────────────────────────────────
   {
@@ -217,6 +329,123 @@ const destinations: Destination[] = [
     lat: -27.1127,
     lng: -109.3497,
   },
+  {
+    id: 'puerto-varas',
+    slug: 'puerto-varas',
+    country: 'chile',
+    content: {
+      es: {
+        name: 'Puerto Varas',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.PUERTOVARAS',
+    active: true,
+  },
+  {
+    id: 'pucon',
+    slug: 'pucon',
+    country: 'chile',
+    content: {
+      es: {
+        name: 'Pucón',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.PUCON',
+    active: true,
+  },
+  {
+    id: 'puerto-montt',
+    slug: 'puerto-montt',
+    country: 'chile',
+    content: {
+      es: {
+        name: 'Puerto Montt',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.PUERTOMONTT',
+    active: true,
+  },
+  {
+    id: 'punta-arenas',
+    slug: 'punta-arenas',
+    country: 'chile',
+    content: {
+      es: {
+        name: 'Punta Arenas',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.PUNTAARENAS',
+    active: true,
+  },
+  {
+    id: 'puerto-natales',
+    slug: 'puerto-natales',
+    country: 'chile',
+    content: {
+      es: {
+        name: 'Puerto Natales',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.PUERTONATALES',
+    active: true,
+  },
+  {
+    id: 'valparaiso',
+    slug: 'valparaiso',
+    country: 'chile',
+    content: {
+      es: {
+        name: 'Valparaiso',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.VALPARAISO',
+    active: true,
+  },
+  {
+    id: 'balmaceda',
+    slug: 'balmaceda',
+    country: 'chile',
+    content: {
+      es: {
+        name: 'Balmaceda',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.BALMACEDA',
+    active: true,
+  },
+  {
+    id: 'coyahique',
+    slug: 'coyahique',
+    country: 'chile',
+    content: {
+      es: {
+        name: 'Coyahique',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.COYAHIQUE',
+    active: true,
+  },
+  {
+    id: 'arica',
+    slug: 'arica',
+    country: 'chile',
+    content: {
+      es: {
+        name: 'Arica',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.ARICA',
+    active: true,
+  },
   // ── Bolivia ──────────────────────────────────────────────────────────────────
   {
     id: 'uyuni',
@@ -248,7 +477,58 @@ const destinations: Destination[] = [
     lat: -16.4897,
     lng: -68.1193,
   },
+  {
+    id: 'sucre',
+    slug: 'sucre',
+    country: 'bolivia',
+    content: {
+      es: {
+        name: 'Sucre',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.SUCRE',
+    active: true,
+  },
+  {
+    id: 'potosi',
+    slug: 'potosi',
+    country: 'bolivia',
+    content: {
+      es: {
+        name: 'Potosí',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.POTOSI',
+    active: true,
+  },
+  {
+    id: 'santa-cruz',
+    slug: 'santa-cruz',
+    country: 'bolivia',
+    content: {
+      es: {
+        name: 'Santa Cruz de la Sierra',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.SANTACRUZ',
+    active: true,
+  },
+  {
+    id: 'copacabana',
+    slug: 'copacabana',
+    country: 'bolivia',
+    content: {
+      es: {
+        name: 'Copacabana',
+        description: '',
+      }
+    },
+    imageKey: 'DESTINATIONS.COPACABANA',
+    active: true,
+  },
 ]
 
 export default destinations
-

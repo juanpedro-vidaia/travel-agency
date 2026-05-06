@@ -56,7 +56,7 @@ export const COMMON_UI = {
       title: 'Route on the map',
       subtitle: 'Click on each destination to see the stay details',
     },
-  }
+  },
 }
 
 export const STATIC_CONTENT = {
@@ -72,7 +72,7 @@ export const STATIC_CONTENT = {
       },
       mobileMenu: {
         openLabel: 'Abrir menú',
-      }
+      },
     },
     footer: {
       brand: {
@@ -105,17 +105,17 @@ export const STATIC_CONTENT = {
     home: {
       hero: {
         tagline: 'Argentina · Chile · Bolivia',
-        title: 'El viaje de tu vida {br} {span}',
+        title: 'Somos {br} {span} Viajes Vidaia',
         titleEmphasized: 'hecho realidad',
-        description: 'Diseñamos cada itinerario desde cero — sin paquetes estándar, sin prisas. Solo tú, el paisaje y una experiencia que no olvidarás.',
-      }
+        description: 'El viaje de tu vida hecho realidad',
+      },
     },
     valueProposition: {
       header: {
-        overline: 'Por qué Vidaia',
+        overline: '¿Por qué Vidaia?',
         title: 'Viajamos diferente.{br}Contigo.',
         subtitle: 'En Vidaia no te vendemos un destino — te ayudamos a vivir una experiencia que de verdad te cambia.',
-      }
+      },
     },
     quienesSomos: {
       header: {
@@ -176,7 +176,7 @@ export const STATIC_CONTENT = {
       title: '¿Hablamos?',
       subtitle: 'Cuéntanos qué tienes en mente — un destino, una fecha, una idea loca — y diseñamos juntos el viaje que siempre quisiste hacer.',
       note: 'Sin compromiso. Sin formularios interminables. Solo una charla.',
-      email: 'hola@viajesvidaia.com',
+      email: 'info@viajesvidaia.com',
     },
     featuredDestinations: {
       header: {
@@ -189,8 +189,7 @@ export const STATIC_CONTENT = {
     honeymoonPage: {
       metadata: {
         title: 'Lunas de Miel a medida en Sudamérica | Viajes Vidaia',
-        description:
-          'Diseñamos lunas de miel únicas y personalizadas en Argentina, Chile, Bolivia y Sudamérica. Sin paquetes cerrados, sin itinerarios estándar.',
+        description: 'Diseñamos lunas de miel únicas y personalizadas en Argentina, Chile, Bolivia y Sudamérica. Sin paquetes cerrados, sin itinerarios estándar.',
       },
       hero: {
         overline: '💍 Viajes Vidaia · Lunas de Miel',
@@ -198,8 +197,7 @@ export const STATIC_CONTENT = {
         subtitle: 'Tu luna de miel, sin plantillas.{br}Solo vuestra historia.',
       },
       introSection: {
-        paragraph:
-          'No hay dos parejas iguales, ¿por qué debería serlo vuestro viaje?{br}{br}En Viajes Vidaia diseñamos lunas de miel completamente personalizadas, pensadas desde cero para vosotros. Sin paquetes cerrados, sin itinerarios estándar. Solo experiencias que encajen con vuestra forma de viajar, vuestro ritmo y lo que realmente os hace ilusión.',
+        paragraph: 'No hay dos parejas iguales, ¿por qué debería serlo vuestro viaje?{br}{br}En Viajes Vidaia diseñamos lunas de miel completamente personalizadas, pensadas desde cero para vosotros. Sin paquetes cerrados, sin itinerarios estándar. Solo experiencias que encajen con vuestra forma de viajar, vuestro ritmo y lo que realmente os hace ilusión.',
       },
       whatMakesUsDifferent: {
         title: '✨ ¿Qué hace diferente vuestra luna de miel con nosotros?',
@@ -208,26 +206,22 @@ export const STATIC_CONTENT = {
           {
             emoji: '💛',
             title: 'Diseño 100% a medida',
-            description:
-              'Cada viaje empieza con vosotros. Entendemos cómo sois, qué os emociona y qué tipo de experiencia queréis vivir. A partir de ahí, lo creamos todo desde cero.',
+            description: 'Cada viaje empieza con vosotros. Entendemos cómo sois, qué os emociona y qué tipo de experiencia queréis vivir. A partir de ahí, lo creamos todo desde cero.',
           },
           {
             emoji: '🌍',
             title: 'Destinos con sentido',
-            description:
-              'Argentina, Chile, Bolivia y otros destinos de Sudamérica o combinaciones únicas. No solo os llevamos a lugares increíbles, sino a vivirlos de forma especial.',
+            description: 'Argentina, Chile, Bolivia y otros destinos de Sudamérica o combinaciones únicas. No solo os llevamos a lugares increíbles, sino a vivirlos de forma especial.',
           },
           {
             emoji: '🧭',
             title: 'Equilibrio perfecto',
-            description:
-              'Aventura, relax, momentos únicos… Diseñamos el viaje para que fluya, sin prisas pero sin perderos nada importante.',
+            description: 'Aventura, relax, momentos únicos… Diseñamos el viaje para que fluya, sin prisas pero sin perderos nada importante.',
           },
           {
             emoji: '🤍',
             title: 'Experiencias que marcan',
-            description:
-              'Una cena especial, un hotel con vistas únicas o un momento sorpresa. Cuidamos los detalles que convierten un viaje en algo inolvidable.',
+            description: 'Una cena especial, un hotel con vistas únicas o un momento sorpresa. Cuidamos los detalles que convierten un viaje en algo inolvidable.',
           },
         ],
       },
@@ -237,8 +231,7 @@ export const STATIC_CONTENT = {
         steps: [
           {
             title: 'Os conocemos',
-            description:
-              'Queremos saber cómo sois, qué os gusta, qué no… y qué esperáis de este viaje tan especial.',
+            description: 'Queremos saber cómo sois, qué os gusta, qué no… y qué esperáis de este viaje tan especial.',
           },
           {
             title: 'Creamos vuestra propuesta',
@@ -286,7 +279,7 @@ export const STATIC_CONTENT = {
         title: 'Expertos en Diseñar Viajes Únicos en Sudamérica',
         quote: '“Como no hay dos personas o grupos iguales, {br} tampoco hay dos viajes iguales.”',
         description: 'Cuéntanos vuestro viaje deseado para poder diseñar una experiencia personalizada. Creamos recuerdos inolvidables, diseñados a medida para vosotros.',
-      }
+      },
     },
     privacyPage: {
       metadata: {
@@ -297,37 +290,56 @@ export const STATIC_CONTENT = {
       policyContent: {
         heading1: 'DATOS DE IDENTIFICACIÓN',
         identificationInfo: [
-          { label: 'Titular', value: 'Viajes Vidaia, S.R.L.' },
-          { label: 'NIF', value: 'B55455380' },
-          { label: 'Domicilio Social', value: 'Calle de la Bahía de Algeciras 1, 28033, Madrid, España' },
-          { label: 'Actividad', value: 'Agencia de viajes online y contenidos del Cono Sur' },
-          { label: 'Correo electrónico', value: 'info@viajesvidaia.com' },
+          {
+            label: 'Titular',
+            value: 'Viajes Vidaia, S.R.L.',
+          },
+          {
+            label: 'NIF',
+            value: 'B55455380',
+          },
+          {
+            label: 'Domicilio Social',
+            value: 'Calle de la Bahía de Algeciras 1, 28033, Madrid, España',
+          },
+          {
+            label: 'Actividad',
+            value: 'Agencia de viajes online y contenidos del Cono Sur',
+          },
+          {
+            label: 'Correo electrónico',
+            value: 'info@viajesvidaia.com',
+          },
         ],
         heading2: 'REGISTRO Y FINALIDAD DE TUS DATOS',
-        registrationPurpose:
-          'En función del formulario o sección a la que accedas, te solicitaremos exclusivamente los datos necesarios para:',
+        registrationPurpose: 'En función del formulario o sección a la que accedas, te solicitaremos exclusivamente los datos necesarios para:',
         registrationPoints: [
           'Atender tus solicitudes, comentarios o consultas.',
           'Informarte sobre actividades, productos y servicios vía e-mail, WhatsApp o teléfono.',
           'Enviar comunicaciones comerciales y promociones de nuestros partners (sin que estos tengan nunca acceso a tus datos).',
         ],
         accuracyHeading: 'EXACTITUD Y VERACIDAD DE LOS DATOS',
-        accuracyText:
-          'Como usuario, eres el único responsable de la veracidad y modificación de los datos que remitas a <strong>Viajes Vidaia, S.R.L.</strong>, comprometiéndote a proporcionar información completa y correcta en los formularios de contacto.',
+        accuracyText: 'Como usuario, eres el único responsable de la veracidad y modificación de los datos que remitas a <strong>Viajes Vidaia, S.R.L.</strong>, comprometiéndote a proporcionar información completa y correcta en los formularios de contacto.',
         rightsHeading: 'DERECHOS DE ACCESO Y REVOCACIÓN',
-        rightsText:
-          'Podrás ejercer en cualquier momento tus derechos de <strong>acceso, rectificación, cancelación y oposición</strong>. Para ello, solo tienes que enviarnos un correo electrónico a <em>info@viajesvidaia.com</em> adjuntando una copia de tu DNI como prueba de identidad.',
+        rightsText: 'Podrás ejercer en cualquier momento tus derechos de <strong>acceso, rectificación, cancelación y oposición</strong>. Para ello, solo tienes que enviarnos un correo electrónico a <em>info@viajesvidaia.com</em> adjuntando una copia de tu DNI como prueba de identidad.',
         thirdPartyServicesHeading: 'SERVICIOS DE TERCEROS',
-        thirdPartyServicesText:
-          'Para el funcionamiento de la web, compartimos datos con los siguientes proveedores bajo sus propias políticas de privacidad:',
+        thirdPartyServicesText: 'Para el funcionamiento de la web, compartimos datos con los siguientes proveedores bajo sus propias políticas de privacidad:',
         thirdPartyServicesList: [
-          { name: 'Hosting', description: 'Hostinger (Hostinger Hosting Profesional)' },
-          { name: 'Web Analytics', description: 'Google Analytics' },
-          { name: 'Publicidad', description: 'Google Adsense' },
+          {
+            name: 'Hosting',
+            description: 'Hostinger (Hostinger Hosting Profesional)',
+          },
+          {
+            name: 'Web Analytics',
+            description: 'Google Analytics',
+          },
+          {
+            name: 'Publicidad',
+            description: 'Google Adsense',
+          },
         ],
         securityMeasuresHeading: 'MEDIDAS DE SEGURIDAD',
-        securityMeasuresText:
-          'Hemos adoptado las medidas técnicas necesarias para garantizar la seguridad e integridad de tus datos, evitando su pérdida o el acceso por parte de terceros no autorizados.',
+        securityMeasuresText: 'Hemos adoptado las medidas técnicas necesarias para garantizar la seguridad e integridad de tus datos, evitando su pérdida o el acceso por parte de terceros no autorizados.',
       },
     },
     cookiesPage: {
@@ -348,8 +360,7 @@ export const STATIC_CONTENT = {
     viajesPage: {
       metadata: {
         title: 'Viajes a Sudamérica a medida | Viajes Vidaia',
-        description:
-          'Viajes personalizados a Argentina, Chile y Bolivia. Diseñamos cada itinerario desde cero adaptado a tus gustos, fechas y presupuesto. Sin paquetes estándar.',
+        description: 'Viajes personalizados a Argentina, Chile y Bolivia. Diseñamos cada itinerario desde cero adaptado a tus gustos, fechas y presupuesto. Sin paquetes estándar.',
       },
       hero: {
         overline: 'Argentina · Chile · Bolivia',
@@ -358,35 +369,39 @@ export const STATIC_CONTENT = {
         ctaPrimary: 'Solicitar viaje a medida',
         ctaSecondary: 'Buscar viajes',
         slides: [
-          { imageKey: 'VIAJES_HERO_CHILE',     location: 'Torres del Paine, Chile' },
-          { imageKey: 'VIAJES_HERO_ARGENTINA', location: 'Perito Moreno, Argentina' },
-          { imageKey: 'VIAJES_HERO_BOLIVIA',   location: 'Salar de Uyuni, Bolivia' },
+          {
+            imageKey: 'VIAJES_HERO_CHILE',
+            location: 'Torres del Paine, Chile',
+          },
+          {
+            imageKey: 'VIAJES_HERO_ARGENTINA',
+            location: 'Perito Moreno, Argentina',
+          },
+          {
+            imageKey: 'VIAJES_HERO_BOLIVIA',
+            location: 'Salar de Uyuni, Bolivia',
+          },
         ],
       },
       servicios: {
-        // TODO: revisar copy — pendiente de redacción definitiva
         missionTitle: 'Nuestra misión',
-        missionText:
-          'Nuestra misión es hacer realidad el viaje ideal de cada persona. Somos una agencia boutique especializada en Sudamérica: conocemos los destinos desde adentro, hemos recorrido cada ruta que ofrecemos y ponemos ese conocimiento al servicio de tu aventura.',
+        missionText: 'Nuestra misión es hacer realidad el viaje ideal de cada persona. Somos una agencia boutique especializada en Sudamérica: conocemos los destinos desde adentro, hemos recorrido cada ruta que ofrecemos y ponemos ese conocimiento al servicio de tu aventura.',
         cardsTitle: '¿Por qué viajar con Vidaia?',
         cards: [
           {
             emoji: '🧭',
             title: 'Planificación personalizada',
-            description:
-              'Cada viaje será único y exclusivo pensando siempre en tus necesidades, gustos y preferencias.',
+            description: 'Cada viaje será único y exclusivo pensando siempre en tus necesidades, gustos y preferencias.',
           },
           {
             emoji: '⭐',
             title: 'Excelencia e innovación',
-            description:
-              'Amplio conocimiento especializado en los destinos que ofrecemos y acceso a destinos exclusivos. Búsqueda continua de nuevos destinos.',
+            description: 'Amplio conocimiento especializado en los destinos que ofrecemos y acceso a destinos exclusivos. Búsqueda continua de nuevos destinos.',
           },
           {
             emoji: '🤝',
             title: 'Compromiso y mejora continua',
-            description:
-              'Asesoramiento profesional y soporte continuo a nuestros clientes. Aprendemos de nuestros clientes.',
+            description: 'Asesoramiento profesional y soporte continuo a nuestros clientes. Aprendemos de nuestros clientes.',
           },
         ],
       },
@@ -410,23 +425,19 @@ export const STATIC_CONTENT = {
         steps: [
           {
             title: '¡Nuestra primera cita!',
-            description:
-              'Una vez que recibimos tu solicitud, la estudiaremos y tendremos una reunión online de 30 minutos contigo para conocerte mejor. Queremos entender qué es lo que te hace feliz cuando viajas, tus imprescindibles, tu presupuesto, la duración de tu viaje, etc. Al ser nuestra primera cita, nos tenemos que conocer. El objetivo es entender tus necesidades y que nos conozcas. Si te gusta nuestra manera de trabajar pasaremos a la siguiente fase.',
+            description: 'Una vez que recibimos tu solicitud, la estudiaremos y tendremos una reunión online de 30 minutos contigo para conocerte mejor. Queremos entender qué es lo que te hace feliz cuando viajas, tus imprescindibles, tu presupuesto, la duración de tu viaje, etc. Al ser nuestra primera cita, nos tenemos que conocer. El objetivo es entender tus necesidades y que nos conozcas. Si te gusta nuestra manera de trabajar pasaremos a la siguiente fase.',
           },
           {
             title: 'Segunda ronda, ¡empieza la magia!',
-            description:
-              'Ya te conocemos y hemos entendido tu viaje soñado, así que ahora nos toca a nosotros. En una semana, te pasaremos una propuesta de viaje con un presupuesto por persona, además del itinerario día a día con alojamientos y actividades.',
+            description: 'Ya te conocemos y hemos entendido tu viaje soñado, así que ahora nos toca a nosotros. En una semana, te pasaremos una propuesta de viaje con un presupuesto por persona, además del itinerario día a día con alojamientos y actividades.',
           },
           {
             title: 'La hora de decidir, ¿te hemos conquistado?',
-            description:
-              'Si la propuesta te encaja, revisamos contigo aquellos aspectos del viaje que quieras mejorar, te asesoramos para cerrar un viaje único adaptado completamente a tus deseos. Cuando cerremos el plan te enviaremos el contrato del viaje combinado con el itinerario acordado y el calendario de pagos. Nuestro equipo de soporte trabajará en las reservas para hacer realidad el viaje.',
+            description: 'Si la propuesta te encaja, revisamos contigo aquellos aspectos del viaje que quieras mejorar, te asesoramos para cerrar un viaje único adaptado completamente a tus deseos. Cuando cerremos el plan te enviaremos el contrato del viaje combinado con el itinerario acordado y el calendario de pagos. Nuestro equipo de soporte trabajará en las reservas para hacer realidad el viaje.',
           },
           {
             title: 'La mejor parte de todas…',
-            description:
-              'Ya tienes los billetes, te hemos entregado la ruta, se han reservado las excursiones, los alojamientos y ahora sólo queda lo mejor de todo: ¡que disfrutes de tu viaje por Argentina, Chile, Bolivia o el próximo destino Vidaia que diseñemos juntos!',
+            description: 'Ya tienes los billetes, te hemos entregado la ruta, se han reservado las excursiones, los alojamientos y ahora sólo queda lo mejor de todo: ¡que disfrutes de tu viaje por Argentina, Chile, Bolivia o el próximo destino Vidaia que diseñemos juntos!',
           },
         ],
       },
@@ -512,37 +523,56 @@ export const STATIC_CONTENT = {
         paragraph3: 'This website complies with current regulations regarding data protection (<strong>GDPR</strong>, <strong>LOPDGDD</strong>, and <strong>LSSI</strong>), which affects the personal data you provide us with your express consent and the cookies we use for this website to function correctly.',
         identificationHeading: 'IDENTIFICATION DATA',
         identificationInfo: [
-          { label: 'Owner', value: 'Viajes Vidaia, S.R.L.' },
-          { label: 'NIF', value: 'B55455380' },
-          { label: 'Registered Office', value: 'Calle de la Bahía de Algeciras 1, 28033, Madrid, Spain' },
-          { label: 'Activity', value: 'Online travel agency and Southern Cone content' },
-          { label: 'Email', value: 'info@viajesvidaia.com' },
+          {
+            label: 'Owner',
+            value: 'Viajes Vidaia, S.R.L.',
+          },
+          {
+            label: 'NIF',
+            value: 'B55455380',
+          },
+          {
+            label: 'Registered Office',
+            value: 'Calle de la Bahía de Algeciras 1, 28033, Madrid, Spain',
+          },
+          {
+            label: 'Activity',
+            value: 'Online travel agency and Southern Cone content',
+          },
+          {
+            label: 'Email',
+            value: 'info@viajesvidaia.com',
+          },
         ],
         registrationHeading: 'DATA REGISTRATION AND PURPOSE',
-        registrationPurposeText:
-          'Depending on the form or section you access, we will only ask for the necessary data to:',
+        registrationPurposeText: 'Depending on the form or section you access, we will only ask for the necessary data to:',
         registrationPoints: [
           'Respond to your requests, comments, or inquiries.',
           'Inform you about activities, products, and services via email, WhatsApp, or phone.',
           'Send commercial communications and promotions from our partners (without them ever having access to your data).',
         ],
         accuracyHeading: 'ACCURACY AND TRUTHFULNESS OF DATA',
-        accuracyText:
-          'As a user, you are solely responsible for the truthfulness and modification of the data you send to <strong>Viajes Vidaia, S.R.L.</strong>, undertaking to provide complete and correct information in the contact forms.',
+        accuracyText: 'As a user, you are solely responsible for the truthfulness and modification of the data you send to <strong>Viajes Vidaia, S.R.L.</strong>, undertaking to provide complete and correct information in the contact forms.',
         rightsHeading: 'RIGHTS OF ACCESS AND REVOCATION',
-        rightsText:
-          'You may exercise your rights of <strong>access, rectification, cancellation, and opposition</strong> at any time. To do so, simply send us an email to <em>info@viajesvidaia.com</em> attaching a copy of your ID as proof of identity.',
+        rightsText: 'You may exercise your rights of <strong>access, rectification, cancellation, and opposition</strong> at any time. To do so, simply send us an email to <em>info@viajesvidaia.com</em> attaching a copy of your ID as proof of identity.',
         thirdPartyServicesHeading: 'THIRD-PARTY SERVICES',
-        thirdPartyServicesText:
-          'For the website to function, we share data with the following providers under their own privacy policies:',
+        thirdPartyServicesText: 'For the website to function, we share data with the following providers under their own privacy policies:',
         thirdPartyServicesList: [
-          { name: 'Hosting', description: 'Hostinger (Professional Hosting Hostinger)' },
-          { name: 'Web Analytics', description: 'Google Analytics' },
-          { name: 'Advertising', description: 'Google Adsense' },
+          {
+            name: 'Hosting',
+            description: 'Hostinger (Professional Hosting Hostinger)',
+          },
+          {
+            name: 'Web Analytics',
+            description: 'Google Analytics',
+          },
+          {
+            name: 'Advertising',
+            description: 'Google Adsense',
+          },
         ],
         securityMeasuresHeading: 'SECURITY MEASURES',
-        securityMeasuresText:
-          'We have adopted the necessary technical measures to guarantee the security and integrity of your data, preventing its loss or access by unauthorized third parties.',
+        securityMeasuresText: 'We have adopted the necessary technical measures to guarantee the security and integrity of your data, preventing its loss or access by unauthorized third parties.',
       },
     },
     cookiesPage: {

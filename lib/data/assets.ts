@@ -32,14 +32,15 @@ export const ASSETS = {
   'TEAM.LANDSCAPE_PHOTO': { url: 'https://images.unsplash.com/photo-1461301214746-1e109215d6d3?auto=format&fit=crop&w=1600&q=80', alt: 'Viajes Vidaia en ruta' },
 
   // ── Trips ─────────────────────────────────────────────────────────────────────
-  'TRIPS.ARGENTINA_NATURAL_PAISAJES': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777912429/copy_of_dscf5187_cgefyp_2abb25.jpg', alt: 'Paisajes naturales de Argentina' },
-  'TRIPS.LATITUDES_AUSTRALES':        { url: 'https://images.unsplash.com/photo-1684790761209-a49f6d6ef7df?q=80&w=800', alt: 'Latitudes Australes - Patagonia' },
-  'TRIPS.PATAGONIA_SUR_NORTE':        { url: 'https://images.unsplash.com/photo-1520641082665-df9ec00b0953?q=80&w=800', alt: 'Patagonia de sur a norte' },
-  'TRIPS.FIN_DE_ANO_ARGENTINA':       { url: 'https://images.unsplash.com/photo-1709426197175-ea5577067e5d?q=80&w=800', alt: 'Fin de año en Argentina' },
-  'TRIPS.ARGENTINA_ESENCIAL':         { url: 'https://images.unsplash.com/photo-1582727867856-46e3951fd3ff?q=80&w=800', alt: 'Argentina esencial' },
-  'TRIPS.CONTRASTES_ARGENTINOS':      { url: 'https://images.unsplash.com/photo-1603155376270-6ad9b9b4fa59?q=80&w=800', alt: 'Contrastes argentinos' },
-  'TRIPS.CHILE_BOLIVIA_SALARES':      { url: 'https://images.unsplash.com/photo-1573502059387-0848782c6956?q=80&w=800', alt: 'Chile y Bolivia: salares y desierto' },
-  'TRIPS.CHILE_ISLA_PASCUA':          { url: 'https://images.unsplash.com/photo-1600754047212-0cf91397fbc6?q=80&w=800', alt: 'Chile e Isla de Pascua' },
+  'TRIPS.ARGENTINA_NATURAL_PAISAJES':   { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777912429/copy_of_dscf5187_cgefyp_2abb25.jpg', alt: 'Paisajes naturales de Argentina' },
+  'TRIPS.LATITUDES_AUSTRALES':          { url: 'https://images.unsplash.com/photo-1684790761209-a49f6d6ef7df?q=80&w=800', alt: 'Latitudes Australes - Patagonia' },
+  'TRIPS.PATAGONIA_SUR_NORTE':          { url: 'https://images.unsplash.com/photo-1520641082665-df9ec00b0953?q=80&w=800', alt: 'Patagonia de sur a norte' },
+  'TRIPS.FIN_DE_ANO_ARGENTINA':         { url: 'https://images.unsplash.com/photo-1709426197175-ea5577067e5d?q=80&w=800', alt: 'Fin de año en Argentina' },
+  'TRIPS.ARGENTINA_ESENCIAL':           { url: 'https://images.unsplash.com/photo-1582727867856-46e3951fd3ff?q=80&w=800', alt: 'Argentina esencial' },
+  'TRIPS.CONTRASTES_ARGENTINOS':        { url: 'https://images.unsplash.com/photo-1603155376270-6ad9b9b4fa59?q=80&w=800', alt: 'Contrastes argentinos' },
+  'TRIPS.CHILE_BOLIVIA_SALARES':        { url: 'https://images.unsplash.com/photo-1573502059387-0848782c6956?q=80&w=800', alt: 'Chile y Bolivia: salares y desierto' },
+  'TRIPS.CHILE_ISLA_PASCUA':            { url: 'https://images.unsplash.com/photo-1600754047212-0cf91397fbc6?q=80&w=800', alt: 'Chile e Isla de Pascua' },
+  'TRIPS.GRANDES_ESCENARIOS_ARGENTINA': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1778096630/DSCF4710_i0ivn7.jpg', alt: 'Fitz Roy en Patagonia, Argentina' },
 
   // ── Viajes hero carousel ──────────────────────────────────────────────────────
   'VIAJES_HERO_CHILE':     { url: 'https://images.unsplash.com/photo-1558518986-a7def81b3b73?q=80&w=1920', alt: 'Torres del Paine, Chile' },
@@ -68,6 +69,8 @@ export const ASSETS = {
   'DESTINATIONS.PUERTO_MADRYN':     { url: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80', alt: 'Puerto Madryn' },
   'DESTINATIONS.EL_CALAFATE':       { url: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80', alt: 'El Calafate' },
   'DESTINATIONS.USHUAIA':           { url: 'https://images.unsplash.com/photo-1531761399323-e5f7e7f98816?w=800&q=80', alt: 'Ushuaia' },
+  'DESTINATIONS.ELCHALTEN':         { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1778096630/IMG_8150_aw7cy4.jpg', alt: 'El Chaltén, Patagonia argentina' },
+  'DESTINATIONS.SANMARTIN':         { url: 'https://images.unsplash.com/photo-1604019550689-d6762c28b19e?q=80&w=1920', alt: 'San Martín de los Andes' },
   'DESTINATIONS.SALTA':             { url: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80', alt: 'Salta' },
   'DESTINATIONS.JUJUY':             { url: 'https://images.unsplash.com/photo-1583309219338-a582f1db9a62?w=800&q=80', alt: 'Jujuy' },
   'DESTINATIONS.TORRES_DEL_PAINE':  { url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80', alt: 'Torres del Paine' },
@@ -123,6 +126,13 @@ export const ASSETS = {
   'INSTAGRAM_PHOTOS.BUENOS_AIRES_INSTA':     { url: 'https://images.unsplash.com/photo-1589993624-d5e0e6a27fd8?w=600&q=80', alt: 'Buenos Aires' },
   'INSTAGRAM_PHOTOS.JUJUY_HUMAHUACA':        { url: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80', alt: 'Quebrada de Humahuaca, Jujuy' },
   'INSTAGRAM_PHOTOS.USHUAIA_BEAGLE':         { url: 'https://images.unsplash.com/photo-1531761399323-e5f7e7f98816?w=600&q=80', alt: 'Canal Beagle, Ushuaia' },
+
+  // ── Itineraries ───────────────────────────────────────────────────────────────
+  'ITINERARIES.GRANDES_ESCENARIOS_FITZ_ROY':  { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777912429/copy_of_dscf5187_cgefyp_2abb25.jpg', alt: 'Fitz Roy y Cerro Torre, desde la Loma del Pliegue Tumbado, El Chaltén' },
+  'ITINERARIES.GRANDES_ESCENARIOS_USHUAIA':   { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1778096630/DSCF3573_1_qdvk2p.jpg', alt: 'Ushuaia desde el Canal de Beagle, Tierra de Fuego' },
+  'ITINERARIES.GRANDES_ESCENARIOS_MORENO':    { url: 'https://images.unsplash.com/photo-1637949213621-c2aba6149fdb?q=80&w=1920', alt: 'Glaciar Perito Moreno' },
+  'ITINERARIES.GRANDES_ESCENARIOS_BARILOCHE': { url: 'https://images.unsplash.com/photo-1661558341880-2c9ab8c9478c?q=80&w=1920', alt: 'Lago Nahuel Huapi Bariloche' },
+  'ITINERARIES.GRANDES_ESCENARIOS_IGUAZU':    { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1778096630/IMG_1417_1_1_xdhe8i.jpg', alt: 'Cataratas del Iguazú, Argentina' },
 } as const
 
 export type AssetKey = keyof typeof ASSETS
