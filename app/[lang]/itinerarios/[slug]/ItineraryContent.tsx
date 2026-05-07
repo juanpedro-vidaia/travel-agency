@@ -22,9 +22,8 @@ import {
   CheckCircle,
   XCircle,
   Mountain,
-  Hike,
+  Binoculars,
   Snowflake,
-  Kayak,
   type LucideIcon,
 } from 'lucide-react'
 import { getItineraryWithDetails, getItineraryOptionals } from '@/lib/services/itinerariesService'
@@ -43,9 +42,8 @@ const ACTIVITY_ICON_MAP: Record<string, LucideIcon> = {
   UtensilsCrossed,
   Music,
   Mountain,
-  Hike,
+  Binoculars,
   Snowflake,
-  Kayak,
 }
 
 export default function ItineraryContent({ slug }: { slug: string }) {
