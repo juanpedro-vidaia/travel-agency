@@ -21,6 +21,10 @@ import {
   Clock,
   CheckCircle,
   XCircle,
+  Mountain,
+  Hike,
+  Snowflake,
+  Kayak,
   type LucideIcon,
 } from 'lucide-react'
 import { getItineraryWithDetails, getItineraryOptionals } from '@/lib/services/itinerariesService'
@@ -38,6 +42,10 @@ const ACTIVITY_ICON_MAP: Record<string, LucideIcon> = {
   Waves,
   UtensilsCrossed,
   Music,
+  Mountain,
+  Hike,
+  Snowflake,
+  Kayak,
 }
 
 export default function ItineraryContent({ slug }: { slug: string }) {
@@ -174,7 +182,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
       {/* ── HERO CAROUSEL ─────────────────────────────────────────────────────── */}
       <section
-        className="relative h-screen overflow-hidden"
+        className="relative h-[75vh] md:h-screen overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -197,27 +205,28 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           </div>
         ))}
 
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4 sm:px-8">
-          <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-5">
+        <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 md:justify-center md:pb-0 text-white text-center px-6 sm:px-8">
+          <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-2 sm:mb-5">
             {content.hero.eyebrowPrefix}
             {tripCountries.length > 0 && (
               <> · {tripCountries.map(c => c.content.es.name).join(' + ')}</>
             )}
           </p>
 
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-3 text-balance">
-            {trip.content.es.title}
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-2 sm:mb-3 text-balance">
+            <span className="md:hidden">{itinerary.content.es.heroTitleMobile ?? trip.content.es.title}</span>
+            <span className="hidden md:inline">{trip.content.es.title}</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-white/90 max-w-2xl mb-2">
+          <p className="text-base sm:text-xl text-white/90 max-w-2xl mb-1 sm:mb-2">
             {trip.content.es.subtitle}
           </p>
 
-          <p className="text-white/65 text-base mb-8">
+          <p className="text-white/65 text-sm sm:text-base mb-0 sm:mb-8">
             🗓 {trip.days} {ui.labels.days} · 🌙 {trip.nights} {content.labels.nights}
           </p>
 
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 max-w-2xl">
+          <div className="hidden sm:flex flex-wrap justify-center gap-2 sm:gap-2.5 max-w-2xl">
             {trip.tags.map(tag => (
               <span key={tag} className={PILL_CLASS}>
                 {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].es.label}
@@ -249,14 +258,14 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
         <button
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors"
+          className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full items-center justify-center text-white transition-colors"
           aria-label={content.hero.ariaLabelPrev}
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors"
+          className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full items-center justify-center text-white transition-colors"
           aria-label={content.hero.ariaLabelNext}
         >
           <ChevronRight className="w-6 h-6" />
@@ -280,7 +289,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
       {/* ── VOLVER AL PAÍS ────────────────────────────────────────────────────── */}
       {tripCountries.length > 0 && (
-        <section className="py-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
+        <section className="py-3 md:py-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto flex flex-wrap gap-3">
             {tripCountries.map(country => (
               <LangLink
@@ -297,14 +306,15 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       )}
 
       {/* ── DESCRIPCIÓN ───────────────────────────────────────────────────────── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-10 md:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg sm:text-xl text-vidaia-charcoal/80 leading-relaxed">
-            {itinerary.content.es.description}
+          <p className="text-base sm:text-xl text-vidaia-charcoal/80 leading-relaxed">
+            <span className="md:hidden">{itinerary.content.es.descriptionMobile ?? itinerary.content.es.description}</span>
+            <span className="hidden md:inline">{itinerary.content.es.description}</span>
           </p>
           <LangLink
             href={requestHref}
-            className="inline-flex items-center gap-2 mt-8 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base sm:text-lg"
+            className="hidden md:inline-flex items-center gap-2 mt-8 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base sm:text-lg"
           >
             {content.hero.ctaButton}
             <ArrowRight className="w-5 h-5" />
@@ -313,12 +323,12 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       </section>
 
       {/* ── ITINERARIO ACORDEÓN ───────────────────────────────────────────────── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
+      <section className="py-10 md:py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
             {content.accordion.title}
           </h2>
-          <p className="text-center text-vidaia-charcoal/55 mb-10 text-sm">
+          <p className="text-center text-vidaia-charcoal/55 mb-6 md:mb-10 text-sm">
             {content.accordion.subtitle}
           </p>
 
@@ -474,7 +484,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       </section>
 
       {/* ── MAPA DEL ITINERARIO ───────────────────────────────────────────────── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
             {ui.map.title}
@@ -492,16 +502,16 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
       {/* ── HOTELES ───────────────────────────────────────────────────────────── */}
       {hotelCards.length > 0 && (
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
             {content.hotels.title}
           </h2>
-          <p className="text-center text-vidaia-charcoal/55 text-sm mb-12">{content.hotels.subtitle}</p>
+          <p className="text-center text-vidaia-charcoal/55 text-sm mb-6 md:mb-12">{content.hotels.subtitle}</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 -mx-4 md:mx-0 px-4 md:px-0 pb-4 md:pb-0">
             {hotelCards.map((hotel, index) => (
-              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+              <div key={index} className="snap-start shrink-0 md:shrink w-[260px] md:w-auto bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src={hotel.img} alt={hotel.name} fill
@@ -552,19 +562,19 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
       {/* ── OPCIONALES ────────────────────────────────────────────────────────── */}
       {optionals.length > 0 && (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-amber-50">
+        <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-amber-50">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-amber-700 font-semibold tracking-widest uppercase text-xs mb-3">
               {content.optionals.overline}
             </p>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-12">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-6 md:mb-12">
               {content.optionals.title}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
               {optionals.map(({ Icon, title, description }) => (
-                <div key={title} className="bg-white rounded-2xl p-6 shadow-sm border border-amber-100 text-left hover:border-amber-300 hover:shadow-md transition-all">
-                  <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-amber-700" />
+                <div key={title} className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-amber-100 text-left hover:border-amber-300 hover:shadow-md transition-all">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-3 md:mb-4">
+                    <Icon className="w-5 h-5 md:w-6 md:h-6 text-amber-700" />
                   </div>
                   <h3 className="font-semibold text-vidaia-dark mb-2">⭐ {title}</h3>
                   <p className="text-sm text-vidaia-charcoal/70 leading-relaxed">{description}</p>
@@ -577,14 +587,14 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
       {/* ── VIAJES RELACIONADOS ───────────────────────────────────────────────── */}
       {relatedTrips.length > 0 && (
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
               {content.relatedTrips.title}
             </h2>
-            <p className="text-center text-vidaia-charcoal/55 text-sm mb-12">{content.relatedTrips.subtitle}</p>
+            <p className="text-center text-vidaia-charcoal/55 text-sm mb-6 md:mb-12">{content.relatedTrips.subtitle}</p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 -mx-4 md:mx-0 px-4 md:px-0 pb-4 md:pb-0">
               {relatedTrips.map(related => {
                 const reason = trip.relatedTrips.find(r => r.slug === related.slug)?.es.reason
                 const href = related.hasItinerary
@@ -593,7 +603,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                 const cta = related.hasItinerary ? ui.buttons.viewItinerary : ui.buttons.requestInfo
 
                 return (
-                  <article key={related.id} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 flex flex-col">
+                  <article key={related.id} className="snap-start shrink-0 md:shrink w-[260px] md:w-auto group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 flex flex-col">
                     <div className="relative h-44 overflow-hidden">
                       <Image
                         src={getAsset(related.imageKey).url} alt={related.content.es.title} fill

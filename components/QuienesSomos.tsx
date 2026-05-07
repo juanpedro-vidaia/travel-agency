@@ -88,7 +88,7 @@ export default function QuienesSomos() {
                 {sectionContent.landscapePhoto.quote}
               </p>
               <Link
-                href="/sobre-nosotros"
+                href="/#quienes-somos"
                 className="inline-flex items-center gap-2 text-vidaia-earth hover:text-vidaia-cream font-semibold text-sm transition-colors"
               >
                 {ui.buttons.readMore}

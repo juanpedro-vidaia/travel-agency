@@ -58,6 +58,8 @@ export interface ItineraryContent {
   title: string
   description: string
   heroImages: { imageKey: string; location: string }[]
+  heroTitleMobile?: string
+  descriptionMobile?: string
 }
 
 /**
@@ -88,6 +90,8 @@ const itineraries: Itinerary[] = [
       es: {
         title: 'Paisajes naturales de Argentina: ballenas, glaciares, cataratas y el Fin del Mundo',
         description: 'Argentina tiene una capacidad única para dejarte sin palabras. Este viaje lo demuestra en cada etapa: las cataratas más impresionantes del mundo, ballenas francas australes, el glaciar Perito Moreno en movimiento y el mítico Fin del Mundo en Ushuaia. 13 días de naturaleza pura y experiencias únicas.',
+        heroTitleMobile: 'Argentina: ballenas, glaciares y cataratas',
+        descriptionMobile: '13 días por las cataratas más impresionantes del mundo, ballenas francas australes, el Glaciar Perito Moreno y el mítico Fin del Mundo en Ushuaia.',
         heroImages: [
           { imageKey: 'ITINERARIES.PAISAJES_NATURALES_IGUAZU', location: 'Cataratas del Iguazú' },
           { imageKey: 'ITINERARIES.PAISAJES_NATURALES_VALDES', location: 'Península de Valdés' },
@@ -332,6 +336,8 @@ const itineraries: Itinerary[] = [
       es: {
         title: 'Esencias de Chile con Isla de Pascua: viñas, moáis y salares',
         description: 'Chile en su máxima esencia: la energía cosmopolita de Santiago, las viñas del valle del Maipo, el desierto más árido del planeta con sus salares y géiseres, y el misterio milenario de los moáis en Isla de Pascua. 13 días recorriendo tres mundos completamente distintos en un solo viaje.',
+        heroTitleMobile: 'Chile e Isla de Pascua: viñas, moáis y salares',
+        descriptionMobile: 'Santiago, el desierto de Atacama y los moáis de Isla de Pascua. 13 días recorriendo tres mundos completamente distintos.',
         heroImages: [
           { imageKey: 'ITINERARIES.ESENCIAS_CHILE_MOAIS', location: 'Ahu Tongariki · Isla de Pascua' },
           { imageKey: 'ITINERARIES.ESENCIAS_CHILE_ATACAMA', location: 'San Pedro de Atacama' },
@@ -551,6 +557,8 @@ const itineraries: Itinerary[] = [
       es: {
         title: 'Grandes Escenarios de Argentina: del Fin del Mundo a las Cataratas del Iguazú',
         description: 'Argentina tiene una capacidad única para dejarte sin palabras. Este viaje de 22 días lo demuestra en cada etapa: desde la cosmopolita Buenos Aires hasta el mítico Fin del Mundo en Ushuaia, pasando por el Glaciar Perito Moreno, el trekking en El Chaltén, los circuitos de Bariloche y San Martín, hasta las majestuosas Cataratas del Iguazú. Naturaleza pura, aventura y experiencias únicas en Patagonia.',
+        heroTitleMobile: 'Argentina: del Fin del Mundo a las Cataratas',
+        descriptionMobile: '22 días por la Patagonia completa: Ushuaia, Perito Moreno, El Chaltén, Bariloche y las Cataratas del Iguazú.',
         heroImages: [
           { imageKey: 'ITINERARIES.GRANDES_ESCENARIOS_FITZ_ROY', location: 'Fitz Roy · El Chaltén' },
           { imageKey: 'ITINERARIES.GRANDES_ESCENARIOS_USHUAIA', location: 'Canal Beagle · Ushuaia' },
@@ -604,7 +612,7 @@ const itineraries: Itinerary[] = [
             included: 'Guía turístico, recogida en hotel, regreso al hotel',
           }
         },
-        activities: [{ activityId: 'buenos-aires-city-tour', status: 'included' }],
+        activities: [{ activityId: 'city-tour-buenos-aires', status: 'included' }],
         referenceHotelId: 'merit-san-telmo',
       },
       {

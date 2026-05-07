@@ -59,7 +59,7 @@ export default function Header() {
             alt={logoAsset.alt}
             width={160}
             height={44}
-            className="h-12 md:h-16 w-auto object-contain"
+            className="h-10 md:h-14 w-auto object-contain"
             priority
           />
         </LangLink>
@@ -158,8 +158,8 @@ export default function Header() {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? 'max-h-[700px] opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="bg-white border-t border-gray-100 shadow-lg">
           <div className="px-4 py-4 space-y-1">
             <LangLink
               href="/"
@@ -224,7 +224,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-      )}
+      </div>
     </header>
   )
 }
