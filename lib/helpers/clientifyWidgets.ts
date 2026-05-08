@@ -45,10 +45,11 @@ function tryClickWidget(selectors: string[]): boolean {
 export function openClientifyMeetingWidget() {
   if (typeof window === 'undefined') return
 
+  const clientWindow = window as unknown as Record<string, unknown>
   const globalsToTry = [
-    (window as Record<string, unknown>).ClientifyMeetings,
-    (window as Record<string, unknown>).clientifyMeetings,
-    (window as Record<string, unknown>).Clientify,
+    clientWindow.ClientifyMeetings,
+    clientWindow.clientifyMeetings,
+    clientWindow.Clientify,
   ]
 
   for (const globalCandidate of globalsToTry) {
@@ -64,10 +65,11 @@ export function openClientifyMeetingWidget() {
 export function openClientifyWhatsAppWidget(fallbackWaLink: string) {
   if (typeof window === 'undefined') return
 
+  const clientWindow = window as unknown as Record<string, unknown>
   const globalsToTry = [
-    (window as Record<string, unknown>).ClientifyWhatsApp,
-    (window as Record<string, unknown>).clientifyWhatsApp,
-    (window as Record<string, unknown>).Clientify,
+    clientWindow.ClientifyWhatsApp,
+    clientWindow.clientifyWhatsApp,
+    clientWindow.Clientify,
   ]
 
   for (const globalCandidate of globalsToTry) {
