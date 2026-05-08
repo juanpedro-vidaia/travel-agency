@@ -331,11 +331,7 @@ export const STATIC_CONTENT = {
           },
           {
             name: 'Web Analytics',
-            description: 'Google Analytics',
-          },
-          {
-            name: 'Publicidad',
-            description: 'Google Adsense',
+            description: 'Google Analytics 4 (solo tras consentimiento de cookies analiticas)',
           },
         ],
         securityMeasuresHeading: 'MEDIDAS DE SEGURIDAD',
@@ -564,11 +560,7 @@ export const STATIC_CONTENT = {
           },
           {
             name: 'Web Analytics',
-            description: 'Google Analytics',
-          },
-          {
-            name: 'Advertising',
-            description: 'Google Adsense',
+            description: 'Google Analytics 4 (loaded only after analytics-cookie consent)',
           },
         ],
         securityMeasuresHeading: 'SECURITY MEASURES',

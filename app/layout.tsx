@@ -4,8 +4,11 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ContactModal from '@/components/ContactModal'
 import ContactFAB from '@/components/ContactFAB'
+import CookieConsentManager from '@/components/CookieConsentManager'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 import JsonLd from '@/components/JsonLd'
 import { ContactModalProvider } from '@/lib/context/ContactModalContext'
+import { ConsentProvider } from '@/lib/context/ConsentContext'
 import { LanguageProvider } from '@/lib/context/LanguageContext'
 import './globals.css'
 
@@ -56,13 +59,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.variable} ${playfair.variable}`}>
         <JsonLd data={travelAgencyJsonLd} />
         <LanguageProvider>
-          <ContactModalProvider>
-            <Header />
-            {children}
-            <Footer />
-            <ContactFAB />
-            <ContactModal />
-          </ContactModalProvider>
+          <ConsentProvider>
+            <GoogleAnalytics />
+            <ContactModalProvider>
+              <Header />
+              {children}
+              <Footer />
+              <ContactFAB />
+              <ContactModal />
+              <CookieConsentManager />
+            </ContactModalProvider>
+          </ConsentProvider>
         </LanguageProvider>
       </body>
     </html>

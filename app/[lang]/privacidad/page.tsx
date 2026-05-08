@@ -85,6 +85,16 @@ export default async function PrivacidadPage({ params }: Props) {
             ))}
           </ul>
 
+          <h3>CONSENTIMIENTO DE COOKIES Y REVOCACION</h3>
+          <p>
+            Las cookies no necesarias (por ejemplo, analitica) solo se activan cuando el usuario las acepta de forma explicita.
+            Puedes retirar o modificar ese consentimiento en cualquier momento desde el enlace <strong>Configurar cookies</strong> del pie de pagina.
+          </p>
+          <p>
+            Para mas detalle sobre categorias, proveedores y duracion de cookies, consulta nuestra{' '}
+            <Link href={`/${lang}/cookies`} className="underline hover:text-vidaia-primary">Politica de cookies</Link>.
+          </p>
+
           <h3>{content.policyContent.securityMeasuresHeading}</h3>
           <p>{content.policyContent.securityMeasuresText}</p>
         </div>

@@ -5,6 +5,7 @@ import { Instagram, Facebook, Mail, MapPin } from 'lucide-react'
 import { getCountries } from '@/lib/services/countriesService'
 import { useContactModal } from '@/lib/context/ContactModalContext'
 import { useLanguage } from '@/lib/hooks/useLanguage'
+import { useConsent } from '@/lib/hooks/useConsent'
 import { getAsset } from '@/lib/data/assets'
 import LangLink from '@/components/LangLink'
 import React from 'react'
@@ -12,6 +13,7 @@ import React from 'react'
 export default function Footer() {
   const countries = getCountries()
   const { openContactModal } = useContactModal()
+  const { openPreferences } = useConsent()
   const { content, language } = useLanguage()
   const footerContent = content.footer
   const logoColorAsset = getAsset('LOGO.COLOR')
@@ -145,6 +147,14 @@ export default function Footer() {
                 <LangLink href="/cookies" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {footerContent.legal.cookiesPolicy}
                 </LangLink>
+              </li>
+              <li>
+                <button
+                  onClick={openPreferences}
+                  className="text-sm text-gray-400 hover:text-white transition-colors"
+                >
+                  Configurar cookies
+                </button>
               </li>
             </ul>
             <p className="text-xs text-gray-500 mt-6 leading-relaxed">
