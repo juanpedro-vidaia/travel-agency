@@ -5,6 +5,7 @@ import { ArrowRight, Heart } from 'lucide-react'
 import { getHoneymoonTrips } from '@/lib/services/tripsService'
 import HoneymoonFaq from '@/components/HoneymoonFaq'
 import TripCard from '@/components/TripCard'
+import ClientifyMeetingButton from '@/components/ClientifyMeetingButton'
 import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getAsset } from '@/lib/data/assets'
@@ -61,14 +62,9 @@ export default async function LunasDeMielPage({ params }: Props) {
             ))}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 w-full sm:w-auto max-w-sm sm:max-w-none">
-            <Link
-              href="https://reuniones.clientify.com/#/viajesvidaia/hablemos30min?v2=true"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
-            >
+            <ClientifyMeetingButton className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base">
               {ui.buttons.freeMeeting}
-            </Link>
+            </ClientifyMeetingButton>
             <Link
               href={`/${lang}/presupuesto`}
               className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
@@ -225,14 +221,9 @@ export default async function LunasDeMielPage({ params }: Props) {
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{content.finalCta.title}</h2>
           <p className="text-white/70 text-lg mb-10">{content.finalCta.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="https://reuniones.clientify.com/#/viajesvidaia/hablemos30min?v2=true"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
-            >
+            <ClientifyMeetingButton className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg">
               {ui.buttons.freeMeeting}
-            </Link>
+            </ClientifyMeetingButton>
             <Link
               href={`/${lang}/presupuesto`}
               className="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"

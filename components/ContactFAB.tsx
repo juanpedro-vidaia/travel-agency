@@ -4,11 +4,11 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { MessageCircle, X, Phone, PhoneCall, Calendar } from 'lucide-react'
 import { useContactModal } from '@/lib/context/ContactModalContext'
 import { CONTACT } from '@/lib/config/contact'
+import { openClientifyMeetingWidget, openClientifyWhatsAppWidget } from '@/lib/helpers/clientifyWidgets'
 
 export default function ContactFAB() {
   const [isOpen,      setIsOpen]      = useState(false)
   const [copied,      setCopied]      = useState(false)
-  const [comingSoon,  setComingSoon]  = useState(false)
   const { openContactModal } = useContactModal()
   const fabRef = useRef<HTMLDivElement>(null)
 
@@ -34,7 +34,7 @@ export default function ContactFAB() {
 
   const handleWhatsApp = useCallback(() => {
     const msg = encodeURIComponent('Hola! Me gustaría información sobre vuestros viajes a medida.')
-    window.open(`https://wa.me/${CONTACT.phoneWhatsApp}?text=${msg}`, '_blank', 'noopener,noreferrer')
+    openClientifyWhatsAppWidget(`https://wa.me/${CONTACT.phoneWhatsApp}?text=${msg}`)
     setIsOpen(false)
   }, [])
 
@@ -57,10 +57,7 @@ export default function ContactFAB() {
   }, [openContactModal])
 
   const handleCitaPrevia = useCallback(() => {
-    // TODO: Integrar widget de reuniones de Clientify cuando esté disponible.
-    // Por ahora muestra un mensaje "Próximamente".
-    setComingSoon(true)
-    setTimeout(() => setComingSoon(false), 2500)
+    openClientifyMeetingWidget()
     setIsOpen(false)
   }, [])
 
@@ -96,9 +93,8 @@ export default function ContactFAB() {
     },
     {
       id: 'appointment',
-      // TODO: Conectar el widget de reuniones de Clientify aquí en el futuro.
       icon: <Calendar className="w-5 h-5 text-white" />,
-      label: comingSoon ? 'Próximamente' : 'Cita previa',
+      label: 'Cita previa',
       bg: 'bg-indigo-500 hover:bg-indigo-600',
       ariaLabel: 'Reservar cita previa',
       action: handleCitaPrevia,
@@ -110,7 +106,7 @@ export default function ContactFAB() {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-[90] bg-black/25 backdrop-blur-[2px]"
+          className="fixed inset-0 z-[9998] bg-black/25 backdrop-blur-[2px]"
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />
@@ -119,7 +115,7 @@ export default function ContactFAB() {
       {/* FAB container — grows upward from bottom-left */}
       <div
         ref={fabRef}
-        className="fixed bottom-6 left-6 z-[100] flex flex-col items-start gap-3"
+        className="fixed bottom-6 left-6 z-[9999] flex flex-col items-start gap-3"
       >
         {/* Options (top = farthest from FAB, bottom = closest) */}
         {[...options].reverse().map((opt, reversedIndex) => {
@@ -138,10 +134,6 @@ export default function ContactFAB() {
                   : `${(options.length - 1 - reversedIndex) * 25}ms`,
               }}
             >
-              {/* Label pill */}
-              <span className="bg-vidaia-dark/90 text-white text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap shadow-sm select-none">
-                {opt.label}
-              </span>
               {/* Action button */}
               <button
                 onClick={opt.action}
@@ -150,6 +142,10 @@ export default function ContactFAB() {
               >
                 {opt.icon}
               </button>
+              {/* Label pill */}
+              <span className="bg-vidaia-dark/90 text-white text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap shadow-sm select-none">
+                {opt.label}
+              </span>
             </div>
           )
         })}
@@ -185,7 +181,7 @@ export default function ContactFAB() {
 
       {/* Copied-to-clipboard toast (desktop) */}
       {copied && (
-        <div className="fixed bottom-24 left-6 z-[100] bg-vidaia-dark text-white text-sm font-medium px-4 py-2.5 rounded-full shadow-lg pointer-events-none">
+        <div className="fixed bottom-24 left-6 z-[10000] bg-vidaia-dark text-white text-sm font-medium px-4 py-2.5 rounded-full shadow-lg pointer-events-none">
           📋 {CONTACT.phone} copiado
         </div>
       )}

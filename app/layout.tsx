@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ContactModal from '@/components/ContactModal'
 import ContactFAB from '@/components/ContactFAB'
+import ClientifyScripts from '@/components/ClientifyScripts'
 import JsonLd from '@/components/JsonLd'
 import { ContactModalProvider } from '@/lib/context/ContactModalContext'
 import { LanguageProvider } from '@/lib/context/LanguageContext'
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <body className={`${inter.variable} ${playfair.variable}`}>
         <JsonLd data={travelAgencyJsonLd} />
+        <ClientifyScripts />
         <LanguageProvider>
           <ContactModalProvider>
             <Header />
