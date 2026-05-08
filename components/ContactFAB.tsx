@@ -4,7 +4,8 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { MessageCircle, X, Phone, PhoneCall, Calendar } from 'lucide-react'
 import { useContactModal } from '@/lib/context/ContactModalContext'
 import { CONTACT } from '@/lib/config/contact'
-import { openClientifyMeetingWidget, openClientifyWhatsAppWidget } from '@/lib/helpers/clientifyWidgets'
+
+const MEETING_URL = 'https://reuniones.clientify.com/#/viajesvidaia/hablemos30min?v2=true'
 
 export default function ContactFAB() {
   const [isOpen,      setIsOpen]      = useState(false)
@@ -34,7 +35,7 @@ export default function ContactFAB() {
 
   const handleWhatsApp = useCallback(() => {
     const msg = encodeURIComponent('Hola! Me gustaría información sobre vuestros viajes a medida.')
-    openClientifyWhatsAppWidget(`https://wa.me/${CONTACT.phoneWhatsApp}?text=${msg}`)
+    window.open(`https://wa.me/${CONTACT.phoneWhatsApp}?text=${msg}`, '_blank', 'noopener,noreferrer')
     setIsOpen(false)
   }, [])
 
@@ -57,7 +58,7 @@ export default function ContactFAB() {
   }, [openContactModal])
 
   const handleCitaPrevia = useCallback(() => {
-    openClientifyMeetingWidget()
+    window.open(MEETING_URL, '_blank', 'noopener,noreferrer')
     setIsOpen(false)
   }, [])
 
