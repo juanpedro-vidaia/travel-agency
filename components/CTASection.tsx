@@ -12,7 +12,7 @@ export default function CTASection() {
   const ctaBgAsset = getAsset('CTA_SECTION_BG')
 
   return (
-    <section className="relative py-28 overflow-hidden">
+    <section className="relative py-16 md:py-28 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <Image
@@ -35,26 +35,26 @@ export default function CTASection() {
       />
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-8">
+        <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-5 md:mb-8">
           {sectionContent.overline}
         </span>
 
-        <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+        <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight">
           {sectionContent.title}
         </h2>
 
-        <p className="text-white/65 text-lg sm:text-xl leading-relaxed mb-4 max-w-xl mx-auto">
+        <p className="text-white/65 text-base sm:text-xl leading-relaxed mb-4 max-w-xl mx-auto">
           {sectionContent.subtitle}
         </p>
 
-        <p className="text-vidaia-earth text-sm font-medium mb-10">
+        <p className="text-vidaia-earth text-sm font-medium mb-8 md:mb-10">
           {sectionContent.note}
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
           <LangLink
             href="/presupuesto"
-            className="inline-flex items-center gap-2.5 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
           >
             {ui.buttons.requestQuote}
             <ArrowRight className="w-5 h-5" />
@@ -62,7 +62,7 @@ export default function CTASection() {
 
           <a
             href={`mailto:${sectionContent.email}`}
-            className="inline-flex items-center gap-2 px-8 py-4 border border-white/25 text-white/80 hover:text-white hover:border-white/50 font-medium rounded-full text-base transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/25 text-white/80 hover:text-white hover:border-white/50 font-medium rounded-full text-base transition-all duration-200"
           >
             <Mail className="w-4 h-4" />
             {sectionContent.email}

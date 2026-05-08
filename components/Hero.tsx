@@ -23,7 +23,7 @@ export default function Hero() {
   const regions = regionContent[language] ?? regionContent.es
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-[82svh] md:h-[86vh] min-h-[620px] md:min-h-[660px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -38,7 +38,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 text-center">
         {/* Region */}
         <p className="inline-flex flex-wrap justify-center items-center gap-2 text-vidaia-earth text-sm font-semibold uppercase tracking-wide sm:tracking-[0.25em] mb-7">
           {regions.map((region, index) => {
@@ -58,7 +58,7 @@ export default function Hero() {
           })}
         </p>
 
-        <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6 text-balance">
+        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-5 sm:mb-6 text-balance">
           {heroContent.title.split('{br}').map((part: string, index: number) => (
             <React.Fragment key={index}>
               {part.split('{span}').map((subPart: string, subIndex: number) => (
@@ -71,11 +71,11 @@ export default function Hero() {
           ))}
         </h1>
 
-        <p className="text-white/75 text-base sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed text-balance px-2">
+        <p className="text-white/75 text-base sm:text-xl max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed text-balance px-2">
           {heroContent.description}
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
           <LangLink
             href="/presupuesto"
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"

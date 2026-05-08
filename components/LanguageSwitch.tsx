@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { LANGUAGES_CONFIG, getEnabledLanguages } from '@/lib/config/languages.config'
 
@@ -13,7 +14,7 @@ const LANG_FLAG_CODES: Record<string, string> = {
 function FlagImg({ langCode, alt }: { langCode: string; alt: string }) {
   const code = LANG_FLAG_CODES[langCode] ?? langCode
   return (
-    <img
+    <Image
       src={`https://flagcdn.com/20x15/${code}.png`}
       alt={alt}
       width={20}

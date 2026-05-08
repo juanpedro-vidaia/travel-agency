@@ -89,7 +89,7 @@ export default function Header() {
                     className="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-vidaia-light transition-colors group/item"
                     onClick={() => setDestinosOpen(false)}
                   >
-                    <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0 mt-0.5" />
+                    <Image src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-semibold text-vidaia-dark group-hover/item:text-vidaia-primary">
                         {(c.content[language as keyof typeof c.content] ?? c.content.es).name}
@@ -180,7 +180,7 @@ export default function Header() {
                   className="flex items-center gap-2.5 pl-6 pr-4 py-2.5 text-sm text-vidaia-charcoal hover:bg-vidaia-light rounded-xl"
                   onClick={() => setMobileOpen(false)}
                 >
-                  <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
+                  <Image src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
                   <span>{(c.content[language as keyof typeof c.content] ?? c.content.es).name}</span>
                 </LangLink>
               ))}

@@ -14,17 +14,17 @@ export default function FeaturedDestinations() {
   const sectionContent = content.featuredDestinations
 
   return (
-    <section className="py-20 bg-vidaia-cream">
+    <section className="py-12 md:py-20 bg-vidaia-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-8 md:mb-14">
           <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-dark text-sm font-semibold rounded-full mb-4">
             {sectionContent.header.overline}
           </span>
-          <h2 className="font-heading text-4xl sm:text-5xl font-bold text-vidaia-dark mb-4">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-vidaia-dark mb-3 sm:mb-4">
             {sectionContent.header.title}
           </h2>
-          <p className="text-xl text-vidaia-charcoal/60 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-vidaia-charcoal/60 max-w-2xl mx-auto">
             {sectionContent.header.subtitle}
           </p>
         </div>

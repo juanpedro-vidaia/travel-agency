@@ -13,14 +13,14 @@ export default function QuienesSomos() {
   const landscapePhotoAsset = getAsset('TEAM.LANDSCAPE_PHOTO');
 
   return (
-    <section id="quienes-somos" className="py-24 bg-white overflow-hidden">
+    <section id="quienes-somos" className="py-12 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-xl mb-16">
+        <div className="max-w-xl mb-8 md:mb-16">
           <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
             {sectionContent.header.overline}
           </span>
-          <h2 className="font-heading text-4xl sm:text-5xl font-bold text-vidaia-dark mb-4 leading-tight">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-vidaia-dark mb-3 sm:mb-4 leading-tight">
             {sectionContent.header.title.split('{br}').map((part, index) => (
               <React.Fragment key={index}>
                 {part}
@@ -28,13 +28,13 @@ export default function QuienesSomos() {
               </React.Fragment>
             ))}
           </h2>
-          <p className="text-gray-500 text-lg leading-relaxed">
+          <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
             {sectionContent.header.subtitle}
           </p>
         </div>
 
         {/* Team cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-14">
           {sectionContent.teamMembers.map((person) => {
             const personImage = getAsset(person.imageKey);
             return (

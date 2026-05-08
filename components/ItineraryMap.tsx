@@ -148,7 +148,7 @@ export default function ItineraryMap({
       mapRef.current?.remove()
       mapRef.current = null
     }
-  }, [stops, polylineCoords])
+  }, [nightLabel, nightsLabel, stops, polylineCoords])
 
   return (
     <div

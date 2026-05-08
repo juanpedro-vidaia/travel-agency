@@ -15,17 +15,17 @@ export default function TestimonialsSection() {
   const sectionContent = content.testimonialsSection
 
   return (
-    <section className="py-24 bg-vidaia-cream">
+    <section className="py-12 md:py-24 bg-vidaia-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-8 md:mb-14">
           <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
             {sectionContent.header.overline}
           </span>
-          <h2 className="font-heading text-4xl sm:text-5xl font-bold text-vidaia-dark mb-4">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-vidaia-dark mb-3 sm:mb-4">
             {sectionContent.header.title}
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto">
+          <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
             {sectionContent.header.subtitle}
           </p>
         </div>

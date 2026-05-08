@@ -51,12 +51,12 @@ export default async function CountryPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
-      <section className="relative h-[70vh] min-h-[480px] flex items-end overflow-hidden">
+      <section className="relative h-[70vh] md:h-[78vh] lg:h-[82vh] min-h-[500px] md:min-h-[580px] flex items-end overflow-hidden">
         <Image src={heroAsset.url} alt={heroAsset.alt} fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-16 w-full">
           <p className="flex items-center gap-2 text-vidaia-earth font-semibold uppercase tracking-widest text-xs mb-3">
-            <img src={flagAsset.url} alt={flagAsset.alt} width={20} height={15} className="rounded-sm flex-shrink-0" />
+            <Image src={flagAsset.url} alt={flagAsset.alt} width={20} height={15} className="rounded-sm flex-shrink-0" />
             {renderTemplate(content.hero.taglineTemplate, { country: countryName })}
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 text-balance max-w-2xl">
@@ -69,7 +69,7 @@ export default async function CountryPage({ params }: Props) {
       </section>
 
       {/* ── INTRODUCCIÓN ── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
+      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-vidaia-charcoal/80 text-lg sm:text-xl leading-relaxed">
             {countryT.description}{' '}
@@ -80,12 +80,12 @@ export default async function CountryPage({ params }: Props) {
 
       {/* ── GRID DE VIAJES ── */}
       {trips.length > 0 && (
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
               {renderTemplate(content.section.titleTemplate, { country: countryName })}
             </h2>
-            <p className="text-center text-vidaia-charcoal/55 text-sm mb-14">{content.section.subtitle}</p>
+            <p className="text-center text-vidaia-charcoal/55 text-sm mb-8 md:mb-14">{content.section.subtitle}</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {trips.map((trip) => (
@@ -108,7 +108,7 @@ export default async function CountryPage({ params }: Props) {
       )}
 
       {/* ── CTA FINAL ── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
+      <section className="py-14 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
         <div className="max-w-xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">{content.cta.title}</h2>
           <p className="text-white/65 text-lg mb-10 leading-relaxed">

@@ -40,7 +40,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-vidaia-charcoal to-vidaia-dark text-white overflow-hidden">
+      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-20 bg-gradient-to-b from-vidaia-charcoal to-vidaia-dark text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-vidaia-earth via-transparent to-transparent" />
         </div>
@@ -48,10 +48,10 @@ export default async function BlogPage({ params, searchParams }: Props) {
           <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-6">
             Blog de Viajes
           </span>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance">
+          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-5 sm:mb-6 text-balance">
             Historias desde el fin del mundo
           </h1>
-          <p className="text-white/70 text-lg max-w-2xl mx-auto text-balance">
+          <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto text-balance">
             Guías honestas, consejos prácticos e inspiración para descubrir Argentina, Chile y Bolivia sin filtros.
           </p>
         </div>
@@ -59,7 +59,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
 
       {/* Featured post */}
       {!activeCategory && featured && (
-        <section className="bg-white py-16">
+        <section className="bg-white py-12 md:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-xs font-bold text-vidaia-primary uppercase tracking-widest mb-6">Artículo destacado</p>
             <Link href={`/${lang}/blog/${featured.slug}`} className="group grid md:grid-cols-2 gap-8 rounded-3xl overflow-hidden bg-vidaia-light/40 hover:bg-vidaia-light/70 transition-colors">
@@ -101,7 +101,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
       )}
 
       {/* Category filter + grid */}
-      <section className="py-16 bg-vidaia-light/20">
+      <section className="py-12 md:py-16 bg-vidaia-light/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-2 mb-10">
             <Link
@@ -130,7 +130,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
           </div>
 
           {posts.length === 0 ? (
-            <div className="text-center py-20">
+            <div className="text-center py-12 md:py-20">
               <BookOpen className="w-12 h-12 text-gray-300 mx-auto mb-4" />
               <p className="text-gray-500">No hay artículos en esta categoría todavía.</p>
               <Link href={`/${lang}/blog`} className="mt-4 inline-block text-vidaia-primary text-sm font-medium hover:underline">
@@ -186,7 +186,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-6">
             Newsletter

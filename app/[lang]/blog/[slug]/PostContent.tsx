@@ -55,7 +55,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
     <>
       <ReadingProgress />
 
-      <article className="pt-24 pb-16">
+      <article className="pt-24 md:pt-28 pb-12 md:pb-16">
         <header className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
           <LangLink
             href="/blog"
@@ -65,7 +65,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
             Volver al blog
           </LangLink>
 
-          <div className="relative h-72 sm:h-96 lg:h-[450px] rounded-3xl overflow-hidden shadow-xl mb-12">
+          <div className="relative h-64 sm:h-96 lg:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl mb-8 md:mb-12">
             <Image
               src={postImageUrl} alt={es.imageAlt} fill className="object-cover" priority
               sizes="(max-width: 1280px) 100vw, 1280px"
@@ -78,11 +78,11 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
             </span>
           </div>
 
-          <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-vidaia-dark leading-tight mb-6 text-balance">
+          <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-vidaia-dark leading-tight mb-5 sm:mb-6 text-balance">
             {es.title}
           </h1>
 
-          <p className="text-gray-500 text-lg leading-relaxed mb-8">{es.excerpt}</p>
+          <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-8">{es.excerpt}</p>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 pb-8 border-b border-gray-100">
             <span className="flex items-center gap-1.5">

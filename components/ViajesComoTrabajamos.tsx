@@ -11,12 +11,12 @@ interface ViajesComoTrabajamosProps {
 
 export default function ViajesComoTrabajamos({ title, subtitle, steps }: ViajesComoTrabajamosProps) {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
+    <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
       <div className="max-w-5xl mx-auto">
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
+        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
           {title}
         </h2>
-        <p className="text-center text-vidaia-charcoal/55 text-sm mb-16">
+        <p className="text-center text-vidaia-charcoal/55 text-sm mb-8 md:mb-16">
           {subtitle}
         </p>
 

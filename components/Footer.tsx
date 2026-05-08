@@ -80,7 +80,7 @@ export default function Footer() {
               {countries.map((c) => (
                 <li key={c.slug}>
                   <LangLink href={`/destinos/${c.slug}`} className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
-                    <img src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
+                    <Image src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
                     {(c.content[language as keyof typeof c.content] ?? c.content.es).name}
                   </LangLink>
                 </li>

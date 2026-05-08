@@ -17,15 +17,15 @@ export default function BlogSection() {
   const sectionContent = content.blogSection
 
   return (
-    <section className="py-24 bg-vidaia-light/30">
+    <section className="py-12 md:py-24 bg-vidaia-light/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 md:mb-12">
           <div>
             <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
               {sectionContent.header.overline}
             </span>
-            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-vidaia-dark leading-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-vidaia-dark leading-tight">
               {sectionContent.header.title}
             </h2>
           </div>

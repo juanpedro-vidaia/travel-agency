@@ -41,18 +41,18 @@ export default async function LunasDeMielPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative h-[75vh] md:h-[82vh] lg:h-[86vh] min-h-[560px] md:min-h-[620px] overflow-hidden">
         <Image src={heroBg.url} alt={heroBg.alt} fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/65" />
 
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4 sm:px-8">
-          <p className="text-vidaia-earth font-medium tracking-widest uppercase text-sm mb-5">
+        <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 md:justify-center md:pt-28 md:pb-12 text-white text-center px-6 sm:px-8">
+          <p className="text-vidaia-earth font-medium tracking-widest uppercase text-xs sm:text-sm mb-2 sm:mb-5">
             {content.hero.overline}
           </p>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-5 text-balance">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-3 sm:mb-5 text-balance">
             {content.hero.title}
           </h1>
-          <p className="text-xl sm:text-2xl text-white/80 max-w-xl font-light italic">
+          <p className="text-base sm:text-xl text-white/80 max-w-xl font-light italic">
             {content.hero.subtitle.split('{br}').map((line, i) => (
               <React.Fragment key={i}>
                 {line}
@@ -60,18 +60,18 @@ export default async function LunasDeMielPage({ params }: Props) {
               </React.Fragment>
             ))}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-10">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 w-full sm:w-auto max-w-sm sm:max-w-none">
             <Link
               href="https://reuniones.clientify.com/#/viajesvidaia/hablemos30min?v2=true"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
+              className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
             >
               {ui.buttons.freeMeeting}
             </Link>
             <Link
               href={`/${lang}/presupuesto`}
-              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
             >
               {ui.buttons.tellUsYourTrip}
             </Link>
@@ -80,7 +80,7 @@ export default async function LunasDeMielPage({ params }: Props) {
       </section>
 
       {/* ── INTRODUCCIÓN ── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-3xl mx-auto text-center">
           <Heart className="w-8 h-8 text-vidaia-earth mx-auto mb-6" fill="currentColor" />
           <p className="text-vidaia-charcoal/80 text-lg sm:text-xl leading-relaxed">
@@ -95,12 +95,12 @@ export default async function LunasDeMielPage({ params }: Props) {
       </section>
 
       {/* ── SECCIÓN 1: QUÉ NOS DIFERENCIA ── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
             {content.whatMakesUsDifferent.title}
           </h2>
-          <p className="text-center text-vidaia-charcoal/55 text-sm mb-14">
+          <p className="text-center text-vidaia-charcoal/55 text-sm mb-8 md:mb-14">
             {content.whatMakesUsDifferent.subtitle}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -116,7 +116,7 @@ export default async function LunasDeMielPage({ params }: Props) {
       </section>
 
       {/* ── SECCIÓN 2: CÓMO LO DISEÑAMOS ── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
             {content.howWeDesignIt.title}
@@ -160,9 +160,9 @@ export default async function LunasDeMielPage({ params }: Props) {
       </section>
 
       {/* ── SECCIÓN 3: POR QUÉ A MEDIDA ── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-12">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-8 md:mb-12">
             {content.whyCustomHoneymoon.title}
           </h2>
           <ul className="space-y-5 text-left">
@@ -178,12 +178,12 @@ export default async function LunasDeMielPage({ params }: Props) {
 
       {/* ── SECCIÓN 4: IDEAS DE LUNAS DE MIEL ── */}
       {honeymoonTrips.length > 0 && (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
+        <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
           <div className="max-w-6xl mx-auto">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
               {content.honeymoonIdeas.title}
             </h2>
-            <p className="text-center text-vidaia-charcoal/55 text-sm mb-14">
+            <p className="text-center text-vidaia-charcoal/55 text-sm mb-8 md:mb-14">
               {content.honeymoonIdeas.subtitle}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -206,12 +206,12 @@ export default async function LunasDeMielPage({ params }: Props) {
       )}
 
       {/* ── SECCIÓN 5: FAQ ── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
             {content.faqSection.title}
           </h2>
-          <p className="text-center text-vidaia-charcoal/55 text-sm mb-12">
+          <p className="text-center text-vidaia-charcoal/55 text-sm mb-8 md:mb-12">
             {content.faqSection.subtitle}
           </p>
           <HoneymoonFaq />
@@ -219,7 +219,7 @@ export default async function LunasDeMielPage({ params }: Props) {
       </section>
 
       {/* ── CTA FINAL ── */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-vidaia-dark via-[#2a5060] to-vidaia-primary text-white text-center">
+      <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-vidaia-dark via-[#2a5060] to-vidaia-primary text-white text-center">
         <div className="max-w-2xl mx-auto">
           <Heart className="w-10 h-10 text-vidaia-earth mx-auto mb-6" fill="currentColor" />
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{content.finalCta.title}</h2>

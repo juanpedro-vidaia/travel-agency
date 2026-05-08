@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, useMemo, useCallback } from 'react'
 import { Search, SlidersHorizontal, X } from 'lucide-react'
 import TripCard from '@/components/TripCard'
@@ -160,7 +161,7 @@ export default function ViajesBuscador({
     : renderTemplate(strings.resultsCountPlural, { count: results.length })
 
   return (
-    <section id="buscador-viajes" className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
+    <section id="buscador-viajes" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
       <div className="max-w-6xl mx-auto">
 
         {/* ── Zona A: search bar ── */}
@@ -249,7 +250,7 @@ export default function ViajesBuscador({
                       onChange={() => toggleCountry(c.id)}
                       className="w-4 h-4 rounded border-vidaia-light accent-vidaia-primary focus:ring-vidaia-primary"
                     />
-                    <img
+                    <Image
                       src={`https://flagcdn.com/20x15/${c.flagCode}.png`}
                       alt=""
                       width={20}
@@ -292,7 +293,7 @@ export default function ViajesBuscador({
         <p className="text-xs text-vidaia-charcoal/50 mb-6 font-medium">{countLabel}</p>
 
         {results.length === 0 ? (
-          <div className="text-center py-20">
+          <div className="text-center py-12 md:py-20">
             <p className="text-2xl font-heading font-bold text-vidaia-dark mb-3">{strings.emptyTitle}</p>
             <p className="text-vidaia-charcoal/60 mb-8">{strings.emptyDescription}</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

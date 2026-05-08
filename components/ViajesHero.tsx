@@ -47,7 +47,7 @@ export default function ViajesHero({
 
   return (
     <section
-      className="relative h-screen overflow-hidden"
+      className="relative h-[75vh] md:h-[82vh] lg:h-[86vh] min-h-[560px] md:min-h-[620px] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -70,20 +70,20 @@ export default function ViajesHero({
       ))}
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4 sm:px-8">
-        <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-5">
+      <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 md:justify-center md:pt-28 md:pb-12 text-white text-center px-6 sm:px-8">
+        <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-2 sm:mb-5">
           {overline}
         </p>
-        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-5 text-balance">
+        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-3 sm:mb-5 text-balance">
           {title}
         </h1>
-        <p className="text-xl sm:text-2xl text-white/80 max-w-xl font-light">
+        <p className="text-base sm:text-xl text-white/80 max-w-xl font-light">
           {subtitle}
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 mt-10">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 w-full sm:w-auto max-w-sm sm:max-w-none">
           <LangLink
             href="/presupuesto"
-            className="inline-flex items-center gap-2.5 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
           >
             {ctaPrimary}
             <ArrowRight className="w-5 h-5" />
@@ -92,7 +92,7 @@ export default function ViajesHero({
             onClick={() => {
               document.getElementById('buscador-viajes')?.scrollIntoView({ behavior: 'smooth' })
             }}
-            className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
+            className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
           >
             {ctaSecondary}
           </button>
@@ -110,14 +110,14 @@ export default function ViajesHero({
       {/* Prev / Next */}
       <button
         onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors"
+        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full items-center justify-center text-white transition-colors"
         aria-label="Imagen anterior"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-colors"
+        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full items-center justify-center text-white transition-colors"
         aria-label="Imagen siguiente"
       >
         <ChevronRight className="w-5 h-5" />

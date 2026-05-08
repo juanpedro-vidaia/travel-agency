@@ -180,7 +180,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
       {/* ── HERO CAROUSEL ─────────────────────────────────────────────────────── */}
       <section
-        className="relative h-[75vh] md:h-screen overflow-hidden"
+        className="relative h-[75vh] md:h-[82vh] lg:h-[86vh] min-h-[560px] md:min-h-[620px] overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -203,7 +203,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           </div>
         ))}
 
-        <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 md:justify-center md:pb-0 text-white text-center px-6 sm:px-8">
+        <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 md:justify-center md:pt-28 md:pb-12 text-white text-center px-6 sm:px-8">
           <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-2 sm:mb-5">
             {content.hero.eyebrowPrefix}
             {tripCountries.length > 0 && (
@@ -652,12 +652,12 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       )}
 
       {/* ── PRECIO ────────────────────────────────────────────────────────────── */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
+      <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
         <div className="max-w-2xl mx-auto">
           <p className="text-vidaia-earth uppercase tracking-widest text-xs font-semibold mb-4">
             {content.price.overline}
           </p>
-          <p className="font-heading text-6xl sm:text-7xl font-bold mb-1">
+          <p className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold mb-1">
             {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom) })}
           </p>
           <p className="text-white/55 text-sm mb-2">{content.price.perPersonLabel}</p>

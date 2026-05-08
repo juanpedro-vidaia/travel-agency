@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { Check, Plus, Minus, Globe, User } from 'lucide-react';
 import LangLink from '@/components/LangLink';
@@ -269,7 +270,7 @@ export default function PresupuestoForm() {
                         {checked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
                       </div>
                       {code
-                        ? <img src={`https://flagcdn.com/20x15/${code}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
+                        ? <Image src={`https://flagcdn.com/20x15/${code}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
                         : <span className="text-xl leading-none">🌎</span>
                       }
                       <span className="text-sm font-semibold">{label}</span>
@@ -300,7 +301,7 @@ export default function PresupuestoForm() {
                   {mainDestinos.map((dest) => (
                     <div key={dest}>
                       <p className="flex items-center gap-2 text-sm font-semibold text-gray-500 mb-2.5">
-                        <img src={`https://flagcdn.com/20x15/${DESTINO_CODES[dest]}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
+                        <Image src={`https://flagcdn.com/20x15/${DESTINO_CODES[dest]}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
                         {dest.charAt(0).toUpperCase() + dest.slice(1)}
                       </p>
                       <div className="flex flex-wrap gap-2">

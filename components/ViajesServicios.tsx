@@ -20,24 +20,24 @@ export default function ViajesServicios({ missionTitle, missionText, cardsTitle,
   return (
     <>
       {/* ── Misión ── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-4 sm:mb-6">
             {missionTitle}
           </h2>
-          <p className="text-vidaia-charcoal/80 text-lg sm:text-xl leading-relaxed">
+          <p className="text-vidaia-charcoal/80 text-base sm:text-xl leading-relaxed">
             {missionText}
           </p>
         </div>
       </section>
 
       {/* ── Cards de servicios ── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
             {cardsTitle}
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-14">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 md:mt-14">
             {cards.map((card, i) => {
               const Icon = CARD_ICONS[i] ?? Compass
               return (
