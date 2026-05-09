@@ -4,12 +4,15 @@ import { useFormContext, useController } from 'react-hook-form'
 import { FieldLabel, RadioPill } from './FormPrimitives'
 import { CheckCard } from './FormPrimitives'
 import { inputCls } from './FormPrimitives'
+import { FieldError } from './FormPrimitives'
 import { TAG_CONFIG, type TripTag } from '@/lib/data/trips'
 import type { FormPayload } from '@/lib/form-utils'
 
 interface Paso2Props {
   t: {
     title: string
+    departureAirportLabel: string
+    departureAirportPlaceholder: string
     experienceLabel: string
     experienceOptional: string
     accommodationLabel: string
@@ -22,7 +25,7 @@ interface Paso2Props {
 }
 
 export default function Paso2ComoViajar({ t }: Paso2Props) {
-  const { watch, setValue } = useFormContext<FormPayload>()
+  const { register, watch, setValue } = useFormContext<FormPayload>()
   const { field: experiencesField } = useController({ name: 'experiences' })
 
   const selectedExperiences = watch('experiences') ?? []
@@ -41,9 +44,20 @@ export default function Paso2ComoViajar({ t }: Paso2Props) {
   return (
     <div className="space-y-8">
 
+      {/* Aeropuerto de salida */}
+      <div>
+        <FieldLabel text={t.departureAirportLabel} />
+        <input
+          type="text"
+          {...register('departureAirport')}
+          placeholder={t.departureAirportPlaceholder}
+          className={inputCls}
+        />
+      </div>
+
       {/* Tipo de experiencia */}
       <fieldset>
-        <FieldLabel text={`${t.experienceLabel} ${t.experienceOptional}`} />
+        <FieldLabel text={t.experienceLabel} />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           {tags.map(([key, config]) => (
             <CheckCard

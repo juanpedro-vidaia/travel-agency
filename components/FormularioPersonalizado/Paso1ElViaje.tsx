@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useFormContext, useController } from 'react-hook-form'
-import { Check } from 'lucide-react'
+import { Check, Globe } from 'lucide-react'
 import {
   FieldLabel, CheckPill, RadioPill, NumberStepper, inputCls, inputErrorCls, FieldError,
 } from './FormPrimitives'
@@ -13,8 +13,9 @@ import type { Destination } from '@/lib/data/destinations'
 interface Paso1Props {
   t: {
     destinationLabel: string
+    otrosLabel: string
+    otrosPlaceholder: string
     zonesLabel: string
-    zonesOptional: string
     dateLabel: string
     datePlaceholder: string
     flexibleLabel: string
@@ -22,6 +23,7 @@ interface Paso1Props {
     durationPlaceholder: string
     durationUnit: string
     motivoLabel: string
+    passengersLabel: string
     adultsLabel: string
     childrenLabel: string
     childrenSublabel: string
@@ -52,6 +54,7 @@ export default function Paso1ElViaje({
   const { field: countriesField } = useController({ name: 'countries' })
   const { field: destinationsField } = useController({ name: 'destinations' })
   const { field: motivoField } = useController({ name: 'motivo' })
+  const { field: durationField } = useController({ name: 'duration' })
 
   const toggleCountry = (countryId: string) => {
     const current = countriesField.value as string[]
@@ -82,15 +85,23 @@ export default function Paso1ElViaje({
   }
 
   const activeCountriesWithDests = selectedCountries.filter(
-    c => (featuredDestinations[c] ?? []).length > 0
+    c => c !== 'otros' && (featuredDestinations[c] ?? []).length > 0
   )
+
+  const hasOtros = selectedCountries.includes('otros')
+  const countriesError = errors.countries?.message
+    ? validationMessages[errors.countries.message] ?? errors.countries.message
+    : undefined
+  const durationError = errors.duration?.message
+    ? validationMessages[errors.duration.message] ?? errors.duration.message
+    : undefined
 
   return (
     <div className="space-y-8">
 
       {/* Destinos */}
       <fieldset>
-        <FieldLabel text={t.destinationLabel} />
+        <FieldLabel text={t.destinationLabel} required />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {countries.map(country => {
             const checked = selectedCountries.includes(country.id)
@@ -129,13 +140,50 @@ export default function Paso1ElViaje({
               </label>
             )
           })}
+
+          {/* Otros */}
+          <label
+            className={`flex items-center gap-3 p-4 rounded-2xl border-2 text-left transition-all cursor-pointer ${
+              hasOtros
+                ? 'border-vidaia-primary bg-vidaia-light/60 text-vidaia-dark'
+                : 'border-gray-200 hover:border-vidaia-mid text-gray-700 bg-white'
+            }`}
+          >
+            <input
+              type="checkbox"
+              checked={hasOtros}
+              onChange={() => toggleCountry('otros')}
+              className="sr-only"
+            />
+            <span className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
+              hasOtros ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'
+            }`}>
+              {hasOtros && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
+            </span>
+            <Globe className="w-5 h-5 flex-shrink-0 text-vidaia-charcoal/60" />
+            <span className="text-sm font-semibold">{t.otrosLabel}</span>
+          </label>
         </div>
+
+        {/* Texto libre cuando se selecciona Otros */}
+        {hasOtros && (
+          <div className="mt-3">
+            <input
+              type="text"
+              {...register('otrosDestino')}
+              placeholder={t.otrosPlaceholder}
+              className={inputCls}
+            />
+          </div>
+        )}
+
+        <FieldError message={countriesError} />
       </fieldset>
 
       {/* Zonas / destinos por país */}
       {activeCountriesWithDests.length > 0 && (
         <div>
-          <FieldLabel text={`${t.zonesLabel} ${t.zonesOptional}`} />
+          <FieldLabel text={t.zonesLabel} />
           <div className="space-y-5">
             {activeCountriesWithDests.map(countryId => {
               const country = countries.find(c => c.id === countryId)
@@ -188,22 +236,25 @@ export default function Paso1ElViaje({
 
       {/* Duración */}
       <div>
-        <FieldLabel text={t.durationLabel} required={origin === 'itinerary'} />
+        <FieldLabel text={t.durationLabel} required />
         <div className="flex items-center gap-3">
           <input
             type="number"
-            {...register('duration', { setValueAs: v => v === '' ? null : Number(v) })}
+            value={durationField.value || ''}
+            onChange={e => durationField.onChange(e.target.value === '' ? 0 : Number(e.target.value))}
+            onBlur={durationField.onBlur}
             min={1}
             max={365}
             placeholder={t.durationPlaceholder}
             readOnly={origin === 'itinerary'}
-            className={`${inputCls} w-28 text-center text-lg font-semibold ${origin === 'itinerary' ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+            className={`${durationError ? inputErrorCls : inputCls} w-28 text-center text-lg font-semibold ${origin === 'itinerary' ? 'bg-gray-50 cursor-not-allowed' : ''}`}
           />
           <span className="text-sm text-gray-500 font-medium">{t.durationUnit}</span>
           {origin === 'itinerary' && (
             <span className="text-xs text-vidaia-primary font-medium">(preseleccionado)</span>
           )}
         </div>
+        <FieldError message={durationError} />
       </div>
 
       {/* Motivo del viaje */}
@@ -221,9 +272,9 @@ export default function Paso1ElViaje({
         </div>
       </fieldset>
 
-      {/* Viajeros */}
+      {/* Pasajeros */}
       <div>
-        <FieldLabel text={t.adultsLabel} required />
+        <FieldLabel text={t.passengersLabel} required />
         <div className="bg-gray-50 rounded-2xl px-5 divide-y divide-gray-100">
           <NumberStepper
             label={t.adultsLabel}

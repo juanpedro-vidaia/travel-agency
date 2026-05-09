@@ -9,17 +9,19 @@ export const formSchema = z.object({
   itineraryId: z.string().optional(),
 
   // Step 1 — El viaje
-  countries: z.array(z.string()).default([]),
+  countries: z.array(z.string()).min(1, 'countriesRequired').default([]),
+  otrosDestino: z.string().default(''),
   destinations: z.array(z.string()).default([]),
   dateStart: z.string().min(1, 'dateRequired'),
   flexible: z.boolean().default(false),
-  duration: z.coerce.number().min(1).nullable().default(null),
+  duration: z.coerce.number().min(1, 'durationRequired').default(0),
   motivo: z.array(z.string()).default([]),
   adultos: z.number().min(1, 'adultsMin').default(2),
   menores: z.number().min(0).default(0),
   groupType: z.string().nullable().default(null),
 
   // Step 2 — Cómo viajar
+  departureAirport: z.string().default(''),
   experiences: z.array(z.string()).default([]),
   accommodation: z.string().nullable().default(null),
   budget: z.string().nullable().default(null),
@@ -43,8 +45,8 @@ export type FormPayload = z.infer<typeof formSchema>
 // ─── Step field map ───────────────────────────────────────────────────────────
 
 export const STEP_FIELDS: Record<1 | 2 | 3, (keyof FormPayload)[]> = {
-  1: ['countries', 'destinations', 'dateStart', 'flexible', 'duration', 'motivo', 'adultos', 'menores', 'groupType'],
-  2: ['experiences', 'accommodation', 'budget'],
+  1: ['countries', 'otrosDestino', 'destinations', 'dateStart', 'flexible', 'duration', 'motivo', 'adultos', 'menores', 'groupType'],
+  2: ['departureAirport', 'experiences', 'accommodation', 'budget'],
   3: ['idea', 'nombre', 'email', 'telefono', 'privacidad'],
 }
 
@@ -101,6 +103,7 @@ export function buildPresupuestoEmailHtml(data: FormPayload): string {
   <table style="width:100%;border-collapse:collapse">
     <tr><td style="padding:4px 0;color:#666;width:40%">Destinos</td><td>${data.countries.join(', ') || '—'}</td></tr>
     <tr><td style="padding:4px 0;color:#666">Zonas</td><td>${data.destinations.join(', ') || '—'}</td></tr>
+    <tr><td style="padding:4px 0;color:#666">Aeropuerto salida</td><td>${data.departureAirport || '—'}</td></tr>
     <tr><td style="padding:4px 0;color:#666">Fecha</td><td>${data.dateStart}${data.flexible ? ' (flexible)' : ''}</td></tr>
     <tr><td style="padding:4px 0;color:#666">Duración</td><td>${data.duration ? `${data.duration} días` : '—'}</td></tr>
     <tr><td style="padding:4px 0;color:#666">Motivo</td><td>${data.motivo.join(', ') || '—'}</td></tr>

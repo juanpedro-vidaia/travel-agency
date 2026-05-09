@@ -38,6 +38,8 @@ interface FormContent {
   step1: Record<string, string>
   step2: {
     title: string
+    departureAirportLabel: string
+    departureAirportPlaceholder: string
     experienceLabel: string
     experienceOptional: string
     accommodationLabel: string
@@ -87,14 +89,16 @@ export default function FormularioPersonalizado({
       itinerarySlug: itineraryData?.slug,
       itineraryId: itineraryData?.id,
       countries: preselectedCountries,
+      otrosDestino: '',
       destinations: preselectedDestinations,
       dateStart: '',
       flexible: false,
-      duration: itineraryData?.duration ?? null,
+      duration: itineraryData?.duration ?? 0,
       motivo: [],
       adultos: 2,
       menores: 0,
       groupType: null,
+      departureAirport: '',
       experiences: preselectedExperiences,
       accommodation: null,
       budget: null,
