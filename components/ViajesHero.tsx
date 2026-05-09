@@ -82,7 +82,7 @@ export default function ViajesHero({
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 w-full sm:w-auto max-w-sm sm:max-w-none">
           <LangLink
-            href="/presupuesto"
+            href="/itinerarios/personalizar"
             className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
           >
             {ctaPrimary}

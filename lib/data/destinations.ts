@@ -1,4 +1,4 @@
-export type Country = 'argentina' | 'chile' | 'bolivia'
+export type Country = 'argentina' | 'chile' | 'bolivia' | 'peru'
 
 export interface DestinationContent {
   name: string
@@ -15,6 +15,8 @@ export interface Destination {
   }
   imageKey: string
   active: boolean
+  /** Shown as pills in the quote form for this country */
+  featured?: boolean
   lat?: number
   lng?: number
 }
@@ -33,6 +35,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.BUENOS_AIRES',
     active: true,
+    featured: true,
     lat: -34.6037,
     lng: -58.3816,
   },
@@ -48,6 +51,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.IGUAZU',
     active: true,
+    featured: true,
     lat: -25.6953,
     lng: -54.4367,
   },
@@ -93,6 +97,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.EL_CALAFATE',
     active: true,
+    featured: true,
     lat: -50.3379,
     lng: -72.2648,
   },
@@ -108,6 +113,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.USHUAIA',
     active: true,
+    featured: true,
     lat: -54.8019,
     lng: -68.303,
   },
@@ -123,6 +129,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.SALTA',
     active: true,
+    featured: true,
     lat: -24.7884,
     lng: -65.4116,
   },
@@ -153,6 +160,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.MENDOZA',
     active: true,
+    featured: true,
     lat: -32.8895,
     lng: -68.8458,
   },
@@ -168,6 +176,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.BARILOCHE',
     active: true,
+    featured: true,
     lat: -41.1335,
     lng: -71.3103,
   },
@@ -266,6 +275,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.TORRES_DEL_PAINE',
     active: true,
+    featured: true,
     lat: -51.0,
     lng: -73.0,
   },
@@ -296,6 +306,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.SANTIAGO',
     active: true,
+    featured: true,
     lat: -33.4569,
     lng: -70.6483,
   },
@@ -311,6 +322,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.SAN_PEDRO_ATACAMA',
     active: true,
+    featured: true,
     lat: -22.9087,
     lng: -68.2003,
   },
@@ -326,6 +338,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.ISLA_PASCUA',
     active: true,
+    featured: true,
     lat: -27.1127,
     lng: -109.3497,
   },
@@ -406,6 +419,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.VALPARAISO',
     active: true,
+    featured: true,
   },
   {
     id: 'balmaceda',
@@ -459,6 +473,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.UYUNI',
     active: false,
+    featured: true,
     lat: -20.1338,
     lng: -67.4891,
   },
@@ -474,6 +489,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.LA_PAZ',
     active: false,
+    featured: true,
     lat: -16.4897,
     lng: -68.1193,
   },
@@ -489,6 +505,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.SUCRE',
     active: true,
+    featured: true,
   },
   {
     id: 'potosi',
@@ -528,6 +545,7 @@ const destinations: Destination[] = [
     },
     imageKey: 'DESTINATIONS.COPACABANA',
     active: true,
+    featured: true,
   },
 ]
 

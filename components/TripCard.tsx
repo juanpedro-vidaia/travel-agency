@@ -40,7 +40,7 @@ export default function TripCard({ trip, lang, strings }: TripCardProps) {
     const displayTitle   = tripT.honeymoonTitle ?? tripT.title
     const displayTagline = tripT.honeymoonTagline ?? tripT.subtitle
     const itineraryHref  = `/${lang}/itinerarios/${trip.slug}`
-    const infoHref       = `/${lang}/presupuesto-itinerario?titulo=${encodeURIComponent(displayTitle)}`
+    const infoHref       = trip.hasItinerary ? `/${lang}/itinerarios/${trip.slug}/personalizar` : `/${lang}/itinerarios/personalizar`
 
     return (
       <article className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col">
@@ -89,7 +89,7 @@ export default function TripCard({ trip, lang, strings }: TripCardProps) {
   const tripSubtitle = tripT.subtitle
   const href = trip.hasItinerary
     ? `/${lang}/itinerarios/${trip.slug}`
-    : `/${lang}/presupuesto-itinerario?titulo=${encodeURIComponent(tripTitle)}&subtitulo=${encodeURIComponent(tripSubtitle)}`
+    : `/${lang}/itinerarios/personalizar`
   const ctaLabel = trip.hasItinerary ? strings.ctaHasItinerary : strings.ctaNoItinerary
 
   return (

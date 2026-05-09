@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...langUrls('',                    1.0, 'weekly'),
     ...langUrls('/viajes',             0.9, 'weekly'),
     ...langUrls('/lunas-de-miel',      0.9, 'monthly'),
-    ...langUrls('/presupuesto',        0.8, 'monthly'),
+    ...langUrls('/itinerarios/personalizar', 0.8, 'monthly'),
     ...langUrls('/blog',               0.8, 'weekly'),
     ...langUrls('/aviso-legal',        0.3, 'yearly'),
     ...langUrls('/privacidad',         0.3, 'yearly'),

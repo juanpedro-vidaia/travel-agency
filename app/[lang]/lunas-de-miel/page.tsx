@@ -70,7 +70,7 @@ export default async function LunasDeMielPage({ params }: Props) {
               {ui.buttons.freeMeeting}
             </Link>
             <Link
-              href={`/${lang}/presupuesto`}
+              href={`/${lang}/itinerarios/personalizar`}
               className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
             >
               {ui.buttons.tellUsYourTrip}
@@ -234,7 +234,7 @@ export default async function LunasDeMielPage({ params }: Props) {
               {ui.buttons.freeMeeting}
             </Link>
             <Link
-              href={`/${lang}/presupuesto`}
+              href={`/${lang}/itinerarios/personalizar`}
               className="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
             >
               {ui.buttons.tellUsYourTrip}

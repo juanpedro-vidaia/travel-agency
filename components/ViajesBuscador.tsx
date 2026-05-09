@@ -298,7 +298,7 @@ export default function ViajesBuscador({
             <p className="text-vidaia-charcoal/60 mb-8">{strings.emptyDescription}</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <LangLink
-                href="/presupuesto"
+                href="/itinerarios/personalizar"
                 className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors"
               >
                 {strings.emptyCta}

@@ -133,7 +133,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <LanguageSwitch />
           <LangLink
-            href="/presupuesto"
+            href="/itinerarios/personalizar"
             className={`hidden md:inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
               scrolled
                 ? 'bg-vidaia-earth text-white hover:bg-vidaia-brown shadow-sm'
@@ -215,7 +215,7 @@ export default function Header() {
 
             <div className="pt-3 border-t border-gray-100">
               <LangLink
-                href="/presupuesto"
+                href="/itinerarios/personalizar"
                 className="block w-full text-center px-4 py-3.5 bg-vidaia-earth text-white font-semibold rounded-xl text-sm"
                 onClick={() => setMobileOpen(false)}
               >

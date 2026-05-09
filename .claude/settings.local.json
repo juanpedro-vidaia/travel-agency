@@ -6,7 +6,9 @@
       "Bash(npx next *)",
       "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); deps={**d.get\\('dependencies',{}\\),**d.get\\('devDependencies',{}\\)}; [print\\(k,v\\) for k,v in sorted\\(deps.items\\(\\)\\)]\")",
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\juanpedro.martin\\\\travel-agency\" -Force)",
-      "Bash(Select-Object Name, PSIsContainer)"
+      "Bash(Select-Object Name, PSIsContainer)",
+      "Read(//c/Users/juanpedro.martin/Downloads/**)",
+      "Bash(Select-Object Name, Mode)"
     ]
   }
 }

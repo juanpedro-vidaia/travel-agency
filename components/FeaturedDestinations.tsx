@@ -35,7 +35,7 @@ export default function FeaturedDestinations() {
             const t = trip.content[language as keyof typeof trip.content] ?? trip.content.es
             const href = trip.hasItinerary
               ? `/itinerarios/${trip.slug}`
-              : `/presupuesto-itinerario?titulo=${encodeURIComponent(t.title)}&subtitulo=${encodeURIComponent(t.subtitle)}`
+              : `/itinerarios/personalizar`
             const tripImage = getAsset(trip.imageKey)
 
             return (

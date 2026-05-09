@@ -170,7 +170,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
   if (!itinerary || !trip) return null
 
-  const requestHref = `/presupuesto-itinerario?titulo=${encodeURIComponent(trip.content.es.title)}&subtitulo=${encodeURIComponent(trip.content.es.subtitle)}`
+  const requestHref = `/itinerarios/${slug}/personalizar`
 
   const PILL_CLASS =
     'flex items-center gap-1.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-sm font-medium text-white'
@@ -597,7 +597,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                 const reason = trip.relatedTrips.find(r => r.slug === related.slug)?.es.reason
                 const href = related.hasItinerary
                   ? `/itinerarios/${related.slug}`
-                  : `/presupuesto-itinerario?titulo=${encodeURIComponent(related.content.es.title)}&subtitulo=${encodeURIComponent(related.content.es.subtitle)}`
+                  : `/itinerarios/personalizar`
                 const cta = related.hasItinerary ? ui.buttons.viewItinerary : ui.buttons.requestInfo
 
                 return (

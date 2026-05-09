@@ -115,7 +115,7 @@ export default async function CountryPage({ params }: Props) {
             {renderTemplate(content.cta.descriptionTemplate, { country: countryName })}
           </p>
           <Link
-            href={`/${lang}/presupuesto`}
+            href={`/${lang}/itinerarios/personalizar`}
             className="inline-flex items-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
           >
             {content.cta.button}
