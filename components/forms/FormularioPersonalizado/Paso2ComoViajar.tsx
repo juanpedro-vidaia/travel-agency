@@ -4,7 +4,6 @@ import { useFormContext, useController } from 'react-hook-form'
 import { FieldLabel, RadioPill } from './FormPrimitives'
 import { CheckCard } from './FormPrimitives'
 import { inputCls } from './FormPrimitives'
-import { FieldError } from './FormPrimitives'
 import { TAG_CONFIG, type TripTag } from '@/lib/data/trips'
 import type { FormPayload } from '@/lib/form-utils'
 

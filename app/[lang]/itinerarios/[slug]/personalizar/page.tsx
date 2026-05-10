@@ -7,8 +7,8 @@ import { getItinerary, getAllItineraries } from '@/lib/services/itinerariesServi
 import { getTripBySlug } from '@/lib/services/tripsService'
 import { getCountriesOrdered, getCountryBySlug } from '@/lib/services/countriesService'
 import { getFeaturedDestinationsGrouped } from '@/lib/services/destinationsService'
-import JsonLd from '@/components/JsonLd'
-import FormularioPersonalizado from '@/components/FormularioPersonalizado'
+import JsonLd from '@/components/scripts/JsonLd'
+import FormularioPersonalizado from '@/components/forms/FormularioPersonalizado'
 
 interface Props {
   params: Promise<{ lang: string; slug: string }>

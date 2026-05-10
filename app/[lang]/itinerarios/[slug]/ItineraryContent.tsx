@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import {
   ChevronLeft,
   ChevronRight,
@@ -35,7 +35,7 @@ import { getAsset } from '@/lib/data/assets'
 import { formatPrice, renderTemplate } from '@/lib/helpers/contentHelpers'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 
-const ItineraryMap = dynamic(() => import('@/components/ItineraryMap'), { ssr: false })
+const ItineraryMap = dynamic(() => import('@/components/ui/ItineraryMap'), { ssr: false })
 
 const ACTIVITY_ICON_MAP: Record<string, LucideIcon> = {
   Waves,

@@ -7,7 +7,7 @@ import { useContactModal } from '@/lib/context/ContactModalContext'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { useConsent } from '@/lib/hooks/useConsent'
 import { getAsset } from '@/lib/data/assets'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import React from 'react'
 
 export default function Footer() {

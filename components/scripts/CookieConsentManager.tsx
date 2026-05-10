@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { ShieldCheck, Settings2, X } from 'lucide-react'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import { useConsent } from '@/lib/context/ConsentContext'
 import type { ConsentPreferences } from '@/lib/consent/consent'
 

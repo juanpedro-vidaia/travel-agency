@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import { ArrowRight, Mail } from 'lucide-react'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'

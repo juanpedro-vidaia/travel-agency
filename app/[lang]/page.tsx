@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import { buildMetadata } from '@/lib/helpers/seo'
-import Hero from '@/components/Hero'
-import ValueProposition from '@/components/ValueProposition'
-import QuienesSomos from '@/components/QuienesSomos'
-import TestimonialsSection from '@/components/TestimonialsSection'
-import InstagramBanner from '@/components/InstagramBanner'
-import BlogSection from '@/components/BlogSection'
-import CTASection from '@/components/CTASection'
+import Hero from '@/components/sections/Hero'
+import ValueProposition from '@/components/sections/ValueProposition'
+import QuienesSomos from '@/components/sections/QuienesSomos'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
+import InstagramBanner from '@/components/sections/InstagramBanner'
+import BlogSection from '@/components/sections/BlogSection'
+import CTASection from '@/components/sections/CTASection'
 
 interface Props { params: Promise<{ lang: string }> }
 

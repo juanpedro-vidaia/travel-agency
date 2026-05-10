@@ -1,13 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import { ArrowLeft, Clock, Calendar, Share2, Twitter, Facebook, Link2, ArrowRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import ReadingProgress from '@/components/ReadingProgress'
-import NewsletterForm from '@/components/NewsletterForm'
+import ReadingProgress from '@/components/ui/ReadingProgress'
+import NewsletterForm from '@/components/forms/NewsletterForm'
 import { CATEGORY_CONFIG } from '@/lib/data/posts'
 import type { Post } from '@/lib/data/posts'
 import type { Trip } from '@/lib/data/trips'
@@ -181,13 +181,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
         )}
 
         <section id="newsletter" className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-          <div className="bg-vidaia-light/50 rounded-3xl p-8 sm:p-10">
-            <h2 className="font-heading text-2xl font-bold text-vidaia-dark mb-2">¿Te ha gustado este artículo?</h2>
-            <p className="text-gray-500 text-sm mb-6">
-              Suscríbete y te avisamos cuando publiquemos algo nuevo. Sin spam, solo inspiración.
-            </p>
-            <NewsletterForm />
-          </div>
+          <NewsletterForm variant="post" />
         </section>
 
         {relatedPosts.length > 0 && (

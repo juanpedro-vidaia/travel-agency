@@ -4,7 +4,7 @@ import { getItinerary, getAllItineraries } from '@/lib/services/itinerariesServi
 import { getTripBySlug } from '@/lib/services/tripsService'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import { buildMetadata } from '@/lib/helpers/seo'
-import JsonLd from '@/components/JsonLd'
+import JsonLd from '@/components/scripts/JsonLd'
 import ItineraryContent from './ItineraryContent'
 
 interface Props {

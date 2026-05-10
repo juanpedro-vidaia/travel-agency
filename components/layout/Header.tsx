@@ -7,8 +7,8 @@ import { getCountries } from '@/lib/services/countriesService'
 import { useContactModal } from '@/lib/context/ContactModalContext'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'
-import LangLink from '@/components/LangLink'
-import LanguageSwitch from '@/components/LanguageSwitch'
+import LangLink from '@/components/ui/LangLink'
+import LanguageSwitch from '@/components/ui/LanguageSwitch'
 
 export default function Header() {
   const countries = getCountries()

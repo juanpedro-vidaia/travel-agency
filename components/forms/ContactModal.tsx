@@ -1,10 +1,11 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Link from 'next/link'
-import { X } from 'lucide-react'
+import { X, Phone } from 'lucide-react'
 import { useContactModal } from '@/lib/context/ContactModalContext'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 import { CONTACT } from '@/lib/config/contact'
+import LangLink from '@/components/ui/LangLink'
 
 type FormState = {
   full_name: string
@@ -26,18 +27,14 @@ const BLANK: FormState = {
   commercial: false,
 }
 
-const PREFERRED_TIME_OPTIONS = [
-  { value: 'lo-antes-posible', label: 'Lo antes posible' },
-  { value: 'manana',           label: 'Mañana' },
-  { value: 'esta-semana',      label: 'Esta semana' },
-  { value: 'semana-siguiente', label: 'Semana que viene' },
-]
-
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
 export default function ContactModal() {
   const { isOpen, closeContactModal } = useContactModal()
-  const [form, setForm]     = useState<FormState>(BLANK)
+  const { content } = useLanguage()
+  const t = content.contactModal
+
+  const [form, setForm] = useState<FormState>(BLANK)
   const [status, setStatus] = useState<Status>('idle')
   const firstInputRef = useRef<HTMLInputElement>(null)
 
@@ -84,7 +81,7 @@ export default function ContactModal() {
     e.preventDefault()
     setStatus('submitting')
     try {
-      const res = await fetch('/api/contacto', {
+      const res = await fetch('/api/forms/contacto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, form_source: 'contact-modal' }),
@@ -117,22 +114,39 @@ export default function ContactModal() {
         <div className="bg-vidaia-dark px-6 sm:px-8 pt-7 pb-5 flex-shrink-0">
           <button
             onClick={closeContactModal}
-            aria-label="Cerrar"
+            aria-label={t.closeLabel}
             className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
-          <p className="text-vidaia-earth font-semibold uppercase tracking-widest text-xs mb-1.5">
-            Contacto directo
-          </p>
+          <div className="flex justify-center mb-3">
+            <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full">
+              {t.overline}
+            </span>
+          </div>
           <h2
             id="contact-modal-title"
-            className="font-heading text-2xl sm:text-3xl font-bold text-white mb-1"
+            className="font-heading text-2xl sm:text-3xl font-bold text-white mb-3"
           >
-            ¿Hablamos?
+            {t.title}
           </h2>
+
+          {/* Phone CTA */}
+          <a
+            href={`tel:${CONTACT.phoneClean}`}
+            className="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/15 rounded-2xl px-4 py-2.5 transition-colors mb-3"
+          >
+            <span className="w-7 h-7 rounded-full bg-vidaia-earth/20 flex items-center justify-center flex-shrink-0">
+              <Phone className="w-3.5 h-3.5 text-vidaia-earth" />
+            </span>
+            <span className="text-sm font-semibold text-white">
+              {t.callUs}{' '}
+              <span className="text-vidaia-earth">{CONTACT.phone}</span>
+            </span>
+          </a>
+
           <p className="text-white/65 text-sm leading-relaxed">
-            Te llamamos cuando te venga mejor. Cuéntanos un poco sobre tu viaje.
+            {t.subtitle}
           </p>
         </div>
 
@@ -142,17 +156,15 @@ export default function ContactModal() {
 
             {status === 'success' && (
               <div className="bg-green-50 border border-green-200 rounded-2xl p-5 text-center">
-                <p className="text-green-800 font-semibold text-lg mb-1">¡Recibido!</p>
-                <p className="text-green-700 text-sm">
-                  Te contactamos en breve. Cerrando en unos segundos…
-                </p>
+                <p className="text-green-800 font-semibold text-lg mb-1">{t.successTitle}</p>
+                <p className="text-green-700 text-sm">{t.successText}</p>
               </div>
             )}
 
             {status === 'error' && (
               <div className="bg-red-50 border border-red-200 rounded-2xl p-4">
                 <p className="text-red-700 text-sm font-medium">
-                  Algo ha ido mal. Inténtalo de nuevo o escríbenos a{' '}
+                  {t.errorText}{' '}
                   <a href={`mailto:${CONTACT.email}`} className="underline">
                     {CONTACT.email}
                   </a>
@@ -166,7 +178,7 @@ export default function ContactModal() {
                 {/* full_name */}
                 <div>
                   <label className="block text-xs font-semibold text-vidaia-charcoal/70 uppercase tracking-wide mb-1.5">
-                    Nombre y apellidos *
+                    {t.fullNameLabel} *
                   </label>
                   <input
                     ref={firstInputRef}
@@ -175,7 +187,7 @@ export default function ContactModal() {
                     value={form.full_name}
                     onChange={e => set('full_name', e.target.value)}
                     required
-                    placeholder="Ana García López"
+                    placeholder={t.fullNamePlaceholder}
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
                   />
                 </div>
@@ -183,7 +195,7 @@ export default function ContactModal() {
                 {/* email */}
                 <div>
                   <label className="block text-xs font-semibold text-vidaia-charcoal/70 uppercase tracking-wide mb-1.5">
-                    Email *
+                    {t.emailLabel} *
                   </label>
                   <input
                     type="email"
@@ -199,7 +211,7 @@ export default function ContactModal() {
                 {/* phone */}
                 <div>
                   <label className="block text-xs font-semibold text-vidaia-charcoal/70 uppercase tracking-wide mb-1.5">
-                    Teléfono *
+                    {t.phoneLabel} *
                   </label>
                   <input
                     type="tel"
@@ -215,10 +227,10 @@ export default function ContactModal() {
                 {/* preferred_time */}
                 <div>
                   <p className="text-xs font-semibold text-vidaia-charcoal/70 uppercase tracking-wide mb-2">
-                    ¿Cuándo prefieres que te llamemos? *
+                    {t.preferredTimeLabel} *
                   </p>
                   <div className="grid grid-cols-2 gap-2">
-                    {PREFERRED_TIME_OPTIONS.map(opt => {
+                    {t.preferredTimeOptions.map(opt => {
                       const active = form.preferred_time === opt.value
                       return (
                         <label
@@ -252,14 +264,14 @@ export default function ContactModal() {
                 {/* message */}
                 <div>
                   <label className="block text-xs font-semibold text-vidaia-charcoal/70 uppercase tracking-wide mb-1.5">
-                    Tu idea de viaje (opcional)
+                    {t.messageLabel}
                   </label>
                   <textarea
                     name="message"
                     value={form.message}
                     onChange={e => set('message', e.target.value)}
                     rows={3}
-                    placeholder="Cuéntanos brevemente qué tienes en mente"
+                    placeholder={t.messagePlaceholder}
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors resize-none"
                   />
                 </div>
@@ -277,15 +289,15 @@ export default function ContactModal() {
                       className="mt-0.5 w-4 h-4 flex-shrink-0 accent-vidaia-primary"
                     />
                     <span className="text-xs text-vidaia-charcoal/60 leading-relaxed">
-                      He leído y acepto la{' '}
-                      <Link
+                      {t.privacyPrefix}{' '}
+                      <LangLink
                         href="/privacidad"
                         target="_blank"
                         className="underline hover:text-vidaia-primary transition-colors"
-                        onClick={e => e.stopPropagation()}
+                        onClick={(e: React.MouseEvent) => e.stopPropagation()}
                       >
-                        política de privacidad
-                      </Link>{' '}
+                        {t.privacyLink}
+                      </LangLink>{' '}
                       *
                     </span>
                   </label>
@@ -297,7 +309,7 @@ export default function ContactModal() {
                       className="mt-0.5 w-4 h-4 flex-shrink-0 accent-vidaia-primary"
                     />
                     <span className="text-xs text-vidaia-charcoal/60 leading-relaxed">
-                      Acepto recibir información comercial y ofertas exclusivas de Viajes Vidaia
+                      {t.commercialText}
                     </span>
                   </label>
                 </div>
@@ -307,9 +319,7 @@ export default function ContactModal() {
                   disabled={status === 'submitting'}
                   className="w-full bg-vidaia-earth hover:bg-vidaia-brown disabled:opacity-60 text-white font-semibold py-4 rounded-2xl transition-colors text-sm mt-2"
                 >
-                  {status === 'submitting'
-                    ? 'Enviando…'
-                    : 'Quiero asesoramiento personalizado'}
+                  {status === 'submitting' ? t.submittingButton : t.submitButton}
                 </button>
               </>
             )}

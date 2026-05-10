@@ -2,7 +2,7 @@
 
 import { useFormContext } from 'react-hook-form'
 import { FieldLabel, inputCls, inputErrorCls, FieldError } from './FormPrimitives'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import type { FormPayload } from '@/lib/form-utils'
 
 interface Paso3Props {

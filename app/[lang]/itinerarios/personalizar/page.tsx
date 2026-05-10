@@ -4,8 +4,8 @@ import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getCountriesOrdered } from '@/lib/services/countriesService'
 import { getFeaturedDestinationsGrouped } from '@/lib/services/destinationsService'
-import JsonLd from '@/components/JsonLd'
-import FormularioPersonalizado from '@/components/FormularioPersonalizado'
+import JsonLd from '@/components/scripts/JsonLd'
+import FormularioPersonalizado from '@/components/forms/FormularioPersonalizado'
 
 interface Props {
   params: Promise<{ lang: string }>

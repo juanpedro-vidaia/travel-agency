@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import { ArrowRight, Clock } from 'lucide-react'
 import { getRecentPosts, formatDate } from '@/lib/services/postsService'
 import { CATEGORY_CONFIG } from '@/lib/data/posts'

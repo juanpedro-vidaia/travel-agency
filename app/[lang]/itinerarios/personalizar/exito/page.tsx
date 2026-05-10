@@ -3,7 +3,7 @@ import { STATIC_CONTENT } from '@/lib/data/staticContent'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { Check } from 'lucide-react'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 
 interface Props {
   params: Promise<{ lang: string }>

@@ -2,9 +2,9 @@
 
 import React from 'react'
 import Image from 'next/image'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import { ArrowRight } from 'lucide-react'
-import ContactModalTrigger from '@/components/ContactModalTrigger'
+import ContactModalTrigger from '@/components/forms/ContactModalTrigger'
 import { getAsset } from '@/lib/data/assets'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 

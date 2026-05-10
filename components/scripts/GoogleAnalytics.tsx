@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import Script from 'next/script'
-import ConsentScript from '@/components/ConsentScript'
+import ConsentScript from '@/components/scripts/ConsentScript'
 import { useConsent } from '@/lib/hooks/useConsent'
 
 const GA4_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID

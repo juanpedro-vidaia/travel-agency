@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
+import {
+  buildContactoClientifyPayload,
+  pushToClientify,
+  type ContactoPayload,
+} from '@/lib/services/clientify'
 
-// TODO: Configurar Resend para enviar a info@viajesvidaia.com
-// Ver /docs/EMAIL.md para instrucciones.
-
-function buildEmailHtml(data: Record<string, string | boolean>) {
+function buildEmailHtml(data: ContactoPayload & { privacy?: boolean }) {
   const sent = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
   return `
 <h2>🔔 Nueva solicitud de llamada — ${data.full_name}</h2>
@@ -13,6 +15,7 @@ function buildEmailHtml(data: Record<string, string | boolean>) {
   <tr><td><strong>Teléfono</strong></td><td>${data.phone}</td></tr>
   <tr><td><strong>Cuándo llamar</strong></td><td>${data.preferred_time}</td></tr>
   <tr><td><strong>Mensaje</strong></td><td>${data.message || '—'}</td></tr>
+  <tr><td><strong>Acepta comercial</strong></td><td>${data.commercial ? 'Sí' : 'No'}</td></tr>
   <tr><td><strong>Origen</strong></td><td>${data.form_source}</td></tr>
   <tr><td><strong>Fecha</strong></td><td>${sent}</td></tr>
 </table>
@@ -21,11 +24,16 @@ function buildEmailHtml(data: Record<string, string | boolean>) {
 
 export async function POST(request: NextRequest) {
   try {
-    const data = await request.json()
+    const data = await request.json() as ContactoPayload & { privacy: boolean }
 
-    console.log('[Contacto] Nueva solicitud de llamada:', JSON.stringify(data, null, 2))
+    // ── Clientify ────────────────────────────────────────────────────────────
+    // TODO: Activate when CLIENTIFY_API_KEY is configured.
+    //
+    // const clientifyPayload = buildContactoClientifyPayload(data)
+    // await pushToClientify(clientifyPayload)
 
-    // TODO: Reemplazar con llamada a Resend cuando esté configurado:
+    // ── Resend ───────────────────────────────────────────────────────────────
+    // TODO: Activate when RESEND_API_KEY and DNS are configured.
     //
     // import { Resend } from 'resend'
     // const resend = new Resend(process.env.RESEND_API_KEY)
@@ -36,7 +44,12 @@ export async function POST(request: NextRequest) {
     //   html: buildEmailHtml(data),
     // })
 
-    void buildEmailHtml(data)  // keep the function referenced until Resend is wired up
+    // Keep references until integrations are active
+    void buildContactoClientifyPayload
+    void pushToClientify
+    void buildEmailHtml(data)
+
+    console.log('[Contacto] Nueva solicitud de llamada:', JSON.stringify(data, null, 2))
 
     return NextResponse.json({ ok: true })
   } catch (error) {

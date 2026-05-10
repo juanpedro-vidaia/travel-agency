@@ -1,4 +1,4 @@
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import { ChevronRight } from 'lucide-react'
 
 interface BreadcrumbPersonalizarProps {

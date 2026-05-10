@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import { ArrowRight, Calendar } from 'lucide-react'
 import { getFeaturedTrips } from '@/lib/services/tripsService'
 import { useLanguage } from '@/lib/hooks/useLanguage'

@@ -4,12 +4,12 @@ import { buildMetadata } from '@/lib/helpers/seo'
 import { getActiveTrips } from '@/lib/services/tripsService'
 import { getCountries } from '@/lib/services/countriesService'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
-import ViajesHero from '@/components/ViajesHero'
-import ViajesServicios from '@/components/ViajesServicios'
-import ViajesBuscador from '@/components/ViajesBuscador'
-import ViajesComoTrabajamos from '@/components/ViajesComoTrabajamos'
-import TestimonialsSection from '@/components/TestimonialsSection'
-import CTASection from '@/components/CTASection'
+import ViajesHero from '@/components/sections/ViajesHero'
+import ViajesServicios from '@/components/sections/ViajesServicios'
+import ViajesBuscador from '@/components/sections/ViajesBuscador'
+import ViajesComoTrabajamos from '@/components/sections/ViajesComoTrabajamos'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
+import CTASection from '@/components/sections/CTASection'
 
 interface Props {
   params: Promise<{ lang: string }>

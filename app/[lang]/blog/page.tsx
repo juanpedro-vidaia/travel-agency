@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Clock, ArrowRight, BookOpen } from 'lucide-react'
+import NewsletterForm from '@/components/forms/NewsletterForm'
 import { getAllPosts, getFeaturedPost, getPostsByCategory, formatDate } from '@/lib/services/postsService'
 import { CATEGORY_CONFIG, type PostCategory } from '@/lib/data/posts'
 import { getAsset } from '@/lib/data/assets'
@@ -185,25 +186,10 @@ export default async function BlogPage({ params, searchParams }: Props) {
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-6">
-            Newsletter
-          </span>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-4 text-balance">
-            Nuevos artículos, directo a tu bandeja
-          </h2>
-          <p className="text-gray-500 mb-8 text-balance">
-            Sin spam, solo inspiración. Publicamos cuando tenemos algo bueno que contar.
-          </p>
-          <Link
-            href="#newsletter"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl"
-          >
-            Suscribirme al newsletter
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+      {/* Newsletter */}
+      <section id="newsletter" className="py-12 md:py-20 bg-white">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <NewsletterForm variant="blog" />
         </div>
       </section>
     </>

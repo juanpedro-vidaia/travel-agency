@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, MapPin, ArrowRight } from 'lucide-react'
-import LangLink from '@/components/LangLink'
+import LangLink from '@/components/ui/LangLink'
 import { getAsset } from '@/lib/data/assets'
 
 interface Slide {
