@@ -42,103 +42,90 @@ export default async function CookiesPage({ params }: Props) {
         </h1>
 
         <div className="prose prose-gray max-w-none text-vidaia-charcoal/80 leading-relaxed space-y-6">
-          <p>
-            En esta web usamos cookies para asegurar el funcionamiento tecnico del sitio y, solo si nos das tu consentimiento,
-            para analitica. Puedes aceptar, rechazar o cambiar tu decision en cualquier momento desde el enlace
-            <strong> Configurar cookies</strong> del pie de pagina.
-          </p>
+          {content.sections.map((section, i) => (
+            <div key={i}>
+              <h2>{section.heading}</h2>
 
-          <h2>1. Que son las cookies</h2>
-          <p>
-            Las cookies son pequeños archivos que se almacenan en tu dispositivo cuando visitas una web. Permiten recordar
-            preferencias, mejorar la experiencia de navegacion y, en algunos casos, medir el uso del sitio.
-          </p>
+              {section.items && (
+                <ul>
+                  {section.items.map((item, j) => (
+                    <li key={j}>
+                      <strong>{item.label}:</strong> {item.value}
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-          <h2>2. Tipos de cookies que usamos</h2>
-          <h3>2.1 Cookies necesarias (siempre activas)</h3>
-          <ul>
-            <li>Finalidad: funcionamiento basico de la web y gestion de preferencias de privacidad.</li>
-            <li>Base legal: interes legitimo y necesidad tecnica para prestar el servicio solicitado.</li>
-            <li>Proveedor: Viajes Vidaia.</li>
-          </ul>
+              {section.paragraphs && section.paragraphs.map((paragraph, j) => (
+                <p key={j}>{paragraph}</p>
+              ))}
 
-          <h3>2.2 Cookies analiticas (opcionales)</h3>
-          <ul>
-            <li>Finalidad: medir uso de la web para mejorar contenidos y experiencia.</li>
-            <li>Base legal: consentimiento expreso del usuario.</li>
-            <li>Proveedor: Google Analytics 4 (Google LLC).</li>
-          </ul>
+              {section.bullets && (
+                <ul>
+                  {section.bullets.map((bullet, j) => (
+                    <li key={j}>{bullet}</li>
+                  ))}
+                </ul>
+              )}
 
-          <h3>2.3 Cookies de marketing (actualmente desactivadas)</h3>
-          <p>
-            Esta categoria esta preparada en nuestra plataforma de consentimiento, pero no cargamos scripts de marketing
-            en este momento.
-          </p>
+              {section.labeledBullets && (
+                <ul>
+                  {section.labeledBullets.map((item, j) => (
+                    <li key={j}>
+                      <strong>{item.label}:</strong> {item.description}
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-          <h3>2.4 Personalizacion no tecnica (fase futura)</h3>
-          <p>
-            Esta categoria esta reservada para funciones futuras del portal de clientes. No se utilizan cookies de esta
-            categoria en el lanzamiento actual.
-          </p>
+              {section.trailingParagraph && (
+                <p>{section.trailingParagraph}</p>
+              )}
 
-          <h2>3. Cookies concretas en uso (lanzamiento)</h2>
-          <div className="overflow-x-auto not-prose rounded-xl border border-vidaia-light">
-            <table className="min-w-full text-sm">
-              <thead className="bg-vidaia-light/50 text-vidaia-dark">
-                <tr>
-                  <th className="px-4 py-3 text-left font-semibold">Cookie</th>
-                  <th className="px-4 py-3 text-left font-semibold">Categoria</th>
-                  <th className="px-4 py-3 text-left font-semibold">Proveedor</th>
-                  <th className="px-4 py-3 text-left font-semibold">Duracion</th>
-                  <th className="px-4 py-3 text-left font-semibold">Finalidad</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-vidaia-light">
-                <tr>
-                  <td className="px-4 py-3 font-mono text-xs">vidaia_consent</td>
-                  <td className="px-4 py-3">Necesaria</td>
-                  <td className="px-4 py-3">Viajes Vidaia</td>
-                  <td className="px-4 py-3">12 meses</td>
-                  <td className="px-4 py-3">Guardar tus preferencias de consentimiento.</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3 font-mono text-xs">_ga</td>
-                  <td className="px-4 py-3">Analitica</td>
-                  <td className="px-4 py-3">Google Analytics 4</td>
-                  <td className="px-4 py-3">2 años (segun navegador)</td>
-                  <td className="px-4 py-3">Distinguir usuarios para estadisticas de uso.</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3 font-mono text-xs">_ga_&lt;measurement_id&gt;</td>
-                  <td className="px-4 py-3">Analitica</td>
-                  <td className="px-4 py-3">Google Analytics 4</td>
-                  <td className="px-4 py-3">2 años (segun navegador)</td>
-                  <td className="px-4 py-3">Mantener estado de sesion para medicion.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+              {section.cookiesTable && (
+                <div className="overflow-x-auto not-prose rounded-xl border border-vidaia-light">
+                  <table className="min-w-full text-sm">
+                    <thead className="bg-vidaia-light/50 text-vidaia-dark">
+                      <tr>
+                        <th className="px-4 py-3 text-left font-semibold">Owner</th>
+                        <th className="px-4 py-3 text-left font-semibold">Finalidad</th>
+                        <th className="px-4 py-3 text-left font-semibold">Cookie</th>
+                        <th className="px-4 py-3 text-left font-semibold">Descripción</th>
+                        <th className="px-4 py-3 text-left font-semibold">Caducidad</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-vidaia-light">
+                      {section.cookiesTable.map((cookie, j) => (
+                        <tr key={j}>
+                          <td className="px-4 py-3">{cookie.owner}</td>
+                          <td className="px-4 py-3">{cookie.finalidad}</td>
+                          <td className="px-4 py-3 font-mono text-xs">{cookie.nombre}</td>
+                          <td className="px-4 py-3">{cookie.descripcion}</td>
+                          <td className="px-4 py-3">{cookie.caducidad}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
 
-          <h2>4. Como gestionar o retirar tu consentimiento</h2>
-          <ul>
-            <li>Desde la web: enlace <strong>Configurar cookies</strong> en el pie de pagina.</li>
-            <li>Desde el navegador: puedes borrar o bloquear cookies en la configuracion de tu navegador.</li>
-          </ul>
-
-          <h2>5. Transferencias internacionales</h2>
-          <p>
-            Si aceptas cookies analiticas, algunos datos pueden tratarse por proveedores ubicados fuera del Espacio Economico
-            Europeo. En ese caso, se aplicaran las garantias contractuales y medidas exigidas por la normativa aplicable.
-          </p>
-
-          <h2>6. Cambios en esta politica</h2>
-          <p>
-            Esta politica puede actualizarse por cambios legales o tecnicos. Si los cambios afectan a finalidades o categorias,
-            solicitaremos de nuevo tu consentimiento.
-          </p>
+              {section.browserLinks && (
+                <ul>
+                  {section.browserLinks.map((link, j) => (
+                    <li key={j}>
+                      <strong>{link.name}:</strong>{' '}
+                      <a href={link.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-vidaia-primary break-all">
+                        {link.url}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
 
           <p className="text-sm text-vidaia-charcoal/60">
-            Ultima actualizacion: mayo de 2026.
+            Última actualización: {content.lastUpdated}
           </p>
         </div>
       </div>

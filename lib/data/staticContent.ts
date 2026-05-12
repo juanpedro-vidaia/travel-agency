@@ -286,60 +286,127 @@ export const STATIC_CONTENT = {
         description: 'Política de privacidad de Viajes Vidaia.',
       },
       title: 'Política de Privacidad',
-      policyContent: {
-        heading1: 'DATOS DE IDENTIFICACIÓN',
-        identificationInfo: [
-          {
-            label: 'Titular',
-            value: 'Viajes Vidaia, S.R.L.',
-          },
-          {
-            label: 'NIF',
-            value: 'B55455380',
-          },
-          {
-            label: 'Domicilio Social',
-            value: 'Calle de la Bahía de Algeciras 1, 28033, Madrid, España',
-          },
-          {
-            label: 'Actividad',
-            value: 'Agencia de viajes online y contenidos del Cono Sur',
-          },
-          {
-            label: 'Correo electrónico',
-            value: 'info@viajesvidaia.com',
-          },
-        ],
-        heading2: 'REGISTRO Y FINALIDAD DE TUS DATOS',
-        registrationPurpose: 'En función del formulario o sección a la que accedas, te solicitaremos exclusivamente los datos necesarios para:',
-        registrationPoints: [
-          'Atender tus solicitudes, comentarios o consultas.',
-          'Informarte sobre actividades, productos y servicios vía e-mail, WhatsApp o teléfono.',
-          'Enviar comunicaciones comerciales y promociones de nuestros partners (sin que estos tengan nunca acceso a tus datos).',
-        ],
-        accuracyHeading: 'EXACTITUD Y VERACIDAD DE LOS DATOS',
-        accuracyText: 'Como usuario, eres el único responsable de la veracidad y modificación de los datos que remitas a <strong>Viajes Vidaia, S.R.L.</strong>, comprometiéndote a proporcionar información completa y correcta en los formularios de contacto.',
-        rightsHeading: 'DERECHOS DE ACCESO Y REVOCACIÓN',
-        rightsText: 'Podrás ejercer en cualquier momento tus derechos de <strong>acceso, rectificación, cancelación y oposición</strong>. Para ello, solo tienes que enviarnos un correo electrónico a <em>info@viajesvidaia.com</em> adjuntando una copia de tu DNI como prueba de identidad.',
-        thirdPartyServicesHeading: 'SERVICIOS DE TERCEROS',
-        thirdPartyServicesText: 'Para el funcionamiento de la web, compartimos datos con los siguientes proveedores bajo sus propias políticas de privacidad:',
-        thirdPartyServicesList: [
-          {
-            name: 'Hosting',
-            description: 'Hostinger (Hostinger Hosting Profesional)',
-          },
-          {
-            name: 'Web Analytics',
-            description: 'Google Analytics',
-          },
-          {
-            name: 'Publicidad',
-            description: 'Google Adsense',
-          },
-        ],
-        securityMeasuresHeading: 'MEDIDAS DE SEGURIDAD',
-        securityMeasuresText: 'Hemos adoptado las medidas técnicas necesarias para garantizar la seguridad e integridad de tus datos, evitando su pérdida o el acceso por parte de terceros no autorizados.',
-      },
+      lastUpdated: '12 de mayo de 2026',
+      sections: [
+        {
+          heading: '1. ¿QUIÉN ES EL RESPONSABLE DEL TRATAMIENTO DE SUS DATOS PERSONALES?',
+          items: [
+            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
+            { label: 'CIF', value: 'B-55455380' },
+            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
+            { label: 'Teléfono', value: '+34 676 97 29 48' },
+            { label: 'Email', value: 'info@viajesvidaia.com' },
+          ],
+          paragraphs: [
+            'Como responsable del tratamiento de sus datos personales, le informamos de que estos serán tratados de conformidad con lo dispuesto en el Reglamento (UE) 2016/679, de 27 de abril (RGPD), y la Ley Orgánica 3/2018, de 5 de diciembre (LOPDGDD).',
+          ],
+        },
+        {
+          heading: '2. ¿CON QUÉ FINALIDAD TRATAMOS SUS DATOS PERSONALES?',
+          paragraphs: [
+            'Según como hayamos obtenido sus datos personales en el sitio web, los trataremos de manera confidencial para alcanzar las siguientes finalidades:',
+          ],
+          bullets: [
+            'Para responder a sus consultas o información solicitada a través de nuestro correo electrónico y los formularios de contacto que ponemos a su disposición (art. 6.1.b RGPD).',
+            'Para enviarle información comercial relacionada con nuestros servicios a aquellos usuarios que nos hayan facilitado su consentimiento para ello, o porque ya sean nuestros clientes (art. 6.1.f RGPD exención art. 21.2 LSSI).',
+          ],
+          trailingParagraph: 'Puede oponerse al envío de información comercial, comunicándonoslo a través de nuestro correo electrónico.',
+        },
+        {
+          heading: '3. PRINCIPIOS APLICABLES AL TRATAMIENTO DE SUS DATOS PERSONALES',
+          labeledBullets: [
+            { label: 'Principio de licitud, lealtad y transparencia', description: 'Se requerirá en todo momento el consentimiento del usuario previa información completamente transparente de los fines para los cuales se recogen los datos personales.' },
+            { label: 'Principio de limitación de la finalidad', description: 'Los datos personales serán recogidos con fines determinados, explícitos y legítimos.' },
+            { label: 'Principio de minimización de datos', description: 'Los datos personales recogidos serán únicamente los estrictamente necesarios en relación con los fines para los que son tratados.' },
+            { label: 'Principio de exactitud', description: 'Los datos personales deben ser exactos y estar siempre actualizados.' },
+            { label: 'Principio de limitación del plazo de conservación', description: 'Los datos personales sólo serán mantenidos de forma que se permita la identificación del usuario durante el tiempo necesario para los fines de su tratamiento.' },
+            { label: 'Principio de integridad y confidencialidad', description: 'Los datos personales serán tratados de manera que se garantice su seguridad y confidencialidad.' },
+            { label: 'Principio de responsabilidad proactiva', description: 'El responsable del tratamiento será responsable de asegurar que los principios anteriores se cumplen.' },
+          ],
+        },
+        {
+          heading: '4. CONSERVACIÓN DE SUS DATOS PERSONALES',
+          paragraphs: [
+            'Sus datos personales, se conservarán durante no más tiempo del necesario para mantener el fin del tratamiento o que existan prescripciones legales que dictaminen su custodia y cuando ya no sean necesarios para ello, se suprimirán con medidas de seguridad adecuadas para garantizar la anonimización de los datos o la destrucción total de los mismos.',
+          ],
+        },
+        {
+          heading: '5. DESTINATARIOS DE SUS DATOS PERSONALES',
+          paragraphs: [
+            'Sus datos personales, serán conservados bajo estrictas medidas de seguridad que garanticen la confidencialidad y la seguridad de los mismos. Sus datos no serán cedidos a terceros salvo que deban de ser comunicados a otras entidades del sector turístico implicadas en los supuestos que sean estrictamente necesarios para gestionar los servicios turísticos contratados por el usuario, o porque exista una obligación legal.',
+            'Las entidades a las que se podrá comunicar sus datos son:',
+          ],
+          labeledBullets: [
+            { label: 'Compañías Aseguradoras', description: 'Para la formalización de la póliza del seguro y cobertura de los riesgos derivados del viaje contratado.' },
+            { label: 'Proveedores Nacionales y Extranjeros', description: 'Para la gestión y organización del viaje contratado.' },
+            { label: 'Compañías Aéreas y de Transporte', description: 'Para la reserva, adquisición y venta de billetes.' },
+            { label: 'Establecimientos Hoteleros', description: 'Para la reserva del alojamiento.' },
+          ],
+          trailingParagraph: 'En relación a lo anteriormente expuesto, el responsable podrá realizar transferencias internacionales de datos personales fuera del Espacio Económico Europeo siempre con sujeción a las restricciones contractuales relativas a confidencialidad y seguridad de los datos contenidas en las leyes y normas relativas a la protección de datos de carácter personal. En ningún caso, sus datos personales serán cedidos a terceros no autorizados a tratarlos que no garanticen la protección completa de sus datos.',
+        },
+        {
+          heading: '6. ¿CUÁLES SON SUS DERECHOS Y CÓMO EJERCITARLOS?',
+          paragraphs: [
+            'Como interesado que nos ha proporcionado sus datos personales, tiene pleno derecho para ejercitar los siguientes derechos que la normativa en materia de protección de datos le reconoce, conforme a lo previsto en la misma.',
+          ],
+          subsections: [
+            {
+              heading: 'Derecho de Acceso',
+              paragraphs: [
+                'El interesado tendrá derecho a solicitar y obtener gratuitamente la información de sus datos de carácter personal sometidos a tratamiento, el origen de dichos datos, así como, las comunicaciones realizadas o que se prevén hacer de los mismos. Cuando el interesado presente la solicitud por medios electrónicos, y a menos que este solicite que se facilite de otro modo, la información se facilitará en un formato electrónico de uso común. El derecho a obtener copia no afectará negativamente a los derechos y libertades de otros.',
+              ],
+            },
+            {
+              heading: 'Derecho de Rectificación y Supresión',
+              paragraphs: [
+                'El responsable, tendrá la obligación de hacer efectivo el derecho de rectificación o supresión del interesado en el plazo de diez días. Serán rectificados o suprimidos en su caso, los datos de carácter personal cuyo tratamiento no se ajuste a lo dispuesto en la ley y en particular, cuando tales datos resulten inexactos e incompletos, tendrá derecho a obtener sin dilación indebida, la rectificación de los datos personales inexactos que le conciernan. El interesado tendrá derecho a que se completen los datos personales que sean incompletos, inclusive mediante una declaración adicional.',
+              ],
+            },
+            {
+              heading: 'Derecho a la Limitación del Tratamiento',
+              paragraphs: [
+                'El interesado tendrá derecho a obtener del responsable, la limitación del tratamiento de los datos. Cuando el tratamiento de datos personales se haya limitado, solo podrán ser objeto de tratamiento para su conservación, con el consentimiento del interesado, para la formulación, el ejercicio o la defensa de reclamaciones, con miras a la protección de los derechos de otra persona física o jurídica o por razones de interés público. Todo interesado que haya obtenido la limitación del tratamiento será informado por la empresa antes del levantamiento de dicha limitación.',
+              ],
+            },
+            {
+              heading: 'Derecho de Oposición',
+              paragraphs: [
+                'El interesado tendrá derecho a oponerse en cualquier momento, por motivos relacionados con su situación particular, a que datos personales que le conciernan (interés público e interés legítimo) sean objeto de tratamiento, incluida la elaboración de perfiles sobre la base de dichas disposiciones. El responsable, dejará de tratar los datos personales, salvo que acredite motivos legítimos imperiosos para el tratamiento que prevalezcan sobre los intereses, los derechos y las libertades del interesado, o para la formulación, el ejercicio o la defensa de reclamaciones.',
+                'En caso de que se haya vulnerado cualquiera de sus derechos, el interesado tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD), en Calle Jorge Juan Nº6, 28001-Madrid, o a través de la sede electrónica de la AEPD: http://www.aepd.es.',
+              ],
+            },
+          ],
+        },
+        {
+          heading: '7. DATOS DE CONTACTO PARA EJERCER SUS DERECHOS',
+          items: [
+            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
+            { label: 'CIF', value: 'B-55455380' },
+            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
+            { label: 'Teléfono', value: '+34 676 97 29 48' },
+            { label: 'Email', value: 'info@viajesvidaia.com' },
+          ],
+        },
+        {
+          heading: '8. CARÁCTER OBLIGATORIO O FACULTATIVO DE LA INFORMACIÓN FACILITADA POR EL USUARIO',
+          paragraphs: [
+            'El usuario, mediante la entrada de datos en los campos de los formularios de contacto o mediante la marcación de las casillas correspondientes, acepta expresamente y de forma libre e inequívoca, que sus datos son necesarios para atender su petición, por parte del responsable. El usuario, garantiza que los datos personales facilitados son veraces y se hace responsable de comunicar cualquier modificación de los mismos.',
+            'Todos los datos solicitados a través del sitio web son obligatorios, ya que son necesarios para la prestación de un servicio óptimo al usuario. En caso de que no se faciliten todos los datos, no se garantiza que la información y servicios facilitados sean completamente ajustados a sus necesidades.',
+          ],
+        },
+        {
+          heading: '9. MEDIDAS DE SEGURIDAD',
+          paragraphs: [
+            'El Responsable garantiza tener implantadas todas las políticas técnicas y organizativas apropiadas para aplicar las medidas de seguridad que se establecen el Reglamento (UE) 2016/679, de 27 de abril (RGPD), y la Ley Orgánica 3/2018, de 5 de diciembre (LOPDGDD), con el fin de proteger los derechos y libertades de los usuarios y que se les ha comunicado la información adecuada para que puedan ejercerlos y cumplimos con los principios descritos en el artículo 5 del RGPD, por los cuales sus datos son tratados de manera lícita, leal y transparente en relación con el interesado y adecuados, pertinentes y limitados a lo necesario en relación con los fines para los que son tratados.',
+          ],
+        },
+        {
+          heading: '10. REDES SOCIALES',
+          paragraphs: [
+            'El usuario, puede acceder a las diferentes cuentas en redes sociales que el responsable tiene incluidas en este sitio web, pudiendo acceder y aceptando el tratamiento de sus datos personales por parte de las mismas según sus políticas de privacidad. El responsable, no se hace responsabiliza de la información personal que cada usuario pueda publicar en éstas.',
+          ],
+        },
+      ],
     },
     cookiesPage: {
       metadata: {
@@ -347,7 +414,88 @@ export const STATIC_CONTENT = {
         description: 'Política de cookies de Viajes Vidaia.',
       },
       title: 'Política de Cookies',
-      content: 'Contenido en preparación. Próximamente se publicará la política de cookies completa.',
+      lastUpdated: '12 de mayo de 2026',
+      sections: [
+        {
+          heading: '1. ¿QUIÉN ES EL RESPONSABLE DEL TRATAMIENTO DE SUS DATOS PERSONALES?',
+          items: [
+            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
+            { label: 'CIF', value: 'B-55455380' },
+            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
+            { label: 'Teléfono', value: '+34 676 97 29 48' },
+            { label: 'Email', value: 'info@viajesvidaia.com' },
+          ],
+        },
+        {
+          heading: '2. ¿QUÉ SON LAS COOKIES?',
+          paragraphs: [
+            'Las cookies son pequeños archivos que se descargan en el dispositivo del usuario al acceder a determinados sitios web y que permiten, entre otras cosas, almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información que contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.',
+          ],
+          bullets: [
+            'Desde un punto de vista técnico, permiten que el sitio web funcione de forma más ágil y adaptado a las preferencias de los usuarios, como por ejemplo almacenar el idioma, la moneda del país o detectar el dispositivo de acceso.',
+            'Establecen niveles de protección y seguridad que impiden o dificultan ciberataques contra el sitio web o sus usuarios.',
+            'Permiten que los gestores de los medios puedan conocer datos estadísticos recopilados en las cookies para mejorar la calidad y experiencia de sus servicios.',
+            'Sirven para optimizar la publicidad que mostramos a los usuarios, ofreciendo la que más se ajusta a sus intereses.',
+          ],
+        },
+        {
+          heading: '3. ¿CUÁL ES LA BASE JURÍDICA APLICABLE?',
+          paragraphs: [
+            'La base jurídica para el uso de cookies depende de su finalidad:',
+          ],
+          labeledBullets: [
+            { label: 'Cookies Técnicas o Necesarias', description: 'Se utilizan sobre la base del interés legítimo del responsable y permiten el funcionamiento del sitio web o la prestación de servicios solicitados por el usuario.' },
+            { label: 'Cookies de Análisis, Personalización o Publicidad', description: 'Se utilizan únicamente cuando el usuario ha prestado su consentimiento (artículo 6.1.a RGPD y artículo 22.2 de la Ley 34/2002 de Servicios de la Sociedad de la Información).' },
+          ],
+          trailingParagraph: 'El usuario puede aceptar, rechazar o configurar el uso de cookies a través del sistema de gestión del consentimiento disponible en el sitio web.',
+        },
+        {
+          heading: '4. TIPOS DE COOKIES',
+          paragraphs: [
+            'Según quien sea la entidad que gestione el dominio desde donde se envían las cookies y trate los datos que se obtengan, se pueden distinguir dos tipos:',
+          ],
+          labeledBullets: [
+            { label: 'Cookies Propias', description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por el propio titular del sitio web.' },
+            { label: 'Cookies de Terceros', description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por una entidad distinta del titular del sitio web.' },
+            { label: 'Cookies de Sesión', description: 'Diseñadas para recabar y almacenar datos mientras el usuario accede a un sitio web. Se suelen emplear para almacenar información que sólo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.' },
+            { label: 'Cookies Persistentes', description: 'Los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un periodo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.' },
+            { label: 'Cookies Técnicas (Necesarias)', description: 'Permiten la navegación a través del sitio web y la utilización de las diferentes opciones o servicios que existen en ella. Sin estas cookies el sitio web no puede funcionar correctamente.' },
+            { label: 'Cookies de Personalización', description: 'Permiten recordar información para que el usuario acceda al servicio con determinadas características que puedan diferenciar su experiencia de la de otros usuarios.' },
+            { label: 'Cookies de Análisis', description: 'Permiten cuantificar el número de usuarios y realizar la medición y análisis estadístico del uso que hacen los usuarios del servicio ofrecido.' },
+            { label: 'Cookies de Publicidad Comportamental', description: 'Permiten analizar los hábitos de navegación de los usuarios para mostrar publicidad relacionada con su perfil de navegación y para medir la eficacia de las campañas publicitarias.' },
+            { label: 'Cookies de Redes Sociales Externas', description: 'Se utilizan para que los visitantes puedan interactuar con el contenido de diferentes redes sociales. Las condiciones de utilización de estas cookies y la información recopilada se regula por la política de privacidad de la red social correspondiente.' },
+          ],
+        },
+        {
+          heading: '5. COOKIES UTILIZADAS EN ESTE SITIO WEB',
+          cookiesTable: [
+            { owner: 'Propia', finalidad: 'Técnica', nombre: 'vidaia_consent', descripcion: 'Almacena las preferencias de consentimiento de cookies del usuario.', caducidad: '12 meses' },
+            { owner: 'Tercero (Google Analytics 4)', finalidad: 'Analítica', nombre: '_ga', descripcion: 'Distingue usuarios únicos para el análisis estadístico del uso del sitio.', caducidad: '2 años' },
+            { owner: 'Tercero (Google Analytics 4)', finalidad: 'Analítica', nombre: '_ga_<ID>', descripcion: 'Mantiene el estado de sesión para la medición de visitas.', caducidad: '2 años' },
+          ],
+        },
+        {
+          heading: '6. ¿CÓMO SE GESTIONA EL CONSENTIMIENTO?',
+          paragraphs: [
+            'Este sitio web dispone de un sistema de gestión del consentimiento que permite al usuario aceptar, rechazar o configurar el uso de cookies cuando accede por primera vez.',
+            'El usuario puede modificar o retirar su consentimiento en cualquier momento accediendo nuevamente al panel de configuración de cookies disponible en el sitio web.',
+          ],
+        },
+        {
+          heading: '7. ¿CÓMO ELIMINAR O DESACTIVAR ESTAS COOKIES?',
+          paragraphs: [
+            'Puede usted permitir o bloquear las cookies, así como borrar sus datos de navegación (incluidas las cookies) desde el navegador que usted utiliza. Consulte las opciones e instrucciones que ofrece su navegador para ello. Tenga en cuenta que, si acepta las cookies de terceros, deberá eliminarlas desde las opciones del navegador o desde el sistema ofrecido por el propio tercero.',
+            'A continuación, tiene disponibles los enlaces con la información para gestionar las cookies de los navegadores más utilizados:',
+          ],
+          browserLinks: [
+            { name: 'Chrome', url: 'https://support.google.com/chrome/answer/95647?hl=es' },
+            { name: 'Microsoft Edge', url: 'https://support.microsoft.com/microsoft-edge/delete-cookies' },
+            { name: 'Firefox', url: 'http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies' },
+            { name: 'Safari', url: 'https://support.apple.com/es-es/guide/safari/sfri11471/mac' },
+            { name: 'Opera', url: 'http://help.opera.com/en/latest/web-preferences/' },
+          ],
+        },
+      ],
     },
     legalNoticePage: {
       metadata: {
@@ -355,6 +503,62 @@ export const STATIC_CONTENT = {
         description: 'Aviso legal de Viajes Vidaia.',
       },
       title: 'Aviso Legal',
+      lastUpdated: '12 de mayo de 2026',
+      intro: [
+        'VIAJES VIDAIA S.R.L, responsable del sitio web (en adelante responsable), pone a disposición del usuario la siguiente información, con la que pretende dar cumplimiento a las obligaciones dispuestas en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE, BOE Nº166), así como informar de cuáles son sus condiciones de uso.',
+        'Toda persona que acceda a este sitio web, asume el papel de usuario, comprometiéndose al cumplimiento riguroso de las disposiciones aquí dispuestas, así como a cualquier otra disposición legal que fuera de aplicación.',
+        'VIAJES VIDAIA S.R.L, se reserva el derecho de modificar cualquier tipo de información que pudiera aparecer en el sitio web, sin que exista obligación de preavisar o poner en conocimiento del usuario dichas obligaciones, entendiéndose como suficiente con la publicación en este sitio web.',
+      ],
+      sections: [
+        {
+          heading: '1. DATOS IDENTIFICATIVOS DEL RESPONSABLE DEL SITIO WEB',
+          items: [
+            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
+            { label: 'CIF', value: 'B-55455380' },
+            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
+            { label: 'Teléfono', value: '+34 676 97 29 48' },
+            { label: 'Email', value: 'info@viajesvidaia.com' },
+            { label: 'Nombre del dominio', value: 'www.viajesvidaia.com' },
+            { label: 'Identificador Registral único de la Sociedad (IRUS)', value: '1000422147558' },
+          ],
+        },
+        {
+          heading: '2. DERECHOS DE LA PROPIEDAD INTELECTUAL E INDUSTRIAL',
+          paragraphs: [
+            'El sitio web, incluyendo a título enunciativo, pero no limitativo su programación, edición, compilación y demás elementos necesarios para su funcionamiento, los diseños, logotipos, textos, etc, son propiedad del responsable, o si es el caso, dispone de licencia o autorización expresa por parte de los autores. Todos los contenidos de este sitio web, se encuentran debidamente protegidos por la normativa de propiedad intelectual e industrial, así como inscritos en los registros públicos correspondientes.',
+            'Independientemente de la finalidad para la que fueran destinados, la reproducción total o parcial, uso, explotación, distribución y comercialización, requiere en todo caso de la autorización por parte del responsable. Cualquier uso no autorizado previamente se considera un incumplimiento grave de los derechos de propiedad intelectual o industrial del autor.',
+            'Los diseños, logotipos, texto y/o gráficos ajenos al responsable y que pudieran aparecer en el sitio web, pertenecen a sus respectivos propietarios, siendo ellos mismos responsables de cualquier posible controversia que pudiera suscitarse respecto a los mismos. El responsable autoriza expresamente a que terceros puedan redirigir directamente a los contenidos concretos del sitio web. El responsable, reconoce a favor de sus titulares, los correspondientes derechos de propiedad intelectual e industrial, no implicando su sola mención o aparición en el sitio web, la existencia de derechos o responsabilidad alguna sobre los mismos, como tampoco respaldo, patrocinio o recomendación por parte del mismo.',
+            'Para realizar cualquier tipo de observación respecto a posibles incumplimientos de los derechos de propiedad intelectual o industrial, así como sobre cualquiera de los contenidos del sitio web, puede hacerlo a través de nuestro correo electrónico.',
+          ],
+        },
+        {
+          heading: '3. EXENCIÓN DE RESPONSABILIDADES',
+          paragraphs: [
+            'El responsable, se exime de cualquier tipo de responsabilidad derivada de la información publicada en su sitio web, siempre que esta información haya sido manipulada o introducida por un tercero ajeno al mismo.',
+          ],
+        },
+        {
+          heading: '4. POLÍTICA DE ENLACES',
+          paragraphs: [
+            'Desde el sitio web, es posible que se redirija a contenidos de terceros sitios web. Dado que el responsable no puede controlar siempre los contenidos introducidos por terceros en sus respectivos sitios web, no asume ningún tipo de responsabilidad respecto a dichos contenidos. En todo caso, procederá a la retirada inmediata de cualquier contenido que pudiera contravenir la legislación nacional o internacional, la moral o el orden público, procediendo a la retirada de la redirección a dicho sitio web, poniendo en conocimiento de las autoridades competentes el contenido en cuestión.',
+            'El responsable, no se responsabiliza de la información y contenidos almacenados a título enunciativo, pero no limitativo, en foros, chats, generadores de blogs, comentarios, redes sociales o cualquier otro medio que permita a terceros publicar contenidos de forma independiente en esta página web.',
+            'Sin embargo, y en cumplimiento de lo dispuesto en los artículos 11 y 16 de la LSSICE, se pone a disposición de todos los usuarios, autoridades y fuerzas de seguridad, colaborando de forma activa en la retirada o, en su caso, bloqueo de todos aquellos contenidos que puedan afectar o contravenir la legislación nacional o internacional, los derechos de terceros o la moral y el orden público. En caso de que el usuario considere que existe en el sitio web algún contenido que pudiera ser susceptible de esta clasificación, se ruega lo notifique de forma inmediata.',
+          ],
+        },
+        {
+          heading: '5. ACTUALIZACIÓN Y MODIFICACIÓN DE LA INFORMACIÓN',
+          paragraphs: [
+            'La información que aparece en este sitio web, es la vigente en la fecha de su última actualización. No se podrá alterar, cambiar, modificar, o adaptar este sitio web. Sin embargo, el responsable, se reserva el derecho a poder actualizar, modificar o eliminar la información de este sitio web, pudiendo limitar o no permitir el acceso al mismo y a efectuar cuantos cambios y modificaciones estime convenientes, pudiendo hacer uso de tal facultad en cualquier momento y sin previo aviso.',
+            'Este sitio web, se ha revisado y probado para que funcione correctamente. En principio, puede garantizarse el correcto funcionamiento los 365 días del año, 24 horas al día. Sin embargo, el responsable no descarta la posibilidad de que existan ciertos errores de programación, o que acontezcan causas de fuerza mayor, catástrofes naturales, huelgas o circunstancias semejantes que hagan imposible el acceso al sitio web.',
+          ],
+        },
+        {
+          heading: '6. LEY APLICABLE Y JURISDICCIÓN',
+          paragraphs: [
+            'Para la resolución de todas las controversias o cuestiones relacionadas con el presente sitio web o de las actividades en el desarrolladas, será de aplicación la legislación española, a la que se someten expresamente las partes, siendo competentes para la resolución de todos los conflictos derivados o relacionados con su uso los Juzgados y Tribunales del domicilio del usuario o del lugar del cumplimiento de la obligación.',
+          ],
+        },
+      ],
     },
     viajesPage: {
       metadata: {
@@ -677,64 +881,128 @@ export const STATIC_CONTENT = {
         title: 'Privacy Policy | Viajes Vidaia',
         description: 'Privacy policy of Viajes Vidaia.',
       },
-      title: 'Privacy Policy',
-      policyContent: {
-        paragraph1: 'The owner informs you about its <strong>Privacy Policy</strong> regarding the processing and protection of the personal data of users and clients that may be collected through navigation or contracting of services through the website https://viajesvidaia.com/. It is our duty to inform you and yours to be duly informed.',
-        paragraph2: 'In this Privacy Policy, we will inform you with <strong>complete transparency</strong> about the purpose of this website and everything that affects the data you provide us, as well as your obligations and rights.',
-        paragraph3: 'This website complies with current regulations regarding data protection (<strong>GDPR</strong>, <strong>LOPDGDD</strong>, and <strong>LSSI</strong>), which affects the personal data you provide us with your express consent and the cookies we use for this website to function correctly.',
-        identificationHeading: 'IDENTIFICATION DATA',
-        identificationInfo: [
-          {
-            label: 'Owner',
-            value: 'Viajes Vidaia, S.R.L.',
-          },
-          {
-            label: 'NIF',
-            value: 'B55455380',
-          },
-          {
-            label: 'Registered Office',
-            value: 'Calle de la Bahía de Algeciras 1, 28033, Madrid, Spain',
-          },
-          {
-            label: 'Activity',
-            value: 'Online travel agency and Southern Cone content',
-          },
-          {
-            label: 'Email',
-            value: 'info@viajesvidaia.com',
-          },
-        ],
-        registrationHeading: 'DATA REGISTRATION AND PURPOSE',
-        registrationPurposeText: 'Depending on the form or section you access, we will only ask for the necessary data to:',
-        registrationPoints: [
-          'Respond to your requests, comments, or inquiries.',
-          'Inform you about activities, products, and services via email, WhatsApp, or phone.',
-          'Send commercial communications and promotions from our partners (without them ever having access to your data).',
-        ],
-        accuracyHeading: 'ACCURACY AND TRUTHFULNESS OF DATA',
-        accuracyText: 'As a user, you are solely responsible for the truthfulness and modification of the data you send to <strong>Viajes Vidaia, S.R.L.</strong>, undertaking to provide complete and correct information in the contact forms.',
-        rightsHeading: 'RIGHTS OF ACCESS AND REVOCATION',
-        rightsText: 'You may exercise your rights of <strong>access, rectification, cancellation, and opposition</strong> at any time. To do so, simply send us an email to <em>info@viajesvidaia.com</em> attaching a copy of your ID as proof of identity.',
-        thirdPartyServicesHeading: 'THIRD-PARTY SERVICES',
-        thirdPartyServicesText: 'For the website to function, we share data with the following providers under their own privacy policies:',
-        thirdPartyServicesList: [
-          {
-            name: 'Hosting',
-            description: 'Hostinger (Professional Hosting Hostinger)',
-          },
-          {
-            name: 'Web Analytics',
-            description: 'Google Analytics',
-          },
-          {
-            name: 'Advertising',
-            description: 'Google Adsense',
-          },
-        ],
-        securityMeasuresHeading: 'SECURITY MEASURES',
-        securityMeasuresText: 'We have adopted the necessary technical measures to guarantee the security and integrity of your data, preventing its loss or access by unauthorized third parties.',
-      },
+      title: 'Política de Privacidad',
+      lastUpdated: '12 de mayo de 2026',
+      sections: [
+        {
+          heading: '1. ¿QUIÉN ES EL RESPONSABLE DEL TRATAMIENTO DE SUS DATOS PERSONALES?',
+          items: [
+            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
+            { label: 'CIF', value: 'B-55455380' },
+            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
+            { label: 'Teléfono', value: '+34 676 97 29 48' },
+            { label: 'Email', value: 'info@viajesvidaia.com' },
+          ],
+          paragraphs: [
+            'Como responsable del tratamiento de sus datos personales, le informamos de que estos serán tratados de conformidad con lo dispuesto en el Reglamento (UE) 2016/679, de 27 de abril (RGPD), y la Ley Orgánica 3/2018, de 5 de diciembre (LOPDGDD).',
+          ],
+        },
+        {
+          heading: '2. ¿CON QUÉ FINALIDAD TRATAMOS SUS DATOS PERSONALES?',
+          paragraphs: [
+            'Según como hayamos obtenido sus datos personales en el sitio web, los trataremos de manera confidencial para alcanzar las siguientes finalidades:',
+          ],
+          bullets: [
+            'Para responder a sus consultas o información solicitada a través de nuestro correo electrónico y los formularios de contacto que ponemos a su disposición (art. 6.1.b RGPD).',
+            'Para enviarle información comercial relacionada con nuestros servicios a aquellos usuarios que nos hayan facilitado su consentimiento para ello, o porque ya sean nuestros clientes (art. 6.1.f RGPD exención art. 21.2 LSSI).',
+          ],
+          trailingParagraph: 'Puede oponerse al envío de información comercial, comunicándonoslo a través de nuestro correo electrónico.',
+        },
+        {
+          heading: '3. PRINCIPIOS APLICABLES AL TRATAMIENTO DE SUS DATOS PERSONALES',
+          labeledBullets: [
+            { label: 'Principio de licitud, lealtad y transparencia', description: 'Se requerirá en todo momento el consentimiento del usuario previa información completamente transparente de los fines para los cuales se recogen los datos personales.' },
+            { label: 'Principio de limitación de la finalidad', description: 'Los datos personales serán recogidos con fines determinados, explícitos y legítimos.' },
+            { label: 'Principio de minimización de datos', description: 'Los datos personales recogidos serán únicamente los estrictamente necesarios en relación con los fines para los que son tratados.' },
+            { label: 'Principio de exactitud', description: 'Los datos personales deben ser exactos y estar siempre actualizados.' },
+            { label: 'Principio de limitación del plazo de conservación', description: 'Los datos personales sólo serán mantenidos de forma que se permita la identificación del usuario durante el tiempo necesario para los fines de su tratamiento.' },
+            { label: 'Principio de integridad y confidencialidad', description: 'Los datos personales serán tratados de manera que se garantice su seguridad y confidencialidad.' },
+            { label: 'Principio de responsabilidad proactiva', description: 'El responsable del tratamiento será responsable de asegurar que los principios anteriores se cumplen.' },
+          ],
+        },
+        {
+          heading: '4. CONSERVACIÓN DE SUS DATOS PERSONALES',
+          paragraphs: [
+            'Sus datos personales, se conservarán durante no más tiempo del necesario para mantener el fin del tratamiento o que existan prescripciones legales que dictaminen su custodia y cuando ya no sean necesarios para ello, se suprimirán con medidas de seguridad adecuadas para garantizar la anonimización de los datos o la destrucción total de los mismos.',
+          ],
+        },
+        {
+          heading: '5. DESTINATARIOS DE SUS DATOS PERSONALES',
+          paragraphs: [
+            'Sus datos personales, serán conservados bajo estrictas medidas de seguridad que garanticen la confidencialidad y la seguridad de los mismos. Sus datos no serán cedidos a terceros salvo que deban de ser comunicados a otras entidades del sector turístico implicadas en los supuestos que sean estrictamente necesarios para gestionar los servicios turísticos contratados por el usuario, o porque exista una obligación legal.',
+            'Las entidades a las que se podrá comunicar sus datos son:',
+          ],
+          labeledBullets: [
+            { label: 'Compañías Aseguradoras', description: 'Para la formalización de la póliza del seguro y cobertura de los riesgos derivados del viaje contratado.' },
+            { label: 'Proveedores Nacionales y Extranjeros', description: 'Para la gestión y organización del viaje contratado.' },
+            { label: 'Compañías Aéreas y de Transporte', description: 'Para la reserva, adquisición y venta de billetes.' },
+            { label: 'Establecimientos Hoteleros', description: 'Para la reserva del alojamiento.' },
+          ],
+          trailingParagraph: 'En relación a lo anteriormente expuesto, el responsable podrá realizar transferencias internacionales de datos personales fuera del Espacio Económico Europeo siempre con sujeción a las restricciones contractuales relativas a confidencialidad y seguridad de los datos contenidas en las leyes y normas relativas a la protección de datos de carácter personal. En ningún caso, sus datos personales serán cedidos a terceros no autorizados a tratarlos que no garanticen la protección completa de sus datos.',
+        },
+        {
+          heading: '6. ¿CUÁLES SON SUS DERECHOS Y CÓMO EJERCITARLOS?',
+          paragraphs: [
+            'Como interesado que nos ha proporcionado sus datos personales, tiene pleno derecho para ejercitar los siguientes derechos que la normativa en materia de protección de datos le reconoce, conforme a lo previsto en la misma.',
+          ],
+          subsections: [
+            {
+              heading: 'Derecho de Acceso',
+              paragraphs: [
+                'El interesado tendrá derecho a solicitar y obtener gratuitamente la información de sus datos de carácter personal sometidos a tratamiento, el origen de dichos datos, así como, las comunicaciones realizadas o que se prevén hacer de los mismos. Cuando el interesado presente la solicitud por medios electrónicos, y a menos que este solicite que se facilite de otro modo, la información se facilitará en un formato electrónico de uso común. El derecho a obtener copia no afectará negativamente a los derechos y libertades de otros.',
+              ],
+            },
+            {
+              heading: 'Derecho de Rectificación y Supresión',
+              paragraphs: [
+                'El responsable, tendrá la obligación de hacer efectivo el derecho de rectificación o supresión del interesado en el plazo de diez días. Serán rectificados o suprimidos en su caso, los datos de carácter personal cuyo tratamiento no se ajuste a lo dispuesto en la ley y en particular, cuando tales datos resulten inexactos e incompletos, tendrá derecho a obtener sin dilación indebida, la rectificación de los datos personales inexactos que le conciernan. El interesado tendrá derecho a que se completen los datos personales que sean incompletos, inclusive mediante una declaración adicional.',
+              ],
+            },
+            {
+              heading: 'Derecho a la Limitación del Tratamiento',
+              paragraphs: [
+                'El interesado tendrá derecho a obtener del responsable, la limitación del tratamiento de los datos. Cuando el tratamiento de datos personales se haya limitado, solo podrán ser objeto de tratamiento para su conservación, con el consentimiento del interesado, para la formulación, el ejercicio o la defensa de reclamaciones, con miras a la protección de los derechos de otra persona física o jurídica o por razones de interés público. Todo interesado que haya obtenido la limitación del tratamiento será informado por la empresa antes del levantamiento de dicha limitación.',
+              ],
+            },
+            {
+              heading: 'Derecho de Oposición',
+              paragraphs: [
+                'El interesado tendrá derecho a oponerse en cualquier momento, por motivos relacionados con su situación particular, a que datos personales que le conciernan (interés público e interés legítimo) sean objeto de tratamiento, incluida la elaboración de perfiles sobre la base de dichas disposiciones. El responsable, dejará de tratar los datos personales, salvo que acredite motivos legítimos imperiosos para el tratamiento que prevalezcan sobre los intereses, los derechos y las libertades del interesado, o para la formulación, el ejercicio o la defensa de reclamaciones.',
+                'En caso de que se haya vulnerado cualquiera de sus derechos, el interesado tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD), en Calle Jorge Juan Nº6, 28001-Madrid, o a través de la sede electrónica de la AEPD: http://www.aepd.es.',
+              ],
+            },
+          ],
+        },
+        {
+          heading: '7. DATOS DE CONTACTO PARA EJERCER SUS DERECHOS',
+          items: [
+            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
+            { label: 'CIF', value: 'B-55455380' },
+            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
+            { label: 'Teléfono', value: '+34 676 97 29 48' },
+            { label: 'Email', value: 'info@viajesvidaia.com' },
+          ],
+        },
+        {
+          heading: '8. CARÁCTER OBLIGATORIO O FACULTATIVO DE LA INFORMACIÓN FACILITADA POR EL USUARIO',
+          paragraphs: [
+            'El usuario, mediante la entrada de datos en los campos de los formularios de contacto o mediante la marcación de las casillas correspondientes, acepta expresamente y de forma libre e inequívoca, que sus datos son necesarios para atender su petición, por parte del responsable. El usuario, garantiza que los datos personales facilitados son veraces y se hace responsable de comunicar cualquier modificación de los mismos.',
+            'Todos los datos solicitados a través del sitio web son obligatorios, ya que son necesarios para la prestación de un servicio óptimo al usuario. En caso de que no se faciliten todos los datos, no se garantiza que la información y servicios facilitados sean completamente ajustados a sus necesidades.',
+          ],
+        },
+        {
+          heading: '9. MEDIDAS DE SEGURIDAD',
+          paragraphs: [
+            'El Responsable garantiza tener implantadas todas las políticas técnicas y organizativas apropiadas para aplicar las medidas de seguridad que se establecen el Reglamento (UE) 2016/679, de 27 de abril (RGPD), y la Ley Orgánica 3/2018, de 5 de diciembre (LOPDGDD), con el fin de proteger los derechos y libertades de los usuarios y que se les ha comunicado la información adecuada para que puedan ejercerlos y cumplimos con los principios descritos en el artículo 5 del RGPD, por los cuales sus datos son tratados de manera lícita, leal y transparente en relación con el interesado y adecuados, pertinentes y limitados a lo necesario en relación con los fines para los que son tratados.',
+          ],
+        },
+        {
+          heading: '10. REDES SOCIALES',
+          paragraphs: [
+            'El usuario, puede acceder a las diferentes cuentas en redes sociales que el responsable tiene incluidas en este sitio web, pudiendo acceder y aceptando el tratamiento de sus datos personales por parte de las mismas según sus políticas de privacidad. El responsable, no se hace responsabiliza de la información personal que cada usuario pueda publicar en éstas.',
+          ],
+        },
+      ],
     },
     cookiesPage: {
       metadata: {
@@ -742,7 +1010,88 @@ export const STATIC_CONTENT = {
         description: 'Política de cookies de Viajes Vidaia.',
       },
       title: 'Política de Cookies',
-      content: 'Contenido en preparación. Próximamente se publicará la política de cookies completa.',
+      lastUpdated: '12 de mayo de 2026',
+      sections: [
+        {
+          heading: '1. ¿QUIÉN ES EL RESPONSABLE DEL TRATAMIENTO DE SUS DATOS PERSONALES?',
+          items: [
+            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
+            { label: 'CIF', value: 'B-55455380' },
+            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
+            { label: 'Teléfono', value: '+34 676 97 29 48' },
+            { label: 'Email', value: 'info@viajesvidaia.com' },
+          ],
+        },
+        {
+          heading: '2. ¿QUÉ SON LAS COOKIES?',
+          paragraphs: [
+            'Las cookies son pequeños archivos que se descargan en el dispositivo del usuario al acceder a determinados sitios web y que permiten, entre otras cosas, almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información que contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.',
+          ],
+          bullets: [
+            'Desde un punto de vista técnico, permiten que el sitio web funcione de forma más ágil y adaptado a las preferencias de los usuarios, como por ejemplo almacenar el idioma, la moneda del país o detectar el dispositivo de acceso.',
+            'Establecen niveles de protección y seguridad que impiden o dificultan ciberataques contra el sitio web o sus usuarios.',
+            'Permiten que los gestores de los medios puedan conocer datos estadísticos recopilados en las cookies para mejorar la calidad y experiencia de sus servicios.',
+            'Sirven para optimizar la publicidad que mostramos a los usuarios, ofreciendo la que más se ajusta a sus intereses.',
+          ],
+        },
+        {
+          heading: '3. ¿CUÁL ES LA BASE JURÍDICA APLICABLE?',
+          paragraphs: [
+            'La base jurídica para el uso de cookies depende de su finalidad:',
+          ],
+          labeledBullets: [
+            { label: 'Cookies Técnicas o Necesarias', description: 'Se utilizan sobre la base del interés legítimo del responsable y permiten el funcionamiento del sitio web o la prestación de servicios solicitados por el usuario.' },
+            { label: 'Cookies de Análisis, Personalización o Publicidad', description: 'Se utilizan únicamente cuando el usuario ha prestado su consentimiento (artículo 6.1.a RGPD y artículo 22.2 de la Ley 34/2002 de Servicios de la Sociedad de la Información).' },
+          ],
+          trailingParagraph: 'El usuario puede aceptar, rechazar o configurar el uso de cookies a través del sistema de gestión del consentimiento disponible en el sitio web.',
+        },
+        {
+          heading: '4. TIPOS DE COOKIES',
+          paragraphs: [
+            'Según quien sea la entidad que gestione el dominio desde donde se envían las cookies y trate los datos que se obtengan, se pueden distinguir dos tipos:',
+          ],
+          labeledBullets: [
+            { label: 'Cookies Propias', description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por el propio titular del sitio web.' },
+            { label: 'Cookies de Terceros', description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por una entidad distinta del titular del sitio web.' },
+            { label: 'Cookies de Sesión', description: 'Diseñadas para recabar y almacenar datos mientras el usuario accede a un sitio web. Se suelen emplear para almacenar información que sólo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.' },
+            { label: 'Cookies Persistentes', description: 'Los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un periodo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.' },
+            { label: 'Cookies Técnicas (Necesarias)', description: 'Permiten la navegación a través del sitio web y la utilización de las diferentes opciones o servicios que existen en ella. Sin estas cookies el sitio web no puede funcionar correctamente.' },
+            { label: 'Cookies de Personalización', description: 'Permiten recordar información para que el usuario acceda al servicio con determinadas características que puedan diferenciar su experiencia de la de otros usuarios.' },
+            { label: 'Cookies de Análisis', description: 'Permiten cuantificar el número de usuarios y realizar la medición y análisis estadístico del uso que hacen los usuarios del servicio ofrecido.' },
+            { label: 'Cookies de Publicidad Comportamental', description: 'Permiten analizar los hábitos de navegación de los usuarios para mostrar publicidad relacionada con su perfil de navegación y para medir la eficacia de las campañas publicitarias.' },
+            { label: 'Cookies de Redes Sociales Externas', description: 'Se utilizan para que los visitantes puedan interactuar con el contenido de diferentes redes sociales. Las condiciones de utilización de estas cookies y la información recopilada se regula por la política de privacidad de la red social correspondiente.' },
+          ],
+        },
+        {
+          heading: '5. COOKIES UTILIZADAS EN ESTE SITIO WEB',
+          cookiesTable: [
+            { owner: 'Propia', finalidad: 'Técnica', nombre: 'vidaia_consent', descripcion: 'Almacena las preferencias de consentimiento de cookies del usuario.', caducidad: '12 meses' },
+            { owner: 'Tercero (Google Analytics 4)', finalidad: 'Analítica', nombre: '_ga', descripcion: 'Distingue usuarios únicos para el análisis estadístico del uso del sitio.', caducidad: '2 años' },
+            { owner: 'Tercero (Google Analytics 4)', finalidad: 'Analítica', nombre: '_ga_<ID>', descripcion: 'Mantiene el estado de sesión para la medición de visitas.', caducidad: '2 años' },
+          ],
+        },
+        {
+          heading: '6. ¿CÓMO SE GESTIONA EL CONSENTIMIENTO?',
+          paragraphs: [
+            'Este sitio web dispone de un sistema de gestión del consentimiento que permite al usuario aceptar, rechazar o configurar el uso de cookies cuando accede por primera vez.',
+            'El usuario puede modificar o retirar su consentimiento en cualquier momento accediendo nuevamente al panel de configuración de cookies disponible en el sitio web.',
+          ],
+        },
+        {
+          heading: '7. ¿CÓMO ELIMINAR O DESACTIVAR ESTAS COOKIES?',
+          paragraphs: [
+            'Puede usted permitir o bloquear las cookies, así como borrar sus datos de navegación (incluidas las cookies) desde el navegador que usted utiliza. Consulte las opciones e instrucciones que ofrece su navegador para ello. Tenga en cuenta que, si acepta las cookies de terceros, deberá eliminarlas desde las opciones del navegador o desde el sistema ofrecido por el propio tercero.',
+            'A continuación, tiene disponibles los enlaces con la información para gestionar las cookies de los navegadores más utilizados:',
+          ],
+          browserLinks: [
+            { name: 'Chrome', url: 'https://support.google.com/chrome/answer/95647?hl=es' },
+            { name: 'Microsoft Edge', url: 'https://support.microsoft.com/microsoft-edge/delete-cookies' },
+            { name: 'Firefox', url: 'http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies' },
+            { name: 'Safari', url: 'https://support.apple.com/es-es/guide/safari/sfri11471/mac' },
+            { name: 'Opera', url: 'http://help.opera.com/en/latest/web-preferences/' },
+          ],
+        },
+      ],
     },
     legalNoticePage: {
       metadata: {
@@ -750,6 +1099,62 @@ export const STATIC_CONTENT = {
         description: 'Aviso legal de Viajes Vidaia.',
       },
       title: 'Aviso Legal',
+      lastUpdated: '12 de mayo de 2026',
+      intro: [
+        'VIAJES VIDAIA S.R.L, responsable del sitio web (en adelante responsable), pone a disposición del usuario la siguiente información, con la que pretende dar cumplimiento a las obligaciones dispuestas en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE, BOE Nº166), así como informar de cuáles son sus condiciones de uso.',
+        'Toda persona que acceda a este sitio web, asume el papel de usuario, comprometiéndose al cumplimiento riguroso de las disposiciones aquí dispuestas, así como a cualquier otra disposición legal que fuera de aplicación.',
+        'VIAJES VIDAIA S.R.L, se reserva el derecho de modificar cualquier tipo de información que pudiera aparecer en el sitio web, sin que exista obligación de preavisar o poner en conocimiento del usuario dichas obligaciones, entendiéndose como suficiente con la publicación en este sitio web.',
+      ],
+      sections: [
+        {
+          heading: '1. DATOS IDENTIFICATIVOS DEL RESPONSABLE DEL SITIO WEB',
+          items: [
+            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
+            { label: 'CIF', value: 'B-55455380' },
+            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
+            { label: 'Teléfono', value: '+34 676 97 29 48' },
+            { label: 'Email', value: 'info@viajesvidaia.com' },
+            { label: 'Nombre del dominio', value: 'www.viajesvidaia.com' },
+            { label: 'Identificador Registral único de la Sociedad (IRUS)', value: '1000422147558' },
+          ],
+        },
+        {
+          heading: '2. DERECHOS DE LA PROPIEDAD INTELECTUAL E INDUSTRIAL',
+          paragraphs: [
+            'El sitio web, incluyendo a título enunciativo, pero no limitativo su programación, edición, compilación y demás elementos necesarios para su funcionamiento, los diseños, logotipos, textos, etc, son propiedad del responsable, o si es el caso, dispone de licencia o autorización expresa por parte de los autores. Todos los contenidos de este sitio web, se encuentran debidamente protegidos por la normativa de propiedad intelectual e industrial, así como inscritos en los registros públicos correspondientes.',
+            'Independientemente de la finalidad para la que fueran destinados, la reproducción total o parcial, uso, explotación, distribución y comercialización, requiere en todo caso de la autorización por parte del responsable. Cualquier uso no autorizado previamente se considera un incumplimiento grave de los derechos de propiedad intelectual o industrial del autor.',
+            'Los diseños, logotipos, texto y/o gráficos ajenos al responsable y que pudieran aparecer en el sitio web, pertenecen a sus respectivos propietarios, siendo ellos mismos responsables de cualquier posible controversia que pudiera suscitarse respecto a los mismos. El responsable autoriza expresamente a que terceros puedan redirigir directamente a los contenidos concretos del sitio web. El responsable, reconoce a favor de sus titulares, los correspondientes derechos de propiedad intelectual e industrial, no implicando su sola mención o aparición en el sitio web, la existencia de derechos o responsabilidad alguna sobre los mismos, como tampoco respaldo, patrocinio o recomendación por parte del mismo.',
+            'Para realizar cualquier tipo de observación respecto a posibles incumplimientos de los derechos de propiedad intelectual o industrial, así como sobre cualquiera de los contenidos del sitio web, puede hacerlo a través de nuestro correo electrónico.',
+          ],
+        },
+        {
+          heading: '3. EXENCIÓN DE RESPONSABILIDADES',
+          paragraphs: [
+            'El responsable, se exime de cualquier tipo de responsabilidad derivada de la información publicada en su sitio web, siempre que esta información haya sido manipulada o introducida por un tercero ajeno al mismo.',
+          ],
+        },
+        {
+          heading: '4. POLÍTICA DE ENLACES',
+          paragraphs: [
+            'Desde el sitio web, es posible que se redirija a contenidos de terceros sitios web. Dado que el responsable no puede controlar siempre los contenidos introducidos por terceros en sus respectivos sitios web, no asume ningún tipo de responsabilidad respecto a dichos contenidos. En todo caso, procederá a la retirada inmediata de cualquier contenido que pudiera contravenir la legislación nacional o internacional, la moral o el orden público, procediendo a la retirada de la redirección a dicho sitio web, poniendo en conocimiento de las autoridades competentes el contenido en cuestión.',
+            'El responsable, no se responsabiliza de la información y contenidos almacenados a título enunciativo, pero no limitativo, en foros, chats, generadores de blogs, comentarios, redes sociales o cualquier otro medio que permita a terceros publicar contenidos de forma independiente en esta página web.',
+            'Sin embargo, y en cumplimiento de lo dispuesto en los artículos 11 y 16 de la LSSICE, se pone a disposición de todos los usuarios, autoridades y fuerzas de seguridad, colaborando de forma activa en la retirada o, en su caso, bloqueo de todos aquellos contenidos que puedan afectar o contravenir la legislación nacional o internacional, los derechos de terceros o la moral y el orden público. En caso de que el usuario considere que existe en el sitio web algún contenido que pudiera ser susceptible de esta clasificación, se ruega lo notifique de forma inmediata.',
+          ],
+        },
+        {
+          heading: '5. ACTUALIZACIÓN Y MODIFICACIÓN DE LA INFORMACIÓN',
+          paragraphs: [
+            'La información que aparece en este sitio web, es la vigente en la fecha de su última actualización. No se podrá alterar, cambiar, modificar, o adaptar este sitio web. Sin embargo, el responsable, se reserva el derecho a poder actualizar, modificar o eliminar la información de este sitio web, pudiendo limitar o no permitir el acceso al mismo y a efectuar cuantos cambios y modificaciones estime convenientes, pudiendo hacer uso de tal facultad en cualquier momento y sin previo aviso.',
+            'Este sitio web, se ha revisado y probado para que funcione correctamente. En principio, puede garantizarse el correcto funcionamiento los 365 días del año, 24 horas al día. Sin embargo, el responsable no descarta la posibilidad de que existan ciertos errores de programación, o que acontezcan causas de fuerza mayor, catástrofes naturales, huelgas o circunstancias semejantes que hagan imposible el acceso al sitio web.',
+          ],
+        },
+        {
+          heading: '6. LEY APLICABLE Y JURISDICCIÓN',
+          paragraphs: [
+            'Para la resolución de todas las controversias o cuestiones relacionadas con el presente sitio web o de las actividades en el desarrolladas, será de aplicación la legislación española, a la que se someten expresamente las partes, siendo competentes para la resolución de todos los conflictos derivados o relacionados con su uso los Juzgados y Tribunales del domicilio del usuario o del lugar del cumplimiento de la obligación.',
+          ],
+        },
+      ],
     },
     itineraryPage: {
       labels: {

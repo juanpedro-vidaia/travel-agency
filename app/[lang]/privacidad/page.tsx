@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
-import React from 'react'
 
 interface Props {
   params: Promise<{ lang: string }>
@@ -43,60 +42,62 @@ export default async function PrivacidadPage({ params }: Props) {
         </h1>
 
         <div className="prose prose-gray max-w-none text-vidaia-charcoal/80 leading-relaxed space-y-6">
-          <p>
-            El titular te informa sobre su <strong>Política de Privacidad</strong> respecto del tratamiento y protección de los datos de carácter personal de los usuarios y clientes que puedan ser recabados por la navegación o contratación de servicios a través del sitio web <a href="https://viajesvidaia.com/">https://viajesvidaia.com/</a>. Nuestro deber es informarte y el tuyo estar debidamente informado.
+          {content.sections.map((section, i) => (
+            <div key={i}>
+              <h2>{section.heading}</h2>
+
+              {section.items && (
+                <ul>
+                  {section.items.map((item, j) => (
+                    <li key={j}>
+                      <strong>{item.label}:</strong> {item.value}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {section.paragraphs && section.paragraphs.map((paragraph, j) => (
+                <p key={j}>{paragraph}</p>
+              ))}
+
+              {section.bullets && (
+                <ul>
+                  {section.bullets.map((bullet, j) => (
+                    <li key={j}>{bullet}</li>
+                  ))}
+                </ul>
+              )}
+
+              {section.labeledBullets && (
+                <ul>
+                  {section.labeledBullets.map((item, j) => (
+                    <li key={j}>
+                      <strong>{item.label}:</strong> {item.description}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {section.subsections && section.subsections.map((sub, j) => (
+                <div key={j}>
+                  <h3 className="not-prose text-base underline italic text-vidaia-dark mt-5 mb-2">
+                    {sub.heading}
+                  </h3>
+                  {sub.paragraphs.map((paragraph, k) => (
+                    <p key={k}>{paragraph}</p>
+                  ))}
+                </div>
+              ))}
+
+              {section.trailingParagraph && (
+                <p>{section.trailingParagraph}</p>
+              )}
+            </div>
+          ))}
+
+          <p className="text-sm text-vidaia-charcoal/60">
+            Última actualización: {content.lastUpdated}
           </p>
-          <p>
-            En esta Política de Privacidad te informaremos con <strong>total transparencia</strong> sobre la finalidad de este sitio web y todo lo que afecta a los datos que nos facilites, así como de las obligaciones y derechos que te corresponden.
-          </p>
-          <p>
-            Este sitio web se adapta a la normativa vigente en relación con la protección de datos (<strong>RGPD</strong>, <strong>LOPDGDD</strong> y <strong>LSSI</strong>), lo que afecta a los datos personales que nos facilites con tu consentimiento expreso y a las cookies que utilizamos para que este sitio web funcione correctamente.
-          </p>
-
-          <h3>{content.policyContent.heading1}</h3>
-          <p>
-            El responsable y titular de este sitio web es Viajes Vidaia, S.R.L.<br />
-            <strong>{content.policyContent.identificationInfo[0].label}:</strong> {content.policyContent.identificationInfo[0].value}<br />
-            <strong>{content.policyContent.identificationInfo[1].label}:</strong> {content.policyContent.identificationInfo[1].value}<br />
-            <strong>{content.policyContent.identificationInfo[2].label}:</strong> {content.policyContent.identificationInfo[2].value}<br />
-            <strong>{content.policyContent.identificationInfo[3].label}:</strong> {content.policyContent.identificationInfo[3].value}<br />
-            <strong>{content.policyContent.identificationInfo[4].label}:</strong> {content.policyContent.identificationInfo[4].value}
-          </p>
-
-          <h3>{content.policyContent.heading2}</h3>
-          <p>{content.policyContent.registrationPurpose}</p>
-          <ul>
-            {content.policyContent.registrationPoints.map((point, i) => (
-              <li key={i}>{point}</li>
-            ))}
-          </ul>
-
-          <h3>{content.policyContent.accuracyHeading}</h3>
-          <p>{content.policyContent.accuracyText}</p>
-
-          <h3>{content.policyContent.rightsHeading}</h3>
-          <p>{content.policyContent.rightsText}</p>
-
-          <h3>{content.policyContent.thirdPartyServicesHeading}</h3>
-          <p>{content.policyContent.thirdPartyServicesText}</p>
-          <ul>
-            {content.policyContent.thirdPartyServicesList.map((service, i) => (
-              <li key={i}><strong>{service.name}:</strong> {service.description}</li>
-            ))}
-          </ul>
-
-          <h3>CONSENTIMIENTO DE COOKIES Y REVOCACION</h3>
-          <p>
-            Las cookies no necesarias (por ejemplo, analitica) solo se activan cuando el usuario las acepta de forma explicita.
-            Puedes retirar o modificar ese consentimiento en cualquier momento desde el enlace <strong>Configurar cookies</strong> del pie de pagina.
-          </p>
-          <p>
-            Para mas detalle sobre categorias, proveedores y duracion de cookies, consulta nuestra{' '}
-            <Link href={`/${lang}/cookies`} className="underline hover:text-vidaia-primary">Politica de cookies</Link>.
-          </p>
-
-          <h3>{content.policyContent.securityMeasuresHeading}</h3>
-          <p>{content.policyContent.securityMeasuresText}</p>
         </div>
       </div>
     </main>

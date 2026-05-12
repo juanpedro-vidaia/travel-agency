@@ -136,9 +136,9 @@ export default function CookieConsentManager() {
               >
                 <X className="w-4 h-4" />
               </button>
-              <p className="text-base font-semibold text-vidaia-dark">Preferencias de cookies</p>
+              <p className="text-base font-semibold text-vidaia-dark">Gestionar consentimiento</p>
               <p className="text-sm text-vidaia-charcoal/70 mt-1 leading-relaxed">
-                Puedes decidir qué categorias de cookies no esenciales quieres permitir.
+                Para ofrecer las mejores experiencias, utilizamos tecnologías como las cookies para almacenar y/o acceder a la información del dispositivo. El consentimiento de estas tecnologías nos permitirá procesar datos como el comportamiento de navegación o las identificaciones únicas en este sitio. No consentir o retirar el consentimiento, puede afectar negativamente a ciertas características y funciones.
               </p>
             </div>
 
@@ -146,26 +146,26 @@ export default function CookieConsentManager() {
               <Toggle
                 checked
                 disabled
-                label="Necesarias"
-                description="Permiten funciones basicas de seguridad, navegacion y formulario. Siempre estan activas."
+                label="Funcional"
+                description="El almacenamiento o acceso técnico es estrictamente necesario para el propósito legítimo de permitir el uso de un servicio específico explícitamente solicitado por el abonado o usuario, o con el único propósito de llevar a cabo la transmisión de una comunicación a través de una red de comunicaciones electrónicas."
               />
               <Toggle
                 checked={preferences.analytics}
                 onChange={(next) => setPreferences(prev => ({ ...prev, analytics: next }))}
-                label="Analitica"
-                description="Nos ayuda a entender el uso de la web para mejorar contenidos y experiencia."
+                label="Analítica"
+                description="El almacenamiento o acceso técnico que se utiliza exclusivamente con fines analíticos anónimos. Sin un requerimiento, el cumplimiento voluntario por parte de tu proveedor de servicios de Internet, o los registros adicionales de un tercero, la información almacenada o recuperada solo para este propósito no se puede utilizar para identificarte."
               />
               <Toggle
                 checked={preferences.marketing}
                 onChange={(next) => setPreferences(prev => ({ ...prev, marketing: next }))}
                 label="Marketing"
-                description="Reservada para futuras campañas y personalizacion publicitaria. Actualmente no se cargan scripts de esta categoria."
+                description="El almacenamiento o acceso técnico es necesario para campañas de marketing y personalización publicitaria."
               />
               <Toggle
                 checked={preferences.personalization}
                 onChange={(next) => setPreferences(prev => ({ ...prev, personalization: next }))}
-                label="Personalizacion"
-                description="Preparada para futuras funciones del portal de clientes con experiencia personalizada no tecnica."
+                label="Personalización"
+                description="El almacenamiento o acceso técnico es necesario para futuras funciones del portal de clientes con experiencia personalizada no técnica."
               />
             </div>
 

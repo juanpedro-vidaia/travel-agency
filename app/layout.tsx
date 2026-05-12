@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import ContactModal from '@/components/forms/ContactModal'
 import ContactFAB from '@/components/ui/ContactFAB'
+import CookieFAB from '@/components/ui/CookieFAB'
 import CookieConsentManager from '@/components/scripts/CookieConsentManager'
 import GoogleAnalytics from '@/components/scripts/GoogleAnalytics'
 import JsonLd from '@/components/scripts/JsonLd'
@@ -66,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {children}
               <Footer />
               <ContactFAB />
+              <CookieFAB />
               <ContactModal />
               <CookieConsentManager />
             </ContactModalProvider>
