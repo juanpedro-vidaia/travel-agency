@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import { getTripsByCountry } from '@/lib/services/tripsService'
 import { getCountryBySlug, getCountries } from '@/lib/services/countriesService'
 import TripCard from '@/components/ui/TripCard'
+import BackButton from '@/app/[lang]/destinos/[slug]/BackButton'
 import { getStaticContent } from '@/lib/helpers/contentHelpers'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getAsset } from '@/lib/data/assets'
@@ -65,6 +66,13 @@ export default async function CountryPage({ params }: Props) {
           <p className="text-white/80 text-base sm:text-lg max-w-xl leading-relaxed text-balance">
             {countryT.metaDescription.split('. ')[0]}{content.hero.descriptionSuffix}
           </p>
+        </div>
+      </section>
+
+      {/* ── VOLVER ── */}
+      <section className="py-3 md:py-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <BackButton label={content.backButton} />
         </div>
       </section>
 

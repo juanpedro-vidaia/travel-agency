@@ -668,6 +668,7 @@ export const STATIC_CONTENT = {
         ctaHasItinerary: 'Ver itinerario',
         ctaNoItinerary: 'Solicitar información',
       },
+      backButton: 'Explorar otros destinos',
       cta: {
         title: 'El viaje que imaginas todavía está por hacer',
         descriptionTemplate: 'Porque las mejores rutas nacen de vuestros sueños. Cuéntanos vuestra idea y diseñaremos una experiencia única por {country}, completamente a vuestra medida.',
