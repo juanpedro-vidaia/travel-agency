@@ -57,7 +57,7 @@ export default function DestinationsSection({ variant, content, countries, desti
       countryDescription: countryContent.description,
       imageUrl: asset.url,
       imageAlt: asset.alt ?? `Paisaje de ${countryContent.name}`,
-      href: `/${lang}/destinos/${country.slug}`,
+      href: `/${lang}/destinos/${country.slug}?from=${variant}`,
       featuredDestNames: featuredDests.map(
         d => (d.content[lang as keyof typeof d.content] ?? d.content.es).name,
       ),
@@ -65,7 +65,7 @@ export default function DestinationsSection({ variant, content, countries, desti
   })
 
   return (
-    <section className="py-12 md:py-24 bg-white">
+    <section id="destinations-section" className="py-12 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 md:mb-14">
           <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">

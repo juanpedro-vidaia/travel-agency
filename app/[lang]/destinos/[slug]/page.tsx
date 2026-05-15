@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import { getTripsByCountry } from '@/lib/services/tripsService'
 import { getCountryBySlug, getCountries } from '@/lib/services/countriesService'
 import TripCard from '@/components/ui/TripCard'
-import BackButton from '@/app/[lang]/destinos/[slug]/BackButton'
+import DestinationBackButton from '@/app/[lang]/destinos/[slug]/DestinationBackButton'
 import { getStaticContent } from '@/lib/helpers/contentHelpers'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getAsset } from '@/lib/data/assets'
@@ -15,6 +15,7 @@ import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 
 interface Props {
   params: Promise<{ lang: string; slug: string }>
+  searchParams: Promise<{ from?: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -37,8 +38,9 @@ export function generateStaticParams() {
   )
 }
 
-export default async function CountryPage({ params }: Props) {
+export default async function CountryPage({ params, searchParams }: Props) {
   const { lang, slug } = await params
+  const { from } = await searchParams
   const country = getCountryBySlug(slug)
   if (!country) notFound()
 
@@ -70,11 +72,13 @@ export default async function CountryPage({ params }: Props) {
       </section>
 
       {/* ── VOLVER ── */}
-      <section className="py-3 md:py-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto">
-          <BackButton label={content.backButton} />
-        </div>
-      </section>
+      {(from === 'home' || from === 'viajes') && (
+        <section className="py-3 md:py-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
+          <div className="max-w-7xl mx-auto">
+            <DestinationBackButton from={from} lang={lang} label={content.backButton} />
+          </div>
+        </section>
+      )}
 
       {/* ── INTRODUCCIÓN ── */}
       <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">

@@ -9,7 +9,11 @@
       "Bash(Select-Object Name, PSIsContainer)",
       "Read(//c/Users/juanpedro.martin/Downloads/**)",
       "Bash(Select-Object Name, Mode)",
-      "Bash(git stash *)"
+      "Bash(git stash *)",
+      "Bash(rm \"/Users/jupemartin/Viajes Vidaia Code/travel-agency/app/[lang]/destinos/[slug]/BackButton.tsx\" && echo \"deleted\")"
+    ],
+    "additionalDirectories": [
+      "/Users/jupemartin/Viajes Vidaia Code/travel-agency/app/[lang]/destinos/[slug]"
     ]
   }
 }

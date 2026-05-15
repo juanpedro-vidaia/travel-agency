@@ -74,35 +74,35 @@ function ViajesCard({
   return (
     <Link
       href={card.href}
-      className={`group flex h-[240px] overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 ${isOdd ? 'flex-row' : 'flex-row-reverse'}`}
+      className={`group flex flex-col overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 md:h-[240px] ${isOdd ? 'md:flex-row' : 'md:flex-row-reverse'}`}
       aria-label={`${content.cardTitlePrefix} ${card.countryName}`}
     >
       {/* Photo */}
-      <div
-        className={`relative w-1/2 flex-shrink-0 overflow-hidden ${isOdd ? 'rounded-l-2xl' : 'rounded-r-2xl'}`}
-      >
+      <div className="relative h-48 w-full flex-shrink-0 md:h-full md:w-1/2">
         <Image
           src={card.imageUrl}
           alt={card.imageAlt}
           fill
           className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
-          sizes="(max-width: 768px) 50vw, 30vw"
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
 
       {/* Text */}
-      <div className="flex w-1/2 flex-col justify-center gap-2 px-8 py-6 bg-vidaia-sand">
+      <div className="flex flex-col bg-vidaia-sand px-5 py-4 md:w-1/2 md:justify-center md:gap-2 md:px-8 md:py-6">
         <p className="font-heading font-bold text-xl text-vidaia-dark leading-tight">
           {content.cardTitlePrefix} {card.countryName}
         </p>
-        {subtitle && <p className="text-vidaia-charcoal/70 text-sm leading-relaxed">{subtitle}</p>}
+        {subtitle && (
+          <p className="hidden text-vidaia-charcoal/70 text-sm leading-relaxed md:block">{subtitle}</p>
+        )}
         {card.countryDescription && (
-          <p className="text-xs text-vidaia-charcoal/50 leading-relaxed line-clamp-3">
+          <p className="hidden text-xs text-vidaia-charcoal/50 leading-relaxed line-clamp-3 md:block">
             {card.countryDescription}
           </p>
         )}
         <ArrowRight
-          className="w-5 h-5 text-vidaia-primary transition-transform duration-200 group-hover:translate-x-1"
+          className="hidden w-5 h-5 text-vidaia-primary transition-transform duration-200 group-hover:translate-x-1 md:block"
           aria-hidden="true"
         />
       </div>
