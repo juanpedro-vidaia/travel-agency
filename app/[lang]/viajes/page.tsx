@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getActiveTrips } from '@/lib/services/tripsService'
-import { getCountries } from '@/lib/services/countriesService'
+import { getCountriesOrdered } from '@/lib/services/countriesService'
+import { getDestinations } from '@/lib/services/destinationsService'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import ViajesHero from '@/components/sections/ViajesHero'
 import ViajesServicios from '@/components/sections/ViajesServicios'
+import DestinationsSection from '@/components/sections/DestinationsSection'
 import ViajesBuscador from '@/components/sections/ViajesBuscador'
 import ViajesComoTrabajamos from '@/components/sections/ViajesComoTrabajamos'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
@@ -36,8 +38,10 @@ export default async function ViajesPage({ params }: Props) {
   const content   = getStaticContent(lang)
   const ui        = getCommonUI(lang)
   const page      = content.viajesPage
-  const allTrips  = getActiveTrips()
-  const countries = getCountries().map(c => ({
+  const allTrips          = getActiveTrips()
+  const activeCountries   = getCountriesOrdered()
+  const activeDestinations = getDestinations()
+  const countries = activeCountries.map(c => ({
     id: c.id,
     flagCode: c.flagCode,
     name: (c.content[lang as keyof typeof c.content] ?? c.content.es).name,
@@ -64,7 +68,16 @@ export default async function ViajesPage({ params }: Props) {
         cards={page.servicios.cards}
       />
 
-      {/* 3 — Buscador + Grid */}
+      {/* 3 — Destinos */}
+      <DestinationsSection
+        variant="viajes"
+        content={content.destinationsSection}
+        countries={activeCountries}
+        destinations={activeDestinations}
+        lang={lang}
+      />
+
+      {/* 4 — Buscador + Grid */}
       <ViajesBuscador
         lang={lang}
         allTrips={allTrips}

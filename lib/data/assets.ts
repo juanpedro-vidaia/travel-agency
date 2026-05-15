@@ -20,6 +20,13 @@ export const ASSETS = {
   'COUNTRIES.BOLIVIA_HERO':   { url: 'https://images.unsplash.com/photo-1641234332283-af77dfe995c7?q=80&w=1920', alt: 'Salar de Uyuni, Bolivia' },
   'COUNTRIES.PERU_HERO':      { url: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1920', alt: 'Machu Picchu, Perú' },
 
+  // ── Destination section card images ──────────────────────────────────────────
+  // Inicialmente igual que heroImageKey — cambiar aquí para independizar la foto de la card
+  'DESTINATIONS_CARD_ARGENTINA': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777912429/copy_of_dscf5187_cgefyp_2abb25.jpg', alt: 'Paisajes de Argentina' },
+  'DESTINATIONS_CARD_CHILE':     { url: 'https://images.unsplash.com/photo-1558517286-6b7b81953cb5?q=80&w=1920', alt: 'Paisajes de Chile' },
+  'DESTINATIONS_CARD_BOLIVIA':   { url: 'https://images.unsplash.com/photo-1641234332283-af77dfe995c7?q=80&w=1920', alt: 'Paisajes de Bolivia' },
+  'DESTINATIONS_CARD_PERU':      { url: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1920', alt: 'Paisajes de Perú' },
+
   // ── Hero backgrounds ──────────────────────────────────────────────────────────
   'HOME.HERO_BG':      { url: 'https://images.unsplash.com/photo-1598162480222-b2c3d92548d5?q=80&w=1920&auto=format&fit=crop', alt: 'Paisajes de Sudamérica' },
   'HONEYMOON_HERO_BG': { url: 'https://images.unsplash.com/photo-1664271987414-15b38d834357?q=80&w=1920&auto=format&fit=crop', alt: 'Luna de miel en Sudamérica' },

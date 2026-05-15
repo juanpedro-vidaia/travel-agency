@@ -177,13 +177,16 @@ export const STATIC_CONTENT = {
       note: 'Sin compromiso. Sin formularios interminables. Solo una charla.',
       email: 'info@viajesvidaia.com',
     },
-    featuredDestinations: {
-      header: {
-        overline: 'Itinerarios destacados',
-        title: '¿A dónde quieres ir?',
-        subtitle: 'Itinerarios diseñados con detalle, todos adaptables a tus fechas y presupuesto',
-      },
-      callToAction: 'Ver todos los viajes a Argentina',
+    destinationsSection: {
+      homePill: 'Destinos Vidaia',
+      homeTitle: 'Explora nuestros destinos',
+      homeSubtitle: 'Seleccionamos cuidadosamente cada país y trabajamos con expertos locales para diseñar experiencias auténticas y memorables.',
+      viajesPill: 'Destinos Vidaia',
+      viajesTitle: 'Descubre nuestros destinos',
+      viajesSubtitle: 'Cada país es una puerta de entrada a experiencias únicas diseñadas junto a expertos locales de confianza.',
+      cardTitlePrefix: 'Explora',
+      cardSubtitleSuffix: 'y muchos más.',
+      discoverMore: 'Descubre más destinos',
     },
     honeymoonPage: {
       metadata: {
@@ -609,6 +612,9 @@ export const STATIC_CONTENT = {
         ],
       },
       buscador: {
+        headerPill: 'Itinerarios recomendados',
+        headerTitle: 'Explora y personaliza nuestra selección de itinerarios.',
+        headerSubtitle: 'Inspírate con alguna de nuestras rutas y adáptalas a tu ritmo, intereses y forma de viajar.',
         searchPlaceholder: 'Buscar por destino, duración, actividad…',
         advancedFilters: 'Filtros avanzados',
         resetFilters: 'Limpiar filtros',

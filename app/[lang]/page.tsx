@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import { buildMetadata } from '@/lib/helpers/seo'
+import { getStaticContent } from '@/lib/helpers/contentHelpers'
+import { getCountriesOrdered } from '@/lib/services/countriesService'
+import { getDestinations } from '@/lib/services/destinationsService'
 import Hero from '@/components/sections/Hero'
 import ValueProposition from '@/components/sections/ValueProposition'
+import DestinationsSection from '@/components/sections/DestinationsSection'
 import QuienesSomos from '@/components/sections/QuienesSomos'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import InstagramBanner from '@/components/sections/InstagramBanner'
@@ -25,11 +29,23 @@ export function generateStaticParams() {
   return ENABLED_LANGUAGES.map(lang => ({ lang }))
 }
 
-export default function Home() {
+export default async function Home({ params }: Props) {
+  const { lang } = await params
+  const content = getStaticContent(lang)
+  const countries = getCountriesOrdered()
+  const destinations = getDestinations()
+
   return (
     <main>
       <Hero />
       <ValueProposition />
+      <DestinationsSection
+        variant="home"
+        content={content.destinationsSection}
+        countries={countries}
+        destinations={destinations}
+        lang={lang}
+      />
       <QuienesSomos />
       <TestimonialsSection />
       <InstagramBanner />

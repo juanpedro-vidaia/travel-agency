@@ -16,7 +16,7 @@ export default function QuienesSomos() {
     <section id="quienes-somos" className="py-12 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-xl mb-8 md:mb-16">
+        <div className="max-w-xl mx-auto mb-8 md:mb-16 text-center">
           <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
             {sectionContent.header.overline}
           </span>

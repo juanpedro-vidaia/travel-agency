@@ -8,7 +8,8 @@
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\juanpedro.martin\\\\travel-agency\" -Force)",
       "Bash(Select-Object Name, PSIsContainer)",
       "Read(//c/Users/juanpedro.martin/Downloads/**)",
-      "Bash(Select-Object Name, Mode)"
+      "Bash(Select-Object Name, Mode)",
+      "Bash(git stash *)"
     ]
   }
 }

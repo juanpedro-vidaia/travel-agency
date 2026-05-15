@@ -17,6 +17,9 @@ interface CountryOption {
 }
 
 interface BuscadorStrings {
+  headerPill: string
+  headerTitle: string
+  headerSubtitle: string
   searchPlaceholder: string
   advancedFilters: string
   resetFilters: string
@@ -163,6 +166,19 @@ export default function ViajesBuscador({
   return (
     <section id="buscador-viajes" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
       <div className="max-w-6xl mx-auto">
+
+        {/* ── Cabecera ── */}
+        <div className="text-center mb-8 md:mb-14">
+          <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
+            {strings.headerPill}
+          </span>
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-vidaia-dark mb-3 sm:mb-4">
+            {strings.headerTitle}
+          </h2>
+          <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
+            {strings.headerSubtitle}
+          </p>
+        </div>
 
         {/* ── Zona A: search bar ── */}
         <div className="flex flex-col sm:flex-row gap-3 mb-4">
