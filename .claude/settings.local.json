@@ -10,7 +10,9 @@
       "Read(//c/Users/juanpedro.martin/Downloads/**)",
       "Bash(Select-Object Name, Mode)",
       "Bash(git stash *)",
-      "Bash(rm \"/Users/jupemartin/Viajes Vidaia Code/travel-agency/app/[lang]/destinos/[slug]/BackButton.tsx\" && echo \"deleted\")"
+      "Bash(rm \"/Users/jupemartin/Viajes Vidaia Code/travel-agency/app/[lang]/destinos/[slug]/BackButton.tsx\" && echo \"deleted\")",
+      "Bash(git -C \"/Users/jupemartin/Viajes Vidaia Code/travel-agency\" log --oneline -20)",
+      "Bash(git -C \"/Users/jupemartin/Viajes Vidaia Code/travel-agency\" log --oneline --all)"
     ],
     "additionalDirectories": [
       "/Users/jupemartin/Viajes Vidaia Code/travel-agency/app/[lang]/destinos/[slug]"
