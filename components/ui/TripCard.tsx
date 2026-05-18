@@ -121,7 +121,7 @@ export default function TripCard({ trip, lang, strings }: TripCardProps) {
         )}
         <div className="flex items-center justify-between mt-auto pt-3 border-t border-vidaia-light/60">
           <span className="text-vidaia-primary font-bold text-base">
-            {renderTemplate(strings.priceTemplate, { price: formatPrice(trip.priceFrom) })}
+            {trip.priceFrom != null && trip.priceFrom > 0 && renderTemplate(strings.priceTemplate, { price: formatPrice(trip.priceFrom) })}
           </span>
           <Link
             href={href}

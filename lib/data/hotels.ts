@@ -378,6 +378,692 @@ const hotels: Hotel[] = [
     imageKey: 'HOTELS.ARAKUR_USHUAIA',
     active: true,
   },
+  {
+    id: 'hotel-del-virrey-salta',
+    destinationId: 'salta',
+    content: {
+      es: {
+        name: 'Hotel Del Virrey',
+        categoryLabel: 'Superior',
+        description: 'Hotel céntrico de Salta con arquitectura colonial. Ubicado en el corazón de la ciudad, ideal para explorar el norte andino argentino.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.HOTEL_DEL_VIRREY_SALTA',
+    active: true,
+  },
+  {
+    id: 'refugio-coquena-purmamarca',
+    destinationId: 'purmamarca',
+    content: {
+      es: {
+        name: 'El Refugio de Coquena',
+        categoryLabel: 'Boutique',
+        description: 'Hostería boutique en Purmamarca, al pie del Cerro de los Siete Colores. Arquitectura regional, atmósfera íntima y vistas únicas.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.REFUGIO_COQUENA_PURMAMARCA',
+    active: true,
+  },
+  {
+    id: 'esplendor-buenos-aires',
+    destinationId: 'buenos-aires',
+    content: {
+      es: {
+        name: 'Esplendor Buenos Aires',
+        categoryLabel: 'Superior',
+        description: 'Hotel 4 estrellas superior en el centro de Buenos Aires. Diseño contemporáneo en un edificio histórico, ideal como base para explorar la ciudad.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.ESPLENDOR_BUENOS_AIRES',
+    active: true,
+  },
+  {
+    id: 'huinid-obelisco-buenos-aires',
+    destinationId: 'buenos-aires',
+    content: {
+      es: {
+        name: 'Huinid Obelisco',
+        categoryLabel: 'Superior',
+        description: 'Hotel bien ubicado en el centro de Buenos Aires, a pasos del Obelisco. Cómodo punto de partida para descubrir la capital argentina.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.HUINID_OBELISCO_BUENOS_AIRES',
+    active: true,
+  },
+  {
+    id: 'amerian-tucuman',
+    destinationId: 'tucuman',
+    content: {
+      es: {
+        name: 'Amerian Tucumán',
+        categoryLabel: 'Superior',
+        description: 'Hotel 4 estrellas en el centro de Tucumán. Servicios completos y ubicación estratégica para explorar el noroeste argentino.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.AMERIAN_TUCUMAN',
+    active: true,
+  },
+  {
+    id: 'vinas-cafayate-wine-resort',
+    destinationId: 'cafayate',
+    content: {
+      es: {
+        name: 'Viñas de Cafayate Wine Resort',
+        categoryLabel: 'Resort',
+        description: 'Resort vinícola en Cafayate, en los Valles Calchaquíes. Rodeado de viñedos, con piscina, spa y acceso directo a bodegas locales.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.VINAS_CAFAYATE_WINE_RESORT',
+    active: true,
+  },
+  {
+    id: 'hotel-salta',
+    destinationId: 'salta',
+    content: {
+      es: {
+        name: 'Hotel Salta',
+        categoryLabel: 'Superior',
+        description: 'Icónico hotel de estilo colonial en el centro histórico de Salta. Frente a la Plaza 9 de Julio, es un referente de la hospitalidad salteña.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.HOTEL_SALTA',
+    active: true,
+  },
+  {
+    id: 'la-comarca-purmamarca',
+    destinationId: 'purmamarca',
+    content: {
+      es: {
+        name: 'La Comarca',
+        categoryLabel: 'Superior',
+        description: 'Hotel de estilo regional en Purmamarca, rodeado de los paisajes coloridos de la Quebrada de Humahuaca. Diseño cálido y auténtico.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.LA_COMARCA_PURMAMARCA',
+    active: true,
+  },
+  {
+    id: 'cilene-del-faro-ushuaia',
+    destinationId: 'ushuaia',
+    content: {
+      es: {
+        name: 'Cilene del Faro Suites & Spa',
+        categoryLabel: 'Suites & Spa',
+        description: 'Suites de lujo en Ushuaia con vistas al Canal Beagle y la Cordillera de los Andes. Spa y restaurante para disfrutar del Fin del Mundo con comodidad.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.CILENE_DEL_FARO_USHUAIA',
+    active: true,
+  },
+  {
+    id: 'mirador-del-lago-el-calafate',
+    destinationId: 'el-calafate',
+    content: {
+      es: {
+        name: 'Mirador del Lago Hotel',
+        categoryLabel: 'Superior',
+        description: 'Hotel con vistas al Lago Argentino en El Calafate. Diseño patagónico, excelente ubicación para acceder al Glaciar Perito Moreno.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.MIRADOR_DEL_LAGO_EL_CALAFATE',
+    active: true,
+  },
+  {
+    id: 'hotel-saint-george-iguazu',
+    destinationId: 'iguazu',
+    content: {
+      es: {
+        name: 'Hotel Saint George',
+        categoryLabel: 'Superior',
+        description: 'Hotel 3 estrellas superior en Puerto Iguazú, a pocos minutos del Parque Nacional Iguazú. Cómodo y bien ubicado para disfrutar las cataratas.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.HOTEL_SAINT_GEORGE_IGUAZU',
+    active: true,
+  },
+  {
+    id: 'hotel-dora-buenos-aires',
+    destinationId: 'buenos-aires',
+    content: {
+      es: {
+        name: 'Hotel Dorá',
+        categoryLabel: 'Superior',
+        description: 'Hotel céntrico en Buenos Aires con buena relación calidad-precio. Ideal como última noche antes del vuelo de regreso.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.HOTEL_DORA_BUENOS_AIRES',
+    active: true,
+  },
+  {
+    id: 'pullman-santiago-vitacura',
+    destinationId: 'santiago-chile',
+    content: {
+      es: {
+        name: 'Pullman Santiago Vitacura',
+        categoryLabel: 'Superior',
+        description: 'Hotel moderno de 20 pisos en la exclusiva comuna de Vitacura, frente al Club de Golf Los Leones y el Parque Bicentenario. Piscina, gimnasio, business center y habitaciones con aire acondicionado y vistas a los Andes.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.PULLMAN_SANTIAGO_VITACURA',
+    active: true,
+  },
+  {
+    id: 'nh-cordillera-mendoza',
+    destinationId: 'mendoza',
+    content: {
+      es: {
+        name: 'NH Cordillera',
+        categoryLabel: 'Superior',
+        description: 'Hotel de alta categoría en el microcentro de Mendoza, frente a una hermosa plaza y a pasos de la calle peatonal. Piscina en terraza con sol mendocino, sauna, restaurante con carta de vinos y habitaciones con sommier, aire acondicionado y frigobar.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.NH_CORDILLERA_MENDOZA',
+    active: true,
+  },
+  {
+    id: 'grand-brizo-buenos-aires',
+    destinationId: 'buenos-aires',
+    content: {
+      es: {
+        name: 'Grand Brizo Hotel',
+        categoryLabel: 'Superior',
+        description: 'Hotel de 192 habitaciones en el corazón de Buenos Aires, a metros del Obelisco. Con Wi-Fi, spa, gimnasio, room service y restaurante. Ideal para acceder a todos los puntos turísticos de la ciudad.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.GRAND_BRIZO_BUENOS_AIRES',
+    active: true,
+  },
+  {
+    id: 'own-montevideo',
+    destinationId: 'montevideo',
+    content: {
+      es: {
+        name: 'Own Montevideo',
+        categoryLabel: 'Boutique',
+        description: 'Boutique hotel de 44 habitaciones en Punta Carretas, con piscina climatizada y vistas al Río de la Plata. Restaurante exclusivo y servicio personalizado "Customize your Stay". 100 % libre de humo, a pasos del centro comercial y el campo de golf.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.OWN_MONTEVIDEO',
+    active: true,
+  },
+  {
+    id: 'hotel-britania-lima',
+    destinationId: 'lima',
+    content: {
+      es: {
+        name: 'Hotel Britania',
+        categoryLabel: 'Superior',
+        description: 'Hotel céntrico en Lima con habitaciones confortables, restaurante y servicio de calidad. Buena ubicación para explorar la ciudad.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.HOTEL_BRITANIA_LIMA',
+    active: true,
+  },
+  {
+    id: 'dazzler-miraflores-lima',
+    destinationId: 'lima',
+    content: {
+      es: {
+        name: 'Dazzler by Wyndham Lima Miraflores',
+        categoryLabel: 'Superior',
+        description: 'Hotel de diseño contemporáneo en el corazón de Miraflores, a pasos del Parque del Amor y los acantilados del Pacífico. Habitaciones amplias con vistas panorámicas, restaurante gourmet y spa.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.DAZZLER_MIRAFLORES_LIMA',
+    active: true,
+  },
+  {
+    id: 'pullman-lima-miraflores',
+    destinationId: 'lima',
+    content: {
+      es: {
+        name: 'Pullman Lima Miraflores',
+        categoryLabel: 'Lujo',
+        description: 'Hotel de cinco estrellas en Miraflores con vistas al Océano Pacífico. Habitaciones de lujo, piscina exterior, spa y restaurante de cocina peruana de autor.',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.PULLMAN_LIMA_MIRAFLORES',
+    active: true,
+  },
+  {
+    id: 'el-condor-paracas',
+    destinationId: 'paracas',
+    content: {
+      es: {
+        name: 'El Cóndor — Vista al Jardín',
+        categoryLabel: 'Superior',
+        description: 'Hotel con jardines a orillas de la bahía de Paracas. Ambiente tranquilo ideal para descansar tras las excursiones por la reserva nacional.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.EL_CONDOR_PARACAS',
+    active: true,
+  },
+  {
+    id: 'casa-andina-select-paracas',
+    destinationId: 'paracas',
+    content: {
+      es: {
+        name: 'Casa Andina Select Paracas',
+        categoryLabel: 'Superior',
+        description: 'Resort frente al mar en Paracas con habitaciones luminosas, piscina y acceso privado a la playa. La cadena peruana de referencia con su carácter local y servicios de primera.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.CASA_ANDINA_SELECT_PARACAS',
+    active: true,
+  },
+  {
+    id: 'la-hacienda-paracas',
+    destinationId: 'paracas',
+    content: {
+      es: {
+        name: 'La Hacienda Bahía Paracas',
+        categoryLabel: 'Lujo',
+        description: 'Elegante resort de lujo a orillas de la bahía, con habitaciones frente al mar, piscina infinita, spa y restaurante de mariscos frescos. En categorías superiores, el embarque a Islas Ballestas sale desde el propio hotel.',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.LA_HACIENDA_PARACAS',
+    active: true,
+  },
+  {
+    id: 'majestad-arequipa',
+    destinationId: 'arequipa',
+    content: {
+      es: {
+        name: 'Majestad Arequipa Boutique Hotel',
+        categoryLabel: 'Boutique',
+        description: 'Encantador hotel boutique en el centro histórico de Arequipa, construido en sillar volcánico. Ambiente íntimo, patio interior y ubicación privilegiada.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.MAJESTAD_AREQUIPA',
+    active: true,
+  },
+  {
+    id: 'san-agustin-posada-monasterio-arequipa',
+    destinationId: 'arequipa',
+    content: {
+      es: {
+        name: 'San Agustín Posada del Monasterio',
+        categoryLabel: 'Superior',
+        description: 'Hotel de cuatro estrellas instalado en un edificio histórico del centro de Arequipa, frente al Convento de Santa Catalina. Habitaciones con encanto colonial y excelente cocina arequipeña.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.SAN_AGUSTIN_POSADA_MONASTERIO',
+    active: true,
+  },
+  {
+    id: 'costa-del-sol-wyndham-arequipa',
+    destinationId: 'arequipa',
+    content: {
+      es: {
+        name: 'Costa del Sol Wyndham Arequipa',
+        categoryLabel: 'Lujo',
+        description: 'Hotel de cinco estrellas en el centro histórico de Arequipa con habitaciones de lujo, spa, piscina climatizada y restaurante de cocina nueva andina. Vistas al volcán Misti desde sus terrazas.',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.COSTA_DEL_SOL_WYNDHAM_AREQUIPA',
+    active: true,
+  },
+  {
+    id: 'pozo-del-cielo-colca',
+    destinationId: 'canon-del-colca',
+    content: {
+      es: {
+        name: 'Pozo del Cielo',
+        categoryLabel: 'Superior',
+        description: 'Hotel acogedor en Chivay, puerta del Cañón del Colca. Ambiente familiar y cálido, restaurante con cocina local y acceso a las termas de La Calera.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.POZO_DEL_CIELO_COLCA',
+    active: true,
+  },
+  {
+    id: 'el-refugio-colca',
+    destinationId: 'canon-del-colca',
+    content: {
+      es: {
+        name: 'El Refugio',
+        categoryLabel: 'Superior',
+        description: 'Hotel de montaña a orillas del río Colca con termas propias, habitaciones confortables y restaurante con productos locales. El entorno natural y las termas hacen de este alojamiento un oasis andino.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.EL_REFUGIO_COLCA',
+    active: true,
+  },
+  {
+    id: 'colca-lodge-spa',
+    destinationId: 'canon-del-colca',
+    content: {
+      es: {
+        name: 'Colca Lodge Spa & Hot Springs',
+        categoryLabel: 'Lujo',
+        description: 'El alojamiento más exclusivo del cañón, ubicado directamente sobre el río Colca. Bungalows con termas privadas alimentadas por aguas termales naturales, spa, restaurante gourmet y vistas espectaculares al cañón.',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.COLCA_LODGE_SPA',
+    active: true,
+  },
+  {
+    id: 'la-hacienda-plaza-armas-puno',
+    destinationId: 'puno',
+    content: {
+      es: {
+        name: 'La Hacienda Plaza de Armas',
+        categoryLabel: 'Superior',
+        description: 'Hotel colonial en plena Plaza de Armas de Puno. Vista directa al lago Titicaca desde sus habitaciones superiores, restaurante con cocina altiplánica y ambiente acogedor.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.LA_HACIENDA_PUNO',
+    active: true,
+  },
+  {
+    id: 'jose-antonio-puno',
+    destinationId: 'puno',
+    content: {
+      es: {
+        name: 'José Antonio Puno',
+        categoryLabel: 'Superior',
+        description: 'Hotel de referencia en Puno con habitaciones amplias y confortables, restaurante con cocina peruana, bar y servicio atento. Excelente ubicación para los embarcaderos del Titicaca.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.JOSE_ANTONIO_PUNO',
+    active: true,
+  },
+  {
+    id: 'casa-andina-premium-puno',
+    destinationId: 'puno',
+    content: {
+      es: {
+        name: 'Casa Andina Premium Puno',
+        categoryLabel: 'Lujo',
+        description: 'Hotel premium frente al lago Titicaca con habitaciones de lujo con vista al lago, restaurante de gastronomía andina, spa y servicio impecable. La mejor experiencia de alojamiento en el altiplano peruano.',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.CASA_ANDINA_PREMIUM_PUNO',
+    active: true,
+  },
+  {
+    id: 'san-agustin-internacional-cusco',
+    destinationId: 'cusco',
+    content: {
+      es: {
+        name: 'San Agustín Internacional Cusco',
+        categoryLabel: 'Superior',
+        description: 'Hotel bien ubicado en el centro histórico de Cusco, a pasos de la Plaza de Armas. Habitaciones cómodas con calefacción, restaurante y servicio atento a la altitud.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.SAN_AGUSTIN_INTERNACIONAL_CUSCO',
+    active: true,
+  },
+  {
+    id: 'san-agustin-el-dorado-cusco',
+    destinationId: 'cusco',
+    content: {
+      es: {
+        name: 'San Agustín El Dorado Cusco',
+        categoryLabel: 'Superior',
+        description: 'Hotel de cuatro estrellas en el corazón de Cusco con habitaciones elegantes, restaurante de cocina novoandina, bar y sala de estar con chimenea. A metros de la Plaza de Armas y el Koricancha.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.SAN_AGUSTIN_EL_DORADO_CUSCO',
+    active: true,
+  },
+  {
+    id: 'casa-andina-premium-cusco',
+    destinationId: 'cusco',
+    content: {
+      es: {
+        name: 'Casa Andina Premium Cusco',
+        categoryLabel: 'Lujo',
+        description: 'Instalado en una joya colonial del siglo XVII en pleno centro histórico, este hotel de lujo ofrece habitaciones con mobiliario artesanal, spa andino, restaurante de cocina de autor y una de las mejores ubicaciones de Cusco.',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.CASA_ANDINA_PREMIUM_CUSCO',
+    active: true,
+  },
+  {
+    id: 'flowers-house-machupicchu',
+    destinationId: 'machu-picchu',
+    content: {
+      es: {
+        name: 'Flowers House Machupicchu',
+        categoryLabel: 'Superior',
+        description: 'Hotel acogedor en Aguas Calientes, a pasos de la estación de tren y del bus hacia Machu Picchu. Ambiente tranquilo, desayuno incluido y trato familiar.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.FLOWERS_HOUSE_MACHUPICCHU',
+    active: true,
+  },
+  {
+    id: 'el-mapi-machupicchu',
+    destinationId: 'machu-picchu',
+    content: {
+      es: {
+        name: 'El Mapi by Inkaterra',
+        categoryLabel: 'Superior',
+        description: 'Moderno hotel urbano de Inkaterra en Aguas Calientes con diseño contemporáneo que dialoga con el entorno selvático. Restaurante de cocina peruana, zona de spa y acceso privilegiado al pueblo y sus termas.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.EL_MAPI_MACHUPICCHU',
+    active: true,
+  },
+  {
+    id: 'sumaq-machu-picchu',
+    destinationId: 'machu-picchu',
+    content: {
+      es: {
+        name: 'Sumaq Machu Picchu Hotel',
+        categoryLabel: 'Lujo',
+        description: 'El hotel de cinco estrellas más exclusivo de Aguas Calientes, con habitaciones de lujo con vistas al río Urubamba y a la montaña. Spa con tratamientos andinos, restaurante gourmet y la cercanía más privilegiada a la ciudadela inca.',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.SUMAQ_MACHU_PICCHU',
+    active: true,
+  },
+  {
+    id: 'san-agustin-urubamba-spa',
+    destinationId: 'valle-sagrado',
+    content: {
+      es: {
+        name: 'San Agustín Urubamba & Spa',
+        categoryLabel: 'Superior',
+        description: 'Hotel & spa en el Valle Sagrado rodeado de jardines andinos y vistas a las montañas. Habitaciones amplias, piscina y spa con tratamientos con plantas medicinales del Valle.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.SAN_AGUSTIN_URUBAMBA_SPA',
+    active: true,
+  },
+  {
+    id: 'hacienda-del-valle-sagrado',
+    destinationId: 'valle-sagrado',
+    content: {
+      es: {
+        name: 'Hacienda del Valle',
+        categoryLabel: 'Superior',
+        description: 'Encantadora hacienda histórica en el corazón del Valle Sagrado, entre Urubamba y Ollantaytambo. Jardines andinos, caballos, restaurante con productos de huerto propio y una atmósfera de total serenidad.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.HACIENDA_DEL_VALLE_SAGRADO',
+    active: true,
+  },
+  {
+    id: 'inkaterra-hacienda-urubamba',
+    destinationId: 'valle-sagrado',
+    content: {
+      es: {
+        name: 'Inkaterra Hacienda Urubamba',
+        categoryLabel: 'Lujo',
+        description: 'Refugio de lujo sostenible en el Valle Sagrado con cabaña-casitas rodeadas de jardines botánicos. Spa con tratamientos ancestrales andinos, restaurante de cocina de autor con ingredientes del huerto y vistas a los Andes. La experiencia más especial del Valle.',
+      }
+    },
+    category: 5,
+    imageKey: 'HOTELS.INKATERRA_HACIENDA_URUBAMBA',
+    active: true,
+  },
+  {
+    id: 'nh-ciudad-de-santiago',
+    destinationId: 'santiago-chile',
+    content: {
+      es: {
+        name: 'NH Ciudad de Santiago',
+        categoryLabel: 'Superior',
+        description: 'Hotel de diseño contemporáneo en la comuna de Providencia, ideal para explorar Santiago. Habitaciones espaciosas decoradas con elegancia, restaurante, gimnasio y varios salones de reuniones. A pasos del metro y los mejores restaurantes de la ciudad.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.NH_CIUDAD_DE_SANTIAGO',
+    active: true,
+  },
+  {
+    id: 'altiplanico-sur-puerto-natales',
+    destinationId: 'puerto-natales',
+    content: {
+      es: {
+        name: 'Altiplánico Sur',
+        categoryLabel: 'Superior',
+        description: 'Hotel de diseño patagónico a 1,2 km de Puerto Natales con vistas al Seno de Última Esperanza y al Glaciar Balmaceda. Arquitectura que se mimetiza con la naturaleza del entorno, habitaciones acogedoras y la Patagonia como telón de fondo a una hora de Torres del Paine.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.ALTIPLANICO_SUR_PUERTO_NATALES',
+    active: true,
+  },
+  {
+    id: 'costaustralis-puerto-natales',
+    destinationId: 'puerto-natales',
+    content: {
+      es: {
+        name: 'Hotel Costaustralis',
+        categoryLabel: 'Superior',
+        description: 'Hotel de arquitectura elegante y céntrica ubicación en Puerto Natales, con vistas impresionantes a las montañas y fiordos. Habitaciones cómodas, desayuno buffet y servicio de primera categoría para explorar la Patagonia y Torres del Paine.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.COSTAUSTRALIS_PUERTO_NATALES',
+    active: true,
+  },
+  {
+    id: 'cabana-del-lago-puerto-varas',
+    destinationId: 'puerto-varas',
+    content: {
+      es: {
+        name: 'Cabaña del Lago — Hotel Sustentable',
+        categoryLabel: 'Superior',
+        description: 'Hotel ícono de Puerto Varas a orillas del Lago Llanquihue con vistas a los volcanes Osorno y Calbuco. Piscina climatizada, tinas calientes y sala de juegos. Comprometido con la sostenibilidad: reciclaje, energías renovables y apoyo a emprendedores locales.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.CABANA_DEL_LAGO_PUERTO_VARAS',
+    active: true,
+  },
+  {
+    id: 'solace-puerto-varas',
+    destinationId: 'puerto-varas',
+    content: {
+      es: {
+        name: 'Solace Hotel Puerto Varas',
+        categoryLabel: 'Superior',
+        description: 'Hotel acogedor en el corazón de Puerto Varas que transmite la auténtica hospitalidad del sur de Chile. Habitaciones diseñadas para conectar con la naturaleza del entorno, con el Lago Llanquihue como referencia constante.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.SOLACE_PUERTO_VARAS',
+    active: true,
+  },
+  {
+    id: 'casa-solcor-san-pedro',
+    destinationId: 'san-pedro-atacama',
+    content: {
+      es: {
+        name: 'Casa Solcor',
+        categoryLabel: 'Boutique',
+        description: 'Encantador bed & breakfast boutique en el Ayllu de Solcor, en el corazón del desierto de Atacama. Habitaciones con baño privado, calefacción y patio exclusivo. Jardines para contemplar el cielo estrellado, piscina y desayuno con sabores locales.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.CASA_SOLCOR_SAN_PEDRO',
+    active: true,
+  },
+  {
+    id: 'hilton-garden-inn-aeropuerto-santiago',
+    destinationId: 'santiago-chile',
+    content: {
+      es: {
+        name: 'Hilton Garden Inn Aeropuerto Santiago',
+        categoryLabel: 'Superior',
+        description: 'Hotel a 5 minutos del aeropuerto Internacional Arturo Merino Benítez y a 20 minutos del centro. Habitaciones con camas Garden Sleep, piscina, sauna, gimnasio y restaurante. La opción más eficiente para noches de tránsito entre vuelos en Santiago.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.HILTON_GARDEN_INN_AEROPUERTO',
+    active: true,
+  },
+  {
+    id: 'altiplanico-rapa-nui',
+    destinationId: 'isla-pascua',
+    content: {
+      es: {
+        name: 'Altiplánico Rapa Nui',
+        categoryLabel: 'Superior',
+        description: 'Hotel original diseñado en el estilo de una casa bote rapanui tradicional, en 1,5 hectáreas con vistas panorámicas a la costa de Isla de Pascua. Habitaciones con terraza privada para contemplar el Pacífico y un entorno que conecta con la esencia más auténtica de Rapa Nui.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.ALTIPLANICO_RAPA_NUI',
+    active: true,
+  },
+  {
+    id: 'hare-nua-rapa-nui',
+    destinationId: 'isla-pascua',
+    content: {
+      es: {
+        name: 'Hare Nua',
+        categoryLabel: 'Boutique',
+        description: 'Alojamiento acogedor construido en 1960 en la avenida principal de Hanga Roa, una de las pocas casas originales de la isla que conserva sus características nativas. Ubicación privilegiada a pasos del mar, restaurantes y del comercio local de Rapa Nui.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.HARE_NUA_RAPA_NUI',
+    active: true,
+  },
 ]
 
 export default hotels

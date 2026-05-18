@@ -24,6 +24,15 @@ import {
   Mountain,
   Binoculars,
   Snowflake,
+  Wine,
+  CableCar,
+  Building2,
+  TreePine,
+  MountainSnow,
+  Fish,
+  Landmark,
+  Shell,
+  TreePalm,
   type LucideIcon,
 } from 'lucide-react'
 import { getItineraryWithDetails, getItineraryOptionals } from '@/lib/services/itinerariesService'
@@ -44,6 +53,15 @@ const ACTIVITY_ICON_MAP: Record<string, LucideIcon> = {
   Mountain,
   Binoculars,
   Snowflake,
+  Wine,
+  CableCar,
+  Building2,
+  TreePine,
+  MountainSnow,
+  Fish,
+  Landmark,
+  Shell,
+  TreePalm
 }
 
 export default function ItineraryContent({ slug }: { slug: string }) {
@@ -625,9 +643,11 @@ export default function ItineraryContent({ slug }: { slug: string }) {
                       )}
                       <div className="flex items-center justify-between pt-3 border-t border-vidaia-light/60 mt-auto">
                         <div>
-                          <p className="text-vidaia-primary font-bold text-sm">
-                            {renderTemplate(content.price.fromTemplate, { price: formatPrice(related.priceFrom) })}
-                          </p>
+                          {related.priceFrom != null && related.priceFrom > 0 && (
+                            <p className="text-vidaia-primary font-bold text-sm">
+                              {renderTemplate(content.price.fromTemplate, { price: formatPrice(related.priceFrom) })}
+                            </p>
+                          )}
                           <p className="text-xs text-vidaia-charcoal/50">{related.days} {ui.labels.days}</p>
                         </div>
                         <LangLink
@@ -657,9 +677,11 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           <p className="text-vidaia-earth uppercase tracking-widest text-xs font-semibold mb-4">
             {content.price.overline}
           </p>
-          <p className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold mb-1">
-            {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom) })}
-          </p>
+          {trip.priceFrom != null && trip.priceFrom > 0 && (
+            <p className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold mb-1">
+              {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom) })}
+            </p>
+          )}
           <p className="text-white/55 text-sm mb-2">{content.price.perPersonLabel}</p>
           <p className="text-white/40 text-xs mb-12">{content.price.priceNote}</p>
           <LangLink

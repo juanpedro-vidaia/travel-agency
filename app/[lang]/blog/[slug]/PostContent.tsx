@@ -170,7 +170,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
                       <p className="font-semibold text-vidaia-dark group-hover:text-vidaia-primary transition-colors text-sm truncate">
                         {tripTitle}
                       </p>
-                      <p className="text-xs text-gray-500 mt-0.5">{trip.days} días · desde {trip.priceFrom.toLocaleString('es-ES')} €</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{trip.days} días{trip.priceFrom != null && trip.priceFrom > 0 && ` · desde ${trip.priceFrom.toLocaleString('es-ES')} €`}</p>
                     </div>
                     <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-vidaia-primary flex-shrink-0 transition-colors" />
                   </LangLink>

@@ -1,4 +1,4 @@
-import type { Country } from './destinations'
+import type { CountrySlug as Country } from './countries'
 
 // ── Tags ──────────────────────────────────────────────────────────────────────
 
@@ -66,7 +66,7 @@ export interface Trip {
   country: Country | Country[]
   days: number
   nights: number
-  priceFrom: number
+  priceFrom?: number
   imageKey: string
   featured: boolean
   active: boolean
@@ -95,14 +95,14 @@ const trips: Trip[] = [
       es: {
         title: 'Paisajes naturales de Argentina: ballenas, glaciares, cataratas y el Fin del Mundo',
         subtitle: 'Iguazú · Península de Valdés · Buenos Aires · El Calafate · Ushuaia',
-        honeymoonTitle: 'Luna de Miel Patagonia e Iguazú',
-        honeymoonTagline: 'Naturaleza en estado puro',
+        honeymoonTitle: 'Luna de Miel - Paisajes Naturales de Argentina',
+        honeymoonTagline: 'De las cataratas al fin del mundo, juntos',
       }
     },
     country: 'argentina',
     days: 13,
     nights: 12,
-    priceFrom: 4412,
+    priceFrom: 0,
     imageKey: 'TRIPS.ARGENTINA_NATURAL_PAISAJES',
     featured: true,
     active: true,
@@ -115,180 +115,53 @@ const trips: Trip[] = [
       { slug: 'patagonia-sur-a-norte', es: { reason: 'Profundiza en la Patagonia argentina' } },
     ],
     honeymoonFeatured: true,
-    bestMonths: [3, 4, 9, 10, 11],
-    ranking: 100,
-  },
-  {
-    id: 'latitudes-australes',
-    slug: 'latitudes-australes',
-    content: {
-      es: {
-        title: 'Latitudes Australes: Patagonia Argentina & Chilena',
-        subtitle: 'El Calafate · Torres del Paine · Ushuaia · Puerto Natales',
-      }
-    },
-    country: ['argentina', 'chile'],
-    days: 14,
-    nights: 13,
-    priceFrom: 3900,
-    imageKey: 'TRIPS.LATITUDES_AUSTRALES',
-    featured: true,
-    active: true,
-    hasItinerary: false,
-    tags: ['nature', 'adventure'],
-    includesInternationalFlights: true,
-    includesDomesticFlights: true,
-    relatedTrips: [
-      { slug: 'paisajes-naturales-argentina', es: { reason: 'Patagonia argentina con ballenas e Iguazú' } },
-    ],
-    ranking: 90,
-  },
-  {
-    id: 'patagonia-sur-a-norte',
-    slug: 'patagonia-sur-a-norte',
-    content: {
-      es: {
-        title: 'Patagonia de sur a norte, con Iguazú opcional',
-        subtitle: 'Ushuaia · El Chaltén · El Calafate · Buenos Aires',
-      }
-    },
-    country: 'argentina',
-    days: 12,
-    nights: 11,
-    priceFrom: 3500,
-    imageKey: 'TRIPS.PATAGONIA_SUR_NORTE',
-    featured: true,
-    active: true,
-    hasItinerary: false,
-    tags: ['nature', 'adventure'],
-    includesInternationalFlights: true,
-    includesDomesticFlights: true,
-    relatedTrips: [
-      { slug: 'paisajes-naturales-argentina', es: { reason: 'Añade ballenas e Iguazú a la misma ruta' } },
-    ],
-    ranking: 80,
-  },
-  {
-    id: 'fin-de-ano-argentina',
-    slug: 'fin-de-ano-argentina',
-    content: {
-      es: {
-        title: 'Fin de año de esencia argentina: cataratas, glaciares y Buenos Aires',
-        subtitle: 'Buenos Aires · Iguazú · El Calafate · Ushuaia',
-      }
-    },
-    country: 'argentina',
-    days: 13,
-    nights: 12,
-    priceFrom: 4200,
-    imageKey: 'TRIPS.FIN_DE_ANO_ARGENTINA',
-    featured: false,
-    active: true,
-    hasItinerary: false,
-    tags: ['nature', 'culture', 'adventure'],
-    includesInternationalFlights: true,
-    includesDomesticFlights: true,
-    relatedTrips: [
-      { slug: 'paisajes-naturales-argentina', es: { reason: 'Ruta similar con avistaje de ballenas' } },
-    ],
     season: 'summer',
-    bestMonths: [12, 1],
-    ranking: 40,
-  },
-  {
-    id: 'argentina-esencial',
-    slug: 'argentina-esencial',
-    content: {
-      es: {
-        title: 'Argentina Esencial de Norte a Sur',
-        subtitle: 'Salta · Jujuy · Buenos Aires · El Calafate · Ushuaia',
-        honeymoonTitle: 'Luna de Miel Argentina',
-        honeymoonTagline: 'Cultura, gastronomía y aventura',
-      }
-    },
-    country: 'argentina',
-    days: 15,
-    nights: 14,
-    priceFrom: 3800,
-    imageKey: 'TRIPS.ARGENTINA_ESENCIAL',
-    featured: false,
-    active: true,
-    hasItinerary: false,
-    tags: ['nature', 'culture', 'gastronomy'],
-    includesInternationalFlights: true,
-    includesDomesticFlights: true,
-    relatedTrips: [
-      { slug: 'contrastes-argentinos', es: { reason: 'Similar ruta norte-sur con más Patagonia' } },
-    ],
-    honeymoonFeatured: true,
-    ranking: 60,
+    bestMonths: [9, 10, 11, 12],
+    ranking: 100,
   },
   {
     id: 'contrastes-argentinos',
     slug: 'contrastes-argentinos',
     content: {
       es: {
-        title: 'Contrastes Argentinos: Salares, selva y hielo',
-        subtitle: 'Jujuy · Salta · Iguazú · Buenos Aires · Patagonia',
+        title: 'Contrastes argentinos: glaciares, selva y salares andinos',
+        subtitle: 'Buenos Aires · Tucumán · Cafayate · Salta · Purmamarca · Ushuaia · El Calafate · Iguazú',
       }
     },
     country: 'argentina',
-    days: 14,
-    nights: 13,
-    priceFrom: 4100,
+    days: 21,
+    nights: 20,
+    priceFrom: 0,
     imageKey: 'TRIPS.CONTRASTES_ARGENTINOS',
-    featured: false,
+    featured: true,
     active: true,
-    hasItinerary: false,
-    tags: ['nature', 'culture', 'adventure'],
+    hasItinerary: true,
+    tags: ['nature', 'adventure', 'culture', 'wildlife'],
     includesInternationalFlights: true,
     includesDomesticFlights: true,
     relatedTrips: [
-      { slug: 'argentina-esencial', es: { reason: 'Misma esencia norte-sur con variante Patagonia' } },
+      { slug: 'contrastes-argentinos-invierno', es: { reason: 'Itinerario similar en invierno con extensión al norte' } },
+      { slug: 'paisajes-naturales-argentina', es: { reason: 'Combina con la Patagonia argentina' } },
     ],
-    ranking: 50,
-  },
-  {
-    id: 'chile-bolivia-salares',
-    slug: 'chile-bolivia-salares',
-    content: {
-      es: {
-        title: 'Chile y Bolivia: Desiertos, salares y paisajes únicos',
-        subtitle: 'Santiago · San Pedro de Atacama · Salar de Uyuni · La Paz',
-        honeymoonTitle: 'Luna de Miel Chile y Bolivia',
-        honeymoonTagline: 'Desiertos, salares y paisajes de otro planeta',
-      }
-    },
-    country: ['chile', 'bolivia'],
-    days: 12,
-    nights: 11,
-    priceFrom: 3800,
-    imageKey: 'TRIPS.CHILE_BOLIVIA_SALARES',
-    featured: false,
-    active: true,
-    hasItinerary: false,
-    tags: ['nature', 'adventure', 'culture'],
-    includesInternationalFlights: true,
-    includesDomesticFlights: true,
-    relatedTrips: [
-      { slug: 'esencias-chile-isla-pascua', es: { reason: 'Más Chile con el misterio de Isla de Pascua' } },
-    ],
-    honeymoonFeatured: true,
-    ranking: 70,
+    season: 'all-year',
+    bestMonths: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    ranking: 85,
   },
   {
     id: 'esencias-chile-isla-pascua',
     slug: 'esencias-chile-isla-pascua',
     content: {
       es: {
-        title: 'Esencias de Chile con Isla de Pascua: viñas, moáis y salares',
-        subtitle: 'Santiago · San Pedro de Atacama · Isla de Pascua',
+        title: 'Chile e Isla de Pascua: de las viñas del Maipo a los moáis del Pacífico',
+        subtitle: 'Santiago · Valle de Casablanca · San Pedro de Atacama · Rapa Nui',
+        honeymoonTitle: 'Luna de Miel en Chile e Isla de Pascua',
+        honeymoonTagline: 'Vino, un desierto y una isla para vosotros solos',
       }
     },
     country: 'chile',
     days: 13,
     nights: 11,
-    priceFrom: 4699,
+    priceFrom: 0,
     imageKey: 'TRIPS.CHILE_ISLA_PASCUA',
     featured: true,
     active: true,
@@ -300,6 +173,9 @@ const trips: Trip[] = [
       { slug: 'paisajes-naturales-argentina', es: { reason: 'Combina con la Patagonia argentina' } },
       { slug: 'chile-bolivia-salares', es: { reason: 'Amplía la ruta con el Salar de Uyuni' } },
     ],
+    honeymoonFeatured: true,
+    season: 'all-year',
+    bestMonths: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     ranking: 95,
   },
   {
@@ -314,7 +190,7 @@ const trips: Trip[] = [
     country: 'argentina',
     days: 22,
     nights: 21,
-    priceFrom: 4628,
+    priceFrom: 0,
     imageKey: 'TRIPS.GRANDES_ESCENARIOS_ARGENTINA',
     featured: true,
     active: true,
@@ -326,6 +202,137 @@ const trips: Trip[] = [
     season: 'summer',
     bestMonths: [1, 2, 3, 10, 11, 12],
     ranking: 95,
+  },
+  {
+    id: 'contrastes-argentinos-invierno',
+    slug: 'contrastes-argentinos-invierno',
+    content: {
+      es: {
+        title: 'Contrastes argentinos en invierno austral: del norte andino al Fin del Mundo',
+        subtitle: 'Salta · Purmamarca · Iguazú · Buenos Aires · Ushuaia · El Calafate',
+      }
+    },
+    country: 'argentina',
+    days: 16,
+    nights: 15,
+    priceFrom: 0,
+    imageKey: 'TRIPS.CONTRASTES_ARGENTINOS_INVIERNO',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+    tags: ['nature', 'adventure', 'culture'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
+    relatedTrips: [
+      { slug: 'contrastes-argentinos', es: { reason: 'Itinerario similar en verano' } },
+      { slug: 'grandes-escenarios-argentina', es: { reason: 'Otra visión de la Patagonia argentina' } },
+    ],
+    season: 'winter',
+    bestMonths: [6, 7, 8, 9],
+    ranking: 80,
+  },
+  {
+    id: 'argentina-sur-norte',
+    slug: 'argentina-sur-norte',
+    content: {
+      es: {
+        title: 'Argentina de sur a norte: de Tierra de Fuego a las Cataratas del Iguazú',
+        subtitle: 'Buenos Aires · Ushuaia · El Calafate · Bariloche · Puerto Iguazú',
+      }
+    },
+    country: 'argentina',
+    days: 16,
+    nights: 15,
+    priceFrom: 0,
+    imageKey: 'TRIPS.ARGENTINA_SUR_NORTE',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+    tags: ['nature', 'adventure', 'wildlife'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
+    relatedTrips: [],
+    season: 'all-year',
+    bestMonths: [1, 2, 3, 4, 5, 9, 10, 11, 12],
+    ranking: 90,
+  },
+  {
+    id: 'capitales-del-vino',
+    slug: 'capitales-del-vino',
+    content: {
+      es: {
+        title: 'El Cono Sur en copa: viñedos, bodegas y ciudades',
+        subtitle: 'Santiago de Chile · Mendoza · Buenos Aires · Montevideo',
+      }
+    },
+    country: ['chile', 'argentina', 'uruguay'],
+    days: 13,
+    nights: 12,
+    priceFrom: 0,
+    imageKey: 'TRIPS.CAPITALES_DEL_VINO',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+    tags: ['gastronomy', 'culture', 'relax'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
+    relatedTrips: [],
+    season: 'all-year',
+    bestMonths: [1, 2, 3, 4, 5, 9, 10, 11, 12],
+    ranking: 75,
+  },
+  {
+    id: 'lo-mejor-de-peru',
+    slug: 'lo-mejor-de-peru',
+    content: {
+      es: {
+        title: 'Lo Mejor de Perú: de Lima al Machu Picchu',
+        subtitle: 'Lima · Paracas · Arequipa · Cañón del Colca · Puno · Cusco · Valle Sagrado · Machu Picchu',
+      }
+    },
+    country: 'peru',
+    days: 14,
+    nights: 13,
+    priceFrom: 0,
+    imageKey: 'TRIPS.LO_MEJOR_DE_PERU',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+    tags: ['nature', 'culture', 'adventure'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
+    relatedTrips: [],
+    season: 'winter',
+    bestMonths: [4, 5, 6, 7, 8, 9, 10],
+    ranking: 95,
+  },
+  {
+    id: 'chile-completo',
+    slug: 'chile-completo',
+    content: {
+      es: {
+        title: 'Chile de punta a punta: Patagonia, Lagos, Atacama y Rapa Nui',
+        subtitle: 'Santiago · Puerto Natales · Puerto Varas · San Pedro de Atacama · Rapa Nui',
+      }
+    },
+    country: 'chile',
+    days: 17,
+    nights: 16,
+    priceFrom: 0,
+    imageKey: 'TRIPS.CHILE_COMPLETO',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+    tags: ['nature', 'adventure', 'culture'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
+    relatedTrips: [
+      { slug: 'esencias-chile-isla-pascua', es: { reason: 'Itinerario mas corto Chile e Isla de Pascua' } },
+    ],
+    honeymoonFeatured: true,
+    season: 'summer',
+    bestMonths: [10, 11, 12, 1, 2, 3],
+    ranking: 90,
   },
 ]
 

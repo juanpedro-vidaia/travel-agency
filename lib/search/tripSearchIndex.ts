@@ -78,7 +78,7 @@ export function searchTrips(filters: TripFilters): Trip[] {
 
       if (trip.days < minDays || trip.days > maxDays) return false
 
-      if (trip.priceFrom < minPrice || trip.priceFrom > maxPrice) return false
+      if (trip.priceFrom != null && (trip.priceFrom < minPrice || trip.priceFrom > maxPrice)) return false
 
       if (countries.length > 0) {
         const tripCountries = Array.isArray(trip.country) ? trip.country : [trip.country]
@@ -98,5 +98,5 @@ export function searchTrips(filters: TripFilters): Trip[] {
 }
 
 export const MAX_DAYS   = Math.max(...trips.filter(t => t.active).map(t => t.days))
-export const MIN_PRICE  = Math.min(...trips.filter(t => t.active).map(t => t.priceFrom))
-export const MAX_PRICE  = Math.max(...trips.filter(t => t.active).map(t => t.priceFrom))
+export const MIN_PRICE  = Math.min(...trips.filter(t => t.active && t.priceFrom != null).map(t => t.priceFrom!))
+export const MAX_PRICE  = Math.max(...trips.filter(t => t.active && t.priceFrom != null).map(t => t.priceFrom!))

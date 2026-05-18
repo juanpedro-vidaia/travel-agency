@@ -1,5 +1,6 @@
 import destinations from '../data/destinations'
-import type { Destination, Country } from '../data/destinations'
+import type { Destination } from '../data/destinations'
+import type { CountrySlug as Country } from '../data/countries'
 
 export function getDestinations(): Destination[] {
   return destinations.filter(destination => destination.active)

@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!itinerary) return {}
   const trip = getTripBySlug(slug)
   return buildMetadata({
-    title: `${itinerary.content.es.title} — Viajes Vidaia`,
-    description: trip?.content.es.subtitle ?? itinerary.content.es.title,
+    title: itinerary.content.es.metaTitle ?? `${itinerary.content.es.title} — Viajes Vidaia`,
+    description: itinerary.content.es.metaDescription ?? trip?.content.es.subtitle ?? itinerary.content.es.title,
     path: `/${lang}/itinerarios/${slug}`,
     lang,
     ogType: 'article',
@@ -49,7 +49,7 @@ export default async function ItineraryPage({ params }: Props) {
       name: 'Viajes Vidaia',
       url: 'https://www.viajesvidaia.com',
     },
-    ...(trip && {
+    ...(trip && trip.priceFrom != null && trip.priceFrom > 0 && {
       offers: {
         '@type': 'Offer',
         priceCurrency: 'EUR',
