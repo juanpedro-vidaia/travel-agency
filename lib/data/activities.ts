@@ -374,7 +374,7 @@ const activities: Activity[] = [
     content: {
       es: {
         name: 'Gran Aventura',
-        description: 'Tres horas en el lado brasileño del Parque, con acceso en autobús panorámico hasta 1.200 metros de pasarelas con vistas frontales al conjunto de los saltos. La perspectiva más amplia de las cataratas, ideal para complementar la visita argentina.',
+        description: 'Tres horas en el lado argentino del Parque, con acceso en autobús panorámico hasta 1.200 metros de pasarelas con vistas frontales al conjunto de los saltos. La perspectiva más amplia de las cataratas, ideal para complementar la visita argentina.',
       }
     },
     duration: '2,5 horas',

@@ -124,9 +124,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Llegada a Buenos Aires y vuelo a Puerto Iguazú.',
-            description: 'Llegada a Buenos Aires y vuelo interno a Puerto Iguazú. Recepción en aeropuerto y traslado al hotel. \n\nDía libre en Iguazú para disfrutar a vuestro ritmo.\n\nAlojamiento en Puerto Iguazú',
-            included: 'Vuelo internacional',
+            title: 'Llegada a Buenos Aires y vuelo a Puerto Iguazú',
+            description: 'Llegada a Buenos Aires con vuelo interno a Puerto Iguazú. Recepción y traslado al hotel. Noche libre para un primer contacto con la selva subtropical. Alojamiento en Puerto Iguazú.',
+            highlights: ['Llegada a Puerto Iguazú'],
+            included: 'Vuelos internacional y doméstico · traslado hotel',
           }
         },
         flights: ['MAD → EZE', 'EZE → IGR'],
@@ -139,12 +140,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Cataratas Argentinas',
-            description: 'Desayuno en el hotel.\n\nVisita de día completo al lado argentino del Parque Nacional Iguazú. \n\nAlojamiento en Puerto Iguazu.',
+            title: 'Cataratas del Iguazú: lado argentino',
+            description: 'Desayuno en el hotel. Jornada completa al Parque Nacional Iguazú. Alojamiento en Puerto Iguazú.',
             schedule: '07:20-16:00 hs',
             duration: '8 horas',
-            highlights: ['Paseo Inferior (1.200 m)', 'Paseo Superior (1.100 m)', 'Garganta del Diablo en tren ecológico'],
-            included: 'Traslados y guía bilingüe',
+            highlights: ['Paseo Inferior · Garganta del Diablo', 'Tren ecológico hasta la Garganta'],
+            included: 'Traslados · guía bilingüe · entrada Parque Nacional',
           }
         },
         activities: [
@@ -160,8 +161,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'De Puerto Iguazú a Puerto Madryn',
-            description: 'Desayuno en el hotel.\n\nTraslado al aeropuerto. Vuelo a Puerto Madryn, puerta de entrada a la Península Valdés y el avistaje de ballena franca austral.\n\nAlojamiento en Puerto Madryn',
-            included: 'Vuelos y traslados',
+            description: 'Desayuno en el hotel. Vuelo a Puerto Madryn, puerta de entrada a la Península Valdés. Traslado al hotel. Tarde libre en la ciudad. Alojamiento en Puerto Madryn.',
+            highlights: ['Llegada a Puerto Madryn · Patagonia atlántica'],
+            included: 'Vuelos · traslados',
           }
         },
         flights: ['IGR → AEP → REL'],
@@ -174,13 +176,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Excursión Península de Valdés y Ballena Franca Austral',
-            description: 'Desayuno en el hotel.\n\nExcursión a la Península de Valdés. Temporada de septiembre a diciembre. \n\nAlojamiento en Puerto Madryn',
+            title: 'Excursión Península de Valdés y ballena franca austral',
+            description: 'Desayuno en el hotel. Excursión completa a la Península Valdés con avistaje de ballena franca austral en catamarán. Alojamiento en Puerto Madryn.',
             schedule: '07:30 hs',
             duration: '10 horas',
-            highlights: ['Istmo Carlos Ameghino', 'Puerto Pirámides · Lobería de Punta Pirámide', 'Caleta Valdés (elefantes marinos)', 'Avistaje de ballena franca austral desde Puerto Pirámides'],
-            included: 'Entrada reserva natural',
-            excluded: 'Almuerzo',
+            highlights: ['Ballena franca austral · Puerto Pirámides', 'Elefantes marinos · Caleta Valdés'],
+            included: 'Traslados · guía bilingüe · entrada reserva natural · navegación',
           }
         },
         activities: [{ activityId: 'peninsula-valdes-ballenas', status: 'included' }],
@@ -193,7 +194,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'De Puerto Madryn a Buenos Aires',
-            description: 'Desayuno en el hotel.\n\nVuelo a Buenos Aires. Tarde libre para explorar la ciudad: Tango, Teatro Colón, San Telmo, La Boca, Recoleta, Palermo, Puerto Madero\n\nAlojamiento en Buenos Aires.',
+            description: 'Desayuno en el hotel. Vuelo a Buenos Aires. Traslado al hotel. Tarde libre para explorar la ciudad. Alojamiento en Buenos Aires.',
+            highlights: ['Llegada a Buenos Aires'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['REL → AEP'],
@@ -206,12 +209,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Buenos Aires: Visita de la ciudad con guía',
-            description: 'Desayuno en el hotel.\n\nPor la mañana: Visita a la ciudad con guía. \nPor la tarde: Tiempo libre para explorar la ciudad. \n\nAlojamiento en Buenos Aires.',
+            title: 'Buenos Aires: City Tour',
+            description: 'Desayuno en el hotel. Por la mañana, city tour por los barrios y monumentos de Buenos Aires. Tarde libre para explorar la ciudad. Alojamiento en Buenos Aires.',
             schedule: 'Tour AM · Recogida 09:00 hs',
             duration: '3,5-4 horas',
-            highlights: ['Plaza de Mayo', 'La Boca · San Telmo', 'Palermo · Puerto Madero · Obelisco'],
-            included: 'Guía de turismo y recogida en hoteles del centro',
+            highlights: ['Plaza de Mayo · La Boca · San Telmo', 'Recoleta · Palermo · Puerto Madero'],
+            included: 'Guía · traslados',
           }
         },
         activities: [{ activityId: 'city-tour-buenos-aires', status: 'included' }],
@@ -224,8 +227,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'De Buenos Aires a El Calafate',
-            description: 'Desayuno en el hotel.\n\nVuelo a El Calafate, entrada al Parque Nacional Los Glaciares y al Glaciar Perito Moreno.\n\nAlojamiento en El Calafate',
-            included: 'Vuelos y traslados',
+            description: 'Desayuno en el hotel. Vuelo a El Calafate. Traslado al hotel. Tarde libre en la ciudad patagónica. Alojamiento en El Calafate.',
+            highlights: ['Llegada a El Calafate · entrada a la Patagonia'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['AEP → FTE'],
@@ -239,11 +243,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Glaciar Perito Moreno y Safari Náutico',
-            description: 'Desayuno en el hotel.\n\nExcursión al Glaciar Perito Moreno, con Safari Náutico\n\nAlojamiento en El Calafate',
+            description: 'Desayuno en el hotel. Excursión al Glaciar Perito Moreno con Safari Náutico. Alojamiento en El Calafate.',
             schedule: '09:00-17:00 hs',
             duration: '8 horas',
-            highlights: ['Parque Nacional Los Glaciares', 'Pasarelas con vistas al frente del glaciar', 'Safari Náutico (1 hora): navegación del Lago Rico', 'Pared sur del glaciar de 60 m de altura'],
-            included: 'Traslados, navegación y guía bilingüe',
+            highlights: ['Glaciar Perito Moreno · pasarelas', 'Safari Náutico · pared sur del glaciar'],
+            included: 'Traslados · guía bilingüe · navegación · entrada Parque Nacional',
           }
         },
         activities: [
@@ -259,7 +263,8 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'El Calafate: Día libre',
-            description: 'Desayuno en el hotel.\n\nDía libre. Opciones por vuestra cuenta: Glaciarium (museo del hielo), Glacio Bar en el centro de El Calafate, paseos en la costanera del Lago Argentino.\n\nAlojamiento en El Calafate.',
+            description: 'Desayuno en el hotel. Día libre en El Calafate. Alojamiento en El Calafate.',
+            highlights: ['Glaciarium', 'Lago Argentino'],
           }
         },
         activities: [{ activityId: 'estancia-nibepo-aike', status: 'optional' }],
@@ -272,7 +277,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'De El Calafate a Ushuaia',
-            description: 'Desayuno en el hotel.\n\nVuelo a Ushuaia, entrada a Tierra de Fuego. Tarde libre.\n\nAlojamiento en El Calafate.',
+            description: 'Desayuno en el hotel. Vuelo a Ushuaia. Traslado al hotel. Tarde libre en el Fin del Mundo. Alojamiento en Ushuaia.',
+            highlights: ['Llegada a Ushuaia · el Fin del Mundo'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['FTE → USH'],
@@ -286,9 +293,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Parque Nacional Tierra del Fuego y Canal Beagle',
-            description: 'Desayuno en el hotel.\n\nPor la mañana: excursión al Parque Nacional de Tierra de Fuego y Tren del Fin del Mundo.\nPor la tarde: navegación a Isla de Lobos en catamarán por el Canal de Beagle.\n\nAlojamiento en El Calafate.',
-            highlights: ['Parque Nacional Tierra del Fuego', 'Tren del Fin del Mundo', 'Bahía Ensenada · Lago Acigami · Bahía Lapataia', 'Navegación Canal Beagle', 'Avistamiento de cormorantes y lobos marinos', 'Faro Les Eclaires'],
-            included: 'Guía, ticket Tren del Fin del Mundo, traslados, tasa portuaria y cafetería a bordo',
+            description: 'Desayuno en el hotel. Por la mañana, excursión al Parque Nacional Tierra del Fuego con el Tren del Fin del Mundo. Por la tarde, navegación por el Canal Beagle hasta la Isla de Lobos y el Faro Les Eclaireurs. Alojamiento en Ushuaia.',
+            highlights: ['Parque Nacional · Tren del Fin del Mundo', 'Canal Beagle · Faro Les Eclaireurs'],
+            included: 'Guía · ticket Tren del Fin del Mundo · entrada parque · tasa portuaria · cafetería a bordo · traslados',
           }
         },
         activities: [
@@ -303,10 +310,10 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'De Ushuaia a Buenos Aires · Cena Tango Show',
-            description: 'Desayuno en el hotel.\n\nVuelo a Buenos Aires. Noche de tango.\n\nAlojamiento en El Calafate.',
-            highlights: ['Espectáculo de tango con cena en La Ventana (San Telmo)', 'Cena: 20:00-21:30 hs / Show: 21:30-23:30 hs'],
-            included: 'Vuelo, traslados, cena con entrada, plato principal, postre y 1 botella de vino cada 2 personas',
+            title: 'De Ushuaia a Buenos Aires — Tango Show',
+            description: 'Desayuno en el hotel. Vuelo a Buenos Aires. Por la noche, espectáculo de tango con cena en La Ventana. Alojamiento en Buenos Aires.',
+            highlights: ['La Ventana · tango show con cena · San Telmo'],
+            included: 'Vuelo · traslados · cena show en La Ventana',
           }
         },
         flights: ['USH → AEP'],
@@ -319,8 +326,8 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Vuelo de regreso a España',
-            description: 'Desayuno en el hotel. \n\nTraslado privado al Aeropuerto Ezeiza. Noche en vuelo.',
-            included: 'Vuelo internacional',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto. Vuelo de regreso a Madrid.',
+            included: 'Traslado aeropuerto · vuelo internacional',
           }
         },
         flights: ['EZE → MAD'],
@@ -366,7 +373,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Vuelo internacional a Santiago de Chile',
-            description: 'Salida desde Barcelona vía Madrid hacia Santiago. Llegada por la noche, recepción en aeropuerto y traslado al hotel.',
+            description: 'Salida desde España hacia Santiago de Chile. Llegada por la noche, recepción y traslado al hotel. Alojamiento en Santiago.',
+            highlights: ['Llegada a Santiago de Chile'],
+            included: 'Traslado aeropuerto → hotel',
           }
         },
         flights: ['MAD → SCL'],
@@ -379,12 +388,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Santiago: City Tour privado',
-            description: 'Recorrido privado por la capital chilena para conocer la mezcla de historia y modernidad de la ciudad.',
+            title: 'Santiago: City Tour Panorámico',
+            description: 'Desayuno en el hotel. Por la tarde, recorrido privado por los contrastes históricos y modernos de Santiago. Alojamiento en Santiago.',
             schedule: 'Tarde',
             duration: 'Medio día',
-            highlights: ['Plaza de Armas y centro histórico', 'Barrio Lastarria y cerro Santa Lucía', 'Bellavista y miradores de la ciudad'],
-            included: 'Guía privado y traslados',
+            highlights: ['Plaza de Armas · Cerro Santa Lucída', 'Barrio Bellavista · Lastarria'],
+            included: 'Guía privado · traslados',
           }
         },
         activities: [{ activityId: 'city-tour-panoramico-santiago', status: 'included' }],
@@ -397,10 +406,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Excursión a Viña Santa Rita',
-            description: 'Día dedicado a la cultura del vino chileno en una de las bodegas más emblemáticas del valle del Maipo.',
-            duration: 'Día completo',
-            highlights: ['Recorrido por los viñedos del valle del Maipo', 'Visita a las bodegas históricas', 'Cata de vinos premium chilenos'],
-            included: 'Traslados, visita guiada y degustación',
+            description: 'Desayuno en el hotel. Tarde en la Viña Santa Rita en el Valle del Maipo: viñedos, bodegas históricas y degustación. Alojamiento en Santiago.',
+            schedule: '14:00',
+            duration: '4 horas',
+            highlights: ['Valle del Maipo · Viña Santa Rita', 'Bodega de los 120 Patriotas · Monumento Nacional'],
+            included: 'Traslados · visita guiada · degustación de tres vinos',
           }
         },
         activities: [{ activityId: 'bodega-santa-rita-tour-clasico', status: 'included' }],
@@ -412,8 +422,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Santiago · San Pedro de Atacama',
-            description: 'Vuelo a Calama y traslado a San Pedro de Atacama. Tarde libre para aclimatarse a la altura (2.400 m).',
+            title: 'Santiago → San Pedro de Atacama',
+            description: 'Desayuno en el hotel. Vuelo a Calama y traslado a San Pedro de Atacama. Tarde libre para aclimatarse a los 2.400 metros. Alojamiento en San Pedro.',
+            highlights: ['Llegada a San Pedro de Atacama'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['SCL → CJC'],
@@ -427,10 +439,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Valle de la Luna al atardecer',
-            description: 'Tarde explorando uno de los paisajes más sobrenaturales del planeta, con la puesta de sol sobre la Cordillera de la Sal.',
+            description: 'Desayuno en el hotel. Mañana libre en San Pedro. Por la tarde, excursión al Valle de la Luna con atardecer desde el Mirador de Licarantay. Alojamiento en San Pedro.',
             schedule: 'Tarde',
             duration: '4-5 horas',
-            highlights: ['Dunas, cuevas de sal y formaciones rocosas', 'Anfiteatro y las Tres Marías', 'Atardecer con vistas a los Andes'],
+            highlights: ['Valle de la Luna · Tres Marías', 'Atardecer · Mirador de Licarantay'],
+            included: 'Guía · traslados · entrada Valle de la Luna',
           }
         },
         activities: [
@@ -446,12 +459,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Salar de Atacama y Lagunas Altiplánicas',
-            description: 'Día completo recorriendo los paisajes más icónicos del altiplano chileno.',
+            title: 'Lagunas Altiplánicas, Piedras Rojas y Laguna Chaxa',
+            description: 'Desayuno en el hotel. Jornada completa al altiplano atacameño: Piedras Rojas, Lagunas Miscanti y Miñiques y Laguna Chaxa. Alojamiento en San Pedro.',
             duration: 'Día completo',
-            highlights: ['Laguna Chaxa con flamencos andinos', 'Lagunas Miscanti y Miñiques (4.200 m)', 'Pueblos de Toconao y Socaire'],
-            included: 'Traslados, guía bilingüe y entradas',
-            excluded: 'Almuerzo',
+            highlights: ['Piedras Rojas · formaciones cobrizas', 'Laguna Chaxa · flamencos andinos'],
+            included: 'Traslados · guía bilingüe · entradas · almuerzo',
           }
         },
         activities: [{ activityId: 'lagunas-altiplanicas-piedras-rojas-chaxa', status: 'included' }],
@@ -463,12 +475,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Géiseres del Tatio · Vuelo a Santiago',
-            description: 'Madrugón mítico para ver el campo geotérmico al amanecer. Por la tarde, traslado al aeropuerto y vuelo a Santiago.',
-            schedule: 'Salida 04:30 hs',
+            title: 'Géiseres del Tatio → Vuelo a Santiago',
+            description: 'Madrugada para la excursión a los Géiseres del Tatio a 4.200 metros. Regreso a San Pedro. Por la tarde, traslado a Calama y vuelo a Santiago. Alojamiento en hotel del aeropuerto.',
+            schedule: '4:30',
             duration: 'Medio día',
-            highlights: ['Campo geotérmico a 4.320 m de altura', 'Fumarolas al amanecer', 'Baño en aguas termales', 'Pueblo andino de Machuca'],
-            included: 'Traslados, desayuno y entrada',
+            highlights: ['Géiseres del Tatio al amanecer · 4.200 m', 'Pueblo de Machuca'],
+            included: 'Traslados · guía · entrada · desayuno en el Tatio · vuelo Calama → Santiago',
           }
         },
         flights: ['CJC → SCL'],
@@ -482,7 +494,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Vuelo a Isla de Pascua',
-            description: 'Vuelo de 5 horas hasta el ombligo del mundo. Recepción en aeropuerto con collar de flores y traslado al hotel.',
+            description: 'Vuelo matinal de cinco horas hasta Rapa Nui. Recepción en el aeropuerto de Mataveri y traslado al hotel en Hanga Roa. Tarde libre para un primer paseo por el pueblo. Alojamiento en Rapa Nui.',
+            highlights: ['Llegada a Rapa Nui · Hanga Roa'],
+            included: 'Vuelo · traslado semiprivado con guía',
           }
         },
         flights: ['SCL → IPC'],
@@ -495,11 +509,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Rano Raraku y Ahu Tongariki',
-            description: 'Visita imprescindible al corazón de la isla, donde nacieron los moáis.',
-            duration: 'Día completo',
-            highlights: ['Cantera de Rano Raraku con cientos de moáis sin terminar', 'Ahu Tongariki: 15 moáis monumentales frente al océano', 'Playa de Anakena y Ahu Nau Nau'],
-            included: 'Guía bilingüe y entrada al Parque Nacional Rapa Nui',
+            title: 'Rapa Nui: Orongo, Rano Kau y Ahu Akivi',
+            description: 'Desayuno en el hotel. Por la mañana, visita al volcán Rano Kau y el Centro Ceremonial Orongo. Por la tarde, Ahu Akivi y los misterios de los moáis. Alojamiento en Rapa Nui.',
+            schedule: 'AM · PM',
+            duration: '6 horas',
+            highlights: ['Centro Ceremonial Orongo · volcán Rano Kau', 'Ahu Akivi · siete moáis alineados'],
+            included: 'Guía bilingüe · traslados',
           }
         },
         activities: [
@@ -514,10 +529,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Orongo y volcán Rano Kau',
-            description: 'Mañana visitando la aldea ceremonial del culto al hombre pájaro. Tarde libre para descansar o explorar Hanga Roa.',
-            duration: 'Medio día',
-            highlights: ['Cráter del volcán Rano Kau', 'Aldea ceremonial de Orongo en el borde del acantilado', 'Petroglifos del culto al Tangata Manu'],
+            title: 'Rapa Nui: Cantera de los Moáis y Playa Anakena',
+            description: 'Desayuno en el hotel. Jornada completa por los sitios arqueológicos más importantes de la isla. Alojamiento en Rapa Nui.',
+            duration: 'Día completo',
+            highlights: ['Rano Raraku · 400 moáis en distintas fases', 'Playa Anakena · arena blanca'],
+            included: 'Guía bilingüe · traslados · box lunch',
           }
         },
         activities: [{ activityId: 'cantera-moais-playa-anakena', status: 'included' }],
@@ -529,8 +545,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Isla de Pascua · Santiago',
-            description: 'Mañana libre en la isla. Por la tarde, vuelo de regreso a Santiago. Hotel cerca del aeropuerto.',
+            title: 'Isla de Pascua → Santiago',
+            description: 'Desayuno en el hotel. Mañana libre en la isla. Por la tarde, vuelo de regreso a Santiago. Alojamiento en hotel del aeropuerto.',
+            highlights: ['Última mañana en Rapa Nui'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['IPC → SCL'],
@@ -542,8 +560,9 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Vuelo de regreso',
-            description: 'Traslado al aeropuerto de Santiago. Vuelo internacional de regreso. Noche en vuelo.',
+            title: 'Vuelo de regreso a España',
+            description: 'Traslado al aeropuerto de Santiago. Vuelo internacional de regreso. Noche a bordo.',
+            included: 'Traslado aeropuerto · vuelo internacional',
           }
         },
         flights: ['SCL → MAD'],
@@ -593,8 +612,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Inicio del viaje: vuelo internacional a Buenos Aires',
-            description: 'Llegada al Aeropuerto Internacional Ezeiza de Buenos Aires. Recepción y traslado privado con guía al hotel.',
-            included: 'Traslado privado con guía.',
+            description: 'Llegada al Aeropuerto Internacional Ezeiza de Buenos Aires. Recepción y traslado privado con guía al hotel. Alojamiento en Buenos Aires.',
+            highlights: ['Llegada a Buenos Aires'],
+            included: 'Traslado privado con guía',
           }
         },
         flights: ['MAD → EZE'],
@@ -607,12 +627,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Buenos Aires: City Tour Clásico',
-            description: 'Desayuno en el hotel. Por la tarde, recorrido guiado por los principales atractivos de Buenos Aires: Plaza de Mayo, Teatro Colón, La Boca, San Telmo, Recoleta y Palermo.',
+            title: 'Buenos Aires: City Tour',
+            description: 'Desayuno en el hotel. Por la tarde, recorrido guiado por Buenos Aires. Alojamiento en Buenos Aires.',
             schedule: '14:00-18:00',
-            duration: '3.5-4 horas',
-            highlights: ['Floralis Genérica · Plaza de Mayo', 'La Boca · San Telmo', 'Palermo · Puerto Madero · Obelisco'],
-            included: 'Guía turístico, recogida en hotel, regreso al hotel',
+            duration: '3,5-4 horas',
+            highlights: ['Plaza de Mayo · La Boca', 'Recoleta · Palermo · Puerto Madero'],
+            included: 'Guía · traslados',
           }
         },
         activities: [{ activityId: 'city-tour-buenos-aires', status: 'included' }],
@@ -625,7 +645,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Buenos Aires: Día libre',
-            description: 'Día libre para explorar Buenos Aires a tu ritmo. Sugerencias: Visita al Teatro Colón, Palacio Barolo, Café Tortoni, Librería El Ateneo, Parrilla Don Julio en Palermo.',
+            description: 'Desayuno en el hotel. Día libre para explorar Buenos Aires. Alojamiento en Buenos Aires.',
           }
         },
         activities: [
@@ -641,7 +661,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'De Buenos Aires a Ushuaia: el Fin del Mundo',
-            description: 'Desayuno en el hotel. Vuelo doméstico a Ushuaia. Recepción en aeropuerto y traslado al hotel.',
+            description: 'Desayuno en el hotel. Vuelo a Ushuaia. Recepción y traslado al hotel. Alojamiento en Ushuaia.',
+            highlights: ['Llegada a Ushuaia · el Fin del Mundo'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['EZE → USH'],
@@ -654,10 +676,10 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Ushuaia: Parque Nacional de Tierra de Fuego & Navegación Canal Beagle en Catamarán',
-            description: 'Desayuno en hotel. \nPor la mañana, excursión guiada al Parque Nacional de Tierra de Fuego con Tren del Fin del Mundo.\nPor la tarde, navegación en catamarán por el histórico Canal Beagle. Observación de lobos marinos, cormoranes y aves patagónicas. Recorrido de 30 km, vistas al Faro Les Eclaireurs y la Isla de los Pájaros.',
-            highlights: ['Parque Nacional de Tierra de Fuego', 'Tren del fin del mundo', 'Fauna marina', 'Faro Les Eclaireurs', 'Isla de los Lobos'],
-            included: 'Traslados, Entrada al parque, guía especializado, ticket del Tren del Fin del Mundo, Catamarán con guía.',
+            title: 'Ushuaia: Parque Nacional y Canal Beagle',
+            description: 'Desayuno en el hotel. Por la mañana, excursión al Parque Nacional Tierra del Fuego con el Tren del Fin del Mundo. Por la tarde, navegación en catamarán por el Canal Beagle. Alojamiento en Ushuaia.',
+            highlights: ['Parque Nacional · Tren del Fin del Mundo', 'Canal Beagle · Faro Les Eclaireurs'],
+            included: 'Traslados · entrada parque · guía · ticket Tren · catamarán',
           }
         },
         activities: [
@@ -673,8 +695,8 @@ const itineraries: Itinerary[] = [
         dayType: 'free',
         content: {
           es: {
-            title: 'Ushuaia: Día libre de exploración',
-            description: 'Día libre en Ushuaia. Opciones: Visita al Presidio (museo histórico), Travesía de los Lagos Fueguinos en 4x4, Laguna Esmeralda (trekking), Glaciar Martial (trekking), o simplemente disfrutar del ambiente austral.',
+            title: 'Ushuaia: Día libre',
+            description: 'Desayuno en el hotel. Día libre en Ushuaia. Alojamiento en Ushuaia.',
           }
         },
         activities: [
@@ -689,9 +711,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'De Ushuaia a El Calafate: Parque Nacional de los Glaciares',
-            description: 'Desayuno en hotel. Vuelo doméstico a El Calafate. Recepción y traslado al hotel.',
-            highlights: ['Glaciarium'],
+            title: 'De Ushuaia a El Calafate',
+            description: 'Desayuno en el hotel. Vuelo a El Calafate. Traslado al hotel. Tarde libre. Alojamiento en El Calafate.',
+            highlights: ['Llegada a El Calafate'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['USH → FTE'],
@@ -704,12 +727,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Glaciar Perito Moreno: excursión completa + Safari Náutico',
-            description: 'Desayuno en hotel. Excursión al Parque Nacional Los Glaciares. Visita al Glaciar Perito Moreno: pasarelas con vistas panorámicas a este coloso de hielo. Por la tarde, navegación en barco Yagán por el Lago Rico, con aproximación a 200m del frente del glaciar. Safari náutico con vistas espectaculares.',
+            title: 'Glaciar Perito Moreno y Safari Náutico',
+            description: 'Desayuno en el hotel. Excursión al Glaciar Perito Moreno con Safari Náutico. Alojamiento en El Calafate.',
             schedule: '09:00-17:00',
             duration: 'Día completo, 8 horas',
-            highlights: ['Perito Moreno', 'Navegación frente al glaciar'],
-            included: 'Traslados, guía especializado, navegación, entrada al parque',
+            highlights: ['Glaciar Perito Moreno · pasarelas', 'Safari Náutico · navegación frente al glaciar'],
+            included: 'Traslados · guía · navegación · entrada Parque Nacional',
           }
         },
         activities: [
@@ -724,9 +747,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'De El Calafate a El Chaltén: Capital Nacional del Trekking',
-            description: 'Desayuno en hotel. Vuelo a Bariloche. Traslado regular en autobús hacia El Chaltén (4 horas aprox). Llegada al hotel.',
-            highlights: ['El Chaltén'],
+            title: 'De El Calafate a El Chaltén',
+            description: 'Desayuno en el hotel. Traslado en autobús a El Chaltén, capital nacional del trekking. Alojamiento en El Chaltén.',
+            highlights: ['El Chaltén · picos del Fitz Roy'],
+            included: 'Traslado en autobús',
           }
         },
         activities: [],
@@ -739,11 +763,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'El Chaltén: Trekking Laguna de los Tres',
-            description: 'Desayuno en hotel. Embárcate en la caminata más emblemática de la Capital Nacional del Trekking.Tras superar el ascenso más desafiante del recorrido, serás recompensado con la vista más cercana y espectacular del Monte Fitz Roy reflejado en las aguas turquesas de la Laguna de los Tres. Aventura épica de 23 km.  Se puede sustutuir por otro trekking más relajado en El Chaltén.',
+            description: 'Desayuno en el hotel. Jornada completa de trekking hasta la Laguna de los Tres con vistas al Fitz Roy. Alojamiento en El Chaltén.',
             schedule: '09:00-17:00',
-            duration: 'Día completo, 9 horas',
-            highlights: ['Laguna Capri', 'Laguna de los Tres', 'Fizt Roy', 'Glaciares y aguas turquesas'],
-            included: 'Guía y almuerzo.',
+            duration: '9 horas',
+            highlights: ['Laguna de los Tres · Monte Fitz Roy', 'Laguna Capri · bosque nativo'],
+            included: 'Guía · traslado al inicio del sendero',
           }
         },
         activities: [{ activityId: 'trekking-laguna-de-los-tres', status: 'included' }],
@@ -756,7 +780,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'El Chaltén: Día libre de trekking',
-            description: 'Día libre para trekkings en El Chaltén. Opciones clásicas: Laguna de los Tres (Fitz Roy, exigente), Laguna Torre (suave), Miradores de los Cóndores y Águilas, Chorrillo del Salto (cascada fácil), Loma del Piegue Tumbado (360° panorámica). Todos pueden hacerse con guía opcional.',
+            description: 'Desayuno en el hotel. Día libre para trekkings en El Chaltén. Alojamiento en El Chaltén.',
           }
         },
         activities: [],
@@ -768,10 +792,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'De El Chaltén a El Calafate y vuelo a Bariloche',
-            description: 'Desayuno en hotel. Traslado a El Calafate para tomar vuelo a Bariloche. Llegada y recogida del coche de alquiler. Circuito Chico en coche: Miradores de Postal, Bahía López, Lago Llao Llao.',
-            highlights: ['Circuto Chico', 'Cerro Campanario', 'Colonia Suiza'],
-            included: 'Coche alquilado (categoría estándar), combustible, seguro',
+            title: 'De El Chaltén a Bariloche',
+            description: 'Desayuno en el hotel. Traslado a El Calafate y vuelo a Bariloche. Recogida del coche de alquiler y primer recorrido por el Circuito Chico. Alojamiento en Bariloche.',
+            highlights: ['Llegada a Bariloche · Lago Nahuel Huapi', 'Circuito Chico · Llao Llao'],
+            included: 'Vuelo · coche de alquiler · seguro',
           }
         },
         flights: ['FTE → BRC'],
@@ -784,10 +808,10 @@ const itineraries: Itinerary[] = [
         dayType: 'free',
         content: {
           es: {
-            title: 'Bariloche: por libre en coche.',
-            description: 'Desayuno en hotel.  Cerro Catedral y Lago Gutierrez. Gastronomía y cervecerías artesanales de Bariloche.',
-            highlights: ['Cerro Catedral', 'Cerro Otto', 'Lago Gutierrez'],
-            included: 'Coche alquilado (categoría estándar), combustible, seguro',
+            title: 'Bariloche: Día libre en coche',
+            description: 'Desayuno en el hotel. Día libre en Bariloche y alrededores en coche de alquiler. Alojamiento en Bariloche.',
+            highlights: ['Cerro Catedral', 'Lago Gutierrez'],
+            included: 'Coche de alquiler · seguro',
           }
         },
         activities: [],
@@ -799,10 +823,11 @@ const itineraries: Itinerary[] = [
         dayType: 'free',
         content: {
           es: {
-            title: 'Ruta a San Martin de los Andes: por libre en coche.',
-            description: 'Salida hacia San Martín de los Andes por Ruta Siete Lagos (150 km, 3-4 horas). Visita a Villa La Angostura y parada en los miradores de los siete lagos.Llegada y alojamiento.',
+            title: 'Ruta de los Siete Lagos hacia San Martín de los Andes',
+            description: 'Desayuno en el hotel. Conducción por la Ruta de los Siete Lagos hasta San Martín de los Andes. Parada en Villa La Angostura y los miradores del camino. Alojamiento en San Martín de los Andes.',
+            duration: '3-4 horas conducción',
             highlights: ['Ruta de los Siete Lagos', 'Villa La Angostura'],
-            included: 'Coche alquilado (categoría estándar), combustible, seguro',
+            included: 'Coche de alquiler · seguro',
           }
         },
         activities: [],
@@ -814,10 +839,10 @@ const itineraries: Itinerary[] = [
         dayType: 'free',
         content: {
           es: {
-            title: 'San Martín de los Andes: por libre en coche.',
-            description: 'Día libre en San Martín.',
-            highlights: ['Volcan Lanin', 'Junin de los Andes'],
-            included: 'Coche alquilado (categoría estándar), combustible, seguro',
+            title: 'San Martín de los Andes: Día libre',
+            description: 'Desayuno en el hotel. Día libre en San Martín de los Andes. Alojamiento en San Martín.',
+            highlights: ['Volcán Lanín'],
+            included: 'Coche de alquiler · seguro',
           }
         },
         activities: [],
@@ -829,11 +854,11 @@ const itineraries: Itinerary[] = [
         dayType: 'free',
         content: {
           es: {
-            title: 'San Martín de los Andes a Bariloche: por libre en coche',
-            description: 'Desayuno. Regreso a Bariloche por la espectacular Ruta del Valle Encantado. Tarde libre en Bariloche.',
-            duration: '3-4 horas conducción',
-            highlights: ['Valle encantado', 'Villa Traful'],
-            included: 'Devolución coche, combustible',
+            title: 'San Martín de los Andes a Bariloche por el Valle Encantado',
+            description: 'Desayuno en el hotel. Regreso a Bariloche por el Valle Encantado. Tarde libre en la ciudad. Alojamiento en Bariloche.',
+            duration: '5-6 horas conducción',
+            highlights: ['Valle Encantado', 'Villa Traful'],
+            included: 'Coche de alquiler · seguro',
           }
         },
         activities: [],
@@ -846,7 +871,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'De Bariloche a Puerto Iguazú',
-            description: 'Desayuno. Devolución del coche de alquiler. Vuelo a Puerto Iguazú. Recepción en aeropuerto y traslado al hotel.',
+            description: 'Desayuno en el hotel. Vuelo a Puerto Iguazú con escala en Buenos Aires. Recepción y traslado al hotel. Alojamiento en Puerto Iguazú.',
+            highlights: ['Llegada a Puerto Iguazú · la selva subtropical'],
+            included: 'Vuelos · traslados',
           }
         },
         flights: ['BRC →  AEP', 'AEP →  IGR'],
@@ -859,12 +886,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Iguazú: Cataratas Argentinas (Lado Argentino)',
-            description: 'Desayuno en hotel. Excursión al Parque Nacional Iguazú. Paseo Inferior (1.200m): vistas de la Garganta del Diablo desde abajo. Paseo Superior (1.100m): panorámicas elevadas. Garganta del Diablo en tren ecológico. Uno de los espectáculos naturales más impresionantes del mundo. Gran Aventura.',
+            title: 'Cataratas del Iguazú: lado argentino',
+            description: 'Desayuno en el hotel. Jornada completa al Parque Nacional Iguazú. Alojamiento en Puerto Iguazú.',
             schedule: '07:20-16:00',
-            duration: 'Día completo, 8 horas',
-            highlights: ['Garganta del Diablo', '275 saltos de agua', 'naturaleza subtropical', 'Gran Aventura'],
-            included: 'Entrada al parque, guía bilingüe, tren ecológico, gran aventura, traslados',
+            duration: '8 horas',
+            highlights: ['Paseo Inferior · Garganta del Diablo', 'Tren ecológico'],
+            included: 'Traslados · guía bilingüe · entrada parque',
           }
         },
         activities: [
@@ -879,12 +906,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Iguazú: Cataratas Brasileñas (Lado Brasileño)',
-            description: 'Desayuno. Continuación de la experiencia con la visita al lado brasileño de las Cataratas. Pasarelas panorámicas de 1.200m con vistas espectaculares a los 275 saltos desde otra perspectiva. Tarde: vuelo a Buenos Aires.',
+            title: 'Cataratas del Iguazú: lado brasileño',
+            description: 'Desayuno en el hotel. Por la mañana, visita al lado brasileño de las cataratas. Por la tarde, vuelo a Buenos Aires. Alojamiento en Buenos Aires.',
             schedule: '08:00-14:00',
-            duration: '3 horas (aproximadamente)',
-            highlights: ['275 saltos desde perspectiva brasileña', 'arcoiris de agua'],
-            included: 'Entrada parque brasileño, pasarelas, traslado',
+            duration: '3 horas',
+            highlights: ['1.200 m de pasarelas · vista panorámica'],
+            included: 'Entrada parque brasileño · traslados',
           }
         },
         activities: [{ activityId: 'cataratas-brasilenas', status: 'included' }],
@@ -897,7 +924,8 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Buenos Aires: Último día libre',
-            description: 'Regreso a Buenos Aires. Día libre para compras, museos, gastronomía o simplemente pasear por los barrios favoritos.',
+            description: 'Regreso a Buenos Aires. Día libre para disfrutar de la ciudad. Alojamiento en Buenos Aires.',
+            included: 'Traslados',
           }
         },
         flights: ['IGR→BUE'],
@@ -909,9 +937,9 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Buenos Aires a Madrid: Vuelo internacional',
-            description: 'Desayuno en hotel. Traslado privado al aeropuerto Ezeiza para el vuelo internacional.',
-            included: 'Traslado privado hotel-aeropuerto',
+            title: 'Buenos Aires a Madrid: vuelo internacional',
+            description: 'Desayuno en el hotel. Traslado privado al aeropuerto Ezeiza. Vuelo de regreso a Madrid.',
+            included: 'Traslado privado aeropuerto · vuelo internacional',
           }
         },
         flights: ['EZE → MAD'],
@@ -958,7 +986,8 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Inicio del viaje: Vuelo a Buenos Aires',
-            description: 'Vuelo internacional a Buenos Aires. Noche en vuelo.',
+            description: 'Vuelo internacional a Buenos Aires. Noche a bordo.',
+            included: 'Vuelo internacional',
           }
         },
         flights: ['MAD → EZE'],
@@ -970,11 +999,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Buenos Aires a Salta: el norte andino',
-            description: 'Vuelo a Salta. Recepción y traslado al hotel. Tiempo libre para explorar el centro histórico de Salta: la Catedral Basílica, Plaza 9 de Julio y el Cabildo.',
-            schedule: '6:40',
-            highlights: ['Salta colonial', 'Catedral', 'Plaza 9 de Julio'],
-            included: 'Traslado aeropuerto, guía',
+            title: 'Buenos Aires → Salta: el norte andino',
+            description: 'Llegada a Buenos Aires y vuelo doméstico a Salta. Recepción y traslado al hotel. Por la tarde, city tour por el centro histórico de Salta. Alojamiento en Salta.',
+            highlights: ['Salta · Plaza 9 de Julio · Catedral Basílica'],
+            included: 'Vuelo doméstico · traslados · guía',
           }
         },
         flights: ['EZE → SLA'],
@@ -987,13 +1015,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Salta a Purmamarca: Salinas Grandes',
-            description: 'Desayuno en el hotel. Excursión de día completo desde Salta hacia el norte. Ascenso por la Cuesta del Muñano, Santa Rosa de Tastil, San Antonio de los Cobres y las Salinas Grandes a 4.170 msnm. Descenso a Purmamarca y su Cerro de los Siete Colores.',
-            schedule: '7:00',
+            title: 'Salta: Salinas Grandes y Purmamarca',
+            description: 'Desayuno en el hotel. Excursión de día completo desde Salta: Salinas Grandes a 4.170 metros y Cerro de los Siete Colores en Purmamarca. Alojamiento en Purmamarca.',
             duration: '12 horas',
-            highlights: ['Salinas Grandes 4.170m', 'Purmamarca', 'Cerro Siete Colores'],
-            included: 'Traslados, guía, entrada a piletones',
-            excluded: 'Almuerzo',
+            highlights: ['Salinas Grandes · 4.170 m', 'Purmamarca · Cerro de los Siete Colores'],
+            included: 'Traslados · guía · entrada a las Salinas',
           }
         },
         activities: [{ activityId: 'salinas-grandes-purmamarca', status: 'included' }],
@@ -1005,12 +1031,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Purmamarca a Salta: Quebrada de Humahuaca',
-            description: 'Desayuno en el hotel. Recorrido por la Quebrada declarada Patrimonio de la Humanidad por la UNESCO. Tilcara, Huacalera, Trópico de Capricornio, Paleta del Pintor de Maimara, Humahuaca con su Monumento a la Independencia. Regreso a Salta.',
+            title: 'Purmamarca → Salta: Quebrada de Humahuaca',
+            description: 'Desayuno en el hotel. Recorrido por la Quebrada de Humahuaca, Patrimonio de la Humanidad. Regreso a Salta. Alojamiento en Salta.',
             duration: 'Día completo',
-            highlights: ['Quebrada de Humahuaca', 'Tilcara', 'Trópico de Capricornio'],
-            included: 'Traslados, guía',
-            excluded: 'Almuerzo',
+            highlights: ['Quebrada de Humahuaca · Tilcara', 'Humahuaca · Monumento a la Independencia'],
+            included: 'Traslados · guía',
           }
         },
         activities: [{ activityId: 'quebrada-humahuaca', status: 'included' }],
@@ -1022,12 +1047,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Salta: día completo en Cafayate',
-            description: 'Desayuno en el hotel. Excursión de día completo a Cafayate por la Quebrada del Río Las Conchas: los médanos, el sapo, la garganta del diablo y el anfiteatro. Visita a bodegas con catas de Torrontés. Regreso a Salta al atardecer.',
+            title: 'Salta: Excursión a Cafayate',
+            description: 'Desayuno en el hotel. Excursión de día completo a Cafayate por la Quebrada del Río Las Conchas. Regreso a Salta al atardecer. Alojamiento en Salta.',
             duration: 'Día completo',
-            highlights: ['Quebrada Las Conchas', 'bodegas Cafayate, Torrontés'],
-            included: 'Traslados, guía',
-            excluded: 'Almuerzo',
+            highlights: ['Quebrada Las Conchas · Garganta del Diablo', 'Bodegas de Cafayate · Torrontés'],
+            included: 'Traslados · guía · visita bodega',
           }
         },
         activities: [{ activityId: 'cafayate-excursion-salta', status: 'included' }],
@@ -1039,14 +1063,13 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Salta a Puerto Iguazú: la selva subtropical',
-            description: 'Desayuno en el hotel. Vuelo a Puerto Iguazú (AR1795, 13:20-15:05h). Recepción y traslado al hotel City Falls Iguazú. Tarde libre para descubrir la ciudad de la triple frontera.',
-            schedule: '13:20',
-            highlights: ['Puerto Iguazú', 'selva subtropical'],
-            included: 'Traslado aeropuerto',
+            title: 'Salta → Puerto Iguazú: la selva subtropical',
+            description: 'Desayuno en el hotel. Vuelo a Puerto Iguazú. Recepción y traslado al hotel. Tarde libre en la ciudad de la triple frontera. Alojamiento en Puerto Iguazú.',
+            highlights: ['Llegada a Puerto Iguazú · selva subtropical'],
+            included: 'Vuelo · traslados',
           }
         },
-        flights: ['SLA → IGR AR1795'],
+        flights: ['SLA → IGR'],
         activities: [],
         referenceHotelId: 'city-falls-iguazu',
       },
@@ -1056,13 +1079,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Cataratas Argentinas',
-            description: 'Desayuno en el hotel. Excursión al Parque Nacional Iguazú. Paseo Inferior (1.200m), Paseo Superior (1.100m) y Garganta del Diablo en tren ecológico. 275 saltos de agua en uno de los espectáculos naturales más impresionantes del mundo. Opcional: Gran Aventura (lancha por el cañón).',
+            title: 'Cataratas del Iguazú: lado argentino',
+            description: 'Desayuno en el hotel. Jornada completa al Parque Nacional Iguazú. Alojamiento en Puerto Iguazú.',
             schedule: '07:20-16:00',
             duration: '8 horas',
-            highlights: ['Paseo Inferior (1.200 m)', 'Paseo Superior (1.100 m)', 'Garganta del Diablo en tren ecológico'],
-            included: 'Traslados, guía bilingüe, entrada parque',
-            excluded: 'Almuerzo',
+            highlights: ['Paseo Inferior · Garganta del Diablo', 'Tren ecológico'],
+            included: 'Traslados · guía bilingüe · entrada parque',
           }
         },
         activities: [
@@ -1078,14 +1100,14 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Cataratas Brasileñas y vuelo a Buenos Aires',
-            description: 'Desayuno en el hotel. Mañana en el lado brasileño de las cataratas: 1.200m de pasarelas panorámicas con vistas a los 275 saltos desde otra perspectiva. Por la tarde, vuelo a Buenos Aires (AR1793, 21:25-23:25h) con traslado privado al hotel.',
+            description: 'Desayuno en el hotel. Por la mañana, visita al lado brasileño de las cataratas. Por la tarde, vuelo a Buenos Aires. Alojamiento en Buenos Aires.',
             schedule: '08:00-14:00',
             duration: '3 horas',
-            included: 'Entrada parque brasileño',
-            excluded: 'Almuerzo',
+            highlights: ['1.200 m de pasarelas · panorámica de los 275 saltos'],
+            included: 'Entrada parque brasileño · vuelo · traslados',
           }
         },
-        flights: ['IGR → AEP AR1793'],
+        flights: ['IGR → AEP'],
         activities: [{ activityId: 'cataratas-brasilenas', status: 'included' }],
         referenceHotelId: 'esplendor-buenos-aires',
       },
@@ -1096,11 +1118,10 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Buenos Aires: City Tour Premium',
-            description: 'Desayuno en el hotel. Recorrido premium por los barrios emblemáticos: Retiro, Palermo, Recoleta (Floralis Genérica, Cementerio), La Boca, Caminito, Puerto Madero. Por la noche, opcional: Cena Tango Show en La Ventana.',
-            schedule: '8:55',
+            description: 'Desayuno en el hotel. Por la mañana, city tour premium por Buenos Aires. Alojamiento en Buenos Aires.',
             duration: '4 horas',
-            highlights: ['Plaza de Mayo', 'La Boca · San Telmo', 'Palermo · Puerto Madero · Obelisco'],
-            included: 'Pick up y drop off hotel, guía en español',
+            highlights: ['Recoleta · Cementerio · Teatro Colón', 'La Boca · Caminito · Puerto Madero'],
+            included: 'Guía · traslados',
           }
         },
         activities: [
@@ -1115,8 +1136,8 @@ const itineraries: Itinerary[] = [
         dayType: 'free',
         content: {
           es: {
-            title: 'Buenos Aires: día libre',
-            description: 'Día libre en Buenos Aires. Sugerencias: Teatro Colón, Palacio Barolo, Café Tortoni, Librería El Ateneo, Parrilla Don Julio. Opcional: Delta Premium del Tigre (9:00-14:00h).',
+            title: 'Buenos Aires: Día libre',
+            description: 'Desayuno en el hotel. Día libre en Buenos Aires. Alojamiento en Buenos Aires.',
           }
         },
         activities: [{ activityId: 'delta-premium-buenos-aires', status: 'optional' }],
@@ -1128,15 +1149,15 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Buenos Aires a Ushuaia: navegación Isla de los Lobos',
-            description: 'Desayuno en el hotel. Vuelo a Ushuaia (AR1870, 07:00-10:40h). Recepción y traslado. Por la tarde, navegación por el Canal Beagle: Isla de los Lobos, Isla de los Pájaros, Faro Les Eclaireurs.',
+            title: 'Buenos Aires → Ushuaia: Canal Beagle',
+            description: 'Desayuno en el hotel. Vuelo a Ushuaia. Por la tarde, navegación por el Canal Beagle. Alojamiento en Ushuaia.',
             schedule: '15:00-18:00',
             duration: '3 horas',
-            highlights: ['Fauna marina', 'Faro Les Eclaireurs', 'Isla de los Lobos'],
-            included: 'Catamarán, traslados',
+            highlights: ['Canal Beagle · Faro Les Eclaireurs', 'Fauna marina · Isla de los Lobos'],
+            included: 'Vuelo · catamarán · traslados',
           }
         },
-        flights: ['EZE → USH AR1870'],
+        flights: ['EZE → USH'],
         activities: [{ activityId: 'navegacion-canal-beagle', status: 'included' }],
         referenceHotelId: 'altos-ushuaia',
       },
@@ -1146,13 +1167,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Ushuaia: Parque Tierra del Fuego y Nieve y Fuego',
-            description: 'Desayuno en el hotel. Mañana: excursión al Parque Nacional Tierra del Fuego con el Tren del Fin del Mundo. Tarde-noche: experiencia Nieve y Fuego con raquetas de nieve por el bosque y trineos con perros Huskies. Cena incluida.',
-            schedule: '8:00',
+            title: 'Ushuaia: Parque Nacional y Nieve y Fuego',
+            description: 'Desayuno en el hotel. Por la mañana, excursión al Parque Nacional con el Tren del Fin del Mundo. Por la tarde-noche, raquetas de nieve y trineos con huskies. Alojamiento en Ushuaia.',
             duration: 'Día completo',
-            highlights: ['Parque Nacional de Tierra de Fuego', 'Tren del fin del mundo', 'Huskies', 'bosque fueguino'],
-            included: 'Tren, traslados, raquetas, trineos, cena con bebidas',
-            excluded: 'Almuerzo',
+            highlights: ['Parque Nacional · Tren del Fin del Mundo', 'Trineos con huskies · bosque fueguino'],
+            included: 'Tren · traslados · raquetas · trineos · cena con bebidas',
           }
         },
         activities: [
@@ -1167,14 +1186,13 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Ushuaia a El Calafate: los glaciares patagónicos',
-            description: 'Desayuno en el hotel. Vuelo a El Calafate (AR1899, 11:30-12:50h). Recepción y traslado al Hotel RH Rochester. Tarde libre para explorar la ciudad o visitar el Glaciarium (museo del hielo).',
-            schedule: '11:30',
-            highlights: ['Lago Argentino', 'Glaciarium'],
-            included: 'Traslado aeropuerto',
+            title: 'Ushuaia → El Calafate: los glaciares',
+            description: 'Desayuno en el hotel. Vuelo a El Calafate. Traslado al hotel. Tarde libre. Alojamiento en El Calafate.',
+            highlights: ['Llegada a El Calafate · Patagonia'],
+            included: 'Vuelo · traslados',
           }
         },
-        flights: ['USH → FTE AR1899'],
+        flights: ['USH → FTE'],
         activities: [],
         referenceHotelId: 'rh-rochester-calafate',
       },
@@ -1185,12 +1203,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Glaciar Perito Moreno y Safari Náutico',
-            description: 'Desayuno en el hotel. Excursión al Parque Nacional Los Glaciares. Navegación Safari Náutico en Puerto Bajo las Sombras con aproximación a 200m del frente glaciar. Recorrido por las pasarelas con múltiples miradores. El espectáculo natural más impresionante de la Patagonia.',
+            description: 'Desayuno en el hotel. Excursión al Glaciar Perito Moreno con Safari Náutico. Alojamiento en El Calafate.',
             schedule: '09:00-17:00',
-            duration: 'Día completo, 8 horas',
-            highlights: ['Parque Nacional Los Glaciares', 'Pasarelas con vistas al frente del glaciar', 'Safari Náutico (1 hora): navegación del Lago Rico', 'Pared sur del glaciar de 60 m de altura'],
-            included: 'Traslados, guía bilingüe, Safari Náutico, entrada parque',
-            excluded: 'Almuerzo',
+            duration: '8 horas',
+            highlights: ['Glaciar Perito Moreno · pasarelas', 'Safari Náutico · pared sur del glaciar'],
+            included: 'Traslados · guía bilingüe · Safari Náutico · entrada parque',
           }
         },
         activities: [
@@ -1205,27 +1222,12 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'El Calafate a Madrid: fin del viaje',
-            description: 'Desayuno en el hotel. Mañana libre en El Calafate. Traslado privado al aeropuerto. Vuelo El Calafate-Ezeiza (AR1897, 17:45-20:45h) y conexión con vuelo internacional a Madrid (AR1132, 23:55-17:10+1h).',
-            schedule: '17:45',
-            included: 'Traslado privado aeropuerto',
+            title: 'El Calafate → Madrid: fin del viaje',
+            description: 'Desayuno en el hotel. Mañana libre en El Calafate. Traslado privado al aeropuerto. Vuelo a Buenos Aires y conexión con vuelo internacional a Madrid.',
+            included: 'Traslado privado aeropuerto · vuelos',
           }
         },
-        flights: ['FTE → EZE AR1897', 'EZE → MAD AR1132'],
-        activities: [],
-      },
-      {
-        dayNumber: 16,
-        destinationId: 'buenos-aires',
-        dayType: 'transit',
-        content: {
-          es: {
-            title: 'Llegada a Madrid. Fin del viaje',
-            description: 'Llegada al aeropuerto de Madrid Adolfo Suárez-Barajas a las 17:10h. Fin de nuestros servicios.',
-            schedule: '17:10',
-          }
-        },
-        flights: ['EZE → MAD llegada'],
+        flights: ['FTE → EZE', 'EZE → MAD'],
         activities: [],
       },
     ],
@@ -1274,7 +1276,7 @@ const itineraries: Itinerary[] = [
             included: 'Traslado privado aeropuerto',
           }
         },
-        flights: ['MAD → EZE PU501'],
+        flights: ['MAD → EZE'],
         activities: [],
         referenceHotelId: 'merit-san-telmo',
       },
@@ -1306,7 +1308,7 @@ const itineraries: Itinerary[] = [
             included: 'Traslado aeropuerto',
           }
         },
-        flights: ['EZE → USH JA3201'],
+        flights: ['EZE → USH'],
         activities: [],
         referenceHotelId: 'altos-ushuaia',
       },
@@ -1356,7 +1358,7 @@ const itineraries: Itinerary[] = [
             included: 'Traslado aeropuerto',
           }
         },
-        flights: ['USH → FTE AR1899'],
+        flights: ['USH → FTE'],
         activities: [],
         referenceHotelId: 'sierra-nevada-el-calafate',
       },
@@ -1372,7 +1374,6 @@ const itineraries: Itinerary[] = [
             duration: '8 horas',
             highlights: ['Parque Nacional Los Glaciares', 'Pasarelas con vistas al frente del glaciar', 'Safari Náutico (1 hora): navegación del Lago Rico', 'Pared sur del glaciar de 60 m de altura'],
             included: 'Traslados, guía bilingüe, entrada parque',
-            excluded: 'Almuerzo',
           }
         },
         activities: [
@@ -1411,7 +1412,7 @@ const itineraries: Itinerary[] = [
             included: 'Traslado aeropuerto',
           }
         },
-        flights: ['FTE → BRC AR1695'],
+        flights: ['FTE → BRC'],
         activities: [],
         referenceHotelId: 'nahuel-huapi-bariloche',
       },
@@ -1458,7 +1459,7 @@ const itineraries: Itinerary[] = [
             included: 'Traslados aeropuerto',
           }
         },
-        flights: ['BRC → AEP AR1695', 'AEP → IGR AR1790'],
+        flights: ['BRC → AEP', 'AEP → IGR'],
         activities: [{ activityId: 'ruta-siete-lagos-san-martin', status: 'included' }],
         referenceHotelId: 'city-falls-iguazu',
       },
@@ -1474,7 +1475,6 @@ const itineraries: Itinerary[] = [
             duration: '8 horas',
             highlights: ['Paseo Inferior (1.200 m)', 'Paseo Superior (1.100 m)', 'Garganta del Diablo en tren ecológico'],
             included: 'Traslados, guía bilingüe, entrada parque',
-            excluded: 'Almuerzo',
           }
         },
         activities: [
@@ -1494,10 +1494,9 @@ const itineraries: Itinerary[] = [
             schedule: '08:00-14:00',
             duration: '3 horas',
             included: 'Entrada parque brasileño',
-            excluded: 'Almuerzo',
           }
         },
-        flights: ['IGR → AEP AR1791'],
+        flights: ['IGR → AEP'],
         activities: [{ activityId: 'cataratas-brasilenas', status: 'included' }],
         referenceHotelId: 'merit-san-telmo',
       },
@@ -1513,7 +1512,7 @@ const itineraries: Itinerary[] = [
             included: 'Traslado privado aeropuerto',
           }
         },
-        flights: ['EZE → MAD PU502'],
+        flights: ['EZE → MAD'],
         activities: [],
       },
       {
@@ -1527,7 +1526,7 @@ const itineraries: Itinerary[] = [
             schedule: '5:30',
           }
         },
-        flights: ['MAD llegada 05:30h'],
+        flights: ['MAD'],
         activities: [],
       },
     ],
@@ -1575,13 +1574,13 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Inicio del viaje: Barcelona a Buenos Aires',
-            description: 'Salida desde Barcelona a las 08:15h (IB2603). Llegada al aeropuerto de Ezeiza a las 17:55h. Recepción y traslado privado con guía al hotel. Primeras impresiones de la capital porteña.',
-            schedule: '8:15',
+            title: 'Inicio del viaje: Barcelona → Buenos Aires',
+            description: 'Salida desde Barcelona hacia Buenos Aires. Llegada al aeropuerto de Ezeiza. Recepción y traslado al hotel. Alojamiento en Buenos Aires.',
+            highlights: ['Llegada a Buenos Aires'],
             included: 'Traslado privado con guía',
           }
         },
-        flights: ['BCN → EZE IB2603'],
+        flights: ['BCN → EZE'],
         activities: [],
         referenceHotelId: 'huinid-obelisco-buenos-aires',
       },
@@ -1591,11 +1590,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Buenos Aires: City Tour Premium en español',
-            description: 'Desayuno en el hotel. Recorrido premium por los barrios icónicos: Retiro, Palermo, Recoleta (Floralis Genérica, Cementerio), La Boca con Caminito, Puerto Madero. El obelisco, la Catedral y la Casa Rosada en Plaza de Mayo.',
-            schedule: '8:55',
+            title: 'Buenos Aires: City Tour Premium',
+            description: 'Desayuno en el hotel. Por la mañana, city tour premium por los barrios icónicos de Buenos Aires. Tarde libre. Alojamiento en Buenos Aires.',
             duration: '4 horas',
-            included: 'Pick up y drop off hotel, guía en español',
+            highlights: ['Recoleta · Cementerio · Teatro Colón', 'La Boca · Caminito · Puerto Madero'],
+            included: 'Guía · traslados',
           }
         },
         activities: [{ activityId: 'city-tour-premium-buenos-aires', status: 'included' }],
@@ -1607,11 +1606,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Buenos Aires: Delta del Tigre Premium',
-            description: 'Desayuno en el hotel. Excursión al Delta del Tigre navegando desde la costa de Buenos Aires. Clubes náuticos del Río Luján, mansiones sobre el Plata. En Tigre: ríos del Delta, Paseo Victorica, Museo de Arte y Puerto de Frutos.',
+            title: 'Buenos Aires: Delta del Tigre',
+            description: 'Desayuno en el hotel. Excursión al Delta del Tigre navegando desde Buenos Aires. Alojamiento en Buenos Aires.',
             schedule: '09:00-14:00',
             duration: '5 horas',
-            included: 'Pick up hotel, guía, navegación en servicio compartido',
+            highlights: ['Delta del Paraná · casas isleñas', 'Tigre · Paseo Victorica · Puerto de Frutos'],
+            included: 'Guía · navegación compartida · traslados',
           }
         },
         activities: [{ activityId: 'delta-premium-buenos-aires', status: 'included' }],
@@ -1623,9 +1623,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Buenos Aires a Tucumán: el jardín de la República',
-            description: 'Desayuno en el hotel. Vuelo a Tucumán. Recepción y traslado al hotel Amerian. Por la tarde, exploración del centro histórico: Plaza Independencia, Catedral, Casa de la Independencia.',
-            included: 'Traslado aeropuerto',
+            title: 'Buenos Aires → Tucumán: el jardín de la República',
+            description: 'Desayuno en el hotel. Vuelo a Tucumán. Recepción y traslado al hotel. Tarde libre para explorar el centro histórico. Alojamiento en Tucumán.',
+            highlights: ['Llegada a Tucumán · capital histórica del noroeste'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['EZE → TUC'],
@@ -1638,11 +1639,11 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Tucumán a Cafayate: Ruta Escénica Tafí-Amaicha-Quilmes',
-            description: 'Desayuno en el hotel. Jornada panorámica de Tucumán a Cafayate por los Valles Calchaquíes: Parque de los Menhires, Tafí del Valle, Amaicha, ascenso al Abra del Infiernillo (3.042 msnm), Ciudad Sagrada de Quilmes. Llegada a Cafayate.',
+            title: 'Tucumán → Cafayate: Ruta Escénica Tafí-Amaicha-Quilmes',
+            description: 'Desayuno en el hotel. Jornada de Tucumán a Cafayate por los Valles Calchaquíes: Menhires, Tafí del Valle, Abra del Infiernillo y Ruinas de Quilmes. Alojamiento en Cafayate.',
             duration: 'Día completo',
-            included: 'Guía',
-            excluded: 'Almuerzo',
+            highlights: ['Ruinas de Quilmes', 'Abra del Infiernillo · 3.042 m'],
+            included: 'Guía · traslados · entradas',
           }
         },
         activities: [{ activityId: 'ruta-escenica-tafi-quilmes', status: 'included' }],
@@ -1654,11 +1655,11 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Cafayate a Salta: Bodegas y Quebrada de las Conchas',
-            description: 'Desayuno en el hotel. Visita a bodegas artesanales de Cafayate (Torrontés). Recorrido por la Quebrada del Río Las Conchas con sus formaciones únicas: el sapo, el obispo, la garganta del diablo. Llegada a Salta al atardecer.',
+            title: 'Cafayate → Salta: Bodegas y Quebrada de las Conchas',
+            description: 'Desayuno en el hotel. Mañana en las bodegas de Cafayate. Por la tarde, Quebrada de las Conchas de vuelta a Salta. Alojamiento en Salta.',
             duration: 'Día completo',
-            included: 'Guía',
-            excluded: 'Almuerzo',
+            highlights: ['Bodegas de Cafayate · Torrontés', 'Quebrada de las Conchas · Garganta del Diablo'],
+            included: 'Guía · transporte · visita bodega con degustación',
           }
         },
         activities: [{ activityId: 'bodegas-quebrada-conchas-cafayate', status: 'included' }],
@@ -1670,10 +1671,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Salta: City Tour por la linda',
-            description: 'Desayuno en el hotel. Recorrido guiado por el centro histórico de Salta: Plaza 9 de Julio, Catedral Basílica, Cabildo, Iglesia San Francisco, Mercado Artesanal con productos de la provincia.',
+            title: 'Salta: City Tour por La Linda',
+            description: 'Desayuno en el hotel. Por la tarde, recorrido guiado por el centro histórico de Salta. Alojamiento en Salta.',
             duration: 'Medio día',
-            included: 'Guía, traslados',
+            highlights: ['Plaza 9 de Julio · Catedral Basílica', 'Cerro San Bernardo · vistas panorámicas'],
+            included: 'Guía · traslados',
           }
         },
         activities: [{ activityId: 'city-tour-salta', status: 'included' }],
@@ -1685,12 +1687,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Salta a Purmamarca: Vuelta al Norte con Salinas Grandes',
-            description: 'Desayuno en el hotel. Excursión de 12 horas desde Salta. Ascenso a 4.170 msnm en las Salinas Grandes pasando por Santa Rosa de Tastil y San Antonio de los Cobres. Descenso a Purmamarca y su icónico Cerro de los Siete Colores. Alojamiento en Purmamarca.',
-            schedule: '7:00',
+            title: 'Salta → Purmamarca: Vuelta a las Alturas y Salinas Grandes',
+            description: 'Desayuno en el hotel. Excursión de doce horas hasta las Salinas Grandes a 4.170 metros y descenso a Purmamarca. Alojamiento en Purmamarca.',
             duration: '12 horas',
-            included: 'Traslados, guía, entrada a piletones',
-            excluded: 'Almuerzo',
+            highlights: ['Salinas Grandes · 4.170 m', 'Purmamarca · Cerro de los Siete Colores'],
+            included: 'Traslados · guía · entrada a las Salinas',
           }
         },
         activities: [{ activityId: 'salinas-grandes-purmamarca', status: 'included' }],
@@ -1702,11 +1703,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Purmamarca a Salta: Quebrada de Humahuaca',
-            description: 'Desayuno en el hotel. Recorrido por la Quebrada Patrimonio de la Humanidad: Tilcara, Huacalera, Trópico de Capricornio, Paleta del Pintor de Maimara, Humahuaca con el Monumento a la Independencia. Regreso a Salta.',
+            title: 'Purmamarca → Salta: Quebrada de Humahuaca',
+            description: 'Desayuno en el hotel. Recorrido por la Quebrada de Humahuaca, Patrimonio de la Humanidad. Regreso a Salta. Alojamiento en Salta.',
             duration: 'Día completo',
-            included: 'Traslados, guía',
-            excluded: 'Almuerzo',
+            highlights: ['Quebrada de Humahuaca · Tilcara', 'Humahuaca · Monumento a la Independencia'],
+            included: 'Traslados · guía',
           }
         },
         activities: [{ activityId: 'quebrada-humahuaca', status: 'included' }],
@@ -1718,8 +1719,9 @@ const itineraries: Itinerary[] = [
         dayType: 'free',
         content: {
           es: {
-            title: 'Salta: día libre',
-            description: 'Desayuno en el hotel. Día libre para explorar Salta a tu ritmo: Teleférico al Cerro San Bernardo, Museo de Arqueología de Alta Montaña (MAAM), mercados locales, o simplemente pasear por el centro histórico.',
+            title: 'Salta: Día libre',
+            description: 'Desayuno en el hotel. Día libre para explorar Salta. Alojamiento en Salta.',
+            highlights: [],
           }
         },
         activities: [],
@@ -1731,9 +1733,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Salta a Ushuaia: el Fin del Mundo',
-            description: 'Desayuno en el hotel. Traslado al aeropuerto de Salta. Vuelo a Ushuaia con escala en Buenos Aires. Recepción en el aeropuerto y traslado al Cilene del Faro Suites & Spa. Llegada al Fin del Mundo.',
-            included: 'Traslados aeropuerto',
+            title: 'Salta → Ushuaia: el Fin del Mundo',
+            description: 'Desayuno en el hotel. Vuelo a Ushuaia con escala en Buenos Aires. Recepción y traslado al hotel. Alojamiento en Ushuaia.',
+            highlights: ['Llegada a Ushuaia'],
+            included: 'Vuelos · traslados',
           }
         },
         flights: ['SLA → EZE → USH'],
@@ -1746,11 +1749,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Ushuaia: Navegación Canal Beagle con pingüinera',
-            description: 'Desayuno en el hotel. Navegación de 6 horas por el Canal Beagle: Bahía de Ushuaia, Isla de los Pájaros, Isla de los Lobos, Faro Les Eclaireurs. Opcional: Aventura Almanza con almuerzo y pingüinos en Isla Martillo.',
-            schedule: '08:30 y 15:00',
-            duration: 'Medio día, 6 horas',
-            included: 'Navegación regular, traslados',
+            title: 'Ushuaia: Navegación Canal Beagle con Pingüinera',
+            description: 'Desayuno en el hotel. Navegación de seis horas por el Canal Beagle hasta la Isla Martillo. Alojamiento en Ushuaia.',
+            schedule: '08:30 o 15:00',
+            duration: '6 horas',
+            highlights: ['Canal Beagle · Faro Les Eclaireurs', 'Isla Martillo · pingüinos Magallanes y Papúa'],
+            included: 'Navegación · traslados',
           }
         },
         activities: [
@@ -1765,11 +1769,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Ushuaia: Parque Nacional Tierra del Fuego y Tren del Fin del Mundo',
-            description: 'Desayuno en el hotel. Excursión al Parque Nacional Tierra del Fuego. Visita al histórico Tren del Fin del Mundo: cementerio de árboles, límite del parque, cascada Macarena. Tarde libre en Ushuaia.',
-            schedule: '8:00',
-            duration: '5 horas aprox.',
-            included: 'Tren, traslados, entradas',
+            title: 'Ushuaia: Parque Nacional Tierra del Fuego',
+            description: 'Desayuno en el hotel. Excursión al Parque Nacional Tierra del Fuego con el Tren del Fin del Mundo. Tarde libre. Alojamiento en Ushuaia.',
+            duration: '5 horas',
+            highlights: ['Parque Nacional · Bahía Lapataia', 'Tren del Fin del Mundo'],
+            included: 'Tren · traslados · entradas',
           }
         },
         activities: [{ activityId: 'parque-nacional-tierra-fuego', status: 'included' }],
@@ -1781,13 +1785,13 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Ushuaia a El Calafate: entrada a los glaciares',
-            description: 'Desayuno en el hotel. Mañana libre en Ushuaia. Vuelo a El Calafate (AR1899). Recepción y traslado al Mirador del Lago Hotel. Tarde libre para explorar El Calafate.',
-            schedule: '15:20',
-            included: 'Traslado aeropuerto',
+            title: 'Ushuaia → El Calafate',
+            description: 'Desayuno en el hotel. Mañana libre en Ushuaia. Vuelo a El Calafate. Traslado al hotel. Alojamiento en El Calafate.',
+            highlights: ['Llegada a El Calafate'],
+            included: 'Vuelo · traslados',
           }
         },
-        flights: ['USH → FTE AR1899'],
+        flights: ['USH → FTE'],
         activities: [],
         referenceHotelId: 'mirador-del-lago-el-calafate',
       },
@@ -1797,12 +1801,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Parque Nacional Los Glaciares: Perito Moreno y Safari Náutico',
-            description: 'Desayuno en el hotel. Excursión al Glaciar Perito Moreno. Navegación Safari Náutico desde Puerto Bajo las Sombras a 200m del frente del glaciar. Pasarelas con vistas panorámicas. El espectáculo natural más impresionante de la Patagonia.',
+            title: 'El Calafate: Glaciar Perito Moreno y Safari Náutico',
+            description: 'Desayuno en el hotel. Excursión al Glaciar Perito Moreno con Safari Náutico. Alojamiento en El Calafate.',
             schedule: '09:00-17:00',
-            duration: 'Día completo, 8 horas',
-            included: 'Traslados, guía bilingüe, Safari Náutico, entrada',
-            excluded: 'Almuerzo',
+            duration: '8 horas',
+            highlights: ['Glaciar Perito Moreno · pasarelas', 'Safari Náutico · pared sur del glaciar'],
+            included: 'Traslados · guía bilingüe · Safari Náutico · entrada parque',
           }
         },
         activities: [
@@ -1817,8 +1821,9 @@ const itineraries: Itinerary[] = [
         dayType: 'free',
         content: {
           es: {
-            title: 'El Calafate: día libre',
-            description: 'Desayuno en el hotel. Día libre en El Calafate. Opcionales: Estancia Cristina Classic (navegación Upsala + almuerzo), Estancia Nibepo Aike (4x4 patagónico). O simplemente el Glaciarium con cóctel en el GlacioBar.',
+            title: 'El Calafate: Día libre',
+            description: 'Desayuno en el hotel. Día libre en El Calafate. Alojamiento en El Calafate.',
+            highlights: [],
           }
         },
         activities: [
@@ -1833,9 +1838,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'El Calafate a Puerto Iguazú: de los glaciares a la selva',
-            description: 'Desayuno en el hotel. Vuelo a Puerto Iguazú con escala en Buenos Aires. Recepción y traslado al hotel. Cambio radical de paisaje: de la Patagonia blanca a la selva subtropical misionera.',
-            included: 'Traslados aeropuerto',
+            title: 'El Calafate → Puerto Iguazú',
+            description: 'Desayuno en el hotel. Vuelo a Puerto Iguazú con escala en Buenos Aires. Traslado al hotel. Alojamiento en Puerto Iguazú.',
+            highlights: ['Llegada a Puerto Iguazú'],
+            included: 'Vuelos · traslados',
           }
         },
         flights: ['FTE → EZE → IGR'],
@@ -1848,12 +1854,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Cataratas Argentinas con Gran Aventura opcional',
-            description: 'Desayuno en el hotel. Excursión al Parque Nacional Iguazú: Paseo Inferior, Paseo Superior y Garganta del Diablo en tren ecológico. Entrada incluida. Opcional: Gran Aventura en lancha por cañón y cascadas (edad mínima 12 años).',
+            title: 'Cataratas del Iguazú: lado argentino',
+            description: 'Desayuno en el hotel. Jornada completa al Parque Nacional Iguazú. Alojamiento en Puerto Iguazú.',
             schedule: '07:20-16:00',
             duration: '8 horas',
-            included: 'Traslados, guía bilingüe, entrada parque',
-            excluded: 'Almuerzo',
+            highlights: ['Paseo Inferior · Garganta del Diablo', 'Tren ecológico'],
+            included: 'Traslados · guía bilingüe · entrada parque',
           }
         },
         activities: [
@@ -1869,11 +1875,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Cataratas Brasileñas y vuelo a Buenos Aires',
-            description: 'Desayuno en el hotel. Mañana en el lado brasileño de las Cataratas: 1.200m de pasarelas con panorámicas espectaculares. Por la tarde, vuelo a Buenos Aires y traslado privado al Hotel Dorá.',
+            description: 'Desayuno en el hotel. Por la mañana, visita al lado brasileño de las cataratas. Por la tarde, vuelo a Buenos Aires. Alojamiento en Buenos Aires.',
             schedule: '08:00-14:00',
             duration: '3 horas',
-            included: 'Entrada parque brasileño',
-            excluded: 'Almuerzo',
+            highlights: ['1.200 m de pasarelas · panorámica de los 275 saltos'],
+            included: 'Entrada parque brasileño · vuelo · traslados',
           }
         },
         flights: ['IGR → AEP'],
@@ -1886,27 +1892,13 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Buenos Aires a Barcelona: vuelo de regreso',
-            description: 'Desayuno en el hotel. Tiempo libre en Buenos Aires. Traslado privado al aeropuerto Ezeiza para el vuelo internacional a Barcelona (IB2604, 19:45-12:20+1h).',
-            schedule: '19:45',
-            included: 'Traslado privado aeropuerto',
+            title: 'Buenos Aires → Barcelona: vuelo de regreso',
+            description: 'Desayuno en el hotel. Traslado privado al aeropuerto Ezeiza. Vuelo de regreso a Barcelona.',
+            highlights: [],
+            included: 'Traslado privado aeropuerto · vuelo internacional',
           }
         },
-        flights: ['EZE → BCN IB2604'],
-        activities: [],
-      },
-      {
-        dayNumber: 21,
-        destinationId: 'buenos-aires',
-        dayType: 'transit',
-        content: {
-          es: {
-            title: 'Llegada a Barcelona. Fin del viaje.',
-            description: 'Llegada al aeropuerto de Barcelona a las 12:20h. Fin de nuestros servicios.',
-            schedule: '12:20',
-          }
-        },
-        flights: ['BCN llegada 12:20h'],
+        flights: ['EZE → BCN'],
         activities: [],
       },
     ],
@@ -1970,7 +1962,6 @@ const itineraries: Itinerary[] = [
             duration: '5 horas',
             highlights: ['Palacio de La Moneda y la Alameda', 'Plaza de Armas e Iglesia Catedral', 'Cerro Santa Lucía', 'Barrio Bellavista', 'Parque Bicentenario · Vitacura'],
             included: 'Traslados y guía bilingüe',
-            excluded: 'Almuerzo',
           }
         },
         activities: [
@@ -2026,7 +2017,6 @@ const itineraries: Itinerary[] = [
             duration: '4.5 horas',
             highlights: ['Área Fundacional · corazón histórico de la Ciudad Vieja', 'Cinco plazas del centro cívico', 'Parque General San Martín · pulmón verde de la ciudad', 'Cerro de la Gloria · Monumento al Ejército de los Andes'],
             included: 'Traslado y guía bilingüe',
-            excluded: 'Almuerzo',
           }
         },
         activities: [
@@ -2245,7 +2235,6 @@ const itineraries: Itinerary[] = [
             description: 'Desayuno en el hotel. Visita del casco histórico Patrimonio de la Humanidad: la Catedral, la Plaza Mayor con el Palacio de Gobierno, el Palacio Municipal y el Arzobispal, el Convento de Santo Domingo y el Convento de San Francisco. Traslado a los barrios residenciales de San Isidro y Miraflores pasando por la Huaca Pucllana. Visita al Museo Larco Herrera con 3.000 años de historia peruana precolombina. Parada en el Parque del Amor con vistas al Océano Pacífico. Tarde libre para descubrir el barrio de Barranco y la gastronomía limeña.',
             highlights: ['Plaza Mayor y Catedral · casco histórico Patrimonio UNESCO', 'Convento de San Francisco · Convento de Santo Domingo', 'Huaca Pucllana · sitio arqueológico de adobe', 'Museo Larco Herrera · 3.000 años de historia precolombina', 'Parque del Amor · vistas a la Costa Verde del Pacífico'],
             included: 'Guía local y traslados',
-            excluded: 'Almuerzo',
           }
         },
         activities: [{ activityId: 'city-tour-lima-colonial-museo-larco', status: 'included' }],
@@ -2261,7 +2250,7 @@ const itineraries: Itinerary[] = [
             description: 'Desayuno en el hotel. Traslado a la estación de autobuses para tomar el bus semi-cama hacia la Bahía de Paracas (aprox. 4 horas) con el Océano Pacífico como compañero de ruta. Llegada y traslado al hotel. Visita a la Reserva Nacional de Paracas con sus acantilados y paisaje marítimo-desértico, y al centro de interpretación de la Reserva. Por la tarde, recogida para la experiencia de Buggies y Sandboard en las dunas del Oasis Costa Rica siguiendo la ruta del Dakar, con atardecer entre dunas incluido.',
             highlights: ['Bus semi-cama Lima → Paracas · costa del Pacífico', 'Reserva Nacional de Paracas · acantilados y necrópolis', 'Buggies o Areneros en dunas · Oasis Costa Rica', 'Sandboard al atardecer en las dunas del desierto'],
             included: 'Bus regular Lima-Paracas, visita a la Reserva y Buggies en compartido',
-            excluded: 'Almuerzo · suplemento por transporte privado Lima-Paracas',
+            excluded: 'suplemento por transporte privado Lima-Paracas',
           }
         },
         activities: [
@@ -2280,7 +2269,7 @@ const itineraries: Itinerary[] = [
             description: 'Desayuno en el hotel. Traslado al embarcadero para zarpar en lancha compartida por el Océano Pacífico. De camino, avistamiento del enigmático geoglifo de "El Candelabro". Recorrido por las Islas Ballestas contemplando colonias de lobos marinos, pingüinos de Humboldt, pelícanos y decenas de especies de aves. Retorno al litoral. A la hora prevista, traslado a la estación de buses para regresar a Lima. Recepción y traslado al hotel. Tarde libre en Lima.',
             highlights: ['Lancha compartida · Islas Ballestas', 'El Candelabro · geoglifo costero pre-inca', 'Lobos marinos, pingüinos de Humboldt y aves marinas en hábitat natural', 'Bus de línea Paracas → Lima'],
             included: 'Lancha compartida Islas Ballestas, bus regular Paracas-Lima',
-            excluded: 'Almuerzo · sobrevuelo Líneas de Nazca (opcional con suplemento)',
+            excluded: 'sobrevuelo Líneas de Nazca (opcional con suplemento)',
           }
         },
         activities: [
@@ -2299,7 +2288,6 @@ const itineraries: Itinerary[] = [
             description: 'Desayuno en el hotel. Traslado al aeropuerto para tomar el vuelo a Arequipa (se sugiere vuelo sobre las 08:00 h). Llegada y traslado al hotel. Tiempo libre por la mañana para entrar en contacto con la ciudad, visitar el mercado de San Camilo o el Museo de los Altares Andinos con la réplica de la Momia Juanita. Por la tarde, visita guiada de la Ciudad Blanca incluyendo el Convento de Santa Catalina, la Plaza de Armas, los Claustros de la Compañía, los distritos de Yanahuara y Chilina con vistas al volcán Misti, y Mundo Alpaca.',
             highlights: ['Vuelo Lima → Arequipa · 1h 35min', 'Convento de Santa Catalina · ciudad dentro de la ciudad', 'Plaza de Armas y Claustros de la Compañía · cúpula de San Ignacio', 'Mirador Yanahuara · vistas al volcán Misti', 'Mundo Alpaca · proceso tradicional de la fibra andina'],
             included: 'Vuelo doméstico Lima-Arequipa (no incluido, ver tabla de precios), traslados, guía y visitas por la tarde',
-            excluded: 'Almuerzo',
           }
         },
         flights: ['LIM → AQP'],
@@ -2408,7 +2396,7 @@ const itineraries: Itinerary[] = [
             description: 'Desayuno. Madrugada para tomar el bus desde Aguas Calientes hasta la ciudadela inca de Machu Picchu, una de las Siete Maravillas Modernas del Mundo. Visita guiada del complejo arqueológico recorriendo sus andenes, plazas, el Templo del Sol, los templos de las Tres Ventanas y el Intihuatana. Posibilidad de subir al monte Huayna Picchu o monte Machu Picchu (previo suplemento, reserva al confirmar). Regreso en bus a Aguas Calientes para explorar el mercadillo del pueblo. A la hora prevista, tren Vistadome Panorámico de regreso a Ollantaytambo, donde espera la movilidad hacia el hotel en el Valle Sagrado. Cena y alojamiento.',
             highlights: ['Bus Aguas Calientes → Machu Picchu · 30 min', 'Machu Picchu · ciudadela inca · una de las 7 Maravillas Modernas', 'Andenes, plazas, Templo del Sol e Intihuatana', 'Mercadillo de Aguas Calientes · pueblo de montaña', 'Tren Vistadome Panorámico Aguas Calientes → Ollantaytambo · 1h 30min'],
             included: 'Bus Aguas Calientes-Machu Picchu-Aguas Calientes, guía, entradas, tren Vistadome Panorámico (vuelta), cena',
-            excluded: 'Almuerzo · ingreso monte Huayna Picchu o monte Machu Picchu (suplemento, confirmar al reservar)',
+            excluded: 'ingreso monte Huayna Picchu o monte Machu Picchu (suplemento, confirmar al reservar)',
           }
         },
         activities: [{ activityId: 'machu-picchu-visita-guiada', status: 'included' }],
@@ -2672,7 +2660,7 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Géiseres del Tatio → Vuelo a Santiago · Noche en Airport Hotel',
+            title: 'Géiseres del Tatio → Vuelo a Santiago · Noche en hotel en el aeropuerto',
             description: 'Madrugada para la excursión a los Géiseres del Tatio. Desayuno al amanecer junto a los Géiseres. Regreso a San Pedro y tarde libre. Por la noche, traslado a Calama y vuelo a Santiago. Traslado a pie al hotel. Alojamiento en hotel del aeropuerto.',
             schedule: '04:30-12:00',
             duration: '7 horas',
