@@ -1270,9 +1270,9 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Inicio del viaje: Madrid a Buenos Aires',
-            description: 'Salida desde Madrid a las 23:10h. Llegada a Ezeiza (Buenos Aires) a las 06:45h. Recepción y traslado privado al hotel Mérit San Telmo.',
-            schedule: '23:10',
+            title: 'Inicio del viaje: Madrid → Buenos Aires',
+            description: 'Salida desde Madrid. Llegada a Buenos Aires. Recepción y traslado al hotel. Alojamiento en Buenos Aires.',
+            highlights: ['Llegada a Buenos Aires'],
             included: 'Traslado privado aeropuerto',
           }
         },
@@ -1287,10 +1287,10 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Buenos Aires: City Tour',
-            description: 'Desayuno en el hotel. Recorrido guiado por la ciudad: Plaza de Mayo, Teatro Colón, La Boca, San Telmo, Recoleta y Palermo. Una primera toma de contacto con la capital argentina.',
+            description: 'Desayuno en el hotel. Recorrido guiado por Buenos Aires. Alojamiento en Buenos Aires.',
             duration: '3-4 horas',
-            highlights: ['Plaza de Mayo', 'La Boca · San Telmo', 'Palermo · Puerto Madero · Obelisco'],
-            included: 'Guía de turismo, pick up hotel',
+            highlights: ['Plaza de Mayo · La Boca', 'Recoleta · Palermo · Puerto Madero'],
+            included: 'Guía · traslados',
           }
         },
         activities: [{ activityId: 'city-tour-buenos-aires', status: 'included' }],
@@ -1302,10 +1302,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Buenos Aires a Ushuaia: el Fin del Mundo',
-            description: 'Desayuno en el hotel. Vuelo a Ushuaia (JA3201, 18:05-21:43h). Recepción y traslado al hotel Altos Ushuaia. Llegada al extremo sur del mundo.',
-            schedule: '18:05',
-            included: 'Traslado aeropuerto',
+            title: 'Buenos Aires → Ushuaia: el Fin del Mundo',
+            description: 'Desayuno en el hotel. Vuelo a Ushuaia. Recepción y traslado al hotel. Alojamiento en Ushuaia.',
+            highlights: ['Llegada a Ushuaia · Tierra del Fuego'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['EZE → USH'],
@@ -1318,12 +1318,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Ushuaia: Parque Nacional Tierra del Fuego y Tren del Fin del Mundo',
-            description: 'Desayuno en el hotel. Excursión al Parque Nacional Tierra del Fuego con el Tren del Fin del Mundo. Bosques de lenga y coihue, lagos, turberas y asentamiento indígena. Tarde libre en Ushuaia.',
-            schedule: '8:00',
-            duration: '5 horas aprox.',
-            highlights: ['Parque Nacional de Tierra de Fuego', 'Tren del fin del mundo'],
-            included: 'Tren, traslados, entradas',
+            title: 'Ushuaia: Parque Nacional Tierra del Fuego',
+            description: 'Desayuno en el hotel. Excursión al Parque Nacional Tierra del Fuego con el Tren del Fin del Mundo. Tarde libre en Ushuaia. Alojamiento en Ushuaia.',
+            duration: '5 horas',
+            highlights: ['Parque Nacional · Bahía Lapataia', 'Tren del Fin del Mundo'],
+            included: 'Tren · traslados · entradas',
           }
         },
         activities: [{ activityId: 'parque-nacional-tierra-fuego', status: 'included' }],
@@ -1335,12 +1334,11 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Ushuaia: Aventura Almanza y pingüinera Isla Martillo',
-            description: 'Desayuno en el hotel. Excursión a Puerto Almanza navegando por el Canal Beagle. Llegada a Isla Martillo para acercarse a los pingüinos de Magallanes y Papúa. Almuerzo de 3 pasos con centolla en Puerto Almanza.',
-            schedule: '7:45',
-            duration: 'Medio día, 6 horas',
-            highlights: ['Isla Martillo', 'pingüinos Magallanes y Papúa', 'centolla'],
-            included: 'Navegación, almuerzo 3 pasos, traslados',
+            title: 'Ushuaia: Aventura Almanza y Pingüinera',
+            description: 'Desayuno en el hotel. Excursión a Puerto Almanza: navegación hasta la Isla Martillo para ver los pingüinos y almuerzo de centolla en casa de pescadores locales. Alojamiento en Ushuaia.',
+            duration: '6 horas',
+            highlights: ['Isla Martillo · pingüinos Magallanes y Papúa', 'Centolla · almuerzo en Puerto Almanza'],
+            included: 'Navegación · almuerzo de 3 pasos · traslados',
           }
         },
         activities: [{ activityId: 'aventura-almanza', status: 'included' }],
@@ -1352,10 +1350,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Ushuaia a El Calafate: los glaciares',
-            description: 'Desayuno en el hotel. Mañana libre en Ushuaia. Vuelo a El Calafate (AR1899, 15:20-16:40h). Recepción y traslado al hotel Sierra Nevada. El Calafate, puerta al Parque Nacional Los Glaciares.',
-            schedule: '15:20',
-            included: 'Traslado aeropuerto',
+            title: 'Ushuaia → El Calafate',
+            description: 'Desayuno en el hotel. Mañana libre en Ushuaia. Vuelo a El Calafate. Traslado al hotel. Alojamiento en El Calafate.',
+            highlights: ['Llegada a El Calafate'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['USH → FTE'],
@@ -1369,11 +1367,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'El Calafate: Glaciar Perito Moreno',
-            description: 'Desayuno en el hotel. Excursión al Parque Nacional Los Glaciares. Visita al Glaciar Perito Moreno con sus pasarelas y miradores. Un gigante vivo de hielo azul y blanco que avanza sobre el Lago Argentino. Posibilidad de presenciar espectaculares desprendimientos.',
+            description: 'Desayuno en el hotel. Excursión al Glaciar Perito Moreno. Alojamiento en El Calafate.',
             schedule: '09:00-17:00',
             duration: '8 horas',
-            highlights: ['Parque Nacional Los Glaciares', 'Pasarelas con vistas al frente del glaciar', 'Safari Náutico (1 hora): navegación del Lago Rico', 'Pared sur del glaciar de 60 m de altura'],
-            included: 'Traslados, guía bilingüe, entrada parque',
+            highlights: ['Glaciar Perito Moreno · pasarelas', 'Safari Náutico · pared sur'],
+            included: 'Traslados · guía bilingüe · entrada parque',
           }
         },
         activities: [
@@ -1389,9 +1387,8 @@ const itineraries: Itinerary[] = [
         dayType: 'free',
         content: {
           es: {
-            title: 'El Calafate: día libre',
-            description: 'Desayuno en el hotel. Día libre en El Calafate. Sugerencias: Glaciarium (museo del hielo), Reserva Laguna Nímez, Glacio Bar. Opcionales: Kayak al Atardecer en el Lago Argentino o Kayak y Trekking en el Río La Leona.',
-            highlights: ['Glaciarium', 'Laguna Nímez', 'Lago Argentino'],
+            title: 'El Calafate: Día libre',
+            description: 'Desayuno en el hotel. Día libre en El Calafate. Alojamiento en El Calafate.',
           }
         },
         activities: [
@@ -1406,10 +1403,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'El Calafate a Bariloche: la Patagonia norte',
-            description: 'Desayuno en el hotel. Vuelo a Bariloche (AR1695, 09:20-11:05h). Recepción y traslado al hotel Nahuel Huapi. Tarde libre para explorar la ciudad y sus chocolaterías.',
-            schedule: '9:20',
-            included: 'Traslado aeropuerto',
+            title: 'El Calafate → Bariloche',
+            description: 'Desayuno en el hotel. Vuelo a Bariloche. Recepción y traslado al hotel. Tarde libre para explorar la ciudad. Alojamiento en Bariloche.',
+            highlights: ['Llegada a Bariloche · Lago Nahuel Huapi'],
+            included: 'Vuelo · traslados',
           }
         },
         flights: ['FTE → BRC'],
@@ -1423,8 +1420,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Bariloche: Circuito Chico y Cerro Campanario',
-            description: 'Desayuno en el hotel. Excursión guiada por el Circuito Chico. Ascenso en aerosilla al Cerro Campanario (1.050m) con panorámica de lagos, montañas y glaciares. Continuación por Llao Llao, Bahía López y Punto Panorámico. El paseo más emblemático de Bariloche.',
-            highlights: ['Cerro Campanario', 'Llao Llao', 'Bahía Lopez'],
+            description: 'Desayuno en el hotel. Excursión por el Circuito Chico con ascenso en aerosilla al Cerro Campanario. Tarde libre. Alojamiento en Bariloche.',
+            highlights: ['Cerro Campanario · vistas panorámicas', 'Llao Llao · Bahía López'],
+            included: 'Guía · traslados · aerosilla',
           }
         },
         activities: [],
@@ -1436,12 +1434,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Bariloche: Circuito de los Siete Lagos',
-            description: 'Desayuno en el hotel. Excursión guiada por el Circuito Chico. Ascenso en aerosilla al Cerro Campanario (1.050m) con panorámica de lagos, montañas y glaciares. Continuación por Llao Llao, Bahía López y Punto Panorámico. El paseo más emblemático de Bariloche.',
-            schedule: '08:30-12:30',
-            duration: 'Medio día, 4 horas',
-            highlights: ['Villa La Angostura', 'Lagos', 'San Martín de los Andes'],
-            included: 'Guía, traslados, aerosilla',
+            title: 'Bariloche: Ruta de los Siete Lagos',
+            description: 'Desayuno en el hotel. Excursión por la Ruta de los Siete Lagos hasta San Martín de los Andes. Regreso al atardecer. Alojamiento en Bariloche.',
+            schedule: '8:30',
+            duration: '10 horas',
+            highlights: ['Ruta de los Siete Lagos · Villa La Angostura', 'San Martín de los Andes'],
+            included: 'Guía · traslados',
           }
         },
         activities: [{ activityId: 'circuito-chico-bariloche', status: 'included' }],
@@ -1453,10 +1451,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Bariloche a Puerto Iguazú: de los Andes a la selva',
-            description: 'Desayuno en el hotel. Vuelo a Puerto Iguazú con escala en Buenos Aires (AR1695 12:00-14:05, AR1790 17:35-19:30h). Recepción y traslado al hotel. Llegada a la ciudad de las tres fronteras.',
-            schedule: '12:00',
-            included: 'Traslados aeropuerto',
+            title: 'Bariloche → Puerto Iguazú',
+            description: 'Desayuno en el hotel. Vuelo a Puerto Iguazú con escala en Buenos Aires. Recepción y traslado al hotel. Alojamiento en Puerto Iguazú.',
+            highlights: ['Llegada a Puerto Iguazú · selva subtropical'],
+            included: 'Vuelos · traslados',
           }
         },
         flights: ['BRC → AEP', 'AEP → IGR'],
@@ -1469,12 +1467,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Cataratas del Iguazú: lado argentino y Gran Aventura',
-            description: 'Desayuno en el hotel. Excursión al Parque Nacional Iguazú: Paseo Inferior, Paseo Superior y Garganta del Diablo en tren ecológico. Entrada incluida. Opcional: Gran Aventura en lancha por el cañón del río (2h15m, 150 escaleras).',
+            title: 'Cataratas del Iguazú: lado argentino',
+            description: 'Desayuno en el hotel. Jornada completa al Parque Nacional Iguazú. Alojamiento en Puerto Iguazú.',
             schedule: '07:20-16:00',
             duration: '8 horas',
-            highlights: ['Paseo Inferior (1.200 m)', 'Paseo Superior (1.100 m)', 'Garganta del Diablo en tren ecológico'],
-            included: 'Traslados, guía bilingüe, entrada parque',
+            highlights: ['Paseo Inferior · Garganta del Diablo', 'Tren ecológico'],
+            included: 'Traslados · guía bilingüe · entrada parque',
           }
         },
         activities: [
@@ -1490,10 +1488,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Cataratas Brasileñas y vuelo a Buenos Aires',
-            description: 'Desayuno en el hotel. Mañana en el lado brasileño de las cataratas: 1.200m de pasarelas con vistas panorámicas a los 275 saltos. Por la tarde, vuelo a Buenos Aires (AR1791, 19:45-21:45h) y traslado privado al hotel.',
+            description: 'Desayuno en el hotel. Por la mañana, visita al lado brasileño de las cataratas. Por la tarde, vuelo a Buenos Aires. Alojamiento en Buenos Aires.',
             schedule: '08:00-14:00',
             duration: '3 horas',
-            included: 'Entrada parque brasileño',
+            highlights: ['Pasarelas panorámicas · 275 saltos'],
+            included: 'Entrada parque brasileño · traslados',
           }
         },
         flights: ['IGR → AEP'],
@@ -1506,10 +1505,9 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Buenos Aires a Madrid: vuelo de regreso',
-            description: 'Desayuno en el hotel. Tiempo libre en Buenos Aires. Traslado privado al aeropuerto Ezeiza para el vuelo de regreso a Madrid (PU502, 13:25-05:30+1h).',
-            schedule: '13:25',
-            included: 'Traslado privado aeropuerto',
+            title: 'Buenos Aires → Madrid: vuelo de regreso',
+            description: 'Desayuno en el hotel. Traslado privado al aeropuerto. Vuelo de regreso a Madrid.',
+            included: 'Traslado privado aeropuerto · vuelo internacional',
           }
         },
         flights: ['EZE → MAD'],
@@ -1521,9 +1519,8 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Llegada a Madrid. Fin del viaje.',
-            description: 'Llegada al aeropuerto de Madrid Adolfo Suárez-Barajas a las 05:30h. Fin de nuestros servicios.',
-            schedule: '5:30',
+            title: 'Llegada a Madrid',
+            description: 'Llegada al aeropuerto de Madrid. Fin de los servicios de Viajes Vidaia.',
           }
         },
         flights: ['MAD'],
@@ -1721,7 +1718,6 @@ const itineraries: Itinerary[] = [
           es: {
             title: 'Salta: Día libre',
             description: 'Desayuno en el hotel. Día libre para explorar Salta. Alojamiento en Salta.',
-            highlights: [],
           }
         },
         activities: [],
@@ -1823,7 +1819,6 @@ const itineraries: Itinerary[] = [
           es: {
             title: 'El Calafate: Día libre',
             description: 'Desayuno en el hotel. Día libre en El Calafate. Alojamiento en El Calafate.',
-            highlights: [],
           }
         },
         activities: [
@@ -1894,7 +1889,6 @@ const itineraries: Itinerary[] = [
           es: {
             title: 'Buenos Aires → Barcelona: vuelo de regreso',
             description: 'Desayuno en el hotel. Traslado privado al aeropuerto Ezeiza. Vuelo de regreso a Barcelona.',
-            highlights: [],
             included: 'Traslado privado aeropuerto · vuelo internacional',
           }
         },
@@ -1941,8 +1935,8 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Llegada a Santiago de Chile',
-            description: 'Llegada al Aeropuerto Internacional Arturo Merino Benítez de Santiago de Chile. Recepción con traslado privado al hotel en la exclusiva comuna de Vitacura. Tarde libre para un primer paseo por el Parque Bicentenario o el barrio de Providencia y sus cafés.',
-            highlights: ['Traslado privado aeropuerto-hotel en Santiago'],
+            description: 'Llegada al aeropuerto de Santiago. Traslado privado al hotel. Tarde libre para un primer paseo por el Parque Bicentenario o Providencia. Alojamiento en Santiago.',
+            highlights: ['Llegada a Santiago de Chile'],
             included: 'Traslado privado',
           }
         },
@@ -1956,12 +1950,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Santiago de Chile: City Tour Panorámico',
-            description: 'Mañana de exploración guiada por la capital chilena descubriendo sus contrastes entre el casco histórico y los modernos barrios del oriente. Visita al Palacio de La Moneda en la Alameda, la Plaza de Armas y sus edificios históricos, el Cerro Santa Lucía, el Barrio Bellavista y las comunas de Las Condes y Vitacura con el Parque Bicentenario. Tarde libre para gastronomía local o museos.',
-            schedule: '08:30-13:30 hs',
+            title: 'Santiago: City Tour Panorámico',
+            description: 'Desayuno en el hotel. Por la mañana, city tour por Santiago. Tarde libre. Alojamiento en Santiago.',
+            schedule: '08:30-13:30',
             duration: '5 horas',
-            highlights: ['Palacio de La Moneda y la Alameda', 'Plaza de Armas e Iglesia Catedral', 'Cerro Santa Lucía', 'Barrio Bellavista', 'Parque Bicentenario · Vitacura'],
-            included: 'Traslados y guía bilingüe',
+            highlights: ['Palacio de La Moneda · Plaza de Armas', 'Cerro Santa Lucía · Barrio Bellavista'],
+            included: 'Traslados · guía bilingüe',
           }
         },
         activities: [
@@ -1976,12 +1970,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Excursión al Valle de Casablanca: Viñas Bodega RE y Casas del Bosque',
-            description: 'Día dedicado al mundo del vino en el reconocido Valle de Casablanca, a 90 km de Santiago. Primera visita a Viña Bodega RE, proyecto artesanal que elabora vinos únicos en tinajas de arcilla maulina bajo los principios de recrear, reinventar y revelar. Segunda parada en Viña Casas del Bosque, especialista en variedades de clima frío, para recorrer viñedos y bodegas y finalizar con degustación y almuerzo incluidos. Los viñedos están cerrados los días feriados de Chile.',
-            schedule: '08:30 hs',
+            title: 'Valle de Casablanca: Viñas Bodega RE y Casas del Bosque',
+            description: 'Desayuno en el hotel. Jornada completa en el Valle de Casablanca visitando dos bodegas con estilos distintos y almuerzo maridado. Alojamiento en Santiago.',
+            schedule: '8:30',
             duration: '9 horas',
-            highlights: ['Valle de Casablanca · vinos de clima frío reconocidos internacionalmente', 'Viña Bodega RE · vinos artesanales en tinajas de arcilla maulina', 'Viña Casas del Bosque · viñedos, sala de barricas y degustación', 'Almuerzo maridado en entorno natural privilegiado'],
-            included: 'Traslado privado, degustación de vinos y almuerzo en Casas del Bosque',
+            highlights: ['Bodega RE · vinos artesanales en tinajas de arcilla', 'Casas del Bosque · Sauvignon Blanc y Pinot Noir'],
+            included: 'Traslado privado · degustación · almuerzo',
           }
         },
         activities: [
@@ -1996,12 +1990,13 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'De Santiago a Mendoza: cruzando los Andes',
-            description: 'Traslado al aeropuerto internacional de Santiago. Vuelo a Mendoza cruzando la impresionante Cordillera de los Andes. Recepción en el aeropuerto mendocino y traslado al hotel en el microcentro. Tarde libre para un primer paseo por las plazas y la calle peatonal Sarmiento, epicentro de la vida social de la ciudad del sol y el buen vino.',
-            highlights: ['Vuelo Santiago-Mendoza con vistas a la Cordillera de los Andes', 'Microcentro de Mendoza · Plazas y calle peatonal Sarmiento'],
-            included: 'Traslados aeropuerto-hotel',
+            title: 'Santiago → Mendoza: cruzando los Andes',
+            description: 'Desayuno en el hotel. Vuelo a Mendoza cruzando la Cordillera de los Andes. Recepción y traslado al hotel. Tarde libre en el centro de Mendoza. Alojamiento en Mendoza.',
+            highlights: ['Vuelo sobre la Cordillera de los Andes', 'Llegada a Mendoza'],
+            included: 'Vuelo · traslados',
           }
         },
+        flights: ['SCL → MDZ'],
         activities: [],
         referenceHotelId: 'nh-cordillera-mendoza',
       },
@@ -2012,11 +2007,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Mendoza: City Tour',
-            description: 'Por la mañana, recorrido guiado por la encantadora ciudad de Mendoza, diseñada con un ingenioso sistema de acequias y arbolada. Visita al Área Fundacional, corazón del centro histórico de la Ciudad Vieja, las cinco plazas del centro cívico, la Bandera del Ejército de los Andes y el imponente Parque General San Martín. El tour culmina en el Cerro de la Gloria con el monumento libertador. Tarde libre para explorar bodegas del centro histórico.',
-            schedule: '08:30-13:00 hs',
-            duration: '4.5 horas',
-            highlights: ['Área Fundacional · corazón histórico de la Ciudad Vieja', 'Cinco plazas del centro cívico', 'Parque General San Martín · pulmón verde de la ciudad', 'Cerro de la Gloria · Monumento al Ejército de los Andes'],
-            included: 'Traslado y guía bilingüe',
+            description: 'Desayuno en el hotel. Por la mañana, city tour por Mendoza. Tarde libre para explorar bodegas del centro. Alojamiento en Mendoza.',
+            schedule: '08:30-13:00',
+            duration: '4,5 horas',
+            highlights: ['Área Fundacional · Parque General San Martín', 'Cerro de la Gloria · Monumento libertador'],
+            included: 'Traslado · guía bilingüe',
           }
         },
         activities: [
@@ -2032,11 +2027,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Mendoza: Caminos del Vino en el Valle de Uco',
-            description: 'Día completo en el oasis vitivinícola del Valle de Uco, a unos 90 km de Mendoza, donde el paisaje andino a 1.000 metros de altura dota a los vinos de complejidad única. Acompañados por un guía especializado en enología, se visitan tres bodegas de alta gama para conocer sus instalaciones y disfrutar de degustaciones. El punto culminante es el almuerzo de pasos maridado en el restaurante de una bodega de prestigio, donde se practican las técnicas de cata aprendidas. Bodegas sujetas a disponibilidad y confirmación.',
-            schedule: '08:30-18:00 hs',
+            description: 'Desayuno en el hotel. Jornada completa en el Valle de Uco: visita a tres bodegas de alta gama con degustaciones y almuerzo maridado. Alojamiento en Mendoza.',
+            schedule: '08:30-18:00',
             duration: '9 horas',
-            highlights: ['Valle de Uco · a los pies de los Andes a 1.000 m de altura', 'Guía especializado en vinos durante todo el recorrido', 'Visita y degustación clásica en dos bodegas de alta gama', 'Almuerzo de pasos maridado en bodega de prestigio'],
-            included: 'Traslado en unidades con A/C, guía especializado, visita y degustación en dos bodegas, almuerzo en tercera bodega',
+            highlights: ['Valle de Uco · a los pies de los Andes', 'Almuerzo maridado en bodega de prestigio'],
+            included: 'Traslado · guía especializado · visita y degustación en dos bodegas · almuerzo en tercera bodega',
           }
         },
         activities: [
@@ -2051,12 +2046,13 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'De Mendoza a Buenos Aires',
-            description: 'Traslado al aeropuerto de Mendoza. Vuelo a Buenos Aires. Recepción en el aeropuerto doméstico con servicio de guía y traslado al hotel, a metros del Obelisco en el corazón de la ciudad. Tarde libre para un primer contacto con la vibrante Buenos Aires: el Obelisco, la Avenida Corrientes o los bares del microcentro porteño.',
-            highlights: ['Aeropuerto doméstico de Buenos Aires', 'Hotel a metros del Obelisco · microcentro porteño'],
-            included: 'Traslado aeropuerto-hotel con guía en español',
+            title: 'Mendoza → Buenos Aires',
+            description: 'Desayuno en el hotel. Vuelo a Buenos Aires. Recepción y traslado al hotel. Tarde libre. Alojamiento en Buenos Aires.',
+            highlights: ['Llegada a Buenos Aires'],
+            included: 'Vuelo · traslado con guía',
           }
         },
+        flights: ['MDZ → BUE'],
         activities: [],
         referenceHotelId: 'grand-brizo-buenos-aires',
       },
@@ -2066,12 +2062,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Buenos Aires: City Tour Clásico',
-            description: 'Mañana de descubrimiento por los barrios más emblemáticos de Buenos Aires. Visita a la Plaza de Mayo, la Casa Rosada y la Floralis Genérica, antes de adentrarse en el colorido barrio de La Boca con el famoso Caminito. Exploración de San Telmo y Recoleta, Palermo y Puerto Madero. Tarde libre para disfrutar de la gastronomía porteña, el Teatro Colón o un café con historia.',
-            schedule: 'Pick up 09:00 hs',
-            duration: '3.5-4 horas',
-            highlights: ['Floralis Genérica · Plaza de Mayo · Casa Rosada', 'La Boca · El Caminito', 'San Telmo · Recoleta', 'Palermo · Puerto Madero · Obelisco'],
-            included: 'Guía de turismo y traslados',
+            title: 'Buenos Aires: City Tour',
+            description: 'Desayuno en el hotel. Por la mañana, city tour por Buenos Aires. Tarde libre para gastronomía o el Teatro Colón. Alojamiento en Buenos Aires.',
+            schedule: '9:00',
+            duration: '3,5-4 horas',
+            highlights: ['Plaza de Mayo · La Boca · San Telmo', 'Palermo · Recoleta · Puerto Madero'],
+            included: 'Guía · traslados',
           }
         },
         activities: [
@@ -2087,12 +2083,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Buenos Aires: Degustación de Vinos y Noche de Tango en La Ventana',
-            description: 'Jornada que combina dos grandes emblemas de la cultura argentina. Al final de la tarde, sesión de cata guiada por el sommelier de La Ventana: tres variedades entre Malbec, Torrontés, Chardonnay y Cabernet maridadas con tabla de quesos, jamón crudo y bruscheta. A continuación, cena show en el histórico conventillo de San Telmo: 32 artistas en escena con dos orquestas de tango, bailarines y cantantes de folclore. La experiencia más auténtica de la noche porteña desde 1982.',
-            schedule: '18:30-23:30 hs',
+            title: 'Buenos Aires: Degustación de Vinos y Tango Show en La Ventana',
+            description: 'Desayuno en el hotel. Por la tarde, degustación de vinos con el sommelier de La Ventana. A continuación, cena show con tango y folclore. Alojamiento en Buenos Aires.',
+            schedule: '18:30-23:30',
             duration: '5 horas',
-            highlights: ['Degustación guiada: Malbec, Torrontés, Chardonnay y Cabernet de bodegas premium', 'Maridaje con tabla de quesos, panes saborizados y jamón crudo', 'Cena en La Ventana · San Telmo', 'Show de tango con 32 artistas · dos orquestas y conjunto folklórico'],
-            included: 'Degustación de vinos con maridaje, cena (entrada + principal + postre) y 1 botella de vino cada 2 personas',
+            highlights: ['Degustación · Malbec, Torrontés y Chardonnay', 'Cena show en La Ventana · 32 artistas · San Telmo'],
+            included: 'Degustación con maridaje · cena show con vino',
             excluded: 'Traslados',
           }
         },
@@ -2110,10 +2106,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'De Buenos Aires a Montevideo: el ferry del Río de la Plata',
-            description: 'Traslado desde el hotel al Puerto de Buenos Aires con servicio de guía. Viaje en ferry Buquebus a Montevideo: 2 horas y 45 minutos cruzando el Río de la Plata en clase turista. Llegada al Puerto de Montevideo y traslado al hotel en el barrio de Punta Carretas. Tarde libre para un primer paseo por la rambla o el casco histórico de Ciudad Vieja.',
-            highlights: ['Ferry Buquebus Buenos Aires → Montevideo · 2h 45min en clase turista', 'Llegada al barrio de Punta Carretas con vistas al Río de la Plata', 'Primera tarde en Montevideo · Rambla o Ciudad Vieja'],
-            included: 'Traslados hotel-puerto-hotel, ticket de ferry en clase turista (equipaje incluido)',
+            title: 'Buenos Aires → Montevideo: el ferry del Río de la Plata',
+            description: 'Desayuno en el hotel. Traslado al puerto y ferry a Montevideo. Llegada y traslado al hotel. Tarde libre para la rambla o Ciudad Vieja. Alojamiento en Montevideo.',
+            highlights: ['Ferry Buquebus · Buenos Aires a Montevideo', 'Llegada a Montevideo'],
+            included: 'Traslados hotel-puerto-hotel · ticket ferry',
           }
         },
         activities: [],
@@ -2126,11 +2122,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Montevideo: City Tour',
-            description: 'Por la mañana, recorrido panorámico guiado por los principales hitos de la capital uruguaya: la Plaza Independencia con el mausoleo de Artigas y el imponente Palacio Salvo, el Teatro Solís, el animado Mercado del Puerto, el Palacio Legislativo y el Estadio Centenario. Paradas para fotografías en el Mercado Agrícola, el Obelisco a los Constituyentes y el Monumento a la Carreta. Tarde libre para explorar la rambla o Ciudad Vieja.',
-            schedule: 'AM · 09:00 hs',
+            description: 'Desayuno en el hotel. Por la mañana, city tour por Montevideo. Tarde libre para explorar la rambla. Alojamiento en Montevideo.',
+            schedule: '9:00',
             duration: '3-4 horas',
-            highlights: ['Plaza Independencia · Palacio Salvo', 'Teatro Solís · Mercado del Puerto', 'Palacio Legislativo · Obelisco a los Constituyentes', 'Estadio Centenario · Mercado Agrícola'],
-            included: 'Traslados y guía bilingüe',
+            highlights: ['Plaza Independencia · Palacio Salvo', 'Mercado del Puerto · Palacio Legislativo'],
+            included: 'Traslados · guía bilingüe',
           }
         },
         activities: [
@@ -2145,12 +2141,12 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Montevideo: Tour Bodega Pizzorno con Almuerzo Maridado',
-            description: 'Jornada dedicada a la vitivinicultura uruguaya en la histórica Bodega Pizzorno, cuarta generación de una familia que lleva más de un siglo cultivando la vid. Recorrido guiado por los viñedos, la bodega y la cava para conocer el proceso de elaboración del vino en todas sus etapas. En el Salón de Degustaciones, cata asistida de cuatro vinos y aceites de oliva, seguida de un almuerzo de tres pasos maridado. Los vinos de la Familia Pizzorno son representantes de una tierra rica y próspera.',
-            schedule: '09:00-13:00 hs',
+            title: 'Montevideo: Bodega Pizzorno con Almuerzo Maridado',
+            description: 'Desayuno en el hotel. Jornada en la Bodega Pizzorno: recorrido por viñedos y cava, degustación y almuerzo de tres pasos maridado. Alojamiento en Montevideo.',
+            schedule: '09:00-13:00',
             duration: '4 horas',
-            highlights: ['Viñedos y cava de Bodega Pizzorno · tradición familiar centenaria', 'Proceso completo de elaboración del vino en sus diferentes etapas', 'Degustación asistida de 4 vinos y aceites de oliva', 'Almuerzo de tres pasos maridado con vino incluido'],
-            included: 'Traslado ida y vuelta a la bodega, visita guiada, degustación y almuerzo maridado',
+            highlights: ['Bodega Pizzorno · tradición familiar centenaria', 'Degustación · almuerzo maridado'],
+            included: 'Traslados · visita guiada · degustación · almuerzo',
           }
         },
         activities: [{ activityId: 'bodega-pizzorno-almuerzo-maridado', status: 'included' }],
@@ -2163,11 +2159,11 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Regreso a España',
-            description: 'Desayuno en el hotel. Traslado al Aeropuerto Internacional de Carrasco (MVD). Fin de los servicios de Viajes Vidaia. Este itinerario habrá sido un recorrido sensorial único por las capitales del vino del Cono Sur: desde las viñas de Casablanca y el Valle de Uco hasta las bodegas boutique de Uruguay, pasando por las noches de tango y la parrilla de Buenos Aires.',
-            highlights: ['Desayuno en el hotel', 'Traslado al Aeropuerto Internacional de Carrasco (MVD)'],
-            included: 'Traslado hotel-aeropuerto',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto internacional de Carrasco. Vuelo de regreso a España.',
+            included: 'Traslado aeropuerto',
           }
         },
+        flights: ['MVD → MAD'],
         activities: [],
       },
     ],
@@ -2216,9 +2212,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Llegada a Lima — Ciudad de los Reyes',
-            description: 'Presentación en el aeropuerto de origen y vuelo internacional a Lima. Arribo al Aeropuerto Internacional Jorge Chávez, asistencia y traslado al hotel seleccionado. Tarde libre para un primer contacto con la animada Lima: el malecón de Miraflores, la Huaca Pucllana iluminada o una primera cena de bienvenida con ceviche fresco.',
-            highlights: ['Aeropuerto Internacional Jorge Chávez · Lima', 'Traslado privado al hotel'],
-            included: 'Traslado aeropuerto-hotel',
+            description: 'Vuelo internacional a Lima. Llegada al aeropuerto Jorge Chávez. Recepción y traslado al hotel. Tarde libre para un primer contacto con Miraflores. Alojamiento en Lima.',
+            highlights: ['Llegada a Lima'],
+            included: 'Traslado aeropuerto → hotel',
           }
         },
         flights: ['MAD → LIM'],
@@ -2231,10 +2227,10 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Lima: City Tour Colonial y Moderno + Museo Larco Herrera',
-            description: 'Desayuno en el hotel. Visita del casco histórico Patrimonio de la Humanidad: la Catedral, la Plaza Mayor con el Palacio de Gobierno, el Palacio Municipal y el Arzobispal, el Convento de Santo Domingo y el Convento de San Francisco. Traslado a los barrios residenciales de San Isidro y Miraflores pasando por la Huaca Pucllana. Visita al Museo Larco Herrera con 3.000 años de historia peruana precolombina. Parada en el Parque del Amor con vistas al Océano Pacífico. Tarde libre para descubrir el barrio de Barranco y la gastronomía limeña.',
-            highlights: ['Plaza Mayor y Catedral · casco histórico Patrimonio UNESCO', 'Convento de San Francisco · Convento de Santo Domingo', 'Huaca Pucllana · sitio arqueológico de adobe', 'Museo Larco Herrera · 3.000 años de historia precolombina', 'Parque del Amor · vistas a la Costa Verde del Pacífico'],
-            included: 'Guía local y traslados',
+            title: 'Lima: City Tour Colonial y Moderno + Museo Larco',
+            description: 'Desayuno en el hotel. Visita del casco histórico Patrimonio de la Humanidad y el Museo Larco Herrera. Tarde libre en Barranco o Miraflores. Alojamiento en Lima.',
+            highlights: ['Plaza Mayor · Convento de San Francisco', 'Museo Larco Herrera · 3.000 años de historia'],
+            included: 'Guía · traslados',
           }
         },
         activities: [{ activityId: 'city-tour-lima-colonial-museo-larco', status: 'included' }],
@@ -2246,11 +2242,10 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Lima → Paracas: Reserva Nacional y Buggies en las Dunas',
-            description: 'Desayuno en el hotel. Traslado a la estación de autobuses para tomar el bus semi-cama hacia la Bahía de Paracas (aprox. 4 horas) con el Océano Pacífico como compañero de ruta. Llegada y traslado al hotel. Visita a la Reserva Nacional de Paracas con sus acantilados y paisaje marítimo-desértico, y al centro de interpretación de la Reserva. Por la tarde, recogida para la experiencia de Buggies y Sandboard en las dunas del Oasis Costa Rica siguiendo la ruta del Dakar, con atardecer entre dunas incluido.',
-            highlights: ['Bus semi-cama Lima → Paracas · costa del Pacífico', 'Reserva Nacional de Paracas · acantilados y necrópolis', 'Buggies o Areneros en dunas · Oasis Costa Rica', 'Sandboard al atardecer en las dunas del desierto'],
-            included: 'Bus regular Lima-Paracas, visita a la Reserva y Buggies en compartido',
-            excluded: 'suplemento por transporte privado Lima-Paracas',
+            title: 'Lima → Paracas: Reserva Nacional y Buggies',
+            description: 'Desayuno en el hotel. Bus a Paracas. Visita a la Reserva Nacional de Paracas. Por la tarde, buggies y sandboard en las dunas al atardecer. Alojamiento en Paracas.',
+            highlights: ['Reserva Nacional de Paracas · acantilados', 'Buggies en las dunas · sandboard al atardecer'],
+            included: 'Bus Lima-Paracas · visita Reserva · buggies compartidos',
           }
         },
         activities: [
@@ -2266,10 +2261,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Paracas: Islas Ballestas → Regreso a Lima',
-            description: 'Desayuno en el hotel. Traslado al embarcadero para zarpar en lancha compartida por el Océano Pacífico. De camino, avistamiento del enigmático geoglifo de "El Candelabro". Recorrido por las Islas Ballestas contemplando colonias de lobos marinos, pingüinos de Humboldt, pelícanos y decenas de especies de aves. Retorno al litoral. A la hora prevista, traslado a la estación de buses para regresar a Lima. Recepción y traslado al hotel. Tarde libre en Lima.',
-            highlights: ['Lancha compartida · Islas Ballestas', 'El Candelabro · geoglifo costero pre-inca', 'Lobos marinos, pingüinos de Humboldt y aves marinas en hábitat natural', 'Bus de línea Paracas → Lima'],
-            included: 'Lancha compartida Islas Ballestas, bus regular Paracas-Lima',
-            excluded: 'sobrevuelo Líneas de Nazca (opcional con suplemento)',
+            description: 'Desayuno en el hotel. Navegación a las Islas Ballestas. Bus de regreso a Lima. Alojamiento en Lima.',
+            highlights: ['Islas Ballestas · lobos marinos y pingüinos de Humboldt', 'Geoglifo del Candelabro'],
+            included: 'Lancha compartida · bus Paracas-Lima · traslados',
           }
         },
         activities: [
@@ -2285,9 +2279,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Lima → Arequipa: City Tour de la Ciudad Blanca',
-            description: 'Desayuno en el hotel. Traslado al aeropuerto para tomar el vuelo a Arequipa (se sugiere vuelo sobre las 08:00 h). Llegada y traslado al hotel. Tiempo libre por la mañana para entrar en contacto con la ciudad, visitar el mercado de San Camilo o el Museo de los Altares Andinos con la réplica de la Momia Juanita. Por la tarde, visita guiada de la Ciudad Blanca incluyendo el Convento de Santa Catalina, la Plaza de Armas, los Claustros de la Compañía, los distritos de Yanahuara y Chilina con vistas al volcán Misti, y Mundo Alpaca.',
-            highlights: ['Vuelo Lima → Arequipa · 1h 35min', 'Convento de Santa Catalina · ciudad dentro de la ciudad', 'Plaza de Armas y Claustros de la Compañía · cúpula de San Ignacio', 'Mirador Yanahuara · vistas al volcán Misti', 'Mundo Alpaca · proceso tradicional de la fibra andina'],
-            included: 'Vuelo doméstico Lima-Arequipa (no incluido, ver tabla de precios), traslados, guía y visitas por la tarde',
+            description: 'Desayuno en el hotel. Vuelo a Arequipa. Por la tarde, visita guiada de la Ciudad Blanca: Convento de Santa Catalina, Plaza de Armas, Yanahuara y Mundo Alpaca. Alojamiento en Arequipa.',
+            highlights: ['Convento de Santa Catalina · ciudad dentro de la ciudad', 'Mirador Yanahuara · volcán Misti'],
+            included: 'Traslados · guía',
           }
         },
         flights: ['LIM → AQP'],
@@ -2301,10 +2295,10 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Arequipa → Cañón del Colca',
-            description: 'Desayuno en el hotel. Salida hacia el Cañón del Colca, uno de los cañones más profundos del planeta. El trayecto transcurre por la Pampa Cañahuas, cerca de la Reserva Nacional Salinas-Aguada Blanca con vizcachas y vicuñas, los Bofedales de Tocra con flamencos andinos y el Mirador de los Volcanes, punto más alto del trayecto con vistas a los principales volcanes de la zona. Llegada al pueblo de Chivay. Almuerzo. Traslado a los alojamientos. Por la tarde, opcionalmente las termas naturales de La Calera (los alojados en Colca Lodge y El Refugio tienen termas propias).',
-            highlights: ['Pampa Cañahuas · Reserva Salinas-Aguada Blanca · vicuñas', 'Bofedales de Tocra · flamencos andinos', 'Mirador de los Volcanes · punto más alto del trayecto', 'Pueblo de Chivay · puerta del Cañón del Colca'],
-            included: 'Traslado Arequipa-Chivay, almuerzo',
-            excluded: 'Termas de La Calera (ingreso no incluido; los hoteles Colca Lodge y El Refugio tienen termas propias)',
+            description: 'Desayuno en el hotel. Traslado al Cañón del Colca con paradas en la Pampa Cañahuas y el Mirador de los Volcanes. Almuerzo en Chivay. Tarde libre. Alojamiento en el Colca.',
+            highlights: ['Pampa Cañahuas · vicuñas', 'Mirador de los Volcanes'],
+            included: 'Traslado Arequipa-Chivay · almuerzo',
+            excluded: 'Termas de La Calera (los hoteles Colca Lodge y El Refugio tienen termas propias)',
           }
         },
         activities: [{ activityId: 'canon-del-colca-cruz-condor', status: 'included' }],
@@ -2316,10 +2310,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Cañón del Colca: Cruz del Cóndor → Puno',
-            description: 'Desayuno en el hotel. Visita al Mirador Cruz del Cóndor, donde se aprecia la profundidad del cañón y el vuelo arrogante de los cóndores andinos. Visita a los pueblos coloniales de Yanque y Maca con sus iglesias y plazas características. De retorno a Chivay, vistas del valle del Colca. Almuerzo en Chivay. Continuación hacia Puno, con hermosos escenarios naturales y vista de la Laguna Lagunillas con flamencos andinos. Llegada a Puno al final de la tarde. Traslado al hotel.',
-            highlights: ['Mirador Cruz del Cóndor · vuelo de cóndores andinos', 'Pueblo colonial de Yanque y su iglesia barroca', 'Pueblo de Maca · plaza e iglesia coloniales', 'Laguna Lagunillas · flamencos andinos de camino a Puno'],
-            included: 'Traslado Chivay-Puno, almuerzo',
+            title: 'Cruz del Cóndor → Puno',
+            description: 'Desayuno en el hotel. Visita al Mirador Cruz del Cóndor y los pueblos coloniales de Yanque y Maca. Almuerzo en Chivay. Traslado a Puno. Alojamiento en Puno.',
+            highlights: ['Cruz del Cóndor · vuelo del cóndor andino', 'Laguna Lagunillas · flamencos andinos'],
+            included: 'Traslado Chivay-Puno · almuerzo',
           }
         },
         activities: [],
@@ -2332,9 +2326,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Puno: Lago Titicaca — Islas Uros e Isla Taquile',
-            description: 'Desayuno en el hotel. Embarcamos en el muelle de Puno para navegar el Lago Titicaca, el lago navegable más alto del planeta a 3.820 metros. Primera parada en las Islas Uros, islas flotantes construidas artesanalmente con totora, donde los descendientes de esta ancestral etnia reciben a los visitantes en sus embarcaciones de junco. Continuación hacia la Isla de Taquile, isla quechua donde los tejidos de los hombres son Patrimonio Inmaterial de la UNESCO. Almuerzo en restaurante local con vistas al lago. Paseo por la isla antes de regresar al puerto de Puno.',
-            highlights: ['Navegación por el lago navegable más alto del planeta · 3.820 m', 'Islas Uros · islas flotantes de totora habitadas', 'Isla de Taquile · tejidos quechuas Patrimonio Inmaterial UNESCO', 'Almuerzo en restaurante local de la isla'],
-            included: 'Lancha compartida, guía local, almuerzo',
+            description: 'Desayuno en el hotel. Navegación por el Lago Titicaca hasta las Islas Uros y la Isla de Taquile con almuerzo local. Alojamiento en Puno.',
+            highlights: ['Islas Uros · islas flotantes de totora', 'Isla Taquile · tejidos Patrimonio Inmaterial UNESCO'],
+            included: 'Lancha compartida · guía · almuerzo',
           }
         },
         activities: [{ activityId: 'lago-titicaca-uros-taquile', status: 'included' }],
@@ -2346,11 +2340,10 @@ const itineraries: Itinerary[] = [
         dayType: 'transit',
         content: {
           es: {
-            title: 'Puno → Cusco en Bus Turístico con Paradas Arqueológicas',
-            description: 'Desayuno en el hotel. Traslado a la estación del bus turístico para iniciar el espectacular trayecto hacia Cusco con paradas culturales e históricas: Pukara y su interesante museo arqueológico; La Raya, punto más alto del trayecto (4.335 m) con vistas a los nevados; Raqchi con el impresionante Templo de Wiracocha; y Andahuaylillas, conocida como la Capilla Sixtina Andina por sus fastuosos frescos coloniales. Almuerzo en ruta. Llegada a Cusco al caer la tarde.',
-            highlights: ['Pukara · museo arqueológico con monolitos líticos', 'La Raya · punto más alto · 4.335 m · nevados andinos', 'Raqchi · Templo de Wiracocha · mayor templo inca conocido', 'Andahuaylillas · "Capilla Sixtina Andina" · frescos barrocos del siglo XVII'],
-            included: 'Bus turístico Puno-Cusco en compartido, guía, almuerzo',
-            excluded: 'Suplemento por transporte privado opcional',
+            title: 'Puno → Cusco en Bus Turístico',
+            description: 'Desayuno en el hotel. Traslado a Cusco en bus turístico con paradas en Pukara, La Raya, Raqchi y Andahuaylillas. Almuerzo en ruta. Alojamiento en Cusco.',
+            highlights: ['Raqchi · Templo de Wiracocha', 'Andahuaylillas · la Capilla Sixtina Andina'],
+            included: 'Bus turístico · guía · almuerzo',
           }
         },
         activities: [],
@@ -2363,9 +2356,9 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Cusco: City Tour Peatonal',
-            description: 'Desayuno en el hotel. Recorrido peatonal exclusivo por el corazón de la antigua capital del Imperio Inca: la plaza del bohemio barrio de San Blas y sus artesanos; la calle Hatunrumiyoc con la célebre Piedra de los 12 Ángulos encastrada en el muro inca con precisión milimétrica; la plazoleta Nazarenas; la monumental Plaza de Armas con la Catedral barroca del siglo XVII; el Koricancha o Templo del Sol, el recinto más sagrado del Tahuantinsuyo; y el mercado de abastos de San Pedro. Tarde libre para explorar el barrio de San Blas, los talleres de artesanos o disfrutar de la cocina novoandina de Cusco.',
-            highlights: ['Barrio de San Blas · artesanos y callejuelas coloniales', 'Calle Hatunrumiyoc · Piedra de los 12 Ángulos · muro inca perfecto', 'Plaza de Armas · Catedral barroca del siglo XVII', 'Koricancha · Templo del Sol · recinto más sagrado del Imperio Inca', 'Mercado de San Pedro · abastos andinos'],
-            included: 'Guía local, entradas incluidas',
+            description: 'Desayuno en el hotel. Recorrido peatonal por el corazón de la antigua capital inca. Tarde libre en San Blas. Alojamiento en Cusco.',
+            highlights: ['Plaza de Armas · Catedral barroca', 'Koricancha · Templo del Sol'],
+            included: 'Guía · entradas',
           }
         },
         activities: [{ activityId: 'city-tour-peatonal-cusco', status: 'included' }],
@@ -2377,10 +2370,10 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Valle Sagrado: Chinchero, Maras, Moray y Ollantaytambo → Aguas Calientes',
-            description: 'Desayuno. Visita al pueblo de Chinchero con su zona arqueológica, iglesia colonial y espectacular mercado (especialmente los domingos) y taller textil con demostración de tejidos con tintes naturales. Continuación a las Minas de Sal de Maras, salineras en explotación desde el Imperio Inca. Visita al Moray, asombroso laboratorio agrícola inca con sus andenerías concéntricas de distintos microclimas. Almuerzo. Por la tarde, visita de la fortaleza de Ollantaytambo. Traslado a la estación del tren Vistadome Observatory hacia Aguas Calientes. Llegada, traslado al hotel. Cena y alojamiento.',
-            highlights: ['Chinchero · zona arqueológica y mercado dominical artesanal', 'Taller textil · tejidos y tintes naturales herederos del Imperio Inca', 'Minas de Sal de Maras · salineras en explotación desde época inca', 'Moray · laboratorio agrícola inca con microclimas concéntricos', 'Ollantaytambo · fortaleza inca y pueblo vivo del Valle Sagrado', 'Tren Vistadome Observatory Ollantaytambo → Aguas Calientes · 1h 30min'],
-            included: 'Traslados, guía, visitas, almuerzo, tren Vistadome Observatory (ida) en compartido, cena',
+            title: 'Valle Sagrado → Aguas Calientes',
+            description: 'Desayuno en el hotel. Jornada por el Valle Sagrado: Chinchero, Minas de Sal de Maras, Moray y Ollantaytambo. Por la tarde, tren Vistadome a Aguas Calientes. Cena y alojamiento en Aguas Calientes.',
+            highlights: ['Maras · salineras en explotación desde el Imperio Inca', 'Ollantaytambo · fortaleza inca'],
+            included: 'Traslados · guía · visitas · almuerzo · tren Vistadome Observatory · cena',
           }
         },
         activities: [{ activityId: 'valle-sagrado-chinchero-maras-moray-ollantaytambo', status: 'included' }],
@@ -2393,10 +2386,10 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Machu Picchu → Valle Sagrado',
-            description: 'Desayuno. Madrugada para tomar el bus desde Aguas Calientes hasta la ciudadela inca de Machu Picchu, una de las Siete Maravillas Modernas del Mundo. Visita guiada del complejo arqueológico recorriendo sus andenes, plazas, el Templo del Sol, los templos de las Tres Ventanas y el Intihuatana. Posibilidad de subir al monte Huayna Picchu o monte Machu Picchu (previo suplemento, reserva al confirmar). Regreso en bus a Aguas Calientes para explorar el mercadillo del pueblo. A la hora prevista, tren Vistadome Panorámico de regreso a Ollantaytambo, donde espera la movilidad hacia el hotel en el Valle Sagrado. Cena y alojamiento.',
-            highlights: ['Bus Aguas Calientes → Machu Picchu · 30 min', 'Machu Picchu · ciudadela inca · una de las 7 Maravillas Modernas', 'Andenes, plazas, Templo del Sol e Intihuatana', 'Mercadillo de Aguas Calientes · pueblo de montaña', 'Tren Vistadome Panorámico Aguas Calientes → Ollantaytambo · 1h 30min'],
-            included: 'Bus Aguas Calientes-Machu Picchu-Aguas Calientes, guía, entradas, tren Vistadome Panorámico (vuelta), cena',
-            excluded: 'ingreso monte Huayna Picchu o monte Machu Picchu (suplemento, confirmar al reservar)',
+            description: 'Desayuno en el hotel. Visita guiada a la ciudadela inca de Machu Picchu. Tren de regreso y traslado al hotel en el Valle Sagrado. Cena y alojamiento en el Valle.',
+            highlights: ['Machu Picchu · una de las 7 Maravillas Modernas', 'Aguas Calientes · pueblo de montaña'],
+            included: 'Bus Aguas Calientes-Machu Picchu · guía · entradas · tren Vistadome Panorámico · cena',
+            excluded: 'Ingreso monte Huayna Picchu o monte Machu Picchu (suplemento, confirmar al reservar)',
           }
         },
         activities: [{ activityId: 'machu-picchu-visita-guiada', status: 'included' }],
@@ -2408,10 +2401,10 @@ const itineraries: Itinerary[] = [
         dayType: 'activity',
         content: {
           es: {
-            title: 'Valle Sagrado: Pisac → Ruinas Aledañas de Cusco',
-            description: "Desayuno en el hotel. Por la mañana traslado de regreso hacia Cusco visitando el camino el sitio arqueológico de Pisac en el sector de Kanturaquay con sus fuentes y cementerio inca, y una breve parada en el animado mercado artesanal de Pisac. Continuación hacia las Ruinas Aledañas de Cusco: Sacsayhuamán, fortaleza ceremonial de piedras monumentales de hasta 125 toneladas; Q'enqo, centro ritual con sacrificios; Tambomachay, templo al Dios Agua; y vista panorámica de Puka-Pukará. Llegada al hotel en Cusco. Tarde libre.",
-            highlights: ['Pisac · sector Kanturaquay · fuentes y cementerio inca', 'Mercado artesanal de Pisac · tejidos y productos andinos', 'Sacsayhuamán · fortaleza ceremonial de megalitos de 125 toneladas', "Q'enqo · centro ritual y ceremonial inca", 'Tambomachay · templo inca del culto al agua', 'Puka-Pukará · tambo y puesto de vigilancia inca'],
-            included: 'Traslados, guía, entradas a las ruinas aledañas de Cusco',
+            title: 'Valle Sagrado: Pisac y Ruinas Aledañas de Cusco',
+            description: "Desayuno en el hotel. Por la mañana, visita a Pisac. Por la tarde, ruinas aledañas de Cusco: Sacsayhuamán, Q'enqo y Tambomachay. Alojamiento en Cusco.",
+            highlights: ['Pisac · sitio arqueológico y mercado artesanal', 'Sacsayhuamán · fortaleza de piedras monumentales'],
+            included: 'Traslados · guía · entradas ruinas de Cusco',
           }
         },
         activities: [
@@ -2427,9 +2420,8 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Cusco → Lima → Vuelo de Regreso',
-            description: 'Desayuno en el hotel. Traslado al aeropuerto de Cusco para tomar el vuelo regular de retorno a Lima (se recomienda un mínimo de 3 horas de diferencia con el vuelo internacional de regreso). Llegada a Lima, asistencia en aeropuerto y posterior conexión con el vuelo internacional de retorno a la ciudad de origen. Noche a bordo. Fin de los servicios de Viajes Vidaia en Perú.',
-            highlights: ['Vuelo doméstico Cusco → Lima · 1h 35min', 'Asistencia en aeropuerto Lima para conexión internacional', 'Vuelo internacional Lima → Ciudad de origen'],
-            included: 'Traslado hotel-aeropuerto Cusco, asistencia en Lima para vuelo internacional',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto de Cusco y vuelo a Lima para la conexión con el vuelo internacional de regreso. Noche a bordo.',
+            included: 'Traslado hotel-aeropuerto Cusco · asistencia en Lima',
           }
         },
         flights: ['CUZ → LIM'],
