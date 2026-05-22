@@ -54,7 +54,7 @@ export default async function CountryPage({ params, searchParams }: Props) {
   return (
     <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
-      <section className="relative h-[70vh] md:h-[78vh] lg:h-[82vh] min-h-[500px] md:min-h-[580px] flex items-end overflow-hidden">
+      <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] flex items-end overflow-hidden">
         <Image src={heroAsset.url} alt={heroAsset.alt} fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-16 w-full">
@@ -62,7 +62,7 @@ export default async function CountryPage({ params, searchParams }: Props) {
             <Image src={flagAsset.url} alt={flagAsset.alt} width={20} height={15} className="rounded-sm flex-shrink-0" />
             {renderTemplate(content.hero.taglineTemplate, { country: countryName })}
           </p>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 text-balance max-w-2xl">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-bold text-white mb-4 text-balance max-w-2xl">
             {renderTemplate(content.hero.titleTemplate, { country: countryName })}
           </h1>
           <p className="text-white/80 text-base sm:text-lg max-w-xl leading-relaxed text-balance">

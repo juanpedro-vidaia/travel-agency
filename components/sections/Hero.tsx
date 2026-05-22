@@ -23,7 +23,7 @@ export default function Hero() {
   const regions = regionContent[language] ?? regionContent.es
 
   return (
-    <section className="relative h-[82svh] md:h-[86vh] min-h-[620px] md:min-h-[660px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -58,7 +58,7 @@ export default function Hero() {
           })}
         </p>
 
-        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-5 sm:mb-6 text-balance">
+        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-bold text-white leading-tight mb-5 sm:mb-6 text-balance">
           {heroContent.title.split('{br}').map((part: string, index: number) => (
             <React.Fragment key={index}>
               {part.split('{span}').map((subPart: string, subIndex: number) => (

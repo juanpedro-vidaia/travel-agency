@@ -348,7 +348,7 @@ const itineraries: Itinerary[] = [
         metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Chile a medida: Santiago, San Pedro de Atacama y Rapa Nui. 13 días por tres mundos distintos. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.ESENCIAS_CHILE_MOAIS', location: 'Ahu Tongariki · Isla de Pascua' },
-          { imageKey: 'ITINERARIES.ESENCIAS_CHILE_ATACAMA', location: 'San Pedro de Atacama' },
+          { imageKey: 'ITINERARIES.ESENCIAS_CHILE_ATACAMA', location: 'Laguna Chaxa, Salar de Atacama' },
           { imageKey: 'ITINERARIES.ESENCIAS_CHILE_SANTIAGO', location: 'Santiago de Chile' },
           { imageKey: 'ITINERARIES.ESENCIAS_CHILE_VALLE_LUNA', location: 'Valle de la Luna · Atacama' },
         ],
@@ -1913,7 +1913,7 @@ const itineraries: Itinerary[] = [
           { imageKey: 'ITINERARIES.CAPITALES_VINO_SANTIAGO', location: 'Santiago de Chile' },
           { imageKey: 'ITINERARIES.CAPITALES_VINO_BUENOS_AIRES', location: 'Buenos Aires' },
           { imageKey: 'ITINERARIES.CAPITALES_VINO_MONTEVIDEO', location: 'Montevideo, Uruguay' },
-          { imageKey: 'ITINERARIES.CAPITALES_VINO_CASABLANCA', location: 'Valle de Casablanca, Chile' },
+          { imageKey: 'ITINERARIES.CAPITALES_VINO_COLCHAGUA', location: 'Valle de Colchagua, Chile' },
         ],
       }
     },

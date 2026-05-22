@@ -47,7 +47,7 @@ export default function ViajesHero({
 
   return (
     <section
-      className="relative h-[75vh] md:h-[82vh] lg:h-[86vh] min-h-[560px] md:min-h-[620px] overflow-hidden"
+      className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -74,7 +74,7 @@ export default function ViajesHero({
         <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-2 sm:mb-5">
           {overline}
         </p>
-        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-3 sm:mb-5 text-balance">
+        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-bold max-w-4xl leading-tight mb-3 sm:mb-5 text-balance">
           {title}
         </h1>
         <p className="text-base sm:text-xl text-white/80 max-w-xl font-light">

@@ -198,7 +198,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
       {/* ── HERO CAROUSEL ─────────────────────────────────────────────────────── */}
       <section
-        className="relative h-[75vh] md:h-[82vh] lg:h-[86vh] min-h-[560px] md:min-h-[620px] overflow-hidden"
+        className="relative h-screen min-h-[600px] md:min-h-[620px] overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -229,7 +229,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
             )}
           </p>
 
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-2 sm:mb-3 text-balance">
+          <h1 className="font-heading text-3xl sm:text-4xl 2xl:text-6xl font-bold max-w-4xl leading-tight mb-2 sm:mb-3 text-balance">
             <span className="md:hidden">{itinerary.content.es.heroTitleMobile ?? trip.content.es.title}</span>
             <span className="hidden md:inline">{trip.content.es.title}</span>
           </h1>
@@ -341,7 +341,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       {/* ── ITINERARIO ACORDEÓN ───────────────────────────────────────────────── */}
       <section className="py-10 md:py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
             {content.accordion.title}
           </h2>
           <p className="text-center text-vidaia-charcoal/55 mb-6 md:mb-10 text-sm">
@@ -502,7 +502,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       {/* ── MAPA DEL ITINERARIO ───────────────────────────────────────────────── */}
       <section className="hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
             {ui.map.title}
           </h2>
           <p className="text-center text-vidaia-charcoal/55 text-sm mb-8">
@@ -520,7 +520,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       {hotelCards.length > 0 && (
       <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
             {content.hotels.title}
           </h2>
           <p className="text-center text-vidaia-charcoal/55 text-sm mb-6 md:mb-12">{content.hotels.subtitle}</p>
@@ -583,7 +583,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
             <p className="text-amber-700 font-semibold tracking-widest uppercase text-xs mb-3">
               {content.optionals.overline}
             </p>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-6 md:mb-12">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-6 md:mb-12">
               {content.optionals.title}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
@@ -605,7 +605,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
       {relatedTrips.length > 0 && (
         <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
               {content.relatedTrips.title}
             </h2>
             <p className="text-center text-vidaia-charcoal/55 text-sm mb-6 md:mb-12">{content.relatedTrips.subtitle}</p>

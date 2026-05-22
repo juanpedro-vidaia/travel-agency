@@ -41,7 +41,7 @@ export default async function LunasDeMielPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
-      <section className="relative h-[75vh] md:h-[82vh] lg:h-[86vh] min-h-[560px] md:min-h-[620px] overflow-hidden">
+      <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] overflow-hidden">
         <Image src={heroBg.url} alt={heroBg.alt} fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/65" />
 
@@ -49,7 +49,7 @@ export default async function LunasDeMielPage({ params }: Props) {
           <p className="text-vidaia-earth font-medium tracking-widest uppercase text-xs sm:text-sm mb-2 sm:mb-5">
             {content.hero.overline}
           </p>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-3 sm:mb-5 text-balance">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-bold max-w-4xl leading-tight mb-3 sm:mb-5 text-balance">
             {content.hero.title}
           </h1>
           <p className="text-base sm:text-xl text-white/80 max-w-xl font-light italic">
