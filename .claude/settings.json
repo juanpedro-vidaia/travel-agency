@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(npm run *)",
-      "Bash(rm \"C:/Users/juanpedro.martin/package-lock.json\")"
+      "Bash(rm \"C:/Users/juanpedro.martin/package-lock.json\")",
+"Bash(python -m json.tool)",
+      "Bash(node -e ' *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\juanpedro.martin"

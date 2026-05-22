@@ -1,11 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import {
-  buildContactoClientifyPayload,
-  pushToClientify,
-  type ContactoPayload,
-} from '@/lib/services/clientify'
+import { pushContactToClientify, type ContactoPayload } from '@/lib/services/clientify'
 
-function buildEmailHtml(data: ContactoPayload & { privacy?: boolean }) {
+function buildEmailHtml(data: ContactoPayload & { privacy: boolean }) {
   const sent = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
   return `
 <h2>🔔 Nueva solicitud de llamada — ${data.full_name}</h2>
@@ -27,10 +23,7 @@ export async function POST(request: NextRequest) {
     const data = await request.json() as ContactoPayload & { privacy: boolean }
 
     // ── Clientify ────────────────────────────────────────────────────────────
-    // TODO: Activate when CLIENTIFY_API_KEY is configured.
-    //
-    // const clientifyPayload = buildContactoClientifyPayload(data)
-    // await pushToClientify(clientifyPayload)
+    await pushContactToClientify(data)
 
     // ── Resend ───────────────────────────────────────────────────────────────
     // TODO: Activate when RESEND_API_KEY and DNS are configured.
@@ -44,10 +37,7 @@ export async function POST(request: NextRequest) {
     //   html: buildEmailHtml(data),
     // })
 
-    // Keep references until integrations are active
-    void buildContactoClientifyPayload
-    void pushToClientify
-    void buildEmailHtml(data)
+    void buildEmailHtml
 
     console.log('[Contacto] Nueva solicitud de llamada:', JSON.stringify(data, null, 2))
 

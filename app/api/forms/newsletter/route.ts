@@ -1,9 +1,5 @@
 import { NextResponse } from 'next/server'
-import {
-  buildNewsletterClientifyPayload,
-  pushToClientify,
-  type NewsletterPayload,
-} from '@/lib/services/clientify'
+import { pushNewsletterToClientify, type NewsletterPayload } from '@/lib/services/clientify'
 
 export async function POST(req: Request) {
   try {
@@ -20,10 +16,7 @@ export async function POST(req: Request) {
     }
 
     // ── Clientify ────────────────────────────────────────────────────────────
-    // TODO: Activate when CLIENTIFY_API_KEY is configured.
-    //
-    // const clientifyPayload = buildNewsletterClientifyPayload({ full_name, email, commercial: !!commercial })
-    // await pushToClientify(clientifyPayload)
+    await pushNewsletterToClientify({ full_name, email, commercial: !!commercial, privacy })
 
     // ── Resend ───────────────────────────────────────────────────────────────
     // TODO: Activate when RESEND_API_KEY and DNS are configured.
@@ -36,10 +29,6 @@ export async function POST(req: Request) {
     //   subject: `Nueva suscripción al newsletter — ${full_name}`,
     //   html: `<p><strong>${full_name}</strong> (${email}) se ha suscrito al newsletter. Acepta comercial: ${commercial ? 'sí' : 'no'}.</p>`,
     // })
-
-    // Keep references until integrations are active
-    void buildNewsletterClientifyPayload
-    void pushToClientify
 
     console.log('[newsletter] Nueva suscripción:', { full_name, email, commercial: !!commercial })
 

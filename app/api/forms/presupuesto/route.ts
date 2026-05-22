@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { formSchema, buildPresupuestoEmailHtml, buildClientifyPayload } from '@/lib/form-utils'
+import { formSchema, buildPresupuestoEmailHtml } from '@/lib/form-utils'
+import { pushPresupuestoToClientify } from '@/lib/services/clientify'
 
 export async function POST(request: NextRequest) {
   let body: unknown
@@ -36,20 +37,8 @@ export async function POST(request: NextRequest) {
   // })
 
   // ── Clientify ────────────────────────────────────────────────────────────────
-  // TODO: Implement when Clientify API key is available.
-  // Uncomment and complete with API key and endpoint:
-  //
-  // const clientifyPayload = buildClientifyPayload(data)
-  // await fetch('https://api.clientify.net/v1/contacts/', {
-  //   method: 'POST',
-  //   headers: {
-  //     Authorization: `Token ${process.env.CLIENTIFY_API_KEY}`,
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify(clientifyPayload),
-  // })
+  await pushPresupuestoToClientify(data)
 
-  // Temporary logging until integrations are active
   console.log('[forms/presupuesto] Nueva solicitud:', JSON.stringify({
     origen: data.origin,
     itinerario: data.itinerarySlug,
@@ -59,9 +48,7 @@ export async function POST(request: NextRequest) {
     fecha: data.dateStart,
   }, null, 2))
 
-  // Reference the helpers to avoid unused import warnings during development
   void buildPresupuestoEmailHtml
-  void buildClientifyPayload
 
   return NextResponse.json({ ok: true }, { status: 201 })
 }
