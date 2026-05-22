@@ -198,7 +198,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
       {/* ── HERO CAROUSEL ─────────────────────────────────────────────────────── */}
       <section
-        className="relative h-screen min-h-[600px] md:min-h-[620px] overflow-hidden"
+        className="relative h-[calc(100dvh-72px)] min-h-[600px] md:h-screen md:min-h-[620px] overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
