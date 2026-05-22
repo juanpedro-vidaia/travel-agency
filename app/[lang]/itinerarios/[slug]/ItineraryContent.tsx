@@ -221,7 +221,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           </div>
         ))}
 
-        <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 md:justify-center md:pt-28 md:pb-12 text-white text-center px-6 sm:px-8">
+        <div className="relative z-10 h-full flex flex-col items-center justify-center pt-24 md:pt-28 pb-12 text-white text-center px-6 sm:px-8">
           <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-2 sm:mb-5">
             {content.hero.eyebrowPrefix}
             {tripCountries.length > 0 && (
@@ -265,7 +265,7 @@ export default function ItineraryContent({ slug }: { slug: string }) {
           </LangLink>
         </div>
 
-        <div className="absolute bottom-8 right-6 sm:right-8 z-10 pointer-events-none">
+        <div className="absolute bottom-16 sm:bottom-8 right-6 sm:right-8 z-10 pointer-events-none">
           <span className="flex items-center gap-1.5 text-white/70 text-xs sm:text-sm">
             <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             {slides[currentSlide]?.location}
