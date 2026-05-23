@@ -8,6 +8,7 @@ import { CATEGORY_CONFIG, type PostCategory } from '@/lib/data/posts'
 import { getAsset } from '@/lib/data/assets'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import { buildMetadata } from '@/lib/helpers/seo'
+import { getStaticContent } from '@/lib/helpers/contentHelpers'
 
 interface Props {
   params: Promise<{ lang: string }>
@@ -32,6 +33,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
   const { lang } = await params
   const { category } = await searchParams
   const activeCategory = category as PostCategory | undefined
+  const blogContent = getStaticContent(lang).blogPage
 
   const allPosts = getAllPosts()
   const featured = getFeaturedPost()
@@ -85,7 +87,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
                   <span>·</span>
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
-                    {featured.readingTime} min de lectura
+                    {featured.readingTime} {blogContent.readingTimeLabel}
                   </span>
                 </div>
                 <h2 className="font-heading text-2xl sm:text-3xl font-bold text-vidaia-dark leading-snug mb-4 group-hover:text-vidaia-primary transition-colors text-balance">
@@ -162,7 +164,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
                       <span>·</span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
-                        {post.readingTime} min
+                        {post.readingTime} {blogContent.readingTimeShort}
                       </span>
                     </div>
                     <h2 className="font-heading text-lg font-semibold text-vidaia-dark leading-snug mb-3 group-hover:text-vidaia-primary transition-colors line-clamp-2">

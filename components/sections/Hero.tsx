@@ -7,20 +7,16 @@ import { ArrowRight } from 'lucide-react'
 import ContactModalTrigger from '@/components/forms/ContactModalTrigger'
 import { getAsset } from '@/lib/data/assets'
 import { useLanguage } from '@/lib/hooks/useLanguage'
-
-const regionContent: Record<string, { flagKey: string; countryName: string }[]> = {
-  es: [
-    { flagKey: 'FLAGS.AR', countryName: 'Argentina' },
-    { flagKey: 'FLAGS.CL', countryName: 'Chile' },
-    { flagKey: 'FLAGS.BO', countryName: 'Bolivia' },
-  ],
-}
+import { getCountriesOrdered } from '@/lib/services/countriesService'
 
 export default function Hero() {
-  const { content, ui, language } = useLanguage()
+  const { content, ui } = useLanguage()
   const heroContent = content.home.hero
   const heroBgAsset = getAsset('HOME.HERO_BG')
-  const regions = regionContent[language] ?? regionContent.es
+  const regions = getCountriesOrdered().map(c => ({
+    flagKey: `FLAGS.${c.flagCode.toUpperCase()}`,
+    countryName: c.content.es.name,
+  }))
 
   return (
     <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] flex items-center justify-center overflow-hidden">

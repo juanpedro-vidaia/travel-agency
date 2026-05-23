@@ -13,6 +13,7 @@ import type { Post } from '@/lib/data/posts'
 import type { Trip } from '@/lib/data/trips'
 import { formatDate } from '@/lib/services/postsService'
 import { getAsset } from '@/lib/data/assets'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
 interface Props {
   post: Post
@@ -21,6 +22,8 @@ interface Props {
 }
 
 export default function PostContent({ post, relatedPosts, relatedTrips }: Props) {
+  const { content } = useLanguage()
+  const blogContent = content.blogPage
   const [copied, setCopied] = useState(false)
   const es = post.content.es
   const postImageUrl = getAsset(post.imageKey).url
@@ -62,7 +65,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
             className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-vidaia-primary transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
-            Volver al blog
+            {blogContent.backButton}
           </LangLink>
 
           <div className="relative h-64 sm:h-96 lg:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl mb-8 md:mb-12">
@@ -91,7 +94,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="w-4 h-4" />
-              {post.readingTime} min de lectura
+              {post.readingTime} {blogContent.readingTimeLabel}
             </span>
           </div>
         </header>

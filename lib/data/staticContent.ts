@@ -103,6 +103,10 @@ export const STATIC_CONTENT = {
       copyright: '© 2026 Viajes Vidaia · Todos los derechos reservados',
     },
     home: {
+      metadata: {
+        title: 'Viajes Vidaia — El viaje de tu vida hecho realidad',
+        description: 'Agencia de viajes personalizados especializada en Argentina, Chile y Bolivia. Diseñamos tu itinerario desde cero.',
+      },
       hero: {
         tagline: 'Argentina · Chile · Bolivia',
         title: 'Somos {br} {span} Viajes Vidaia',
@@ -116,6 +120,28 @@ export const STATIC_CONTENT = {
         title: 'Viajamos diferente.{br}Contigo.',
         subtitle: 'En Vidaia no te vendemos un destino — te ayudamos a vivir una experiencia que de verdad te cambia.',
       },
+      items: [
+        {
+          iconName: 'Compass',
+          title: 'Viajes únicos',
+          description: 'Nada de catálogos ni paquetes de agencia. Cada itinerario nace de una conversación contigo y se construye desde cero.',
+        },
+        {
+          iconName: 'Heart',
+          title: 'Totalmente personalizados',
+          description: 'Tu ritmo, tus intereses, tu presupuesto. Diseñamos el viaje que encaja con tu forma de viajar, no al revés.',
+        },
+        {
+          iconName: 'Leaf',
+          title: 'Turismo sostenible',
+          description: 'Viajamos con respeto por los ecosistemas y las comunidades. Huella mínima, experiencia máxima y conciencia en cada paso.',
+        },
+        {
+          iconName: 'Users',
+          title: 'Apoyo local',
+          description: 'Trabajamos con guías, hospedajes y operadores locales de confianza. Tu viaje impulsa directamente a las personas del lugar.',
+        },
+      ],
     },
     quienesSomos: {
       header: {
@@ -569,7 +595,6 @@ export const STATIC_CONTENT = {
         description: 'Viajes personalizados a Argentina, Chile y Bolivia. Diseñamos cada itinerario desde cero adaptado a tus gustos, fechas y presupuesto. Sin paquetes estándar.',
       },
       hero: {
-        overline: 'Argentina · Chile · Bolivia',
         title: 'Viajes Vidaia',
         subtitle: 'Si sueñas con viajar a nuestros destinos Vidaia de América del Sur pero no sabes por dónde empezar, nosotros te ayudamos.',
         ctaPrimary: 'Solicitar viaje a medida',
@@ -718,6 +743,11 @@ export const STATIC_CONTENT = {
         priceNote: 'En habitación doble · Vuelos internos incluidos · Alojamiento incluido',
         ctaButton: 'Solicitar mi presupuesto personalizado',
       },
+    },
+    blogPage: {
+      backButton: 'Volver al blog',
+      readingTimeLabel: 'min de lectura',
+      readingTimeShort: 'min',
     },
     formularioPersonalizado: {
       metadata: {
@@ -1168,6 +1198,11 @@ export const STATIC_CONTENT = {
         night: 'night',
         nights: 'nights',
       },
+    },
+    blogPage: {
+      backButton: 'Back to blog',
+      readingTimeLabel: 'min read',
+      readingTimeShort: 'min',
     },
     formularioPersonalizado: {
       metadata: {

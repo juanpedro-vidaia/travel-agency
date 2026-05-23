@@ -71,7 +71,7 @@ export default function ViajesHero({
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 md:justify-center md:pt-28 md:pb-12 text-white text-center px-6 sm:px-8">
-        <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-2 sm:mb-5">
+        <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs sm:text-sm mb-2 sm:mb-5">
           {overline}
         </p>
         <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-bold max-w-4xl leading-tight mb-3 sm:mb-5 text-balance">

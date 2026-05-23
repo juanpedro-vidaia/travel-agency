@@ -52,7 +52,7 @@ export default async function ViajesPage({ params }: Props) {
 
       {/* 1 — Hero carrusel */}
       <ViajesHero
-        overline={page.hero.overline}
+        overline={countries.map(c => c.name).join(' · ')}
         title={page.hero.title}
         subtitle={page.hero.subtitle}
         ctaPrimary={ui.buttons.requestQuote}

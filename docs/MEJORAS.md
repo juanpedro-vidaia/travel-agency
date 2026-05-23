@@ -7,6 +7,7 @@
 ## 🔴 Urgente
 
 ### M01 — Los formularios no envían datos a ningún destino
+> ✅ CLIENTIFY COMPLETADO 23/05/2026 — PENDIENTE RESEND (bloqueado por DNS y RESEND_API_KEY)
 
 **Problema:** Los tres endpoints de formulario (`/api/forms/contacto`, `/api/forms/newsletter`, `/api/forms/presupuesto`) aceptan los datos, validan y devuelven `{ ok: true }`, pero **solo escriben en `console.log`**. El equipo no recibe ninguna notificación de los formularios enviados en producción.
 
@@ -20,6 +21,7 @@
 2. Añadir `CLIENTIFY_API_KEY` a las variables de entorno
 3. En cada route, descomentar los bloques marcados con `// TODO: Activate`
 4. Instalar el paquete `resend`: `npm install resend`
+
 
 ---
 
@@ -35,6 +37,7 @@
 ---
 
 ### M03 — Crear `.env.example` con todas las variables necesarias
+> ✅ COMPLETADO 23/05/2026
 
 **Problema:** No existe documentación de las variables de entorno necesarias para arrancar el proyecto o activar integraciones. Cualquier developer nuevo debe rastrear el código para saber qué variables configurar.
 
@@ -78,6 +81,7 @@ Eliminar también `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY` d
 ---
 
 ### M05 — Strings hardcodeados en `PostContent.tsx` y `blog/page.tsx`
+> ✅ COMPLETADO 23/05/2026 — `blogPage` añadido a staticContent; PostContent usa useLanguage(); blog/page usa getStaticContent(lang)
 
 **Problema:** "Volver al blog" y "min de lectura" están hardcodeados en español en los ficheros del blog, rompiendo el sistema de i18n cuando se active el inglés.
 
@@ -99,6 +103,7 @@ Y actualizar los componentes para leer de `getStaticContent(lang).blogPage` (en 
 ---
 
 ### M06 — `ValueProposition.tsx` con contenido hardcodeado en el componente
+> ✅ COMPLETADO 23/05/2026 — items[] movido a staticContent con iconName como string; componente usa ICON_MAP
 
 **Problema:** Los títulos y descripciones de las 4 cards de propuesta de valor están hardcodeados en el componente en lugar de venir de `staticContent.ts`. El componente llama a `useLanguage()` para el header, pero ignora el sistema para el contenido principal.
 
@@ -120,6 +125,7 @@ Y en el componente, iterar sobre `sectionContent.items`.
 ---
 
 ### M07 — Añadir `aria-label` a los botones de compartir en `PostContent.tsx`
+> ✅ YA ESTABA IMPLEMENTADO — aria-labels presentes en el código antes de esta sesión
 
 **Problema:** Los tres botones de compartir (Twitter, Facebook, copiar enlace) en el post del blog solo muestran iconos sin texto accesible. Los lectores de pantalla no pueden identificarlos.
 
@@ -142,6 +148,7 @@ Y en el componente, iterar sobre `sectionContent.items`.
 ---
 
 ### M08 — `generateMetadata` de Home con contenido hardcodeado
+> ✅ COMPLETADO 23/05/2026 — home.metadata añadido a staticContent; generateMetadata lee de ahí
 
 **Problema:** `app/[lang]/page.tsx` (líneas 21-29) tiene el título y la descripción de metadata hardcodeados en lugar de leer de `getStaticContent(lang)`. Inconsistente con el patrón del resto de páginas.
 
@@ -163,6 +170,7 @@ Y actualizar `generateMetadata` para leer de ahí.
 ---
 
 ### M09 — `blog/page.tsx` sin `generateMetadata` propio
+> ✅ YA ESTABA IMPLEMENTADO — generateMetadata ya existía en blog/page.tsx antes de esta sesión
 
 **Problema:** La página del listado de blog (`app/[lang]/blog/page.tsx`) no exporta `generateMetadata`, heredando el título genérico del layout raíz.
 
@@ -185,6 +193,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 ---
 
 ### M10 — Añadir JSON-LD de `Article` en páginas de blog
+> ✅ YA ESTABA IMPLEMENTADO — script JSON-LD Article presente en blog/[slug]/page.tsx antes de esta sesión
 
 **Problema:** Los posts del blog no tienen structured data de tipo `Article`. Esto reduce la visibilidad en Google News y los rich results de artículos.
 
@@ -196,6 +205,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 ---
 
 ### M11 — `ItineraryContent.tsx` (687 líneas) — dividir en subcomponentes
+> ✅ COMPLETADO 23/05/2026 — Extraídos: ItineraryHeroCarousel, ItineraryDayAccordion, ItineraryHotels, ItineraryRelated. ItineraryContent reducido a ~170 líneas como orquestador.
 
 **Problema:** `ItineraryContent.tsx` es el componente más grande del proyecto con 687 líneas. Mezcla lógica de carousel, acordeón, mapa, hoteles, opcionales y viajes relacionados. Dificulta el mantenimiento.
 
@@ -213,6 +223,7 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 ---
 
 ### M12 — `Hero.tsx` — eliminar `regionContent` hardcodeado y leer de `countries.ts`
+> ✅ COMPLETADO 23/05/2026 — regionContent eliminado; Hero usa getCountriesOrdered() con flagCode para construir la clave de asset dinámicamente
 
 **Problema:** `Hero.tsx` tiene un objeto `regionContent` con los países (Argentina, Chile, Bolivia) y sus flags hardcodeados en el componente. Si se añade un país nuevo a `countries.ts`, no aparece en el hero automáticamente.
 
@@ -242,6 +253,7 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 ---
 
 ### M15 — Añadir JSON-LD de tipo `TouristTrip` en páginas de itinerarios
+> ✅ YA ESTABA IMPLEMENTADO — script JSON-LD TouristTrip presente en blog/[slug]/page.tsx antes de esta sesión
 
 **Solución:** Añadir en `app/[lang]/itinerarios/[slug]/page.tsx` un JSON-LD con el schema `TouristTrip` o `Product` con precio desde y destinos. Mejora los rich results de Google para búsquedas de viajes.
 
@@ -268,3 +280,29 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 **Problema:** El formulario de contacto (`ContactModal`) muestra un mensaje inline de éxito, pero si se usa sin modal (en página directa), no hay redirección de confirmación.
 
 **Nota:** El formulario de presupuesto sí tiene página de éxito en `app/[lang]/itinerarios/personalizar/exito/page.tsx`. El patrón ya existe.
+
+---
+
+### M19 — Homogeneizar la ubicación de componentes: co-locación en `app/` para componentes de página
+
+**Decisión:** Alinearse con la convención de Next.js App Router. El criterio definitivo es:
+- `components/` — componentes **reutilizables** en más de una página (Header, Footer, LangLink, TripCard, NewsletterForm…)
+- `app/[lang]/.../` — componentes **ligados a una ruta concreta** y no reutilizados en otro sitio
+
+**Estado actual — componentes mal ubicados en `components/` que deberían co-locarse:**
+
+| Componente | Usado solo en | Mover a |
+|---|---|---|
+| `components/sections/ViajesHero.tsx` | `viajes/page.tsx` | `app/[lang]/viajes/` |
+| `components/sections/ViajesServicios.tsx` | `viajes/page.tsx` | `app/[lang]/viajes/` |
+| `components/sections/ViajesComoTrabajamos.tsx` | `viajes/page.tsx` | `app/[lang]/viajes/` |
+| `components/sections/HoneymoonFaq.tsx` | `lunas-de-miel/page.tsx` | `app/[lang]/lunas-de-miel/` |
+| `components/sections/ViajesBuscador.tsx` | `viajes/page.tsx` | `app/[lang]/viajes/` |
+| `components/forms/FormularioPersonalizado/` | `itinerarios/personalizar/` | `app/[lang]/itinerarios/personalizar/` |
+
+**Componentes ya co-locados correctamente (no mover):**
+- `app/[lang]/blog/[slug]/PostContent.tsx`
+- `app/[lang]/destinos/[slug]/DestinationBackButton.tsx`
+- `app/[lang]/itinerarios/[slug]/ItineraryContent.tsx` y subcomponentes
+
+**Alcance:** ~8 ficheros a mover + actualizar imports en sus páginas padre. No hay cambios funcionales.

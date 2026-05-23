@@ -1,23 +1,23 @@
 // ── Categories ────────────────────────────────────────────────────────────────
 
 export const POST_CATEGORIES = {
-  ARGENTINA:    'argentina',
-  CHILE:        'chile',
-  BOLIVIA:      'bolivia',
-  INSPIRATION:  'inspiration',
+  ARGENTINA: 'argentina',
+  CHILE: 'chile',
+  BOLIVIA: 'bolivia',
+  INSPIRATION: 'inspiration',
   HONEYMOON: 'honeymoon',
-  TIPS:     'tips',
+  TIPS: 'tips',
 } as const
 
 export type PostCategory = typeof POST_CATEGORIES[keyof typeof POST_CATEGORIES]
 
 export const CATEGORY_CONFIG: Record<PostCategory, { es: { label: string }; en?: { label: string }; color: string }> = {
-  argentina:    { es: { label: 'Argentina' },          color: 'bg-sky-50 text-sky-700' },
-  chile:        { es: { label: 'Chile' },              color: 'bg-red-50 text-red-700' },
-  bolivia:      { es: { label: 'Bolivia' },            color: 'bg-amber-50 text-amber-700' },
-  inspiration:  { es: { label: 'Inspiración' },        color: 'bg-purple-50 text-purple-700' },
-  honeymoon: { es: { label: 'Lunas de Miel' },    color: 'bg-rose-50 text-rose-700' },
-  tips:     { es: { label: 'Consejos de viaje' },  color: 'bg-green-50 text-green-700' },
+  argentina: { es: { label: 'Argentina' }, color: 'bg-sky-50 text-sky-700' },
+  chile: { es: { label: 'Chile' }, color: 'bg-red-50 text-red-700' },
+  bolivia: { es: { label: 'Bolivia' }, color: 'bg-amber-50 text-amber-700' },
+  inspiration: { es: { label: 'Inspiración' }, color: 'bg-purple-50 text-purple-700' },
+  honeymoon: { es: { label: 'Lunas de Miel' }, color: 'bg-rose-50 text-rose-700' },
+  tips: { es: { label: 'Consejos de viaje' }, color: 'bg-green-50 text-green-700' },
 }
 
 // ── Post ──────────────────────────────────────────────────────────────────────
@@ -85,7 +85,7 @@ La última tarde juntos, después de visitar la parte brasileña, disfrutamos de
 
 Puede que en parte la conexión **Vidaia** naciera allí…`,
         imageAlt: 'Cataratas del Iguazú, desde un mirador del Lado Brasileño',
-        metaTitle: 'Nuestro encuentro en Iguazú — Inspiración viajeros | Viajes Vidaia',
+        metaTitle: 'Cataratas de Iguazú: nuestra experiencia | Viajes Vidaia',
         metaDescription: 'Descubre el encuentro en las Cataratas del Iguazú de los fundadores de Viajes Vidaia. Un encuentro inspiracional que no llevó a fundar esta empresa para crear viajes a Argentina para vosotros.',
       }
     },
@@ -96,7 +96,7 @@ Puede que en parte la conexión **Vidaia** naciera allí…`,
     readingTime: 3,
     featured: true,
     active: true,
-    relatedTripSlugs: ['paisajes-naturales-argentina', 'argentina-esencial'],
+    relatedTripSlugs: ['paisajes-naturales-argentina', 'argentina-sur-norte'],
   },
   {
     slug: 'mate-alma-tradicion-argentina',
@@ -179,7 +179,7 @@ El mate es, sin lugar a dudas, un símbolo de identidad en Argentina. Más allá
 
 Con sus múltiples beneficios para la salud y su capacidad para unir a las personas, **el mate sigue siendo una costumbre arraigada que acompaña a los argentinos en su vida cotidiana**, manteniendo viva una tradición que trasciende generaciones.`,
         imageAlt: 'Foto de Jorge Zapata en Unsplash',
-        metaTitle: 'El mate, alma y tradición de Argentina. — Viajes Vidaia',
+        metaTitle: 'El mate, alma y tradición de Argentina | Viajes Vidaia',
         metaDescription: 'Descubre la cultura del mate en Argentina: su historia desde los guaraníes, cómo se prepara, los tipos de yerba y el ritual de compartirlo. Una tradición que define la identidad argentina.',
       }
     },
@@ -190,7 +190,7 @@ Con sus múltiples beneficios para la salud y su capacidad para unir a las perso
     readingTime: 5,
     featured: true,
     active: true,
-    relatedTripSlugs: ['paisajes-naturales-argentina', 'argentina-esencial'],
+    relatedTripSlugs: ['paisajes-naturales-argentina', 'grandes-escenarios-argentina', 'capitales-del-vino'],
   },
   {
     slug: 'desierto-de-atacama-en-chile',
@@ -226,7 +226,7 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
 
 ¿De verdad te vas a quedar sin visitarlo?`,
         imageAlt: 'Laguna Miscanti en el Desierto de Atacama, Chile',
-        metaTitle: 'Viaje al Desierto de Atacama (Chile) — Guía completa | Viajes Vidaia',
+        metaTitle: 'Desierto de Atacama: guia completa de viaje | Viajes Vidaia',
         metaDescription: 'Descubre el Desierto de Atacama: lagunas altiplánicas, geysers del Tatio, Valle de la Luna y sus leyendas. Consejos prácticos y todo lo necesario para organizar tu viaje.',
       }
     },
@@ -237,7 +237,7 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
     readingTime: 4,
     featured: true,
     active: true,
-    relatedTripSlugs: ['chile-bolivia-salares'],
+    relatedTripSlugs: ['chile-completo', 'esencias-chile-isla-pascua'],
   },
   {
     slug: 'carretera-austral-chile',
@@ -281,7 +281,7 @@ Caleta Tortel es única en el mundo por su sistema de pasarelas de madera que co
 
 > La Carretera Austral es mucho más que una carretera; es un testimonio de la historia, la naturaleza y la perseverancia humana. Conectando algunos de los paisajes más remotos y asombrosos de la Patagonia, esta ruta es un viaje que todo amante de la aventura debe realizar al menos una vez en la vida. ¿Te animas a recorrer la Carretera Austral en coche o en bicicleta? Empaca tu mochila, prepárate para la aventura y descubre por qué esta ruta es uno de los tesoros más valiosos de Chile.`,
         imageAlt: 'Catedrales de Marmol en el Lago General Carrera, Chile',
-        metaTitle: 'Viaje a la Carretera Austral de Chile — Guía completa | Viajes Vidaia',
+        metaTitle: 'Carretera Austral: guía completa de viaje | Viajes Vidaia',
         metaDescription: 'Descubre la Carretera Austral en Chile: Caleta Tortel, Catedrales de Marmol, Trekking de Cerro Castillo, Glaciar San Rafael, Ventisquero Colgante en Queulat, Puyuhapi, Coyahique y Chaiten. Consejos prácticos y todo lo necesario para organizar tu viaje.',
       }
     },
@@ -292,28 +292,70 @@ Caleta Tortel es única en el mundo por su sistema de pasarelas de madera que co
     readingTime: 7,
     featured: true,
     active: true,
-    relatedTripSlugs: ['latitudes-australes'],
+    relatedTripSlugs: ['chile-completo', 'esencias-chile-isla-pascua'],
   },
   {
-    slug: 'patagonia-argentina-w-circuit',
+    slug: 'costumbres-argentinas',
     content: {
       es: {
-        title: 'W Circuit en Torres del Paine: todo lo que necesitas saber',
-        excerpt: 'Uno de los trekkings más míticos del planeta. Campamentos, refugios, el Glaciar Grey y esas torres que emergen entre nubes. Paso a paso.',
-        content: ``,
-        imageAlt: 'Torres del Paine, Patagonia',
-        metaTitle: 'Circuito W Torres del Paine: guía paso a paso — Viajes Vidaia',
-        metaDescription: 'Cómo hacer el Circuito W en Torres del Paine: campamentos, refugios, cuánto cuesta, cuándo ir y cómo reservar. La guía más completa en español.',
+        title: '¡Costumbres Argentinas… que no sabías y no te puedes perder!',
+        excerpt: 'Argentina es mucho más que tango y asado. Te contamos las costumbres que nos impactaron: desde los rituales del asado y del mate, Maradona y el fútbol como religión hasta la invención del dulce de leche. ¿Te animás a descubrirla?',
+        content: `Si te digo Argentina, ¿ qué te evoca este país? Tango, asado o Maradona pueden ser algunas de las cosas que nos vengan a la mente, pero créeme, Argentina es mucho más, y como buena enamorada de este país, te voy a contar algunas de las costumbres que más me impactaron.
+
+## Una tarde normal de asado.
+
+Diría que es uno de los planes favoritos de los argentinos. El asado no es sólo la estrella de su gastronomía, es un momento de compartir con los amigos y la familia, es un momento de charla y de disfrute. 
+
+> Por lo general, ¡comer un asado hasta tiene su propio protocolo! Normalmente, se empieza poniendo la carne a la parrilla y comienzan las primeras charlas; en paralelo, se disfruta de una picada de quesos y embutidos, etc. ¡Además, suele ser el cocinero o asador el que va eligiendo el orden de los platos!
+
+## Fútbol como religión
+
+Ir a la cancha, como dicen los argentinos, es una cita indispensable para la mayoría, y más si hablamos de los porteños (la gente de Buenos Aires). Ponerse la camiseta como buen aficionado y llegar al estadio varias horas antes del partido es un plan no sólo de hombres, ¡sino de mujeres, niños y ancianos!
+
+Maradona, Messi o Di Stéfano son algunos de los ídolos del país y el clásico River (millonarios) – Boca (Xeneizes) se convierte en una batalla social y cultural en la capital argentina.
+
+## Hora del mate, ¿lo compartimos?
+
+Del mate os hablamos hace poco, ¡pero es que no podía faltar en esta lista!
+
+El mate es una tradición muy arraigada en este país; es una bebida similar al té que se encuentra en cualquier casa argentina Pero es mucho más que eso, es un momento de compartir, de charla y disfrutar. ¡Hasta los más pequeños lo beben!
+
+Cuando empezó la pandemia, una de las cosas que más me preocupaba era qué pasaría con esta tradición de compartir el mate, pero como mis propios amigos argentinos me decían… ¡Esto es algo que nadie nos puede quitar!
+
+A día de hoy y desde España seguimos siendo fans de este momento…
+
+> Si quieres tener más detalles sobre el mate, te lo contamos en uno de nuestros post anteriores: [El mate, alma y tradición de Argentina](https://viajesvidaia.com/es/blog/mate-alma-tradicion-argentina)
+
+## El tango y su sensualidad
+
+El tango es un baile sensual y un género musical que ha ganado fama, ya no sólo en Argentina, sino a nivel internacional… y esto debido a su atractivo. Si viajas sobre todo a Buenos Aires, Iguazú y la Patagonia, podrás disfrutar de este baile tan tradicional.
+
+Es una expresión artística rica, comprendida y admirada en todo el mundo, convirtiéndose en uno de los bailes típicos que se aprende en todas las escuelas como un baile clásico. ¡Ahora bien, cantar tangos ya son palabras mayores! ¡Esto te lo dejamos para que lo descubras en tu viaje a Argentina!
+
+## Y para acabar, el postre preferido de los golosos… el dulce de leche.
+
+Relleno por excelencia de los alfajores (otro clásico argentino) o usado para hacer flan, en pastelitos o simplemente en formato crema listo para untar.
+
+Sólo me queda decirte que Argentina intentó declarar el dulce de leche como patrimonio cultural argentino oficial en 2003. Ahora ya tienes ganas de probarlo, ¿verdad?
+
+> Además y como broche de oro, ¿sabías que Costumbres Argentinas es una canción de [Los Abuelos de la Nada](https://www.youtube.com/watch?v=DNokYTCVU2w)?
+
+También podéis escuchar la versión de Andrés Calamaro 🙂
+
+Con todo esto que os he contado hoy… ¿no te dan ganas de visitar Argentina?`,
+        imageAlt: 'Murales de Messi y Maradona en un escaparate del barrio de La Boca, Buenos Aires',
+        metaTitle: 'Costumbres argentinas que te enamorarán | Viajes Vidaia',
+        metaDescription: 'Asado, mate, tango y fútbol: descubre las costumbres más auténticas de Argentina de la mano de alguien que la conoce y la ama. ¡Te vas a querer ir ya!',
       }
     },
-    imageKey: 'BLOG.PATAGONIA_W_CIRCUIT',
-    date: '2026-03-28',
-    category: 'chile',
-    tags: ['torres-del-paine', 'trekking', 'patagonia', 'circuito-w'],
-    readingTime: 10,
-    featured: false,
+    imageKey: 'BLOG.COSTUMBRES_ARGENTINAS',
+    date: '2024-12-18',
+    category: 'argentina',
+    tags: ['argentina', 'asado', 'futbol', 'tango', 'mate'],
+    readingTime: 4,
+    featured: true,
     active: true,
-    relatedTripSlugs: ['latitudes-australes'],
+    relatedTripSlugs: ['contrastes-argentinos', 'argentina-sur-norte'],
   },
   {
     slug: 'buenos-aires-primera-vez',

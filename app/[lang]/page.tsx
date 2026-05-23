@@ -17,9 +17,10 @@ interface Props { params: Promise<{ lang: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
+  const { home } = getStaticContent(lang)
   return buildMetadata({
-    title: 'Viajes Vidaia — El viaje de tu vida hecho realidad',
-    description: 'Agencia de viajes personalizados especializada en Argentina, Chile y Bolivia. Diseñamos tu itinerario desde cero.',
+    title: home.metadata.title,
+    description: home.metadata.description,
     path: `/${lang}`,
     lang,
   })

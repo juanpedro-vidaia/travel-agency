@@ -78,6 +78,7 @@ export const ASSETS = {
   'BLOG.HONEYMOON_PATAGONIA':     { url: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80', alt: 'Luna de miel en Patagonia' },
   'BLOG.MATE_ARGENTINA':          { url: 'https://images.unsplash.com/photo-1523642456391-c597480dbdb6?auto=format&fit=crop&w=1200&q=80', alt: 'Mate argentino' },
   'BLOG.PATAGONIA_W_CIRCUIT':     { url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80', alt: 'Circuito W, Torres del Paine' },
+  'BLOG.COSTUMBRES_ARGENTINAS':   { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779498619/pexels-maggychang-30828707_woumuq.jpg', alt: 'Murales de Messi y Maradona en un escaparate del barrio de La Boca, Buenos Aires' },
 
   // ── Country hero images ───────────────────────────────────────────────────────
   'COUNTRIES.ARGENTINA_HERO': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777912429/copy_of_dscf5187_cgefyp_2abb25.jpg', alt: 'El Chaltén, Patagonia argentina' },

@@ -1,47 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Compass, Heart, Leaf, Users } from 'lucide-react'
+import { Compass, Heart, Leaf, Users, type LucideIcon } from 'lucide-react'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 
-const valuePropositionItems = [
-  {
-    icon: Compass,
-    contentKey: 0,
-    es: {
-      title: 'Viajes únicos',
-      description:
-        'Nada de catálogos ni paquetes de agencia. Cada itinerario nace de una conversación contigo y se construye desde cero.',
-    },
-  },
-  {
-    icon: Heart,
-    contentKey: 1,
-    es: {
-      title: 'Totalmente personalizados',
-      description:
-        'Tu ritmo, tus intereses, tu presupuesto. Diseñamos el viaje que encaja con tu forma de viajar, no al revés.',
-    },
-  },
-  {
-    icon: Leaf,
-    contentKey: 2,
-    es: {
-      title: 'Turismo sostenible',
-      description:
-        'Viajamos con respeto por los ecosistemas y las comunidades. Huella mínima, experiencia máxima y conciencia en cada paso.',
-    },
-  },
-  {
-    icon: Users,
-    contentKey: 3,
-    es: {
-      title: 'Apoyo local',
-      description:
-        'Trabajamos con guías, hospedajes y operadores locales de confianza. Tu viaje impulsa directamente a las personas del lugar.',
-    },
-  },
-]
+const ICON_MAP: Record<string, LucideIcon> = { Compass, Heart, Leaf, Users }
 
 export default function ValueProposition() {
   const { content } = useLanguage()
@@ -70,20 +33,23 @@ export default function ValueProposition() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {valuePropositionItems.map(({ icon: Icon, es }) => (
-            <div
-              key={es.title}
-              className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow duration-300 border border-vidaia-light/60 group"
-            >
-              <div className="w-12 h-12 flex items-center justify-center bg-vidaia-light rounded-xl mb-5 group-hover:bg-vidaia-primary transition-colors duration-300">
-                <Icon className="w-6 h-6 text-vidaia-primary group-hover:text-white transition-colors duration-300" strokeWidth={1.8} />
+          {sectionContent.items.map((item) => {
+            const Icon = ICON_MAP[item.iconName] ?? Compass
+            return (
+              <div
+                key={item.title}
+                className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow duration-300 border border-vidaia-light/60 group"
+              >
+                <div className="w-12 h-12 flex items-center justify-center bg-vidaia-light rounded-xl mb-5 group-hover:bg-vidaia-primary transition-colors duration-300">
+                  <Icon className="w-6 h-6 text-vidaia-primary group-hover:text-white transition-colors duration-300" strokeWidth={1.8} />
+                </div>
+                <h3 className="font-heading text-lg font-semibold text-vidaia-dark mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
               </div>
-              <h3 className="font-heading text-lg font-semibold text-vidaia-dark mb-2">
-                {es.title}
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{es.description}</p>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
