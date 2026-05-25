@@ -334,6 +334,32 @@ const trips: Trip[] = [
     bestMonths: [10, 11, 12, 1, 2, 3],
     ranking: 90,
   },
+  {
+    id: 'bolivia-infinita',
+    slug: 'bolivia-infinita',
+    content: {
+      es: {
+        title: 'Bolivia Infinita: Colores que Cuentan Historias',
+        subtitle: 'Santa Cruz · Sucre · Potosí · Salar de Uyuni · Lípez · La Paz · Copacabana',
+      }
+    },
+    country: 'bolivia',
+    days: 13,
+    nights: 12,
+    priceFrom: 0,
+    imageKey: 'TRIPS.BOLIVIA_INFINITA',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+    tags: ['culture', 'nature', 'adventure'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
+    relatedTrips: [],
+    honeymoonFeatured: false,
+    season: 'all-year',
+    bestMonths: [4, 5, 6, 7, 8, 9, 10, 11],
+    ranking: 80,
+  },
 ]
 
 export default trips

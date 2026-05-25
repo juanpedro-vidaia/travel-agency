@@ -2753,6 +2753,261 @@ const itineraries: Itinerary[] = [
       },
     ],
   },
+  {
+    id: 'bolivia-infinita',
+    slug: 'bolivia-infinita',
+    content: {
+      es: {
+        title: 'Bolivia Infinita: Colores que Cuentan Historias',
+        description: 'Bolivia de arriba abajo y sin prisas. Santa Cruz y sus tierras bajas tropicales, las ciudades coloniales de Sucre y Potosí, el altiplano extremo de la Reserva Eduardo Avaroa con sus lagunas de colores, el Salar de Uyuni y sus doce mil kilómetros cuadrados de sal, La Paz con la ceremonia de la Pachamama, y el Lago Titicaca con la Isla del Sol. Trece días que atraviesan Bolivia de este a oeste y de las tierras bajas a los cuatro mil ochocientos metros.',
+        heroTitleMobile: 'Bolivia Infinita: Colores que Cuentan Historias',
+        descriptionMobile: '13 días desde Santa Cruz hasta el Lago Titicaca, pasando por el Salar de Uyuni, las lagunas del Lípez y La Paz.',
+        metaTitle: 'Bolivia Infinita: Salar, Sucre y Lago Titicaca — Viajes Vidaia',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Bolivia completamente a medida: Salar de Uyuni, Sucre, La Paz, Lago Titicaca y mucho más. Cuéntanos tu idea.',
+        heroImages: [
+          { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_SALAR', location: 'Salar de Uyuni, Bolivia' },
+          { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_LAGUNA_COLORADA', location: 'Laguna Colorada, Reserva Eduardo Avaroa' },
+          { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_SUCRE', location: 'Sucre, capital constitucional de Bolivia' },
+          { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_TITICACA', location: 'Lago Titicaca, Isla del Sol' },
+          { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_LA_PAZ', location: 'La Paz, Valle de la Luna' },
+        ],
+      }
+    },
+    featured: true,
+    active: true,
+
+    accommodationStops: [
+      { hotelsByCategory: { '3': 'hotel-cosmopolitano-santa-cruz', '4': 'hotel-eco-chairu-santa-cruz' }, nights: 2, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'hotel-independencia-sucre', '4': 'villa-antigua-sucre' }, nights: 2, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'samay-wasi-uyuni', '4': 'jardines-de-uyuni' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'tayka-del-desierto', '4': 'tayka-del-desierto' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'tayka-de-piedra', '4': 'tayka-de-piedra' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'samay-wasi-uyuni', '4': 'jardines-de-uyuni' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'apart-hotel-ritz-la-paz', '4': 'hotel-europa-la-paz' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'jacha-inti-hostal', '4': 'winay-inti-lodge' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'apart-hotel-ritz-la-paz', '4': 'hotel-europa-la-paz' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'hotel-cosmopolitano-santa-cruz', '4': 'hotel-eco-chairu-santa-cruz' }, nights: 1, defaultCategory: 3, featured: false },
+    ],
+
+    days: [
+      {
+        dayNumber: 1,
+        destinationId: 'santa-cruz',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Llegada a Santa Cruz de la Sierra',
+            description: 'Llegada al aeropuerto internacional Viru Viru de Santa Cruz. Recepción y traslado al hotel. Por la tarde, city tour panorámico por el centro histórico: Plaza 24 de Septiembre, Artecampo y mercado La Recoba. Tarde libre. Alojamiento en Santa Cruz.',
+            highlights: ['Santa Cruz · Plaza 24 de Septiembre'],
+            included: 'Traslado aeropuerto · guía',
+          }
+        },
+        flights: ['MAD → VVI'],
+        activities: [{ activityId: 'city-tour-santa-cruz', status: 'included' }],
+        referenceHotelId: 'hotel-cosmopolitano-santa-cruz',
+      },
+      {
+        dayNumber: 2,
+        destinationId: 'santa-cruz',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Samaipata: Patrimonio de la Humanidad',
+            description: 'Desayuno en el hotel. Jornada completa de excursión a Samaipata y El Fuerte, el mayor petroglifo precolombino del mundo. Por la tarde, paseo por el pueblo antes del regreso a Santa Cruz. Alojamiento en Santa Cruz.',
+            schedule: 'Salida temprano',
+            duration: 'Día completo',
+            highlights: ['El Fuerte · Samaipata · Patrimonio UNESCO 1998', 'Roca tallada · mirador natural sobre el valle'],
+            included: 'Transporte privado · guía hispanohablante · entradas',
+          }
+        },
+        activities: [{ activityId: 'excursion-full-day-samaipata', status: 'included' }],
+        referenceHotelId: 'hotel-cosmopolitano-santa-cruz',
+      },
+      {
+        dayNumber: 3,
+        destinationId: 'sucre',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Santa Cruz → Sucre: La Ciudad Blanca',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto para el vuelo a Sucre. Llegada a la capital constitucional de Bolivia. Paseo panorámico por el centro histórico y la Plaza Principal. Tarde libre. Alojamiento en Sucre.',
+            schedule: '08:35 VVI · 09:20 SRE',
+            highlights: ['Llegada a Sucre · Patrimonio de la Humanidad UNESCO'],
+            included: 'Vuelo SCZ → Sucre · traslados',
+          }
+        },
+        flights: ['VVI → SRE'],
+        activities: [{ activityId: 'city-tour-sucre', status: 'included' }],
+        referenceHotelId: 'hotel-independencia-sucre',
+      },
+      {
+        dayNumber: 4,
+        destinationId: 'sucre',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Sucre: Circuito Cultural',
+            description: 'Desayuno en el hotel. Mañana libre. Por la tarde, circuito cultural: Casa de la Libertad, Fundación ASUR y pausa en el café colonial de la Iglesia San Francisco. Alojamiento en Sucre.',
+            schedule: 'Tarde',
+            duration: '4 horas',
+            highlights: ['Casa de la Libertad · Independencia de Bolivia 1825', "Fundación ASUR · tejidos jalq'a y tarabuco"],
+            included: 'Guía · entradas',
+          }
+        },
+        activities: [{ activityId: 'circuito-cultural-sucre', status: 'included' }],
+        referenceHotelId: 'hotel-independencia-sucre',
+      },
+      {
+        dayNumber: 5,
+        destinationId: 'uyuni',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Sucre → Potosí → Uyuni',
+            description: 'Desayuno en el hotel. Traslado a Potosí: visita del centro histórico y la Real Casa de la Moneda. Almuerzo incluido. Continuación hacia Uyuni. Alojamiento en Uyuni.',
+            highlights: ['Potosí · Real Casa de la Moneda', 'Cerro Rico · 4.090 m'],
+            included: 'Guía · traslados · entradas · almuerzo',
+          }
+        },
+        activities: [{ activityId: 'city-tour-potosi-casa-moneda', status: 'included' }],
+        referenceHotelId: 'samay-wasi-uyuni',
+      },
+      {
+        dayNumber: 6,
+        destinationId: 'ojo-de-perdiz',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Lagunas Joyas de los Andes y Desierto de Siloli',
+            description: 'Desayuno en el hotel. Jornada completa por el altiplano sur: Laguna Turquiri, las Lagunas Joyas de los Andes y el Desierto de Siloli. Picnic incluido en ruta. Cena en el hotel.',
+            schedule: 'Salida desde Uyuni',
+            duration: 'Día completo',
+            highlights: ['Lagunas Joyas de los Andes · 4.000-4.200 m', 'Laguna Turquiri · 4.261 m'],
+            included: 'Guía · transporte 4x4 · picnic · cena',
+          }
+        },
+        activities: [{ activityId: 'lagunas-joyas-andes-siloli', status: 'included' }],
+        referenceHotelId: 'tayka-del-desierto',
+      },
+      {
+        dayNumber: 7,
+        destinationId: 'san-pedro-quemez',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Reserva Eduardo Avaroa: Laguna Verde y Laguna Colorada',
+            description: 'Desayuno en el hotel. Jornada completa por la Reserva Eduardo Avaroa: Árbol de Piedra, géiseres del Sol de Mañana, termas de Polques, Desierto de Dalí, Laguna Verde y Laguna Colorada con sus flamencos. Cena en el hotel.',
+            schedule: 'Salida temprano',
+            duration: 'Día completo',
+            highlights: ['Laguna Colorada · flamencos andinos · volcán Ollagüe', 'Sol de Mañana · 4.850 m · géiseres'],
+            included: 'Guía · transporte 4x4 · entradas REA · cena',
+          }
+        },
+        activities: [{ activityId: 'reserva-eduardo-avaroa-lagunas', status: 'included' }],
+        referenceHotelId: 'tayka-de-piedra',
+      },
+      {
+        dayNumber: 8,
+        destinationId: 'uyuni',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Pastoreo de Llamas, Salar de Uyuni e Isla Incahuasi',
+            description: 'Desayuno en el hotel. Mañana con el llamero Edwin en los corrales del altiplano. Visita de la Cueva de las Galaxias. Entrada al Salar de Uyuni y picnic al aire libre. Tarde en la Isla Incahuasi. Alojamiento en Uyuni.',
+            duration: 'Día completo',
+            highlights: ['Salar de Uyuni · 12.000 km²', 'Isla Incahuasi · cactus de hasta 8 metros'],
+            included: 'Guía · transporte 4x4 · entradas · picnic',
+          }
+        },
+        activities: [{ activityId: 'pastoreo-llamas-cueva-galaxias-incahuasi', status: 'included' }],
+        referenceHotelId: 'samay-wasi-uyuni',
+      },
+      {
+        dayNumber: 9,
+        destinationId: 'la-paz',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Uyuni → La Paz: Ceremonia Andina y City Tour',
+            description: 'Desayuno en el hotel. Vuelo a La Paz. Ceremonia de agradecimiento a la Pachamama con yatiris locales. City tour: teleférico, mercados, Catedral San Francisco y Valle de la Luna. Alojamiento en La Paz.',
+            schedule: '09:15 UYU · 10:15 LPB',
+            duration: 'Día completo',
+            highlights: ['Ceremonia andina · Pachamama · yatiris', 'Teleférico · vistas sobre La Paz · 3.600 m'],
+            included: 'Vuelo Uyuni → La Paz · guía · traslados · entradas',
+          }
+        },
+        flights: ['UYU → LPB'],
+        activities: [{ activityId: 'ceremonia-andina-city-tour-la-paz', status: 'included' }],
+        referenceHotelId: 'apart-hotel-ritz-la-paz',
+      },
+      {
+        dayNumber: 10,
+        destinationId: 'isla-del-sol',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'La Paz → Copacabana → Isla de la Luna → Isla del Sol',
+            description: 'Desayuno en el hotel. Salida hacia el Lago Titicaca. Cruce del Estrecho de Tiquina. Desde Copacabana, navegación hasta la Isla de la Luna y su Templo de las Vírgenes del Sol. Continuación hasta la Isla del Sol. Cena incluida. Alojamiento en la Isla del Sol.',
+            schedule: 'Salida mañana',
+            duration: 'Día completo',
+            highlights: ['Isla de la Luna · Templo de las Vírgenes del Sol', 'Isla del Sol · Lago Titicaca · 3.800 m'],
+            included: 'Guía · traslados · navegación privada · cena',
+          }
+        },
+        activities: [{ activityId: 'navegacion-titicaca-isla-luna-sol', status: 'included' }],
+        referenceHotelId: 'jacha-inti-hostal',
+      },
+      {
+        dayNumber: 11,
+        destinationId: 'la-paz',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Isla del Sol, Pilkokaina y Basílica de Copacabana',
+            description: 'Desayuno en el alojamiento. Visita del sitio arqueológico de Pilkokaina en la Isla del Sol. Almuerzo Apthapi incluido. Regreso a Copacabana y visita de la Basílica. Traslado a La Paz. Alojamiento en La Paz.',
+            duration: 'Día completo',
+            highlights: ['Pilkokaina · palacio inca · Isla del Sol', 'Almuerzo Apthapi · tradición comunitaria andina'],
+            included: 'Guía · navegación · traslados · almuerzo Apthapi',
+          }
+        },
+        activities: [{ activityId: 'isla-del-sol-pilkokaina-copacabana', status: 'included' }],
+        referenceHotelId: 'apart-hotel-ritz-la-paz',
+      },
+      {
+        dayNumber: 12,
+        destinationId: 'santa-cruz',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'La Paz → Santa Cruz: Ecoparque La Rinconada',
+            description: 'Desayuno en el hotel. Vuelo a Santa Cruz. Traslado al hotel. Por la tarde, visita del Ecoparque La Rinconada. Alojamiento en Santa Cruz.',
+            schedule: '11:00 LPB · 12:05 VVI',
+            highlights: ['Ecoparque La Rinconada · Victoria Regia', 'Fauna tropical · tucanes · lagunas'],
+            included: 'Vuelo La Paz → Santa Cruz · guía · entradas · traslados',
+          }
+        },
+        flights: ['LPB → VVI'],
+        activities: [{ activityId: 'ecoparque-rinconada-santa-cruz', status: 'included' }],
+        referenceHotelId: 'hotel-cosmopolitano-santa-cruz',
+      },
+      {
+        dayNumber: 13,
+        destinationId: 'santa-cruz',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Vuelo de Regreso a España',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto para el vuelo de regreso a España.',
+            schedule: '12:20 VVI',
+            highlights: [],
+            included: 'Traslado aeropuerto · vuelo internacional',
+          }
+        },
+        flights: ['VVI → MAD'],
+        activities: [],
+      },
+    ],
+  },
 ]
 
 export default itineraries

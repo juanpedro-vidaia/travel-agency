@@ -1164,6 +1164,174 @@ const activities: Activity[] = [
     icon: 'Binoculars',
     active: true,
   },
+  {
+    id: 'city-tour-santa-cruz',
+    destinationId: 'santa-cruz',
+    content: {
+      es: {
+        name: 'City Tour Panorámico · Santa Cruz de la Sierra',
+        description: 'Recorrido por Santa Cruz, capital económica de Bolivia. Plaza 24 de Septiembre con la Catedral y el atrio como punto de encuentro cruceño, el centro artesanal Artecampo con piezas de las etnias amazónicas y el mercado La Recoba con productos de las comunidades nativas. La ciudad, organizada en anillos concéntricos desde el casco histórico, combina arquitectura colonial con el dinamismo de una ciudad en expansión permanente. Incluye traslados y guía hispanohablante.',
+      }
+    },
+    duration: '4 horas',
+    imageKey: 'ACTIVITIES.CITY_TOUR_SANTA_CRUZ',
+    icon: 'Building2',
+    active: true,
+  },
+  {
+    id: 'excursion-full-day-samaipata',
+    destinationId: 'santa-cruz',
+    content: {
+      es: {
+        name: 'Excursión Full Day a Samaipata',
+        description: 'Jornada completa desde Santa Cruz hasta Samaipata, en las últimas estribaciones de la Cordillera Oriental. Visita de El Fuerte, el mayor petroglifo precolombino del mundo, inscrito en la lista del Patrimonio de la Humanidad por la UNESCO desde 1998: una roca tallada que funciona como mirador natural con vistas sobre el valle. Los orígenes del lugar, anteriores a los incas, siguen siendo inciertos. Por la tarde, paseo por el pueblo. Incluye transporte privado, guía hispanohablante y entradas.',
+      }
+    },
+    duration: 'Día completo',
+    imageKey: 'ACTIVITIES.EXCURSION_SAMAIPATA',
+    icon: 'Landmark',
+    active: true,
+  },
+  {
+    id: 'city-tour-sucre',
+    destinationId: 'sucre',
+    content: {
+      es: {
+        name: 'City Tour Sucre Colonial',
+        description: 'Paseo panorámico por Sucre, la capital constitucional de Bolivia y ciudad Patrimonio de la Humanidad. La Plaza Principal con la Catedral, la Alcaldía y la Prefectura, el mercado Central y el Mirador de la Recoleta —fundacional de la ciudad— con vistas sobre los tejados blancos y las cúpulas de las iglesias coloniales. Incluye guía hispanohablante.',
+      }
+    },
+    duration: '3 horas',
+    imageKey: 'ACTIVITIES.CITY_TOUR_SUCRE',
+    icon: 'Building2',
+    active: true,
+  },
+  {
+    id: 'circuito-cultural-sucre',
+    destinationId: 'sucre',
+    content: {
+      es: {
+        name: 'Circuito Cultural de Sucre',
+        description: "Tarde de inmersión cultural en el centro histórico de Sucre. La Casa de la Libertad, donde se firmó la independencia de Bolivia en 1825. El Museo de Arte Textil Indígena de la Fundación ASUR, con su colección de tejidos jalq'a y tarabuco de gran valor etnográfico. El Parque Bolívar. Cierre con una pausa en el café colonial de la Iglesia San Francisco, en terraza con vistas sobre la ciudad. Incluye guía y entradas.",
+      }
+    },
+    duration: '4 horas',
+    imageKey: 'ACTIVITIES.CIRCUITO_CULTURAL_SUCRE',
+    icon: 'Landmark',
+    active: true,
+  },
+  {
+    id: 'city-tour-potosi-casa-moneda',
+    destinationId: 'potosi',
+    content: {
+      es: {
+        name: 'City Tour Potosí y Casa de la Moneda',
+        description: 'Visita del centro histórico de Potosí a 4.090 metros de altitud. Plaza principal con pórticos coloniales y las fachadas barrocas de San Francisco y San Lorenzo. La Real Casa de la Moneda, donde se acuñó la mayor parte de la plata del Virreinato del Perú: el museo más completo de la ciudad sobre el origen colonial de Potosí y la explotación del Cerro Rico. Incluye guía y entradas.',
+      }
+    },
+    duration: '3-4 horas',
+    imageKey: 'ACTIVITIES.CITY_TOUR_POTOSI',
+    icon: 'Landmark',
+    active: true,
+  },
+  {
+    id: 'lagunas-joyas-andes-siloli',
+    destinationId: 'uyuni',
+    content: {
+      es: {
+        name: 'Lagunas Joyas de los Andes y Desierto de Siloli',
+        description: 'Jornada completa en 4x4 desde Uyuni hacia el altiplano sur. Cementerio de trenes. Laguna Turquiri a 4.261 metros con patos endémicos. Las Joyas Altoandinas: lagunas Cañapa, Hedionda, Chiarkota, Honda y Ramadita entre 4.000 y 4.200 metros, cada una con su propio color. El cañón del Paseo del León con formaciones de Yareta —planta endémica del altiplano— y llegada al Desierto de Siloli. Picnic incluido en ruta.',
+      }
+    },
+    duration: 'Día completo',
+    imageKey: 'ACTIVITIES.LAGUNAS_JOYAS_ANDES',
+    icon: 'Waves',
+    active: true,
+  },
+  {
+    id: 'reserva-eduardo-avaroa-lagunas',
+    destinationId: 'san-pedro-quemez',
+    content: {
+      es: {
+        name: 'Reserva Eduardo Avaroa: Lagunas de Colores y Volcán Ollagüe',
+        description: 'Jornada completa por la Reserva Nacional Eduardo Avaroa. El Árbol de Piedra en el Desierto de Siloli. Sol de Mañana a 4.850 metros con géiseres y fumarolas activas. Termas de Polques. El Desierto de Dalí. Laguna Verde al pie del volcán Licancabur. Laguna Colorada con sus 30.000 flamencos andinos y el volcán Ollagüe en el horizonte. Cena en el hotel incluida. Incluye guía, transporte 4x4 y entradas REA.',
+      }
+    },
+    duration: 'Día completo',
+    imageKey: 'ACTIVITIES.RESERVA_EDUARDO_AVAROA',
+    icon: 'Binoculars',
+    active: true,
+  },
+  {
+    id: 'pastoreo-llamas-cueva-galaxias-incahuasi',
+    destinationId: 'uyuni',
+    content: {
+      es: {
+        name: 'Pastoreo de Llamas, Cueva de las Galaxias e Isla Incahuasi',
+        description: 'Mañana con Edwin, el llamero del altiplano: corrales del hotel, historia de los camélidos en la cultura andina y recorrido por los puntos de agua. Visita de la Cueva de las Galaxias a 3.670 metros, formaciones de caliza volcánica con millones de años. Entrada al Salar de Uyuni: picnic al aire libre en medio de la sal y visita de la Isla Incahuasi con sus cactus gigantes de hasta ocho metros. Incluye guía, transporte 4x4 y picnic.',
+      }
+    },
+    duration: 'Día completo',
+    imageKey: 'ACTIVITIES.PASTOREO_LLAMAS_INCAHUASI',
+    icon: 'TreePine',
+    active: true,
+  },
+  {
+    id: 'ceremonia-andina-city-tour-la-paz',
+    destinationId: 'la-paz',
+    content: {
+      es: {
+        name: 'Ceremonia Andina, Teleférico y City Tour La Paz',
+        description: 'Jornada completa en La Paz desde la llegada. Ceremonia de agradecimiento a la Pachamama guiada por yatiris locales en el límite entre La Paz y El Alto. City tour en teleférico por la cuenca paceña: Plaza Murillo, Mercado de las Brujas, artesanía local, Catedral San Francisco. Tarde en el Valle de la Luna, formaciones sedimentarias erosionadas en el sur de la ciudad. Incluye guía y entradas.',
+      }
+    },
+    duration: 'Día completo',
+    imageKey: 'ACTIVITIES.CEREMONIA_ANDINA_LA_PAZ',
+    icon: 'Landmark',
+    active: true,
+  },
+  {
+    id: 'navegacion-titicaca-isla-luna-sol',
+    destinationId: 'copacabana',
+    content: {
+      es: {
+        name: 'Navegación Lago Titicaca: Isla de la Luna e Isla del Sol',
+        description: 'Jornada completa por el Lago Titicaca desde La Paz. Cruce del Estrecho de Tiquina en embarcación local. Llegada a Copacabana. Navegación en lancha privada hasta la Isla de la Luna y su Templo de las Vírgenes del Sol. Continuación hasta la Isla del Sol, la mayor del lago, a 3.800 metros, sin coches ni carreteras. Cena incluida. Incluye guía hispanohablante, traslados y navegación privada.',
+      }
+    },
+    duration: 'Día completo',
+    imageKey: 'ACTIVITIES.NAVEGACION_TITICACA',
+    icon: 'Waves',
+    active: true,
+  },
+  {
+    id: 'isla-del-sol-pilkokaina-copacabana',
+    destinationId: 'isla-del-sol',
+    content: {
+      es: {
+        name: 'Isla del Sol, Pilkokaina y Basílica de Copacabana',
+        description: 'Mañana arqueológica en la Isla del Sol: visita del sitio de Pilkokaina, antiguo palacio inca con vistas al lago. Almuerzo Apthapi, la comida comunitaria andina servida en el suelo con productos locales. Regreso a Copacabana y visita de la Basílica del siglo XVI, sede de la Virgen de Copacabana, patrona de Bolivia. Traslado de regreso a La Paz. Incluye guía, navegación y almuerzo Apthapi.',
+      }
+    },
+    duration: 'Día completo',
+    imageKey: 'ACTIVITIES.ISLA_SOL_COPACABANA',
+    icon: 'Landmark',
+    active: true,
+  },
+  {
+    id: 'ecoparque-rinconada-santa-cruz',
+    destinationId: 'santa-cruz',
+    content: {
+      es: {
+        name: 'Ecoparque La Rinconada',
+        description: 'Parque tropical de siete hectáreas en Santa Cruz con senderos ecológicos, lagunas y acuarios en hábitat natural. Recorrido hasta la laguna de la Victoria Boliviana, donde crece la planta acuática Victoria Regia, la mayor del mundo. Observación de tucanes, peces y cascadas en un jardín con múltiples especies registradas. Incluye guía y entradas.',
+      }
+    },
+    duration: '2-3 horas',
+    imageKey: 'ACTIVITIES.ECOPARQUE_RINCONADA',
+    icon: 'TreePine',
+    active: true,
+  },
 ]
 
 export default activities

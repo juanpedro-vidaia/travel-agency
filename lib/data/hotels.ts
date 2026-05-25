@@ -1064,6 +1064,174 @@ const hotels: Hotel[] = [
     imageKey: 'HOTELS.HARE_NUA_RAPA_NUI',
     active: true,
   },
+  {
+    id: 'hotel-cosmopolitano-santa-cruz',
+    destinationId: 'santa-cruz',
+    content: {
+      es: {
+        name: 'Hotel Cosmopolitano',
+        categoryLabel: 'Superior',
+        description: 'Hotel céntrico en Santa Cruz de la Sierra, a pasos de la Plaza 24 de Septiembre. Habitaciones con aire acondicionado, piscina y restaurante. Punto de partida natural para los circuitos por Bolivia oriental.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.COSMOPOLITANO_SANTA_CRUZ',
+    active: true,
+  },
+  {
+    id: 'hotel-independencia-sucre',
+    destinationId: 'sucre',
+    content: {
+      es: {
+        name: 'Hotel Independencia',
+        categoryLabel: 'Superior',
+        description: 'Hotel en el centro histórico de Sucre, la ciudad blanca. Habitaciones confortables, desayuno incluido y trato cálido. A pocos minutos a pie de la Plaza Principal y los principales atractivos coloniales de la capital constitucional de Bolivia.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.INDEPENDENCIA_SUCRE',
+    active: true,
+  },
+  {
+    id: 'samay-wasi-uyuni',
+    destinationId: 'uyuni',
+    content: {
+      es: {
+        name: 'Samay Wasi',
+        categoryLabel: 'Superior',
+        description: 'Hotel de referencia en Uyuni para los circuitos por el Salar. Habitaciones sencillas y funcionales, desayuno incluido y servicio atento. Ubicación céntrica para gestionar traslados y excursiones al Salar y la Reserva Eduardo Avaroa.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.SAMAY_WASI_UYUNI',
+    active: true,
+  },
+  {
+    id: 'tayka-del-desierto',
+    destinationId: 'ojo-de-perdiz',
+    content: {
+      es: {
+        name: 'Tayka del Desierto',
+        categoryLabel: 'Boutique',
+        description: 'Hotel de la cadena Tayka construido con materiales del altiplano en pleno Lípez. Habitaciones cálidas a más de 4.500 metros, cenas incluidas para los grupos en circuito. La única opción de alojamiento en el camino entre las lagunas de colores y el Salar de Uyuni.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.TAYKA_DEL_DESIERTO',
+    active: true,
+  },
+  {
+    id: 'tayka-de-piedra',
+    destinationId: 'san-pedro-quemez',
+    content: {
+      es: {
+        name: 'Tayka de Piedra',
+        categoryLabel: 'Boutique',
+        description: 'Hotel de la cadena Tayka en San Pedro de Quemez, construido en piedra volcánica del altiplano. Cenas incluidas para los grupos en circuito. Base de partida hacia el Salar de Uyuni y la Isla Incahuasi al día siguiente.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.TAYKA_DE_PIEDRA',
+    active: true,
+  },
+  {
+    id: 'apart-hotel-ritz-la-paz',
+    destinationId: 'la-paz',
+    content: {
+      es: {
+        name: 'Apart Hotel Ritz',
+        categoryLabel: 'Superior',
+        description: 'Apart-hotel en La Paz con habitaciones amplias y equipadas. Buena ubicación en la zona de Miraflores, con acceso cómodo al centro histórico y los puntos de interés de la ciudad. Desayuno incluido.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.APART_HOTEL_RITZ_LA_PAZ',
+    active: true,
+  },
+  {
+    id: 'jacha-inti-hostal',
+    destinationId: 'isla-del-sol',
+    content: {
+      es: {
+        name: 'Jacha Inti Hostal',
+        categoryLabel: 'Hostal',
+        description: 'Alojamiento familiar en la Isla del Sol, accesible a pie desde el embarcadero. Habitaciones sencillas con vistas al Lago Titicaca. Cena incluida para los grupos en circuito. Sin electricidad permanente ni agua caliente en todas las habitaciones — así es la isla.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.JACHA_INTI_HOSTAL',
+    active: true,
+  },
+  {
+    id: 'hotel-eco-chairu-santa-cruz',
+    destinationId: 'santa-cruz',
+    content: {
+      es: {
+        name: 'Hotel Eco Chairu',
+        categoryLabel: 'Superior',
+        description: 'Hotel de cuatro estrellas a orillas del río Piraí, en zona residencial de Santa Cruz. Habitaciones espaciosas, piscina exterior, restaurante y jardines tropicales. Alternativa superior para quienes prefieren un entorno tranquilo fuera del centro.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.ECO_CHAIRU_SANTA_CRUZ',
+    active: true,
+  },
+  {
+    id: 'villa-antigua-sucre',
+    destinationId: 'sucre',
+    content: {
+      es: {
+        name: 'Villa Antigua',
+        categoryLabel: 'Boutique',
+        description: 'Hotel boutique en una casona colonial restaurada en el corazón de Sucre. Patio interior con vegetación, habitaciones con carácter histórico y desayuno en terraza. A minutos de la Plaza Principal.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.VILLA_ANTIGUA_SUCRE',
+    active: true,
+  },
+  {
+    id: 'jardines-de-uyuni',
+    destinationId: 'uyuni',
+    content: {
+      es: {
+        name: 'Jardines de Uyuni',
+        categoryLabel: 'Superior',
+        description: 'Hotel de cuatro estrellas en Uyuni con habitaciones cómodas, jardín interior y buena relación calidad-precio para la categoría superior. Desayuno incluido y servicio atento para los viajeros del circuito del Salar.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.JARDINES_DE_UYUNI',
+    active: true,
+  },
+  {
+    id: 'hotel-europa-la-paz',
+    destinationId: 'la-paz',
+    content: {
+      es: {
+        name: 'Hotel Europa',
+        categoryLabel: 'Superior',
+        description: 'Hotel clásico en el centro de La Paz con más de cien años de historia. Habitaciones amplias, restaurante con cocina boliviana e internacional, y ubicación ideal para explorar la ciudad a pie. Referencia de hospitalidad en la capital boliviana.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.EUROPA_LA_PAZ',
+    active: true,
+  },
+  {
+    id: 'winay-inti-lodge',
+    destinationId: 'isla-del-sol',
+    content: {
+      es: {
+        name: 'Wiñay Inti Lodge',
+        categoryLabel: 'Superior',
+        description: 'Lodge superior en la Isla del Sol con vistas panorámicas al Lago Titicaca. Habitaciones con baño privado, terraza y cenas incluidas para los grupos en circuito. La mejor opción de alojamiento disponible en la isla.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.WINAY_INTI_LODGE',
+    active: true,
+  },
 ]
 
 export default hotels
