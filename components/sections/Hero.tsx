@@ -7,12 +7,15 @@ import { ArrowRight } from 'lucide-react'
 import ContactModalTrigger from '@/components/forms/ContactModalTrigger'
 import { getAsset } from '@/lib/data/assets'
 import { useLanguage } from '@/lib/hooks/useLanguage'
+import { useIsMobile } from '@/lib/hooks/useIsMobile'
 import { getCountriesOrdered } from '@/lib/services/countriesService'
 
 export default function Hero() {
   const { content, ui } = useLanguage()
+  const isMobile = useIsMobile()
   const heroContent = content.home.hero
   const heroBgAsset = getAsset('HOME.HERO_BG')
+  const heroBgUrl = isMobile ? (heroBgAsset.url_mobile ?? heroBgAsset.url) : heroBgAsset.url
   const regions = getCountriesOrdered().map(c => ({
     flagKey: `FLAGS.${c.flagCode.toUpperCase()}`,
     countryName: c.content.es.name,
@@ -23,7 +26,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src={heroBgAsset.url}
+          src={heroBgUrl}
           alt={heroBgAsset.alt}
           fill
           className="object-cover"

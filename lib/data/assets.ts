@@ -1,6 +1,7 @@
 export interface Asset {
   url: string
   alt: string
+  url_mobile?: string
 }
 
 export const ASSETS = {

@@ -26,6 +26,7 @@
 ---
 
 ### M02 — `og-default.jpg` no existe en `public/`
+> ✅ CREADO OG-DEFAULT con branding de Vidaia para páginas sin imagen OG explicita. 
 
 **Problema:** `lib/helpers/seo.ts` (línea 4) referencia `https://www.viajesvidaia.com/images/og-default.jpg` como fallback para Open Graph. El fichero no existe en `public/images/`. Todas las páginas sin imagen OG explícita (aviso legal, privacidad, cookies, blog) muestran imagen rota al compartirlas en redes sociales.
 
@@ -306,3 +307,26 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 - `app/[lang]/itinerarios/[slug]/ItineraryContent.tsx` y subcomponentes
 
 **Alcance:** ~8 ficheros a mover + actualizar imports en sus páginas padre. No hay cambios funcionales.
+
+---
+
+### M20 — `url_mobile` en heroes de Server Components (lunas-de-miel, destinos)
+> ✅ PARCIALMENTE COMPLETADO 25/05/2026 — url_mobile implementado en Hero.tsx, ViajesHero.tsx, ItineraryHeroCarousel.tsx (todos Client Components).
+
+**Pendiente:** Los siguientes heroes son Server Components y no pueden usar `useIsMobile()`:
+
+| Componente | Ruta |
+|---|---|
+| Hero de lunas de miel | `app/[lang]/lunas-de-miel/page.tsx` (renderiza imagen inline o via subcomponente server) |
+| Hero de destinos | `app/[lang]/destinos/[slug]/page.tsx` |
+
+**Qué habría que hacer para incluirlos:**
+1. Extraer la sección de imagen del hero a un Client Component propio (ej. `LunasDeMielHeroImage.tsx`) que reciba `asset: Asset` como prop.
+2. En ese Client Component, usar `useIsMobile()` y computar la URL igual que en los heroes ya migrados: `isMobile ? (asset.url_mobile ?? asset.url) : asset.url`.
+3. El Server Component padre sigue haciendo el fetch de datos y pasa el asset como prop.
+4. Añadir `url_mobile` a los assets correspondientes en `lib/data/assets.ts`.
+
+**Archivos afectados cuando se implemente:**
+- `app/[lang]/lunas-de-miel/page.tsx`
+- `app/[lang]/destinos/[slug]/page.tsx`
+- `lib/data/assets.ts` (añadir `url_mobile` a los assets de esos heroes)

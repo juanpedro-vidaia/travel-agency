@@ -10,6 +10,7 @@ import { TAG_CONFIG } from '@/lib/data/trips'
 import { getCountryBySlug } from '@/lib/services/countriesService'
 import { getAsset } from '@/lib/data/assets'
 import { useLanguage } from '@/lib/hooks/useLanguage'
+import { useIsMobile } from '@/lib/hooks/useIsMobile'
 
 const PILL_CLASS =
   'flex items-center gap-1.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-sm font-medium text-white'
@@ -22,14 +23,16 @@ export default function ItineraryHeroCarousel({ slug }: { slug: string }) {
 
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const isMobile = useIsMobile()
 
   const slides = useMemo(
     () =>
       (itinerary?.content.es.heroImages ?? []).map((h) => {
         const asset = getAsset(h.imageKey)
-        return { src: asset.url, alt: asset.alt || h.location, location: h.location }
+        const src = isMobile ? (asset.url_mobile ?? asset.url) : asset.url
+        return { src, alt: asset.alt || h.location, location: h.location }
       }),
-    [itinerary]
+    [itinerary, isMobile]
   )
 
   const nextSlide = useCallback(() => {

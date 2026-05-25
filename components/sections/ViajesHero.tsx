@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { ChevronLeft, ChevronRight, MapPin, ArrowRight } from 'lucide-react'
 import LangLink from '@/components/ui/LangLink'
 import { getAsset } from '@/lib/data/assets'
+import { useIsMobile } from '@/lib/hooks/useIsMobile'
 
 interface Slide {
   imageKey: string
@@ -30,10 +31,12 @@ export default function ViajesHero({
 }: ViajesHeroProps) {
   const [current,  setCurrent]  = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const isMobile = useIsMobile()
 
   const resolvedSlides = slides.map(s => {
     const asset = getAsset(s.imageKey)
-    return { src: asset.url, alt: asset.alt || s.location, location: s.location }
+    const src = isMobile ? (asset.url_mobile ?? asset.url) : asset.url
+    return { src, alt: asset.alt || s.location, location: s.location }
   })
 
   const next = useCallback(() => setCurrent(p => (p + 1) % resolvedSlides.length), [resolvedSlides.length])
