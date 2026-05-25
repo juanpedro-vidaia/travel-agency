@@ -70,15 +70,13 @@ export const ASSETS = {
   'ACTIVITIES.VUELTA_LAGO_LLANQUIHUE':             { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800', alt: 'Lago Llanquihue · volcán Osorno · Puerto Varas' },
 
   // ── Blog posts ────────────────────────────────────────────────────────────────
-  'BLOG.ATACAMA_CHILE':           { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg', alt: 'Desierto de Atacama, Chile' },
-  'BLOG.BEST_TIME_ARGENTINA':     { url: 'https://images.unsplash.com/photo-1591177335318-eb7de5c24f86?auto=format&fit=crop&w=1200&q=80', alt: 'Mejor época para viajar a Argentina' },
-  'BLOG.BUENOS_AIRES_FIRST_TIME': { url: 'https://images.unsplash.com/photo-1612294037637-ec328d0e075e?auto=format&fit=crop&w=1200&q=80', alt: 'Buenos Aires' },
-  'BLOG.CARRETERA_AUSTRAL':       { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777938578/DSCF5578_2_ofnz1j.jpg', alt: 'Catedrales de Mármol en el Lago General Carrera, Chile' },
-  'BLOG.ENCUENTRO_IGUAZU':        { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777991216/IMG_1651_1_apzpg6.jpg', alt: 'Vista de las Cataratas del Iguazú desde un mirador del Lago Brasileño.' },
-  'BLOG.HONEYMOON_PATAGONIA':     { url: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80', alt: 'Luna de miel en Patagonia' },
-  'BLOG.MATE_ARGENTINA':          { url: 'https://images.unsplash.com/photo-1523642456391-c597480dbdb6?auto=format&fit=crop&w=1200&q=80', alt: 'Mate argentino' },
-  'BLOG.PATAGONIA_W_CIRCUIT':     { url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80', alt: 'Circuito W, Torres del Paine' },
-  'BLOG.COSTUMBRES_ARGENTINAS':   { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779498619/pexels-maggychang-30828707_woumuq.jpg', alt: 'Murales de Messi y Maradona en un escaparate del barrio de La Boca, Buenos Aires' },
+  'BLOG.ATACAMA_CHILE':         { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg', alt: 'Desierto de Atacama, Chile' },
+  'BLOG.BEST_TIME_ARGENTINA':   { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800', alt: '' },
+  'BLOG.CARRETERA_AUSTRAL':     { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777938578/DSCF5578_2_ofnz1j.jpg', alt: 'Catedrales de Mármol en el Lago General Carrera, Chile' },
+  'BLOG.ENCUENTRO_IGUAZU':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777991216/IMG_1651_1_apzpg6.jpg', alt: 'Vista de las Cataratas del Iguazú desde un mirador del Lago Brasileño.' },
+  'BLOG.MATE_ARGENTINA':        { url: 'https://images.unsplash.com/photo-1523642456391-c597480dbdb6?auto=format&fit=crop&w=1200&q=80', alt: 'Mate argentino' },
+  'BLOG.COSTUMBRES_ARGENTINAS': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779498619/pexels-maggychang-30828707_woumuq.jpg', alt: 'Murales de Messi y Maradona en un escaparate del barrio de La Boca, Buenos Aires' },
+  'BLOG.REQUISITOS_CHILE':      { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800', alt: '' },
 
   // ── Country hero images ───────────────────────────────────────────────────────
   'COUNTRIES.ARGENTINA_HERO': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777912429/copy_of_dscf5187_cgefyp_2abb25.jpg', alt: 'El Chaltén, Patagonia argentina' },
@@ -89,9 +87,8 @@ export const ASSETS = {
 
   // ── Hero backgrounds ──────────────────────────────────────────────────────────
   'CTA_SECTION_BG':    { url: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80', alt: 'Diseña tu aventura' },
-  'HOME.HERO_BG':      { url: 'https://images.unsplash.com/photo-1598162480222-b2c3d92548d5?q=80&w=1920&auto=format&fit=crop', alt: 'Paisajes de Sudamérica' },
+  'HOME.HERO_BG':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779534667/el-chalten-fizt-roy-argentina-jupe20190417_bd8p1u.jpg', alt: 'Vista del macizo del Fitz Roy al amanecer desde la Laguna Capri' },
   'HONEYMOON_HERO_BG': { url: 'https://images.unsplash.com/photo-1664271987414-15b38d834357?q=80&w=1920&auto=format&fit=crop', alt: 'Luna de miel en Sudamérica' },
-  'QUOTE_HERO_BG':     { url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=85', alt: 'Diseña tu viaje' },
 
   // ── Destination section card images ───────────────────────────────────────────
   'DESTINATIONS_CARD_ARGENTINA': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777912429/copy_of_dscf5187_cgefyp_2abb25.jpg', alt: 'Paisajes de Argentina' },
@@ -225,9 +222,9 @@ export const ASSETS = {
   'INSTAGRAM_PHOTOS.USHUAIA_BEAGLE':         { url: 'https://images.unsplash.com/photo-1531761399323-e5f7e7f98816?w=600&q=80', alt: 'Canal Beagle, Ushuaia' },
 
   // ── Itinerary hero images ─────────────────────────────────────────────────────
-  'ITINERARIES.CAPITALES_VINO_BUENOS_AIRES':    { url: 'https://images.unsplash.com/photo-1706170421190-48b12aa10f5e?q=80&w=1920', alt: 'Buenos Aires, Argentina' },
+  'ITINERARIES.CAPITALES_VINO_BUENOS_AIRES':    { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779573648/buenos-aires-desde-palacio-barolo-jupe-22092019_ij8ykg.jpg', alt: 'Atardecer sobre Buenos Aires desde el Palacio Barolo, CABA, Argentina' },
   'ITINERARIES.CAPITALES_VINO_COLCHAGUA':       { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779472134/Vi%C3%B1a-Santa-Cruz-1_1_e1ekqu.jpg', alt: 'Paisaje de viñedos en Viña Santa Cruz, Valle de Colchagua, Chile' },
-  'ITINERARIES.CAPITALES_VINO_MENDOZA':         { url: 'https://images.unsplash.com/photo-1609096458733-95b38583ac4e?q=80&w=1920', alt: 'Valle de Uco, Mendoza, Argentina' },
+  'ITINERARIES.CAPITALES_VINO_MENDOZA':         { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779572393/valle-uco-mendoza-jupe-20082019_anfmtc.jpg', alt: 'Viñedos con los Andes nevados al fondo en el Valle de Uco, Mendoza, Argentina' },
   'ITINERARIES.CAPITALES_VINO_MONTEVIDEO':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779228860/guillermo-vuljevas-D_GJeAfV1xA-unsplash_rqmrte.jpg', alt: 'Palacio Salvo, Montevideo, Uruguay' },
   'ITINERARIES.CAPITALES_VINO_SANTIAGO':        { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779229663/ParqueBicentenario_jkgdvo.jpg', alt: 'Parque Bicentenario, Santiago de Chile' },
   'ITINERARIES.CHILE_COMPLETO_ATACAMA':         { url: 'https://images.unsplash.com/photo-1547530386-e0e1f7f6e3a0?q=80&w=1920', alt: 'Valle de la Luna · desierto de Atacama' },
@@ -275,9 +272,9 @@ export const ASSETS = {
   'LOGO.DEFAULT': { url: '/images/logo/viajes-vidaia-logo.png', alt: 'Viajes Vidaia' },
 
   // ── Team ──────────────────────────────────────────────────────────────────────
-  'TEAM.JUPE':            { url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80', alt: 'Jupe - Viajes Vidaia' },
-  'TEAM.LANDSCAPE_PHOTO': { url: 'https://images.unsplash.com/photo-1461301214746-1e109215d6d3?auto=format&fit=crop&w=1600&q=80', alt: 'Viajes Vidaia en ruta' },
-  'TEAM.LAU':             { url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80', alt: 'Lau - Viajes Vidaia' },
+  'TEAM.JUPE':            { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/c_crop,g_north_west,h_652,w_652,x_548,y_142/foto-jupe-borobudur-indonesia_hxbmvh.jpg', alt: 'Jupe en Borobudur, Java, Indonesia' },
+  'TEAM.LANDSCAPE_PHOTO': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/c_crop,g_north_west,h_633,w_1991,x_257,y_577/IMG_1651_1_apzpg6.jpg', alt: 'Mirador de las Cataratas del Iguzú, desde el lado brasileño. Laura y Jupe de Vidaia contemplan el lado argentino de las cataratas.' },
+  'TEAM.LAU':             { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/ar_1:1,c_auto/IMG_1047_cupyq4.jpg', alt: 'Lau en Salinas Grandes, Salta y Jujuy, Argentina' },
 
   // ── Testimonials ──────────────────────────────────────────────────────────────
   'TESTIMONIALS.ANA_RODRIGUEZ':   { url: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=200&q=80', alt: 'Ana Rodríguez' },
@@ -285,7 +282,6 @@ export const ASSETS = {
   'TESTIMONIALS.MARIA_GARCIA':    { url: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80', alt: 'María García' },
 
   // ── Trips ─────────────────────────────────────────────────────────────────────
-  'TRIPS.ARGENTINA_ESENCIAL':             { url: 'https://images.unsplash.com/photo-1582727867856-46e3951fd3ff?q=80&w=800', alt: 'Argentina esencial' },
   'TRIPS.ARGENTINA_NATURAL_PAISAJES':     { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777912429/copy_of_dscf5187_cgefyp_2abb25.jpg', alt: 'Paisajes naturales de Argentina' },
   'TRIPS.ARGENTINA_SUR_NORTE':            { url: 'https://images.unsplash.com/photo-1570804142540-c58f0e67cf9a?w=1200&h=600&fit=crop', alt: 'Cataratas del Iguazú, Argentina' },
   'TRIPS.CAPITALES_DEL_VINO':             { url: 'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?q=80&w=800', alt: 'Capitales del Vino · viñedos Mendoza' },
