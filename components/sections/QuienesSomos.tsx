@@ -87,13 +87,6 @@ export default function QuienesSomos() {
               <p className="font-heading text-2xl sm:text-3xl font-bold text-white mb-4 max-w-sm leading-snug">
                 {sectionContent.landscapePhoto.quote}
               </p>
-              <Link
-                href="/#quienes-somos"
-                className="inline-flex items-center gap-2 text-vidaia-earth hover:text-vidaia-cream font-semibold text-sm transition-colors"
-              >
-                {ui.buttons.readMore}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
           </div>
         </div>

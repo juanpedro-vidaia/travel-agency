@@ -585,7 +585,7 @@ const itineraries: Itinerary[] = [
           { imageKey: 'ITINERARIES.GRANDES_ESCENARIOS_FITZ_ROY', location: 'Fitz Roy · El Chaltén' },
           { imageKey: 'ITINERARIES.GRANDES_ESCENARIOS_USHUAIA', location: 'Canal Beagle · Ushuaia' },
           { imageKey: 'ITINERARIES.GRANDES_ESCENARIOS_MORENO', location: 'Glaciar Perito Moreno · El Calafate' },
-          { imageKey: 'ITINERARIES.GRANDES_ESCENARIOS_BARILOCHE', location: 'Lago Nahuel Huapi · Bariloche' },
+          { imageKey: 'ITINERARIES.GRANDES_ESCENARIOS_SAN_MARTIN', location: 'Lago Lácar · San Martín de los Andes' },
           { imageKey: 'ITINERARIES.GRANDES_ESCENARIOS_IGUAZU', location: 'Cataratas del Iguazú' },
         ],
       }
@@ -1909,11 +1909,11 @@ const itineraries: Itinerary[] = [
         metaTitle: 'Viaje por los Viñedos del Cono Sur — Viajes Vidaia',
         metaDescription: 'En Viajes Vidaia diseñamos tu viaje por Chile, Argentina y Uruguay a medida: Santiago, Mendoza, Buenos Aires y Montevideo. 13 días de vino y gastronomía. Cuéntanos tu idea.',
         heroImages: [
-          { imageKey: 'ITINERARIES.CAPITALES_VINO_MENDOZA', location: 'Valle de Uco, Mendoza' },
+          { imageKey: 'ITINERARIES.CAPITALES_VINO_MENDOZA', location: 'Valle de Uco · Mendoza' },
           { imageKey: 'ITINERARIES.CAPITALES_VINO_SANTIAGO', location: 'Santiago de Chile' },
-          { imageKey: 'ITINERARIES.CAPITALES_VINO_BUENOS_AIRES', location: 'Buenos Aires' },
-          { imageKey: 'ITINERARIES.CAPITALES_VINO_MONTEVIDEO', location: 'Montevideo, Uruguay' },
-          { imageKey: 'ITINERARIES.CAPITALES_VINO_COLCHAGUA', location: 'Valle de Colchagua, Chile' },
+          { imageKey: 'ITINERARIES.CAPITALES_VINO_BUENOS_AIRES', location: 'Buenos Aires · Argentina' },
+          { imageKey: 'ITINERARIES.CAPITALES_VINO_MONTEVIDEO', location: 'Montevideo · Uruguay' },
+          { imageKey: 'ITINERARIES.CAPITALES_VINO_COLCHAGUA', location: 'Valle de Colchagua · Chile' },
         ],
       }
     },
@@ -3004,6 +3004,291 @@ const itineraries: Itinerary[] = [
           }
         },
         flights: ['VVI → MAD'],
+        activities: [],
+      },
+    ],
+  },
+  {
+    id: 'bolivia-chile-salar-pascua',
+    slug: 'bolivia-chile-salar-pascua',
+    content: {
+      es: {
+        title: 'Bolivia y Chile: del Salar de Uyuni a la Isla de Pascua',
+        description: 'Un viaje que cruza dos países y tres mundos distintos. Bolivia del altiplano más árido al blanco absoluto del Salar: Santa Cruz tropical, ciudades coloniales de Sucre y Potosí, las lagunas de colores de la Reserva Eduardo Avaroa y la inmensidad del Salar de Uyuni. Luego Chile: el desierto de Atacama con sus géiseres, sus lagunas altiplánicas y el Valle de la Luna. Y finalmente Rapa Nui, los moáis y el Pacífico, con Santiago como cierre cosmopolita.',
+        heroTitleMobile: 'Bolivia y Chile: del Salar a Rapa Nui',
+        descriptionMobile: '15 días de Bolivia a Chile: Salar de Uyuni, Atacama, Isla de Pascua y Santiago.',
+        metaTitle: 'Bolivia y Chile: Salar, Atacama y Rapa Nui — Viajes Vidaia',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Bolivia y Chile completamente a medida: Salar de Uyuni, Atacama, Isla de Pascua y Santiago. Cuéntanos tu idea.',
+        heroImages: [
+          { imageKey: 'ITINERARIES.SALAR_PASCUA_UYUNI', location: 'Salar de Uyuni · Bolivia' },
+          { imageKey: 'ITINERARIES.SALAR_PASCUA_LAGUNA_COLORADA', location: 'Laguna Colorada · Lípez boliviano' },
+          { imageKey: 'ITINERARIES.SALAR_PASCUA_ATACAMA', location: 'Valle de la Luna · San Pedro de Atacama' },
+          { imageKey: 'ITINERARIES.SALAR_PASCUA_RAPA_NUI', location: 'Ahu Tongariki · Rapa Nui' },
+          { imageKey: 'ITINERARIES.SALAR_PASCUA_SANTIAGO', location: 'Santiago de Chile · Cerro San Cristóbal' },
+        ],
+      }
+    },
+    featured: true,
+    active: true,
+
+    accommodationStops: [
+      { hotelsByCategory: { '3': 'hotel-eco-chairu-santa-cruz', '4': 'hotel-cortez-santa-cruz' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'hotel-independencia-sucre', '4': 'hotel-mi-pueblo-samary-sucre' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'hotel-rosario-uyuni', '4': 'hotel-luna-salada' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'tayka-de-piedra', '4': 'tayka-de-piedra' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'tayka-del-desierto', '4': 'tayka-del-desierto' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'hotel-casa-don-tomas-atacama', '4': 'hotel-poblado-kimal' }, nights: 3, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'holiday-inn-santiago-airport', '4': 'holiday-inn-santiago-airport' }, nights: 1, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'hotel-otai-rapa-nui', '4': 'hotel-hare-nua' }, nights: 3, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'hotel-capital-bellet-providencia', '4': 'hotel-hilton-doubletree-vitacura' }, nights: 2, defaultCategory: 3, featured: false },
+    ],
+
+    days: [
+      {
+        dayNumber: 1,
+        destinationId: 'santa-cruz',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Llegada a Santa Cruz',
+            description: 'Llegada al aeropuerto Viru Viru de Santa Cruz. Recepción y traslado al hotel. Por la tarde, city tour panorámico por el centro histórico. Alojamiento en Santa Cruz.',
+            highlights: ['Santa Cruz · Plaza 24 de Septiembre'],
+            included: 'Traslado · guía · entradas',
+          }
+        },
+        flights: ['MAD → VVI · (referencial)'],
+        activities: [{ activityId: 'city-tour-santa-cruz', status: 'included' }],
+        referenceHotelId: 'hotel-eco-chairu-santa-cruz',
+      },
+      {
+        dayNumber: 2,
+        destinationId: 'sucre',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Santa Cruz → Sucre',
+            description: 'Desayuno en el hotel. Vuelo a Sucre. Llegada y city tour por el centro histórico colonial. Alojamiento en Sucre.',
+            highlights: ['Sucre · Mirador de la Recoleta', 'Casa de la Libertad · 1825'],
+            included: 'Vuelo SCZ → Sucre · guía · entradas',
+          }
+        },
+        flights: ['VVI → SRE · BOA · (referencial)'],
+        activities: [{ activityId: 'city-tour-sucre', status: 'included' }],
+        referenceHotelId: 'hotel-independencia-sucre',
+      },
+      {
+        dayNumber: 3,
+        destinationId: 'uyuni',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Sucre → Potosí → Uyuni',
+            description: 'Desayuno en el hotel. Traslado a Potosí: visita del centro histórico y la Casa de la Moneda. Continuación hacia Uyuni. Alojamiento en Uyuni.',
+            highlights: ['Potosí · Casa de la Moneda · Patrimonio UNESCO'],
+            included: 'Guía · traslados · entradas · almuerzo · cena',
+          }
+        },
+        activities: [{ activityId: 'city-tour-potosi-casa-moneda', status: 'included' }],
+        referenceHotelId: 'hotel-rosario-uyuni',
+      },
+      {
+        dayNumber: 4,
+        destinationId: 'san-pedro-quemez',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Salar de Uyuni e Isla Incahuasi',
+            description: 'Desayuno en el hotel. Jornada completa en el Salar de Uyuni e Isla Incahuasi. Alojamiento en San Pedro de Quemez.',
+            duration: 'Día completo',
+            highlights: ['Salar de Uyuni · 12.000 km²', 'Isla Incahuasi · cactus de hasta 8 metros'],
+            included: 'Guía · transporte 4x4 · entradas · picnic · cena',
+          }
+        },
+        activities: [{ activityId: 'salar-uyuni-isla-incahuasi', status: 'included' }],
+        referenceHotelId: 'tayka-de-piedra',
+      },
+      {
+        dayNumber: 5,
+        destinationId: 'ojo-de-perdiz',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Joyas Altoandinas y Desierto de Siloli',
+            description: 'Desayuno en el hotel. Jornada completa por las Joyas Altoandinas y el Desierto de Siloli. Cena en el hotel.',
+            duration: 'Día completo',
+            highlights: ['Lagunas Joyas de los Andes · 4.000-4.200 m', 'Desierto de Siloli · Árbol de Piedra'],
+            included: 'Guía · transporte 4x4 · entradas · picnic · cena',
+          }
+        },
+        activities: [{ activityId: 'lagunas-joyas-andes-siloli', status: 'included' }],
+        referenceHotelId: 'tayka-del-desierto',
+      },
+      {
+        dayNumber: 6,
+        destinationId: 'san-pedro-atacama',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Reserva Eduardo Avaroa → San Pedro de Atacama',
+            description: 'Desayuno en el hotel. Jornada completa por la Reserva Eduardo Avaroa. Cruce de la frontera en Hito Cajón y llegada a San Pedro de Atacama. Alojamiento en San Pedro.',
+            duration: 'Día completo',
+            highlights: ['Laguna Colorada · flamencos andinos', 'Laguna Verde · cruce frontera Hito Cajón'],
+            included: 'Guía · transporte 4x4 · entradas REA · picnic · traslado frontera → hotel',
+          }
+        },
+        activities: [{ activityId: 'reserva-eduardo-avaroa-lagunas', status: 'included' }],
+        referenceHotelId: 'hotel-casa-don-tomas-atacama',
+      },
+      {
+        dayNumber: 7,
+        destinationId: 'san-pedro-atacama',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Piedras Rojas y Lagunas Altiplánicas',
+            description: 'Desayuno en el hotel. Jornada completa a Piedras Rojas y las Lagunas Altiplánicas. Alojamiento en San Pedro.',
+            duration: 'Día completo',
+            highlights: ['Piedras Rojas · Salar de Aguas Calientes', 'Lagunas Miscanti y Miñiques'],
+            included: 'Guía · traslados compartidos · entradas · almuerzo',
+          }
+        },
+        activities: [{ activityId: 'lagunas-altiplanicas-piedras-rojas-chaxa', status: 'included' }],
+        referenceHotelId: 'hotel-casa-don-tomas-atacama',
+      },
+      {
+        dayNumber: 8,
+        destinationId: 'san-pedro-atacama',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Géiseres del Tatio y Valle de la Luna',
+            description: 'Madrugada para los Géiseres del Tatio. Por la tarde, excursión al Valle de la Luna al atardecer. Alojamiento en San Pedro.',
+            schedule: '04:30 · 14:30',
+            duration: 'Mañana + tarde',
+            highlights: ['Géiseres del Tatio · 4.200 m · 80 géiseres', 'Valle de la Luna · atardecer'],
+            included: 'Guía · traslados · entradas · desayuno en el Tatio · cocktail Valle de la Luna',
+          }
+        },
+        activities: [
+          { activityId: 'geysers-tatio-machuca-putana', status: 'included' },
+          { activityId: 'valle-de-la-luna', status: 'included' },
+        ],
+        referenceHotelId: 'hotel-casa-don-tomas-atacama',
+      },
+      {
+        dayNumber: 9,
+        destinationId: 'santiago-chile',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Atacama → Santiago: Valle del Arcoíris',
+            description: 'Desayuno en el hotel. Por la mañana, excursión al Valle del Arcoíris y Petroglifos. Por la tarde, traslado a Calama y vuelo a Santiago. Alojamiento en hotel del aeropuerto.',
+            schedule: 'Mañana · vuelo tarde',
+            highlights: ['Valle del Arcoíris · Cordillera de Domeyko'],
+            included: 'Guía · traslados · entradas · vuelo Calama → Santiago',
+          }
+        },
+        flights: ['CJC → SCL · (referencial)'],
+        activities: [{ activityId: 'valle-arcoiris-atacama', status: 'included' }],
+        referenceHotelId: 'holiday-inn-santiago-airport',
+      },
+      {
+        dayNumber: 10,
+        destinationId: 'isla-pascua',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Vuelo a Rapa Nui',
+            description: 'Vuelo matinal a Rapa Nui. Llegada y traslado al hotel en Hanga Roa. Tarde libre para un primer paseo por la isla. Alojamiento en Rapa Nui.',
+            highlights: ['Llegada a Hanga Roa · primeros moáis'],
+            included: 'Vuelo SCL → Rapa Nui · traslado · entrada Isla de Pascua',
+          }
+        },
+        flights: ['SCL → IPC · (referencial)'],
+        activities: [],
+        referenceHotelId: 'hotel-otai-rapa-nui',
+      },
+      {
+        dayNumber: 11,
+        destinationId: 'isla-pascua',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Rano Raraku, Ahu Tongariki y Playa Anakena',
+            description: 'Desayuno en el hotel. Jornada completa por Rano Raraku, Ahu Tongariki y la Playa Anakena. Alojamiento en Rapa Nui.',
+            duration: 'Día completo',
+            highlights: ['Rano Raraku · cantera · 397 moáis', 'Ahu Tongariki · 15 moáis restaurados'],
+            included: 'Guía · traslados · entradas · box lunch',
+          }
+        },
+        activities: [{ activityId: 'cantera-moais-playa-anakena', status: 'included' }],
+        referenceHotelId: 'hotel-otai-rapa-nui',
+      },
+      {
+        dayNumber: 12,
+        destinationId: 'isla-pascua',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Orongo, Rano Kau y Ahu Akivi',
+            description: 'Desayuno en el hotel. Por la mañana, excursión a Orongo y el volcán Rano Kau. Por la tarde, Ahu Akivi y cantera Puna Pau. Alojamiento en Rapa Nui.',
+            schedule: 'AM · PM',
+            duration: '6 horas',
+            highlights: ['Centro Ceremonial Orongo · volcán Rano Kau', 'Ahu Akivi · 7 moáis alineados'],
+            included: 'Guía · traslados · entradas',
+          }
+        },
+        activities: [
+          { activityId: 'orongo-rano-kau', status: 'included' },
+          { activityId: 'ahu-akivi-misterios-moais', status: 'included' },
+        ],
+        referenceHotelId: 'hotel-otai-rapa-nui',
+      },
+      {
+        dayNumber: 13,
+        destinationId: 'santiago-chile',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Rapa Nui → Santiago',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto de Rapa Nui. Vuelo a Santiago y traslado al hotel en Providencia. Alojamiento en Santiago.',
+            highlights: ['Última mañana en Hanga Roa'],
+            included: 'Traslados · vuelo IPC → SCL',
+          }
+        },
+        flights: ['IPC → SCL · (referencial)'],
+        activities: [],
+        referenceHotelId: 'hotel-capital-bellet-providencia',
+      },
+      {
+        dayNumber: 14,
+        destinationId: 'santiago-chile',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Santiago: City Tour con Cerro San Cristóbal',
+            description: 'Desayuno en el hotel. City tour por el centro histórico de Santiago y el Cerro San Cristóbal. Tarde libre. Alojamiento en Santiago.',
+            duration: 'Medio día',
+            highlights: ['La Moneda · Plaza de Armas · Mercado Central', 'Cerro San Cristóbal · vistas panorámicas'],
+            included: 'Guía · traslados · teleférico Cerro San Cristóbal',
+          }
+        },
+        activities: [{ activityId: 'city-tour-panoramico-santiago', status: 'included' }],
+        referenceHotelId: 'hotel-capital-bellet-providencia',
+      },
+      {
+        dayNumber: 15,
+        destinationId: 'santiago-chile',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Vuelo de Regreso a España',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto. Vuelo de regreso a España.',
+            highlights: [],
+            included: 'Traslado aeropuerto',
+          }
+        },
+        flights: ['SCL → MAD · (referencial)'],
         activities: [],
       },
     ],

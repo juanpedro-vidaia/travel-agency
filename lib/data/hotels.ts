@@ -164,19 +164,6 @@ const hotels: Hotel[] = [
     active: true,
   },
   {
-    id: 'hotel-otai-rapa-nui',
-    destinationId: 'isla-pascua',
-    content: {
-      es: {
-        name: 'Hotel Otai',
-        categoryLabel: 'Tradicional',
-      }
-    },
-    category: 3,
-    imageKey: 'HOTELS.OTAI_RAPA_NUI',
-    active: true,
-  },
-  {
     id: 'takarua',
     destinationId: 'isla-pascua',
     content: {
@@ -1230,6 +1217,132 @@ const hotels: Hotel[] = [
     },
     category: 4,
     imageKey: 'HOTELS.WINAY_INTI_LODGE',
+    active: true,
+  },
+  {
+    id: 'hotel-cortez-santa-cruz',
+    destinationId: 'santa-cruz',
+    content: {
+      es: {
+        name: 'Hotel Cortez',
+        categoryLabel: 'Superior',
+        description: 'Hotel de cuatro estrellas en la mejor zona residencial de Santa Cruz, rodeado de jardines y con piscina exterior. Fachada moderna y elegante a pocos minutos del centro histórico. Habitaciones amplias con desayuno buffet incluido.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.CORTEZ_SANTA_CRUZ',
+    active: true,
+  },
+  {
+    id: 'hotel-mi-pueblo-samary-sucre',
+    destinationId: 'sucre',
+    content: {
+      es: {
+        name: 'Mi Pueblo Samary',
+        categoryLabel: 'Boutique',
+        description: 'Hotel boutique en el casco histórico de Sucre con un patio interior tranquilo y acogedor. Arquitectura colonial restaurada a pasos de la Plaza Principal. Desayuno americano incluido.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.MI_PUEBLO_SAMARY_SUCRE',
+    active: true,
+  },
+  {
+    id: 'hotel-rosario-uyuni',
+    destinationId: 'uyuni',
+    content: {
+      es: {
+        name: 'Hotel Rosario Uyuni',
+        categoryLabel: 'Superior',
+        description: 'Hotel de diseño armónico con el entorno y la geografía del Salar de Uyuni. Habitaciones cómodas con desayuno buffet incluido, bien situado para los circuitos por el altiplano boliviano.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.ROSARIO_UYUNI',
+    active: true,
+  },
+  {
+    id: 'hotel-luna-salada',
+    destinationId: 'uyuni',
+    content: {
+      es: {
+        name: 'Hotel Luna Salada',
+        categoryLabel: 'Boutique',
+        description: 'Hotel construido íntegramente con bloques de sal en Colchani, al borde del Salar de Uyuni. Vistas directas al desierto de sal desde las habitaciones. A 30 minutos de Uyuni.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.LUNA_SALADA',
+    active: true,
+  },
+  {
+    id: 'hotel-casa-don-tomas-atacama',
+    destinationId: 'san-pedro-atacama',
+    content: {
+      es: {
+        name: 'Hotel La Casa de Don Tomás',
+        categoryLabel: 'Superior',
+        description: 'Hotel a dos kilómetros de las ruinas de Pukará de Quitor en San Pedro de Atacama. Piscina al aire libre, restaurante y desayuno buffet incluido. Habitaciones con baño privado y calefacción.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.CASA_DON_TOMAS_ATACAMA',
+    active: true,
+  },
+  {
+    id: 'hotel-otai-rapa-nui',
+    destinationId: 'isla-pascua',
+    content: {
+      es: {
+        name: "Hotel O'tai",
+        categoryLabel: 'Superior',
+        description: 'Hotel cerca de la playa y del centro de Hanga Roa con piscina exterior y jardín. Habitaciones con wifi, aire acondicionado y baños privados. Acceso a excursiones por la isla.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.OTAI_RAPA_NUI',
+    active: true,
+  },
+  {
+    id: 'hotel-hare-nua',
+    destinationId: 'isla-pascua',
+    content: {
+      es: {
+        name: 'Hotel Hare Nua Boutique',
+        categoryLabel: 'Boutique',
+        description: 'Hotel boutique en la avenida principal de Hanga Roa, en una casa construida en 1960, una de las pocas originarias en pie. A 7 minutos del aeropuerto Mataveri y a 5 del mar. Diecinueve habitaciones.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.HARE_NUA',
+    active: true,
+  },
+  {
+    id: 'hotel-capital-bellet-providencia',
+    destinationId: 'santiago-chile',
+    content: {
+      es: {
+        name: 'Hotel Capital Bellet Providencia',
+        categoryLabel: 'Superior',
+        description: 'Hotel en el barrio de Providencia, a 14 kilómetros del aeropuerto internacional. Dentro de un núcleo empresarial con amplia oferta gastronómica y buenas conexiones de transporte. Piscina y restaurante.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.CAPITAL_BELLET_PROVIDENCIA',
+    active: true,
+  },
+  {
+    id: 'hotel-hilton-doubletree-vitacura',
+    destinationId: 'santiago-chile',
+    content: {
+      es: {
+        name: 'DoubleTree by Hilton Vitacura',
+        categoryLabel: 'Superior',
+        description: 'Hotel en el distrito comercial y financiero de Vitacura, a una cuadra del Costanera Center. Cerca de embajadas y centros de convenciones. Piscina, restaurante y gimnasio.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.HILTON_DOUBLETREE_VITACURA',
     active: true,
   },
 ]

@@ -1332,6 +1332,20 @@ const activities: Activity[] = [
     icon: 'TreePine',
     active: true,
   },
+  {
+    id: 'salar-uyuni-isla-incahuasi',
+    destinationId: 'uyuni',
+    content: {
+      es: {
+        name: 'Salar de Uyuni e Isla Incahuasi',
+        description: 'Jornada completa en 4x4 por el Salar de Uyuni, el mayor desierto de sal del mundo con más de 12.000 km². Observación del proceso de extracción y refinamiento de la sal. Picnic al aire libre en medio del salar. Visita de la Isla Incahuasi, roca volcánica con cactus de hasta ocho metros, rodeada por la inmensidad blanca. Incluye guía hispanohablante, transporte 4x4, entradas y picnic.',
+      }
+    },
+    duration: 'Día completo',
+    imageKey: 'ACTIVITIES.SALAR_UYUNI_ISLA_INCAHUASI',
+    icon: 'Snowflake',
+    active: true,
+  },
 ]
 
 export default activities

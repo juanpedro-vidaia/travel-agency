@@ -320,11 +320,26 @@ export const STATIC_CONTENT = {
         {
           heading: '1. ¿QUIÉN ES EL RESPONSABLE DEL TRATAMIENTO DE SUS DATOS PERSONALES?',
           items: [
-            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
-            { label: 'CIF', value: 'B-55455380' },
-            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
-            { label: 'Teléfono', value: '+34 676 97 29 48' },
-            { label: 'Email', value: 'info@viajesvidaia.com' },
+            {
+              label: 'Denominación social',
+              value: 'VIAJES VIDAIA S.R.L',
+            },
+            {
+              label: 'CIF',
+              value: 'B-55455380',
+            },
+            {
+              label: 'Domicilio',
+              value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid',
+            },
+            {
+              label: 'Teléfono',
+              value: '+34 676 97 29 48',
+            },
+            {
+              label: 'Email',
+              value: 'info@viajesvidaia.com',
+            },
           ],
           paragraphs: [
             'Como responsable del tratamiento de sus datos personales, le informamos de que estos serán tratados de conformidad con lo dispuesto en el Reglamento (UE) 2016/679, de 27 de abril (RGPD), y la Ley Orgánica 3/2018, de 5 de diciembre (LOPDGDD).',
@@ -344,13 +359,34 @@ export const STATIC_CONTENT = {
         {
           heading: '3. PRINCIPIOS APLICABLES AL TRATAMIENTO DE SUS DATOS PERSONALES',
           labeledBullets: [
-            { label: 'Principio de licitud, lealtad y transparencia', description: 'Se requerirá en todo momento el consentimiento del usuario previa información completamente transparente de los fines para los cuales se recogen los datos personales.' },
-            { label: 'Principio de limitación de la finalidad', description: 'Los datos personales serán recogidos con fines determinados, explícitos y legítimos.' },
-            { label: 'Principio de minimización de datos', description: 'Los datos personales recogidos serán únicamente los estrictamente necesarios en relación con los fines para los que son tratados.' },
-            { label: 'Principio de exactitud', description: 'Los datos personales deben ser exactos y estar siempre actualizados.' },
-            { label: 'Principio de limitación del plazo de conservación', description: 'Los datos personales sólo serán mantenidos de forma que se permita la identificación del usuario durante el tiempo necesario para los fines de su tratamiento.' },
-            { label: 'Principio de integridad y confidencialidad', description: 'Los datos personales serán tratados de manera que se garantice su seguridad y confidencialidad.' },
-            { label: 'Principio de responsabilidad proactiva', description: 'El responsable del tratamiento será responsable de asegurar que los principios anteriores se cumplen.' },
+            {
+              label: 'Principio de licitud, lealtad y transparencia',
+              description: 'Se requerirá en todo momento el consentimiento del usuario previa información completamente transparente de los fines para los cuales se recogen los datos personales.',
+            },
+            {
+              label: 'Principio de limitación de la finalidad',
+              description: 'Los datos personales serán recogidos con fines determinados, explícitos y legítimos.',
+            },
+            {
+              label: 'Principio de minimización de datos',
+              description: 'Los datos personales recogidos serán únicamente los estrictamente necesarios en relación con los fines para los que son tratados.',
+            },
+            {
+              label: 'Principio de exactitud',
+              description: 'Los datos personales deben ser exactos y estar siempre actualizados.',
+            },
+            {
+              label: 'Principio de limitación del plazo de conservación',
+              description: 'Los datos personales sólo serán mantenidos de forma que se permita la identificación del usuario durante el tiempo necesario para los fines de su tratamiento.',
+            },
+            {
+              label: 'Principio de integridad y confidencialidad',
+              description: 'Los datos personales serán tratados de manera que se garantice su seguridad y confidencialidad.',
+            },
+            {
+              label: 'Principio de responsabilidad proactiva',
+              description: 'El responsable del tratamiento será responsable de asegurar que los principios anteriores se cumplen.',
+            },
           ],
         },
         {
@@ -366,10 +402,22 @@ export const STATIC_CONTENT = {
             'Las entidades a las que se podrá comunicar sus datos son:',
           ],
           labeledBullets: [
-            { label: 'Compañías Aseguradoras', description: 'Para la formalización de la póliza del seguro y cobertura de los riesgos derivados del viaje contratado.' },
-            { label: 'Proveedores Nacionales y Extranjeros', description: 'Para la gestión y organización del viaje contratado.' },
-            { label: 'Compañías Aéreas y de Transporte', description: 'Para la reserva, adquisición y venta de billetes.' },
-            { label: 'Establecimientos Hoteleros', description: 'Para la reserva del alojamiento.' },
+            {
+              label: 'Compañías Aseguradoras',
+              description: 'Para la formalización de la póliza del seguro y cobertura de los riesgos derivados del viaje contratado.',
+            },
+            {
+              label: 'Proveedores Nacionales y Extranjeros',
+              description: 'Para la gestión y organización del viaje contratado.',
+            },
+            {
+              label: 'Compañías Aéreas y de Transporte',
+              description: 'Para la reserva, adquisición y venta de billetes.',
+            },
+            {
+              label: 'Establecimientos Hoteleros',
+              description: 'Para la reserva del alojamiento.',
+            },
           ],
           trailingParagraph: 'En relación a lo anteriormente expuesto, el responsable podrá realizar transferencias internacionales de datos personales fuera del Espacio Económico Europeo siempre con sujeción a las restricciones contractuales relativas a confidencialidad y seguridad de los datos contenidas en las leyes y normas relativas a la protección de datos de carácter personal. En ningún caso, sus datos personales serán cedidos a terceros no autorizados a tratarlos que no garanticen la protección completa de sus datos.',
         },
@@ -409,11 +457,26 @@ export const STATIC_CONTENT = {
         {
           heading: '7. DATOS DE CONTACTO PARA EJERCER SUS DERECHOS',
           items: [
-            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
-            { label: 'CIF', value: 'B-55455380' },
-            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
-            { label: 'Teléfono', value: '+34 676 97 29 48' },
-            { label: 'Email', value: 'info@viajesvidaia.com' },
+            {
+              label: 'Denominación social',
+              value: 'VIAJES VIDAIA S.R.L',
+            },
+            {
+              label: 'CIF',
+              value: 'B-55455380',
+            },
+            {
+              label: 'Domicilio',
+              value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid',
+            },
+            {
+              label: 'Teléfono',
+              value: '+34 676 97 29 48',
+            },
+            {
+              label: 'Email',
+              value: 'info@viajesvidaia.com',
+            },
           ],
         },
         {
@@ -448,11 +511,26 @@ export const STATIC_CONTENT = {
         {
           heading: '1. ¿QUIÉN ES EL RESPONSABLE DEL TRATAMIENTO DE SUS DATOS PERSONALES?',
           items: [
-            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
-            { label: 'CIF', value: 'B-55455380' },
-            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
-            { label: 'Teléfono', value: '+34 676 97 29 48' },
-            { label: 'Email', value: 'info@viajesvidaia.com' },
+            {
+              label: 'Denominación social',
+              value: 'VIAJES VIDAIA S.R.L',
+            },
+            {
+              label: 'CIF',
+              value: 'B-55455380',
+            },
+            {
+              label: 'Domicilio',
+              value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid',
+            },
+            {
+              label: 'Teléfono',
+              value: '+34 676 97 29 48',
+            },
+            {
+              label: 'Email',
+              value: 'info@viajesvidaia.com',
+            },
           ],
         },
         {
@@ -469,12 +547,16 @@ export const STATIC_CONTENT = {
         },
         {
           heading: '3. ¿CUÁL ES LA BASE JURÍDICA APLICABLE?',
-          paragraphs: [
-            'La base jurídica para el uso de cookies depende de su finalidad:',
-          ],
+          paragraphs: ['La base jurídica para el uso de cookies depende de su finalidad:'],
           labeledBullets: [
-            { label: 'Cookies Técnicas o Necesarias', description: 'Se utilizan sobre la base del interés legítimo del responsable y permiten el funcionamiento del sitio web o la prestación de servicios solicitados por el usuario.' },
-            { label: 'Cookies de Análisis, Personalización o Publicidad', description: 'Se utilizan únicamente cuando el usuario ha prestado su consentimiento (artículo 6.1.a RGPD y artículo 22.2 de la Ley 34/2002 de Servicios de la Sociedad de la Información).' },
+            {
+              label: 'Cookies Técnicas o Necesarias',
+              description: 'Se utilizan sobre la base del interés legítimo del responsable y permiten el funcionamiento del sitio web o la prestación de servicios solicitados por el usuario.',
+            },
+            {
+              label: 'Cookies de Análisis, Personalización o Publicidad',
+              description: 'Se utilizan únicamente cuando el usuario ha prestado su consentimiento (artículo 6.1.a RGPD y artículo 22.2 de la Ley 34/2002 de Servicios de la Sociedad de la Información).',
+            },
           ],
           trailingParagraph: 'El usuario puede aceptar, rechazar o configurar el uso de cookies a través del sistema de gestión del consentimiento disponible en el sitio web.',
         },
@@ -484,23 +566,68 @@ export const STATIC_CONTENT = {
             'Según quien sea la entidad que gestione el dominio desde donde se envían las cookies y trate los datos que se obtengan, se pueden distinguir dos tipos:',
           ],
           labeledBullets: [
-            { label: 'Cookies Propias', description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por el propio titular del sitio web.' },
-            { label: 'Cookies de Terceros', description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por una entidad distinta del titular del sitio web.' },
-            { label: 'Cookies de Sesión', description: 'Diseñadas para recabar y almacenar datos mientras el usuario accede a un sitio web. Se suelen emplear para almacenar información que sólo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.' },
-            { label: 'Cookies Persistentes', description: 'Los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un periodo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.' },
-            { label: 'Cookies Técnicas (Necesarias)', description: 'Permiten la navegación a través del sitio web y la utilización de las diferentes opciones o servicios que existen en ella. Sin estas cookies el sitio web no puede funcionar correctamente.' },
-            { label: 'Cookies de Personalización', description: 'Permiten recordar información para que el usuario acceda al servicio con determinadas características que puedan diferenciar su experiencia de la de otros usuarios.' },
-            { label: 'Cookies de Análisis', description: 'Permiten cuantificar el número de usuarios y realizar la medición y análisis estadístico del uso que hacen los usuarios del servicio ofrecido.' },
-            { label: 'Cookies de Publicidad Comportamental', description: 'Permiten analizar los hábitos de navegación de los usuarios para mostrar publicidad relacionada con su perfil de navegación y para medir la eficacia de las campañas publicitarias.' },
-            { label: 'Cookies de Redes Sociales Externas', description: 'Se utilizan para que los visitantes puedan interactuar con el contenido de diferentes redes sociales. Las condiciones de utilización de estas cookies y la información recopilada se regula por la política de privacidad de la red social correspondiente.' },
+            {
+              label: 'Cookies Propias',
+              description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por el propio titular del sitio web.',
+            },
+            {
+              label: 'Cookies de Terceros',
+              description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por una entidad distinta del titular del sitio web.',
+            },
+            {
+              label: 'Cookies de Sesión',
+              description: 'Diseñadas para recabar y almacenar datos mientras el usuario accede a un sitio web. Se suelen emplear para almacenar información que sólo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.',
+            },
+            {
+              label: 'Cookies Persistentes',
+              description: 'Los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un periodo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.',
+            },
+            {
+              label: 'Cookies Técnicas (Necesarias)',
+              description: 'Permiten la navegación a través del sitio web y la utilización de las diferentes opciones o servicios que existen en ella. Sin estas cookies el sitio web no puede funcionar correctamente.',
+            },
+            {
+              label: 'Cookies de Personalización',
+              description: 'Permiten recordar información para que el usuario acceda al servicio con determinadas características que puedan diferenciar su experiencia de la de otros usuarios.',
+            },
+            {
+              label: 'Cookies de Análisis',
+              description: 'Permiten cuantificar el número de usuarios y realizar la medición y análisis estadístico del uso que hacen los usuarios del servicio ofrecido.',
+            },
+            {
+              label: 'Cookies de Publicidad Comportamental',
+              description: 'Permiten analizar los hábitos de navegación de los usuarios para mostrar publicidad relacionada con su perfil de navegación y para medir la eficacia de las campañas publicitarias.',
+            },
+            {
+              label: 'Cookies de Redes Sociales Externas',
+              description: 'Se utilizan para que los visitantes puedan interactuar con el contenido de diferentes redes sociales. Las condiciones de utilización de estas cookies y la información recopilada se regula por la política de privacidad de la red social correspondiente.',
+            },
           ],
         },
         {
           heading: '5. COOKIES UTILIZADAS EN ESTE SITIO WEB',
           cookiesTable: [
-            { owner: 'Propia', finalidad: 'Técnica', nombre: 'vidaia_consent', descripcion: 'Almacena las preferencias de consentimiento de cookies del usuario.', caducidad: '12 meses' },
-            { owner: 'Tercero (Google Analytics 4)', finalidad: 'Analítica', nombre: '_ga', descripcion: 'Distingue usuarios únicos para el análisis estadístico del uso del sitio.', caducidad: '2 años' },
-            { owner: 'Tercero (Google Analytics 4)', finalidad: 'Analítica', nombre: '_ga_<ID>', descripcion: 'Mantiene el estado de sesión para la medición de visitas.', caducidad: '2 años' },
+            {
+              owner: 'Propia',
+              finalidad: 'Técnica',
+              nombre: 'vidaia_consent',
+              descripcion: 'Almacena las preferencias de consentimiento de cookies del usuario.',
+              caducidad: '12 meses',
+            },
+            {
+              owner: 'Tercero (Google Analytics 4)',
+              finalidad: 'Analítica',
+              nombre: '_ga',
+              descripcion: 'Distingue usuarios únicos para el análisis estadístico del uso del sitio.',
+              caducidad: '2 años',
+            },
+            {
+              owner: 'Tercero (Google Analytics 4)',
+              finalidad: 'Analítica',
+              nombre: '_ga_<ID>',
+              descripcion: 'Mantiene el estado de sesión para la medición de visitas.',
+              caducidad: '2 años',
+            },
           ],
         },
         {
@@ -517,11 +644,26 @@ export const STATIC_CONTENT = {
             'A continuación, tiene disponibles los enlaces con la información para gestionar las cookies de los navegadores más utilizados:',
           ],
           browserLinks: [
-            { name: 'Chrome', url: 'https://support.google.com/chrome/answer/95647?hl=es' },
-            { name: 'Microsoft Edge', url: 'https://support.microsoft.com/microsoft-edge/delete-cookies' },
-            { name: 'Firefox', url: 'http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies' },
-            { name: 'Safari', url: 'https://support.apple.com/es-es/guide/safari/sfri11471/mac' },
-            { name: 'Opera', url: 'http://help.opera.com/en/latest/web-preferences/' },
+            {
+              name: 'Chrome',
+              url: 'https://support.google.com/chrome/answer/95647?hl=es',
+            },
+            {
+              name: 'Microsoft Edge',
+              url: 'https://support.microsoft.com/microsoft-edge/delete-cookies',
+            },
+            {
+              name: 'Firefox',
+              url: 'http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies',
+            },
+            {
+              name: 'Safari',
+              url: 'https://support.apple.com/es-es/guide/safari/sfri11471/mac',
+            },
+            {
+              name: 'Opera',
+              url: 'http://help.opera.com/en/latest/web-preferences/',
+            },
           ],
         },
       ],
@@ -542,13 +684,34 @@ export const STATIC_CONTENT = {
         {
           heading: '1. DATOS IDENTIFICATIVOS DEL RESPONSABLE DEL SITIO WEB',
           items: [
-            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
-            { label: 'CIF', value: 'B-55455380' },
-            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
-            { label: 'Teléfono', value: '+34 676 97 29 48' },
-            { label: 'Email', value: 'info@viajesvidaia.com' },
-            { label: 'Nombre del dominio', value: 'www.viajesvidaia.com' },
-            { label: 'Identificador Registral único de la Sociedad (IRUS)', value: '1000422147558' },
+            {
+              label: 'Denominación social',
+              value: 'VIAJES VIDAIA S.R.L',
+            },
+            {
+              label: 'CIF',
+              value: 'B-55455380',
+            },
+            {
+              label: 'Domicilio',
+              value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid',
+            },
+            {
+              label: 'Teléfono',
+              value: '+34 676 97 29 48',
+            },
+            {
+              label: 'Email',
+              value: 'info@viajesvidaia.com',
+            },
+            {
+              label: 'Nombre del dominio',
+              value: 'www.viajesvidaia.com',
+            },
+            {
+              label: 'Identificador Registral único de la Sociedad (IRUS)',
+              value: '1000422147558',
+            },
           ],
         },
         {
@@ -606,11 +769,15 @@ export const STATIC_CONTENT = {
           },
           {
             imageKey: 'VIAJES_HERO_ARGENTINA',
-            location: 'Perito Moreno, Argentina',
+            location: 'Lago Nahuel Huapi, Bariloche, Argentina',
           },
           {
             imageKey: 'VIAJES_HERO_BOLIVIA',
             location: 'Salar de Uyuni, Bolivia',
+          },
+          {
+            imageKey: 'VIAJES_HERO_PERU',
+            location: 'Machu Picchu, Perú',
           },
         ],
       },
@@ -798,17 +965,44 @@ export const STATIC_CONTENT = {
         budgetLabel: 'Presupuesto por persona',
         budgetPlaceholder: 'Selecciona una opción',
         budgetOptions: [
-          { value: 'less-3500', label: 'Menos de 3.500€' },
-          { value: '3500-4500', label: '3.500 — 4.500€' },
-          { value: '4500-6000', label: '4.500 — 6.000€' },
-          { value: 'more-6000', label: 'Más de 6.000€' },
-          { value: 'advice', label: 'Prefiero asesoramiento' },
+          {
+            value: 'less-3500',
+            label: 'Menos de 3.500€',
+          },
+          {
+            value: '3500-4500',
+            label: '3.500 — 4.500€',
+          },
+          {
+            value: '4500-6000',
+            label: '4.500 — 6.000€',
+          },
+          {
+            value: 'more-6000',
+            label: 'Más de 6.000€',
+          },
+          {
+            value: 'advice',
+            label: 'Prefiero asesoramiento',
+          },
         ],
         accommodationOptions: [
-          { value: 'standard', label: 'Estándar (3★)' },
-          { value: 'primera', label: 'Primera (4★)' },
-          { value: 'premium', label: 'Premium (5★)' },
-          { value: 'surprise', label: 'Sorpréndeme' },
+          {
+            value: 'standard',
+            label: 'Estándar (3★)',
+          },
+          {
+            value: 'primera',
+            label: 'Primera (4★)',
+          },
+          {
+            value: 'premium',
+            label: 'Premium (5★)',
+          },
+          {
+            value: 'surprise',
+            label: 'Sorpréndeme',
+          },
         ],
       },
       step3: {
@@ -826,18 +1020,48 @@ export const STATIC_CONTENT = {
         privacyLink: 'política de privacidad',
       },
       motivoOptions: [
-        { value: 'vacaciones', label: 'Vacaciones' },
-        { value: 'luna_de_miel', label: 'Luna de Miel' },
-        { value: 'aniversario', label: 'Aniversario' },
-        { value: 'celebracion_familiar', label: 'Celebración familiar' },
-        { value: 'incentivo_empresa', label: 'Incentivo empresa' },
-        { value: 'otros', label: 'Otros' },
+        {
+          value: 'vacaciones',
+          label: 'Vacaciones',
+        },
+        {
+          value: 'luna_de_miel',
+          label: 'Luna de Miel',
+        },
+        {
+          value: 'aniversario',
+          label: 'Aniversario',
+        },
+        {
+          value: 'celebracion_familiar',
+          label: 'Celebración familiar',
+        },
+        {
+          value: 'incentivo_empresa',
+          label: 'Incentivo empresa',
+        },
+        {
+          value: 'otros',
+          label: 'Otros',
+        },
       ],
       groupTypes: [
-        { value: 'pareja', label: 'Pareja' },
-        { value: 'familia', label: 'Familia' },
-        { value: 'amigos', label: 'Amigos' },
-        { value: 'solo', label: 'Solo/a' },
+        {
+          value: 'pareja',
+          label: 'Pareja',
+        },
+        {
+          value: 'familia',
+          label: 'Familia',
+        },
+        {
+          value: 'amigos',
+          label: 'Amigos',
+        },
+        {
+          value: 'solo',
+          label: 'Solo/a',
+        },
       ],
       buttons: {
         next: 'Siguiente',
@@ -894,10 +1118,22 @@ export const STATIC_CONTENT = {
       phoneLabel: 'Teléfono',
       preferredTimeLabel: '¿Cuándo prefieres que te llamemos?',
       preferredTimeOptions: [
-        { value: 'lo-antes-posible', label: 'Lo antes posible' },
-        { value: 'manana', label: 'Mañana' },
-        { value: 'esta-semana', label: 'Esta semana' },
-        { value: 'semana-siguiente', label: 'Semana que viene' },
+        {
+          value: 'lo-antes-posible',
+          label: 'Lo antes posible',
+        },
+        {
+          value: 'manana',
+          label: 'Mañana',
+        },
+        {
+          value: 'esta-semana',
+          label: 'Esta semana',
+        },
+        {
+          value: 'semana-siguiente',
+          label: 'Semana que viene',
+        },
       ],
       messageLabel: 'Tu idea de viaje',
       messagePlaceholder: 'Cuéntanos brevemente qué tienes en mente',
@@ -924,11 +1160,26 @@ export const STATIC_CONTENT = {
         {
           heading: '1. ¿QUIÉN ES EL RESPONSABLE DEL TRATAMIENTO DE SUS DATOS PERSONALES?',
           items: [
-            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
-            { label: 'CIF', value: 'B-55455380' },
-            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
-            { label: 'Teléfono', value: '+34 676 97 29 48' },
-            { label: 'Email', value: 'info@viajesvidaia.com' },
+            {
+              label: 'Denominación social',
+              value: 'VIAJES VIDAIA S.R.L',
+            },
+            {
+              label: 'CIF',
+              value: 'B-55455380',
+            },
+            {
+              label: 'Domicilio',
+              value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid',
+            },
+            {
+              label: 'Teléfono',
+              value: '+34 676 97 29 48',
+            },
+            {
+              label: 'Email',
+              value: 'info@viajesvidaia.com',
+            },
           ],
           paragraphs: [
             'Como responsable del tratamiento de sus datos personales, le informamos de que estos serán tratados de conformidad con lo dispuesto en el Reglamento (UE) 2016/679, de 27 de abril (RGPD), y la Ley Orgánica 3/2018, de 5 de diciembre (LOPDGDD).',
@@ -948,13 +1199,34 @@ export const STATIC_CONTENT = {
         {
           heading: '3. PRINCIPIOS APLICABLES AL TRATAMIENTO DE SUS DATOS PERSONALES',
           labeledBullets: [
-            { label: 'Principio de licitud, lealtad y transparencia', description: 'Se requerirá en todo momento el consentimiento del usuario previa información completamente transparente de los fines para los cuales se recogen los datos personales.' },
-            { label: 'Principio de limitación de la finalidad', description: 'Los datos personales serán recogidos con fines determinados, explícitos y legítimos.' },
-            { label: 'Principio de minimización de datos', description: 'Los datos personales recogidos serán únicamente los estrictamente necesarios en relación con los fines para los que son tratados.' },
-            { label: 'Principio de exactitud', description: 'Los datos personales deben ser exactos y estar siempre actualizados.' },
-            { label: 'Principio de limitación del plazo de conservación', description: 'Los datos personales sólo serán mantenidos de forma que se permita la identificación del usuario durante el tiempo necesario para los fines de su tratamiento.' },
-            { label: 'Principio de integridad y confidencialidad', description: 'Los datos personales serán tratados de manera que se garantice su seguridad y confidencialidad.' },
-            { label: 'Principio de responsabilidad proactiva', description: 'El responsable del tratamiento será responsable de asegurar que los principios anteriores se cumplen.' },
+            {
+              label: 'Principio de licitud, lealtad y transparencia',
+              description: 'Se requerirá en todo momento el consentimiento del usuario previa información completamente transparente de los fines para los cuales se recogen los datos personales.',
+            },
+            {
+              label: 'Principio de limitación de la finalidad',
+              description: 'Los datos personales serán recogidos con fines determinados, explícitos y legítimos.',
+            },
+            {
+              label: 'Principio de minimización de datos',
+              description: 'Los datos personales recogidos serán únicamente los estrictamente necesarios en relación con los fines para los que son tratados.',
+            },
+            {
+              label: 'Principio de exactitud',
+              description: 'Los datos personales deben ser exactos y estar siempre actualizados.',
+            },
+            {
+              label: 'Principio de limitación del plazo de conservación',
+              description: 'Los datos personales sólo serán mantenidos de forma que se permita la identificación del usuario durante el tiempo necesario para los fines de su tratamiento.',
+            },
+            {
+              label: 'Principio de integridad y confidencialidad',
+              description: 'Los datos personales serán tratados de manera que se garantice su seguridad y confidencialidad.',
+            },
+            {
+              label: 'Principio de responsabilidad proactiva',
+              description: 'El responsable del tratamiento será responsable de asegurar que los principios anteriores se cumplen.',
+            },
           ],
         },
         {
@@ -970,10 +1242,22 @@ export const STATIC_CONTENT = {
             'Las entidades a las que se podrá comunicar sus datos son:',
           ],
           labeledBullets: [
-            { label: 'Compañías Aseguradoras', description: 'Para la formalización de la póliza del seguro y cobertura de los riesgos derivados del viaje contratado.' },
-            { label: 'Proveedores Nacionales y Extranjeros', description: 'Para la gestión y organización del viaje contratado.' },
-            { label: 'Compañías Aéreas y de Transporte', description: 'Para la reserva, adquisición y venta de billetes.' },
-            { label: 'Establecimientos Hoteleros', description: 'Para la reserva del alojamiento.' },
+            {
+              label: 'Compañías Aseguradoras',
+              description: 'Para la formalización de la póliza del seguro y cobertura de los riesgos derivados del viaje contratado.',
+            },
+            {
+              label: 'Proveedores Nacionales y Extranjeros',
+              description: 'Para la gestión y organización del viaje contratado.',
+            },
+            {
+              label: 'Compañías Aéreas y de Transporte',
+              description: 'Para la reserva, adquisición y venta de billetes.',
+            },
+            {
+              label: 'Establecimientos Hoteleros',
+              description: 'Para la reserva del alojamiento.',
+            },
           ],
           trailingParagraph: 'En relación a lo anteriormente expuesto, el responsable podrá realizar transferencias internacionales de datos personales fuera del Espacio Económico Europeo siempre con sujeción a las restricciones contractuales relativas a confidencialidad y seguridad de los datos contenidas en las leyes y normas relativas a la protección de datos de carácter personal. En ningún caso, sus datos personales serán cedidos a terceros no autorizados a tratarlos que no garanticen la protección completa de sus datos.',
         },
@@ -1013,11 +1297,26 @@ export const STATIC_CONTENT = {
         {
           heading: '7. DATOS DE CONTACTO PARA EJERCER SUS DERECHOS',
           items: [
-            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
-            { label: 'CIF', value: 'B-55455380' },
-            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
-            { label: 'Teléfono', value: '+34 676 97 29 48' },
-            { label: 'Email', value: 'info@viajesvidaia.com' },
+            {
+              label: 'Denominación social',
+              value: 'VIAJES VIDAIA S.R.L',
+            },
+            {
+              label: 'CIF',
+              value: 'B-55455380',
+            },
+            {
+              label: 'Domicilio',
+              value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid',
+            },
+            {
+              label: 'Teléfono',
+              value: '+34 676 97 29 48',
+            },
+            {
+              label: 'Email',
+              value: 'info@viajesvidaia.com',
+            },
           ],
         },
         {
@@ -1052,11 +1351,26 @@ export const STATIC_CONTENT = {
         {
           heading: '1. ¿QUIÉN ES EL RESPONSABLE DEL TRATAMIENTO DE SUS DATOS PERSONALES?',
           items: [
-            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
-            { label: 'CIF', value: 'B-55455380' },
-            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
-            { label: 'Teléfono', value: '+34 676 97 29 48' },
-            { label: 'Email', value: 'info@viajesvidaia.com' },
+            {
+              label: 'Denominación social',
+              value: 'VIAJES VIDAIA S.R.L',
+            },
+            {
+              label: 'CIF',
+              value: 'B-55455380',
+            },
+            {
+              label: 'Domicilio',
+              value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid',
+            },
+            {
+              label: 'Teléfono',
+              value: '+34 676 97 29 48',
+            },
+            {
+              label: 'Email',
+              value: 'info@viajesvidaia.com',
+            },
           ],
         },
         {
@@ -1073,12 +1387,16 @@ export const STATIC_CONTENT = {
         },
         {
           heading: '3. ¿CUÁL ES LA BASE JURÍDICA APLICABLE?',
-          paragraphs: [
-            'La base jurídica para el uso de cookies depende de su finalidad:',
-          ],
+          paragraphs: ['La base jurídica para el uso de cookies depende de su finalidad:'],
           labeledBullets: [
-            { label: 'Cookies Técnicas o Necesarias', description: 'Se utilizan sobre la base del interés legítimo del responsable y permiten el funcionamiento del sitio web o la prestación de servicios solicitados por el usuario.' },
-            { label: 'Cookies de Análisis, Personalización o Publicidad', description: 'Se utilizan únicamente cuando el usuario ha prestado su consentimiento (artículo 6.1.a RGPD y artículo 22.2 de la Ley 34/2002 de Servicios de la Sociedad de la Información).' },
+            {
+              label: 'Cookies Técnicas o Necesarias',
+              description: 'Se utilizan sobre la base del interés legítimo del responsable y permiten el funcionamiento del sitio web o la prestación de servicios solicitados por el usuario.',
+            },
+            {
+              label: 'Cookies de Análisis, Personalización o Publicidad',
+              description: 'Se utilizan únicamente cuando el usuario ha prestado su consentimiento (artículo 6.1.a RGPD y artículo 22.2 de la Ley 34/2002 de Servicios de la Sociedad de la Información).',
+            },
           ],
           trailingParagraph: 'El usuario puede aceptar, rechazar o configurar el uso de cookies a través del sistema de gestión del consentimiento disponible en el sitio web.',
         },
@@ -1088,23 +1406,68 @@ export const STATIC_CONTENT = {
             'Según quien sea la entidad que gestione el dominio desde donde se envían las cookies y trate los datos que se obtengan, se pueden distinguir dos tipos:',
           ],
           labeledBullets: [
-            { label: 'Cookies Propias', description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por el propio titular del sitio web.' },
-            { label: 'Cookies de Terceros', description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por una entidad distinta del titular del sitio web.' },
-            { label: 'Cookies de Sesión', description: 'Diseñadas para recabar y almacenar datos mientras el usuario accede a un sitio web. Se suelen emplear para almacenar información que sólo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.' },
-            { label: 'Cookies Persistentes', description: 'Los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un periodo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.' },
-            { label: 'Cookies Técnicas (Necesarias)', description: 'Permiten la navegación a través del sitio web y la utilización de las diferentes opciones o servicios que existen en ella. Sin estas cookies el sitio web no puede funcionar correctamente.' },
-            { label: 'Cookies de Personalización', description: 'Permiten recordar información para que el usuario acceda al servicio con determinadas características que puedan diferenciar su experiencia de la de otros usuarios.' },
-            { label: 'Cookies de Análisis', description: 'Permiten cuantificar el número de usuarios y realizar la medición y análisis estadístico del uso que hacen los usuarios del servicio ofrecido.' },
-            { label: 'Cookies de Publicidad Comportamental', description: 'Permiten analizar los hábitos de navegación de los usuarios para mostrar publicidad relacionada con su perfil de navegación y para medir la eficacia de las campañas publicitarias.' },
-            { label: 'Cookies de Redes Sociales Externas', description: 'Se utilizan para que los visitantes puedan interactuar con el contenido de diferentes redes sociales. Las condiciones de utilización de estas cookies y la información recopilada se regula por la política de privacidad de la red social correspondiente.' },
+            {
+              label: 'Cookies Propias',
+              description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por el propio titular del sitio web.',
+            },
+            {
+              label: 'Cookies de Terceros',
+              description: 'Son aquellas que se envían al dispositivo del usuario desde un dominio gestionado por una entidad distinta del titular del sitio web.',
+            },
+            {
+              label: 'Cookies de Sesión',
+              description: 'Diseñadas para recabar y almacenar datos mientras el usuario accede a un sitio web. Se suelen emplear para almacenar información que sólo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión.',
+            },
+            {
+              label: 'Cookies Persistentes',
+              description: 'Los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un periodo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.',
+            },
+            {
+              label: 'Cookies Técnicas (Necesarias)',
+              description: 'Permiten la navegación a través del sitio web y la utilización de las diferentes opciones o servicios que existen en ella. Sin estas cookies el sitio web no puede funcionar correctamente.',
+            },
+            {
+              label: 'Cookies de Personalización',
+              description: 'Permiten recordar información para que el usuario acceda al servicio con determinadas características que puedan diferenciar su experiencia de la de otros usuarios.',
+            },
+            {
+              label: 'Cookies de Análisis',
+              description: 'Permiten cuantificar el número de usuarios y realizar la medición y análisis estadístico del uso que hacen los usuarios del servicio ofrecido.',
+            },
+            {
+              label: 'Cookies de Publicidad Comportamental',
+              description: 'Permiten analizar los hábitos de navegación de los usuarios para mostrar publicidad relacionada con su perfil de navegación y para medir la eficacia de las campañas publicitarias.',
+            },
+            {
+              label: 'Cookies de Redes Sociales Externas',
+              description: 'Se utilizan para que los visitantes puedan interactuar con el contenido de diferentes redes sociales. Las condiciones de utilización de estas cookies y la información recopilada se regula por la política de privacidad de la red social correspondiente.',
+            },
           ],
         },
         {
           heading: '5. COOKIES UTILIZADAS EN ESTE SITIO WEB',
           cookiesTable: [
-            { owner: 'Propia', finalidad: 'Técnica', nombre: 'vidaia_consent', descripcion: 'Almacena las preferencias de consentimiento de cookies del usuario.', caducidad: '12 meses' },
-            { owner: 'Tercero (Google Analytics 4)', finalidad: 'Analítica', nombre: '_ga', descripcion: 'Distingue usuarios únicos para el análisis estadístico del uso del sitio.', caducidad: '2 años' },
-            { owner: 'Tercero (Google Analytics 4)', finalidad: 'Analítica', nombre: '_ga_<ID>', descripcion: 'Mantiene el estado de sesión para la medición de visitas.', caducidad: '2 años' },
+            {
+              owner: 'Propia',
+              finalidad: 'Técnica',
+              nombre: 'vidaia_consent',
+              descripcion: 'Almacena las preferencias de consentimiento de cookies del usuario.',
+              caducidad: '12 meses',
+            },
+            {
+              owner: 'Tercero (Google Analytics 4)',
+              finalidad: 'Analítica',
+              nombre: '_ga',
+              descripcion: 'Distingue usuarios únicos para el análisis estadístico del uso del sitio.',
+              caducidad: '2 años',
+            },
+            {
+              owner: 'Tercero (Google Analytics 4)',
+              finalidad: 'Analítica',
+              nombre: '_ga_<ID>',
+              descripcion: 'Mantiene el estado de sesión para la medición de visitas.',
+              caducidad: '2 años',
+            },
           ],
         },
         {
@@ -1121,11 +1484,26 @@ export const STATIC_CONTENT = {
             'A continuación, tiene disponibles los enlaces con la información para gestionar las cookies de los navegadores más utilizados:',
           ],
           browserLinks: [
-            { name: 'Chrome', url: 'https://support.google.com/chrome/answer/95647?hl=es' },
-            { name: 'Microsoft Edge', url: 'https://support.microsoft.com/microsoft-edge/delete-cookies' },
-            { name: 'Firefox', url: 'http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies' },
-            { name: 'Safari', url: 'https://support.apple.com/es-es/guide/safari/sfri11471/mac' },
-            { name: 'Opera', url: 'http://help.opera.com/en/latest/web-preferences/' },
+            {
+              name: 'Chrome',
+              url: 'https://support.google.com/chrome/answer/95647?hl=es',
+            },
+            {
+              name: 'Microsoft Edge',
+              url: 'https://support.microsoft.com/microsoft-edge/delete-cookies',
+            },
+            {
+              name: 'Firefox',
+              url: 'http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies',
+            },
+            {
+              name: 'Safari',
+              url: 'https://support.apple.com/es-es/guide/safari/sfri11471/mac',
+            },
+            {
+              name: 'Opera',
+              url: 'http://help.opera.com/en/latest/web-preferences/',
+            },
           ],
         },
       ],
@@ -1146,13 +1524,34 @@ export const STATIC_CONTENT = {
         {
           heading: '1. DATOS IDENTIFICATIVOS DEL RESPONSABLE DEL SITIO WEB',
           items: [
-            { label: 'Denominación social', value: 'VIAJES VIDAIA S.R.L' },
-            { label: 'CIF', value: 'B-55455380' },
-            { label: 'Domicilio', value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid' },
-            { label: 'Teléfono', value: '+34 676 97 29 48' },
-            { label: 'Email', value: 'info@viajesvidaia.com' },
-            { label: 'Nombre del dominio', value: 'www.viajesvidaia.com' },
-            { label: 'Identificador Registral único de la Sociedad (IRUS)', value: '1000422147558' },
+            {
+              label: 'Denominación social',
+              value: 'VIAJES VIDAIA S.R.L',
+            },
+            {
+              label: 'CIF',
+              value: 'B-55455380',
+            },
+            {
+              label: 'Domicilio',
+              value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid',
+            },
+            {
+              label: 'Teléfono',
+              value: '+34 676 97 29 48',
+            },
+            {
+              label: 'Email',
+              value: 'info@viajesvidaia.com',
+            },
+            {
+              label: 'Nombre del dominio',
+              value: 'www.viajesvidaia.com',
+            },
+            {
+              label: 'Identificador Registral único de la Sociedad (IRUS)',
+              value: '1000422147558',
+            },
           ],
         },
         {
@@ -1253,17 +1652,44 @@ export const STATIC_CONTENT = {
         budgetLabel: 'Budget per person',
         budgetPlaceholder: 'Select an option',
         budgetOptions: [
-          { value: 'less-3500', label: 'Less than €3,500' },
-          { value: '3500-4500', label: '€3,500 — €4,500' },
-          { value: '4500-6000', label: '€4,500 — €6,000' },
-          { value: 'more-6000', label: 'More than €6,000' },
-          { value: 'advice', label: 'I prefer guidance' },
+          {
+            value: 'less-3500',
+            label: 'Less than €3,500',
+          },
+          {
+            value: '3500-4500',
+            label: '€3,500 — €4,500',
+          },
+          {
+            value: '4500-6000',
+            label: '€4,500 — €6,000',
+          },
+          {
+            value: 'more-6000',
+            label: 'More than €6,000',
+          },
+          {
+            value: 'advice',
+            label: 'I prefer guidance',
+          },
         ],
         accommodationOptions: [
-          { value: 'standard', label: 'Standard (3★)' },
-          { value: 'primera', label: 'First class (4★)' },
-          { value: 'premium', label: 'Premium (5★)' },
-          { value: 'surprise', label: 'Surprise me' },
+          {
+            value: 'standard',
+            label: 'Standard (3★)',
+          },
+          {
+            value: 'primera',
+            label: 'First class (4★)',
+          },
+          {
+            value: 'premium',
+            label: 'Premium (5★)',
+          },
+          {
+            value: 'surprise',
+            label: 'Surprise me',
+          },
         ],
       },
       step3: {
@@ -1281,18 +1707,48 @@ export const STATIC_CONTENT = {
         privacyLink: 'privacy policy',
       },
       motivoOptions: [
-        { value: 'vacaciones', label: 'Vacation' },
-        { value: 'luna_de_miel', label: 'Honeymoon' },
-        { value: 'aniversario', label: 'Anniversary' },
-        { value: 'celebracion_familiar', label: 'Family celebration' },
-        { value: 'incentivo_empresa', label: 'Company incentive' },
-        { value: 'otros', label: 'Other' },
+        {
+          value: 'vacaciones',
+          label: 'Vacation',
+        },
+        {
+          value: 'luna_de_miel',
+          label: 'Honeymoon',
+        },
+        {
+          value: 'aniversario',
+          label: 'Anniversary',
+        },
+        {
+          value: 'celebracion_familiar',
+          label: 'Family celebration',
+        },
+        {
+          value: 'incentivo_empresa',
+          label: 'Company incentive',
+        },
+        {
+          value: 'otros',
+          label: 'Other',
+        },
       ],
       groupTypes: [
-        { value: 'pareja', label: 'Couple' },
-        { value: 'familia', label: 'Family' },
-        { value: 'amigos', label: 'Friends' },
-        { value: 'solo', label: 'Solo' },
+        {
+          value: 'pareja',
+          label: 'Couple',
+        },
+        {
+          value: 'familia',
+          label: 'Family',
+        },
+        {
+          value: 'amigos',
+          label: 'Friends',
+        },
+        {
+          value: 'solo',
+          label: 'Solo',
+        },
       ],
       buttons: {
         next: 'Next',
@@ -1349,10 +1805,22 @@ export const STATIC_CONTENT = {
       phoneLabel: 'Phone',
       preferredTimeLabel: 'When would you prefer we call you?',
       preferredTimeOptions: [
-        { value: 'lo-antes-posible', label: 'As soon as possible' },
-        { value: 'manana', label: 'Tomorrow' },
-        { value: 'esta-semana', label: 'This week' },
-        { value: 'semana-siguiente', label: 'Next week' },
+        {
+          value: 'lo-antes-posible',
+          label: 'As soon as possible',
+        },
+        {
+          value: 'manana',
+          label: 'Tomorrow',
+        },
+        {
+          value: 'esta-semana',
+          label: 'This week',
+        },
+        {
+          value: 'semana-siguiente',
+          label: 'Next week',
+        },
       ],
       messageLabel: 'Your trip idea',
       messagePlaceholder: 'Tell us briefly what you have in mind',

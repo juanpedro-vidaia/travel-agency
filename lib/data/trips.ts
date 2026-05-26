@@ -360,6 +360,32 @@ const trips: Trip[] = [
     bestMonths: [4, 5, 6, 7, 8, 9, 10, 11],
     ranking: 80,
   },
+  {
+    id: 'bolivia-chile-salar-pascua',
+    slug: 'bolivia-chile-salar-pascua',
+    content: {
+      es: {
+        title: 'Bolivia y Chile: del Salar de Uyuni a la Isla de Pascua',
+        subtitle: 'Santa Cruz · Sucre · Salar de Uyuni · Atacama · Rapa Nui · Santiago',
+      }
+    },
+    country: ['bolivia', 'chile'],
+    days: 15,
+    nights: 14,
+    priceFrom: 4818,
+    imageKey: 'TRIPS.BOLIVIA_CHILE_SALAR_PASCUA',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+    tags: ['culture', 'nature', 'adventure'],
+    includesInternationalFlights: false,
+    includesDomesticFlights: false,
+    relatedTrips: [],
+    honeymoonFeatured: false,
+    season: 'all-year',
+    bestMonths: [4, 5, 6, 7, 8, 9, 10, 11],
+    ranking: 85,
+  },
 ]
 
 export default trips
