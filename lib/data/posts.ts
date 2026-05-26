@@ -96,7 +96,7 @@ Puede que en parte la conexión **Vidaia** naciera allí…`,
     readingTime: 3,
     featured: true,
     active: true,
-    relatedTripSlugs: ['paisajes-naturales-argentina', 'argentina-sur-norte'],
+    relatedTripSlugs: ['paisajes-naturales-argentina', 'argentina-sur-norte', 'contrastes-argentinos-invierno'],
   },
   {
     slug: 'mate-alma-tradicion-argentina',
@@ -237,7 +237,7 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
     readingTime: 4,
     featured: true,
     active: true,
-    relatedTripSlugs: ['chile-completo', 'esencias-chile-isla-pascua'],
+    relatedTripSlugs: ['chile-completo', 'bolivia-chile-salar-pascua', 'bolivia-infinita'],
   },
   {
     slug: 'carretera-austral-chile',
@@ -292,7 +292,7 @@ Caleta Tortel es única en el mundo por su sistema de pasarelas de madera que co
     readingTime: 7,
     featured: true,
     active: true,
-    relatedTripSlugs: ['chile-completo', 'esencias-chile-isla-pascua'],
+    relatedTripSlugs: ['chile-completo', 'esencias-chile-isla-pascua', 'bolivia-chile-salar-pascua'],
   },
   {
     slug: 'costumbres-argentinas',
@@ -355,70 +355,198 @@ Con todo esto que os he contado hoy… ¿no te dan ganas de visitar Argentina?`,
     readingTime: 4,
     featured: true,
     active: true,
-    relatedTripSlugs: ['contrastes-argentinos', 'argentina-sur-norte'],
-  },
-  {
-    slug: 'buenos-aires-primera-vez',
-    content: {
-      es: {
-        title: 'Buenos Aires por primera vez: el barrio a barrio que te falta leer',
-        excerpt: 'Palermo, San Telmo, La Boca, Recoleta… Buenos Aires no se entiende sin sus barrios. Aquí va el mapa mental que necesitas antes de aterrizar.',
-        content: ``,
-        imageAlt: 'Buenos Aires, Argentina',
-        metaTitle: 'Buenos Aires por primera vez: guía de barrios — Viajes Vidaia',
-        metaDescription: 'De Palermo a San Telmo: cómo orientarte en Buenos Aires, qué ver en cada barrio, dónde comer y los errores que no debes cometer en tu primera visita.',
-      }
-    },
-    imageKey: 'BLOG.BUENOS_AIRES_FIRST_TIME',
-    date: '2026-03-10',
-    category: 'argentina',
-    tags: ['buenos-aires', 'ciudad', 'argentina', 'primera-vez'],
-    readingTime: 7,
-    featured: false,
-    active: true,
-    relatedTripSlugs: [],
-  },
-  {
-    slug: 'luna-de-miel-patagonia',
-    content: {
-      es: {
-        title: 'Luna de miel en Patagonia: romanticismo en el fin del mundo',
-        excerpt: 'Pocos escenarios en el mundo combinan tanta grandeza con tanta intimidad. Te contamos cómo organizar una luna de miel que jamás olvidaréis.',
-        content: ``,
-        imageAlt: 'Patagonia al atardecer',
-        metaTitle: 'Luna de miel en Patagonia: guía romántica — Viajes Vidaia',
-        metaDescription: 'Glaciares, lagos y silencio. Todo lo que necesitas para planificar una luna de miel inolvidable en la Patagonia argentina y chilena.',
-      }
-    },
-    imageKey: 'BLOG.HONEYMOON_PATAGONIA',
-    date: '2026-02-14',
-    category: 'honeymoon',
-    tags: ['luna-de-miel', 'patagonia', 'argentina', 'chile', 'romantico'],
-    readingTime: 6,
-    featured: false,
-    active: true,
-    relatedTripSlugs: ['latitudes-australes'],
+    relatedTripSlugs: ['contrastes-argentinos', 'argentina-sur-norte', 'capitales-del-vino'],
   },
   {
     slug: 'mejores-epocas-viajar-argentina',
     content: {
       es: {
-        title: 'Cuándo viajar a Argentina: mes a mes, destino a destino',
-        excerpt: 'Argentina es el país de los contrastes climáticos. Lo que es perfecto en Bariloche puede ser un infierno en Buenos Aires. Aquí te lo aclaramos todo.',
-        content: ``,
-        imageAlt: 'Patagonia argentina en otoño',
-        metaTitle: 'Cuándo viajar a Argentina: guía mes a mes — Viajes Vidaia',
-        metaDescription: 'La mejor época para viajar a cada región de Argentina: Patagonia, Buenos Aires, Iguazú, Mendoza y el norte. Clima, temporadas y cuándo reservar.',
+        title: 'La mejor época para viajar a Argentina según tus preferencias',
+        excerpt: 'Descubre cuál es la mejor época para viajar a Argentina según el tipo de viaje que buscas: Patagonia, Iguazú, norte argentino, ciudades, trekking, nieve o rutas en coche.',
+        content: `Elegir la mejor época para **viajar a Argentina** no va de “un mes perfecto para todo”, porque Argentina es casi un continente: puedes pasar del **frío en la Patagonia** a un calor veraniego en el norte, o vivir el **clima subtropical húmedo de la selva** en Iguazú en el mismo viaje. La clave está en decidir **qué quieres ver en Argentina** (y cómo quieres vivirlo): esquí, glaciares, trekking, cataratas, vinos, ciudades, etc. Y, a partir de ahí, encajar el mejor momento y la ruta.
+
+Un dato que lo ilustra muy bien: **el 30 de junio de 2025, Chile y Argentina figuraron entre los lugares más [fríos de la Tierra](https://news.un.org/es/story/2025/07/1540116) fuera de las regiones polares**, durante una ola de frío excepcional. Y aun así, ese invierno fue un gran momento para viajar: simplemente había que saber dónde y para qué. Y para darte algo de luz con este tema, ¡estamos nosotros!
+
+## Argentina por estaciones: qué época es mejor para viajar
+
+Argentina funciona como un mapa de climas. En un mismo mes puedes encontrarte calor húmedo en el litoral, cielos secos en el norte, y temperaturas bajas en el sur argentino. Por eso, más que buscar “el mes perfecto”, lo inteligente es decidir primero qué te tira más: ¿naturaleza salvaje, nieve, cataratas, vinos, ciudad, trekking, carretera?
+
+Si lo que te mueve es qué ver en Argentina en un primer viaje “para enamorarte”, normalmente lo mejor es elegir una estación cómoda (primavera u otoño). Y si ya vas a por un viaje de paisajes potentes, ahí sí conviene ajustar mucho más el calendario.
+
+## Primavera: equilibrio, luz bonita y un viaje muy redondo
+
+La primavera (septiembre a noviembre) suele ser una respuesta muy sólida a la pregunta mejor época para viajar a Argentina, sobre todo si quieres un viaje variado sin extremos. Es una estación en la que todo se siente “en su punto”: temperaturas amables, días que alargan, y una sensación general de viaje fluido.
+
+En primavera encaja genial si quieres mezclar cultura y naturaleza. Buenos Aires se disfruta caminando, comiendo bien y metiéndote en barrios sin que el clima te pase factura. Y si quieres moverte al interior, el norte suele estar agradable para carretera y excursiones, algo importante si estás pensando en el clásico dilema de qué visitar en el norte argentino sin que el calor te corte el día a la mitad. También es uno de los mejores momentos para avivamiento de ballenas en lugares tan mágicos como Puerto Madryn (Chubut).
+
+## Verano: cómo evitar (o disfrutar) el calor en Argentina
+
+Si te preguntas cuándo hace calor en Argentina, el verano austral (diciembre a febrero) es el momento más obvio. Ahora bien: “calor” en Argentina no significa lo mismo en todos los lugares. En Buenos Aires puede sentirse pesado por la humedad; en ciertas zonas del norte, el sol pega fuerte; y en Patagonia, el verano es muchas veces la estación más práctica para hacer rutas largas, porque tienes más luz y más accesos abiertos.
+
+El verano es especialmente bueno si tu prioridad es visitar la Patagonia argentina y sacarle partido a rutas completas: lagos, miradores, carreteras escénicas, glaciares, caminatas largas y días que parecen infinitos. También es una buena época si quieres un viaje de 2–3 semanas que recorra mucho sin quedarte corto de horas.
+
+Si tu viaje incluye cataratas y norte, se puede hacer perfectamente en verano, pero con un estilo distinto: madrugar, hacer descansos, y diseñar actividades pensando en el sol del mediodía. Ahí es donde una planificación a medida marca la diferencia entre “me lo he pasado bien” y “me lo he pasado bien, pero agotado”.
+
+> Si alguna de estas épocas encaja contigo, en **Viajes Vidaia** diseñamos tu [Viaje Organizado a Argentina](https://viajesvidaia.com/es/destinos/argentina/) totalmente a medida, adaptado a tus fechas, ritmo y preferencias, para que aproveches la primavera en el destino que mejor se ajuste a tu idea de viaje. [¿Hablamos y empezamos a planificarlo?](https://viajesvidaia.com/es/itinerarios/personalizar)
+
+## Otoño: disfrutar de un país increíble y sin prisa
+
+El otoño (marzo a mayo) es, para mucha gente, la temporada más agradecida. Si lo que buscas es un viaje con paisajes espectaculares, menos sensación de masificación y un ritmo más suave, aquí suele estar una de las mejores respuestas para la mejor época para viajar a Argentina.
+
+En el sur argentino, el otoño tiene algo especial: colores, luz más fotogénica y una atmósfera de viaje más tranquila. Y en ciudades grandes también se nota: caminar Buenos Aires o Rosario en otoño es otra película comparado con el pleno verano.
+
+## Invierno: sí hay frío en Argentina, pero también hay viajes muy buenos
+
+El invierno (junio a agosto) asusta a mucha gente por el frío en Argentina, y es normal: algunas zonas se ponen serias. Pero el invierno no es “temporada prohibida”, es temporada de objetivos concretos.
+
+Si quieres nieve y montaña, o tienes la intención de esquiar por algunos de los mejores paisajes del mundo, por ejemplo, Bariloche, el invierno tiene sentido. Si quieres ciudad, museos, gastronomía y escapadas puntuales, también. Lo que no suele funcionar tan bien es un viaje “de todo un poco”: intentar hacer norte, cataratas, Patagonia profunda y ciudad en pocos días en pleno invierno sin adaptar logística puede terminar en frustración.
+
+Y aquí vuelve a encajar el ejemplo de junio de 2025: hubo un episodio de frío excepcional en el Cono Sur que llevó a Chile y Argentina a situarse entre los lugares más fríos del planeta fuera de los polos. Eso no define el invierno “normal”, pero recuerda algo importante: la planificación manda. En invierno, elegir bien la zona y el tipo de experiencia vale oro.
+
+## Qué ruta elegir según lo que quieres ver en Argentina
+
+### Si tu sueño es el norte y las Cataratas del Iguazú
+
+Cuando alguien llega con la idea de “quiero norte, cultura, paisajes y algo diferente”, la primavera y el otoño argentino suelen ser las estaciones más cómodas. Te permiten hacer carretera, excursiones y pueblos con más margen, y el viaje se siente menos pesado.
+
+**Iguazú** es especial porque puedes visitarlo todo el año, pero cambia la experiencia. Si buscas caminar cómodo y tener un clima más equilibrado, primavera u otoño. Si te da igual sudar y quieres una sensación más tropical, verano. En invierno puede ser muy buena opción si te molesta el calor y te apetece un ritmo más amable.
+
+### Si lo tuyo es el sur y la Patagonia argentina
+
+Si tu prioridad es visitar la Patagonia argentina, lo normal es que el mejor encaje esté entre finales de primavera, verano y principios de otoño, dependiendo del estilo de viaje.
+
+Verano es el comodín para rutas completas: más luz, más accesos, más margen para caminar y moverse. Otoño, si te apetece una Patagonia más tranquila, muy estética y menos “de correr”. Invierno puede ser precioso, pero más exigente y más limitado (algunas experiencias dejan de estar disponibles), ideal si buscas nieve o una experiencia invernal concreta y bien armada.
+
+Pingüinos en la costa de la Patagonia argentina, destino ideal según la mejor época para viajar a Argentina.
+
+### Si prefieres un viaje urbano con escapadas
+
+Hay viajeros que quieren vivir *Argentina desde lo urbano*: bodegones, barrios, cafés, cenas, fútbol, mercados, museos, y desde ahí hacer escapadas. En ese caso, primavera y otoño son una delicia. En verano se puede, pero se nota el calor. En invierno también funciona bien si no te importa abrigarte un poco y te gusta esa sensación de ciudad “más local”.
+
+## Viajar a Argentina desde España: no es el destino, es cómo lo recorres
+
+Si estás pensando en un Viaje Organizado a Argentina, ¡Viajes Vidaia es tu agencia! La temporada influye, pero sobre todo influye cómo diseñamos tu ruta. Más allá de elegir la mejor época para viajar a Argentina, lo realmente importante es construir un itinerario equilibrado, adaptado a tu ritmo y a lo que quieres vivir. Argentina es inmensa, las distancias existen y afectan, y un viaje bien planificado marca la diferencia entre “ver mucho” y disfrutarlo de verdad.
+
+En **Viajes Vidaia** no creemos en viajes acelerados o enlatados. Si dispones de 10–12 días, lo ideal es concentrarse en una gran zona bien combinada, como Buenos Aires + Iguazú o Buenos Aires + una Patagonia seleccionada. Si tienes 15 días o más, podemos diseñar algo más completo como el recorrido [Argentina de Sur a Norte](https://viajesvidaia.com/es/itinerarios/argentina-sur-norte). Y si cuentas con tres semanas y espíritu aventurero, rutas como [Grandes Escenarios de Argentina](https://viajesvidaia.com/es/itinerarios/grandes-escenarios-argentina) o [Contrastes Argentinos](https://viajesvidaia.com/es/itinerarios/contrastes-argentinos) permiten descubrir el país con profundidad y sin prisas.
+
+La clave de un Viaje Organizado a Argentina no es abarcar todo (sería imposible!), **sino elegir bien y personalizar cada etapa* para que vivas el mate, las peñas, los asados, la Patagonia o el norte con la intensidad que buscas. Tú decides el estilo; nosotros lo convertimos en un viaje a medida.
+
+¿Te vienes? [Quiero organizar mi viaje a Argentina](https://viajesvidaia.com/es/destinos/argentina/).`,
+        imageAlt: 'Cerro de los Siete Colores en Purmamarca, Argentina, uno de los paisajes del norte argentino',
+        metaTitle: 'Guía de la mejor época para viajar a Argentina | Viajes Vidaia',
+        metaDescription: 'Descubre la mejor época para viajar a Argentina según tus preferencias: Patagonia, Iguazú, norte argentino, ciudades, nieve, trekking y clima por estaciones.',
       }
     },
     imageKey: 'BLOG.BEST_TIME_ARGENTINA',
-    date: '2026-01-20',
+    date: '2026-03-12',
     category: 'tips',
     tags: ['argentina', 'cuando-ir', 'temporadas', 'planificacion'],
-    readingTime: 5,
-    featured: false,
+    readingTime: 8,
+    featured: true,
     active: true,
-    relatedTripSlugs: [],
+    relatedTripSlugs: ['contrastes-argentinos-invierno', 'grandes-escenarios-argentina', 'capitales-del-vino'],
+  },
+  {
+    slug: 'requisitos-viajar-a-chile',
+    content: {
+      es: {
+        title: 'Requisitos para Viajar a Chile desde España: ¿Qué necesitas?',
+        excerpt: 'Todo lo que necesitas saber sobre los requisitos para viajar a Chile desde España: pasaporte, visado, seguro, vacunas, seguridad, documentación y consejos clave para organizar tu viaje sin sorpresas.',
+        content: `Chile es uno de nuestros destinos preferidos. Si estás buscando los **requisitos para viajar a Chile desde España**, desde Viajes Vidaia te contamos todo lo que necesitas saber antes de ir.
+
+> Conviene tenerlo claro desde el principio: para un viaje turístico corto, la entrada es bastante sencilla, pero no por eso hay que improvisar. Mucha gente se pregunta cuáles son exactamente los requisitos para entrar a Chile desde España, si hace falta **visado** o **pasaporte**, si se necesita pasaporte o incluso **si es seguro viajar al país** ahora mismo. La respuesta corta es que, para turismo de hasta 90 días, los españoles no necesitan visado, pero sí deben viajar con pasaporte en vigor, billete de salida y, si se lo requieren, prueba de medios económicos suficientes para la estancia.
+
+Además, aunque **no hay restricciones específicas vigentes para viajar a Chile** según la recomendación oficial española consultada, eso no significa que el viaje deba prepararse “sin más”. Las autoridades recomiendan mantenerse informado, viajar con seguro y revisar tanto la documentación como las condiciones sanitarias, aduaneras y de seguridad antes de salir.
+
+Nosotros os vamos a contar todo lo necesario pero recordar, si viajáis con nosotros, desde Viajes Vidaia ¡nos encargaríamos de todo!
+
+## Documentación para viajar a Chile
+
+Uno de los puntos más importantes es este: para viajar a Chile se necesita pasaporte. El DNI español no sirve para entrar en el país. El Ministerio de Asuntos Exteriores de España indica que los ciudadanos españoles que ingresen en Chile por un periodo no superior a 90 días deben llevar pasaporte en vigor, además de **billete de regreso y medios económicos demostrables** para la estancia.
+
+Esto significa que, aunque en muchos casos no te pidan toda la documentación adicional en frontera, debes viajar preparado para presentarla. Llevar **reserva de alojamiento, itinerario y justificantes económicos** puede evitarte problemas o retrasos en el control migratorio. Normalmente lo que suelen pedir en el control de pasaportes del aeropuerto es el alojamiento del primer destino en el país. El Consulado chileno también recoge que, si te la solicitan, la solvencia puede acreditarse con copia de la cuenta bancaria u otro documento que pruebe disponer de al menos **46 dólares por día** de estancia.
+
+Conoce las recomendaciones del Ministerio de Asuntos Exteriores de España [aquí](https://www.exteriores.gob.es/es/ServiciosAlCiudadano/Paginas/Detalle-recomendaciones-de-viaje.aspx?trc=chile).
+
+## Visado para Chile desde España: cuándo hace falta y cuándo no
+
+Sobre el visado para Chile desde España, la norma general para turismo es clara: **no se necesita visado para estancias de hasta 90 días**. Esa es la situación habitual para quienes viajan por vacaciones o por una estancia corta sin actividad laboral.
+
+Ahora bien, hay dos matices importantes:
+
+- Si prevés superar esos 90 días, tendrás que solicitar una prórroga ante las autoridades locales; de lo contrario, puedes incurrir en estancia irregular, con el riesgo de multa e incluso expulsión en determinados casos.
+- Si tu intención es **residir, estudiar o trabajar en Chile**, debes tramitar la autorización correspondiente antes del viaje.
+
+Además, la información consular chilena recuerda que **desde febrero de 2022 no es posible cambiar dentro de Chile el tipo de estadía**; es decir, no puedes entrar como turista y luego pasar sin más a una situación de trabajo o estudios sin salir y reingresar conforme a la normativa migratoria aplicable.
+
+## Qué debes presentar al llegar a Chile
+
+Entre los **requisitos para entrar a Chile desde España**, hay varios elementos prácticos que conviene no olvidar. Uno de ellos es la llamada **tarjeta de turismo** que la Policía de Investigaciones entrega a los turistas extranjeros al entrar en el país y que debe conservarse hasta la salida. Exteriores recalca que es imprescindible guardarla durante toda la estancia.
+
+También debes tener presente el control del **Servicio Agrícola y Ganadero (SAG)**. Chile protege de forma muy estricta su patrimonio fitosanitario y zoosanitario, por lo que todos los viajeros deben declarar los productos de origen vegetal o animal que lleven consigo. El SAG permite hacer esta declaración en línea hasta el día anterior a la llegada o, si no, mediante el formulario tradicional en frontera. Si no declaras productos sujetos a control y te los detectan, puedes enfrentarte a confiscación y multas.
+
+> En la práctica, esto afecta especialmente a alimentos, semillas, frutas, verduras, quesos, productos de origen animal y determinadas artesanías. Si tienes dudas, lo sensato es declararlo. En Chile prefieren que declares de más a que ocultes algo por error.
+
+En **Viajes Vidaia** te ayudamos a organizar tu viaje a Chile para que solo te preocupes de disfrutar de la experiencia.
+
+## Viajar a Chile con menores
+
+Si el viaje incluye niños o adolescentes, la documentación debe revisarse con mucho más cuidado. Las autoridades chilenas son muy estrictas cuando un menor viaja solo o acompañado por un solo progenitor. La información consular chilena especifica distintos supuestos y exige, según el caso, **autorizaciones notariales, certificados de nacimiento o libreta de familia**, además del documento de identidad o pasaporte vigente del menor.
+
+Por eso, si viajas en familia, conviene comprobar este punto con antelación y no dejarlo para el último momento. En este tipo de viajes, un simple documento ausente puede complicar tanto la entrada como la salida del país.
+
+## ¿Es seguro viajar a Chile?
+
+Una de las búsquedas más frecuentes es precisamente esta: es seguro viajar a Chile. La respuesta razonable es que sí, **Chile sigue siendo un destino turístico importante y perfectamente viable para un viajero español**, de hecho, lo catalogaría como uno de los países más seguros de Latinoamérica, pero conviene no viajar desinformado. El Ministerio de Asuntos Exteriores español advierte de un deterioro de la seguridad en algunas zonas urbanas, con aumento de robos con violencia, robos por sorpresa, fraude con tarjetas y robos en vehículos, especialmente en ciudades como Santiago, Valparaíso, Viña del Mar, Antofagasta, Calama o Iquique.
+
+Eso no convierte a Chile en un destino inseguro, pero sí obliga a viajar con más atención: cuidar bolsos y mochilas en lugares concurridos, usar transportes oficiales desde el aeropuerto, no perder de vista la tarjeta al pagar y reservar actividades y alojamientos formales. Nada que no harías en España. Las autoridades chilenas y españolas coinciden en recomendar prudencia, especialmente en ciertos barrios periféricos de Santiago, en zonas portuarias de Valparaíso por la noche y en áreas afectadas por conflictividad en Biobío y La Araucanía.
+
+## Seguro de viaje y asistencia sanitaria en Chile
+
+Aunque no es un requisito migratorio obligatorio, viajar con **seguro de viaje para Chile** es una recomendación muy seria. Exteriores recuerda que la Seguridad Social española no opera automáticamente en el extranjero como en la UE, y que los gastos de hospitalización, repatriación o emergencias médicas pueden recaer sobre el viajero si no lleva cobertura adecuada. También aconseja que el seguro sea especialmente completo si vas a hacer deportes de riesgo o excursiones en zonas remotas, glaciares, desiertos o montaña.
+
+Desde Viajes Vidaia incluimos la gestión del seguro de viaje con el que estarías totalmente cubierto en caso de que algo sucediera y además recuerda, te damos soporte antes, durante y después del viaje así que, te sentirás acompañado en todo momento.
+
+## Vacunas, COVID y salud general en Chile
+
+En estos momentos, **Chile no exige vacunas obligatorias** para entrar, y Exteriores tampoco recoge vacunas recomendadas de forma general para el viajero español en condiciones normales. También indica que desde septiembre dejó de regir la alerta sanitaria por COVID-19 y que ya no existen las restricciones que estuvieron vigentes durante la pandemia.
+
+Eso sí, algunas recomendaciones sanitarias siguen teniendo sentido según el destino. Por ejemplo, se aconseja usar repelente y extremar precauciones en **Isla de Pascua** por la presencia del mosquito transmisor de **zika y dengue**, y tener cuidado en zonas rurales donde se han registrado casos de **hantavirus**. Exteriores también recuerda que la contaminación ambiental en Santiago puede ser alta entre finales de abril y comienzos de septiembre.
+
+## Cambio de divisas en Chile
+
+La moneda oficial es el **peso chileno (CLP)**. Si entras en el país con más de **10.000 dólares estadounidenses** en efectivo o instrumentos negociables, o su equivalente en otra moneda, debes declararlo ante Aduanas.
+
+Para consultar el valor de referencia del euro frente al peso chileno, lo más fiable es mirar el Banco Central de Chile, aunque luego el tipo real puede variar según la casa de cambio, el banco o el cajero automático que utilices.
+
+## Naturaleza, terremotos y viajes de aventura
+
+Chile es un país impresionante para el viajero, pero también exigente en ciertos contextos. Exteriores recuerda que es un territorio con actividad sísmica frecuente y que conviene seguir siempre las instrucciones de las autoridades locales en caso de terremotos, tsunamis, incendios o erupciones. Para ello, el organismo de referencia es SENAPRED, que centraliza la información oficial de prevención y respuesta ante desastres.
+
+Lo mismo ocurre con el senderismo y la montaña. Los Andes, Torres del Paine, el desierto de Atacama o ciertas rutas remotas pueden requerir más preparación física y logística de la que muchos viajeros imaginan desde España. Las autoridades aconsejan informarse bien, contratar operadores serios, dejar constancia de la ruta cuando proceda y no banalizar las condiciones meteorológicas ni las distancias.
+
+## Requisitos para viajar a Chile desde España
+
+En resumen, si quieres tener claros los requisitos para viajar a Chile desde España, quédate con esto: **pasaporte en vigor**, estancia turística de hasta **90 días sin visado**, posibilidad de que te pidan **billete de salida, prueba de fondos, reserva o alojamiento**, y mucho cuidado con la declaración SAG si llevas productos de origen vegetal o animal. También conviene revisar si viajas con menores, contratar seguro y comprobar la situación de seguridad de las zonas que vas a visitar.
+
+> Así que sí: **para viajar a Chile se necesita pasaporte**, normalmente no hace falta visado para Chile desde España si viajas por turismo, y es seguro viajar a Chile siempre que lo hagas con la prudencia habitual, información actualizada y una planificación sensata. Antes de salir, lo más recomendable es revisar otra vez las fuentes oficiales, porque este tipo de requisitos puede cambiar.
+
+Ahora que ya tienes claro todo lo que implica viajar a Chile, si quieres conocer el país bien y sin complicarte con la organización, en Viajes Vidaia diseñamos tu viaje a Chile a medida para que vivas una experiencia auténtica, segura y totalmente adaptada a ti.
+
+Recuerda, tu lo deseas y, ¡nosotros lo hacemos realidad!`,
+        imageAlt: 'Torres del Paine en Chile al amanecer, uno de los paisajes más espectaculares de la Patagonia chilena',
+        metaTitle: 'Requisitos para Viajar a Chile desde España | Viajes Vidaia',
+        metaDescription: 'Descubre los requisitos para viajar a Chile desde España: pasaporte, visado, seguro, vacunas, seguridad, documentación y todo lo necesario para entrar a Chile sin problemas.',
+      }
+    },
+    imageKey: 'BLOG.REQUISITOS_CHILE',
+    date: '2026-04-27',
+    category: 'tips',
+    tags: ['chile', 'cuando-ir', 'requisitos', 'planificacion'],
+    readingTime: 10,
+    featured: true,
+    active: true,
+    relatedTripSlugs: ['chile-completo', 'esencias-chile-isla-pascua', 'bolivia-chile-salar-pascua'],
   },
 ]
 

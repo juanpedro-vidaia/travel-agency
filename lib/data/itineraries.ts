@@ -619,7 +619,7 @@ const itineraries: Itinerary[] = [
         },
         flights: ['MAD → EZE'],
         activities: [],
-        referenceHotelId: 'merit-san-telmo-buenos-aires',
+        referenceHotelId: 'merit-san-telmo',
       },
       {
         dayNumber: 2,
@@ -876,9 +876,9 @@ const itineraries: Itinerary[] = [
             included: 'Vuelos · traslados',
           }
         },
-        flights: ['BRC →  AEP', 'AEP →  IGR'],
+        flights: ['BRC → AEP', 'AEP → IGR'],
         activities: [],
-        referenceHotelId: 'city-falls-iguazu-puerto',
+        referenceHotelId: 'city-falls-iguazu',
       },
       {
         dayNumber: 18,
@@ -928,7 +928,7 @@ const itineraries: Itinerary[] = [
             included: 'Traslados',
           }
         },
-        flights: ['IGR→BUE'],
+        flights: ['IGR → BUE'],
         activities: [],
         referenceHotelId: 'merit-san-telmo',
       },
@@ -1822,7 +1822,7 @@ const itineraries: Itinerary[] = [
           }
         },
         activities: [
-          { activityId: 'estancia-cristina-calafate', status: 'optional' },
+          { activityId: 'estancia-cristina-classic-calafate', status: 'optional' },
           { activityId: 'estancia-nibepo-aike', status: 'optional' },
         ],
         referenceHotelId: 'mirador-del-lago-el-calafate',
@@ -2797,7 +2797,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Llegada a Santa Cruz de la Sierra',
-            description: 'Llegada al aeropuerto internacional Viru Viru de Santa Cruz. Recepción y traslado al hotel. Por la tarde, city tour panorámico por el centro histórico: Plaza 24 de Septiembre, Artecampo y mercado La Recoba. Tarde libre. Alojamiento en Santa Cruz.',
+            description: 'Llegada al aeropuerto Viru Viru de Santa Cruz. Recepción y traslado al hotel. Por la tarde, city tour panorámico por el centro histórico. Alojamiento en Santa Cruz.',
             highlights: ['Santa Cruz · Plaza 24 de Septiembre'],
             included: 'Traslado aeropuerto · guía',
           }
@@ -2813,7 +2813,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Samaipata: Patrimonio de la Humanidad',
-            description: 'Desayuno en el hotel. Jornada completa de excursión a Samaipata y El Fuerte, el mayor petroglifo precolombino del mundo. Por la tarde, paseo por el pueblo antes del regreso a Santa Cruz. Alojamiento en Santa Cruz.',
+            description: 'Desayuno en el hotel. Jornada completa de excursión a Samaipata. Alojamiento en Santa Cruz.',
             schedule: 'Salida temprano',
             duration: 'Día completo',
             highlights: ['El Fuerte · Samaipata · Patrimonio UNESCO 1998', 'Roca tallada · mirador natural sobre el valle'],
@@ -2830,7 +2830,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Santa Cruz → Sucre: La Ciudad Blanca',
-            description: 'Desayuno en el hotel. Traslado al aeropuerto para el vuelo a Sucre. Llegada a la capital constitucional de Bolivia. Paseo panorámico por el centro histórico y la Plaza Principal. Tarde libre. Alojamiento en Sucre.',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto para el vuelo a Sucre. Llegada y paseo panorámico por el centro histórico. Alojamiento en Sucre.',
             schedule: '08:35 VVI · 09:20 SRE',
             highlights: ['Llegada a Sucre · Patrimonio de la Humanidad UNESCO'],
             included: 'Vuelo SCZ → Sucre · traslados',
@@ -2847,7 +2847,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Sucre: Circuito Cultural',
-            description: 'Desayuno en el hotel. Mañana libre. Por la tarde, circuito cultural: Casa de la Libertad, Fundación ASUR y pausa en el café colonial de la Iglesia San Francisco. Alojamiento en Sucre.',
+            description: 'Desayuno en el hotel. Mañana libre en Sucre. Por la tarde, circuito cultural por el centro histórico. Alojamiento en Sucre.',
             schedule: 'Tarde',
             duration: '4 horas',
             highlights: ['Casa de la Libertad · Independencia de Bolivia 1825', "Fundación ASUR · tejidos jalq'a y tarabuco"],
@@ -2864,7 +2864,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Sucre → Potosí → Uyuni',
-            description: 'Desayuno en el hotel. Traslado a Potosí: visita del centro histórico y la Real Casa de la Moneda. Almuerzo incluido. Continuación hacia Uyuni. Alojamiento en Uyuni.',
+            description: 'Desayuno en el hotel. Traslado a Potosí: visita del centro histórico. Continuación hacia Uyuni. Alojamiento en Uyuni.',
             highlights: ['Potosí · Real Casa de la Moneda', 'Cerro Rico · 4.090 m'],
             included: 'Guía · traslados · entradas · almuerzo',
           }
@@ -2879,7 +2879,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Lagunas Joyas de los Andes y Desierto de Siloli',
-            description: 'Desayuno en el hotel. Jornada completa por el altiplano sur: Laguna Turquiri, las Lagunas Joyas de los Andes y el Desierto de Siloli. Picnic incluido en ruta. Cena en el hotel.',
+            description: 'Desayuno en el hotel. Jornada completa por las Lagunas Joyas de los Andes y el Desierto de Siloli. Cena en el hotel.',
             schedule: 'Salida desde Uyuni',
             duration: 'Día completo',
             highlights: ['Lagunas Joyas de los Andes · 4.000-4.200 m', 'Laguna Turquiri · 4.261 m'],
@@ -2896,7 +2896,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Reserva Eduardo Avaroa: Laguna Verde y Laguna Colorada',
-            description: 'Desayuno en el hotel. Jornada completa por la Reserva Eduardo Avaroa: Árbol de Piedra, géiseres del Sol de Mañana, termas de Polques, Desierto de Dalí, Laguna Verde y Laguna Colorada con sus flamencos. Cena en el hotel.',
+            description: 'Desayuno en el hotel. Jornada completa por la Reserva Eduardo Avaroa. Cena en el hotel.',
             schedule: 'Salida temprano',
             duration: 'Día completo',
             highlights: ['Laguna Colorada · flamencos andinos · volcán Ollagüe', 'Sol de Mañana · 4.850 m · géiseres'],
@@ -2913,7 +2913,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Pastoreo de Llamas, Salar de Uyuni e Isla Incahuasi',
-            description: 'Desayuno en el hotel. Mañana con el llamero Edwin en los corrales del altiplano. Visita de la Cueva de las Galaxias. Entrada al Salar de Uyuni y picnic al aire libre. Tarde en la Isla Incahuasi. Alojamiento en Uyuni.',
+            description: 'Desayuno en el hotel. Jornada completa: pastoreo de llamas, Cueva de las Galaxias e Isla Incahuasi en el Salar. Alojamiento en Uyuni.',
             duration: 'Día completo',
             highlights: ['Salar de Uyuni · 12.000 km²', 'Isla Incahuasi · cactus de hasta 8 metros'],
             included: 'Guía · transporte 4x4 · entradas · picnic',
@@ -2929,7 +2929,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Uyuni → La Paz: Ceremonia Andina y City Tour',
-            description: 'Desayuno en el hotel. Vuelo a La Paz. Ceremonia de agradecimiento a la Pachamama con yatiris locales. City tour: teleférico, mercados, Catedral San Francisco y Valle de la Luna. Alojamiento en La Paz.',
+            description: 'Desayuno en el hotel. Vuelo a La Paz. Ceremonia andina, city tour y Valle de la Luna. Alojamiento en La Paz.',
             schedule: '09:15 UYU · 10:15 LPB',
             duration: 'Día completo',
             highlights: ['Ceremonia andina · Pachamama · yatiris', 'Teleférico · vistas sobre La Paz · 3.600 m'],
@@ -2947,7 +2947,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'La Paz → Copacabana → Isla de la Luna → Isla del Sol',
-            description: 'Desayuno en el hotel. Salida hacia el Lago Titicaca. Cruce del Estrecho de Tiquina. Desde Copacabana, navegación hasta la Isla de la Luna y su Templo de las Vírgenes del Sol. Continuación hasta la Isla del Sol. Cena incluida. Alojamiento en la Isla del Sol.',
+            description: 'Desayuno en el hotel. Salida hacia el Lago Titicaca. Navegación a la Isla de la Luna y la Isla del Sol. Alojamiento en la Isla del Sol.',
             schedule: 'Salida mañana',
             duration: 'Día completo',
             highlights: ['Isla de la Luna · Templo de las Vírgenes del Sol', 'Isla del Sol · Lago Titicaca · 3.800 m'],
@@ -2964,7 +2964,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Isla del Sol, Pilkokaina y Basílica de Copacabana',
-            description: 'Desayuno en el alojamiento. Visita del sitio arqueológico de Pilkokaina en la Isla del Sol. Almuerzo Apthapi incluido. Regreso a Copacabana y visita de la Basílica. Traslado a La Paz. Alojamiento en La Paz.',
+            description: 'Desayuno en el alojamiento. Visita de la Isla del Sol y regreso a Copacabana. Traslado a La Paz. Alojamiento en La Paz.',
             duration: 'Día completo',
             highlights: ['Pilkokaina · palacio inca · Isla del Sol', 'Almuerzo Apthapi · tradición comunitaria andina'],
             included: 'Guía · navegación · traslados · almuerzo Apthapi',
@@ -2980,7 +2980,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'La Paz → Santa Cruz: Ecoparque La Rinconada',
-            description: 'Desayuno en el hotel. Vuelo a Santa Cruz. Traslado al hotel. Por la tarde, visita del Ecoparque La Rinconada. Alojamiento en Santa Cruz.',
+            description: 'Desayuno en el hotel. Vuelo a Santa Cruz. Por la tarde, visita del Ecoparque La Rinconada. Alojamiento en Santa Cruz.',
             schedule: '11:00 LPB · 12:05 VVI',
             highlights: ['Ecoparque La Rinconada · Victoria Regia', 'Fauna tropical · tucanes · lagunas'],
             included: 'Vuelo La Paz → Santa Cruz · guía · entradas · traslados',
@@ -2997,7 +2997,7 @@ const itineraries: Itinerary[] = [
         content: {
           es: {
             title: 'Vuelo de Regreso a España',
-            description: 'Desayuno en el hotel. Traslado al aeropuerto para el vuelo de regreso a España.',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto. Vuelo de regreso a España.',
             schedule: '12:20 VVI',
             highlights: [],
             included: 'Traslado aeropuerto · vuelo internacional',
@@ -3056,7 +3056,7 @@ const itineraries: Itinerary[] = [
             included: 'Traslado · guía · entradas',
           }
         },
-        flights: ['MAD → VVI · (referencial)'],
+        flights: ['MAD → VVI'],
         activities: [{ activityId: 'city-tour-santa-cruz', status: 'included' }],
         referenceHotelId: 'hotel-eco-chairu-santa-cruz',
       },
@@ -3072,7 +3072,7 @@ const itineraries: Itinerary[] = [
             included: 'Vuelo SCZ → Sucre · guía · entradas',
           }
         },
-        flights: ['VVI → SRE · BOA · (referencial)'],
+        flights: ['VVI → SRE'],
         activities: [{ activityId: 'city-tour-sucre', status: 'included' }],
         referenceHotelId: 'hotel-independencia-sucre',
       },
@@ -3188,7 +3188,7 @@ const itineraries: Itinerary[] = [
             included: 'Guía · traslados · entradas · vuelo Calama → Santiago',
           }
         },
-        flights: ['CJC → SCL · (referencial)'],
+        flights: ['CJC → SCL'],
         activities: [{ activityId: 'valle-arcoiris-atacama', status: 'included' }],
         referenceHotelId: 'holiday-inn-santiago-airport',
       },
@@ -3204,7 +3204,7 @@ const itineraries: Itinerary[] = [
             included: 'Vuelo SCL → Rapa Nui · traslado · entrada Isla de Pascua',
           }
         },
-        flights: ['SCL → IPC · (referencial)'],
+        flights: ['SCL → IPC'],
         activities: [],
         referenceHotelId: 'hotel-otai-rapa-nui',
       },
@@ -3256,7 +3256,7 @@ const itineraries: Itinerary[] = [
             included: 'Traslados · vuelo IPC → SCL',
           }
         },
-        flights: ['IPC → SCL · (referencial)'],
+        flights: ['IPC → SCL'],
         activities: [],
         referenceHotelId: 'hotel-capital-bellet-providencia',
       },
@@ -3288,7 +3288,7 @@ const itineraries: Itinerary[] = [
             included: 'Traslado aeropuerto',
           }
         },
-        flights: ['SCL → MAD · (referencial)'],
+        flights: ['SCL → MAD'],
         activities: [],
       },
     ],

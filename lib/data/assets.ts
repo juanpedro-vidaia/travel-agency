@@ -85,12 +85,12 @@ export const ASSETS = {
 
   // ── Blog posts ────────────────────────────────────────────────────────────────
   'BLOG.ATACAMA_CHILE':         { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg', alt: 'Desierto de Atacama, Chile' },
-  'BLOG.BEST_TIME_ARGENTINA':   { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800', alt: '' },
+  'BLOG.BEST_TIME_ARGENTINA':   { url: 'https://images.unsplash.com/photo-1605056402177-ed1bf1234c7b', alt: 'Cerro de los Siete Colores en Purmamarca, Argentina, uno de los paisajes del norte argentino' },
   'BLOG.CARRETERA_AUSTRAL':     { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777938578/DSCF5578_2_ofnz1j.jpg', alt: 'Catedrales de Mármol en el Lago General Carrera, Chile' },
   'BLOG.ENCUENTRO_IGUAZU':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777991216/IMG_1651_1_apzpg6.jpg', alt: 'Vista de las Cataratas del Iguazú desde un mirador del Lago Brasileño.' },
   'BLOG.MATE_ARGENTINA':        { url: 'https://images.unsplash.com/photo-1523642456391-c597480dbdb6?auto=format&fit=crop&w=1200&q=80', alt: 'Mate argentino' },
   'BLOG.COSTUMBRES_ARGENTINAS': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779498619/pexels-maggychang-30828707_woumuq.jpg', alt: 'Murales de Messi y Maradona en un escaparate del barrio de La Boca, Buenos Aires' },
-  'BLOG.REQUISITOS_CHILE':      { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800', alt: '' },
+  'BLOG.REQUISITOS_CHILE':      { url: 'https://images.unsplash.com/photo-1478827387698-1527781a4887', alt: 'Torres del Paine en Chile al amanecer, uno de los paisajes más espectaculares de la Patagonia chilena' },
 
   // ── Country hero images ───────────────────────────────────────────────────────
   'COUNTRIES.ARGENTINA_HERO': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777912429/copy_of_dscf5187_cgefyp_2abb25.jpg', alt: 'El Chaltén, Patagonia argentina' },

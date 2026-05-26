@@ -229,7 +229,7 @@ const activities: Activity[] = [
     active: true,
   },
   {
-    id: 'perito-moreno-mintrekking',
+    id: 'perito-moreno-minitrekking',
     destinationId: 'el-calafate',
     content: {
       es: {
