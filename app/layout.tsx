@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className={`${inter.variable} ${playfair.variable}`}>
-        <JsonLd data={organizationSchema} />
+        <JsonLd data={organizationSchema} id="ld-organization" />
         <LanguageProvider>
           <ConsentProvider>
             <GoogleAnalytics />

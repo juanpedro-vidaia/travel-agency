@@ -73,8 +73,8 @@ export default async function PersonalizarPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={serviceJsonLd} />
-      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={serviceJsonLd} id="ld-personalizar-service" />
+      <JsonLd data={breadcrumbJsonLd} id="ld-personalizar-breadcrumb" />
       <FormularioPersonalizado
         origin="generic"
         countries={countries}

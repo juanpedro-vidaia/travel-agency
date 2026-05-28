@@ -106,8 +106,8 @@ export default async function PersonalizarItinerarioPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={reserveActionJsonLd} />
-      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={reserveActionJsonLd} id="ld-trip-personalizar-action" />
+      <JsonLd data={breadcrumbJsonLd} id="ld-trip-personalizar-breadcrumb" />
       <FormularioPersonalizado
         origin="itinerary"
         itineraryData={itineraryData}

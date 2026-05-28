@@ -55,7 +55,7 @@ export default async function ItineraryPage({ params }: Props) {
   return (
     <>
       {(tripSchemas.length > 0 || faqSchemas.length > 0) && (
-        <JsonLd data={buildPageSchema(...tripSchemas, ...faqSchemas)} />
+        <JsonLd data={buildPageSchema(...tripSchemas, ...faqSchemas)} id="ld-itinerary" />
       )}
       <ItineraryContent slug={slug} faqs={itineraryFaqs} />
     </>

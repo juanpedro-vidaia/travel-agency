@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={buildArticleSchema({
+      <JsonLd id="ld-article" data={buildArticleSchema({
         title: es.title,
         description: es.excerpt,
         imageUrl,

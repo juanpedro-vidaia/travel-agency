@@ -65,7 +65,7 @@ export default async function CountryPage({ params, searchParams }: Props) {
       <JsonLd data={buildPageSchema(
         buildTouristDestinationSchema(country, countryDests),
         ...(destinationFaqs.length > 0 ? [buildFAQSchema(destinationFaqs.map(f => f.es))] : []),
-      )} />
+      )} id="ld-destination" />
       <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] flex items-end overflow-hidden">

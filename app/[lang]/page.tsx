@@ -48,7 +48,7 @@ export default async function Home({ params }: Props) {
       <JsonLd data={buildPageSchema(
         ...persons,
         buildFAQSchema(homeFaqs.map(f => f.es)),
-      )} />
+      )} id="ld-home" />
       <main>
         <Hero />
         <ValueProposition />

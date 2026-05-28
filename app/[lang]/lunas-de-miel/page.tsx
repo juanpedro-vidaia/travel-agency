@@ -44,7 +44,7 @@ export default async function LunasDeMielPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={buildFAQSchema(lunaFaqs.map(f => f.es))} />
+      <JsonLd data={buildFAQSchema(lunaFaqs.map(f => f.es))} id="ld-honeymoon" />
       <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] overflow-hidden">
