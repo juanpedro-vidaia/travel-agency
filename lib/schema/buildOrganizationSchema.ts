@@ -13,6 +13,7 @@ export function buildOrganizationSchema(countries: Country[], destinations: Dest
   return {
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
+    '@id': 'https://www.viajesvidaia.com/#organization',
     name: 'Viajes Vidaia',
     url: 'https://www.viajesvidaia.com',
     logo: 'https://www.viajesvidaia.com/images/logo/viajes-vidaia-logo.png',

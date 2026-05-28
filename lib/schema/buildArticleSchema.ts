@@ -14,14 +14,7 @@ export function buildArticleSchema(post: {
     datePublished: post.publishedAt,
     url: post.url,
     mainEntityOfPage: post.url,
-    author: { '@type': 'Organization', name: 'Viajes Vidaia' },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Viajes Vidaia',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://www.viajesvidaia.com/images/logo/viajes-vidaia-logo.png',
-      },
-    },
+    author: { '@id': 'https://www.viajesvidaia.com/#organization' },
+    publisher: { '@id': 'https://www.viajesvidaia.com/#organization' },
   }
 }

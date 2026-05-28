@@ -5,7 +5,7 @@ import { getStaticContent } from '@/lib/helpers/contentHelpers'
 import { getCountriesOrdered } from '@/lib/services/countriesService'
 import { getDestinations } from '@/lib/services/destinationsService'
 import { getFAQsByPage } from '@/lib/services/faqsService'
-import { buildPageSchema, buildOrganizationSchema, buildPersonSchema, buildFAQSchema } from '@/lib/schema'
+import { buildPageSchema, buildPersonSchema, buildFAQSchema } from '@/lib/schema'
 import Hero from '@/components/sections/Hero'
 import ValueProposition from '@/components/sections/ValueProposition'
 import DestinationsSection from '@/components/sections/DestinationsSection'
@@ -46,7 +46,6 @@ export default async function Home({ params }: Props) {
   return (
     <>
       <JsonLd data={buildPageSchema(
-        buildOrganizationSchema(countries, destinations),
         ...persons,
         buildFAQSchema(homeFaqs.map(f => f.es)),
       )} />

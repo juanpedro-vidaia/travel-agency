@@ -49,7 +49,7 @@ export function buildTouristTripSchema(
     name: trip.content.es.title,
     description: trip.content.es.subtitle,
     url: `https://www.viajesvidaia.com/es/itinerarios/${trip.slug}`,
-    provider: { '@type': 'TravelAgency', name: 'Viajes Vidaia', url: 'https://www.viajesvidaia.com' },
+    provider: { '@id': 'https://www.viajesvidaia.com/#organization' },
     subTrip,
     ...(trip.priceFrom != null && trip.priceFrom > 0 && {
       offers: {
