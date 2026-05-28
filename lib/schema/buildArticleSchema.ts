@@ -11,7 +11,7 @@ export function buildArticleSchema(post: {
     headline: post.title,
     description: post.description,
     image: post.imageUrl,
-    datePublished: post.publishedAt,
+    datePublished: new Date(post.publishedAt).toISOString(),
     url: post.url,
     mainEntityOfPage: post.url,
     author: { '@id': 'https://www.viajesvidaia.com/#organization' },

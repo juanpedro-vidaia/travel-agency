@@ -194,14 +194,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 ---
 
 ### M10 — Añadir JSON-LD de `Article` en páginas de blog
-> ✅ COMPLETADO 28/05/2026 — Migrado a `buildArticleSchema` de `lib/schema/`. Usa `<JsonLd>` component en lugar de `<script dangerouslySetInnerHTML>`.
+> ✅ COMPLETADO 28/05/2026 — Migrado a `buildArticleSchema` de `lib/schema/`. Usa `<JsonLd>` component con `next/script`. `datePublished` normalizado a ISO 8601 completo con timezone (`new Date(date).toISOString()`).
 
 **Problema:** Los posts del blog no tienen structured data de tipo `Article`. Esto reduce la visibilidad en Google News y los rich results de artículos.
 
 **Archivos afectados:**
 - `app/[lang]/blog/[slug]/page.tsx`
 
-**Solución implementada:** `buildArticleSchema({ title, description, imageUrl, publishedAt, url })` en `lib/schema/buildArticleSchema.ts`, llamado desde `app/[lang]/blog/[slug]/page.tsx` con `<JsonLd data={buildArticleSchema(...)} />`.
+**Solución implementada:** `buildArticleSchema({ title, description, imageUrl, publishedAt, url })` en `lib/schema/buildArticleSchema.ts`, llamado desde `app/[lang]/blog/[slug]/page.tsx` con `<JsonLd data={buildArticleSchema(...)} id="ld-article" />`. Las fechas de `posts.ts` son `"YYYY-MM-DD"` — el builder las convierte a `"YYYY-MM-DDT00:00:00.000Z"` antes de emitirlas.
 
 ---
 

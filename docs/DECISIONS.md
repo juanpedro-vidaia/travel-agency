@@ -283,6 +283,23 @@
 
 ---
 
+## D15 — `JsonLd` usa `next/script` con `id` para evitar duplicación RSC
+
+**Fecha:** 2026-05-28
+
+**Decisión:** El componente `components/scripts/JsonLd.tsx` usa `<Script id={id}>` de `next/script` en lugar de un `<script dangerouslySetInnerHTML>` nativo. Todos los callers deben pasar un `id` estable y único por ruta.
+
+**Problema que resuelve:** Next.js App Router serializa el árbol de Server Components en el payload RSC (React flight data) para la hidratación cliente. Cuando el runtime cliente procesa ese payload, re-inyecta en el DOM los elementos `<script dangerouslySetInnerHTML>` del body aunque el SSR ya los hubiera renderizado. Esto hace que validadores que ejecutan JavaScript (validator.schema.org, Rich Results Test) encuentren cada schema dos veces.
+
+**Por qué `next/script` + `id` lo resuelve:** Next.js registra internamente cada script por su `id`. Al procesar el payload RSC, si un script con ese `id` ya existe en el DOM, el runtime lo omite y no crea un nodo duplicado.
+
+**Consecuencias:**
+- El prop `id` es obligatorio en `JsonLd` — TypeScript lo fuerza
+- Los `id` deben ser estables (no depender de datos dinámicos) para que la deduplicación funcione también en navegación SPA
+- El schema de Organization NO debe incluirse en los `buildPageSchema` de las páginas — solo se emite desde `layout.tsx` con `id="ld-organization"`
+
+---
+
 ## D12 — Leaflet con `dynamic` import y `ssr: false`
 
 **Fecha aproximada:** Commit `69af0f1` — "Mapa en Itinerario"

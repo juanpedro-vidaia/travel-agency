@@ -111,12 +111,12 @@ Módulo creado para centralizar toda la generación de schema.org. Cada builder 
 | Builder | Schema | Usado en |
 |---|---|---|
 | `buildPageSchema(...schemas)` | `@graph` combinator | Todas las páginas con >1 schema |
-| `buildOrganizationSchema(countries, destinations)` | `TravelAgency` dinámico con `areaServed`, `knowsAbout`, `sameAs` | `layout.tsx`, home |
+| `buildOrganizationSchema(countries, destinations)` | `TravelAgency` con `@id`, `areaServed`, `knowsAbout`, `sameAs` | `layout.tsx` (solo aquí, para todas las páginas) |
 | `buildTouristDestinationSchema(country, dests)` | `TouristDestination` con `GeoCoordinates` + `includesAttraction` | `/destinos/[slug]` |
 | `buildTouristTripSchema(trip, days, allDests)` | `TouristTrip` con `subTrip` por día y `subjectOf` actividades | `/itinerarios/[slug]` |
 | `buildFAQSchema(items)` | `FAQPage` | Todas las páginas con FAQs |
-| `buildPersonSchema(member)` | `Person` | Home (equipo) |
-| `buildArticleSchema(post)` | `Article` | `/blog/[slug]` |
+| `buildPersonSchema(member)` | `Person` con `worksFor: { '@id': '.../#organization' }` | Home (equipo) |
+| `buildArticleSchema(post)` | `Article` con `author`/`publisher` por `@id` | `/blog/[slug]` |
 
 ### Patrón de uso
 
@@ -126,10 +126,18 @@ import { buildPageSchema, buildTouristDestinationSchema, buildFAQSchema } from '
 <JsonLd data={buildPageSchema(
   buildTouristDestinationSchema(country, dests),
   buildFAQSchema(faqs),
-)} />
+)} id="ld-destination" />
 ```
 
 `buildPageSchema` acepta 1..N schemas y siempre genera un `@graph` válido. Si solo hay un schema, igualmente lo envuelve en `@graph` para consistencia.
+
+### `@id` canónico y referencias
+
+`buildOrganizationSchema` emite `"@id": "https://www.viajesvidaia.com/#organization"`. Todos los builders que referencian la organización usan `{ '@id': 'https://www.viajesvidaia.com/#organization' }` en lugar de objetos inline (`worksFor`, `provider`, `author`, `publisher`). Esto evita que los validadores cuenten múltiples instancias de Organization en la misma página.
+
+### `JsonLd` — deduplicación RSC
+
+`components/scripts/JsonLd.tsx` usa `next/script` con prop `id` obligatoria. Next.js usa ese `id` para registrar el script y evitar re-inyectarlo cuando el runtime RSC cliente procesa el payload de hidratación — sin esto, los scripts del body aparecerían dos veces en validadores que ejecutan JavaScript (como validator.schema.org). Cada página usa un `id` estable y único: `ld-organization`, `ld-home`, `ld-destination`, `ld-itinerary`, `ld-article`, `ld-viajes`, `ld-honeymoon`.
 
 ### `renderTemplate`
 
