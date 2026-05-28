@@ -27,8 +27,10 @@ import {
 import { getItineraryWithDetails, getItineraryOptionals } from '@/lib/services/itinerariesService'
 import { getTripBySlug } from '@/lib/services/tripsService'
 import { getCountryBySlug } from '@/lib/services/countriesService'
+import type { ResolvedFAQ } from '@/lib/services/faqsService'
 import { formatPrice, renderTemplate } from '@/lib/helpers/contentHelpers'
 import { useLanguage } from '@/lib/hooks/useLanguage'
+import FaqSection from '@/components/sections/FaqSection'
 import ItineraryHeroCarousel from './ItineraryHeroCarousel'
 import ItineraryDayAccordion from './ItineraryDayAccordion'
 import ItineraryHotels from './ItineraryHotels'
@@ -54,7 +56,7 @@ const ACTIVITY_ICON_MAP: Record<string, LucideIcon> = {
   TreePalm,
 }
 
-export default function ItineraryContent({ slug }: { slug: string }) {
+export default function ItineraryContent({ slug, faqs }: { slug: string; faqs: ResolvedFAQ[] }) {
   const itinerary = getItineraryWithDetails(slug)
   const trip = getTripBySlug(slug)
   const optionalActivities = getItineraryOptionals(slug)
@@ -175,6 +177,13 @@ export default function ItineraryContent({ slug }: { slug: string }) {
 
       {/* ── VIAJES RELACIONADOS ───────────────────────────────────────────────── */}
       <ItineraryRelated slug={slug} />
+
+      {/* ── FAQs ──────────────────────────────────────────────────────────────── */}
+      <FaqSection
+        title={content.faqSection.title}
+        subtitle={content.faqSection.subtitle}
+        faqs={faqs}
+      />
 
       {/* ── PRECIO ────────────────────────────────────────────────────────────── */}
       <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">

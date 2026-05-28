@@ -3,9 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Heart } from 'lucide-react'
 import { getHoneymoonTrips } from '@/lib/services/tripsService'
-import HoneymoonFaq from '@/components/sections/HoneymoonFaq'
+import { getFAQsByPage } from '@/lib/services/faqsService'
 import TripCard from '@/components/ui/TripCard'
+import FaqSection from '@/components/sections/FaqSection'
+import JsonLd from '@/components/scripts/JsonLd'
 import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
+import { buildFAQSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getAsset } from '@/lib/data/assets'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
@@ -37,9 +40,12 @@ export default async function LunasDeMielPage({ params }: Props) {
   const content = getStaticContent(lang).honeymoonPage
   const ui = getCommonUI(lang)
   const heroBg = getAsset('HONEYMOON_HERO_BG')
+  const lunaFaqs = getFAQsByPage('luna-de-miel')
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <JsonLd data={buildFAQSchema(lunaFaqs.map(f => f.es))} />
+      <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] overflow-hidden">
         <Image src={heroBg.url} alt={heroBg.alt} fill className="object-cover" priority sizes="100vw" />
@@ -206,17 +212,11 @@ export default async function LunasDeMielPage({ params }: Props) {
       )}
 
       {/* ── SECCIÓN 5: FAQ ── */}
-      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-            {content.faqSection.title}
-          </h2>
-          <p className="text-center text-vidaia-charcoal/55 text-sm mb-8 md:mb-12">
-            {content.faqSection.subtitle}
-          </p>
-          <HoneymoonFaq />
-        </div>
-      </section>
+      <FaqSection
+        title={content.faqSection.title}
+        subtitle={content.faqSection.subtitle}
+        faqs={lunaFaqs.map(f => ({ id: f.id, ...f.es }))}
+      />
 
       {/* ── CTA FINAL ── */}
       <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-vidaia-dark via-[#2a5060] to-vidaia-primary text-white text-center">
@@ -243,6 +243,7 @@ export default async function LunasDeMielPage({ params }: Props) {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }

@@ -235,6 +235,54 @@
 
 ---
 
+## D13 — `lib/schema/` con builders tipados para structured data
+
+**Fecha:** 2026-05-28
+
+**Decisión:** Toda la generación de JSON-LD se centraliza en `lib/schema/`, un directorio de funciones puras que reciben datos tipados y devuelven objetos schema.org. Se usa un helper `buildPageSchema(...schemas)` que combina varios schemas en un único `@graph`.
+
+**Alternativas consideradas:**
+- Objetos inline en cada página (era el estado anterior)
+- Un único fichero `schemas.ts` con todas las funciones
+- Librería externa como `schema-dts` para tipado schema.org
+
+**Razonamiento:**
+- Un builder por tipo de schema = fácil de encontrar, testear y modificar de forma aislada
+- El patrón `@graph` es la recomendación actual de Google para múltiples schemas en una página — evita que cada `<script>` sea independiente
+- Elimina duplicación: `buildFaqJsonLd` estaba en `contentHelpers.ts` (lugar incorrecto) y duplicado conceptualmente en cada página
+- Tipado estricto: los builders reciben `Country`, `Trip`, `ResolvedDay[]` etc. — TypeScript garantiza que los schemas reflejan el estado real de los datos
+- Los builders solo dependen de los tipos de `lib/data/` y `lib/services/` — sin acoplamiento con componentes React
+
+**Consecuencias:**
+- Añadir un schema nuevo requiere crear un fichero en `lib/schema/` y re-exportarlo en `index.ts`
+- `buildPageSchema` siempre genera un `@graph` (aunque haya un solo schema) — consistencia sobre brevedad
+- `buildTouristTripSchema` genera `subTrip` con un nodo por día de itinerario, lo que puede producir payloads grandes para itinerarios de 20+ días
+
+---
+
+## D14 — `llms.txt` dinámico para visibilidad en IAs
+
+**Fecha:** 2026-05-28
+
+**Decisión:** Crear una ruta `GET /llms.txt` en `app/llms.txt/route.ts` que genera un fichero de texto plano en formato [llms.txt spec](https://llmstxt.org/) con destinos e itinerarios reales.
+
+**Alternativas consideradas:**
+- Fichero estático `public/llms.txt` mantenido a mano
+- Sin fichero (dejar que los crawlers de IA usen el sitemap.xml)
+
+**Razonamiento:**
+- Los crawlers de LLMs (ChatGPT, Perplexity, Claude, Gemini) consumen `llms.txt` para indexar el contexto de un sitio sin renderizar JS
+- Una ruta dinámica se actualiza automáticamente cuando se añaden países, destinos o itinerarios — sin mantenimiento manual
+- El formato es simple (texto plano con Markdown) y no requiere librería externa
+- Complementa el sitemap.xml (descubrimiento de URLs) con contexto semántico (qué hace el sitio, en qué destaca)
+
+**Consecuencias:**
+- La ruta es sincrónica (`GET` sin `async`) porque todos los datos vienen de módulos estáticos
+- El contenido cambia con cada redeploy al añadir contenido nuevo — comportamiento deseado
+- No es indexado por Google (que usa sitemap.xml) pero sí por IAs que buscan `llms.txt` en el dominio raíz
+
+---
+
 ## D12 — Leaflet con `dynamic` import y `ssr: false`
 
 **Fecha aproximada:** Commit `69af0f1` — "Mapa en Itinerario"

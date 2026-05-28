@@ -1,17 +1,21 @@
 import type { Metadata } from 'next'
 import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
+import { buildFAQSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getActiveTrips } from '@/lib/services/tripsService'
 import { getCountriesOrdered } from '@/lib/services/countriesService'
 import { getDestinations } from '@/lib/services/destinationsService'
+import { getFAQsByPage } from '@/lib/services/faqsService'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import ViajesHero from '@/components/sections/ViajesHero'
 import ViajesServicios from '@/components/sections/ViajesServicios'
 import DestinationsSection from '@/components/sections/DestinationsSection'
 import ViajesBuscador from '@/components/sections/ViajesBuscador'
 import ViajesComoTrabajamos from '@/components/sections/ViajesComoTrabajamos'
+import FaqSection from '@/components/sections/FaqSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import CTASection from '@/components/sections/CTASection'
+import JsonLd from '@/components/scripts/JsonLd'
 
 interface Props {
   params: Promise<{ lang: string }>
@@ -46,9 +50,12 @@ export default async function ViajesPage({ params }: Props) {
     flagCode: c.flagCode,
     name: (c.content[lang as keyof typeof c.content] ?? c.content.es).name,
   }))
+  const viajesFaqs = getFAQsByPage('viajes')
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <JsonLd data={buildFAQSchema(viajesFaqs.map(f => f.es))} />
+      <main className="min-h-screen bg-white">
 
       {/* 1 — Hero carrusel */}
       <ViajesHero
@@ -93,12 +100,20 @@ export default async function ViajesPage({ params }: Props) {
         steps={page.comoTrabajamos.steps}
       />
 
-      {/* 5 — Testimonios */}
+      {/* 5 — FAQs */}
+      <FaqSection
+        title={page.faqSection.title}
+        subtitle={page.faqSection.subtitle}
+        faqs={viajesFaqs.map(f => ({ id: f.id, ...f.es }))}
+      />
+
+      {/* 6 — Testimonios */}
       <TestimonialsSection />
 
-      {/* 6 — CTA final */}
+      {/* 7 — CTA final */}
       <CTASection />
 
-    </main>
+      </main>
+    </>
   )
 }

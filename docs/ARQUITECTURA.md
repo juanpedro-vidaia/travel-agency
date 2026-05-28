@@ -10,7 +10,7 @@
 |---|---|---|---|
 | `/es` | `app/[lang]/page.tsx` | Server Component | `getCountriesOrdered()`, `getDestinations()`, `getStaticContent()` |
 | `/es/viajes` | `app/[lang]/viajes/page.tsx` | Server Component | `getActiveTrips()`, `getCountriesOrdered()`, `getDestinations()`, `getStaticContent()`, `getCommonUI()` |
-| `/es/destinos/:slug` | `app/[lang]/destinos/[slug]/page.tsx` | Server Component | `getCountryBySlug()`, `getTripsByCountry()`, `getStaticContent()`, `getAsset()` |
+| `/es/destinos/:slug` | `app/[lang]/destinos/[slug]/page.tsx` | Server Component | `getCountryBySlug()`, `getTripsByCountry()`, `getDestinationsByCountry()`, `getStaticContent()`, `getAsset()` |
 | `/es/itinerarios/:slug` | `app/[lang]/itinerarios/[slug]/page.tsx` | Server Component (shell) | Delega rendering a `ItineraryContent` (Client Component) |
 | `/es/itinerarios/personalizar` | `app/[lang]/itinerarios/personalizar/page.tsx` | Server Component (shell) | Delega a `FormularioPersonalizado` (Client Component) |
 | `/es/itinerarios/:slug/personalizar` | `app/[lang]/itinerarios/[slug]/personalizar/page.tsx` | Redirect a personalizar con `?itinerarySlug=` | — |
@@ -24,6 +24,7 @@
 | `/api/forms/contacto` | `app/api/forms/contacto/route.ts` | API Route (POST) | — |
 | `/api/forms/newsletter` | `app/api/forms/newsletter/route.ts` | API Route (POST) | — |
 | `/api/forms/presupuesto` | `app/api/forms/presupuesto/route.ts` | API Route (POST) | Zod validation con `formSchema` |
+| `/llms.txt` | `app/llms.txt/route.ts` | API Route (GET) | `getCountriesOrdered()`, `getDestinationsByCountry()`, `getActiveTrips()` |
 
 ---
 
@@ -64,8 +65,8 @@ getAsset('KEY') llamado directamente en el componente (función pura)
 |---|---|
 | `staticContent.ts` | Todos los textos de la UI en español (e inglés parcial). Exporta `STATIC_CONTENT` y `COMMON_UI`. |
 | `assets.ts` | Registro tipado de todas las URLs de imágenes y sus `alt`. Exporta `ASSETS` y `getAsset()`. |
-| `countries.ts` | Array de países activos con contenido i18n, flags, slug y orden. |
-| `destinations.ts` | Array de destinos con coordenadas, país y flag de `featured`. |
+| `countries.ts` | Array de países activos con contenido i18n, flags, slug, orden y coordenadas geográficas (`lat`, `lng`). |
+| `destinations.ts` | Array de destinos con país, flag de `featured` y coordenadas opcionales (`lat?`, `lng?`). |
 | `trips.ts` | Viajes con precio, duración, tags, países y referencias a itinerarios. |
 | `itineraries.ts` | Itinerarios detallados (días, etapas, alojamientos, actividades incluidas). |
 | `activities.ts` | Actividades opcionales referenciadas desde itinerarios. |
@@ -83,7 +84,7 @@ Los servicios son funciones puras que filtran y transforman los datos de `lib/da
 | Servicio | Funciones clave |
 |---|---|
 | `countriesService.ts` | `getCountries()`, `getCountriesOrdered()`, `getCountryBySlug()` |
-| `destinationsService.ts` | `getDestinations()`, `getDestinationById()`, `getDestinationsByCountry()` |
+| `destinationsService.ts` | `getDestinations()`, `getDestinationById()`, `getDestinationsByCountry(countrySlug)` |
 | `tripsService.ts` | `getActiveTrips()`, `getTripsByCountry()`, `getTripBySlug()`, `getRelatedTripsBySlug()` |
 | `itinerariesService.ts` | `getItinerary()`, `getItineraryWithDetails()` (resuelve hotels y activities por referencia), `getAllItineraries()` |
 | `activitiesService.ts` | `getActivityById()` |
@@ -100,6 +101,35 @@ Los servicios son funciones puras que filtran y transforman los datos de `lib/da
 |---|---|
 | `contentHelpers.ts` | `getStaticContent(lang)`, `getCommonUI(lang)`, `renderTemplate(template, vars)`, `formatPrice(price)` |
 | `seo.ts` | `buildMetadata({ title, description, path, lang, ogImage?, ogType? })` — genera Metadata completo con OG, Twitter Card, canonical y hreflang |
+
+---
+
+## `lib/schema/` — Builders de structured data (JSON-LD)
+
+Módulo creado para centralizar toda la generación de schema.org. Cada builder recibe datos tipados y devuelve un objeto JSON-LD con `@context`. El helper `buildPageSchema` los combina en un `@graph` único eliminando los `@context` individuales.
+
+| Builder | Schema | Usado en |
+|---|---|---|
+| `buildPageSchema(...schemas)` | `@graph` combinator | Todas las páginas con >1 schema |
+| `buildOrganizationSchema(countries, destinations)` | `TravelAgency` dinámico con `areaServed`, `knowsAbout`, `sameAs` | `layout.tsx`, home |
+| `buildTouristDestinationSchema(country, dests)` | `TouristDestination` con `GeoCoordinates` + `includesAttraction` | `/destinos/[slug]` |
+| `buildTouristTripSchema(trip, days, allDests)` | `TouristTrip` con `subTrip` por día y `subjectOf` actividades | `/itinerarios/[slug]` |
+| `buildFAQSchema(items)` | `FAQPage` | Todas las páginas con FAQs |
+| `buildPersonSchema(member)` | `Person` | Home (equipo) |
+| `buildArticleSchema(post)` | `Article` | `/blog/[slug]` |
+
+### Patrón de uso
+
+```typescript
+import { buildPageSchema, buildTouristDestinationSchema, buildFAQSchema } from '@/lib/schema'
+
+<JsonLd data={buildPageSchema(
+  buildTouristDestinationSchema(country, dests),
+  buildFAQSchema(faqs),
+)} />
+```
+
+`buildPageSchema` acepta 1..N schemas y siempre genera un `@graph` válido. Si solo hay un schema, igualmente lo envuelve en `@graph` para consistencia.
 
 ### `renderTemplate`
 
@@ -243,6 +273,12 @@ Todo el contenido (viajes, itinerarios, posts, hoteles, actividades, países, te
 
 - **Estado:** Activo. El componente `GoogleAnalytics.tsx` carga el script de GA4 solo si el usuario ha aceptado las cookies analíticas (vía `ConsentContext`).
 - **Variable:** `NEXT_PUBLIC_GA4_MEASUREMENT_ID`.
+
+### `llms.txt` — Visibilidad en IAs
+
+- **Ruta:** `GET /llms.txt` — `app/llms.txt/route.ts`
+- **Qué hace:** Genera un fichero de texto plano en formato [llms.txt](https://llmstxt.org/) con la descripción del negocio, destinos activos con sus atracciones, y los itinerarios destacados con enlace directo. Los crawlers de LLMs (ChatGPT, Perplexity, Claude, Gemini) leen este fichero para conocer el sitio sin necesidad de renderizar HTML.
+- **Contenido dinámico:** Lee en tiempo real de `getCountriesOrdered()`, `getDestinationsByCountry()` y `getActiveTrips()`. No requiere mantenimiento manual.
 
 ### Instagram widget
 

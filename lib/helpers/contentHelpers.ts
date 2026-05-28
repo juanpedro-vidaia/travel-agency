@@ -25,3 +25,4 @@ export function renderTemplate(
 export function formatPrice(price: number, locale = 'es-ES'): string {
   return price.toLocaleString(locale)
 }
+

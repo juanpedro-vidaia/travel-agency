@@ -172,7 +172,7 @@ const itineraries: Itinerary[] = [
       },
       {
         dayNumber: 4,
-        destinationId: 'peninsula-valdes',
+        destinationId: 'puerto-madryn',
         dayType: 'activity',
         content: {
           es: {

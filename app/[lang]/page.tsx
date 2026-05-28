@@ -4,6 +4,8 @@ import { buildMetadata } from '@/lib/helpers/seo'
 import { getStaticContent } from '@/lib/helpers/contentHelpers'
 import { getCountriesOrdered } from '@/lib/services/countriesService'
 import { getDestinations } from '@/lib/services/destinationsService'
+import { getFAQsByPage } from '@/lib/services/faqsService'
+import { buildPageSchema, buildOrganizationSchema, buildPersonSchema, buildFAQSchema } from '@/lib/schema'
 import Hero from '@/components/sections/Hero'
 import ValueProposition from '@/components/sections/ValueProposition'
 import DestinationsSection from '@/components/sections/DestinationsSection'
@@ -11,7 +13,9 @@ import QuienesSomos from '@/components/sections/QuienesSomos'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import InstagramBanner from '@/components/sections/InstagramBanner'
 import BlogSection from '@/components/sections/BlogSection'
+import FaqSection from '@/components/sections/FaqSection'
 import CTASection from '@/components/sections/CTASection'
+import JsonLd from '@/components/scripts/JsonLd'
 
 interface Props { params: Promise<{ lang: string }> }
 
@@ -35,23 +39,38 @@ export default async function Home({ params }: Props) {
   const content = getStaticContent(lang)
   const countries = getCountriesOrdered()
   const destinations = getDestinations()
+  const homeFaqs = getFAQsByPage('home')
+
+  const persons = getStaticContent('es').quienesSomos.teamMembers.map(m => buildPersonSchema(m))
 
   return (
-    <main>
-      <Hero />
-      <ValueProposition />
-      <DestinationsSection
-        variant="home"
-        content={content.destinationsSection}
-        countries={countries}
-        destinations={destinations}
-        lang={lang}
-      />
-      <QuienesSomos />
-      <TestimonialsSection />
-      <InstagramBanner />
-      <BlogSection />
-      <CTASection />
-    </main>
+    <>
+      <JsonLd data={buildPageSchema(
+        buildOrganizationSchema(countries, destinations),
+        ...persons,
+        buildFAQSchema(homeFaqs.map(f => f.es)),
+      )} />
+      <main>
+        <Hero />
+        <ValueProposition />
+        <DestinationsSection
+          variant="home"
+          content={content.destinationsSection}
+          countries={countries}
+          destinations={destinations}
+          lang={lang}
+        />
+        <QuienesSomos />
+        <TestimonialsSection />
+        <InstagramBanner />
+        <BlogSection />
+        <FaqSection
+          title={content.home.faqSection.title}
+          subtitle={content.home.faqSection.subtitle}
+          faqs={homeFaqs.map(f => ({ id: f.id, ...f.es }))}
+        />
+        <CTASection />
+      </main>
+    </>
   )
 }

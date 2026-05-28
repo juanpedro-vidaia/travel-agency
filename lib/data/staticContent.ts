@@ -113,6 +113,10 @@ export const STATIC_CONTENT = {
         titleEmphasized: 'hecho realidad',
         description: 'El viaje de tu vida hecho realidad',
       },
+      faqSection: {
+        title: 'Preguntas frecuentes',
+        subtitle: 'Todo lo que sueles preguntarnos antes de empezar',
+      },
     },
     valueProposition: {
       header: {
@@ -842,6 +846,10 @@ export const STATIC_CONTENT = {
           },
         ],
       },
+      faqSection: {
+        title: 'Preguntas frecuentes',
+        subtitle: 'Las dudas más habituales sobre nuestros viajes a medida',
+      },
     },
     destinationPage: {
       hero: {
@@ -865,6 +873,10 @@ export const STATIC_CONTENT = {
         title: 'El viaje que imaginas todavía está por hacer',
         descriptionTemplate: 'Porque las mejores rutas nacen de vuestros sueños. Cuéntanos vuestra idea y diseñaremos una experiencia única por {country}, completamente a vuestra medida.',
         button: 'Solicitar mi viaje a medida',
+      },
+      faqSection: {
+        title: 'Preguntas frecuentes',
+        subtitle: 'Lo más consultado sobre viajar a {country}',
       },
     },
     itineraryPage: {
@@ -909,6 +921,10 @@ export const STATIC_CONTENT = {
         perPersonLabel: 'por persona',
         priceNote: 'En habitación doble · Vuelos internos incluidos · Alojamiento incluido',
         ctaButton: 'Solicitar mi presupuesto personalizado',
+      },
+      faqSection: {
+        title: 'Preguntas frecuentes',
+        subtitle: 'Lo que más nos preguntan sobre este itinerario',
       },
     },
     blogPage: {

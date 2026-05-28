@@ -5,10 +5,16 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { getTripsByCountry } from '@/lib/services/tripsService'
 import { getCountryBySlug, getCountries } from '@/lib/services/countriesService'
+import { getFAQsByPage } from '@/lib/services/faqsService'
 import TripCard from '@/components/ui/TripCard'
 import DestinationBackButton from '@/app/[lang]/destinos/[slug]/DestinationBackButton'
+import FaqSection from '@/components/sections/FaqSection'
+import JsonLd from '@/components/scripts/JsonLd'
 import { getStaticContent } from '@/lib/helpers/contentHelpers'
 import { buildMetadata } from '@/lib/helpers/seo'
+import { getDestinationsByCountry } from '@/lib/services/destinationsService'
+import type { CountrySlug } from '@/lib/data/countries'
+import { buildPageSchema, buildTouristDestinationSchema, buildFAQSchema } from '@/lib/schema'
 import { getAsset } from '@/lib/data/assets'
 import { renderTemplate } from '@/lib/helpers/contentHelpers'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
@@ -50,9 +56,17 @@ export default async function CountryPage({ params, searchParams }: Props) {
   const countryName = countryT.name
   const heroAsset = getAsset(country.heroImageKey)
   const flagAsset = getAsset(`FLAGS.${country.flagCode.toUpperCase()}`)
+  const destinationFaqs = getFAQsByPage('destination', country.slug)
+
+  const countryDests = getDestinationsByCountry(country.slug as CountrySlug)
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <JsonLd data={buildPageSchema(
+        buildTouristDestinationSchema(country, countryDests),
+        ...(destinationFaqs.length > 0 ? [buildFAQSchema(destinationFaqs.map(f => f.es))] : []),
+      )} />
+      <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] flex items-end overflow-hidden">
         <Image src={heroAsset.url} alt={heroAsset.alt} fill className="object-cover" priority sizes="100vw" />
@@ -119,6 +133,13 @@ export default async function CountryPage({ params, searchParams }: Props) {
         </section>
       )}
 
+      {/* ── FAQs ── */}
+      <FaqSection
+        title={content.faqSection.title}
+        subtitle={renderTemplate(content.faqSection.subtitle, { country: countryName })}
+        faqs={destinationFaqs.map(f => ({ id: f.id, ...f.es }))}
+      />
+
       {/* ── CTA FINAL ── */}
       <section className="py-14 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
         <div className="max-w-xl mx-auto">
@@ -135,6 +156,7 @@ export default async function CountryPage({ params, searchParams }: Props) {
           </Link>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }

@@ -11,6 +11,9 @@ import JsonLd from '@/components/scripts/JsonLd'
 import { ContactModalProvider } from '@/lib/context/ContactModalContext'
 import { ConsentProvider } from '@/lib/context/ConsentContext'
 import { LanguageProvider } from '@/lib/context/LanguageContext'
+import { getCountriesOrdered } from '@/lib/services/countriesService'
+import { getDestinations } from '@/lib/services/destinationsService'
+import { buildOrganizationSchema } from '@/lib/schema'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -35,30 +38,15 @@ export const metadata: Metadata = {
   },
 }
 
-const travelAgencyJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'TravelAgency',
-  name: 'Viajes Vidaia',
-  url: 'https://www.viajesvidaia.com',
-  logo: 'https://www.viajesvidaia.com/images/logo/viajes-vidaia-logo.png',
-  description:
-    'Agencia de viajes personalizados especializada en Argentina, Chile y Bolivia.',
-  email: 'info@viajesvidaia.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Calle de la Bahía de Algeciras 1',
-    addressLocality: 'Madrid',
-    postalCode: '28033',
-    addressCountry: 'ES',
-  },
-  sameAs: ['https://www.instagram.com/viajesvidaia'],
-}
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const countries = getCountriesOrdered()
+  const destinations = getDestinations()
+  const organizationSchema = buildOrganizationSchema(countries, destinations)
+
   return (
     <html lang="es">
       <body className={`${inter.variable} ${playfair.variable}`}>
-        <JsonLd data={travelAgencyJsonLd} />
+        <JsonLd data={organizationSchema} />
         <LanguageProvider>
           <ConsentProvider>
             <GoogleAnalytics />

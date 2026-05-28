@@ -1,0 +1,19 @@
+import type { Country } from '@/lib/data/countries'
+import type { Destination } from '@/lib/data/destinations'
+
+export function buildTouristDestinationSchema(country: Country, dests: Destination[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TouristDestination',
+    name: country.content.es.name,
+    description: country.content.es.metaDescription,
+    geo: { '@type': 'GeoCoordinates', latitude: country.lat, longitude: country.lng },
+    includesAttraction: dests.filter((d) => d.active).map((d) => ({
+      '@type': 'TouristAttraction',
+      name: d.content.es.name,
+      ...(d.lat != null && {
+        geo: { '@type': 'GeoCoordinates', latitude: d.lat, longitude: d.lng },
+      }),
+    })),
+  }
+}

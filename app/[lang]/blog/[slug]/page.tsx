@@ -5,6 +5,8 @@ import { getTripBySlug } from '@/lib/services/tripsService'
 import type { Trip } from '@/lib/data/trips'
 import { getAsset } from '@/lib/data/assets'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
+import { buildArticleSchema } from '@/lib/schema'
+import JsonLd from '@/components/scripts/JsonLd'
 import PostContent from './PostContent'
 
 interface Props {
@@ -63,29 +65,15 @@ export default async function BlogPostPage({ params }: Props) {
   const es = post.content.es
   const imageUrl = getAsset(post.imageKey).url
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: es.title,
-    description: es.excerpt,
-    image: imageUrl,
-    datePublished: post.date,
-    author: { '@type': 'Organization', name: 'Viajes Vidaia' },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Viajes Vidaia',
-      logo: { '@type': 'ImageObject', url: 'https://viajesvidaia.com/images/logo/viajes-vidaia-logo-color.jpg' },
-    },
-    url: `https://viajesvidaia.com/${lang}/blog/${post.slug}`,
-    mainEntityOfPage: `https://viajesvidaia.com/${lang}/blog/${post.slug}`,
-  }
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={buildArticleSchema({
+        title: es.title,
+        description: es.excerpt,
+        imageUrl,
+        publishedAt: post.date,
+        url: `https://viajesvidaia.com/${lang}/blog/${post.slug}`,
+      })} />
       <PostContent post={post} relatedPosts={relatedPosts} relatedTrips={relatedTrips} />
     </>
   )

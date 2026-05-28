@@ -1,9 +1,12 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getItinerary, getAllItineraries } from '@/lib/services/itinerariesService'
+import { getItinerary, getItineraryWithDetails, getAllItineraries } from '@/lib/services/itinerariesService'
 import { getTripBySlug } from '@/lib/services/tripsService'
+import { generateItineraryFAQs } from '@/lib/services/faqsService'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import { buildMetadata } from '@/lib/helpers/seo'
+import { getDestinations } from '@/lib/services/destinationsService'
+import { buildPageSchema, buildTouristTripSchema, buildFAQSchema } from '@/lib/schema'
 import JsonLd from '@/components/scripts/JsonLd'
 import ItineraryContent from './ItineraryContent'
 
@@ -38,31 +41,23 @@ export default async function ItineraryPage({ params }: Props) {
   if (!itinerary) notFound()
 
   const trip = getTripBySlug(slug)
-  const tourJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'TouristTrip',
-    name: itinerary.content.es.title,
-    description: trip?.content.es.subtitle ?? itinerary.content.es.title,
-    url: `https://www.viajesvidaia.com/${lang}/itinerarios/${slug}`,
-    provider: {
-      '@type': 'TravelAgency',
-      name: 'Viajes Vidaia',
-      url: 'https://www.viajesvidaia.com',
-    },
-    ...(trip && trip.priceFrom != null && trip.priceFrom > 0 && {
-      offers: {
-        '@type': 'Offer',
-        priceCurrency: 'EUR',
-        price: trip.priceFrom,
-        availability: 'https://schema.org/InStock',
-      },
-    }),
-  }
+  const resolvedItinerary = getItineraryWithDetails(slug)
+  const itineraryFaqs = resolvedItinerary && trip
+    ? generateItineraryFAQs(trip, resolvedItinerary.days)
+    : []
+
+  const allDestinations = getDestinations()
+  const tripSchemas = trip && resolvedItinerary
+    ? [buildTouristTripSchema(trip, resolvedItinerary.days, allDestinations)]
+    : []
+  const faqSchemas = itineraryFaqs.length > 0 ? [buildFAQSchema(itineraryFaqs)] : []
 
   return (
     <>
-      <JsonLd data={tourJsonLd} />
-      <ItineraryContent slug={slug} />
+      {(tripSchemas.length > 0 || faqSchemas.length > 0) && (
+        <JsonLd data={buildPageSchema(...tripSchemas, ...faqSchemas)} />
+      )}
+      <ItineraryContent slug={slug} faqs={itineraryFaqs} />
     </>
   )
 }

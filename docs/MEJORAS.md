@@ -194,14 +194,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 ---
 
 ### M10 — Añadir JSON-LD de `Article` en páginas de blog
-> ✅ YA ESTABA IMPLEMENTADO — script JSON-LD Article presente en blog/[slug]/page.tsx antes de esta sesión
+> ✅ COMPLETADO 28/05/2026 — Migrado a `buildArticleSchema` de `lib/schema/`. Usa `<JsonLd>` component en lugar de `<script dangerouslySetInnerHTML>`.
 
 **Problema:** Los posts del blog no tienen structured data de tipo `Article`. Esto reduce la visibilidad en Google News y los rich results de artículos.
 
 **Archivos afectados:**
 - `app/[lang]/blog/[slug]/page.tsx`
 
-**Solución:** En el `generateMetadata` del post, añadir un componente `<JsonLd>` con el schema de `Article` (se puede reutilizar el componente ya existente `components/scripts/JsonLd.tsx`).
+**Solución implementada:** `buildArticleSchema({ title, description, imageUrl, publishedAt, url })` en `lib/schema/buildArticleSchema.ts`, llamado desde `app/[lang]/blog/[slug]/page.tsx` con `<JsonLd data={buildArticleSchema(...)} />`.
 
 ---
 
@@ -254,13 +254,24 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 ---
 
 ### M15 — Añadir JSON-LD de tipo `TouristTrip` en páginas de itinerarios
-> ✅ YA ESTABA IMPLEMENTADO — script JSON-LD TouristTrip presente en blog/[slug]/page.tsx antes de esta sesión
+> ✅ COMPLETADO 28/05/2026 — `buildTouristTripSchema` en `lib/schema/`. Incluye `subTrip` por día con `itinerary` (lugar + coordenadas) y `subjectOf` (actividades incluidas). Combinado en `@graph` con `FAQPage` vía `buildPageSchema`.
 
-**Solución:** Añadir en `app/[lang]/itinerarios/[slug]/page.tsx` un JSON-LD con el schema `TouristTrip` o `Product` con precio desde y destinos. Mejora los rich results de Google para búsquedas de viajes.
+**Solución implementada:** `buildTouristTripSchema(trip, resolvedItinerary.days, allDestinations)` en `lib/schema/buildTouristTripSchema.ts`. Cada día del itinerario genera un nodo `TouristTrip` anidado en `subTrip`, con el destino del día como `itinerary: Place` y las actividades incluidas como `subjectOf: ItemList`.
 
 ---
 
-### M16 — Instagrambanner: preparar integración con widget real
+### M16 — Añadir coordenadas `lat`/`lng` a los destinos que aún no las tienen
+
+**Problema:** `Destination` tiene `lat?` y `lng?` como campos opcionales. `buildTouristDestinationSchema` omite el `GeoCoordinates` para los destinos que no las tienen, empobreciendo el schema `TouristAttraction` para esos destinos.
+
+**Archivos afectados:**
+- `lib/data/destinations.ts` — los destinos sin coordenadas
+
+**Solución:** Añadir `lat` y `lng` al resto de destinos en `destinations.ts`. No requiere cambios en el builder — ya está preparado para usarlas cuando existen.
+
+---
+
+### M17 — InstagramBanner: preparar integración con widget real
 
 **Problema:** Las 6 fotos del `InstagramBanner` son fotos estáticas de Unsplash, no el Instagram real. Hay un comentario con un div de Elfsight placeholder que nunca se activa.
 

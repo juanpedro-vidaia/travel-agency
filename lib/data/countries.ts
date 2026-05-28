@@ -18,6 +18,8 @@ export interface Country {
   heroImageKey: string
   active: boolean
   order: number
+  lat: number
+  lng: number
 }
 
 export type CountrySlug = 'argentina' | 'chile' | 'bolivia' | 'peru' | 'uruguay'
@@ -40,6 +42,8 @@ const countries: Country[] = [
     heroImageKey: 'COUNTRIES.ARGENTINA_HERO',
     active: true,
     order: 1,
+    lat: -38.4161,
+    lng: -63.6167,
   },
   {
     id: 'chile',
@@ -58,6 +62,8 @@ const countries: Country[] = [
     heroImageKey: 'COUNTRIES.CHILE_HERO',
     active: true,
     order: 2,
+    lat: -35.6751,
+    lng: -71.543,
   },
   {
     id: 'bolivia',
@@ -76,6 +82,8 @@ const countries: Country[] = [
     heroImageKey: 'COUNTRIES.BOLIVIA_HERO',
     active: true,
     order: 3,
+    lat: -16.2902,
+    lng: -63.5887,
   },
   {
     id: 'peru',
@@ -94,6 +102,8 @@ const countries: Country[] = [
     heroImageKey: 'COUNTRIES.PERU_HERO',
     active: true,
     order: 4,
+    lat: -9.19,
+    lng: -75.0152,
   },
   {
     id: 'uruguay',
@@ -112,6 +122,8 @@ const countries: Country[] = [
     heroImageKey: 'COUNTRIES.URUGUAY_HERO',
     active: false,
     order: 5,
+    lat: -32.5228,
+    lng: -55.7658,
   }
 ]
 
