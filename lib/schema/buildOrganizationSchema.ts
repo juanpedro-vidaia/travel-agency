@@ -1,5 +1,6 @@
 import type { Country } from '@/lib/data/countries'
 import type { Destination } from '@/lib/data/destinations'
+import { CONTACT } from '@/lib/config/contact'
 
 const SOCIAL_LINKS = [
   'https://www.instagram.com/viajesvidaia',
@@ -15,7 +16,10 @@ export function buildOrganizationSchema(countries: Country[], destinations: Dest
     name: 'Viajes Vidaia',
     url: 'https://www.viajesvidaia.com',
     logo: 'https://www.viajesvidaia.com/images/logo/viajes-vidaia-logo.png',
+    image: 'https://www.viajesvidaia.com/images/og-default.jpg',
+    telephone: CONTACT.phone,
     email: 'info@viajesvidaia.com',
+    priceRange: '€€€',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Calle de la Bahía de Algeciras 1',
