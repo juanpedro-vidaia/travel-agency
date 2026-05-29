@@ -16,8 +16,18 @@ import { getDestinations } from '@/lib/services/destinationsService'
 import { buildOrganizationSchema } from '@/lib/schema'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  weight: ['400', '700'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {

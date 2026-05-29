@@ -5,7 +5,8 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   const firstSegment = pathname.split('/')[1]
   if (ENABLED_LANGUAGES.includes(firstSegment)) return NextResponse.next()
-  return NextResponse.redirect(new URL(`/${DEFAULT_LANGUAGE}${pathname}`, request.url))
+  const target = pathname === '/' ? `/${DEFAULT_LANGUAGE}` : `/${DEFAULT_LANGUAGE}${pathname}`
+  return NextResponse.redirect(new URL(target, request.url))
 }
 
 export const config = {

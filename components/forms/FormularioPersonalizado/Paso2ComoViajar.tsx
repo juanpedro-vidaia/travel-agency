@@ -4,7 +4,7 @@ import { useFormContext, useController } from 'react-hook-form'
 import { FieldLabel, RadioPill } from './FormPrimitives'
 import { CheckCard } from './FormPrimitives'
 import { inputCls } from './FormPrimitives'
-import { TAG_CONFIG, type TripTag } from '@/lib/data/trips'
+import { TAG_CONFIG, type TripTag } from '@/lib/data/tagConfig'
 import type { FormPayload } from '@/lib/form-utils'
 
 interface Paso2Props {

@@ -4,9 +4,10 @@ import Image from 'next/image'
 import LangLink from '@/components/ui/LangLink'
 import { ArrowLeft, Clock, Calendar, Share2, Twitter, Facebook, Link2, ArrowRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import dynamic from 'next/dynamic'
 import ReadingProgress from '@/components/ui/ReadingProgress'
+
+const MarkdownContent = dynamic(() => import('./MarkdownContent'))
 import NewsletterForm from '@/components/forms/NewsletterForm'
 import { CATEGORY_CONFIG } from '@/lib/data/posts'
 import type { Post } from '@/lib/data/posts'
@@ -101,17 +102,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {es.content ? (
-            <div className="prose prose-lg prose-vidaia max-w-none
-              [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-6
-              [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:my-6
-              [&_li]:my-2 [&_li]:pl-2 [&_li::marker]:text-vidaia-primary
-              prose-h2:text-4xl prose-h2:font-bold prose-h2:mt-16 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-vidaia-light
-              prose-h3:text-2xl prose-h3:font-semibold prose-h3:mt-10 prose-h3:mb-4
-              prose-p:mb-6 prose-p:leading-relaxed prose-p:text-base [&_p+p]:mt-6">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {es.content}
-              </ReactMarkdown>
-            </div>
+            <MarkdownContent content={es.content} />
           ) : (
             <div className="text-center py-16 bg-vidaia-light/30 rounded-3xl">
               <p className="text-gray-500 text-lg mb-2">Este artículo está siendo redactado.</p>

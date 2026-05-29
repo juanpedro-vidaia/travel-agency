@@ -13,7 +13,7 @@ export function GET() {
     .map((c) => {
       const dests = getDestinationsByCountry(c.slug as CountrySlug)
         .map((d) => d.content.es.name)
-      return `- [${c.content.es.name}](${BASE}/destinos/${c.slug}): Viajes a ${dests.join(', ')}`
+      return `- [${c.content.es.name}](${BASE}/destinos/${c.slug}): Viajes personalizados a ${dests.join(', ')} | Viajes Vidaia`
     })
     .join('\n')
 
@@ -39,8 +39,8 @@ ${itinerariesSection}
 
 ## Información general
 
-- [Sobre nosotros](${BASE}#quienes-somos): equipo y forma de trabajar
-- [Cómo funciona](${BASE}#como-funciona): proceso de reserva paso a paso
+- [Sobre nosotros](${BASE}#quienes-somos): el equipo de Viajes Vidaia
+- [Cómo trabajabamos](${BASE}/viajes): proceso de reserva paso a paso
 - [Viajes de luna de miel](${BASE}/lunas-de-miel): propuestas especiales para parejas
 - [Blog](${BASE}/blog): experiencias y consejos de viaje
 

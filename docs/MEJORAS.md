@@ -341,3 +341,28 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 - `app/[lang]/lunas-de-miel/page.tsx`
 - `app/[lang]/destinos/[slug]/page.tsx`
 - `lib/data/assets.ts` (añadir `url_mobile` a los assets de esos heroes)
+
+---
+
+### M21 — `searchParams` fuerza dynamic rendering en blog listing y destinos
+
+**Problema:** En Next.js 16, cualquier página que haga `await searchParams` se convierte en dynamic (server-rendered on demand), incluso si tiene `generateStaticParams`. Estas dos páginas lo hacen y aparecen como `ƒ` en el build en lugar de `●` (SSG):
+
+| Página | Archivo | `searchParams` usado para |
+|---|---|---|
+| Blog listing | `app/[lang]/blog/page.tsx` | `category?: string` — filtrar posts por categoría |
+| Destino | `app/[lang]/destinos/[slug]/page.tsx` | `from?: string` — URL de vuelta del botón back |
+
+**Impacto:** Estas páginas se sirven desde serverless functions (Vercel) en lugar de CDN estático. Aumenta la latencia en ~50–200 ms por request.
+
+**Solución:** Mover la lectura de `searchParams` a un Client Component con `useSearchParams()`:
+
+1. **Blog listing** — Extraer un `BlogFilters` Client Component que lea `useSearchParams()` para el filtro de categoría. La página (`blog/page.tsx`) pasa los posts al componente como prop; el filtrado ocurre en el cliente.
+
+2. **Destinos** — El `from` param solo se usa para la URL del botón "volver". Mover esa lógica al ya existente `DestinationBackButton.tsx` (ya es Client Component — puede leer `useSearchParams()` directamente). Eliminar `searchParams` de la firma de `CountryPage`.
+
+**Archivos afectados:**
+- `app/[lang]/blog/page.tsx` — eliminar `searchParams` de la firma; pasar todos los posts al componente de filtros
+- `app/[lang]/blog/[slug]/DestinationBackButton.tsx` — usar `useSearchParams()` para leer `from`
+- `app/[lang]/destinos/[slug]/page.tsx` — eliminar `searchParams` de la firma
+- (nuevo) `app/[lang]/blog/BlogFilters.tsx` — Client Component con `useSearchParams()` para filtrado por categoría

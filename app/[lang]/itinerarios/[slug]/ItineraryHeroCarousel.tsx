@@ -4,20 +4,25 @@ import { useState, useEffect, useCallback, useMemo } from 'react'
 import Image from 'next/image'
 import LangLink from '@/components/ui/LangLink'
 import { ChevronLeft, ChevronRight, MapPin, ArrowRight } from 'lucide-react'
-import { getItineraryWithDetails } from '@/lib/services/itinerariesService'
-import { getTripBySlug } from '@/lib/services/tripsService'
-import { TAG_CONFIG } from '@/lib/data/trips'
-import { getCountryBySlug } from '@/lib/services/countriesService'
+import { TAG_CONFIG } from '@/lib/data/tagConfig'
 import { getAsset } from '@/lib/data/assets'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { useIsMobile } from '@/lib/hooks/useIsMobile'
+import type { ResolvedItinerary } from '@/lib/services/itinerariesService'
+import type { Trip } from '@/lib/data/trips'
+import type { Country } from '@/lib/data/countries'
 
 const PILL_CLASS =
   'flex items-center gap-1.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-sm font-medium text-white'
 
-export default function ItineraryHeroCarousel({ slug }: { slug: string }) {
-  const itinerary = getItineraryWithDetails(slug)
-  const trip = getTripBySlug(slug)
+interface Props {
+  slug: string
+  resolvedItinerary: ResolvedItinerary
+  trip: Trip
+  countries: Country[]
+}
+
+export default function ItineraryHeroCarousel({ slug, resolvedItinerary, trip, countries }: Props) {
   const { content: pageContent, ui } = useLanguage()
   const content = pageContent.itineraryPage
 
@@ -27,12 +32,12 @@ export default function ItineraryHeroCarousel({ slug }: { slug: string }) {
 
   const slides = useMemo(
     () =>
-      (itinerary?.content.es.heroImages ?? []).map((h) => {
+      (resolvedItinerary.content.es.heroImages ?? []).map((h) => {
         const asset = getAsset(h.imageKey)
         const src = isMobile ? (asset.url_mobile ?? asset.url) : asset.url
         return { src, alt: asset.alt || h.location, location: h.location }
       }),
-    [itinerary, isMobile]
+    [resolvedItinerary, isMobile]
   )
 
   const nextSlide = useCallback(() => {
@@ -48,16 +53,6 @@ export default function ItineraryHeroCarousel({ slug }: { slug: string }) {
     const timer = setInterval(nextSlide, 5000)
     return () => clearInterval(timer)
   }, [isPaused, nextSlide, slides.length])
-
-  const tripCountries = useMemo(() => {
-    if (!trip) return []
-    const slugs = Array.isArray(trip.country) ? trip.country : [trip.country]
-    return slugs
-      .map((s) => getCountryBySlug(s))
-      .filter((c): c is NonNullable<ReturnType<typeof getCountryBySlug>> => c !== undefined)
-  }, [trip])
-
-  if (!itinerary || !trip) return null
 
   const requestHref = `/itinerarios/${slug}/personalizar`
 
@@ -89,13 +84,13 @@ export default function ItineraryHeroCarousel({ slug }: { slug: string }) {
       <div className="relative z-10 h-full flex flex-col items-center justify-center pt-24 md:pt-28 pb-12 text-white text-center px-6 sm:px-8">
         <p className="text-vidaia-earth font-semibold tracking-widest uppercase text-xs mb-2 sm:mb-5">
           {content.hero.eyebrowPrefix}
-          {tripCountries.length > 0 && (
-            <> · {tripCountries.map((c) => c.content.es.name).join(' + ')}</>
+          {countries.length > 0 && (
+            <> · {countries.map((c) => c.content.es.name).join(' + ')}</>
           )}
         </p>
 
         <h1 className="font-heading text-3xl sm:text-4xl 2xl:text-6xl font-bold max-w-4xl leading-tight mb-2 sm:mb-3 text-balance">
-          <span className="md:hidden">{itinerary.content.es.heroTitleMobile ?? trip.content.es.title}</span>
+          <span className="md:hidden">{resolvedItinerary.content.es.heroTitleMobile ?? trip.content.es.title}</span>
           <span className="hidden md:inline">{trip.content.es.title}</span>
         </h1>
 

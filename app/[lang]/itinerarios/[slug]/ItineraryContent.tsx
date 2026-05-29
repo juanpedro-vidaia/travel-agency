@@ -24,9 +24,9 @@ import {
   TreePalm,
   type LucideIcon,
 } from 'lucide-react'
-import { getItineraryWithDetails, getItineraryOptionals } from '@/lib/services/itinerariesService'
-import { getTripBySlug } from '@/lib/services/tripsService'
-import { getCountryBySlug } from '@/lib/services/countriesService'
+import type { ResolvedItinerary } from '@/lib/services/itinerariesService'
+import type { Trip } from '@/lib/data/trips'
+import type { Country } from '@/lib/data/countries'
 import type { ResolvedFAQ } from '@/lib/services/faqsService'
 import { formatPrice, renderTemplate } from '@/lib/helpers/contentHelpers'
 import { useLanguage } from '@/lib/hooks/useLanguage'
@@ -56,32 +56,41 @@ const ACTIVITY_ICON_MAP: Record<string, LucideIcon> = {
   TreePalm,
 }
 
-export default function ItineraryContent({ slug, faqs }: { slug: string; faqs: ResolvedFAQ[] }) {
-  const itinerary = getItineraryWithDetails(slug)
-  const trip = getTripBySlug(slug)
-  const optionalActivities = getItineraryOptionals(slug)
+interface Props {
+  slug: string
+  resolvedItinerary: ResolvedItinerary
+  trip: Trip
+  countries: Country[]
+  relatedTrips: Trip[]
+  optionals: { title: string; description: string; icon: string }[]
+  destinationNames: Record<string, string>
+  destCoords: Record<string, { name: string; lat: number; lng: number }>
+  faqs: ResolvedFAQ[]
+}
+
+export default function ItineraryContent({
+  slug,
+  resolvedItinerary,
+  trip,
+  countries,
+  relatedTrips,
+  optionals,
+  destinationNames,
+  destCoords,
+  faqs,
+}: Props) {
   const { content: pageContent, ui } = useLanguage()
   const content = pageContent.itineraryPage
 
-  const tripCountries = useMemo(() => {
-    if (!trip) return []
-    const slugs = Array.isArray(trip.country) ? trip.country : [trip.country]
-    return slugs
-      .map((s) => getCountryBySlug(s))
-      .filter((c): c is NonNullable<ReturnType<typeof getCountryBySlug>> => c !== undefined)
-  }, [trip])
-
-  const optionals = useMemo(
+  const optionalsWithIcons = useMemo(
     () =>
-      optionalActivities.map((activity) => ({
-        Icon: ACTIVITY_ICON_MAP[activity.icon ?? ''] ?? Star,
-        title: activity.content.es.name,
-        description: activity.content.es.description,
+      optionals.map(o => ({
+        Icon: ACTIVITY_ICON_MAP[o.icon] ?? Star,
+        title: o.title,
+        description: o.description,
       })),
-    [optionalActivities]
+    [optionals]
   )
-
-  if (!itinerary || !trip) return null
 
   const requestHref = `/itinerarios/${slug}/personalizar`
 
@@ -89,13 +98,18 @@ export default function ItineraryContent({ slug, faqs }: { slug: string; faqs: R
     <main className="min-h-screen bg-white pb-20 lg:pb-0">
 
       {/* ── HERO CAROUSEL ─────────────────────────────────────────────────────── */}
-      <ItineraryHeroCarousel slug={slug} />
+      <ItineraryHeroCarousel
+        slug={slug}
+        resolvedItinerary={resolvedItinerary}
+        trip={trip}
+        countries={countries}
+      />
 
       {/* ── VOLVER AL PAÍS ────────────────────────────────────────────────────── */}
-      {tripCountries.length > 0 && (
+      {countries.length > 0 && (
         <section className="py-3 md:py-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto flex flex-wrap gap-3">
-            {tripCountries.map((country) => (
+            {countries.map((country) => (
               <LangLink
                 key={country.slug}
                 href={`/destinos/${country.slug}`}
@@ -113,8 +127,8 @@ export default function ItineraryContent({ slug, faqs }: { slug: string; faqs: R
       <section className="py-10 md:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-base sm:text-xl text-vidaia-charcoal/80 leading-relaxed">
-            <span className="md:hidden">{itinerary.content.es.descriptionMobile ?? itinerary.content.es.description}</span>
-            <span className="hidden md:inline">{itinerary.content.es.description}</span>
+            <span className="md:hidden">{resolvedItinerary.content.es.descriptionMobile ?? resolvedItinerary.content.es.description}</span>
+            <span className="hidden md:inline">{resolvedItinerary.content.es.description}</span>
           </p>
           <LangLink
             href={requestHref}
@@ -127,7 +141,10 @@ export default function ItineraryContent({ slug, faqs }: { slug: string; faqs: R
       </section>
 
       {/* ── ITINERARIO ACORDEÓN ───────────────────────────────────────────────── */}
-      <ItineraryDayAccordion slug={slug} />
+      <ItineraryDayAccordion
+        resolvedItinerary={resolvedItinerary}
+        destinationNames={destinationNames}
+      />
 
       {/* ── MAPA DEL ITINERARIO ───────────────────────────────────────────────── */}
       <section className="hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -137,7 +154,8 @@ export default function ItineraryContent({ slug, faqs }: { slug: string; faqs: R
           </h2>
           <p className="text-center text-vidaia-charcoal/55 text-sm mb-8">{ui.map.subtitle}</p>
           <ItineraryMap
-            accommodationStops={itinerary.accommodationStops}
+            accommodationStops={resolvedItinerary.accommodationStops}
+            destCoords={destCoords}
             nightLabel={content.labels.night}
             nightsLabel={content.labels.nights}
           />
@@ -145,10 +163,13 @@ export default function ItineraryContent({ slug, faqs }: { slug: string; faqs: R
       </section>
 
       {/* ── HOTELES ───────────────────────────────────────────────────────────── */}
-      <ItineraryHotels slug={slug} />
+      <ItineraryHotels
+        resolvedItinerary={resolvedItinerary}
+        destinationNames={destinationNames}
+      />
 
       {/* ── OPCIONALES ────────────────────────────────────────────────────────── */}
-      {optionals.length > 0 && (
+      {optionalsWithIcons.length > 0 && (
         <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-amber-50">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-amber-700 font-semibold tracking-widest uppercase text-xs mb-3">
@@ -158,7 +179,7 @@ export default function ItineraryContent({ slug, faqs }: { slug: string; faqs: R
               {content.optionals.title}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-              {optionals.map(({ Icon, title, description }) => (
+              {optionalsWithIcons.map(({ Icon, title, description }) => (
                 <div
                   key={title}
                   className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-amber-100 text-left hover:border-amber-300 hover:shadow-md transition-all"
@@ -176,7 +197,7 @@ export default function ItineraryContent({ slug, faqs }: { slug: string; faqs: R
       )}
 
       {/* ── VIAJES RELACIONADOS ───────────────────────────────────────────────── */}
-      <ItineraryRelated slug={slug} />
+      <ItineraryRelated relatedTrips={relatedTrips} mainTrip={trip} />
 
       {/* ── FAQs ──────────────────────────────────────────────────────────────── */}
       <FaqSection

@@ -1,7 +1,11 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from 'next'
+import bundleAnalyzer from '@next/bundle-analyzer'
+
+const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })
 
 const nextConfig: NextConfig = {
   images: {
+    qualities: [75, 80, 90],
     remotePatterns: [
       {
         protocol: 'https',
@@ -17,6 +21,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-};
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
+}
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig)

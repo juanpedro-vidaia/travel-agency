@@ -3,19 +3,22 @@
 import Image from 'next/image'
 import LangLink from '@/components/ui/LangLink'
 import { ArrowRight } from 'lucide-react'
-import { getTripBySlug, getRelatedTripsBySlug } from '@/lib/services/tripsService'
-import { TAG_CONFIG } from '@/lib/data/trips'
+import { TAG_CONFIG } from '@/lib/data/tagConfig'
 import { getAsset } from '@/lib/data/assets'
 import { formatPrice, renderTemplate } from '@/lib/helpers/contentHelpers'
 import { useLanguage } from '@/lib/hooks/useLanguage'
+import type { Trip } from '@/lib/data/trips'
 
-export default function ItineraryRelated({ slug }: { slug: string }) {
-  const trip = getTripBySlug(slug)
-  const relatedTrips = getRelatedTripsBySlug(slug)
+interface Props {
+  relatedTrips: Trip[]
+  mainTrip: Trip
+}
+
+export default function ItineraryRelated({ relatedTrips, mainTrip }: Props) {
   const { content: pageContent, ui } = useLanguage()
   const content = pageContent.itineraryPage
 
-  if (!trip || relatedTrips.length === 0) return null
+  if (relatedTrips.length === 0) return null
 
   return (
     <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
@@ -29,7 +32,7 @@ export default function ItineraryRelated({ slug }: { slug: string }) {
 
         <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 -mx-4 md:mx-0 px-4 md:px-0 pb-4 md:pb-0">
           {relatedTrips.map((related) => {
-            const reason = trip.relatedTrips.find((r) => r.slug === related.slug)?.es.reason
+            const reason = mainTrip.relatedTrips.find((r) => r.slug === related.slug)?.es.reason
             const href = related.hasItinerary ? `/itinerarios/${related.slug}` : `/itinerarios/personalizar`
             const cta = related.hasItinerary ? ui.buttons.viewItinerary : ui.buttons.requestInfo
 

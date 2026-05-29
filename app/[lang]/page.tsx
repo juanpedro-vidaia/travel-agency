@@ -6,16 +6,18 @@ import { getCountriesOrdered } from '@/lib/services/countriesService'
 import { getDestinations } from '@/lib/services/destinationsService'
 import { getFAQsByPage } from '@/lib/services/faqsService'
 import { buildPageSchema, buildPersonSchema, buildFAQSchema } from '@/lib/schema'
+import dynamic from 'next/dynamic'
 import Hero from '@/components/sections/Hero'
 import ValueProposition from '@/components/sections/ValueProposition'
 import DestinationsSection from '@/components/sections/DestinationsSection'
-import QuienesSomos from '@/components/sections/QuienesSomos'
-import TestimonialsSection from '@/components/sections/TestimonialsSection'
-import InstagramBanner from '@/components/sections/InstagramBanner'
-import BlogSection from '@/components/sections/BlogSection'
 import FaqSection from '@/components/sections/FaqSection'
-import CTASection from '@/components/sections/CTASection'
 import JsonLd from '@/components/scripts/JsonLd'
+
+const QuienesSomos        = dynamic(() => import('@/components/sections/QuienesSomos'))
+const TestimonialsSection = dynamic(() => import('@/components/sections/TestimonialsSection'))
+const InstagramBanner     = dynamic(() => import('@/components/sections/InstagramBanner'))
+const BlogSection         = dynamic(() => import('@/components/sections/BlogSection'))
+const CTASection          = dynamic(() => import('@/components/sections/CTASection'))
 
 interface Props { params: Promise<{ lang: string }> }
 

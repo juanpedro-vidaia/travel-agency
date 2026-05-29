@@ -6,7 +6,7 @@ import { Search, SlidersHorizontal, X } from 'lucide-react'
 import TripCard from '@/components/ui/TripCard'
 import LangLink from '@/components/ui/LangLink'
 import { searchTrips, MAX_DAYS, MIN_PRICE, MAX_PRICE, type TripFilters } from '@/lib/search/tripSearchIndex'
-import { TAG_CONFIG, type TripTag } from '@/lib/data/trips'
+import { TAG_CONFIG, type TripTag } from '@/lib/data/tagConfig'
 import type { Trip } from '@/lib/data/trips'
 import { renderTemplate, formatPrice } from '@/lib/helpers/contentHelpers'
 

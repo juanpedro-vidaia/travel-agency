@@ -28,8 +28,7 @@ import {
   TreePalm,
   type LucideIcon,
 } from 'lucide-react'
-import { getItineraryWithDetails } from '@/lib/services/itinerariesService'
-import { getDestinationById } from '@/lib/services/destinationsService'
+import type { ResolvedItinerary } from '@/lib/services/itinerariesService'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 
 const ACTIVITY_ICON_MAP: Record<string, LucideIcon> = {
@@ -50,8 +49,12 @@ const ACTIVITY_ICON_MAP: Record<string, LucideIcon> = {
   TreePalm,
 }
 
-export default function ItineraryDayAccordion({ slug }: { slug: string }) {
-  const itinerary = getItineraryWithDetails(slug)
+interface Props {
+  resolvedItinerary: ResolvedItinerary
+  destinationNames: Record<string, string>
+}
+
+export default function ItineraryDayAccordion({ resolvedItinerary, destinationNames }: Props) {
   const { content: pageContent } = useLanguage()
   const content = pageContent.itineraryPage
 
@@ -67,9 +70,8 @@ export default function ItineraryDayAccordion({ slug }: { slug: string }) {
   }, [])
 
   const itineraryDays = useMemo(() => {
-    if (!itinerary) return []
-    return itinerary.days.map((day) => {
-      const destination = day.destinationId ? getDestinationById(day.destinationId) : undefined
+    return resolvedItinerary.days.map((day) => {
+      const cityName = day.destinationId ? (destinationNames[day.destinationId] ?? '') : ''
       const hotel = day.referenceHotel
       const hotelLabel = hotel
         ? `${hotel.content.es.name} ${hotel.category}★${hotel.content.es.categoryLabel ? ' ' + hotel.content.es.categoryLabel : ''}`
@@ -91,7 +93,7 @@ export default function ItineraryDayAccordion({ slug }: { slug: string }) {
       return {
         day: day.dayNumber,
         title: day.content.es.title,
-        cities: destination?.content.es.name ?? '',
+        cities: cityName,
         hotel: hotelLabel,
         schedule: day.content.es.schedule,
         duration: day.content.es.duration,
@@ -105,9 +107,7 @@ export default function ItineraryDayAccordion({ slug }: { slug: string }) {
         includedActivities,
       }
     })
-  }, [itinerary])
-
-  if (!itinerary) return null
+  }, [resolvedItinerary, destinationNames])
 
   return (
     <section className="py-10 md:py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">

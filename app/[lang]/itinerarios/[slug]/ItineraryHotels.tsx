@@ -3,38 +3,40 @@
 import { useMemo } from 'react'
 import Image from 'next/image'
 import { Bed, Star, Calendar } from 'lucide-react'
-import { getItineraryWithDetails } from '@/lib/services/itinerariesService'
-import { getDestinationById } from '@/lib/services/destinationsService'
 import { getAsset } from '@/lib/data/assets'
 import { useLanguage } from '@/lib/hooks/useLanguage'
+import type { ResolvedItinerary } from '@/lib/services/itinerariesService'
 
-export default function ItineraryHotels({ slug }: { slug: string }) {
-  const itinerary = getItineraryWithDetails(slug)
+interface Props {
+  resolvedItinerary: ResolvedItinerary
+  destinationNames: Record<string, string>
+}
+
+export default function ItineraryHotels({ resolvedItinerary, destinationNames }: Props) {
   const { content: pageContent } = useLanguage()
   const content = pageContent.itineraryPage
 
   const hotelCards = useMemo(() => {
-    if (!itinerary) return []
-    return itinerary.accommodationStops
+    return resolvedItinerary.accommodationStops
       .filter((stop) => stop.featured)
       .map((stop) => {
         const hotel = stop.defaultHotel
         if (!hotel) return null
-        const destination = getDestinationById(hotel.destinationId)
+        const cityName = destinationNames[hotel.destinationId] ?? hotel.destinationId
         return {
           name: hotel.content.es.name,
           stars: stop.defaultCategory,
           category: hotel.content.es.categoryLabel,
           nights: stop.nights,
           dates: stop.dates,
-          city: destination?.content.es.name ?? hotel.destinationId,
+          city: cityName,
           img: getAsset(hotel.imageKey).url,
         }
       })
       .filter((h): h is NonNullable<typeof h> => h !== null)
-  }, [itinerary])
+  }, [resolvedItinerary, destinationNames])
 
-  if (!itinerary || hotelCards.length === 0) return null
+  if (hotelCards.length === 0) return null
 
   return (
     <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">

@@ -3,7 +3,12 @@
 import { useEffect, useRef, useMemo } from 'react'
 import 'leaflet/dist/leaflet.css'
 import type { ResolvedAccommodationStop } from '@/lib/services/itinerariesService'
-import allDestinations from '@/lib/data/destinations'
+
+interface DestCoord {
+  name: string
+  lat: number
+  lng: number
+}
 
 interface MapStop {
   destinationId: string
@@ -15,15 +20,19 @@ interface MapStop {
   hotels: string[]
 }
 
-export default function ItineraryMap({
-  accommodationStops,
-  nightLabel,
-  nightsLabel,
-}: {
+interface Props {
   accommodationStops: ResolvedAccommodationStop[]
+  destCoords: Record<string, DestCoord>
   nightLabel: string
   nightsLabel: string
-}) {
+}
+
+export default function ItineraryMap({
+  accommodationStops,
+  destCoords,
+  nightLabel,
+  nightsLabel,
+}: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<import('leaflet').Map | null>(null)
 
@@ -36,8 +45,8 @@ export default function ItineraryMap({
       const destId = stop.defaultHotel?.destinationId
       if (!destId) return
 
-      const dest = allDestinations.find(d => d.id === destId)
-      if (!dest || dest.lat == null || dest.lng == null) return
+      const dest = destCoords[destId]
+      if (!dest) return
 
       const coord: [number, number] = [dest.lat, dest.lng]
       polylineCoords.push(coord)
@@ -54,7 +63,7 @@ export default function ItineraryMap({
       } else {
         stopsByDest.set(destId, {
           destinationId: destId,
-          name: dest.content.es.name,
+          name: dest.name,
           lat: dest.lat,
           lng: dest.lng,
           orders: [order],
@@ -65,7 +74,7 @@ export default function ItineraryMap({
     })
 
     return { stops: Array.from(stopsByDest.values()), polylineCoords }
-  }, [accommodationStops])
+  }, [accommodationStops, destCoords])
 
   useEffect(() => {
     if (!containerRef.current || stops.length === 0) return
@@ -86,7 +95,6 @@ export default function ItineraryMap({
         }
       ).addTo(map)
 
-      // Polyline connecting stops in travel order
       if (polylineCoords.length > 1) {
         L.polyline(polylineCoords, {
           color: '#5ea6ae',
@@ -96,7 +104,6 @@ export default function ItineraryMap({
         }).addTo(map)
       }
 
-      // Markers
       stops.forEach(stop => {
         const orderLabel = stop.orders.join(', ')
         const nightsText =
@@ -130,7 +137,6 @@ export default function ItineraryMap({
           .addTo(map)
       })
 
-      // Fit map to show all stops
       if (stops.length === 1) {
         map.setView([stops[0].lat, stops[0].lng], 7)
       } else {
