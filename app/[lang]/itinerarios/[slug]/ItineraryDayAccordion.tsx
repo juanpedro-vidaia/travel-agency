@@ -115,7 +115,7 @@ export default function ItineraryDayAccordion({ resolvedItinerary, destinationNa
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
           {content.accordion.title}
         </h2>
-        <p className="text-center text-vidaia-charcoal/55 mb-6 md:mb-10 text-sm">
+        <p className="text-center text-vidaia-charcoal/70 mb-6 md:mb-10 text-sm">
           {content.accordion.subtitle}
         </p>
 
@@ -144,7 +144,7 @@ export default function ItineraryDayAccordion({ resolvedItinerary, destinationNa
                     {day.cities && (
                       <p
                         className={`text-xs sm:text-sm flex items-center gap-1 mt-0.5 ${
-                          isOpen ? 'text-white/60' : 'text-vidaia-charcoal/55'
+                          isOpen ? 'text-white/60' : 'text-vidaia-charcoal/70'
                         }`}
                       >
                         <MapPin className="w-3.5 h-3.5 shrink-0" />

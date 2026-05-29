@@ -16,7 +16,7 @@ export default function ViajesComoTrabajamos({ title, subtitle, steps }: ViajesC
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
           {title}
         </h2>
-        <p className="text-center text-vidaia-charcoal/55 text-sm mb-8 md:mb-16">
+        <p className="text-center text-vidaia-charcoal/70 text-sm mb-8 md:mb-16">
           {subtitle}
         </p>
 

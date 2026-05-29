@@ -44,7 +44,7 @@ export default function ItineraryHotels({ resolvedItinerary, destinationNames }:
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
           {content.hotels.title}
         </h2>
-        <p className="text-center text-vidaia-charcoal/55 text-sm mb-6 md:mb-12">
+        <p className="text-center text-vidaia-charcoal/70 text-sm mb-6 md:mb-12">
           {content.hotels.subtitle}
         </p>
 
@@ -67,7 +67,7 @@ export default function ItineraryHotels({ resolvedItinerary, destinationNames }:
                 <div className="flex items-start justify-between gap-2 mb-1.5">
                   <div className="min-w-0">
                     <h3 className="font-semibold text-vidaia-dark truncate">{hotel.name}</h3>
-                    <p className="text-sm text-vidaia-charcoal/55">{hotel.city}</p>
+                    <p className="text-sm text-vidaia-charcoal/70">{hotel.city}</p>
                   </div>
                   <div className="flex items-center gap-0.5 shrink-0 pt-0.5">
                     {Array.from({ length: hotel.stars }).map((_, i) => (
@@ -80,7 +80,7 @@ export default function ItineraryHotels({ resolvedItinerary, destinationNames }:
                     {hotel.category}
                   </span>
                 )}
-                <div className="flex items-center justify-between text-xs text-vidaia-charcoal/55 pt-3 border-t border-vidaia-light/50 mt-1">
+                <div className="flex items-center justify-between text-xs text-vidaia-charcoal/70 pt-3 border-t border-vidaia-light/50 mt-1">
                   <span className="flex items-center gap-1">
                     <Bed className="w-3.5 h-3.5" />
                     {hotel.nights} {hotel.nights === 1 ? content.labels.night : content.labels.nights}

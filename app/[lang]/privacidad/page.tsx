@@ -31,7 +31,7 @@ export default async function PrivacidadPage({ params }: Props) {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href={`/${lang}`}
-          className="inline-flex items-center gap-2 text-sm text-vidaia-charcoal/55 hover:text-vidaia-primary mb-8 md:mb-10 transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-vidaia-charcoal/70 hover:text-vidaia-primary mb-8 md:mb-10 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           {ui.labels.backToHome}

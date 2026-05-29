@@ -157,7 +157,7 @@ export default function Footer() {
                 </button>
               </li>
             </ul>
-            <p className="text-xs text-gray-500 mt-6 leading-relaxed">
+            <p className="text-xs text-gray-400 mt-6 leading-relaxed">
               {footerContent.legal.officialAgencyInfo.split('{br}').map((line, i) => (
                 <React.Fragment key={i}>
                   {line}
@@ -173,7 +173,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-center">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             {footerContent.copyright}
           </p>
         </div>

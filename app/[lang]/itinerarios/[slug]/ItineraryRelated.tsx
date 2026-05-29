@@ -26,7 +26,7 @@ export default function ItineraryRelated({ relatedTrips, mainTrip }: Props) {
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
           {content.relatedTrips.title}
         </h2>
-        <p className="text-center text-vidaia-charcoal/55 text-sm mb-6 md:mb-12">
+        <p className="text-center text-vidaia-charcoal/70 text-sm mb-6 md:mb-12">
           {content.relatedTrips.subtitle}
         </p>
 

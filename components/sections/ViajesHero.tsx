@@ -133,7 +133,7 @@ export default function ViajesHero({
             key={i}
             onClick={() => setCurrent(i)}
             aria-label={`Ir a imagen ${i + 1}`}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+            className={`w-2 h-2 rounded-full transition-all duration-300 p-3 -m-3 ${
               i === current ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/70'
             }`}
           />

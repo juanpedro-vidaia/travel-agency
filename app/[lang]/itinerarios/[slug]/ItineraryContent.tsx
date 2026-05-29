@@ -152,7 +152,7 @@ export default function ItineraryContent({
           <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
             {ui.map.title}
           </h2>
-          <p className="text-center text-vidaia-charcoal/55 text-sm mb-8">{ui.map.subtitle}</p>
+          <p className="text-center text-vidaia-charcoal/70 text-sm mb-8">{ui.map.subtitle}</p>
           <ItineraryMap
             accommodationStops={resolvedItinerary.accommodationStops}
             destCoords={destCoords}
@@ -217,8 +217,8 @@ export default function ItineraryContent({
               {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom) })}
             </p>
           )}
-          <p className="text-white/55 text-sm mb-2">{content.price.perPersonLabel}</p>
-          <p className="text-white/40 text-xs mb-12">{content.price.priceNote}</p>
+          <p className="text-white/75 text-sm mb-2">{content.price.perPersonLabel}</p>
+          <p className="text-white/60 text-xs mb-12">{content.price.priceNote}</p>
           <LangLink
             href={requestHref}
             className="inline-flex items-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
@@ -229,8 +229,8 @@ export default function ItineraryContent({
         </div>
       </section>
 
-      {/* ── STICKY CTA (mobile) ───────────────────────────────────────────────── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white/95 backdrop-blur-sm border-t border-vidaia-light px-4 py-3 shadow-2xl">
+      {/* ── STICKY CTA (mobile) — right-[80px] = w-14 (FAB) + right-6 gap ────── */}
+      <div className="fixed bottom-6 left-4 right-[80px] z-50 lg:hidden bg-white/95 backdrop-blur-sm border border-vidaia-light rounded-2xl px-4 py-3 shadow-2xl">
         <LangLink
           href={requestHref}
           className="flex items-center justify-center gap-2 w-full bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-6 py-3.5 rounded-full transition-colors text-base"

@@ -113,18 +113,22 @@ export default function ContactFAB() {
         />
       )}
 
-      {/* FAB container — grows upward from bottom-left */}
+      {/* FAB container — grows upward from bottom-right.
+          pointer-events-none when closed so it doesn't block links beneath */}
       <div
         ref={fabRef}
-        className="fixed bottom-6 left-6 z-[9999] flex flex-col items-start gap-3"
+        className={`fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3 ${
+          isOpen ? 'pointer-events-auto' : 'pointer-events-none'
+        }`}
       >
-        {/* Options (top = farthest from FAB, bottom = closest) */}
+        {/* Options (top = farthest from FAB, bottom = closest).
+            flex-row-reverse puts the icon on the right and the label to the left */}
         {[...options].reverse().map((opt, reversedIndex) => {
           const delay = (options.length - 1 - reversedIndex) * 50
           return (
             <div
               key={opt.id}
-              className={`flex items-center gap-3 transition-all duration-300 ${
+              className={`flex flex-row-reverse items-center gap-3 transition-all duration-300 ${
                 isOpen
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-3 pointer-events-none'
@@ -151,9 +155,9 @@ export default function ContactFAB() {
           )
         })}
 
-        {/* Main FAB button */}
-        <div className="relative group">
-          {/* Tooltip (only when collapsed) */}
+        {/* Main FAB button — always pointer-events-auto even when container is none */}
+        <div className="relative group pointer-events-auto">
+          {/* Tooltip (only when collapsed) — appears to the left of the button */}
           {!isOpen && (
             <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-vidaia-dark text-white text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-sm">
               ¿Hablamos?
@@ -182,7 +186,7 @@ export default function ContactFAB() {
 
       {/* Copied-to-clipboard toast (desktop) */}
       {copied && (
-        <div className="fixed bottom-24 left-6 z-[10000] bg-vidaia-dark text-white text-sm font-medium px-4 py-2.5 rounded-full shadow-lg pointer-events-none">
+        <div className="fixed bottom-24 right-6 z-[10000] bg-vidaia-dark text-white text-sm font-medium px-4 py-2.5 rounded-full shadow-lg pointer-events-none">
           📋 {CONTACT.phone} copiado
         </div>
       )}

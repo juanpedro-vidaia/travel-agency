@@ -28,7 +28,7 @@ export default function FaqSection({ title, subtitle, faqs, className }: FaqSect
           {title}
         </h2>
         {subtitle && (
-          <p className="text-center text-vidaia-charcoal/55 text-sm mb-8 md:mb-12">
+          <p className="text-center text-vidaia-charcoal/70 text-sm mb-8 md:mb-12">
             {subtitle}
           </p>
         )}

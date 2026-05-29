@@ -111,7 +111,7 @@ export default async function CountryPage({ params, searchParams }: Props) {
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
               {renderTemplate(content.section.titleTemplate, { country: countryName })}
             </h2>
-            <p className="text-center text-vidaia-charcoal/55 text-sm mb-8 md:mb-14">{content.section.subtitle}</p>
+            <p className="text-center text-vidaia-charcoal/70 text-sm mb-8 md:mb-14">{content.section.subtitle}</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {trips.map((trip) => (

@@ -152,7 +152,7 @@ export default function ItineraryHeroCarousel({ slug, resolvedItinerary, trip, c
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-2 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 p-3 -m-3 ${
               index === currentSlide ? 'bg-vidaia-earth w-6' : 'bg-white/50 w-2 hover:bg-white/80'
             }`}
             aria-label={`Ir a imagen ${index + 1}`}
