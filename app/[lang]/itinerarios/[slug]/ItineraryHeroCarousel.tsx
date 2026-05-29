@@ -147,12 +147,12 @@ export default function ItineraryHeroCarousel({ slug, resolvedItinerary, trip, c
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-6 md:gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-2 rounded-full transition-all duration-300 p-3 -m-3 ${
+            className={`h-2 rounded-full transition-all duration-300 p-3 -m-3 md:p-0 md:m-0 ${
               index === currentSlide ? 'bg-vidaia-earth w-6' : 'bg-white/50 w-2 hover:bg-white/80'
             }`}
             aria-label={`Ir a imagen ${index + 1}`}

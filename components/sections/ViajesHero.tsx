@@ -127,13 +127,13 @@ export default function ViajesHero({
       </button>
 
       {/* Dots */}
-      <div className="absolute bottom-8 right-6 sm:right-8 z-10 flex gap-2">
+      <div className="absolute bottom-8 right-6 sm:right-8 z-10 flex gap-6 md:gap-2">
         {resolvedSlides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
             aria-label={`Ir a imagen ${i + 1}`}
-            className={`w-2 h-2 rounded-full transition-all duration-300 p-3 -m-3 ${
+            className={`w-2 h-2 rounded-full transition-all duration-300 p-3 -m-3 md:p-0 md:m-0 ${
               i === current ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/70'
             }`}
           />

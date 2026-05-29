@@ -229,16 +229,13 @@ export default function ItineraryContent({
         </div>
       </section>
 
-      {/* ── STICKY CTA (mobile) — right-[80px] = w-14 (FAB) + right-6 gap ────── */}
-      <div className="fixed bottom-6 left-4 right-[80px] z-50 lg:hidden bg-white/95 backdrop-blur-sm border border-vidaia-light rounded-2xl px-4 py-3 shadow-2xl">
-        <LangLink
-          href={requestHref}
-          className="flex items-center justify-center gap-2 w-full bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-6 py-3.5 rounded-full transition-colors text-base"
-        >
-          {content.hero.ctaButton}
-          <ArrowRight className="w-5 h-5" />
-        </LangLink>
-      </div>
+      <LangLink
+        href={requestHref}
+        className="fixed bottom-6 left-4 right-[80px] z-50 lg:hidden flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-6 py-3.5 rounded-full transition-colors text-base"
+      >
+        {content.hero.ctaButton}
+        <ArrowRight className="w-5 h-5" />
+      </LangLink>
     </main>
   )
 }
