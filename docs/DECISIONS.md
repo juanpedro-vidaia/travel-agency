@@ -283,6 +283,32 @@
 
 ---
 
+## D16 — Server Component como único punto de acceso a datos en páginas pesadas
+
+**Fecha:** 2026-05-29
+
+**Decisión:** En páginas cuyo contenido principal es un Client Component complejo (como la página de itinerario), el Server Component (`page.tsx`) pre-computa TODOS los datos necesarios y los pasa como props serializables. Los Client Components no importan ningún servicio ni fichero de datos.
+
+**Problema previo:** `ItineraryContent` y sus cinco sub-componentes (`ItineraryHeroCarousel`, `ItineraryDayAccordion`, `ItineraryHotels`, `ItineraryRelated`, `ItineraryMap`) recibían solo `slug: string` como prop y llamaban a servicios internamente. Webpack incluía en el bundle cliente todos los ficheros de datos importados por esos servicios: `itineraries.ts`, `activities.ts`, `hotels.ts`, `destinations.ts`, `trips.ts` (~244 KB parsed).
+
+**Solución aplicada:**
+- `page.tsx` centraliza todas las llamadas a servicios y construye lookup maps (`destinationNames`, `destCoords`)
+- `ItineraryContent` recibe datos resueltos como props tipadas
+- Sub-componentes reciben exactamente los datos que necesitan (no el slug)
+- `TAG_CONFIG` se extrajo a `lib/data/tagConfig.ts` para que los Client Components lo importen sin arrastrar el array de viajes
+
+**Alternativas consideradas:**
+- React Context para compartir datos entre Client Components — añade complejidad y no elimina los datos del bundle
+- Convertir los Client Components a Server Components — imposible; necesitan estado/efectos (carousel, accordion, mapa)
+
+**Consecuencias:**
+- El Server Component `page.tsx` crece en responsabilidad (centraliza más lógica de datos)
+- Al añadir un nuevo dato a algún sub-componente, hay que añadirlo en tres sitios: cómputo en page.tsx, prop en ItineraryContent, prop en el sub-componente
+- Los Client Components son más testables (reciben datos, no los buscan)
+- `itineraries.ts`, `activities.ts`, `hotels.ts`, `destinations.ts` ya NO aparecen en el bundle cliente
+
+---
+
 ## D15 — `JsonLd` usa `next/script` con `id` para evitar duplicación RSC
 
 **Fecha:** 2026-05-28

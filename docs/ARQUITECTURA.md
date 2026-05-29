@@ -67,7 +67,8 @@ getAsset('KEY') llamado directamente en el componente (función pura)
 | `assets.ts` | Registro tipado de todas las URLs de imágenes y sus `alt`. Exporta `ASSETS` y `getAsset()`. |
 | `countries.ts` | Array de países activos con contenido i18n, flags, slug, orden y coordenadas geográficas (`lat`, `lng`). |
 | `destinations.ts` | Array de destinos con país, flag de `featured` y coordenadas opcionales (`lat?`, `lng?`). |
-| `trips.ts` | Viajes con precio, duración, tags, países y referencias a itinerarios. |
+| `tagConfig.ts` | `TAG_CONFIG` y `TRIP_TAGS` — metadatos de tags (emoji + label). Separado de `trips.ts` para que los Client Components puedan importarlo sin arrastrar el array de viajes al bundle cliente. |
+| `trips.ts` | Viajes con precio, duración, tags, países y referencias a itinerarios. Re-exporta `TAG_CONFIG` y `TripTag` desde `tagConfig.ts` para uso server-side. |
 | `itineraries.ts` | Itinerarios detallados (días, etapas, alojamientos, actividades incluidas). |
 | `activities.ts` | Actividades opcionales referenciadas desde itinerarios. |
 | `hotels.ts` | Hoteles con categoría (3/4/5★) referenciados desde itinerarios. |
@@ -138,6 +139,31 @@ import { buildPageSchema, buildTouristDestinationSchema, buildFAQSchema } from '
 ### `JsonLd` — deduplicación RSC
 
 `components/scripts/JsonLd.tsx` usa `next/script` con prop `id` obligatoria. Next.js usa ese `id` para registrar el script y evitar re-inyectarlo cuando el runtime RSC cliente procesa el payload de hidratación — sin esto, los scripts del body aparecerían dos veces en validadores que ejecutan JavaScript (como validator.schema.org). Cada página usa un `id` estable y único: `ld-organization`, `ld-home`, `ld-destination`, `ld-itinerary`, `ld-article`, `ld-viajes`, `ld-honeymoon`.
+
+### Patrón: Server Component como único punto de acceso a datos
+
+Para páginas con Client Components pesados, el Server Component (`page.tsx`) pre-computa todos los datos y los pasa como props serializables. Los Client Components no importan servicios ni ficheros de datos.
+
+**Ejemplo — itinerary page:**
+```
+page.tsx (Server)
+  ├── getItineraryWithDetails() → resolvedItinerary
+  ├── getTripBySlug()           → trip
+  ├── getCountryBySlug()        → countries[]
+  ├── getRelatedTripsBySlug()   → relatedTrips[]
+  ├── getItineraryOptionals()   → optionals[]
+  ├── Object.fromEntries(...)   → destinationNames: Record<string, string>
+  └── Object.fromEntries(...)   → destCoords: Record<string, {name,lat,lng}>
+         ↓ props serializables
+  ItineraryContent (Client) → ItineraryHeroCarousel, ItineraryDayAccordion,
+                               ItineraryHotels, ItineraryRelated, ItineraryMap
+```
+
+**Beneficio:** `itineraries.ts` + `activities.ts` + `hotels.ts` + `destinations.ts` (~244 KB parsed) se eliminan del bundle cliente. Los Client Components solo contienen lógica de UI (estado, efectos, Lucide icons).
+
+**Regla:** Ningún Client Component del itinerario debe importar desde `lib/services/` ni `lib/data/` (excepto `getAsset()`, `tagConfig.ts`, y tipos TypeScript — que se eliminan en build).
+
+---
 
 ### `renderTemplate`
 

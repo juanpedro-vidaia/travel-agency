@@ -366,3 +366,52 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 - `app/[lang]/blog/[slug]/DestinationBackButton.tsx` — usar `useSearchParams()` para leer `from`
 - `app/[lang]/destinos/[slug]/page.tsx` — eliminar `searchParams` de la firma
 - (nuevo) `app/[lang]/blog/BlogFilters.tsx` — Client Component con `useSearchParams()` para filtrado por categoría
+
+---
+
+### M22 — Eliminar datos estáticos del bundle cliente (itinerario)
+> ✅ COMPLETADO 29/05/2026 — `itineraries.ts` + `activities.ts` + `hotels.ts` + `destinations.ts` (~244 KB parsed) eliminados del bundle cliente. `trips.ts` (array de datos) eliminado de los chunks de itinerario y viajes.
+
+**Solución implementada:**
+- Creado `lib/data/tagConfig.ts` con `TAG_CONFIG` + `TRIP_TAGS` extraídos de `trips.ts` — los Client Components importan solo el config sin arrastrar el array de datos
+- `app/[lang]/itinerarios/[slug]/page.tsx` centraliza todas las llamadas a servicios y construye lookup maps (`destinationNames`, `destCoords`)
+- `ItineraryContent` y sus 5 sub-componentes refactorizados para recibir datos como props (no slug) — eliminadas todas las llamadas a `lib/services/` desde código cliente
+- `ItineraryMap` recibe `destCoords: Record<string, {name,lat,lng}>` en lugar de importar el array completo de `destinations.ts`
+- Ver D16 en DECISIONS.md para el razonamiento arquitectónico
+
+---
+
+### M23 — `staticContent.ts` (79 KB) en shared chunk — deuda técnica arquitectónica
+
+**Problema:** `useLanguage` hook importa todo `staticContent.ts` (1.854 líneas, ~79 KB parsed) a nivel de módulo. Como es usado por 20+ Client Components repartidos por todas las páginas, webpack lo eleva al shared chunk que se carga en CADA página. No se puede tree-shake porque el acceso a la clave del idioma (`STATIC_CONTENT[language]`) es dinámico en tiempo de ejecución.
+
+**Impacto:** 79 KB presentes en el shared bundle de todas las páginas, incluyendo páginas que solo usan una pequeña fracción del contenido estático.
+
+**Solución (alto coste):** Eliminar `useLanguage()` de los Client Components que no tienen interactividad real y convertirlos a Server Components que reciben `content` como prop desde la página padre. Esto es el refactor arquitectónico de D10 (DECISIONS.md).
+
+**Componentes candidatos (solo usan `useLanguage()` para texto, sin interactividad):**
+- `components/layout/Footer.tsx`
+- `components/sections/ValueProposition.tsx`
+- `components/sections/QuienesSomos.tsx`
+- `components/sections/TestimonialsSection.tsx`
+- `components/sections/CTASection.tsx`
+- `components/sections/InstagramBanner.tsx`
+- `components/sections/BlogSection.tsx`
+- `components/sections/ViajesServicios.tsx`
+- `components/sections/ViajesComoTrabajamos.tsx`
+
+**Estimación:** ~8-12 ficheros a cambiar + actualizar sus páginas padre para pasar `content` como prop. Requiere crear un `app/[lang]/layout.tsx` intermedio para que el Footer en el root layout también pueda recibir `lang` desde la URL.
+
+---
+
+### M24 — Auditoría Lighthouse post-optimizaciones
+
+**Problema:** Se han aplicado múltiples optimizaciones de bundle (dynamic imports, server pre-computation, font weights, optimizePackageImports) pero no se ha medido el impacto real en Lighthouse.
+
+**Acción:** Ejecutar Lighthouse en Chrome DevTools sobre `/es` (home) y `/es/itinerarios/[slug]` (itinerario) tras el deploy de los cambios de bundle. Comparar contra baseline (First Load JS antes: home 180 kB, itinerario 227 kB).
+
+**Objetivos:**
+- Lighthouse Performance > 90 en home
+- First Load JS home < 145 kB
+- First Load JS itinerario < 150 kB
+- Requests en Network tab (home) < 12
