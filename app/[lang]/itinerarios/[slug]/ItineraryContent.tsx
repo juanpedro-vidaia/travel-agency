@@ -233,7 +233,8 @@ export default function ItineraryContent({
         href={requestHref}
         className="fixed bottom-6 left-4 right-[80px] z-50 lg:hidden flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-6 py-3.5 pr-16 sm:pr-20 rounded-full transition-colors text-sm sm:text-base"
       >
-        {content.hero.ctaButton}
+        <span className="w-5 h-5 sm:hidden" /> {/* espaciador invisible */}
+        <span>{content.hero.ctaButton}</span>
         <ArrowRight className="w-5 h-5 hidden sm:block" />
       </LangLink>
     </main>
