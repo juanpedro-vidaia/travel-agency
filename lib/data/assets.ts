@@ -279,23 +279,23 @@ export const ASSETS = {
   'ITINERARIES.PAISAJES_NATURALES_MORENO':        { url: 'https://images.unsplash.com/photo-1552751753-0fc84ae5b6c8?q=80&w=1920', alt: 'Glaciar Perito Moreno' },
   'ITINERARIES.PAISAJES_NATURALES_VALDES':        { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780343171/ballena-puerto-madryn-pexels-ivan-stecko-01062026_mzltz0.jpg', alt: 'Ballena franca austral en las aguas de Puerto Madryn, vista aérea', url_mobile: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780343171/ballena-puerto-madryn-pexels-ivan-stecko-mobile-01062026_scfys2.jpg' },
   'ITINERARIES.PERU_CANON_COLCA':                 { url: 'https://images.unsplash.com/photo-1574347990087-2aa3f2ab0a6b?q=80&w=1920', alt: 'FOTO CAÑON DE COLCA (JUPE)' },
-  'ITINERARIES.PERU_CUSCO':                       { url: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=1920', alt: 'FOTO CUSCO JUPE (PLAZA O ALGO ASÍ)', url_mobile: 'FOTO MOVIL CUZCO (LAU)' },
+  'ITINERARIES.PERU_CUSCO':                       { url: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=1920', alt: 'FOTO CUSCO JUPE (PLAZA O ALGO ASÍ)' },
   'ITINERARIES.PERU_LAGO_TITICACA':               { url: 'https://images.unsplash.com/photo-1567551568791-efe6b0b4e24e?q=80&w=1920', alt: 'FOTO ISLA DE URUS (JUPE)' },
-  'ITINERARIES.PERU_MACHU_PICCHU':                { url: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1920', alt: 'FOTO MACHU PICCHU (JUPE)', url_mobile: 'FOTO MACHU PICCHU LAU' },
-  'ITINERARIES.PERU_PARACAS':                     { url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1920', alt: 'FOTO PARACAS (LAU)', url_mobile: 'FOTO MOVIL PARACAS (LAU)' },
+  'ITINERARIES.PERU_MACHU_PICCHU':                { url: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1920', alt: 'FOTO MACHU PICCHU (JUPE)' },
+  'ITINERARIES.PERU_PARACAS':                     { url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1920', alt: 'FOTO PARACAS (LAU)' },
   'ITINERARIES.BOLIVIA_INFINITA_SALAR':           { url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1920', alt: 'FOTO SALAR DE UYUNI (MARTA)' },
   'ITINERARIES.BOLIVIA_INFINITA_LAGUNA_COLORADA': { url: 'https://images.unsplash.com/photo-1641234332283-af77dfe995c7?q=80&w=1920', alt: 'FOTO LAGUNA COLORADA (JUPE)' },
   'ITINERARIES.BOLIVIA_INFINITA_SUCRE':           { url: 'https://images.unsplash.com/photo-1573502059387-0848782c6956?q=80&w=1920', alt: 'FOTO SUCRE (JUPE)' },
   'ITINERARIES.BOLIVIA_INFINITA_TITICACA':        { url: 'https://images.unsplash.com/photo-1567551568791-efe6b0b4e24e?q=80&w=1920', alt: 'Lago Titicaca · Isla del Sol · Bolivia' },
   'ITINERARIES.BOLIVIA_INFINITA_LA_PAZ':          { url: 'https://images.unsplash.com/photo-1531761399323-e5f7e7f98816?q=80&w=1920', alt: 'FOTO LA PAZ (JUPE)' },
-  'ITINERARIES.SALAR_PASCUA_UYUNI':               { url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1920', alt: 'FOTO DE SALAR DE UYUNI (MARTA)', url_mobile: 'FOTO MOVIL SALAR DE UYUNI (MOVIL, LAU)' },
-  'ITINERARIES.SALAR_PASCUA_LAGUNA_COLORADA':     { url: 'https://images.unsplash.com/photo-1641234332283-af77dfe995c7?q=80&w=1920', alt: 'FOTO DE LAGUNA COLORADA (MARTA)', url_mobile: 'FOTO LAGUNA COLORADA (MOVIL, LAU)' },
+  'ITINERARIES.SALAR_PASCUA_UYUNI':               { url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1920', alt: 'FOTO DE SALAR DE UYUNI (MARTA)' },
+  'ITINERARIES.SALAR_PASCUA_LAGUNA_COLORADA':     { url: 'https://images.unsplash.com/photo-1641234332283-af77dfe995c7?q=80&w=1920', alt: 'FOTO DE LAGUNA COLORADA (MARTA)' },
   'ITINERARIES.SALAR_PASCUA_ATACAMA':             { url: 'https://images.unsplash.com/photo-1547363025-42a7e4a26b7e?q=80&w=1920', alt: 'FOTO DEL VALLE DE LA LUNA (JUPE)' },
   'ITINERARIES.SALAR_PASCUA_RAPA_NUI':            { url: 'https://images.unsplash.com/photo-1542315204-8b9abdb5f4de?q=80&w=1920', alt: 'FOTO DE AKU TONGARIKI (UNSPLASH, CLMUNDO)' },
   'ITINERARIES.SALAR_PASCUA_SANTIAGO':            { url: 'https://images.unsplash.com/photo-1531761399323-e5f7e7f98816?q=80&w=1920', alt: 'FOTO DE SANTIAGO (CLMUNDO)' },
 
   // ── Itineraries ───────────────────────────────────────────────────────────────
-  'ITINERARIES.CONTRASTES_CAFAYATE':           { url: 'https://images.unsplash.com/photo-1596396767285-0a7cb60c3bd8?w=800&h=600&fit=crop', alt: 'FOTOS QUEBRADA DE LAS CONCHAS (LAU) O JUPE (CAFAYATE)', url_mobile: 'FOTO MOVIL QUEBRADA DE LAS CONCHAS (LAU)' },
+  'ITINERARIES.CONTRASTES_CAFAYATE':           { url: 'https://images.unsplash.com/photo-1596396767285-0a7cb60c3bd8?w=800&h=600&fit=crop', alt: 'FOTOS QUEBRADA DE LAS CONCHAS (LAU) O JUPE (CAFAYATE)' },
   'ITINERARIES.CONTRASTES_IGUAZU':             { url: 'https://images.unsplash.com/photo-1570804142540-c58f0e67cf9a?w=800&h=600&fit=crop', alt: 'FOTO CATARATAS DE IGUAZÚ MIA O DE LAU' },
   'ITINERARIES.CONTRASTES_INVIERNO_IGUAZU':    { url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop', alt: 'FOTO CATARATAS DE IGUAZÚ MIA O DE LAU' },
   'ITINERARIES.CONTRASTES_INVIERNO_MORENO':    { url: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&h=600&fit=crop', alt: 'FOTO PERITO MORENO JUPE O LAU' },
@@ -343,7 +343,7 @@ export const ASSETS = {
 
   // ── Viajes hero carousel ──────────────────────────────────────────────────────
   'VIAJES_HERO_ARGENTINA': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779727561/lago-nahuel-huapi-bariloche-jupe-052019_z8g7uo.jpg', alt: 'Lago Nahuel Huapi desde el Cerro Campanario con el Cerro López al fondo, Bariloche, Argentina' },
-  'VIAJES_HERO_BOLIVIA':   { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780417102/laguna-colorada-reserva-eduardo-avaroa-bolivia-072019-jupe_fvat8e.jpg', alt: 'Flamencos en la Laguna Colorada, Reserva Natural Eduardo Avaroa, Bolivia', url_mobile: 'FOTO DE MOVIL DE LIPEZ (LAU)' },
+  'VIAJES_HERO_BOLIVIA':   { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780417102/laguna-colorada-reserva-eduardo-avaroa-bolivia-072019-jupe_fvat8e.jpg', alt: 'Flamencos en la Laguna Colorada, Reserva Natural Eduardo Avaroa, Bolivia' },
   'VIAJES_HERO_CHILE':     { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780416518/cuerno-paine-parque-nacional-torres-del-paine-chile-042019-jupe_adtkym.jpg', alt: 'Cuernos del Paine, Parque Nacional de Torres del Paine, Patagonia, Chile' },
   'VIAJES_HERO_PERU':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780416227/machu-picchu-peru-valle-sagrado-2-042019_nqzcv8.jpg', alt: 'Machu Picchu, ciudadela inca Patrimonio UNESCO, Perú' },
 } as const
