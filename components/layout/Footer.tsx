@@ -8,6 +8,7 @@ import { useLanguage } from '@/lib/hooks/useLanguage'
 import { useConsent } from '@/lib/hooks/useConsent'
 import { getAsset } from '@/lib/data/assets'
 import LangLink from '@/components/ui/LangLink'
+import ObfuscatedEmail from '@/components/ui/ObfuscatedEmail'
 import React from 'react'
 
 export default function Footer() {
@@ -40,13 +41,10 @@ export default function Footer() {
             </p>
 
             <div className="space-y-2.5 mb-7">
-              <a
-                href={`mailto:${footerContent.brand.email}`}
-                className="flex items-center gap-2.5 text-sm hover:text-white transition-colors"
-              >
+              <div className="flex items-center gap-2.5 text-sm">
                 <Mail className="w-4 h-4 text-vidaia-earth flex-shrink-0" />
-                {footerContent.brand.email}
-              </a>
+                <ObfuscatedEmail user="info" domain="viajesvidaia.com" className="hover:text-white transition-colors" />
+              </div>
               <div className="flex items-center gap-2.5 text-sm">
                 <MapPin className="w-4 h-4 text-vidaia-earth flex-shrink-0" />
                 {footerContent.brand.location}

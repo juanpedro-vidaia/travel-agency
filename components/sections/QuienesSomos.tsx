@@ -46,7 +46,7 @@ export default function QuienesSomos() {
                 <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 rounded-2xl overflow-hidden self-start">
                   <Image
                     src={personImage.url}
-                    alt={person.name}
+                    alt={personImage.alt}
                     fill
                     className="object-cover"
                     sizes="112px"

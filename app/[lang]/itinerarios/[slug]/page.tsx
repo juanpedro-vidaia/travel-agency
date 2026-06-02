@@ -7,7 +7,7 @@ import { generateItineraryFAQs } from '@/lib/services/faqsService'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getDestinations } from '@/lib/services/destinationsService'
-import { buildPageSchema, buildTouristTripSchema, buildFAQSchema } from '@/lib/schema'
+import { buildPageSchema, buildTouristTripSchema, buildFAQSchema, buildBreadcrumbSchema } from '@/lib/schema'
 import JsonLd from '@/components/scripts/JsonLd'
 import ItineraryContent from './ItineraryContent'
 
@@ -37,7 +37,7 @@ export function generateStaticParams() {
 }
 
 export default async function ItineraryPage({ params }: Props) {
-  const { lang: _lang, slug } = await params
+  const { lang, slug } = await params
   const itinerary = getItinerary(slug)
   if (!itinerary) notFound()
 
@@ -83,7 +83,15 @@ export default async function ItineraryPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={buildPageSchema(...tripSchemas, ...faqSchemas)} id="ld-itinerary" />
+      <JsonLd data={buildPageSchema(
+        ...tripSchemas,
+        ...faqSchemas,
+        buildBreadcrumbSchema(lang, [
+          { name: 'Inicio', path: '' },
+          { name: 'Viajes', path: '/viajes' },
+          { name: trip.content.es.title },
+        ]),
+      )} id="ld-itinerary" />
       <ItineraryContent
         slug={slug}
         resolvedItinerary={resolvedItinerary}

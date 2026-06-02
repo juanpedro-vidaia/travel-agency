@@ -319,9 +319,9 @@ export const ASSETS = {
   'LOGO.DEFAULT': { url: '/images/logo/viajes-vidaia-logo.png', alt: 'Viajes Vidaia' },
 
   // ── Team ──────────────────────────────────────────────────────────────────────
-  'TEAM.JUPE':            { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/c_crop,g_north_west,h_652,w_652,x_548,y_142/foto-jupe-borobudur-indonesia_hxbmvh.jpg', alt: 'Jupe en Borobudur, Java, Indonesia' },
+  'TEAM.JUPE':            { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/c_crop,g_north_west,h_652,w_652,x_548,y_142/foto-jupe-borobudur-indonesia_hxbmvh.jpg', alt: 'Jupe, asesor de Viajes Vidaia, en Borobudur, Isla de Java en Indonesia' },
   'TEAM.LANDSCAPE_PHOTO': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/c_crop,g_north_west,h_633,w_1991,x_257,y_577/IMG_1651_1_apzpg6.jpg', alt: 'Mirador de las Cataratas del Iguzú, desde el lado brasileño. Laura y Jupe de Vidaia contemplan el lado argentino de las cataratas.' },
-  'TEAM.LAU':             { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/ar_1:1,c_auto/IMG_1047_cupyq4.jpg', alt: 'Lau en Salinas Grandes, Salta y Jujuy, Argentina' },
+  'TEAM.LAU':             { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/ar_1:1,c_auto/IMG_1047_cupyq4.jpg', alt: 'Lau, asesora de Viajes Vidaia, en Salinas Grandes, Salta y Jujuy, Argentina' },
 
   // ── Testimonials ──────────────────────────────────────────────────────────────
   'TESTIMONIALS.ANA_RODRIGUEZ':   { url: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=200&q=80', alt: 'Ana Rodríguez' },

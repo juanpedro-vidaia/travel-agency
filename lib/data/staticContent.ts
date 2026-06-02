@@ -104,8 +104,8 @@ export const STATIC_CONTENT = {
     },
     home: {
       metadata: {
-        title: 'Viajes Vidaia — El viaje de tu vida hecho realidad',
-        description: 'Agencia de viajes personalizados especializada en Argentina, Chile y Bolivia. Diseñamos tu itinerario desde cero.',
+        title: 'Viajes Vidaia — Expertos en viajes a medida en Sudamérica',
+        description: 'Agencia especializada en viajes a medida a Argentina, Chile, Bolivia y Perú. Diseñamos tu itinerario desde cero: vuelos, alojamiento, actividades y seguro. Sin paquetes cerrados, te hacemos una propuesta personalizada.',
       },
       hero: {
         tagline: 'Argentina · Chile · Bolivia',
@@ -1162,6 +1162,14 @@ export const STATIC_CONTENT = {
       successText: 'Te contactamos en breve. Cerrando en unos segundos…',
       errorText: 'Algo ha ido mal. Inténtalo de nuevo o escríbenos a',
       closeLabel: 'Cerrar',
+    },
+    contactPage: {
+      success: {
+        title: '¡Mensaje recibido!',
+        subtitle: 'Gracias por escribirnos. Te respondemos en menos de 24 horas.',
+        cta: 'Volver al inicio',
+        ctaHref: '/',
+      },
     },
   },
   en: {

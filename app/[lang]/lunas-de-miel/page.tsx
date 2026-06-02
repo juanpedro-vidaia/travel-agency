@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
+import LunasDeMielHeroImage from '@/app/[lang]/lunas-de-miel/LunasDeMielHeroImage'
 import { ArrowRight, Heart } from 'lucide-react'
 import { getHoneymoonTrips } from '@/lib/services/tripsService'
 import { getFAQsByPage } from '@/lib/services/faqsService'
@@ -48,7 +48,7 @@ export default async function LunasDeMielPage({ params }: Props) {
       <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] overflow-hidden">
-        <Image src={heroBg.url} alt={heroBg.alt} fill className="object-cover" priority sizes="100vw" />
+        <LunasDeMielHeroImage asset={heroBg} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/65" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 md:justify-center md:pt-28 md:pb-12 text-white text-center px-6 sm:px-8">

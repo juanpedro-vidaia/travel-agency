@@ -2,26 +2,27 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { getTripsByCountry } from '@/lib/services/tripsService'
 import { getCountryBySlug, getCountries } from '@/lib/services/countriesService'
 import { getFAQsByPage } from '@/lib/services/faqsService'
 import TripCard from '@/components/ui/TripCard'
 import DestinationBackButton from '@/app/[lang]/destinos/[slug]/DestinationBackButton'
+import DestinationHeroImage from '@/app/[lang]/destinos/[slug]/DestinationHeroImage'
 import FaqSection from '@/components/sections/FaqSection'
 import JsonLd from '@/components/scripts/JsonLd'
 import { getStaticContent } from '@/lib/helpers/contentHelpers'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getDestinationsByCountry } from '@/lib/services/destinationsService'
 import type { CountrySlug } from '@/lib/data/countries'
-import { buildPageSchema, buildTouristDestinationSchema, buildFAQSchema } from '@/lib/schema'
+import { buildPageSchema, buildTouristDestinationSchema, buildFAQSchema, buildBreadcrumbSchema } from '@/lib/schema'
 import { getAsset } from '@/lib/data/assets'
 import { renderTemplate } from '@/lib/helpers/contentHelpers'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 
 interface Props {
   params: Promise<{ lang: string; slug: string }>
-  searchParams: Promise<{ from?: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -44,9 +45,8 @@ export function generateStaticParams() {
   )
 }
 
-export default async function CountryPage({ params, searchParams }: Props) {
+export default async function CountryPage({ params }: Props) {
   const { lang, slug } = await params
-  const { from } = await searchParams
   const country = getCountryBySlug(slug)
   if (!country) notFound()
 
@@ -64,12 +64,17 @@ export default async function CountryPage({ params, searchParams }: Props) {
     <>
       <JsonLd data={buildPageSchema(
         buildTouristDestinationSchema(country, countryDests),
+        buildBreadcrumbSchema(lang, [
+          { name: 'Inicio', path: '' },
+          { name: 'Viajes', path: '/viajes' },
+          { name: countryName },
+        ]),
         ...(destinationFaqs.length > 0 ? [buildFAQSchema(destinationFaqs.map(f => f.es))] : []),
       )} id="ld-destination" />
       <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] flex items-end overflow-hidden">
-        <Image src={heroAsset.url} alt={heroAsset.alt} fill className="object-cover" priority sizes="100vw" />
+        <DestinationHeroImage asset={heroAsset} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-16 w-full">
           <p className="flex items-center gap-2 text-vidaia-earth font-semibold uppercase tracking-widest text-xs mb-3">
@@ -86,13 +91,9 @@ export default async function CountryPage({ params, searchParams }: Props) {
       </section>
 
       {/* ── VOLVER ── */}
-      {(from === 'home' || from === 'viajes') && (
-        <section className="py-3 md:py-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
-          <div className="max-w-7xl mx-auto">
-            <DestinationBackButton from={from} lang={lang} label={content.backButton} />
-          </div>
-        </section>
-      )}
+      <Suspense fallback={null}>
+        <DestinationBackButton lang={lang} label={content.backButton} />
+      </Suspense>
 
       {/* ── INTRODUCCIÓN ── */}
       <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">

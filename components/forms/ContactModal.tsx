@@ -5,6 +5,7 @@ import { X, Phone } from 'lucide-react'
 import { useContactModal } from '@/lib/context/ContactModalContext'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { CONTACT } from '@/lib/config/contact'
+import ObfuscatedEmail from '@/components/ui/ObfuscatedEmail'
 import LangLink from '@/components/ui/LangLink'
 
 type FormState = {
@@ -165,9 +166,7 @@ export default function ContactModal() {
               <div className="bg-red-50 border border-red-200 rounded-2xl p-4">
                 <p className="text-red-700 text-sm font-medium">
                   {t.errorText}{' '}
-                  <a href={`mailto:${CONTACT.email}`} className="underline">
-                    {CONTACT.email}
-                  </a>
+                  <ObfuscatedEmail user="info" domain="viajesvidaia.com" className="underline" />
                   .
                 </p>
               </div>

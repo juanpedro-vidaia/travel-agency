@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import LangLink from '@/components/ui/LangLink'
+import ObfuscatedEmail from '@/components/ui/ObfuscatedEmail'
 import { ArrowRight, Mail } from 'lucide-react'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'
@@ -60,13 +61,13 @@ export default function CTASection() {
             <ArrowRight className="w-5 h-5" />
           </LangLink>
 
-          <a
-            href={`mailto:${sectionContent.email}`}
+          <ObfuscatedEmail
+            user="info"
+            domain="viajesvidaia.com"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/25 text-white/80 hover:text-white hover:border-white/50 font-medium rounded-full text-base transition-all duration-200"
           >
             <Mail className="w-4 h-4" />
-            {sectionContent.email}
-          </a>
+          </ObfuscatedEmail>
         </div>
       </div>
     </section>

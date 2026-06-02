@@ -5,7 +5,7 @@ import { getTripBySlug } from '@/lib/services/tripsService'
 import type { Trip } from '@/lib/data/trips'
 import { getAsset } from '@/lib/data/assets'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
-import { buildArticleSchema } from '@/lib/schema'
+import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/schema'
 import JsonLd from '@/components/scripts/JsonLd'
 import PostContent from './PostContent'
 
@@ -74,6 +74,11 @@ export default async function BlogPostPage({ params }: Props) {
         publishedAt: post.date,
         url: `https://viajesvidaia.com/${lang}/blog/${post.slug}`,
       })} />
+      <JsonLd id="ld-breadcrumb" data={buildBreadcrumbSchema(lang, [
+        { name: 'Inicio', path: '' },
+        { name: 'Blog', path: '/blog' },
+        { name: es.title },
+      ])} />
       <PostContent post={post} relatedPosts={relatedPosts} relatedTrips={relatedTrips} />
     </>
   )

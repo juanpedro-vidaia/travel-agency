@@ -65,6 +65,7 @@ CLIENTIFY_API_KEY=xxxxxxxxxxxxxxxx
 ## 🟡 Importante
 
 ### M04 — Eliminar `lib/supabase.ts` y dependencia `@supabase/supabase-js`
+> ✅ COMPLETADO 02/06/2026 — `lib/supabase.ts` borrado; `@supabase/supabase-js` desinstalado (10 paquetes menos).
 
 **Problema:** `lib/supabase.ts` no se importa en ningún fichero activo. Mantenerlo confunde sobre la arquitectura del proyecto y genera dudas sobre si los datos vienen de Supabase o de los ficheros estáticos.
 
@@ -261,6 +262,7 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 ---
 
 ### M16 — Añadir coordenadas `lat`/`lng` a los destinos que aún no las tienen
+> ✅ COMPLETADO — Todos los destinos tienen `lat` y `lng` confirmado por el usuario.
 
 **Problema:** `Destination` tiene `lat?` y `lng?` como campos opcionales. `buildTouristDestinationSchema` omite el `GeoCoordinates` para los destinos que no las tienen, empobreciendo el schema `TouristAttraction` para esos destinos.
 
@@ -280,6 +282,7 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 ---
 
 ### M17 — Alt de fotos de equipo más descriptivo
+> ✅ COMPLETADO 02/06/2026 — `alt={person.name}` → `alt={personImage.alt}` en `QuienesSomos.tsx`. Los assets ya tienen alt rico con rol y localización.
 
 **Problema:** Las fotos de Lau y Jupe usan `alt={person.name}` (solo el nombre).
 
@@ -288,6 +291,7 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 ---
 
 ### M18 — Crear página de éxito genérica para el formulario de contacto
+> ✅ COMPLETADO 02/06/2026 — `app/[lang]/contacto/exito/page.tsx` creada. Strings en `staticContent.ts` bajo `contactPage.success` (es + en). Patrón idéntico a `itinerarios/personalizar/exito`.
 
 **Problema:** El formulario de contacto (`ContactModal`) muestra un mensaje inline de éxito, pero si se usa sin modal (en página directa), no hay redirección de confirmación.
 
@@ -322,7 +326,7 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 ---
 
 ### M20 — `url_mobile` en heroes de Server Components (lunas-de-miel, destinos)
-> ✅ PARCIALMENTE COMPLETADO 25/05/2026 — url_mobile implementado en Hero.tsx, ViajesHero.tsx, ItineraryHeroCarousel.tsx (todos Client Components).
+> ✅ COMPLETADO 02/06/2026 — `LunasDeMielHeroImage.tsx` y `DestinationHeroImage.tsx` creados como Client Components con `useIsMobile()`. Integrados en sus páginas. Degradación elegante hasta que se añadan `url_mobile` en `assets.ts` para `HONEYMOON_HERO_BG` y `COUNTRIES.*_HERO`.
 
 **Pendiente:** Los siguientes heroes son Server Components y no pueden usar `useIsMobile()`:
 
@@ -345,6 +349,7 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 ---
 
 ### M21 — `searchParams` fuerza dynamic rendering en blog listing y destinos
+> ✅ COMPLETADO 02/06/2026 — Blog: `BlogFilters.tsx` Client Component con `useSearchParams()` extrae filtrado/grid; `blog/page.tsx` es SSG puro con `<Suspense>`. Destinos: `DestinationBackButton` lee `from` internamente con `useSearchParams()` e incluye su propio `<section>`; `destinos/[slug]/page.tsx` sin `searchParams`, con `<Suspense fallback={null}>`.
 
 **Problema:** En Next.js 16, cualquier página que haga `await searchParams` se convierte en dynamic (server-rendered on demand), incluso si tiene `generateStaticParams`. Estas dos páginas lo hacen y aparecen como `ƒ` en el build en lugar de `●` (SSG):
 
@@ -415,3 +420,54 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 - First Load JS home < 145 kB
 - First Load JS itinerario < 150 kB
 - Requests en Network tab (home) < 12
+
+---
+
+### M25 — BreadcrumbList en schema.org
+> ✅ COMPLETADO 02/06/2026 — `buildBreadcrumbSchema(lang, items)` en `lib/schema/buildBreadcrumbSchema.ts`. Integrado vía `buildPageSchema` (en `@graph`) en itinerarios y destinos, y como `<JsonLd id="ld-breadcrumb">` independiente en blog posts. Breadcrumb: Inicio → Viajes → Título en itinerarios/destinos; Inicio → Blog → Título en posts.
+
+---
+
+### M26 — Email en texto plano — ObfuscatedEmail
+> ✅ COMPLETADO 02/06/2026 — Componente `components/ui/ObfuscatedEmail.tsx` (Client Component) construye la dirección con `[user, domain].join('@')` en cliente. Reemplazado el `<a href="mailto:...">` de `ContactModal.tsx`. El email ya no aparece en el HTML estático entregado al crawler.
+
+---
+
+### M27 — `eslint-config-next` desactualizado
+> ✅ COMPLETADO 02/06/2026 — Actualizado de `^15.3.0` a `^16.2.6` para coincidir con la versión de Next.js (`^16.2.6`).
+
+---
+
+### M28 — Render blocking resources (inspección manual)
+
+**Requiere:** DevTools → Network → pestaña Coverage o Lighthouse en producción.
+
+**Contexto:** Las fuentes ya tienen `display: swap` (no bloquean render). Identificar si hay scripts o stylesheets de terceros que sí bloqueen. El punto de partida natural es la auditoría M24 de Lighthouse — el informe listará explícitamente los recursos bloqueantes si los hay.
+
+**Acción cuando se ejecute M24:** Anotar aquí los recursos encontrados y aplicar `defer`/`async` o moverlos a `<Script strategy="lazyOnload">` según el caso.
+
+---
+
+### M29 — `sizes` en componentes `<Image>` (auditoría manual)
+
+**Requiere:** Revisar cada `<Image>` del proyecto y comparar el `sizes` declarado con el ancho real del elemento en cada breakpoint.
+
+**Riesgo:** Sin `sizes` correcto, Next.js sirve la imagen al ancho del viewport completo aunque el elemento ocupe, por ejemplo, 33vw en desktop. Penaliza LCP y bandwidth.
+
+**Ficheros prioritarios a revisar:**
+- `components/ui/TripCard.tsx` — grid de 1/2/3 columnas
+- `app/[lang]/blog/BlogFilters.tsx` — grid de posts 1/2/3 columnas
+- `app/[lang]/blog/[slug]/PostContent.tsx` — imagen de portada
+- `components/sections/InstagramBanner.tsx` — grid de 6 fotos
+
+**Criterio:** `sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"` para grids de 3 columnas; ajustar según diseño real.
+
+---
+
+### M30 — Aspect ratio en imágenes (inspección visual)
+
+**Requiere:** Revisar en el navegador (mobile + desktop) que ninguna imagen aparece distorsionada. Candidatos principales: fotos de equipo (`QuienesSomos`), cards de blog, flags en Header/Footer.
+
+**Solución si se detecta distorsión:** Usar `object-fit: cover` con contenedor de proporción fija (`aspect-ratio` en CSS o clase Tailwind `aspect-[x/y]`), o `fill` con contenedor de altura explícita.
+
+**Estado:** Sin confirmar — pendiente inspección visual en producción.
