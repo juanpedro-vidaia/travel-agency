@@ -84,7 +84,7 @@ export const ASSETS = {
   'ACTIVITIES.SALAR_UYUNI_ISLA_INCAHUASI':         { url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80', alt: 'Isla Incahuasi, Salar de Uyuni, Bolivia' },
 
   // ── Blog posts ────────────────────────────────────────────────────────────────
-  'BLOG.ATACAMA_CHILE':         { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg', alt: 'Desierto de Atacama, Chile' },
+  'BLOG.ATACAMA_CHILE':         { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg', alt: 'Laguna Miscanti en el Desierto de Atacama, Chile' },
   'BLOG.BEST_TIME_ARGENTINA':   { url: 'https://images.unsplash.com/photo-1605056402177-ed1bf1234c7b', alt: 'Cerro de los Siete Colores en Purmamarca, Argentina, uno de los paisajes del norte argentino' },
   'BLOG.CARRETERA_AUSTRAL':     { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777938578/DSCF5578_2_ofnz1j.jpg', alt: 'Catedrales de Mármol en el Lago General Carrera, Chile' },
   'BLOG.ENCUENTRO_IGUAZU':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777991216/IMG_1651_1_apzpg6.jpg', alt: 'Vista de las Cataratas del Iguazú desde un mirador del Lago Brasileño.' },
@@ -100,7 +100,7 @@ export const ASSETS = {
   'COUNTRIES.URUGUAY_HERO':   { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779228348/karan-chaudhari-YqUW7fT5NwM-unsplash_sx9y77.jpg', alt: 'Salto del Penitente, Lavalleja Department, Uruguay' },
 
   // ── Hero backgrounds ──────────────────────────────────────────────────────────
-  'CTA_SECTION_BG':    { url: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1920&q=80', alt: 'Diseña tu aventura' },
+  'CTA_SECTION_BG':    { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780507725/trekking-nevado-tolima-colombia-lau-jupe_j615c1.jpg', alt: 'Trekking Nevado del Tolima, Valle de Cocora, Colombia' },
   'HOME.HERO_BG':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779534667/el-chalten-fizt-roy-argentina-jupe20190417_bd8p1u.jpg', alt: 'Vista del macizo del Fitz Roy al amanecer desde la Laguna Capri' },
   'HONEYMOON_HERO_BG': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780490891/salar_1_qjib5p.jpg', alt: 'Salar de Uyuni con colores rojos y naranjas al atardecer, Bolivia', url_mobile: 'https://res.cloudinary.com/dny6gct6o/image/upload/ar_9:16,c_auto/salar_1_qjib5p.jpg' },
 
@@ -249,6 +249,14 @@ export const ASSETS = {
   'HOTELS.HARE_NUA':                        { url: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80', alt: 'Hotel Hare Nua Boutique, Hanga Roa, Rapa Nui' },
   'HOTELS.CAPITAL_BELLET_PROVIDENCIA':      { url: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80', alt: 'Hotel Capital Bellet, Providencia, Santiago' },
   'HOTELS.HILTON_DOUBLETREE_VITACURA':      { url: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80', alt: 'DoubleTree by Hilton Vitacura, Santiago' },
+
+  // ── Instagram grid ────────────────────────────────────────────────────────────
+  'INSTAGRAM_PHOTOS.BUENOS_AIRES_INSTA':     { url: 'https://images.unsplash.com/photo-1589993624-d5e0e6a27fd8?w=600&q=80', alt: 'Buenos Aires' },
+  'INSTAGRAM_PHOTOS.IGUAZU_FALLS':           { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80', alt: 'Cataratas del Iguazú' },
+  'INSTAGRAM_PHOTOS.JUJUY_HUMAHUACA':        { url: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80', alt: 'Quebrada de Humahuaca, Jujuy' },
+  'INSTAGRAM_PHOTOS.PERITO_MORENO':          { url: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80', alt: 'Glaciar Perito Moreno, Argentina' },
+  'INSTAGRAM_PHOTOS.TORRES_DEL_PAINE_INSTA': { url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80', alt: 'Torres del Paine, Chile' },
+  'INSTAGRAM_PHOTOS.USHUAIA_BEAGLE':         { url: 'https://images.unsplash.com/photo-1531761399323-e5f7e7f98816?w=600&q=80', alt: 'Canal Beagle, Ushuaia' },
 
   // ── Itinerary hero images ─────────────────────────────────────────────────────
   'ITINERARIES.CAPITALES_VINO_BUENOS_AIRES':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779573648/buenos-aires-desde-palacio-barolo-jupe-22092019_ij8ykg.jpg', alt: 'Atardecer sobre Buenos Aires desde el Palacio Barolo, CABA, Argentina' },

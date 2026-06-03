@@ -37,9 +37,8 @@ export default function InstagramBanner() {
         <iframe
           src="https://cdn.lightwidget.com/widgets/7113b98ca17856d2acf211e0680b259e.html"
           scrolling="no"
-          allowTransparency={true}
           className="lightwidget-widget"
-          style={{ width: '100%', border: 0, overflow: 'hidden' }}
+          style={{ width: '100%', border: 0, overflow: 'hidden', minHeight: '300px' }}
         />
       </div>
     </section>
