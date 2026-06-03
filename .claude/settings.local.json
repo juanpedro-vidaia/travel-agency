@@ -12,7 +12,10 @@
       "Bash(git stash *)",
       "Bash(rm \"/Users/jupemartin/Viajes Vidaia Code/travel-agency/app/[lang]/destinos/[slug]/BackButton.tsx\" && echo \"deleted\")",
       "Bash(git -C \"/Users/jupemartin/Viajes Vidaia Code/travel-agency\" log --oneline -20)",
-      "Bash(git -C \"/Users/jupemartin/Viajes Vidaia Code/travel-agency\" log --oneline --all)"
+      "Bash(git -C \"/Users/jupemartin/Viajes Vidaia Code/travel-agency\" log --oneline --all)",
+      "Bash(curl -s http://localhost:3001/es)",
+      "Bash(curl -s http://localhost:3000/es)",
+      "PowerShell($html = Invoke-WebRequest -Uri \"http://localhost:3000/es\" -UseBasicParsing; if \\($html.Content -match \"lightwidget\"\\) { \"✓ LightWidget iframe found in SSR HTML\" } else { \"✗ Not found\" })"
     ],
     "additionalDirectories": [
       "/Users/jupemartin/Viajes Vidaia Code/travel-agency/app/[lang]/destinos/[slug]"
