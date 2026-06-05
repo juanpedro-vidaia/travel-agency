@@ -125,7 +125,7 @@ export default function ItineraryHeroCarousel({ slug, resolvedItinerary, trip, c
         </LangLink>
       </div>
 
-      <div className="absolute bottom-16 sm:bottom-8 right-6 sm:right-8 z-10 pointer-events-none">
+      <div className="absolute bottom-16 sm:bottom-8 left-6 sm:left-8 z-10 pointer-events-none">
         <span className="flex items-center gap-1.5 text-white/70 text-xs sm:text-sm">
           <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           {slides[currentSlide]?.location}
