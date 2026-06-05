@@ -53,10 +53,14 @@ export function buildTouristTripSchema(
     subTrip,
     ...(trip.priceFrom != null && trip.priceFrom > 0 && {
       offers: {
-        '@type': 'Offer',
+        '@type': 'AggregateOffer',
         priceCurrency: 'EUR',
-        price: trip.priceFrom,
-        availability: 'https://schema.org/InStock',
+        lowPrice: trip.priceFrom,
+        availability: 'https://schema.org/MadeToOrder',
+        seller: {
+          '@type': 'TravelAgency',
+          name: 'Viajes Vidaia',
+        },
       },
     }),
   }

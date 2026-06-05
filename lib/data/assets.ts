@@ -86,7 +86,7 @@ export const ASSETS = {
   // ── Blog posts ────────────────────────────────────────────────────────────────
   'BLOG.ATACAMA_CHILE':         { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg', alt: 'Laguna Miscanti en el Desierto de Atacama, Chile' },
   'BLOG.BEST_TIME_ARGENTINA':   { url: 'https://images.unsplash.com/photo-1605056402177-ed1bf1234c7b', alt: 'Cerro de los Siete Colores en Purmamarca, Argentina, uno de los paisajes del norte argentino' },
-  'BLOG.CARRETERA_AUSTRAL':     { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777938578/DSCF5578_2_ofnz1j.jpg', alt: 'Catedrales de Mármol en el Lago General Carrera, Chile' },
+  'BLOG.CARRETERA_AUSTRAL':     { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/carretera-austral/catedrales-marmol-carretera-austral-chile-jupe201904_ofnz1j.jpg', alt: 'Catedrales de Mármol en el Lago General Carrera, Chile' },
   'BLOG.ENCUENTRO_IGUAZU':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777991216/IMG_1651_1_apzpg6.jpg', alt: 'Vista de las Cataratas del Iguazú desde un mirador del Lago Brasileño.' },
   'BLOG.MATE_ARGENTINA':        { url: 'https://images.unsplash.com/photo-1523642456391-c597480dbdb6?auto=format&fit=crop&w=1200&q=80', alt: 'Mate argentino' },
   'BLOG.COSTUMBRES_ARGENTINAS': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779498619/pexels-maggychang-30828707_woumuq.jpg', alt: 'Murales de Messi y Maradona en un escaparate del barrio de La Boca, Buenos Aires' },
@@ -101,7 +101,7 @@ export const ASSETS = {
 
   // ── Hero backgrounds ──────────────────────────────────────────────────────────
   'CTA_SECTION_BG':    { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780507725/trekking-nevado-tolima-colombia-lau-jupe_j615c1.jpg', alt: 'Trekking Nevado del Tolima, Valle de Cocora, Colombia' },
-  'HOME.HERO_BG':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779534667/el-chalten-fizt-roy-argentina-jupe20190417_bd8p1u.jpg', alt: 'Vista del macizo del Fitz Roy al amanecer desde la Laguna Capri' },
+  'HOME.HERO_BG':      { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/patagonia/el-chalten-fizt-roy-argentina-jupe20190417_bd8p1u.jpg', alt: 'Vista del macizo del Fitz Roy al amanecer desde la Laguna Capri' },
   'HONEYMOON_HERO_BG': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780490891/salar_1_qjib5p.jpg', alt: 'Salar de Uyuni con colores rojos y naranjas al atardecer, Bolivia', url_mobile: 'https://res.cloudinary.com/dny6gct6o/image/upload/ar_9:16,c_auto/salar_1_qjib5p.jpg' },
 
   // ── Destination section card images ───────────────────────────────────────────

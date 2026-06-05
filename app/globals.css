@@ -25,6 +25,20 @@
   }
 }
 
+@layer base {
+  img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Restore pointer events on images inside links so CTAs stay clickable */
+  a img,
+  button img {
+    pointer-events: auto;
+  }
+}
+
 /* Dual range slider — overlapping inputs share the same track */
 .dual-range-thumb {
   pointer-events: none;
