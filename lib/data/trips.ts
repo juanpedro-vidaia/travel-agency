@@ -1,8 +1,26 @@
 import type { CountrySlug as Country } from './countries'
-import type { TripTag } from './tagConfig'
 
-// ── Tags (re-exported from tagConfig for server-side use) ─────────────────────
-export { TRIP_TAGS, type TripTag, TAG_CONFIG } from './tagConfig'
+// ── Tags ──────────────────────────────────────────────────────────────────────
+
+export const TRIP_TAGS = {
+  NATURE: 'nature',
+  WILDLIFE: 'wildlife',
+  ADVENTURE: 'adventure',
+  RELAX: 'relax',
+  CULTURE: 'culture',
+  GASTRONOMY: 'gastronomy',
+} as const
+
+export type TripTag = typeof TRIP_TAGS[keyof typeof TRIP_TAGS]
+
+export const TAG_CONFIG: Record<TripTag, { icon: string; es: { label: string }; en?: { label: string } }> = {
+  nature: { icon: '🌿', es: { label: 'Naturaleza' } },
+  wildlife: { icon: '🐋', es: { label: 'Vida salvaje' } },
+  adventure: { icon: '🏔', es: { label: 'Aventura' } },
+  relax: { icon: '🌅', es: { label: 'Relax' } },
+  culture: { icon: '🏛', es: { label: 'Cultura' } },
+  gastronomy: { icon: '🍷', es: { label: 'Gastronomía' } },
+}
 
 // ── Season & best months (future use — not rendered) ──────────────────────────
 
@@ -94,7 +112,8 @@ const trips: Trip[] = [
     includesDomesticFlights: true,
     relatedTrips: [
       { slug: 'esencias-chile-isla-pascua', es: { reason: 'Combina con paisajes únicos del Cono Sur' } },
-      { slug: 'patagonia-sur-a-norte', es: { reason: 'Profundiza en la Patagonia argentina' } },
+      { slug: 'argentina-sur-norte', es: { reason: 'Profundiza en la Patagonia argentina' } },
+      { slug: 'grandes-escenarios-argentina', es: { reason: 'Una forma diferente de recorrer Argentina' } },
     ],
     honeymoonFeatured: true,
     season: 'summer',
@@ -124,6 +143,7 @@ const trips: Trip[] = [
     relatedTrips: [
       { slug: 'contrastes-argentinos-invierno', es: { reason: 'Itinerario similar en invierno con extensión al norte' } },
       { slug: 'paisajes-naturales-argentina', es: { reason: 'Combina con la Patagonia argentina' } },
+      { slug: 'grandes-escenarios-argentina', es: { reason: 'Una forma diferente de recorrer Argentina' } },
     ],
     season: 'all-year',
     bestMonths: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],

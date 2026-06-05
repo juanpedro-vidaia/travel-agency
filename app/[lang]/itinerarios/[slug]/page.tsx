@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: itinerary.content.es.metaDescription ?? trip?.content.es.subtitle ?? itinerary.content.es.title,
     path: `/${lang}/itinerarios/${slug}`,
     lang,
-    ogType: 'article',
   })
 }
 

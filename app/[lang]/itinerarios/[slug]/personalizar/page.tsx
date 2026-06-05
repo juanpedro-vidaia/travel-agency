@@ -28,7 +28,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     path: `/${lang}/itinerarios/${slug}/personalizar`,
     lang,
-    ogType: 'article',
   })
 }
 
