@@ -110,8 +110,8 @@ export const STATIC_CONTENT = {
       hero: {
         tagline: 'Argentina · Chile · Bolivia',
         title: 'Somos {br} {span} Viajes Vidaia',
-        titleEmphasized: 'hecho realidad',
-        description: 'El viaje de tu vida hecho realidad',
+        titleEmphasized: '',
+        description: 'Agencia de viajes boutique especializada en viajes a medida por Argentina, Chile, Perú, Bolivia y Ecuador. Diseñamos cada itinerario contigo. Viajes personalizados a tu ritmo.',
       },
       faqSection: {
         title: 'Preguntas frecuentes',
@@ -121,7 +121,7 @@ export const STATIC_CONTENT = {
     valueProposition: {
       header: {
         overline: '¿Por qué Vidaia?',
-        title: 'Viajamos diferente.{br}Contigo.',
+        title: '¿Qué incluye un viaje a medida con Viajes Vidaia?',
         subtitle: 'En Vidaia no te vendemos un destino — te ayudamos a vivir una experiencia que de verdad te cambia.',
       },
       items: [
@@ -150,7 +150,7 @@ export const STATIC_CONTENT = {
     quienesSomos: {
       header: {
         overline: '¿Quiénes somos?',
-        title: 'Hola, somos{br}Lau y Jupe.',
+        title: '¿Quiénes diseñan tu viaje?{br}Conoce a Lau y Jupe.',
         subtitle: 'Dos viajeros que se enamoraron de Sudamérica y decidieron dedicar su vida a compartirla. No somos una gran agencia — somos personas que diseñan viajes como si fueran propios.',
       },
       landscapePhoto: {
@@ -180,7 +180,7 @@ export const STATIC_CONTENT = {
     testimonialsSection: {
       header: {
         overline: 'Testimonios',
-        title: 'Lo que dicen nuestros viajeros',
+        title: 'Opiniones de viajeros Vidaia: experiencias reales',
         subtitle: 'Cada viaje es único — estos son sus protagonistas',
       },
     },
@@ -209,10 +209,10 @@ export const STATIC_CONTENT = {
     },
     destinationsSection: {
       homePill: 'Destinos Vidaia',
-      homeTitle: 'Explora nuestros destinos',
+      homeTitle: 'Destinos en Sudamérica: Argentina, Chile, Bolivia y Perú',
       homeSubtitle: 'Seleccionamos cuidadosamente cada país y trabajamos con expertos locales para diseñar experiencias auténticas y memorables.',
       viajesPill: 'Destinos Vidaia',
-      viajesTitle: 'Descubre nuestros destinos',
+      viajesTitle: 'Destinos en Sudamérica: Argentina, Chile, Bolivia y Perú',
       viajesSubtitle: 'Cada país es una puerta de entrada a experiencias únicas diseñadas junto a expertos locales de confianza.',
       cardTitlePrefix: 'Explora',
       cardSubtitleSuffix: 'y muchos más.',
@@ -1162,14 +1162,6 @@ export const STATIC_CONTENT = {
       successText: 'Te contactamos en breve. Cerrando en unos segundos…',
       errorText: 'Algo ha ido mal. Inténtalo de nuevo o escríbenos a',
       closeLabel: 'Cerrar',
-    },
-    contactPage: {
-      success: {
-        title: '¡Mensaje recibido!',
-        subtitle: 'Gracias por escribirnos. Te respondemos en menos de 24 horas.',
-        cta: 'Volver al inicio',
-        ctaHref: '/',
-      },
     },
   },
   en: {

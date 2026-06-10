@@ -84,31 +84,31 @@ export const ASSETS = {
   'ACTIVITIES.SALAR_UYUNI_ISLA_INCAHUASI':         { url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80', alt: 'Isla Incahuasi, Salar de Uyuni, Bolivia' },
 
   // ── Blog posts ────────────────────────────────────────────────────────────────
-  'BLOG.ATACAMA_CHILE':         { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777455009/DSCF7649_1_uoc1t6.jpg', alt: 'Laguna Miscanti en el Desierto de Atacama, Chile' },
-  'BLOG.BEST_TIME_ARGENTINA':   { url: 'https://images.unsplash.com/photo-1605056402177-ed1bf1234c7b', alt: 'Cerro de los Siete Colores en Purmamarca, Argentina, uno de los paisajes del norte argentino' },
+  'BLOG.ATACAMA_CHILE':         { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/desierto-atacama/laguna-miscanti-desierto-atacama-chile-jupe-201905.jpg', alt: 'Laguna Miscanti en el Desierto de Atacama, Chile' },
+  'BLOG.BEST_TIME_ARGENTINA':   { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/norte-argentino/hornocal-montana-catorce-colores-jujuy.jpg', alt: 'El Hornocal, montaña de catorce colores en Humahuaca, Jujuy, Argentina' },
   'BLOG.CARRETERA_AUSTRAL':     { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/carretera-austral/catedrales-marmol-carretera-austral-chile-jupe201904_ofnz1j.jpg', alt: 'Catedrales de Mármol en el Lago General Carrera, Chile' },
-  'BLOG.ENCUENTRO_IGUAZU':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1777991216/IMG_1651_1_apzpg6.jpg', alt: 'Vista de las Cataratas del Iguazú desde un mirador del Lago Brasileño.' },
-  'BLOG.MATE_ARGENTINA':        { url: 'https://images.unsplash.com/photo-1523642456391-c597480dbdb6?auto=format&fit=crop&w=1200&q=80', alt: 'Mate argentino' },
-  'BLOG.COSTUMBRES_ARGENTINAS': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779498619/pexels-maggychang-30828707_woumuq.jpg', alt: 'Murales de Messi y Maradona en un escaparate del barrio de La Boca, Buenos Aires' },
-  'BLOG.REQUISITOS_CHILE':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779796268/torres-del-paine-cuernos-amanecer-marc-thunis_gs53jd.jpg', alt: 'Torres del Paine en Chile al amanecer, uno de los paisajes más espectaculares de la Patagonia chilena' },
+  'BLOG.ENCUENTRO_IGUAZU':      { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/cataratas-iguazu/cataratas-iguazu-brasil-lau-jupe-201908.jpg', alt: 'Vista de las Cataratas del Iguazú desde un mirador del Lago Brasileño.' },
+  'BLOG.MATE_ARGENTINA':        { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/general/mate-cultura-argentina.avif', alt: 'Mate argentino' },
+  'BLOG.COSTUMBRES_ARGENTINAS': { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/buenos-aires/maradona-messi-la-boca-buenos-aires-pexels-maggychang.jpg', alt: 'Murales de Messi y Maradona en un escaparate del barrio de La Boca, Buenos Aires' },
+  'BLOG.REQUISITOS_CHILE':      { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/patagonia/torres-del-paine-cuernos-amanecer-marc-thunis_gs53jd.jpg', alt: 'Torres del Paine en Chile al amanecer, uno de los paisajes más espectaculares de la Patagonia chilena' },
 
   // ── Country hero images ───────────────────────────────────────────────────────
-  'COUNTRIES.ARGENTINA_HERO': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1778096630/DSCF5097_rb8cl9.jpg', alt: 'Fitz Roy y Cerro Torre, desde la Loma del Pliegue Tumbado, El Chaltén' },
-  'COUNTRIES.BOLIVIA_HERO':   { url: 'https://images.unsplash.com/photo-1641234332283-af77dfe995c7?q=80&w=1920', alt: 'Salar de Uyuni, Bolivia' },
-  'COUNTRIES.CHILE_HERO':     { url: 'https://images.unsplash.com/photo-1558517286-6b7b81953cb5?q=80&w=1920', alt: 'Torres del Paine, Chile' },
-  'COUNTRIES.PERU_HERO':      { url: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1920', alt: 'Machu Picchu, Perú' },
+  'COUNTRIES.ARGENTINA_HERO': { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/patagonia/loma-pliegue-tumbado-el-chalten-patagonia-argentina-jupe-201904.jpg', alt: 'Fitz Roy y Cerro Torre, desde la Loma del Pliegue Tumbado, El Chaltén' },
+  'COUNTRIES.BOLIVIA_HERO':   { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/bolivia/salar-uyuni/salar-uyuni-agua-4x4-bolivia.jpg', alt: '4x4 en ell Salar de Uyuni con agua, Bolivia' },
+  'COUNTRIES.CHILE_HERO':     { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/patagonia/torres-del-paine-cuernos-del-paine-chile.jpg', alt: 'Cuernos del Paine y Lago Nordenskjöld, Parque Nacional Torres del Paine, Chile' },
+  'COUNTRIES.PERU_HERO':      { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/peru/machu-picchu/machu-picchu-ciudadela-con-nieebla-jupe-201906.jpg', alt: 'Machu Picchu con niebla — ciudadela inca Patrimonio UNESCO, Perú' },
   'COUNTRIES.URUGUAY_HERO':   { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779228348/karan-chaudhari-YqUW7fT5NwM-unsplash_sx9y77.jpg', alt: 'Salto del Penitente, Lavalleja Department, Uruguay' },
 
   // ── Hero backgrounds ──────────────────────────────────────────────────────────
-  'CTA_SECTION_BG':    { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780507725/trekking-nevado-tolima-colombia-lau-jupe_j615c1.jpg', alt: 'Trekking Nevado del Tolima, Valle de Cocora, Colombia' },
+  'CTA_SECTION_BG':    { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/equipo-vidaia/trekking-nevado-tolima-colombia-lau-jupe_j615c1.jpg', alt: 'Trekking Nevado del Tolima, Valle de Cocora, Colombia' },
   'HOME.HERO_BG':      { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/patagonia/el-chalten-fizt-roy-argentina-jupe20190417_bd8p1u.jpg', alt: 'Vista del macizo del Fitz Roy al amanecer desde la Laguna Capri' },
-  'HONEYMOON_HERO_BG': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780490891/salar_1_qjib5p.jpg', alt: 'Salar de Uyuni con colores rojos y naranjas al atardecer, Bolivia', url_mobile: 'https://res.cloudinary.com/dny6gct6o/image/upload/ar_9:16,c_auto/salar_1_qjib5p.jpg' },
+  'HONEYMOON_HERO_BG': { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/bolivia/salar-uyuni/salar-uyuni-amanecer-4x4-bolivia.jpg', alt: 'Salar de Uyuni con colores rojos y naranjas al atardecer, Bolivia', url_mobile: 'https://res.cloudinary.com/dny6gct6o/image/upload/ar_9:16,c_auto/salar_1_qjib5p.jpg' },
 
   // ── Destination section card images ───────────────────────────────────────────
-  'DESTINATIONS_CARD_ARGENTINA': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1778096630/DSCF5097_rb8cl9.jpg', alt: 'Fitz Roy y Cerro Torre, desde la Loma del Pliegue Tumbado, El Chaltén' },
-  'DESTINATIONS_CARD_BOLIVIA':   { url: 'https://images.unsplash.com/photo-1641234332283-af77dfe995c7?q=80&w=1920', alt: 'Paisajes de Bolivia' },
-  'DESTINATIONS_CARD_CHILE':     { url: 'https://images.unsplash.com/photo-1558517286-6b7b81953cb5?q=80&w=1920', alt: 'Paisajes de Chile' },
-  'DESTINATIONS_CARD_PERU':      { url: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1920', alt: 'Paisajes de Perú' },
+  'DESTINATIONS_CARD_ARGENTINA': { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/patagonia/glaciiar-perito-moreno-patagonia-argentina-jupe-201904.jpg', alt: 'Glaciar Perito Moreno, Santa Cruz, Argentina' },
+  'DESTINATIONS_CARD_BOLIVIA':   { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/bolivia/salar-uyuni/salar-uyuni-agua-4x4-bolivia.jpg', alt: '4x4 en ell Salar de Uyuni con agua, Bolivia' },
+  'DESTINATIONS_CARD_CHILE':     { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/patagonia/torres-del-paine-cuernos-del-paine-chile.jpg', alt: 'Cuernos del Paine y Lago Nordenskjöld, Parque Nacional Torres del Paine, Chile' },
+  'DESTINATIONS_CARD_PERU':      { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/peru/machu-picchu/machu-picchu-ciudadela-con-nieebla-jupe-201906.jpg', alt: 'Machu Picchu con niebla — ciudadela inca Patrimonio UNESCO, Perú' },
 
   // ── Destinations ──────────────────────────────────────────────────────────────
   'DESTINATIONS.AREQUIPA':          { url: 'https://images.unsplash.com/photo-1727161797764-3f7f83bf3adf?q=80&w=1920', alt: 'Arequipa y el volcán Misti, Perú' },
@@ -259,10 +259,10 @@ export const ASSETS = {
   'INSTAGRAM_PHOTOS.USHUAIA_BEAGLE':         { url: 'https://images.unsplash.com/photo-1531761399323-e5f7e7f98816?w=600&q=80', alt: 'Canal Beagle, Ushuaia' },
 
   // ── Itinerary hero images ─────────────────────────────────────────────────────
-  'ITINERARIES.CAPITALES_VINO_BUENOS_AIRES':      { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779573648/buenos-aires-desde-palacio-barolo-jupe-22092019_ij8ykg.jpg', alt: 'Atardecer sobre Buenos Aires desde el Palacio Barolo, CABA, Argentina' },
-  'ITINERARIES.CAPITALES_VINO_COLCHAGUA':         { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779472134/Vi%C3%B1a-Santa-Cruz-1_1_e1ekqu.jpg', alt: 'Paisaje de viñedos en Viña Santa Cruz, Valle de Colchagua, Chile' },
-  'ITINERARIES.CAPITALES_VINO_MENDOZA':           { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779572393/valle-uco-mendoza-jupe-20082019_anfmtc.jpg', alt: 'Viñedos con los Andes nevados al fondo en el Valle de Uco, Mendoza, Argentina' },
-  'ITINERARIES.CAPITALES_VINO_MONTEVIDEO':        { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779228860/guillermo-vuljevas-D_GJeAfV1xA-unsplash_rqmrte.jpg', alt: 'Palacio Salvo, Montevideo, Uruguay' },
+  'ITINERARIES.CAPITALES_VINO_BUENOS_AIRES':      { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/buenos-aires/buenos-aires-desde-palacio-barolo-jupe-22092019-ij8ykg.jpg', alt: 'Atardecer sobre Buenos Aires desde el Palacio Barolo, CABA, Argentina' },
+  'ITINERARIES.CAPITALES_VINO_COLCHAGUA':         { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/santiago-central/vina-santa-cruz-valle-colchahua-santiago-chile.jpg', alt: 'Paisaje de viñedos en Viña Santa Cruz, Valle de Colchagua, Chile' },
+  'ITINERARIES.CAPITALES_VINO_MENDOZA':           { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/mendoza/valle-uco-mendoza-jupe-20082019-anfmtc.jpg', alt: 'Viñedos con los Andes nevados al fondo en el Valle de Uco, Mendoza, Argentina' },
+  'ITINERARIES.CAPITALES_VINO_MONTEVIDEO':        { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/uruguay/palacio-salvo-montevideo-guillermo-vuljevas-unsplash_rqmrte.jpg', alt: 'Palacio Salvo, Montevideo, Uruguay', url_mobile: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/uruguay/palacio-salvo-montevideo-uruguay-pexels-nahir-barrera.jpg' },
   'ITINERARIES.CAPITALES_VINO_SANTIAGO':          { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779229663/ParqueBicentenario_jkgdvo.jpg', alt: 'Parque Bicentenario, Santiago de Chile' },
   'ITINERARIES.CHILE_COMPLETO_ATACAMA':           { url: 'https://images.unsplash.com/photo-1547530386-e0e1f7f6e3a0?q=80&w=1920', alt: 'Valle de la Luna · desierto de Atacama' },
   'ITINERARIES.CHILE_COMPLETO_LAGO_LLANQUIHUE':   { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779471240/Puerto-Varas_1_kqwok1.jpg', alt: 'Lago Llanquihue y volcán Osorno · Puerto Varas' },
