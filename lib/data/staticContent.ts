@@ -1163,6 +1163,14 @@ export const STATIC_CONTENT = {
       errorText: 'Algo ha ido mal. Inténtalo de nuevo o escríbenos a',
       closeLabel: 'Cerrar',
     },
+    contactPage: {
+      success: {
+        title: '¡Mensaje recibido!',
+        subtitle: 'Gracias por escribirnos. Te respondemos en menos de 24 horas.',
+        cta: 'Volver al inicio',
+        ctaHref: '/',
+      },
+    },
   },
   en: {
     privacyPage: {
