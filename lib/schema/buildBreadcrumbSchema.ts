@@ -1,4 +1,4 @@
-const BASE_URL = 'https://www.viajesvidaia.com'
+import { BASE_URL } from '@/lib/config/site'
 
 interface BreadcrumbItem {
   name: string

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
+import { buildMetadata } from '@/lib/helpers/seo'
 
 interface Props {
   params: Promise<{ lang: string }>
@@ -11,10 +12,12 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
   const content = getStaticContent(lang)
-  return {
+  return buildMetadata({
     title: content.cookiesPage.metadata.title,
     description: content.cookiesPage.metadata.description,
-  }
+    path: `/${lang}/cookies`,
+    lang,
+  })
 }
 
 export function generateStaticParams() {

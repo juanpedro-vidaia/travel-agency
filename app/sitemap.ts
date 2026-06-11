@@ -3,8 +3,7 @@ import { getCountries } from '@/lib/services/countriesService'
 import { getAllItineraries } from '@/lib/services/itinerariesService'
 import { getAllPosts } from '@/lib/services/postsService'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
-
-const BASE_URL = 'https://www.viajesvidaia.com'
+import { BASE_URL } from '@/lib/config/site'
 
 function langUrls(path: string, priority: number, changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']) {
   return ENABLED_LANGUAGES.map(lang => ({

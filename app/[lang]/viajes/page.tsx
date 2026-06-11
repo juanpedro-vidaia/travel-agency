@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
-import { buildFAQSchema } from '@/lib/schema'
+import { buildFAQSchema, buildCollectionPageSchema, buildPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getActiveTrips } from '@/lib/services/tripsService'
 import { getCountriesOrdered } from '@/lib/services/countriesService'
@@ -54,7 +54,17 @@ export default async function ViajesPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={buildFAQSchema(viajesFaqs.map(f => f.es))} id="ld-viajes" />
+      <JsonLd data={buildPageSchema(
+        buildCollectionPageSchema(lang, {
+          name: page.metadata.title,
+          description: page.metadata.description,
+          path: '/viajes',
+          items: allTrips
+            .filter(t => t.hasItinerary)
+            .map(t => ({ name: t.content.es.title, path: `/itinerarios/${t.slug}` })),
+        }),
+        buildFAQSchema(viajesFaqs.map(f => f.es)),
+      )} id="ld-viajes" />
       <main className="min-h-screen bg-white">
 
       {/* 1 — Hero carrusel */}

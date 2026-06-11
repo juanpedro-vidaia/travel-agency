@@ -62,6 +62,35 @@ CLIENTIFY_API_KEY=xxxxxxxxxxxxxxxx
 
 ---
 
+### M31 — La raíz `/` no tiene manejo: dará 404 al desplegar
+> ✅ FALSO POSITIVO (cerrado 11/06/2026) — La raíz **sí** está manejada: `proxy.ts` (el sustituto de `middleware.ts` en Next.js 16) redirige cualquier ruta sin prefijo de idioma a `/${DEFAULT_LANGUAGE}/...`, incluida `/` → `/es`. La auditoría buscó `middleware.ts` (deprecado en Next.js 16) y no encontró el fichero renombrado. Verificado con curl: `/` → 307 `/es`, `/viajes` → 307 `/es/viajes`. Se añadió temporalmente un `redirects()` en next.config.ts y se retiró al descubrir el proxy — una sola fuente de verdad.
+
+**Lección para futuras auditorías:** en Next.js 16 el fichero de middleware se llama `proxy.ts` (export `proxy`), no `middleware.ts`. Aparece en el build como `ƒ Proxy (Middleware)`.
+
+---
+
+### M32 — Dominio canónico inconsistente: www vs no-www
+> ✅ COMPLETADO 11/06/2026 — Decidido dominio canónico **no-www** (`viajesvidaia.com`, coincide con el redirect del hosting). Constante única `BASE_URL` en `lib/config/site.ts` importada en seo.ts, sitemap, robots, todos los schemas, llms.txt y páginas personalizar. Enlaces internos de `posts.ts` convertidos a rutas relativas. Cero ocurrencias de `www.viajesvidaia.com` en `lib/` y `app/`.
+
+**Problema:** El código usa `https://www.viajesvidaia.com` como BASE_URL en canonicals, sitemap, robots y schemas. Pero el dominio en producción redirige `www.viajesvidaia.com → viajesvidaia.com` (301, verificado con curl el 03/06/2026). Resultado: **todos los canonicals, URLs del sitemap y URLs de schema apuntarían a direcciones que redirigen** — señal confusa para Google (canonical que no es canonical).
+
+Además, hay inconsistencia interna: `app/[lang]/blog/[slug]/page.tsx:32,75` y varios enlaces en `lib/data/posts.ts` usan `viajesvidaia.com` **sin** www, distinto del resto del código.
+
+**Archivos afectados (todos con BASE_URL hardcodeado):**
+- `lib/helpers/seo.ts`
+- `app/sitemap.ts`, `app/robots.ts`
+- `lib/schema/buildOrganizationSchema.ts`, `buildTouristTripSchema.ts`, `buildBreadcrumbSchema.ts`
+- `app/[lang]/itinerarios/personalizar/page.tsx`, `app/[lang]/itinerarios/[slug]/personalizar/page.tsx`
+- `app/[lang]/blog/[slug]/page.tsx` (sin www)
+- `lib/data/posts.ts` (enlaces internos en contenido, sin www)
+
+**Solución:**
+1. **Decidir** el dominio canónico (www o no-www) y configurar el redirect del hosting/DNS en esa dirección.
+2. Extraer una constante única `BASE_URL` en un módulo compartido (ej. `lib/config/site.ts`) e importarla en todos los puntos anteriores.
+3. Alinear los enlaces internos de `posts.ts` (o mejor: convertirlos en rutas relativas).
+
+---
+
 ## 🟡 Importante
 
 ### M04 — Eliminar `lib/supabase.ts` y dependencia `@supabase/supabase-js`
@@ -236,6 +265,78 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 
 ---
 
+### M33 — Sin `not-found.tsx` global (404 sin marca)
+> ✅ COMPLETADO 11/06/2026 — `app/not-found.tsx` creado con branding Vidaia (patrón visual de las páginas de éxito), CTA a `/es` y enlaces a viajes/blog. Pendiente validación visual por diseño.
+
+**Problema:** `notFound()` se invoca en `blog/[slug]`, `destinos/[slug]` e `itinerarios/[slug]`, pero no existe `app/not-found.tsx` ni `app/[lang]/not-found.tsx`. El usuario que llega a una URL rota ve el 404 genérico de Next.js sin logo, sin navegación y sin enlaces de recuperación.
+
+**Solución:** Crear `app/not-found.tsx` con branding Vidaia y enlaces a home/viajes/blog. Patrón visual similar a las páginas de éxito existentes (`contacto/exito`).
+
+---
+
+### M34 — Páginas legales sin `buildMetadata` (sin canonical ni OG)
+> ✅ COMPLETADO 11/06/2026 — privacidad, aviso-legal y cookies migradas a `buildMetadata()` con su path. Canonical verificado en local.
+
+**Problema:** `privacidad/page.tsx`, `aviso-legal/page.tsx` y `cookies/page.tsx` definen solo `title`/`description` a mano. No tienen canonical, ni hreflang, ni Open Graph — son las únicas páginas del sitio fuera del patrón `buildMetadata`.
+
+**Archivos afectados:**
+- `app/[lang]/privacidad/page.tsx`
+- `app/[lang]/aviso-legal/page.tsx`
+- `app/[lang]/cookies/page.tsx`
+
+**Solución:** Migrar las tres a `buildMetadata()` de `lib/helpers/seo.ts` con su `path` correspondiente, como el resto de páginas.
+
+---
+
+### M35 — `blog/[slug]` construye metadata a mano en vez de usar `buildMetadata`
+> ✅ COMPLETADO 11/06/2026 — `buildMetadata()` extendido con `publishedTime` (emitido solo con `ogType: 'article'`). Blog post migrado; canonical no-www verificado.
+
+**Problema:** `generateMetadata` de `app/[lang]/blog/[slug]/page.tsx` no usa el helper: construye la URL hardcodeada (además sin www — ver M32), duplica la lógica OG/Twitter y no emite canonical vía `alternates`.
+
+**Archivos afectados:**
+- `app/[lang]/blog/[slug]/page.tsx` (líneas 23-56)
+
+**Solución:** Extender `buildMetadata()` para aceptar `publishedTime` y `ogImage` por página (ya soporta `ogType: 'article'`), y migrar el blog post a usarlo. Un único punto de verdad para canonical/OG en todo el sitio.
+
+---
+
+### M36 — Sin security headers en `next.config.ts`
+> ✅ COMPLETADO 11/06/2026 — `headers()` añadido: nosniff, Referrer-Policy, X-Frame-Options SAMEORIGIN, Permissions-Policy. Verificado con curl en local.
+
+**Problema:** La app no emite cabeceras de seguridad estándar: `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `X-Frame-Options` (o CSP `frame-ancestors`), `Permissions-Policy`. Herramientas como securityheaders.com penalizarán el dominio; algunos scanners de clientes corporativos también.
+
+**Archivos afectados:**
+- `next.config.ts`
+
+**Solución:** Añadir función `headers()`:
+```typescript
+async headers() {
+  return [{
+    source: '/(.*)',
+    headers: [
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+    ],
+  }]
+}
+```
+**Nota:** HSTS lo añade Vercel automáticamente. Ojo con `X-Frame-Options` si algún día se embebe el sitio en iframes propios. El iframe de LightWidget (M17) no se ve afectado — es contenido externo embebido aquí, no al revés.
+
+---
+
+### M37 — Sin `manifest.webmanifest` ni `apple-touch-icon`
+> ✅ COMPLETADO 11/06/2026 — `app/manifest.ts` creado (theme_color `#5ea6ae`, descripción dinámica desde `getCountriesOrdered()` — se actualiza sola al añadir países). Iconos provistos por diseño: `public/apple-touch-icon.png` (180×180, raíz por convención iOS) + `public/images/icons/icon-192.png` e `icon-512.png`. `apple` añadido a `metadata.icons` del layout.
+
+**Problema:** Solo existe `public/favicon.png`. Falta el web manifest (nombre, `theme_color`, iconos para "añadir a pantalla de inicio" en Android) y el `apple-touch-icon` de 180×180 para iOS. Sin ellos, el icono al guardar el sitio en el móvil es un screenshot o un icono genérico.
+
+**Solución:**
+1. Crear `app/manifest.ts` (Next.js lo sirve como `/manifest.webmanifest`): `name`, `short_name`, `theme_color`, `background_color`, `icons` (192×192 y 512×512).
+2. Generar `apple-touch-icon.png` (180×180) y añadirlo en `metadata.icons` del root layout.
+
+---
+
 ## 🟢 Nice to have
 
 ### M13 — `STATIC_CONTENT.en` — completar o eliminar el bloque parcial
@@ -243,6 +344,8 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 **Problema:** El bloque `en` en `staticContent.ts` solo tiene las páginas legales (~450 líneas) pero faltan todas las secciones funcionales. Mientras inglés esté desactivado es inofensivo, pero puede confundir.
 
 **Solución:** Si no hay planes inminentes de activar inglés, mover el bloque `en` a un fichero separado `staticContent.en.ts` y no importarlo hasta que esté completo.
+
+**Nota hreflang (auditoría 03/06/2026):** `buildMetadata` en `lib/helpers/seo.ts:29-34` hardcodea los alternates hreflang solo para `es` + `x-default`. Cuando se active el inglés, hay que generar los alternates dinámicamente iterando `ENABLED_LANGUAGES` — el código actual no produciría hreflang `en`.
 
 ---
 
@@ -274,14 +377,14 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 ---
 
 ### M17 — InstagramBanner: preparar integración con widget real
+> ✅ COMPLETADO 03/06/2026 — Integrado widget de LightWidget (`<Script>` con `strategy="afterInteractive"` + `<iframe>` con `minHeight: 300px` para evitar CLS). Eliminado el grid placeholder de Unsplash y los 6 assets `INSTAGRAM_PHOTOS.*` de `assets.ts`.
 
-**Problema:** Las 6 fotos del `InstagramBanner` son fotos estáticas de Unsplash, no el Instagram real. Hay un comentario con un div de Elfsight placeholder que nunca se activa.
-
-**Solución:** Cuando se integre el widget de Instagram (Elfsight, SnapWidget, o Instagram Graph API), el componente ya tiene el placeholder comentado. Solo hay que reemplazar el grid de fotos estáticas.
+**Problema:** Las 6 fotos del `InstagramBanner` eran fotos estáticas de Unsplash, no el Instagram real.
 
 ---
 
-### M17 — Alt de fotos de equipo más descriptivo
+### M17b — Alt de fotos de equipo más descriptivo
+> (Nota: ID duplicado con el anterior; renumerado como M17b para distinguirlos.)
 > ✅ COMPLETADO 02/06/2026 — `alt={person.name}` → `alt={personImage.alt}` en `QuienesSomos.tsx`. Los assets ya tienen alt rico con rol y localización.
 
 **Problema:** Las fotos de Lau y Jupe usan `alt={person.name}` (solo el nombre).
@@ -450,6 +553,8 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 
 ### M29 — `sizes` en componentes `<Image>` (auditoría manual)
 
+> ⏸️ EN ESPERA (decidido 11/06/2026) — No abordar hasta que **todas las imágenes finales estén subidas** (incluye los `url_mobile` de M20), para hacer la auditoría una sola vez y no repetirla.
+
 **Requiere:** Revisar cada `<Image>` del proyecto y comparar el `sizes` declarado con el ancho real del elemento en cada breakpoint.
 
 **Riesgo:** Sin `sizes` correcto, Next.js sirve la imagen al ancho del viewport completo aunque el elemento ocupe, por ejemplo, 33vw en desktop. Penaliza LCP y bandwidth.
@@ -458,7 +563,7 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 - `components/ui/TripCard.tsx` — grid de 1/2/3 columnas
 - `app/[lang]/blog/BlogFilters.tsx` — grid de posts 1/2/3 columnas
 - `app/[lang]/blog/[slug]/PostContent.tsx` — imagen de portada
-- `components/sections/InstagramBanner.tsx` — grid de 6 fotos
+- ~~`components/sections/InstagramBanner.tsx`~~ — ya no aplica: el grid se sustituyó por el widget de LightWidget (M17)
 
 **Criterio:** `sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"` para grids de 3 columnas; ajustar según diseño real.
 
@@ -471,3 +576,66 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 **Solución si se detecta distorsión:** Usar `object-fit: cover` con contenedor de proporción fija (`aspect-ratio` en CSS o clase Tailwind `aspect-[x/y]`), o `fill` con contenedor de altura explícita.
 
 **Estado:** Sin confirmar — pendiente inspección visual en producción.
+
+---
+
+### M38 — Sustituir TestimonialsSection por widget de Google Reviews
+
+> ⚠️ REDEFINIDO 11/06/2026 — El objetivo original (schema Review/AggregateRating sobre los testimonios estáticos) se descarta: la sección de testimonios es **temporal** y se sustituirá por un widget de Google Reviews con reseñas reales.
+
+**Pendiente de negocio antes de implementar:**
+1. Perfil de Google Business activo y con reseñas
+2. Elegir proveedor de widget (Elfsight, etc. — mismo patrón de integración que LightWidget en M17)
+3. Decidir ubicación/diseño en home y en /viajes
+
+**Al implementar:**
+- Eliminar `components/sections/TestimonialsSection.tsx`, `lib/data/testimonials.ts` y los assets `TESTIMONIALS.*` de `assets.ts`
+- Quitar el componente de `app/[lang]/page.tsx` y `app/[lang]/viajes/page.tsx`
+- Las reseñas de Google traen su propio rich data verificable — no hace falta schema manual
+
+**Precaución:** Google exige que las reseñas sean verificables y no autogeneradas — por eso el widget de Google Reviews es mejor señal que el markup manual sobre testimonios estáticos.
+
+---
+
+### M39 — Sin schema `WebSite` (GEO)
+> ✅ COMPLETADO 11/06/2026 — `lib/schema/buildWebSiteSchema.ts` creado y emitido en `app/layout.tsx` como `<JsonLd id="ld-website">` junto al Organization. Sin SearchAction (no hay buscador con URL de query).
+
+**Problema:** El layout emite `TravelAgency` (Organization) pero no hay nodo `WebSite`. Es el schema que conecta el nombre del sitio con su URL para Google (site name en resultados) y ayuda a los motores IA a identificar la entidad sitio.
+
+**Archivos afectados:**
+- `app/layout.tsx` + nuevo `lib/schema/buildWebSiteSchema.ts`
+
+**Solución:** Emitir junto al Organization:
+```json
+{ "@type": "WebSite", "name": "Viajes Vidaia", "url": "...", "inLanguage": "es", "publisher": { "@id": ".../#organization" } }
+```
+`SearchAction` solo si algún día existe un buscador interno con URL de query (el filtro de `/viajes` no cualifica — no tiene URL por término de búsqueda).
+
+---
+
+### M40 — Enriquecer schemas existentes con propiedades recomendadas (GEO)
+> ✅ COMPLETADO 11/06/2026 — `buildTouristTripSchema`: `image` desde `getAsset(trip.imageKey)`. `buildArticleSchema`: `dateModified` con fallback a `datePublished`; campo opcional `dateUpdated` añadido a la interfaz `Post`. `buildPersonSchema`: `image` desde `imageKey` del miembro (spread condicional). Duración del trip NO añadida — schema.org `Trip` no tiene propiedad oficial de duración.
+
+**Problema:** Los builders emiten lo esencial pero omiten propiedades que los datos ya tienen disponibles:
+
+| Builder | Falta | El dato ya existe en |
+|---|---|---|
+| `buildTouristTripSchema` | `image` | `trip.imageKey` → `getAsset()` |
+| `buildTouristTripSchema` | duración (`P14D` ISO 8601) | `trip.days` / `trip.nights` |
+| `buildArticleSchema` | `dateModified` | añadir campo a `posts.ts` (fallback: `datePublished`) |
+| `buildPersonSchema` | `image` | fotos de equipo en `assets.ts` |
+
+**Solución:** Añadir cada propiedad a su builder con spread condicional (mismo patrón que `offers`/`geo` ya usados). Bajo coste, los datos ya están.
+
+---
+
+### M41 — Listados sin `CollectionPage`/`ItemList` (GEO)
+> ✅ COMPLETADO 11/06/2026 — `lib/schema/buildCollectionPageSchema.ts` creado (CollectionPage + mainEntity ItemList). Integrado: `/viajes` y `/lunas-de-miel` en `@graph` con su FAQSchema vía `buildPageSchema`; `/blog` con `<JsonLd id="ld-blog">` nuevo. Solo se listan trips con `hasItinerary` (los demás no tienen URL propia).
+
+**Problema:** Las páginas de listado (`/viajes`, `/blog`, `/lunas-de-miel`) solo emiten FAQSchema (o nada en el caso de `/blog`). Los motores generativos entienden mucho mejor el catálogo si el listado declara sus items.
+
+**Archivos afectados:**
+- `app/[lang]/viajes/page.tsx`, `app/[lang]/blog/page.tsx`, `app/[lang]/lunas-de-miel/page.tsx`
+- Nuevo `lib/schema/buildCollectionPageSchema.ts`
+
+**Solución:** Emitir `CollectionPage` con `mainEntity: ItemList` donde cada `ListItem` apunta a la URL del trip/post. Integrar en el `@graph` existente vía `buildPageSchema`.

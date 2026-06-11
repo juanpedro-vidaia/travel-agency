@@ -192,14 +192,18 @@
 
 ---
 
-## D09 — `middleware.ts` redirige automáticamente a `/es` si no hay idioma en la URL
+## D09 — `proxy.ts` (antes `middleware.ts`) redirige automáticamente a `/es` si no hay idioma en la URL
 
-**Fecha aproximada:** Commit `eace0a7`
+**Fecha aproximada:** Commit `eace0a7` — Actualizado 11/06/2026
 
-**Decisión:** El middleware intercepta todas las peticiones sin prefijo de idioma y redirige a `/${DEFAULT_LANGUAGE}${pathname}`.
+**Decisión:** El proxy intercepta todas las peticiones sin prefijo de idioma y redirige a `/${DEFAULT_LANGUAGE}${pathname}`.
+
+**Nota de migración (11/06/2026):** En Next.js 16 `middleware.ts` está deprecado; en un refactor el fichero se renombró a `proxy.ts` con export `proxy()`. La funcionalidad es idéntica. En el output del build aparece como `ƒ Proxy (Middleware)`. La auditoría SEO del 03/06/2026 no lo encontró por buscar el nombre antiguo (ver M31 en MEJORAS.md) — tener en cuenta el nombre nuevo en futuras revisiones.
 
 **Consecuencias:**
-- La URL raíz `/` siempre redirige a `/es`
+- La URL raíz `/` siempre redirige a `/es` (307)
+- Cualquier ruta sin idioma redirige conservando el path: `/viajes` → `/es/viajes`
+- El matcher excluye `_next`, `api`, favicon y ficheros con extensión
 - Compatible con la estructura `[lang]` sin configuración adicional
 
 ---
@@ -323,6 +327,93 @@
 - El prop `id` es obligatorio en `JsonLd` — TypeScript lo fuerza
 - Los `id` deben ser estables (no depender de datos dinámicos) para que la deduplicación funcione también en navegación SPA
 - El schema de Organization NO debe incluirse en los `buildPageSchema` de las páginas — solo se emite desde `layout.tsx` con `id="ld-organization"`
+
+---
+
+## D17 — Dominio canónico no-www con constante única en `lib/config/site.ts`
+
+**Fecha:** 2026-06-11
+
+**Decisión:** El dominio canónico del sitio es `https://viajesvidaia.com` (sin www). Existe una única constante `BASE_URL` en `lib/config/site.ts` que importan todos los puntos que construyen URLs absolutas: `seo.ts`, `sitemap.ts`, `robots.ts`, todos los builders de `lib/schema/`, `llms.txt` y las páginas personalizar.
+
+**Alternativas consideradas:**
+- `www.viajesvidaia.com` como canónico (era lo que usaba el código) — requería invertir el redirect en el proveedor de dominio
+- Mantener constantes locales duplicadas por fichero (estado anterior — provocó la inconsistencia)
+
+**Razonamiento:**
+- El hosting ya redirige `www → no-www` (301): elegir no-www significa cero cambios de infraestructura
+- Antes de esta decisión, los canonicals/sitemap/schemas apuntaban a `www.`, que redirige — señal SEO confusa (canonical que no es canónico)
+- Una constante única elimina la clase de bug por inconsistencia: el blog usaba sin www y el resto con www
+- Los enlaces internos en el contenido markdown de `posts.ts` se convirtieron a rutas relativas — inmunes a futuros cambios de dominio
+
+**Consecuencias:**
+- El `@id` del Organization schema cambió (`https://viajesvidaia.com/#organization`) — Google regenerará la entidad, esperable
+- Cualquier URL absoluta nueva DEBE importar `BASE_URL` de `lib/config/site.ts` — nunca hardcodear el dominio
+- Si el dominio cambia algún día, se toca un solo fichero
+
+---
+
+## D18 — Security headers básicos en `next.config.ts`, sin CSP completa
+
+**Fecha:** 2026-06-11
+
+**Decisión:** Añadir vía `headers()` en next.config.ts: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`. NO se añadió Content-Security-Policy.
+
+**Razonamiento:**
+- Los cuatro headers elegidos son seguros de activar sin auditoría: no rompen nada del sitio actual
+- Una CSP completa requiere inventariar todos los orígenes (GA4, Cloudinary, Unsplash, LightWidget, Clientify, flagcdn) y los inline scripts de Next.js — coste alto y riesgo de romper terceros en producción
+- HSTS no se añade porque Vercel lo gestiona automáticamente
+
+**Consecuencias:**
+- `X-Frame-Options: SAMEORIGIN` impide embeber el sitio en iframes de terceros (el iframe de LightWidget no se ve afectado: es contenido externo embebido aquí, no al revés)
+- La CSP queda como mejora futura si se quiere endurecer más
+
+---
+
+## D19 — Schemas GEO: CollectionPage solo con trips enlazables, sin duración en TouristTrip, sin SearchAction
+
+**Fecha:** 2026-06-11
+
+**Decisión:** Al añadir los schemas de la auditoría GEO (M39–M41) se tomaron tres decisiones de alcance:
+
+1. **`CollectionPage.mainEntity.ItemList` solo incluye trips con `hasItinerary: true`.** Los trips sin itinerario enlazan al formulario genérico `/itinerarios/personalizar` (sin URL propia) — incluirlos generaría N items apuntando a la misma URL, lo que invalida el propósito del ItemList.
+2. **No se añade duración a `TouristTrip`.** schema.org `Trip` no tiene propiedad oficial de duración — emitirla provocaría warnings del validador. Los días/noches ya van en el texto.
+3. **`WebSite` sin `SearchAction`.** Google exige una URL de búsqueda con parámetro de query; el filtro de `/viajes` es client-side sin URL por término — no cualifica. Añadir si algún día existe `/buscar?q=`.
+
+**Consecuencias:**
+- Si un trip pasa a tener itinerario, entra automáticamente en el ItemList (filtro dinámico)
+- Patrón reutilizable: `buildCollectionPageSchema(lang, { name, description, path, items })` sirve para cualquier listado futuro
+
+---
+
+## D20 — Contenido derivado de datos, no hardcodeado (manifest, llms.txt, organization)
+
+**Fecha:** 2026-06-11 (generaliza el principio de D14)
+
+**Decisión:** Cualquier texto generado que enumere países/destinos/viajes debe derivarse de los servicios (`getCountriesOrdered()`, etc.), nunca hardcodearse. Aplicado hoy a `app/manifest.ts` (descripción con lista de países dinámica).
+
+**Contexto:** El manifest se creó con "Argentina, Chile y Bolivia" hardcodeado mientras el sitio ya incluía Perú. Mismo patrón que ya cumplían `llms.txt` (D14) y `buildOrganizationSchema` (description y `areaServed` dinámicos).
+
+**Consecuencias:**
+- Añadir un país a `countries.ts` actualiza automáticamente manifest, llms.txt y Organization schema
+- **Deuda conocida:** siguen hardcodeados con el trío antiguo (sin Perú) las meta descriptions de `app/layout.tsx`, `blog/page.tsx` (×3) y 3 entradas de `staticContent.ts`. Son copy de marketing — pendiente de revisión editorial, no de automatización (decidido 11/06/2026).
+
+---
+
+## D21 — Google Reviews en lugar de schema sobre testimonios estáticos
+
+**Fecha:** 2026-06-11
+
+**Decisión:** No añadir `Review`/`AggregateRating` sobre los testimonios estáticos de `testimonials.ts`. La sección `TestimonialsSection` es temporal y se sustituirá por un widget de Google Reviews (ver M38 en MEJORAS.md).
+
+**Razonamiento:**
+- Google penaliza el self-serving review markup: el `aggregateRating` emitido por el propio sitio sobre testimonios no verificables es señal débil y arriesgada
+- Las reseñas de Google Business son verificables por terceros y alimentan directamente el Knowledge Panel y los AI Overviews
+- Evita invertir en schema sobre una sección que va a desaparecer
+
+**Consecuencias:**
+- Bloqueado por negocio: perfil de Google Business con reseñas + elección de proveedor de widget
+- Al implementar: eliminar `TestimonialsSection`, `testimonials.ts`, `testimonialsService.ts` y assets `TESTIMONIALS.*`
 
 ---
 

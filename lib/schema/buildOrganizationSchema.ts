@@ -1,6 +1,7 @@
 import type { Country } from '@/lib/data/countries'
 import type { Destination } from '@/lib/data/destinations'
 import { CONTACT } from '@/lib/config/contact'
+import { BASE_URL } from '@/lib/config/site'
 
 const SOCIAL_LINKS = [
   'https://www.instagram.com/viajesvidaia',
@@ -13,11 +14,11 @@ export function buildOrganizationSchema(countries: Country[], destinations: Dest
   return {
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
-    '@id': 'https://www.viajesvidaia.com/#organization',
+    '@id': `${BASE_URL}/#organization`,
     name: 'Viajes Vidaia',
-    url: 'https://www.viajesvidaia.com',
-    logo: 'https://www.viajesvidaia.com/images/logo/viajes-vidaia-logo.png',
-    image: 'https://www.viajesvidaia.com/images/og-default.jpg',
+    url: BASE_URL,
+    logo: `${BASE_URL}/images/logo/viajes-vidaia-logo.png`,
+    image: `${BASE_URL}/images/og-default.jpg`,
     telephone: CONTACT.phone,
     email: 'info@viajesvidaia.com',
     priceRange: '€€€',

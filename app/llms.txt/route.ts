@@ -2,12 +2,13 @@ import { getCountriesOrdered } from '@/lib/services/countriesService'
 import { getDestinationsByCountry } from '@/lib/services/destinationsService'
 import { getActiveTrips } from '@/lib/services/tripsService'
 import type { CountrySlug } from '@/lib/data/countries'
+import { BASE_URL } from '@/lib/config/site'
 
 export function GET() {
   const countries = getCountriesOrdered()
   const trips = getActiveTrips()
   const featured = trips.filter((t) => t.featured && t.hasItinerary)
-  const BASE = 'https://www.viajesvidaia.com/es'
+  const BASE = `${BASE_URL}/es`
 
   const destinationsSection = countries
     .map((c) => {
@@ -46,7 +47,7 @@ ${itinerariesSection}
 
 ## Optional
 
-- [Sitemap](https://www.viajesvidaia.com/sitemap.xml)
+- [Sitemap](${BASE_URL}/sitemap.xml)
 `
 
   return new Response(content, {

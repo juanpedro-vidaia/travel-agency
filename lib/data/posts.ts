@@ -39,6 +39,7 @@ export interface Post {
   }
   imageKey: string
   date: string           // ISO: "2026-04-18"
+  dateUpdated?: string   // ISO — set when a post is revised after publishing
   category: PostCategory
   tags: string[]
   readingTime: number    // minutes
@@ -324,7 +325,7 @@ Cuando empezó la pandemia, una de las cosas que más me preocupaba era qué pas
 
 A día de hoy y desde España seguimos siendo fans de este momento…
 
-> Si quieres tener más detalles sobre el mate, te lo contamos en uno de nuestros post anteriores: [El mate, alma y tradición de Argentina](https://viajesvidaia.com/es/blog/mate-alma-tradicion-argentina)
+> Si quieres tener más detalles sobre el mate, te lo contamos en uno de nuestros post anteriores: [El mate, alma y tradición de Argentina](/es/blog/mate-alma-tradicion-argentina)
 
 ## El tango y su sensualidad
 
@@ -387,7 +388,7 @@ El verano es especialmente bueno si tu prioridad es visitar la Patagonia argenti
 
 Si tu viaje incluye cataratas y norte, se puede hacer perfectamente en verano, pero con un estilo distinto: madrugar, hacer descansos, y diseñar actividades pensando en el sol del mediodía. Ahí es donde una planificación a medida marca la diferencia entre “me lo he pasado bien” y “me lo he pasado bien, pero agotado”.
 
-> Si alguna de estas épocas encaja contigo, en **Viajes Vidaia** diseñamos tu [Viaje Organizado a Argentina](https://viajesvidaia.com/es/destinos/argentina/) totalmente a medida, adaptado a tus fechas, ritmo y preferencias, para que aproveches la primavera en el destino que mejor se ajuste a tu idea de viaje. [¿Hablamos y empezamos a planificarlo?](https://viajesvidaia.com/es/itinerarios/personalizar)
+> Si alguna de estas épocas encaja contigo, en **Viajes Vidaia** diseñamos tu [Viaje Organizado a Argentina](/es/destinos/argentina/) totalmente a medida, adaptado a tus fechas, ritmo y preferencias, para que aproveches la primavera en el destino que mejor se ajuste a tu idea de viaje. [¿Hablamos y empezamos a planificarlo?](/es/itinerarios/personalizar)
 
 ## Otoño: disfrutar de un país increíble y sin prisa
 
@@ -427,11 +428,11 @@ Hay viajeros que quieren vivir *Argentina desde lo urbano*: bodegones, barrios, 
 
 Si estás pensando en un Viaje Organizado a Argentina, ¡Viajes Vidaia es tu agencia! La temporada influye, pero sobre todo influye cómo diseñamos tu ruta. Más allá de elegir la mejor época para viajar a Argentina, lo realmente importante es construir un itinerario equilibrado, adaptado a tu ritmo y a lo que quieres vivir. Argentina es inmensa, las distancias existen y afectan, y un viaje bien planificado marca la diferencia entre “ver mucho” y disfrutarlo de verdad.
 
-En **Viajes Vidaia** no creemos en viajes acelerados o enlatados. Si dispones de 10–12 días, lo ideal es concentrarse en una gran zona bien combinada, como Buenos Aires + Iguazú o Buenos Aires + una Patagonia seleccionada. Si tienes 15 días o más, podemos diseñar algo más completo como el recorrido [Argentina de Sur a Norte](https://viajesvidaia.com/es/itinerarios/argentina-sur-norte). Y si cuentas con tres semanas y espíritu aventurero, rutas como [Grandes Escenarios de Argentina](https://viajesvidaia.com/es/itinerarios/grandes-escenarios-argentina) o [Contrastes Argentinos](https://viajesvidaia.com/es/itinerarios/contrastes-argentinos) permiten descubrir el país con profundidad y sin prisas.
+En **Viajes Vidaia** no creemos en viajes acelerados o enlatados. Si dispones de 10–12 días, lo ideal es concentrarse en una gran zona bien combinada, como Buenos Aires + Iguazú o Buenos Aires + una Patagonia seleccionada. Si tienes 15 días o más, podemos diseñar algo más completo como el recorrido [Argentina de Sur a Norte](/es/itinerarios/argentina-sur-norte). Y si cuentas con tres semanas y espíritu aventurero, rutas como [Grandes Escenarios de Argentina](/es/itinerarios/grandes-escenarios-argentina) o [Contrastes Argentinos](/es/itinerarios/contrastes-argentinos) permiten descubrir el país con profundidad y sin prisas.
 
 La clave de un Viaje Organizado a Argentina no es abarcar todo (sería imposible!), **sino elegir bien y personalizar cada etapa* para que vivas el mate, las peñas, los asados, la Patagonia o el norte con la intensidad que buscas. Tú decides el estilo; nosotros lo convertimos en un viaje a medida.
 
-¿Te vienes? [Quiero organizar mi viaje a Argentina](https://viajesvidaia.com/es/destinos/argentina/).`,
+¿Te vienes? [Quiero organizar mi viaje a Argentina](/es/destinos/argentina/).`,
         imageAlt: 'Cerro de los Siete Colores en Purmamarca, Argentina, uno de los paisajes del norte argentino',
         metaTitle: 'Guía de la mejor época para viajar a Argentina | Viajes Vidaia',
         metaDescription: 'Descubre la mejor época para viajar a Argentina según tus preferencias: Patagonia, Iguazú, norte argentino, ciudades, nieve, trekking y clima por estaciones.',

@@ -5,6 +5,8 @@ import { getTripBySlug } from '@/lib/services/tripsService'
 import type { Trip } from '@/lib/data/trips'
 import { getAsset } from '@/lib/data/assets'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
+import { buildMetadata } from '@/lib/helpers/seo'
+import { BASE_URL } from '@/lib/config/site'
 import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/schema'
 import JsonLd from '@/components/scripts/JsonLd'
 import PostContent from './PostContent'
@@ -26,30 +28,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
 
   const es = post.content.es
-  const title = es.metaTitle ?? `${es.title} — Viajes Vidaia`
-  const description = es.metaDescription ?? es.excerpt
-  const imageUrl = getAsset(post.imageKey).url
-  const url = `https://viajesvidaia.com/${lang}/blog/${post.slug}`
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url,
-      type: 'article',
-      publishedTime: post.date,
-      images: [{ url: imageUrl, alt: es.imageAlt }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [imageUrl],
-    },
-    alternates: { canonical: url },
-  }
+  return buildMetadata({
+    title: es.metaTitle ?? `${es.title} — Viajes Vidaia`,
+    description: es.metaDescription ?? es.excerpt,
+    path: `/${lang}/blog/${post.slug}`,
+    lang,
+    ogImage: getAsset(post.imageKey).url,
+    ogType: 'article',
+    publishedTime: post.date,
+  })
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -72,7 +59,8 @@ export default async function BlogPostPage({ params }: Props) {
         description: es.excerpt,
         imageUrl,
         publishedAt: post.date,
-        url: `https://viajesvidaia.com/${lang}/blog/${post.slug}`,
+        updatedAt: post.dateUpdated,
+        url: `${BASE_URL}/${lang}/blog/${post.slug}`,
       })} />
       <JsonLd id="ld-breadcrumb" data={buildBreadcrumbSchema(lang, [
         { name: 'Inicio', path: '' },

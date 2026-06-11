@@ -6,6 +6,8 @@ import { CATEGORY_CONFIG, type PostCategory } from '@/lib/data/posts'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getStaticContent } from '@/lib/helpers/contentHelpers'
+import { buildCollectionPageSchema } from '@/lib/schema'
+import JsonLd from '@/components/scripts/JsonLd'
 import BlogFilters from '@/app/[lang]/blog/BlogFilters'
 
 interface Props {
@@ -36,6 +38,12 @@ export default async function BlogPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd data={buildCollectionPageSchema(lang, {
+        name: 'Blog de viajes — Viajes Vidaia',
+        description: 'Guías de viaje, consejos prácticos e inspiración para descubrir Argentina, Chile y Bolivia.',
+        path: '/blog',
+        items: allPosts.map(p => ({ name: p.content.es.title, path: `/blog/${p.slug}` })),
+      })} id="ld-blog" />
       {/* Hero */}
       <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-20 bg-gradient-to-b from-vidaia-charcoal to-vidaia-dark text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">

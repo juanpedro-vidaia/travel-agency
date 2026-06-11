@@ -25,6 +25,11 @@
 | `/api/forms/newsletter` | `app/api/forms/newsletter/route.ts` | API Route (POST) | — |
 | `/api/forms/presupuesto` | `app/api/forms/presupuesto/route.ts` | API Route (POST) | Zod validation con `formSchema` |
 | `/llms.txt` | `app/llms.txt/route.ts` | API Route (GET) | `getCountriesOrdered()`, `getDestinationsByCountry()`, `getActiveTrips()` |
+| `/manifest.webmanifest` | `app/manifest.ts` | Metadata Route | `getCountriesOrdered()` (descripción dinámica) |
+| (404 global) | `app/not-found.tsx` | Server Component | Página 404 con marca; se renderiza al llamar `notFound()` o en rutas inexistentes |
+| (rutas sin `/es`) | `proxy.ts` (raíz del proyecto) | Proxy (middleware de Next.js 16) | Redirige `/` y cualquier ruta sin prefijo de idioma a `/${DEFAULT_LANGUAGE}/...` (307) |
+
+> **Nota Next.js 16:** `middleware.ts` está deprecado — el fichero se llama `proxy.ts` con export `proxy()`. En el build aparece como `ƒ Proxy (Middleware)`.
 
 ---
 
@@ -96,12 +101,22 @@ Los servicios son funciones puras que filtran y transforman los datos de `lib/da
 
 ---
 
+## `lib/config/` — Configuración
+
+| Fichero | Contenido |
+|---|---|
+| `site.ts` | `BASE_URL = 'https://viajesvidaia.com'` — **dominio canónico único** (no-www, coincide con el redirect del hosting). Toda URL absoluta del proyecto DEBE importar esta constante; nunca hardcodear el dominio. La importan: `seo.ts`, `sitemap.ts`, `robots.ts`, todos los builders de `lib/schema/`, `llms.txt` y las páginas personalizar. |
+| `contact.ts` | `CONTACT` — teléfono, email, horarios |
+| `languages.config.ts` | `LANGUAGES_CONFIG`, `ENABLED_LANGUAGES`, `DEFAULT_LANGUAGE` |
+
+---
+
 ## `lib/helpers/` — Utilidades
 
 | Fichero | Funciones |
 |---|---|
 | `contentHelpers.ts` | `getStaticContent(lang)`, `getCommonUI(lang)`, `renderTemplate(template, vars)`, `formatPrice(price)` |
-| `seo.ts` | `buildMetadata({ title, description, path, lang, ogImage?, ogType? })` — genera Metadata completo con OG, Twitter Card, canonical y hreflang |
+| `seo.ts` | `buildMetadata({ title, description, path, lang, ogImage?, ogType?, publishedTime? })` — genera Metadata completo con OG, Twitter Card, canonical y hreflang. `publishedTime` solo se emite con `ogType: 'article'` (blog posts). **Todas** las páginas usan este helper — incluidas legales y blog posts; no construir metadata a mano. |
 
 ---
 
@@ -113,11 +128,14 @@ Módulo creado para centralizar toda la generación de schema.org. Cada builder 
 |---|---|---|
 | `buildPageSchema(...schemas)` | `@graph` combinator | Todas las páginas con >1 schema |
 | `buildOrganizationSchema(countries, destinations)` | `TravelAgency` con `@id`, `areaServed`, `knowsAbout`, `sameAs` | `layout.tsx` (solo aquí, para todas las páginas) |
+| `buildWebSiteSchema()` | `WebSite` con `publisher` por `@id` (sin SearchAction — no hay buscador con URL de query) | `layout.tsx` |
 | `buildTouristDestinationSchema(country, dests)` | `TouristDestination` con `GeoCoordinates` + `includesAttraction` | `/destinos/[slug]` |
-| `buildTouristTripSchema(trip, days, allDests)` | `TouristTrip` con `subTrip` por día y `subjectOf` actividades | `/itinerarios/[slug]` |
+| `buildTouristTripSchema(trip, days, allDests)` | `TouristTrip` con `image`, `subTrip` por día, `subjectOf` actividades y `offers: AggregateOffer` (solo si `priceFrom > 0`) | `/itinerarios/[slug]` |
 | `buildFAQSchema(items)` | `FAQPage` | Todas las páginas con FAQs |
-| `buildPersonSchema(member)` | `Person` con `worksFor: { '@id': '.../#organization' }` | Home (equipo) |
-| `buildArticleSchema(post)` | `Article` con `author`/`publisher` por `@id` | `/blog/[slug]` |
+| `buildPersonSchema(member)` | `Person` con `image` (desde `imageKey`) y `worksFor` por `@id` | Home (equipo) |
+| `buildArticleSchema(post)` | `Article` con `dateModified` (fallback a `datePublished`), `author`/`publisher` por `@id` | `/blog/[slug]` |
+| `buildBreadcrumbSchema(lang, items)` | `BreadcrumbList` — el último item va sin `path` (página actual) | `/itinerarios/[slug]`, `/destinos/[slug]`, `/blog/[slug]` |
+| `buildCollectionPageSchema(lang, opts)` | `CollectionPage` + `mainEntity: ItemList` — solo items con URL propia (ej. trips con `hasItinerary`) | `/viajes`, `/blog`, `/lunas-de-miel` |
 
 ### Patrón de uso
 
@@ -134,11 +152,11 @@ import { buildPageSchema, buildTouristDestinationSchema, buildFAQSchema } from '
 
 ### `@id` canónico y referencias
 
-`buildOrganizationSchema` emite `"@id": "https://www.viajesvidaia.com/#organization"`. Todos los builders que referencian la organización usan `{ '@id': 'https://www.viajesvidaia.com/#organization' }` en lugar de objetos inline (`worksFor`, `provider`, `author`, `publisher`). Esto evita que los validadores cuenten múltiples instancias de Organization en la misma página.
+`buildOrganizationSchema` emite `"@id": "${BASE_URL}/#organization"` (= `https://viajesvidaia.com/#organization`, importando `BASE_URL` de `lib/config/site.ts`). Todos los builders que referencian la organización usan `{ '@id': \`${BASE_URL}/#organization\` }` en lugar de objetos inline (`worksFor`, `provider`, `author`, `publisher`). Esto evita que los validadores cuenten múltiples instancias de Organization en la misma página.
 
 ### `JsonLd` — deduplicación RSC
 
-`components/scripts/JsonLd.tsx` usa `next/script` con prop `id` obligatoria. Next.js usa ese `id` para registrar el script y evitar re-inyectarlo cuando el runtime RSC cliente procesa el payload de hidratación — sin esto, los scripts del body aparecerían dos veces en validadores que ejecutan JavaScript (como validator.schema.org). Cada página usa un `id` estable y único: `ld-organization`, `ld-home`, `ld-destination`, `ld-itinerary`, `ld-article`, `ld-viajes`, `ld-honeymoon`.
+`components/scripts/JsonLd.tsx` usa `next/script` con prop `id` obligatoria. Next.js usa ese `id` para registrar el script y evitar re-inyectarlo cuando el runtime RSC cliente procesa el payload de hidratación — sin esto, los scripts del body aparecerían dos veces en validadores que ejecutan JavaScript (como validator.schema.org). Cada página usa un `id` estable y único: `ld-organization`, `ld-website`, `ld-home`, `ld-destination`, `ld-itinerary`, `ld-article`, `ld-breadcrumb`, `ld-viajes`, `ld-blog`, `ld-honeymoon`.
 
 ### Patrón: Server Component como único punto de acceso a datos
 
@@ -237,10 +255,9 @@ const asset = getAsset('COUNTRIES.ARGENTINA_HERO')
 | `ITINERARIES.*` | Imágenes del carousel de itinerarios |
 | `VIAJES_HERO_*` | Imágenes del carousel de la página /viajes |
 | `BLOG.*` | Imágenes de posts del blog |
-| `TESTIMONIALS.*` | Fotos de testimonios |
+| `TESTIMONIALS.*` | Fotos de testimonios (a eliminar con M38 — Google Reviews) |
 | `HOTELS.*` | Fotos de hoteles |
 | `TEAM.*` | Fotos del equipo |
-| `INSTAGRAM_PHOTOS.*` | Fotos del grid de Instagram |
 | `HOME.HERO_BG` | Fondo del hero de la home |
 | `HONEYMOON_HERO_BG` | Fondo del hero de lunas de miel |
 | `CTA_SECTION_BG` | Fondo de la sección CTA |
@@ -314,9 +331,27 @@ Todo el contenido (viajes, itinerarios, posts, hoteles, actividades, países, te
 - **Qué hace:** Genera un fichero de texto plano en formato [llms.txt](https://llmstxt.org/) con la descripción del negocio, destinos activos con sus atracciones, y los itinerarios destacados con enlace directo. Los crawlers de LLMs (ChatGPT, Perplexity, Claude, Gemini) leen este fichero para conocer el sitio sin necesidad de renderizar HTML.
 - **Contenido dinámico:** Lee en tiempo real de `getCountriesOrdered()`, `getDestinationsByCountry()` y `getActiveTrips()`. No requiere mantenimiento manual.
 
-### Instagram widget
+### Instagram widget (LightWidget)
 
-- **Estado:** Grid estático con fotos de Unsplash como placeholder. Hay un comentario en `InstagramBanner.tsx` con el div de Elfsight listo para insertar.
+- **Estado:** Activo desde 03/06/2026. `InstagramBanner.tsx` carga el script de LightWidget con `<Script strategy="afterInteractive">` (no bloquea LCP) y renderiza el feed real en un `<iframe>` con `minHeight: 300px` para reservar espacio y evitar CLS.
+- **Patrón reutilizable para widgets de terceros** (aplicable al futuro widget de Google Reviews — M38):
+  ```tsx
+  <Script src="https://cdn.proveedor.com/widget.js" strategy="afterInteractive" />
+  <iframe src="..." scrolling="no" className="..." style={{ width: '100%', border: 0, overflow: 'hidden', minHeight: '300px' }} />
+  ```
+  No usar `allowTransparency` (atributo legacy — React lo rechaza).
+
+### Web App Manifest
+
+- **Ruta:** `/manifest.webmanifest` — `app/manifest.ts` (Metadata Route de Next.js)
+- **Descripción dinámica:** la lista de países se genera desde `getCountriesOrdered()` — al añadir un país a `countries.ts` el manifest se actualiza solo (mismo principio que `llms.txt`; ver D20 en DECISIONS.md).
+- **Iconos:** `public/images/icons/icon-192.png` e `icon-512.png` (manifest) + `public/apple-touch-icon.png` (180×180, **debe estar en la raíz de public/** — iOS lo busca en `/apple-touch-icon.png`). `theme_color: #5ea6ae` (vidaia-primary, validado por diseño).
+
+### Security headers
+
+- **Dónde:** `headers()` en `next.config.ts`, aplicados a todas las rutas.
+- **Headers:** `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`, `Permissions-Policy` (cámara/micro/geo deshabilitados).
+- **Sin CSP** (ver D18 en DECISIONS.md). HSTS lo añade Vercel automáticamente.
 
 ---
 
@@ -354,3 +389,9 @@ Todo el contenido (viajes, itinerarios, posts, hoteles, actividades, países, te
 5. **Los API Routes de formulario deben siempre validar con Zod** antes de procesar los datos (`formSchema.safeParse(body)`). El formulario de presupuesto ya lo hace; los de contacto y newsletter validan manualmente.
 
 6. **No commitear claves de API.** Las variables sensibles van únicamente en `.env.local` (ignorado por git).
+
+7. **No hardcodear el dominio.** Toda URL absoluta importa `BASE_URL` de `lib/config/site.ts`. El dominio canónico es `viajesvidaia.com` (no-www). Los enlaces internos en contenido (markdown de posts) son rutas relativas.
+
+8. **Toda página usa `buildMetadata()`** de `lib/helpers/seo.ts` en su `generateMetadata` — nunca construir el objeto Metadata a mano. Es el único punto que garantiza canonical, hreflang y OG consistentes.
+
+9. **Contenido generado que enumere países/destinos/viajes se deriva de los servicios** (`getCountriesOrdered()`, etc.), nunca se hardcodea — aplica a manifest, llms.txt y schemas (ver D20).

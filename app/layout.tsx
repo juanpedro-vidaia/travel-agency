@@ -13,7 +13,7 @@ import { ConsentProvider } from '@/lib/context/ConsentContext'
 import { LanguageProvider } from '@/lib/context/LanguageContext'
 import { getCountriesOrdered } from '@/lib/services/countriesService'
 import { getDestinations } from '@/lib/services/destinationsService'
-import { buildOrganizationSchema } from '@/lib/schema'
+import { buildOrganizationSchema, buildWebSiteSchema } from '@/lib/schema'
 import './globals.css'
 
 const inter = Inter({
@@ -36,7 +36,10 @@ export const metadata: Metadata = {
   },
   description:
     'Agencia de viajes personalizados especializada en Argentina, Chile y Bolivia. Viajes únicos, sostenibles y con apoyo local. Diseñamos tu itinerario desde cero.',
-  icons: { icon: '/favicon.png' },
+  icons: {
+    icon: '/favicon.png',
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     siteName: 'Viajes Vidaia',
     type: 'website',
@@ -57,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <body className={`${inter.variable} ${playfair.variable}`}>
         <JsonLd data={organizationSchema} id="ld-organization" />
+        <JsonLd data={buildWebSiteSchema()} id="ld-website" />
         <LanguageProvider>
           <ConsentProvider>
             <GoogleAnalytics />

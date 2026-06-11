@@ -8,7 +8,7 @@ import TripCard from '@/components/ui/TripCard'
 import FaqSection from '@/components/sections/FaqSection'
 import JsonLd from '@/components/scripts/JsonLd'
 import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
-import { buildFAQSchema } from '@/lib/schema'
+import { buildFAQSchema, buildCollectionPageSchema, buildPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getAsset } from '@/lib/data/assets'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
@@ -44,7 +44,17 @@ export default async function LunasDeMielPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={buildFAQSchema(lunaFaqs.map(f => f.es))} id="ld-honeymoon" />
+      <JsonLd data={buildPageSchema(
+        buildCollectionPageSchema(lang, {
+          name: content.metadata.title,
+          description: content.metadata.description,
+          path: '/lunas-de-miel',
+          items: honeymoonTrips
+            .filter(t => t.hasItinerary)
+            .map(t => ({ name: t.content.es.title, path: `/itinerarios/${t.slug}` })),
+        }),
+        buildFAQSchema(lunaFaqs.map(f => f.es)),
+      )} id="ld-honeymoon" />
       <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
       <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] overflow-hidden">

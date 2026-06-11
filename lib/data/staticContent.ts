@@ -710,7 +710,7 @@ export const STATIC_CONTENT = {
             },
             {
               label: 'Nombre del dominio',
-              value: 'www.viajesvidaia.com',
+              value: 'viajesvidaia.com',
             },
             {
               label: 'Identificador Registral único de la Sociedad (IRUS)',
@@ -1570,7 +1570,7 @@ export const STATIC_CONTENT = {
             },
             {
               label: 'Nombre del dominio',
-              value: 'www.viajesvidaia.com',
+              value: 'viajesvidaia.com',
             },
             {
               label: 'Identificador Registral único de la Sociedad (IRUS)',

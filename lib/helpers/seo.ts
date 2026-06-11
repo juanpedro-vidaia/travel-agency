@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
+import { BASE_URL } from '@/lib/config/site'
 
-const BASE_URL = 'https://www.viajesvidaia.com'
 const DEFAULT_OG_IMAGE = `${BASE_URL}/images/og-default.jpg`
 
 interface SeoOptions {
@@ -10,6 +10,8 @@ interface SeoOptions {
   lang: string
   ogImage?: string
   ogType?: 'website' | 'article'
+  /** Only used when ogType is 'article' (ISO date, e.g. post.date) */
+  publishedTime?: string
 }
 
 /**
@@ -23,6 +25,7 @@ export function buildMetadata({
   lang,
   ogImage = DEFAULT_OG_IMAGE,
   ogType = 'website',
+  publishedTime,
 }: SeoOptions): Metadata {
   const url = `${BASE_URL}${path}`
 
@@ -47,6 +50,7 @@ export function buildMetadata({
       siteName: 'Viajes Vidaia',
       locale: lang === 'en' ? 'en_US' : 'es_ES',
       type: ogType,
+      ...(ogType === 'article' && publishedTime ? { publishedTime } : {}),
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
     twitter: {

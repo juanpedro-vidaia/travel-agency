@@ -1,6 +1,8 @@
 import type { Trip } from '@/lib/data/trips'
 import type { Destination } from '@/lib/data/destinations'
 import type { ResolvedDay } from '@/lib/services/itinerariesService'
+import { BASE_URL } from '@/lib/config/site'
+import { getAsset } from '@/lib/data/assets'
 
 export function buildTouristTripSchema(
   trip: Trip,
@@ -48,8 +50,9 @@ export function buildTouristTripSchema(
     '@type': 'TouristTrip',
     name: trip.content.es.title,
     description: trip.content.es.subtitle,
-    url: `https://www.viajesvidaia.com/es/itinerarios/${trip.slug}`,
-    provider: { '@id': 'https://www.viajesvidaia.com/#organization' },
+    image: getAsset(trip.imageKey).url,
+    url: `${BASE_URL}/es/itinerarios/${trip.slug}`,
+    provider: { '@id': `${BASE_URL}/#organization` },
     subTrip,
     ...(trip.priceFrom != null && trip.priceFrom > 0 && {
       offers: {

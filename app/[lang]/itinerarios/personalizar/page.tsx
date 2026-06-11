@@ -11,7 +11,7 @@ interface Props {
   params: Promise<{ lang: string }>
 }
 
-const BASE_URL = 'https://www.viajesvidaia.com'
+import { BASE_URL } from '@/lib/config/site'
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
