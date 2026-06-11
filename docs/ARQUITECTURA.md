@@ -154,9 +154,13 @@ import { buildPageSchema, buildTouristDestinationSchema, buildFAQSchema } from '
 
 `buildOrganizationSchema` emite `"@id": "${BASE_URL}/#organization"` (= `https://viajesvidaia.com/#organization`, importando `BASE_URL` de `lib/config/site.ts`). Todos los builders que referencian la organización usan `{ '@id': \`${BASE_URL}/#organization\` }` en lugar de objetos inline (`worksFor`, `provider`, `author`, `publisher`). Esto evita que los validadores cuenten múltiples instancias de Organization en la misma página.
 
-### `JsonLd` — deduplicación RSC
+### `JsonLd` — script nativo server-rendered
 
-`components/scripts/JsonLd.tsx` usa `next/script` con prop `id` obligatoria. Next.js usa ese `id` para registrar el script y evitar re-inyectarlo cuando el runtime RSC cliente procesa el payload de hidratación — sin esto, los scripts del body aparecerían dos veces en validadores que ejecutan JavaScript (como validator.schema.org). Cada página usa un `id` estable y único: `ld-organization`, `ld-website`, `ld-home`, `ld-destination`, `ld-itinerary`, `ld-article`, `ld-breadcrumb`, `ld-viajes`, `ld-blog`, `ld-honeymoon`.
+`components/scripts/JsonLd.tsx` usa `<script type="application/ld+json">` **nativo** (no `next/script`) con prop `id` obligatoria. El script queda en el HTML estático servido — visible para crawlers que **no ejecutan JS** (GPTBot, PerplexityBot, ClaudeBot), no solo para Google. Verificado en Next.js 16 (build de producción + Chrome headless) que no hay duplicación tras la hidratación — ver D22 en DECISIONS.md (revierte D15).
+
+El layout emite Organization + WebSite juntos en un `@graph` con `id="ld-site"`. Ids por página: `ld-site`, `ld-home`, `ld-destination`, `ld-itinerary`, `ld-article`, `ld-breadcrumb`, `ld-viajes`, `ld-blog`, `ld-honeymoon`.
+
+**Verificación rápida tras tocar schemas:** `curl -s localhost:3000/es | grep -c 'application/ld+json'` debe devolver ≥1 — si da 0, los schemas han dejado de estar en el HTML estático.
 
 ### Patrón: Server Component como único punto de acceso a datos
 

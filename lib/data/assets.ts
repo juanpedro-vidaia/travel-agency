@@ -250,14 +250,6 @@ export const ASSETS = {
   'HOTELS.CAPITAL_BELLET_PROVIDENCIA':      { url: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80', alt: 'Hotel Capital Bellet, Providencia, Santiago' },
   'HOTELS.HILTON_DOUBLETREE_VITACURA':      { url: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80', alt: 'DoubleTree by Hilton Vitacura, Santiago' },
 
-  // ── Instagram grid ────────────────────────────────────────────────────────────
-  'INSTAGRAM_PHOTOS.BUENOS_AIRES_INSTA':     { url: 'https://images.unsplash.com/photo-1589993624-d5e0e6a27fd8?w=600&q=80', alt: 'Buenos Aires' },
-  'INSTAGRAM_PHOTOS.IGUAZU_FALLS':           { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80', alt: 'Cataratas del Iguazú' },
-  'INSTAGRAM_PHOTOS.JUJUY_HUMAHUACA':        { url: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80', alt: 'Quebrada de Humahuaca, Jujuy' },
-  'INSTAGRAM_PHOTOS.PERITO_MORENO':          { url: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80', alt: 'Glaciar Perito Moreno, Argentina' },
-  'INSTAGRAM_PHOTOS.TORRES_DEL_PAINE_INSTA': { url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80', alt: 'Torres del Paine, Chile' },
-  'INSTAGRAM_PHOTOS.USHUAIA_BEAGLE':         { url: 'https://images.unsplash.com/photo-1531761399323-e5f7e7f98816?w=600&q=80', alt: 'Canal Beagle, Ushuaia' },
-
   // ── Itinerary hero images ─────────────────────────────────────────────────────
   'ITINERARIES.CAPITALES_VINO_BUENOS_AIRES':      { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/buenos-aires/buenos-aires-desde-palacio-barolo-jupe-22092019-ij8ykg.jpg', alt: 'Atardecer sobre Buenos Aires desde el Palacio Barolo, CABA, Argentina' },
   'ITINERARIES.CAPITALES_VINO_COLCHAGUA':         { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/santiago-central/vina-santa-cruz-valle-colchahua-santiago-chile.jpg', alt: 'Paisaje de viñedos en Viña Santa Cruz, Valle de Colchagua, Chile' },

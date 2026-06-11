@@ -8,7 +8,10 @@
       "Bash(node -e ' *)",
       "Bash(curl -s http://localhost:3000/es/itinerarios/bolivia-chile-salar-pascua)",
       "PowerShell($html = Invoke-WebRequest -Uri \"http://localhost:3000/es/itinerarios/bolivia-chile-salar-pascua\" -UseBasicParsing; $match = [regex]::Match\\($html.Content, 'AggregateOffer'\\); if \\($match.Success\\) { \"✓ AggregateOffer found\" } else { \"✗ Not found\" }; $match2 = [regex]::Match\\($html.Content, '\"offers\"'\\); if \\($match2.Success\\) { \"✓ offers key found\" } else { \"✗ offers key not found\" })",
-      "PowerShell($html = Invoke-WebRequest -Uri \"http://localhost:3000/es/itinerarios/bolivia-chile-salar-pascua\" -UseBasicParsing; $idx = $html.Content.IndexOf\\(\"AggregateOffer\"\\); $html.Content.Substring\\([Math]::Max\\(0,$idx-100\\), 400\\))"
+      "PowerShell($html = Invoke-WebRequest -Uri \"http://localhost:3000/es/itinerarios/bolivia-chile-salar-pascua\" -UseBasicParsing; $idx = $html.Content.IndexOf\\(\"AggregateOffer\"\\); $html.Content.Substring\\([Math]::Max\\(0,$idx-100\\), 400\\))",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3002/es)",
+      "Bash(curl -s http://localhost:3002/es)",
+      "Read(//tmp/**)"
     ],
     "additionalDirectories": [
       "C:\\Users\\juanpedro.martin"

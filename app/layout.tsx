@@ -13,7 +13,7 @@ import { ConsentProvider } from '@/lib/context/ConsentContext'
 import { LanguageProvider } from '@/lib/context/LanguageContext'
 import { getCountriesOrdered } from '@/lib/services/countriesService'
 import { getDestinations } from '@/lib/services/destinationsService'
-import { buildOrganizationSchema, buildWebSiteSchema } from '@/lib/schema'
+import { buildOrganizationSchema, buildWebSiteSchema, buildPageSchema } from '@/lib/schema'
 import './globals.css'
 
 const inter = Inter({
@@ -59,8 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className={`${inter.variable} ${playfair.variable}`}>
-        <JsonLd data={organizationSchema} id="ld-organization" />
-        <JsonLd data={buildWebSiteSchema()} id="ld-website" />
+        <JsonLd data={buildPageSchema(organizationSchema, buildWebSiteSchema())} id="ld-site" />
         <LanguageProvider>
           <ConsentProvider>
             <GoogleAnalytics />

@@ -315,18 +315,39 @@
 
 ## D15 — `JsonLd` usa `next/script` con `id` para evitar duplicación RSC
 
+> ⚠️ REVERTIDA 11/06/2026 por **D22** — `next/script` con `afterInteractive` inyectaba el JSON-LD **solo en cliente**: el HTML estático no contenía ningún `<script type="application/ld+json">`, haciendo los schemas invisibles para crawlers que no ejecutan JS (GPTBot, PerplexityBot, ClaudeBot). El problema de duplicación que motivó esta decisión NO se reproduce en Next.js 16 con build de producción (verificado empíricamente con Chrome headless). Ver D22.
+
 **Fecha:** 2026-05-28
 
 **Decisión:** El componente `components/scripts/JsonLd.tsx` usa `<Script id={id}>` de `next/script` en lugar de un `<script dangerouslySetInnerHTML>` nativo. Todos los callers deben pasar un `id` estable y único por ruta.
 
-**Problema que resuelve:** Next.js App Router serializa el árbol de Server Components en el payload RSC (React flight data) para la hidratación cliente. Cuando el runtime cliente procesa ese payload, re-inyecta en el DOM los elementos `<script dangerouslySetInnerHTML>` del body aunque el SSR ya los hubiera renderizado. Esto hace que validadores que ejecutan JavaScript (validator.schema.org, Rich Results Test) encuentren cada schema dos veces.
+**Problema que resolvía:** validadores que ejecutan JavaScript encontraban cada schema dos veces (re-inyección RSC en versiones anteriores de Next).
 
-**Por qué `next/script` + `id` lo resuelve:** Next.js registra internamente cada script por su `id`. Al procesar el payload RSC, si un script con ese `id` ya existe en el DOM, el runtime lo omite y no crea un nodo duplicado.
+**Consecuencias (vigentes tras D22):**
+- El prop `id` es obligatorio en `JsonLd` — TypeScript lo fuerza
+- El schema de Organization NO debe incluirse en los `buildPageSchema` de las páginas — solo se emite desde `layout.tsx` (ahora con `id="ld-site"`, junto a WebSite)
+
+---
+
+## D22 — JSON-LD server-rendered con `<script>` nativo + Organization/WebSite en un solo @graph
+
+**Fecha:** 2026-06-11
+
+**Decisión:**
+1. `JsonLd.tsx` vuelve a `<script type="application/ld+json" dangerouslySetInnerHTML>` nativo (sin `next/script`) — el patrón que recomienda la documentación oficial de Next.js para JSON-LD.
+2. El layout emite Organization (TravelAgency) y WebSite juntos en **un único `@graph`** (`<JsonLd id="ld-site">` vía `buildPageSchema`), en lugar de dos scripts separados.
+
+**Contexto que lo destapó:** Al validar la preview en validator.schema.org, TravelAgency "desaparecía" del listado de primer nivel. Investigación: (a) el validador lo anidaba bajo `WebSite → publisher` por la referencia `@id` — solo presentación, los datos estaban; (b) hallazgo colateral grave: con `next/script` afterInteractive el JSON-LD solo existía tras hidratación — `curl` del HTML estático devolvía **cero** schemas. Toda la inversión GEO era invisible para crawlers sin JS.
+
+**Verificación empírica (build de producción, Chrome headless `--dump-dom`):**
+- HTML estático (curl, sin JS): schemas presentes como `<script type="application/ld+json">` reales
+- DOM tras hidratación: exactamente 2 scripts por página (`ld-site` + el de la página), TravelAgency aparece **una sola vez** — la duplicación RSC que motivó D15 no se reproduce en Next.js 16
+- Verificado en home e itinerario (TouristTrip ×14 = 1 principal + 13 subTrip días, correcto)
 
 **Consecuencias:**
-- El prop `id` es obligatorio en `JsonLd` — TypeScript lo fuerza
-- Los `id` deben ser estables (no depender de datos dinámicos) para que la deduplicación funcione también en navegación SPA
-- El schema de Organization NO debe incluirse en los `buildPageSchema` de las páginas — solo se emite desde `layout.tsx` con `id="ld-organization"`
+- Los schemas son visibles para TODOS los crawlers (Google, GPTBot, PerplexityBot, ClaudeBot) sin ejecutar JS
+- Si una futura versión de Next reintroduce la duplicación, re-verificar con el mismo método (headless Chrome contra build de producción) antes de revertir
+- En el validador, TravelAgency aparece dentro del @graph del `ld-site` junto a WebSite — presentación estándar recomendada por Google (entidades hermanas conectadas por `@id`)
 
 ---
 
