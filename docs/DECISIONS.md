@@ -349,6 +349,13 @@
 - Si una futura versión de Next reintroduce la duplicación, re-verificar con el mismo método (headless Chrome contra build de producción) antes de revertir
 - En el validador, TravelAgency aparece dentro del @graph del `ld-site` junto a WebSite — presentación estándar recomendada por Google (entidades hermanas conectadas por `@id`)
 
+**Addendum (mismo día) — duplicados por hydration mismatch de fechas:**
+Tras desplegar el script nativo, el validador mostró TODOS los schemas duplicados en home y blog/[slug] (no en viajes/destinos/itinerarios/lunas-de-miel). Causa raíz: `formatDate` usaba `toLocaleDateString('es-ES', ...)` **sin `timeZone`** — `new Date('YYYY-MM-DD')` es medianoche UTC, y en zonas detrás de UTC (el renderer del validador corre en zona US) la fecha retrocedía un día respecto al HTML pre-renderizado en build. El texto distinto dispara la recuperación de hidratación de React, que re-renderiza el árbol y **duplica los `<script>` nativos** (los `next/script` no se duplicaban gracias a su registro por id — por eso el problema no se vio antes de D22). Las páginas afectadas eran exactamente las que pintan fechas en Client Components: home (BlogSection), blog/[slug] (PostContent) y blog listing (BlogFilters).
+
+**Fix:** `timeZone: 'UTC'` en `formatDate` (lib/services/postsService.ts) — salida determinista en cualquier zona horaria.
+
+**Regla derivada:** cualquier formateo de fecha/hora que se renderice como texto en un Client Component debe fijar `timeZone` explícita. Los hydration mismatches no solo penalizan rendimiento: con scripts JSON-LD nativos, duplican los schemas de cara a los validadores.
+
 ---
 
 ## D17 — Dominio canónico no-www con constante única en `lib/config/site.ts`

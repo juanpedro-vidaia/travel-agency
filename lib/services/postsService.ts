@@ -40,6 +40,9 @@ export function getRelatedPosts(slug: string, count = 3): Post[] {
 
 export function formatDate(iso: string): string {
   const d = new Date(iso)
-  return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+  // timeZone fijo: sin él, el navegador formatea en su zona local y en zonas
+  // detrás de UTC la fecha retrocede un día respecto al HTML pre-renderizado,
+  // provocando un hydration mismatch que duplica los <script> JSON-LD (ver D22)
+  return d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
 }
 
