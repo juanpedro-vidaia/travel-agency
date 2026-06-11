@@ -266,7 +266,9 @@ El `ItineraryContent.tsx` quedaría como orquestador de ~100 líneas.
 ---
 
 ### M33 — Sin `not-found.tsx` global (404 sin marca)
-> ✅ COMPLETADO 11/06/2026 — `app/not-found.tsx` creado con branding Vidaia (patrón visual de las páginas de éxito), CTA a `/es` y enlaces a viajes/blog. Pendiente validación visual por diseño.
+> ✅ COMPLETADO 11/06/2026 — `app/not-found.tsx` creado. Validado por el equipo, con dos correcciones posteriores el mismo día:
+> 1. **i18n:** ahora es Client Component con `useLanguage()` (el `LanguageContext` deriva el idioma del pathname, que se conserva en la 404). Strings en `staticContent.ts` bajo `notFoundPage` (es + en). Enlaces con `LangLink` para conservar el prefijo de idioma.
+> 2. **Header ilegible:** el Header arranca transparente con texto blanco (diseñado para heroes oscuros); sobre el fondo blanco original de la 404 los enlaces eran invisibles hasta hacer scroll. Solución: la 404 usa el degradado oscuro del hero del blog (`from-vidaia-charcoal to-vidaia-dark`) — mismo lenguaje visual que el resto de páginas con header transparente.
 
 **Problema:** `notFound()` se invoca en `blog/[slug]`, `destinos/[slug]` e `itinerarios/[slug]`, pero no existe `app/not-found.tsx` ni `app/[lang]/not-found.tsx`. El usuario que llega a una URL rota ve el 404 genérico de Next.js sin logo, sin navegación y sin enlaces de recuperación.
 

@@ -1171,8 +1171,22 @@ export const STATIC_CONTENT = {
         ctaHref: '/',
       },
     },
+    notFoundPage: {
+      title: 'Página no encontrada',
+      subtitle: 'La página que buscas no existe o ha cambiado de dirección. Pero el viaje no termina aquí.',
+      cta: 'Volver al inicio',
+      linkViajes: 'Ver viajes',
+      linkBlog: 'Ir al blog',
+    },
   },
   en: {
+    notFoundPage: {
+      title: 'Page not found',
+      subtitle: "The page you're looking for doesn't exist or has moved. But the journey doesn't end here.",
+      cta: 'Back to home',
+      linkViajes: 'See trips',
+      linkBlog: 'Go to blog',
+    },
     privacyPage: {
       metadata: {
         title: 'Privacy Policy | Viajes Vidaia',
