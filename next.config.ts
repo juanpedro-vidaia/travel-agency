@@ -27,6 +27,8 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lucide-react'],
+    // Inlinea el CSS en el HTML: elimina el único request render-blocking
+    inlineCss: true,
   },
   // El redirect de rutas sin prefijo de idioma (incluida la raíz /) lo gestiona proxy.ts
   async headers() {

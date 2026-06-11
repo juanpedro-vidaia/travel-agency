@@ -492,6 +492,7 @@ async headers() {
 ---
 
 ### M23 — `staticContent.ts` (79 KB) en shared chunk — deuda técnica arquitectónica
+> ⏬ DESPRIORITIZADO 11/06/2026 — Con el baseline real de M24 (scores 87-95, TBT sano en hardware estándar), el coste del refactor no se justifica ahora. Reevaluar solo si los scores caen al crecer el contenido o al activar el inglés (que duplicaría el tamaño de staticContent en el bundle).
 
 **Problema:** `useLanguage` hook importa todo `staticContent.ts` (1.854 líneas, ~79 KB parsed) a nivel de módulo. Como es usado por 20+ Client Components repartidos por todas las páginas, webpack lo eleva al shared chunk que se carga en CADA página. No se puede tree-shake porque el acceso a la clave del idioma (`STATIC_CONTENT[language]`) es dinámico en tiempo de ejecución.
 
@@ -515,16 +516,23 @@ async headers() {
 ---
 
 ### M24 — Auditoría Lighthouse post-optimizaciones
+> ✅ BASELINE MEDIDO 11/06/2026 (PSI mobile, preview de Vercel):
+>
+> | Página | Score | FCP | LCP |
+> |---|---|---|---|
+> | /es | 89 | 1,8 s | 3,5 s |
+> | /es/viajes | 90 | 1,0 s | 3,5 s |
+> | /es/destinos/argentina | 95 | 0,9 s | 2,9 s |
+> | /es/itinerarios/capitales-del-vino | 87 | 1,0 s | 4,1 s |
+>
+> **Conclusiones:** CLS = 0 (perfecto), TBT sano, oportunidades de red vacías. El único gap sistemático es **LCP > 2,5 s** (hero image) → la palanca es M20 (`url_mobile`) + M29 (`sizes`), en espera de imágenes finales. La "cadena crítica" HTML→CSS reportada por Lighthouse era la mínima posible y se eliminó con `experimental.inlineCss` (ver M28). Re-medir tras M20/M29.
+>
+> ⚠️ Nota de medición: Lighthouse en máquina local lenta dio Performance 50 / TBT 1.830 ms — falsa alarma por hardware (benchmarkIndex 786 + throttle 4x). Usar siempre PSI (pagespeed.web.dev) para números comparables.
 
-**Problema:** Se han aplicado múltiples optimizaciones de bundle (dynamic imports, server pre-computation, font weights, optimizePackageImports) pero no se ha medido el impacto real en Lighthouse.
-
-**Acción:** Ejecutar Lighthouse en Chrome DevTools sobre `/es` (home) y `/es/itinerarios/[slug]` (itinerario) tras el deploy de los cambios de bundle. Comparar contra baseline (First Load JS antes: home 180 kB, itinerario 227 kB).
-
-**Objetivos:**
-- Lighthouse Performance > 90 en home
+**Objetivos originales:**
+- Lighthouse Performance > 90 en home → 89 (rozado; pendiente del LCP)
 - First Load JS home < 145 kB
 - First Load JS itinerario < 150 kB
-- Requests en Network tab (home) < 12
 
 ---
 
@@ -544,12 +552,7 @@ async headers() {
 ---
 
 ### M28 — Render blocking resources (inspección manual)
-
-**Requiere:** DevTools → Network → pestaña Coverage o Lighthouse en producción.
-
-**Contexto:** Las fuentes ya tienen `display: swap` (no bloquean render). Identificar si hay scripts o stylesheets de terceros que sí bloqueen. El punto de partida natural es la auditoría M24 de Lighthouse — el informe listará explícitamente los recursos bloqueantes si los hay.
-
-**Acción cuando se ejecute M24:** Anotar aquí los recursos encontrados y aplicar `defer`/`async` o moverlos a `<Script strategy="lazyOnload">` según el caso.
+> ✅ COMPLETADO 11/06/2026 — La auditoría M24 confirmó que el único recurso render-blocking era el CSS propio (13 KiB gzip, cadena HTML→CSS). Resuelto con `experimental.inlineCss: true` en `next.config.ts`: el CSS se inlinea en el HTML (`<style data-precedence="next">`) y desaparece el request. Verificado: 0 stylesheets externos, render visual correcto, JSON-LD intacto. No hay scripts de terceros bloqueantes (GA4 carga tras consentimiento; LightWidget es afterInteractive).
 
 ---
 
