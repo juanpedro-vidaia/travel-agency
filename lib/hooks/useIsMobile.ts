@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useSyncExternalStore } from 'react'
+
+const MQ = '(max-width: 767px) and (orientation: portrait)'
+
+function subscribe(cb: () => void) {
+  const mq = window.matchMedia(MQ)
+  mq.addEventListener('change', cb)
+  return () => mq.removeEventListener('change', cb)
+}
 
 export function useIsMobile(): boolean {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 767px) and (orientation: portrait)')
-    setIsMobile(mq.matches)
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-
-  return isMobile
+  return useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(MQ).matches,
+    () => false,
+  )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, startTransition } from 'react'
 import { Mail, CheckCircle, Loader2 } from 'lucide-react'
 import LangLink from '@/components/ui/LangLink'
 import { useLanguage } from '@/lib/hooks/useLanguage'
@@ -21,8 +21,8 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
   const [errorMsg, setErrorMsg] = useState('')
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === '1') {
-      setAlreadySubscribed(true)
+    if (localStorage.getItem(STORAGE_KEY) === '1') {
+      startTransition(() => setAlreadySubscribed(true))
     }
   }, [])
 

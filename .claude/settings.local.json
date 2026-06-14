@@ -15,7 +15,9 @@
       "Bash(git -C \"/Users/jupemartin/Viajes Vidaia Code/travel-agency\" log --oneline --all)",
       "Bash(curl -s http://localhost:3001/es)",
       "Bash(curl -s http://localhost:3000/es)",
-      "PowerShell($html = Invoke-WebRequest -Uri \"http://localhost:3000/es\" -UseBasicParsing; if \\($html.Content -match \"lightwidget\"\\) { \"✓ LightWidget iframe found in SSR HTML\" } else { \"✗ Not found\" })"
+      "PowerShell($html = Invoke-WebRequest -Uri \"http://localhost:3000/es\" -UseBasicParsing; if \\($html.Content -match \"lightwidget\"\\) { \"✓ LightWidget iframe found in SSR HTML\" } else { \"✗ Not found\" })",
+      "Bash(node -e \"require\\('@eslint/eslintrc'\\); console.log\\('ok'\\)\")",
+      "Bash(Remove-Item \"c:\\\\Users\\\\juanpedro.martin\\\\travel-agency\\\\.eslintrc.json\")"
     ],
     "additionalDirectories": [
       "/Users/jupemartin/Viajes Vidaia Code/travel-agency/app/[lang]/destinos/[slug]"

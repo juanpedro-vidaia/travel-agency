@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState, startTransition, type ReactNode } from 'react'
 import {
   CONSENT_VERSION,
   DEFAULT_PREFERENCES,
@@ -38,14 +38,16 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const stored = readStoredConsent(CONSENT_VERSION)
-    if (stored) {
-      setConsent(stored)
-      setIsBannerOpen(false)
-    } else {
-      setConsent(createConsentState(DEFAULT_PREFERENCES, CONSENT_VERSION))
-      setIsBannerOpen(true)
-    }
-    setIsReady(true)
+    startTransition(() => {
+      if (stored) {
+        setConsent(stored)
+        setIsBannerOpen(false)
+      } else {
+        setConsent(createConsentState(DEFAULT_PREFERENCES, CONSENT_VERSION))
+        setIsBannerOpen(true)
+      }
+      setIsReady(true)
+    })
   }, [])
 
   const saveAndClose = (next: ConsentState) => {

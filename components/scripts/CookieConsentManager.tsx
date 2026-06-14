@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, startTransition } from 'react'
 import { ShieldCheck, Settings2, X } from 'lucide-react'
 import LangLink from '@/components/ui/LangLink'
 import { useConsent } from '@/lib/context/ConsentContext'
@@ -66,11 +66,11 @@ export default function CookieConsentManager() {
   })
 
   useEffect(() => {
-    setPreferences({
+    startTransition(() => setPreferences({
       analytics: consent.analytics,
       marketing: consent.marketing,
       personalization: consent.personalization,
-    })
+    }))
   }, [consent])
 
   if (!isReady) return null
