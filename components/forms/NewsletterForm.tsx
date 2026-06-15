@@ -83,7 +83,7 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
             value={form.full_name}
             onChange={(e) => setForm((f) => ({ ...f, full_name: e.target.value }))}
             placeholder={t.fullNamePlaceholder}
-            className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
           />
         </div>
 
@@ -98,12 +98,12 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
             placeholder="tu@email.com"
-            className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
           />
         </div>
 
         <label className="flex items-start gap-3 cursor-pointer group">
-          <div className="relative mt-0.5 flex-shrink-0">
+          <div className="relative mt-0.5 shrink-0">
             <input
               type="checkbox"
               required
@@ -111,7 +111,7 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
               onChange={(e) => setForm((f) => ({ ...f, privacy: e.target.checked }))}
               className="sr-only peer"
             />
-            <div className="w-5 h-5 rounded border-2 border-gray-300 peer-checked:border-vidaia-primary peer-checked:bg-vidaia-primary transition-colors flex items-center justify-center">
+            <div className="w-5 h-5 rounded-sm border-2 border-gray-300 peer-checked:border-vidaia-primary peer-checked:bg-vidaia-primary transition-colors flex items-center justify-center">
               {form.privacy && (
                 <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -129,14 +129,14 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
         </label>
 
         <label className="flex items-start gap-3 cursor-pointer group">
-          <div className="relative mt-0.5 flex-shrink-0">
+          <div className="relative mt-0.5 shrink-0">
             <input
               type="checkbox"
               checked={form.commercial}
               onChange={(e) => setForm((f) => ({ ...f, commercial: e.target.checked }))}
               className="sr-only peer"
             />
-            <div className="w-5 h-5 rounded border-2 border-gray-300 peer-checked:border-vidaia-primary peer-checked:bg-vidaia-primary transition-colors flex items-center justify-center">
+            <div className="w-5 h-5 rounded-sm border-2 border-gray-300 peer-checked:border-vidaia-primary peer-checked:bg-vidaia-primary transition-colors flex items-center justify-center">
               {form.commercial && (
                 <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />

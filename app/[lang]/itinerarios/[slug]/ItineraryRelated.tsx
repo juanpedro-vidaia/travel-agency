@@ -39,7 +39,7 @@ export default function ItineraryRelated({ relatedTrips, mainTrip }: Props) {
             return (
               <article
                 key={related.id}
-                className="snap-start shrink-0 md:shrink w-[260px] md:w-auto group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 flex flex-col"
+                className="snap-start shrink-0 md:shrink w-[260px] md:w-auto group bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all border border-gray-100 flex flex-col"
               >
                 <div className="relative h-44 overflow-hidden">
                   <Image

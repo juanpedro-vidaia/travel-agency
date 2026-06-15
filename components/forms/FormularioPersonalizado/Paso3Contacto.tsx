@@ -100,7 +100,7 @@ export default function Paso3Contacto({ t, validationMessages }: Paso3Props) {
             <input
               type="checkbox"
               {...register('privacidad')}
-              className="mt-0.5 rounded border-gray-300 text-vidaia-primary flex-shrink-0"
+              className="mt-0.5 rounded-sm border-gray-300 text-vidaia-primary shrink-0"
             />
             <span className="text-xs text-gray-500 leading-relaxed">
               {t.privacyLabel}{' '}

@@ -13,7 +13,7 @@ import type { Trip } from '@/lib/data/trips'
 import type { Country } from '@/lib/data/countries'
 
 const PILL_CLASS =
-  'flex items-center gap-1.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-sm font-medium text-white'
+  'flex items-center gap-1.5 bg-white/20 backdrop-blur-xs border border-white/30 rounded-full px-4 py-2 text-sm font-medium text-white'
 
 interface Props {
   slug: string
@@ -77,7 +77,7 @@ export default function ItineraryHeroCarousel({ slug, resolvedItinerary, trip, c
             priority={index === 0}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/70" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/20 to-black/70" />
         </div>
       ))}
 
@@ -134,14 +134,14 @@ export default function ItineraryHeroCarousel({ slug, resolvedItinerary, trip, c
 
       <button
         onClick={prevSlide}
-        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full items-center justify-center text-white transition-colors"
+        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-xs rounded-full items-center justify-center text-white transition-colors"
         aria-label={content.hero.ariaLabelPrev}
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full items-center justify-center text-white transition-colors"
+        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-xs rounded-full items-center justify-center text-white transition-colors"
         aria-label={content.hero.ariaLabelNext}
       >
         <ChevronRight className="w-6 h-6" />

@@ -50,7 +50,7 @@ export default function ViajesHero({
 
   return (
     <section
-      className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] overflow-hidden"
+      className="relative h-dvh md:h-screen min-h-[600px] md:min-h-[620px] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -68,7 +68,7 @@ export default function ViajesHero({
             priority={i === 0}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/70" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/20 to-black/70" />
         </div>
       ))}
 
@@ -95,7 +95,7 @@ export default function ViajesHero({
             onClick={() => {
               document.getElementById('buscador-viajes')?.scrollIntoView({ behavior: 'smooth' })
             }}
-            className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
+            className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-xs border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
           >
             {ctaSecondary}
           </button>
@@ -113,14 +113,14 @@ export default function ViajesHero({
       {/* Prev / Next */}
       <button
         onClick={prev}
-        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full items-center justify-center text-white transition-colors"
+        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-xs rounded-full items-center justify-center text-white transition-colors"
         aria-label="Imagen anterior"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
       <button
         onClick={next}
-        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full items-center justify-center text-white transition-colors"
+        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white/20 hover:bg-white/40 backdrop-blur-xs rounded-full items-center justify-center text-white transition-colors"
         aria-label="Imagen siguiente"
       >
         <ChevronRight className="w-5 h-5" />

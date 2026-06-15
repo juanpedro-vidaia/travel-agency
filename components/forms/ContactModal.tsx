@@ -96,14 +96,14 @@ export default function ContactModal() {
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6"
+      className="fixed inset-0 z-200 flex items-center justify-center p-4 sm:p-6"
       role="dialog"
       aria-modal="true"
       aria-labelledby="contact-modal-title"
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 backdrop-blur-xs"
         onClick={closeContactModal}
         aria-hidden="true"
       />
@@ -112,7 +112,7 @@ export default function ContactModal() {
       <div className="relative z-10 w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
 
         {/* Header */}
-        <div className="bg-vidaia-dark px-6 sm:px-8 pt-7 pb-5 flex-shrink-0">
+        <div className="bg-vidaia-dark px-6 sm:px-8 pt-7 pb-5 shrink-0">
           <button
             onClick={closeContactModal}
             aria-label={t.closeLabel}
@@ -137,7 +137,7 @@ export default function ContactModal() {
             href={`tel:${CONTACT.phoneClean}`}
             className="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/15 rounded-2xl px-4 py-2.5 transition-colors mb-3"
           >
-            <span className="w-7 h-7 rounded-full bg-vidaia-earth/20 flex items-center justify-center flex-shrink-0">
+            <span className="w-7 h-7 rounded-full bg-vidaia-earth/20 flex items-center justify-center shrink-0">
               <Phone className="w-3.5 h-3.5 text-vidaia-earth" />
             </span>
             <span className="text-sm font-semibold text-white">
@@ -187,7 +187,7 @@ export default function ContactModal() {
                     onChange={e => set('full_name', e.target.value)}
                     required
                     placeholder={t.fullNamePlaceholder}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-hidden focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
                   />
                 </div>
 
@@ -203,7 +203,7 @@ export default function ContactModal() {
                     onChange={e => set('email', e.target.value)}
                     required
                     placeholder="ana@email.com"
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-hidden focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
                   />
                 </div>
 
@@ -219,7 +219,7 @@ export default function ContactModal() {
                     onChange={e => set('phone', e.target.value)}
                     required
                     placeholder="+34 600 000 000"
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-hidden focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors"
                   />
                 </div>
 
@@ -249,7 +249,7 @@ export default function ContactModal() {
                             className="sr-only"
                           />
                           <span
-                            className={`w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors ${
+                            className={`w-4 h-4 rounded-full border-2 shrink-0 transition-colors ${
                               active ? 'border-vidaia-primary bg-vidaia-primary' : 'border-gray-300'
                             }`}
                           />
@@ -271,7 +271,7 @@ export default function ContactModal() {
                     onChange={e => set('message', e.target.value)}
                     rows={3}
                     placeholder={t.messagePlaceholder}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors resize-none"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-hidden focus:ring-2 focus:ring-vidaia-primary/30 focus:border-vidaia-primary transition-colors resize-none"
                   />
                 </div>
 
@@ -285,7 +285,7 @@ export default function ContactModal() {
                       checked={form.privacy}
                       onChange={e => set('privacy', e.target.checked)}
                       required
-                      className="mt-0.5 w-4 h-4 flex-shrink-0 accent-vidaia-primary"
+                      className="mt-0.5 w-4 h-4 shrink-0 accent-vidaia-primary"
                     />
                     <span className="text-xs text-vidaia-charcoal/60 leading-relaxed">
                       {t.privacyPrefix}{' '}
@@ -305,7 +305,7 @@ export default function ContactModal() {
                       type="checkbox"
                       checked={form.commercial}
                       onChange={e => set('commercial', e.target.checked)}
-                      className="mt-0.5 w-4 h-4 flex-shrink-0 accent-vidaia-primary"
+                      className="mt-0.5 w-4 h-4 shrink-0 accent-vidaia-primary"
                     />
                     <span className="text-xs text-vidaia-charcoal/60 leading-relaxed">
                       {t.commercialText}

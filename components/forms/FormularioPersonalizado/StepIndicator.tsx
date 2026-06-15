@@ -21,7 +21,7 @@ export default function StepIndicator({ currentStep, labels }: StepIndicatorProp
             const active = currentStep === step.num
             return (
               <div key={step.num} className="flex items-center flex-1 last:flex-none">
-                <div className="flex items-center gap-2.5 flex-shrink-0">
+                <div className="flex items-center gap-2.5 shrink-0">
                   <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                     done
                       ? 'bg-vidaia-primary text-white'

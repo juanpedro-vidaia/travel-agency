@@ -190,7 +190,7 @@ export default function ViajesBuscador({
               onChange={e => setQuery(e.target.value)}
               placeholder={strings.searchPlaceholder}
               aria-label={strings.searchPlaceholder}
-              className="w-full pl-12 pr-4 py-4 rounded-2xl border border-vidaia-light bg-white text-vidaia-charcoal placeholder:text-vidaia-charcoal/40 focus:outline-none focus:ring-2 focus:ring-vidaia-primary text-base"
+              className="w-full pl-12 pr-4 py-4 rounded-2xl border border-vidaia-light bg-white text-vidaia-charcoal placeholder:text-vidaia-charcoal/40 focus:outline-hidden focus:ring-2 focus:ring-vidaia-primary text-base"
             />
           </div>
           <button
@@ -264,14 +264,14 @@ export default function ViajesBuscador({
                       type="checkbox"
                       checked={selectedCountries.includes(c.id)}
                       onChange={() => toggleCountry(c.id)}
-                      className="w-4 h-4 rounded border-vidaia-light accent-vidaia-primary focus:ring-vidaia-primary"
+                      className="w-4 h-4 rounded-sm border-vidaia-light accent-vidaia-primary focus:ring-vidaia-primary"
                     />
                     <Image
                       src={`https://flagcdn.com/20x15/${c.flagCode}.png`}
                       alt=""
                       width={20}
                       height={15}
-                      className="rounded-sm flex-shrink-0"
+                      className="rounded-xs shrink-0"
                     />
                     <span className="text-sm text-vidaia-charcoal group-hover:text-vidaia-primary transition-colors">
                       {c.name}
@@ -293,7 +293,7 @@ export default function ViajesBuscador({
                       type="checkbox"
                       checked={selectedTags.includes(tag)}
                       onChange={() => toggleTag(tag)}
-                      className="w-4 h-4 rounded border-vidaia-light accent-vidaia-primary focus:ring-vidaia-primary"
+                      className="w-4 h-4 rounded-sm border-vidaia-light accent-vidaia-primary focus:ring-vidaia-primary"
                     />
                     <span className="text-sm text-vidaia-charcoal group-hover:text-vidaia-primary transition-colors">
                       {TAG_CONFIG[tag].icon} {TAG_CONFIG[tag].es.label}

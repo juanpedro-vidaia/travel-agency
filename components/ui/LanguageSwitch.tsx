@@ -19,7 +19,7 @@ function FlagImg({ langCode, alt }: { langCode: string; alt: string }) {
       alt={alt}
       width={20}
       height={15}
-      className="rounded-sm inline-block flex-shrink-0"
+      className="rounded-xs inline-block shrink-0"
     />
   )
 }

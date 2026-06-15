@@ -42,11 +42,11 @@ export default function Footer() {
 
             <div className="space-y-2.5 mb-7">
               <div className="flex items-center gap-2.5 text-sm">
-                <Mail className="w-4 h-4 text-vidaia-earth flex-shrink-0" />
+                <Mail className="w-4 h-4 text-vidaia-earth shrink-0" />
                 <ObfuscatedEmail user="info" domain="viajesvidaia.com" className="hover:text-white transition-colors" />
               </div>
               <div className="flex items-center gap-2.5 text-sm">
-                <MapPin className="w-4 h-4 text-vidaia-earth flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-vidaia-earth shrink-0" />
                 {footerContent.brand.location}
               </div>
             </div>
@@ -80,7 +80,7 @@ export default function Footer() {
               {countries.map((c) => (
                 <li key={c.slug}>
                   <LangLink href={`/destinos/${c.slug}`} className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
-                    <Image src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
+                    <Image src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-xs shrink-0" />
                     {(c.content[language as keyof typeof c.content] ?? c.content.es).name}
                   </LangLink>
                 </li>

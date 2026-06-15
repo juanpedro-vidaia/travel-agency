@@ -47,7 +47,7 @@ export default async function ExitoPage({ params }: Props) {
         </p>
         <LangLink
           href={success.ctaHref}
-          className="inline-flex items-center justify-center px-8 py-3.5 bg-vidaia-primary hover:bg-vidaia-mid text-white font-bold text-sm rounded-2xl transition-all shadow-sm hover:shadow-md"
+          className="inline-flex items-center justify-center px-8 py-3.5 bg-vidaia-primary hover:bg-vidaia-mid text-white font-bold text-sm rounded-2xl transition-all shadow-xs hover:shadow-md"
         >
           {success.cta}
         </LangLink>

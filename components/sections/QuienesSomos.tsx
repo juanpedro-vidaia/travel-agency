@@ -43,7 +43,7 @@ export default function QuienesSomos() {
                 className="group flex flex-col sm:flex-row gap-6 bg-vidaia-sand rounded-2xl p-6 sm:p-8 hover:shadow-md transition-shadow duration-300"
               >
                 {/* Photo */}
-                <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 rounded-2xl overflow-hidden self-start">
+                <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-2xl overflow-hidden self-start">
                   <Image
                     src={personImage.url}
                     alt={personImage.alt}
@@ -81,7 +81,7 @@ export default function QuienesSomos() {
             className="object-cover"
             sizes="(max-width: 1280px) 100vw, 1280px"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-vidaia-dark/70 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-vidaia-dark/70 to-transparent" />
           <div className="absolute inset-0 flex items-end p-8 sm:p-12">
             <div>
               <p className="font-heading text-2xl sm:text-3xl font-bold text-white mb-4 max-w-sm leading-snug">

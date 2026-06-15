@@ -38,7 +38,7 @@ export default function TestimonialsSection() {
             return (
               <article
                 key={testimonial.id}
-                className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
+                className="bg-white rounded-2xl p-7 shadow-xs hover:shadow-md transition-shadow duration-300 flex flex-col"
               >
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-5">
@@ -54,7 +54,7 @@ export default function TestimonialsSection() {
 
                 {/* Author */}
                 <div className="flex items-center gap-3 pt-5 border-t border-vidaia-light/60">
-                  <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0">
+                  <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0">
                     <Image
                       src={testimonialImage.url}
                       alt={t.name}

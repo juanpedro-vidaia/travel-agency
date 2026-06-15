@@ -36,7 +36,7 @@ export default function DestinationsSectionExpand({ countryCards, content }: Pro
       {hasMore && !showAll && (
         <div className="relative mt-0">
           {/* Fade overlay on last card */}
-          <div className="absolute -top-24 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-white pointer-events-none" />
+          <div className="absolute -top-24 left-0 right-0 h-24 bg-linear-to-b from-transparent to-white pointer-events-none" />
           <div className="relative flex flex-col items-center pt-4">
             <button
               onClick={handleExpand}
@@ -74,11 +74,11 @@ function ViajesCard({
   return (
     <Link
       href={card.href}
-      className={`group flex flex-col overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 md:h-[240px] ${isOdd ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+      className={`group flex flex-col overflow-hidden rounded-2xl shadow-xs hover:shadow-md transition-shadow duration-300 md:h-[240px] ${isOdd ? 'md:flex-row' : 'md:flex-row-reverse'}`}
       aria-label={`${content.cardTitlePrefix} ${card.countryName}`}
     >
       {/* Photo */}
-      <div className="relative h-48 w-full flex-shrink-0 md:h-full md:w-1/2">
+      <div className="relative h-48 w-full shrink-0 md:h-full md:w-1/2">
         <Image
           src={card.imageUrl}
           alt={card.imageAlt}

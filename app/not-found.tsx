@@ -9,7 +9,7 @@ export default function NotFound() {
   const t = content.notFoundPage
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-vidaia-charcoal to-vidaia-dark flex items-center justify-center px-4">
+    <main className="min-h-screen bg-linear-to-b from-vidaia-charcoal to-vidaia-dark flex items-center justify-center px-4">
       <div className="text-center max-w-md mx-auto pt-28 pb-20">
         <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-8">
           <Compass className="w-10 h-10 text-vidaia-earth" strokeWidth={2} />
@@ -22,7 +22,7 @@ export default function NotFound() {
         </p>
         <LangLink
           href="/"
-          className="inline-flex items-center justify-center px-8 py-3.5 bg-vidaia-earth hover:bg-vidaia-brown text-white font-bold text-sm rounded-2xl transition-all shadow-sm hover:shadow-md"
+          className="inline-flex items-center justify-center px-8 py-3.5 bg-vidaia-earth hover:bg-vidaia-brown text-white font-bold text-sm rounded-2xl transition-all shadow-xs hover:shadow-md"
         >
           {t.cta}
         </LangLink>

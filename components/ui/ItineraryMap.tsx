@@ -159,7 +159,7 @@ export default function ItineraryMap({
   return (
     <div
       ref={containerRef}
-      className="w-full rounded-2xl overflow-hidden shadow-sm border border-vidaia-light"
+      className="w-full rounded-2xl overflow-hidden shadow-xs border border-vidaia-light"
       style={{ height: 480 }}
       aria-label="Mapa del itinerario"
     />

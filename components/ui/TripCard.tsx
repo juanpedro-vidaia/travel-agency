@@ -43,7 +43,7 @@ export default function TripCard({ trip, lang, strings }: TripCardProps) {
     const infoHref       = trip.hasItinerary ? `/${lang}/itinerarios/${trip.slug}/personalizar` : `/${lang}/itinerarios/personalizar`
 
     return (
-      <article className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col">
+      <article className="group bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col">
         <div className="relative h-52 overflow-hidden">
           <Image
             src={tripImage.url}
@@ -52,7 +52,7 @@ export default function TripCard({ trip, lang, strings }: TripCardProps) {
             className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
-          <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
+          <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-xs text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
             <Calendar className="w-3 h-3" />
             {trip.days} {strings.daysLabel}
           </span>
@@ -93,7 +93,7 @@ export default function TripCard({ trip, lang, strings }: TripCardProps) {
   const ctaLabel = trip.hasItinerary ? strings.ctaHasItinerary : strings.ctaNoItinerary
 
   return (
-    <article className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col">
+    <article className="group bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col">
       <div className="relative h-52 overflow-hidden">
         <Image
           src={tripImage.url}
@@ -102,7 +102,7 @@ export default function TripCard({ trip, lang, strings }: TripCardProps) {
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
+        <span className="absolute top-3 right-3 flex items-center gap-1 bg-vidaia-dark/80 backdrop-blur-xs text-white text-xs font-semibold px-2.5 py-1.5 rounded-full">
           <Calendar className="w-3 h-3" />
           {renderTemplate(strings.durationTemplate, { days: trip.days, nights: trip.nights })}
         </span>

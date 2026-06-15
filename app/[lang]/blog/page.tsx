@@ -45,9 +45,9 @@ export default async function BlogPage({ params }: Props) {
         items: allPosts.map(p => ({ name: p.content.es.title, path: `/blog/${p.slug}` })),
       })} id="ld-blog" />
       {/* Hero */}
-      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-20 bg-gradient-to-b from-vidaia-charcoal to-vidaia-dark text-white overflow-hidden">
+      <section className="relative pt-28 sm:pt-32 pb-14 sm:pb-20 bg-linear-to-b from-vidaia-charcoal to-vidaia-dark text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-vidaia-earth via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-vidaia-earth via-transparent to-transparent" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-6">

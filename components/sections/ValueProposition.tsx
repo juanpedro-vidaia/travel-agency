@@ -38,7 +38,7 @@ export default function ValueProposition() {
             return (
               <div
                 key={item.title}
-                className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow duration-300 border border-vidaia-light/60 group"
+                className="bg-white rounded-2xl p-7 shadow-xs hover:shadow-md transition-shadow duration-300 border border-vidaia-light/60 group"
               >
                 <div className="w-12 h-12 flex items-center justify-center bg-vidaia-light rounded-xl mb-5 group-hover:bg-vidaia-primary transition-colors duration-300">
                   <Icon className="w-6 h-6 text-vidaia-primary group-hover:text-white transition-colors duration-300" strokeWidth={1.8} />

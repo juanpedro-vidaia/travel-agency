@@ -7,7 +7,7 @@ import { Check, Plus, Minus } from 'lucide-react'
 export function FieldLabel({ text, required }: { text: string; required?: boolean }) {
   return (
     <p className="flex items-center gap-2.5 mb-4">
-      <span className="w-1.5 h-4 rounded-full bg-vidaia-primary flex-shrink-0" />
+      <span className="w-1.5 h-4 rounded-full bg-vidaia-primary shrink-0" />
       <span className="text-sm font-bold text-vidaia-dark uppercase tracking-wide">
         {text}
         {required && <span className="text-red-400 ml-1">*</span>}
@@ -71,7 +71,7 @@ export function CheckCard({
           : 'border-gray-200 hover:border-vidaia-mid text-gray-700 bg-white'
       }`}
     >
-      <span className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
+      <span className={`w-5 h-5 rounded shrink-0 border-2 flex items-center justify-center transition-colors ${
         checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'
       }`}>
         {checked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
@@ -118,8 +118,8 @@ export function NumberStepper({
 
 // ─── Input class ─────────────────────────────────────────────────────────────
 
-export const inputCls = 'w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-sm text-vidaia-charcoal placeholder-gray-400 focus:outline-none focus:border-vidaia-primary transition-colors bg-white'
-export const inputErrorCls = 'w-full px-4 py-3 border-2 border-red-300 rounded-xl text-sm text-vidaia-charcoal placeholder-gray-400 focus:outline-none focus:border-red-400 transition-colors bg-white'
+export const inputCls = 'w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-sm text-vidaia-charcoal placeholder-gray-400 focus:outline-hidden focus:border-vidaia-primary transition-colors bg-white'
+export const inputErrorCls = 'w-full px-4 py-3 border-2 border-red-300 rounded-xl text-sm text-vidaia-charcoal placeholder-gray-400 focus:outline-hidden focus:border-red-400 transition-colors bg-white'
 
 // ─── FieldError ───────────────────────────────────────────────────────────────
 

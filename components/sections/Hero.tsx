@@ -22,7 +22,7 @@ export default function Hero() {
   }))
 
   return (
-    <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-dvh md:h-screen min-h-[600px] md:min-h-[620px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -33,7 +33,7 @@ export default function Hero() {
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/65" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/30 to-black/65" />
       </div>
 
       {/* Content */}
@@ -49,7 +49,7 @@ export default function Hero() {
                   alt={flagAsset.alt}
                   width={20}
                   height={15}
-                  className="rounded-sm"
+                  className="rounded-xs"
                 />
                 <span>{region.countryName}</span>
               </span>

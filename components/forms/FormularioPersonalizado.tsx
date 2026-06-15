@@ -168,7 +168,7 @@ export default function FormularioPersonalizado({
             )}
             {origin === 'itinerary' && (
               <div className="flex justify-center mb-4">
-                <span className="inline-block bg-white/10 backdrop-blur-sm border border-white/15 text-vidaia-earth font-bold uppercase tracking-widest text-xs px-4 py-1.5 rounded-full">
+                <span className="inline-block bg-white/10 backdrop-blur-xs border border-white/15 text-vidaia-earth font-bold uppercase tracking-widest text-xs px-4 py-1.5 rounded-full">
                   {t.hero.customizingLabel}
                 </span>
               </div>
@@ -191,7 +191,7 @@ export default function FormularioPersonalizado({
             <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
 
               {step === 1 && (
-                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-xs p-6 sm:p-8">
                   <Paso1ElViaje
                     t={t.step1 as Parameters<typeof Paso1ElViaje>[0]['t']}
                     motivoOptions={t.motivoOptions}
@@ -206,7 +206,7 @@ export default function FormularioPersonalizado({
               )}
 
               {step === 2 && (
-                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-xs p-6 sm:p-8">
                   <Paso2ComoViajar t={t.step2} origin={origin} />
                 </div>
               )}
@@ -238,7 +238,7 @@ export default function FormularioPersonalizado({
                   <button
                     type="button"
                     onClick={goNext}
-                    className="flex-1 py-3.5 bg-vidaia-primary hover:bg-vidaia-mid text-white font-bold text-sm rounded-2xl transition-all shadow-sm hover:shadow-md active:scale-[0.98]"
+                    className="flex-1 py-3.5 bg-vidaia-primary hover:bg-vidaia-mid text-white font-bold text-sm rounded-2xl transition-all shadow-xs hover:shadow-md active:scale-[0.98]"
                   >
                     {t.buttons.next}
                   </button>
@@ -246,7 +246,7 @@ export default function FormularioPersonalizado({
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 py-3.5 bg-vidaia-earth hover:bg-vidaia-brown text-white font-bold text-sm rounded-2xl transition-all shadow-sm hover:shadow-md active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="flex-1 py-3.5 bg-vidaia-earth hover:bg-vidaia-brown text-white font-bold text-sm rounded-2xl transition-all shadow-xs hover:shadow-md active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? t.buttons.sending : t.buttons.send}
                   </button>
@@ -259,7 +259,7 @@ export default function FormularioPersonalizado({
 
         {/* Mobile sticky CTA — only on last step */}
         {step === 3 && (
-          <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-sm border-t border-vidaia-light px-4 py-3 shadow-2xl">
+          <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-xs border-t border-vidaia-light px-4 py-3 shadow-2xl">
             <button
               form="personalizar-form"
               type="submit"

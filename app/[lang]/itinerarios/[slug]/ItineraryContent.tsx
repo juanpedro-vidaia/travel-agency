@@ -182,7 +182,7 @@ export default function ItineraryContent({
               {optionalsWithIcons.map(({ Icon, title, description }) => (
                 <div
                   key={title}
-                  className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-amber-100 text-left hover:border-amber-300 hover:shadow-md transition-all"
+                  className="bg-white rounded-2xl p-4 md:p-6 shadow-xs border border-amber-100 text-left hover:border-amber-300 hover:shadow-md transition-all"
                 >
                   <div className="w-10 h-10 md:w-12 md:h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-3 md:mb-4">
                     <Icon className="w-5 h-5 md:w-6 md:h-6 text-amber-700" />

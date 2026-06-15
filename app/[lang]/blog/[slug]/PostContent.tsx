@@ -136,7 +136,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
               className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors relative">
               <Link2 className="w-4 h-4" />
               {copied && (
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-sm whitespace-nowrap">
                   ¡Copiado!
                 </span>
               )}
@@ -157,7 +157,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
                     href={`/itinerarios/${trip.slug}`}
                     className="group flex items-center gap-4 p-4 bg-vidaia-light/40 hover:bg-vidaia-light rounded-2xl transition-colors"
                   >
-                    <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
+                    <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0">
                       <Image src={tripImage.url} alt={tripImage.alt} fill className="object-cover" sizes="64px" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -166,7 +166,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
                       </p>
                       <p className="text-xs text-gray-500 mt-0.5">{trip.days} días{trip.priceFrom != null && trip.priceFrom > 0 && ` · desde ${trip.priceFrom.toLocaleString('es-ES')} €`}</p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-vidaia-primary flex-shrink-0 transition-colors" />
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-vidaia-primary shrink-0 transition-colors" />
                   </LangLink>
                 )
               })}
@@ -183,8 +183,8 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
             <h2 className="font-heading text-2xl font-bold text-vidaia-dark mb-8">Más artículos</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedPosts.map((related) => (
-                <article key={related.slug} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex flex-col">
-                  <div className="relative h-44 overflow-hidden flex-shrink-0">
+                <article key={related.slug} className="group bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex flex-col">
+                  <div className="relative h-44 overflow-hidden shrink-0">
                     <Image
                       src={getAsset(related.imageKey).url} alt={related.content.es.imageAlt} fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"

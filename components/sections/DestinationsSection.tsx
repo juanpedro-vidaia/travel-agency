@@ -100,7 +100,7 @@ function HomeCard({ card, content }: { card: CountryCard; content: DestinationsS
   return (
     <Link
       href={card.href}
-      className="group relative block aspect-[4/3] overflow-hidden rounded-2xl"
+      className="group relative block aspect-4/3 overflow-hidden rounded-2xl"
       aria-label={`${content.cardTitlePrefix} ${card.countryName}`}
     >
       <Image
@@ -110,7 +110,7 @@ function HomeCard({ card, content }: { card: CountryCard; content: DestinationsS
         className="object-cover transition-transform duration-300 group-hover:scale-105"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
       <div className="absolute bottom-0 right-0 p-5 text-right text-white">
         <p className="font-heading font-bold text-xl leading-tight">
           {content.cardTitlePrefix} {card.countryName}

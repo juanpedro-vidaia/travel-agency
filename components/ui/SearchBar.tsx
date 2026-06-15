@@ -23,7 +23,7 @@ export default function SearchBar() {
       >
         {/* Destino */}
         <div className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
-          <MapPin className="w-5 h-5 text-amber-500 flex-shrink-0" />
+          <MapPin className="w-5 h-5 text-amber-500 shrink-0" />
           <div className="flex-1 text-left">
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5">
               Destino
@@ -33,7 +33,7 @@ export default function SearchBar() {
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
               placeholder="¿A dónde quieres ir?"
-              className="w-full text-sm text-gray-900 placeholder-gray-400 bg-transparent outline-none"
+              className="w-full text-sm text-gray-900 placeholder-gray-400 bg-transparent outline-hidden"
             />
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function SearchBar() {
 
         {/* Fecha ida */}
         <div className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors md:w-44">
-          <Calendar className="w-5 h-5 text-amber-500 flex-shrink-0" />
+          <Calendar className="w-5 h-5 text-amber-500 shrink-0" />
           <div className="flex-1 text-left">
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5">
               Salida
@@ -51,7 +51,7 @@ export default function SearchBar() {
               type="date"
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
-              className="w-full text-sm text-gray-900 bg-transparent outline-none"
+              className="w-full text-sm text-gray-900 bg-transparent outline-hidden"
             />
           </div>
         </div>
@@ -60,7 +60,7 @@ export default function SearchBar() {
 
         {/* Fecha vuelta */}
         <div className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors md:w-44">
-          <Calendar className="w-5 h-5 text-amber-500 flex-shrink-0" />
+          <Calendar className="w-5 h-5 text-amber-500 shrink-0" />
           <div className="flex-1 text-left">
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5">
               Vuelta
@@ -69,7 +69,7 @@ export default function SearchBar() {
               type="date"
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
-              className="w-full text-sm text-gray-900 bg-transparent outline-none"
+              className="w-full text-sm text-gray-900 bg-transparent outline-hidden"
             />
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function SearchBar() {
 
         {/* Viajeros */}
         <div className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors md:w-36">
-          <Users className="w-5 h-5 text-amber-500 flex-shrink-0" />
+          <Users className="w-5 h-5 text-amber-500 shrink-0" />
           <div className="flex-1 text-left">
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5">
               Viajeros
@@ -86,7 +86,7 @@ export default function SearchBar() {
             <select
               value={travelers}
               onChange={(e) => setTravelers(e.target.value)}
-              className="w-full text-sm text-gray-900 bg-transparent outline-none cursor-pointer"
+              className="w-full text-sm text-gray-900 bg-transparent outline-hidden cursor-pointer"
             >
               {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                 <option key={n} value={n}>

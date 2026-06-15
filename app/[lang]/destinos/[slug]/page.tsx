@@ -73,12 +73,12 @@ export default async function CountryPage({ params }: Props) {
       )} id="ld-destination" />
       <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
-      <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] flex items-end overflow-hidden">
+      <section className="relative h-dvh md:h-screen min-h-[600px] md:min-h-[620px] flex items-end overflow-hidden">
         <DestinationHeroImage asset={heroAsset} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-black/10" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-16 w-full">
           <p className="flex items-center gap-2 text-vidaia-earth font-semibold uppercase tracking-widest text-xs mb-3">
-            <Image src={flagAsset.url} alt={flagAsset.alt} width={20} height={15} className="rounded-sm flex-shrink-0" />
+            <Image src={flagAsset.url} alt={flagAsset.alt} width={20} height={15} className="rounded-xs shrink-0" />
             {renderTemplate(content.hero.taglineTemplate, { country: countryName })}
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-bold text-white mb-4 text-balance max-w-2xl">

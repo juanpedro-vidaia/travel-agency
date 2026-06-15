@@ -78,7 +78,7 @@ export default function CookieConsentManager() {
   return (
     <>
       {isBannerOpen && !isPreferencesOpen && (
-        <div className="fixed bottom-4 left-4 right-4 z-[250] mx-auto max-w-4xl rounded-2xl border border-vidaia-light bg-white shadow-2xl">
+        <div className="fixed bottom-4 left-4 right-4 z-250 mx-auto max-w-4xl rounded-2xl border border-vidaia-light bg-white shadow-2xl">
           <div className="p-5 sm:p-6">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-xl bg-vidaia-light flex items-center justify-center shrink-0">
@@ -124,7 +124,7 @@ export default function CookieConsentManager() {
       )}
 
       {isPreferencesOpen && (
-        <div className="fixed inset-0 z-[260] flex items-center justify-center p-4 sm:p-6">
+        <div className="fixed inset-0 z-260 flex items-center justify-center p-4 sm:p-6">
           <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" onClick={closePreferences} aria-hidden="true" />
           <div className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white border border-vidaia-light shadow-2xl">
             <div className="p-5 sm:p-6 border-b border-vidaia-light">

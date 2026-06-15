@@ -27,7 +27,7 @@ export default function BreadcrumbPersonalizar({
             {countryName}
           </LangLink>
         </li>
-        <li aria-hidden><ChevronRight className="w-3 h-3 text-white/25 flex-shrink-0" /></li>
+        <li aria-hidden><ChevronRight className="w-3 h-3 text-white/25 shrink-0" /></li>
         <li>
           <LangLink
             href={`/itinerarios/${itinerarySlug}`}
@@ -36,7 +36,7 @@ export default function BreadcrumbPersonalizar({
             {itineraryName}
           </LangLink>
         </li>
-        <li aria-hidden><ChevronRight className="w-3 h-3 text-white/25 flex-shrink-0" /></li>
+        <li aria-hidden><ChevronRight className="w-3 h-3 text-white/25 shrink-0" /></li>
         <li>
           <span className="text-white/70 font-medium">{personalizarLabel}</span>
         </li>

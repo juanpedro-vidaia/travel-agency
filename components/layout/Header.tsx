@@ -48,7 +48,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm py-4' : 'bg-transparent py-5'
+        scrolled ? 'bg-white/95 backdrop-blur-xs shadow-xs py-4' : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -89,7 +89,7 @@ export default function Header() {
                     className="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-vidaia-light transition-colors group/item"
                     onClick={() => setDestinosOpen(false)}
                   >
-                    <Image src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0 mt-0.5" />
+                    <Image src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-xs shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-semibold text-vidaia-dark group-hover/item:text-vidaia-primary">
                         {(c.content[language as keyof typeof c.content] ?? c.content.es).name}
@@ -136,7 +136,7 @@ export default function Header() {
             href="/itinerarios/personalizar"
             className={`hidden md:inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
               scrolled
-                ? 'bg-vidaia-earth text-white hover:bg-vidaia-brown shadow-sm'
+                ? 'bg-vidaia-earth text-white hover:bg-vidaia-brown shadow-xs'
                 : 'bg-vidaia-earth/90 text-white hover:bg-vidaia-earth'
             }`}
           >
@@ -180,7 +180,7 @@ export default function Header() {
                   className="flex items-center gap-2.5 pl-6 pr-4 py-2.5 text-sm text-vidaia-charcoal hover:bg-vidaia-light rounded-xl"
                   onClick={() => setMobileOpen(false)}
                 >
-                  <Image src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-sm flex-shrink-0" />
+                  <Image src={`https://flagcdn.com/20x15/${c.flagCode}.png`} alt="" width={20} height={15} className="rounded-xs shrink-0" />
                   <span>{(c.content[language as keyof typeof c.content] ?? c.content.es).name}</span>
                 </LangLink>
               ))}

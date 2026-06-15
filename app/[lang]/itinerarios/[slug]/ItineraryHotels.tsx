@@ -52,7 +52,7 @@ export default function ItineraryHotels({ resolvedItinerary, destinationNames }:
           {hotelCards.map((hotel, index) => (
             <div
               key={index}
-              className="snap-start shrink-0 md:shrink w-[260px] md:w-auto bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
+              className="snap-start shrink-0 md:shrink w-[260px] md:w-auto bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-shadow group"
             >
               <div className="relative h-48 overflow-hidden">
                 <Image

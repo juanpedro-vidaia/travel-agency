@@ -123,7 +123,7 @@ export default function ItineraryDayAccordion({ resolvedItinerary, destinationNa
           {itineraryDays.map((day) => {
             const isOpen = openDays.has(day.day)
             return (
-              <div key={day.day} className="border border-vidaia-light rounded-2xl overflow-hidden shadow-sm">
+              <div key={day.day} className="border border-vidaia-light rounded-2xl overflow-hidden shadow-xs">
                 <button
                   onClick={() => toggleDay(day.day)}
                   className={`w-full flex items-center gap-4 px-4 sm:px-5 py-4 text-left transition-colors ${

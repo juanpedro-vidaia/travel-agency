@@ -34,7 +34,7 @@ export default function FaqSection({ title, subtitle, faqs, className }: FaqSect
         )}
         <div className="space-y-3">
           {faqs.map((faq, i) => (
-            <div key={faq.id} className="border border-vidaia-light rounded-2xl overflow-hidden shadow-sm">
+            <div key={faq.id} className="border border-vidaia-light rounded-2xl overflow-hidden shadow-xs">
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className={`w-full flex items-center justify-between px-6 py-5 text-left transition-colors ${

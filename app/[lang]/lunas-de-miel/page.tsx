@@ -57,9 +57,9 @@ export default async function LunasDeMielPage({ params }: Props) {
       )} id="ld-honeymoon" />
       <main className="min-h-screen bg-white">
       {/* ── HERO ── */}
-      <section className="relative h-[100dvh] md:h-screen min-h-[600px] md:min-h-[620px] overflow-hidden">
+      <section className="relative h-dvh md:h-screen min-h-[600px] md:min-h-[620px] overflow-hidden">
         <LunasDeMielHeroImage asset={heroBg} />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/65" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/25 to-black/65" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 md:justify-center md:pt-28 md:pb-12 text-white text-center px-6 sm:px-8">
           <p className="text-vidaia-earth font-medium tracking-widest uppercase text-xs sm:text-sm mb-2 sm:mb-5">
@@ -87,7 +87,7 @@ export default async function LunasDeMielPage({ params }: Props) {
             </Link>
             <Link
               href={`/${lang}/itinerarios/personalizar`}
-              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-xs border border-white/40 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
             >
               {ui.buttons.tellUsYourTrip}
             </Link>
@@ -145,7 +145,7 @@ export default async function LunasDeMielPage({ params }: Props) {
             <div className="grid grid-cols-4 gap-6">
               {content.howWeDesignIt.steps.map((step, i) => (
                 <div key={i} className="flex flex-col items-center text-center">
-                  <div className="relative z-10 w-10 h-10 rounded-full bg-vidaia-primary text-white flex items-center justify-center font-heading font-bold text-lg mb-5 shadow-sm">
+                  <div className="relative z-10 w-10 h-10 rounded-full bg-vidaia-primary text-white flex items-center justify-center font-heading font-bold text-lg mb-5 shadow-xs">
                     {i + 1}
                   </div>
                   <h3 className="font-heading font-bold text-vidaia-dark mb-2">{step.title}</h3>
@@ -158,11 +158,11 @@ export default async function LunasDeMielPage({ params }: Props) {
             {content.howWeDesignIt.steps.map((step, i) => (
               <div key={i} className="flex gap-5">
                 <div className="flex flex-col items-center">
-                  <div className="w-10 h-10 rounded-full bg-vidaia-primary text-white flex items-center justify-center font-heading font-bold text-lg shrink-0 shadow-sm">
+                  <div className="w-10 h-10 rounded-full bg-vidaia-primary text-white flex items-center justify-center font-heading font-bold text-lg shrink-0 shadow-xs">
                     {i + 1}
                   </div>
                   {i < content.howWeDesignIt.steps.length - 1 && (
-                    <div className="w-px flex-1 bg-vidaia-light my-2 min-h-[2rem]" />
+                    <div className="w-px flex-1 bg-vidaia-light my-2 min-h-8" />
                   )}
                 </div>
                 <div className="pb-8">
@@ -229,7 +229,7 @@ export default async function LunasDeMielPage({ params }: Props) {
       />
 
       {/* ── CTA FINAL ── */}
-      <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-vidaia-dark via-[#2a5060] to-vidaia-primary text-white text-center">
+      <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-vidaia-dark via-[#2a5060] to-vidaia-primary text-white text-center">
         <div className="max-w-2xl mx-auto">
           <Heart className="w-10 h-10 text-vidaia-earth mx-auto mb-6" fill="currentColor" />
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{content.finalCta.title}</h2>

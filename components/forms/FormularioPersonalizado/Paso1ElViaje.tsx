@@ -121,7 +121,7 @@ export default function Paso1ElViaje({
                   onChange={() => toggleCountry(country.id)}
                   className="sr-only"
                 />
-                <span className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
+                <span className={`w-5 h-5 rounded shrink-0 border-2 flex items-center justify-center transition-colors ${
                   checked ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'
                 }`}>
                   {checked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
@@ -131,7 +131,7 @@ export default function Paso1ElViaje({
                   alt=""
                   width={20}
                   height={15}
-                  className="rounded-sm flex-shrink-0"
+                  className="rounded-xs shrink-0"
                 />
                 <span className="text-sm font-semibold">{country.content.es.name}</span>
                 {isPreselected && (
@@ -155,12 +155,12 @@ export default function Paso1ElViaje({
               onChange={() => toggleCountry('otros')}
               className="sr-only"
             />
-            <span className={`w-5 h-5 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
+            <span className={`w-5 h-5 rounded shrink-0 border-2 flex items-center justify-center transition-colors ${
               hasOtros ? 'bg-vidaia-primary border-vidaia-primary' : 'border-gray-300'
             }`}>
               {hasOtros && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
             </span>
-            <Globe className="w-5 h-5 flex-shrink-0 text-vidaia-charcoal/60" />
+            <Globe className="w-5 h-5 shrink-0 text-vidaia-charcoal/60" />
             <span className="text-sm font-semibold">{t.otrosLabel}</span>
           </label>
         </div>
@@ -197,7 +197,7 @@ export default function Paso1ElViaje({
                       alt=""
                       width={20}
                       height={15}
-                      className="rounded-sm"
+                      className="rounded-xs"
                     />
                     {country.content.es.name}
                   </p>
@@ -229,7 +229,7 @@ export default function Paso1ElViaje({
         />
         <FieldError message={errors.dateStart?.message ? validationMessages[errors.dateStart.message] ?? errors.dateStart.message : undefined} />
         <label className="flex items-center gap-2.5 mt-3 cursor-pointer">
-          <input type="checkbox" {...register('flexible')} className="rounded border-gray-300 text-vidaia-primary" />
+          <input type="checkbox" {...register('flexible')} className="rounded-sm border-gray-300 text-vidaia-primary" />
           <span className="text-sm text-gray-600">{t.flexibleLabel}</span>
         </label>
       </div>

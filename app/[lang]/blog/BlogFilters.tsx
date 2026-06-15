@@ -111,8 +111,8 @@ export default function BlogFilters({ allPosts, featured, categories, lang, blog
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {posts.map((post) => (
-                <article key={post.slug} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex flex-col">
-                  <div className="relative h-52 overflow-hidden flex-shrink-0">
+                <article key={post.slug} className="group bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex flex-col">
+                  <div className="relative h-52 overflow-hidden shrink-0">
                     <Image
                       src={getAsset(post.imageKey).url}
                       alt={post.content.es.imageAlt}

@@ -46,10 +46,10 @@ export default function BlogSection() {
             return (
               <article
                 key={post.slug}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex flex-col"
+                className="group bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex flex-col"
               >
                 {/* Image */}
-                <div className="relative h-52 overflow-hidden flex-shrink-0">
+                <div className="relative h-52 overflow-hidden shrink-0">
                   <Image
                     src={postImage.url}
                     alt={p.imageAlt}

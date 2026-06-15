@@ -26,7 +26,7 @@ export default function ViajesComoTrabajamos({ title, subtitle, steps }: ViajesC
           <div className="grid grid-cols-4 gap-6">
             {steps.map((step, i) => (
               <div key={i} className="flex flex-col items-center text-center">
-                <div className="relative z-10 w-10 h-10 rounded-full bg-vidaia-primary text-white flex items-center justify-center font-heading font-bold text-lg mb-5 shadow-sm">
+                <div className="relative z-10 w-10 h-10 rounded-full bg-vidaia-primary text-white flex items-center justify-center font-heading font-bold text-lg mb-5 shadow-xs">
                   {i + 1}
                 </div>
                 <h3 className="font-heading font-bold text-vidaia-dark mb-2">{step.title}</h3>
@@ -41,11 +41,11 @@ export default function ViajesComoTrabajamos({ title, subtitle, steps }: ViajesC
           {steps.map((step, i) => (
             <div key={i} className="flex gap-5">
               <div className="flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full bg-vidaia-primary text-white flex items-center justify-center font-heading font-bold text-lg shrink-0 shadow-sm">
+                <div className="w-10 h-10 rounded-full bg-vidaia-primary text-white flex items-center justify-center font-heading font-bold text-lg shrink-0 shadow-xs">
                   {i + 1}
                 </div>
                 {i < steps.length - 1 && (
-                  <div className="w-px flex-1 bg-vidaia-light my-2 min-h-[2rem]" />
+                  <div className="w-px flex-1 bg-vidaia-light my-2 min-h-8" />
                 )}
               </div>
               <div className="pb-8">
