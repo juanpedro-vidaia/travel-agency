@@ -777,7 +777,7 @@ export const STATIC_CONTENT = {
           },
           {
             imageKey: 'VIAJES_HERO_BOLIVIA',
-            location: 'Salar de Uyuni, Bolivia',
+            location: 'Laguna Colorada, Reserva Eduardo Avaroa, Bolivia',
           },
           {
             imageKey: 'VIAJES_HERO_PERU',

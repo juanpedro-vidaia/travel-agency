@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const organizationSchema = buildOrganizationSchema(countries, destinations)
 
   return (
-    <html lang="es">
+    <html lang="es" data-scroll-behavior="smooth">
       <body className={`${inter.variable} ${playfair.variable}`}>
         <JsonLd data={buildPageSchema(organizationSchema, buildWebSiteSchema())} id="ld-site" />
         <LanguageProvider>
