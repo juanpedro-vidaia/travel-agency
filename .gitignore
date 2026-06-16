@@ -5,3 +5,7 @@ next-env.d.ts
 
 # TypeScript incremental build cache
 *.tsbuildinfo
+
+# Gestor de paquetes: este proyecto usa npm (package-lock.json)
+pnpm-lock.yaml
+yarn.lock
