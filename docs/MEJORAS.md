@@ -98,6 +98,20 @@ Además, hay inconsistencia interna: `app/[lang]/blog/[slug]/page.tsx:32,75` y v
 
 ---
 
+### M42 — Flujo de despliegue develop → main con CI
+> ✅ COMPLETADO 16/06/2026 — Establecido el flujo `develop` → `main` con validación automática antes de producción. Antes se commiteaba directo a `main` (rama de producción en Vercel), sin red de seguridad.
+
+**Implementado:**
+1. **Rama `develop`** como integración (todo el desarrollo se pushea aquí); `main` reservada para producción.
+2. **CI GitHub Actions** (`.github/workflows/ci.yml`, job `validate`): `npm ci` → `lint` → `build` sobre Node 24, en cada push a `develop` y en cada PR contra `main`. No despliega (eso lo hace Vercel); es el gate de calidad y añade el `lint` que Vercel no corre.
+3. **`main` protegida**: solo se actualiza vía PR desde `develop` con el check `validate` en verde.
+4. **`.nvmrc`** fija Node 24 (alinea local / CI / Vercel).
+5. **Vercel:** Production Branch = `main` (merge → deploy a producción); push a `develop` → Preview Deployment con URL de staging.
+
+> ⚠️ Los previews de `develop` comparten las claves de producción → los formularios de prueba en una preview crean contactos reales en Clientify y envían emails reales. Si se quiere aislar, cambiar las env vars del scope *Preview* en Vercel por claves de test. Ver `docs/ARQUITECTURA.md` → "Despliegue y CI/CD".
+
+---
+
 ## 🟡 Importante
 
 ### M04 — Eliminar `lib/supabase.ts` y dependencia `@supabase/supabase-js`

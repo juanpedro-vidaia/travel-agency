@@ -97,7 +97,8 @@ Los servicios son funciones puras que filtran y transforman los datos de `lib/da
 | `hotelsService.ts` | `getHotelById()` |
 | `postsService.ts` | `getAllPosts()`, `getRecentPosts(n)`, `getFeaturedPost()`, `getPostBySlug()` |
 | `testimonialsService.ts` | `getFeaturedTestimonials()` |
-| `clientify.ts` | `pushToClientify()` (comentado), payload builders para cada formulario |
+| `clientify.ts` | `pushContactToClientify()`, `pushNewsletterToClientify()`, `pushPresupuestoToClientify()` + payload builders (activo) |
+| `resend.ts` | `sendNotificationEmail()` — notificación email best-effort de formularios (activo) |
 
 ---
 
@@ -313,16 +314,18 @@ Todo el contenido (viajes, itinerarios, posts, hoteles, actividades, países, te
 
 ### Clientify CRM
 
-- **Estado:** Código completo, listo para activar. Comentado en los 3 API Routes y en `lib/services/clientify.ts`.
-- **Qué hace:** Envía leads (nombre, email, teléfono) al CRM cuando alguien rellena un formulario.
+- **Estado:** Activo. Los 3 API Routes llaman a `pushContactToClientify`, `pushNewsletterToClientify` y `pushPresupuestoToClientify` (`lib/services/clientify.ts`).
+- **Qué hace:** Crea/actualiza el contacto en el CRM y, según el formulario, una tarea de llamada (contacto), o un deal con nota en el pipeline "Viaje a Medida" (presupuesto).
 - **Reuniones (activo):** La URL `https://reuniones.clientify.com/#/viajesvidaia/hablemos30min` está activa en el FAB de contacto y en la página de lunas de miel.
-- **Para activar:** Añadir `CLIENTIFY_API_KEY` al `.env.local` y descomentar el código en los routes.
+- **Variable:** `VV_CLIENTIFY_API_TOKEN`. Si no está definida, la integración se omite con un `console.warn` (el resto del flujo del formulario sigue funcionando).
 
-### Resend (email)
+### Resend (email) — M01
 
-- **Estado:** Código listo, comentado. Requiere instalar `npm install resend`.
-- **Qué hace:** Envía un email de notificación al equipo cuando se recibe un formulario.
-- **Para activar:** Añadir `RESEND_API_KEY`, configurar DNS del dominio en Resend, y descomentar el código.
+- **Estado:** Activo desde 16/06/2026 (paquete `resend` instalado).
+- **Qué hace:** Envía un email de notificación al equipo cuando se recibe un formulario. Presupuesto → `sales@viajesvidaia.com`; contacto y newsletter → `info@viajesvidaia.com`. Remitente `web@viajesvidaia.com`.
+- **Dónde:** centralizado en `lib/services/resend.ts` (`sendNotificationEmail`), llamado desde los 3 API Routes tras el push a Clientify. Plantillas: `buildPresupuestoEmailHtml` (`lib/form-utils.ts`) y HTML inline en contacto/newsletter.
+- **Best-effort:** `sendNotificationEmail` captura sus propios errores y nunca lanza — un fallo de Resend no rompe el envío del formulario (Clientify es la fuente de verdad).
+- **Variable:** `RESEND_API_KEY` + dominio `viajesvidaia.com` verificado en Resend. Si falta la variable, el envío se omite con un `console.warn`. Ver `docs/EMAIL.md`.
 
 ### Google Analytics 4
 
@@ -356,6 +359,41 @@ Todo el contenido (viajes, itinerarios, posts, hoteles, actividades, países, te
 - **Dónde:** `headers()` en `next.config.ts`, aplicados a todas las rutas.
 - **Headers:** `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`, `Permissions-Policy` (cámara/micro/geo deshabilitados).
 - **Sin CSP** (ver D18 en DECISIONS.md). HSTS lo añade Vercel automáticamente.
+
+---
+
+## Despliegue y CI/CD
+
+### Estrategia de ramas
+
+- **`develop`** — rama de integración. Todo el desarrollo se commitea/pushea aquí. Es la rama por defecto del repo.
+- **`main`** — rama de producción. Solo se actualiza vía Pull Request desde `develop`. Está protegida: requiere PR + el check de CI en verde para mergear.
+
+```
+push a develop  →  CI (lint + build)  +  Vercel Preview (URL staging)
+       │
+PR develop → main  →  re-corre CI (gate; bloquea el merge si falla)
+       │
+   merge a main  →  Vercel Production Deploy
+```
+
+### CI — GitHub Actions
+
+- **Fichero:** `.github/workflows/ci.yml`. Job único `validate`.
+- **Disparadores:** `push` a `develop` y `pull_request` contra `main`.
+- **Pasos:** `npm ci` → `npm run lint` → `npm run build` sobre **Node 24** (`actions/setup-node` con caché de npm).
+- **No despliega** — el deploy lo gestiona la integración Git de Vercel. El CI es puramente el gate de calidad (y añade el `lint`, que el build de Vercel no ejecuta por sí solo).
+- El build de CI corre **sin secrets**: las integraciones (Resend, Clientify, GA4) guardan ante env ausente, así que no son necesarias para que el build pase.
+
+### Vercel
+
+- **Production Branch:** `main` → cada merge despliega a producción.
+- **Previews:** cada push a `develop` (y cualquier rama/PR) genera un Preview Deployment con URL propia. Comparten las variables de entorno de producción (`RESEND_API_KEY`, `VV_CLIENTIFY_API_TOKEN`, GA4) marcadas en scope Preview — por tanto, **los formularios de prueba en una preview crean contactos reales en Clientify y envían emails reales**.
+- **Node.js Version:** 24.x, alineada con `.nvmrc` y el CI.
+
+### Node version
+
+`.nvmrc` fija Node **24** para alinear local / CI / Vercel. Al cambiar de versión, actualizar los tres puntos a la vez (`.nvmrc`, `node-version` en el workflow, y el panel de Vercel).
 
 ---
 
