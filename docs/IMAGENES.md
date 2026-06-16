@@ -68,3 +68,28 @@ Por tanto, el ancho "mínimo" de la tabla aplica **solo si la imagen vive única
 - **Retratos / avatares** (`TEAM` equipo, `TESTIMONIALS`, miniaturas): **128–400px cuadrado**.
 - **Logo**: SVG (o PNG 480px ancho).
 - **Banderas**: nada (externas).
+
+---
+
+## Flujo de preparación y compresión
+
+El proyecto usa el **optimizador de imágenes nativo de Next.js** (sin loader custom). El almacén (Supabase Storage; aún quedan algunas en Cloudinary durante la migración) solo guarda el **master**; Next.js lo re-comprime a WebP/AVIF al servir, en la calidad que define el código.
+
+```
+Original (cámara, ~6000px) → Squoosh (resize, q85–90) → bucket Supabase (master)
+                                                               ↓
+                        Next.js fetch + re-comprime WebP/AVIF (q75–90) → navegador
+```
+
+- **Hay doble compresión.** Si comprimes el master a q75 en Squoosh y Next vuelve a comprimir a 75, los artefactos se acumulan (visible en cielos/degradados de heroes). En Squoosh **casi solo redimensiona** y deja el master en **q85–90** (MozJPEG). Subir a 100 solo infla el master sin beneficio tras la recompresión.
+- **La calidad final la decide el código**, no Squoosh: `images.qualities` en `next.config.ts` (`[75, 80, 90]`) + el prop `quality` de cada `<Image>` (el hero de home usa `quality={90}`; el resto, default 75).
+- **El peso que descarga el usuario** lo determina la salida WebP/AVIF de Next, no el JPEG de origen.
+- **Formato del master:** JPEG q85–90 sirve. No hace falta generar WebP/AVIF a mano.
+
+### Almacenamiento del master
+
+- Destino final: **bucket de Supabase Storage** (público, para que Next.js lo cachee y sirva optimizado). Migración en curso — algunas imágenes siguen en Cloudinary.
+- Al migrar, las URLs de `lib/data/assets.ts` pasan de `res.cloudinary.com` al formato público de Supabase:
+  `https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/<bucket>/<ruta>`
+- El hostname de Supabase ya está en `images.remotePatterns` de `next.config.ts`, así que no requiere cambios de config.
+- **Egress bajo:** Next.js cachea las variantes optimizadas; Supabase solo sirve el master en el *cache miss*, no en cada visita.
