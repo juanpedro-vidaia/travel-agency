@@ -8,6 +8,19 @@ El ancho recomendado de subida = **ancho CSS máximo al que se renderiza × 2** 
 
 Las **banderas** (`flagcdn.com`, 20×15) son externas y ya vienen dimensionadas → **no requieren acción**.
 
+> **Por qué 2560 mínimo en heroes (no 2200):** en un monitor grande o retina, Next.js intenta pedir la variante de 2560px (p. ej. 1280 CSS × 2 de DPR). Si el original solo tiene 2200px, **no puede generar esa variante → escala hacia arriba y se ve blanda**. Es exactamente el síntoma de un hero a 2200px que en una pantalla de 27" "le falta nitidez". Para 4K perfecto serían 3840, pero 2560 es el punto dulce (más allá, rendimientos decrecientes y mucho peso).
+
+## Una imagen vs varias: resolución ≠ recorte
+
+Es el concepto que decide si hay que subir uno o varios archivos:
+
+- **Distinta resolución → UNA sola imagen.** `<Image>` genera automáticamente el `srcset` con todas las variantes a partir del original y sirve la adecuada según el `sizes` y la pantalla. Si la misma foto a 2560px se usa en un hero (`100vw`) y en una card (`33vw`), en la card Next.js pide una variante **pequeña (~640px)** de ese mismo archivo — **no sirve los 2560 en la card**. No hace falta generar un 1280 a mano: se sube una vez al tamaño mayor y Next la reduce sola.
+- **Distinto recorte / proporción → ARCHIVO APARTE.** Lo único que justifica un segundo archivo es necesitar **otra proporción** (el caso del `url_mobile` vertical de los heroes), no otra resolución.
+
+> **Regla mental:** distinta resolución → una imagen, Next.js se encarga · distinto recorte/proporción → archivo aparte.
+
+Por tanto, el ancho "mínimo" de la tabla aplica **solo si la imagen vive únicamente en ese rol**. Si una foto se comparte entre un hero y una card, gana el requisito mayor (2560) y se sube **una sola vez** a ese tamaño.
+
 ---
 
 ## Tabla por rol de imagen
