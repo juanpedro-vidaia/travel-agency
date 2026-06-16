@@ -7,20 +7,27 @@
 ## 🔴 Urgente
 
 ### M01 — Los formularios no envían datos a ningún destino
-> ✅ CLIENTIFY COMPLETADO 23/05/2026 — PENDIENTE RESEND (bloqueado por DNS y RESEND_API_KEY)
+> ✅ COMPLETADO — CLIENTIFY 23/05/2026 · RESEND 16/06/2026. Los tres endpoints (`/api/forms/{presupuesto,contacto,newsletter}`) envían el lead a Clientify y notifican por email vía Resend (`lib/services/resend.ts`, remitente `web@viajesvidaia.com`). El email es best-effort (no rompe el envío si falla). Requiere `RESEND_API_KEY` en las variables de entorno (Vercel → Settings → Environment Variables) y el dominio `viajesvidaia.com` verificado en Resend.
 
-**Problema:** Los tres endpoints de formulario (`/api/forms/contacto`, `/api/forms/newsletter`, `/api/forms/presupuesto`) aceptan los datos, validan y devuelven `{ ok: true }`, pero **solo escriben en `console.log`**. El equipo no recibe ninguna notificación de los formularios enviados en producción.
+**Problema (resuelto):** Los tres endpoints de formulario (`/api/forms/contacto`, `/api/forms/newsletter`, `/api/forms/presupuesto`) aceptaban los datos, validaban y devolvían `{ ok: true }`, pero **solo escribían en `console.log`**. El equipo no recibía ninguna notificación de los formularios enviados en producción.
 
-**Archivos afectados:**
-- `app/api/forms/contacto/route.ts` (líneas 29-49)
-- `app/api/forms/newsletter/route.ts` (líneas 22-42)
-- `app/api/forms/presupuesto/route.ts` (líneas 23-65)
+**Archivos:**
+- `app/api/forms/contacto/route.ts` → Clientify + email a `info@viajesvidaia.com`
+- `app/api/forms/newsletter/route.ts` → Clientify + email a `info@viajesvidaia.com`
+- `app/api/forms/presupuesto/route.ts` → Clientify + email a `sales@viajesvidaia.com`
+- `lib/services/clientify.ts` → integración CRM (`VV_CLIENTIFY_API_TOKEN`)
+- `lib/services/resend.ts` → notificación email (`RESEND_API_KEY`)
 
-**Solución:** Activar Resend (email de notificación) y Clientify (CRM):
-1. Añadir `RESEND_API_KEY` a las variables de entorno
-2. Añadir `CLIENTIFY_API_KEY` a las variables de entorno
-3. En cada route, descomentar los bloques marcados con `// TODO: Activate`
-4. Instalar el paquete `resend`: `npm install resend`
+**Implementado:**
+1. ✅ Clientify (CRM): contacto + tarea/deal/nota según formulario.
+2. ✅ Resend (email): helper `sendNotificationEmail` centralizado, remitente `web@viajesvidaia.com`, envío best-effort (un fallo de email no rompe el envío del formulario; Clientify es la fuente de verdad).
+3. ✅ Paquete `resend` instalado.
+
+**Variables de entorno requeridas** (local en `.env.local`, producción en Vercel → Settings → Environment Variables):
+- `RESEND_API_KEY` — además, el dominio `viajesvidaia.com` debe estar verificado en Resend.
+- `VV_CLIENTIFY_API_TOKEN`.
+
+Si falta alguna variable, la integración correspondiente se omite con un `console.warn` y el resto del flujo sigue funcionando.
 
 
 ---

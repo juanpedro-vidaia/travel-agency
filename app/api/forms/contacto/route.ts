@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { pushContactToClientify, type ContactoPayload } from '@/lib/services/clientify'
+import { sendNotificationEmail } from '@/lib/services/resend'
 
 function buildEmailHtml(data: ContactoPayload & { privacy: boolean }) {
   const sent = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
@@ -25,19 +26,13 @@ export async function POST(request: NextRequest) {
     // ── Clientify ────────────────────────────────────────────────────────────
     await pushContactToClientify(data)
 
-    // ── Resend ───────────────────────────────────────────────────────────────
-    // TODO: Activate when RESEND_API_KEY and DNS are configured.
-    //
-    // import { Resend } from 'resend'
-    // const resend = new Resend(process.env.RESEND_API_KEY)
-    // await resend.emails.send({
-    //   from: 'web@viajesvidaia.com',
-    //   to: 'info@viajesvidaia.com',
-    //   subject: `🔔 Nueva solicitud de llamada — ${data.full_name}`,
-    //   html: buildEmailHtml(data),
-    // })
-
-    void buildEmailHtml
+    // ── Resend (notificación al equipo) ────────────────────────────────────────
+    await sendNotificationEmail({
+      to:      'info@viajesvidaia.com',
+      replyTo: data.email,
+      subject: `🔔 Nueva solicitud de llamada — ${data.full_name}`,
+      html:    buildEmailHtml(data),
+    })
 
     console.log('[Contacto] Nueva solicitud de llamada:', JSON.stringify(data, null, 2))
 
