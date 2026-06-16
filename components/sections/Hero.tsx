@@ -32,6 +32,7 @@ export default function Hero() {
           className="object-cover"
           priority
           quality={90}
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/30 to-black/65" />
       </div>
