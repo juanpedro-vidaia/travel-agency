@@ -12,6 +12,8 @@ interface SeoOptions {
   ogType?: 'website' | 'article'
   /** Only used when ogType is 'article' (ISO date, e.g. post.date) */
   publishedTime?: string
+  /** Optional robots directives, e.g. { index: false, follow: true }. */
+  robots?: Metadata['robots']
 }
 
 /**
@@ -26,6 +28,7 @@ export function buildMetadata({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = 'website',
   publishedTime,
+  robots,
 }: SeoOptions): Metadata {
   const url = `${BASE_URL}${path}`
 
@@ -43,6 +46,7 @@ export function buildMetadata({
       canonical: url,
       languages,
     },
+    ...(robots ? { robots } : {}),
     openGraph: {
       title,
       description,

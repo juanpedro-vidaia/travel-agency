@@ -86,8 +86,8 @@ La última tarde juntos, después de visitar la parte brasileña, disfrutamos de
 
 Puede que en parte la conexión **Vidaia** naciera allí…`,
         imageAlt: 'Cataratas del Iguazú, desde un mirador del Lado Brasileño',
-        metaTitle: 'Cataratas de Iguazú: nuestra experiencia | Viajes Vidaia',
-        metaDescription: 'Descubre el encuentro en las Cataratas del Iguazú de los fundadores de Viajes Vidaia. Un encuentro inspiracional que no llevó a fundar esta empresa para crear viajes a Argentina para vosotros.',
+        metaTitle: 'Cataratas de Iguazú: nuestra experiencia',
+        metaDescription: 'Descubre el encuentro en las Cataratas del Iguazú que nos llevó a fundar esta agencia de viajes para diseñar viajes a Argentina para vosotros.',
       }
     },
     imageKey: 'BLOG.ENCUENTRO_IGUAZU',
@@ -180,8 +180,8 @@ El mate es, sin lugar a dudas, un símbolo de identidad en Argentina. Más allá
 
 Con sus múltiples beneficios para la salud y su capacidad para unir a las personas, **el mate sigue siendo una costumbre arraigada que acompaña a los argentinos en su vida cotidiana**, manteniendo viva una tradición que trasciende generaciones.`,
         imageAlt: 'Foto de Jorge Zapata en Unsplash',
-        metaTitle: 'El mate, alma y tradición de Argentina | Viajes Vidaia',
-        metaDescription: 'Descubre la cultura del mate en Argentina: su historia desde los guaraníes, cómo se prepara, los tipos de yerba y el ritual de compartirlo. Una tradición que define la identidad argentina.',
+        metaTitle: 'El mate, alma y tradición de Argentina',
+        metaDescription: 'Descubre la tradición cultural del mate en Argentina: su historia desde los guaraníes, cómo se prepara, los tipos de yerba y el ritual de compartirlo.',
       }
     },
     imageKey: 'BLOG.MATE_ARGENTINA',
@@ -227,8 +227,8 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
 
 ¿De verdad te vas a quedar sin visitarlo?`,
         imageAlt: 'Laguna Miscanti en el Desierto de Atacama, Chile',
-        metaTitle: 'Desierto de Atacama: guia completa de viaje | Viajes Vidaia',
-        metaDescription: 'Descubre el Desierto de Atacama: lagunas altiplánicas, geysers del Tatio, Valle de la Luna y sus leyendas. Consejos prácticos y todo lo necesario para organizar tu viaje.',
+        metaTitle: 'Desierto de Atacama: guia completa de viaje',
+        metaDescription: 'Descubre el Desierto de Atacama: lagunas altiplánicas y geysers, el Valle de la Luna y sus leyendas. Consejos prácticos para organizar tu viaje a Chile.',
       }
     },
     imageKey: 'BLOG.ATACAMA_CHILE',
@@ -282,8 +282,8 @@ Caleta Tortel es única en el mundo por su sistema de pasarelas de madera que co
 
 > La Carretera Austral es mucho más que una carretera; es un testimonio de la historia, la naturaleza y la perseverancia humana. Conectando algunos de los paisajes más remotos y asombrosos de la Patagonia, esta ruta es un viaje que todo amante de la aventura debe realizar al menos una vez en la vida. ¿Te animas a recorrer la Carretera Austral en coche o en bicicleta? Empaca tu mochila, prepárate para la aventura y descubre por qué esta ruta es uno de los tesoros más valiosos de Chile.`,
         imageAlt: 'Catedrales de Marmol en el Lago General Carrera, Chile',
-        metaTitle: 'Carretera Austral: guía completa de viaje | Viajes Vidaia',
-        metaDescription: 'Descubre la Carretera Austral en Chile: Caleta Tortel, Catedrales de Marmol, Trekking de Cerro Castillo, Glaciar San Rafael, Ventisquero Colgante en Queulat, Puyuhapi, Coyahique y Chaiten. Consejos prácticos y todo lo necesario para organizar tu viaje.',
+        metaTitle: 'Carretera Austral: guía completa de viaje',
+        metaDescription: 'Descubre la Carretera Austral en Chile: glaciares, trekkings y aventura a tu ritmo. Consejos prácticos y todo lo necesario para organizar tu viaje a Chile.',
       }
     },
     imageKey: 'BLOG.CARRETERA_AUSTRAL',
@@ -325,7 +325,7 @@ Cuando empezó la pandemia, una de las cosas que más me preocupaba era qué pas
 
 A día de hoy y desde España seguimos siendo fans de este momento…
 
-> Si quieres tener más detalles sobre el mate, te lo contamos en uno de nuestros post anteriores: [El mate, alma y tradición de Argentina](/es/blog/mate-alma-tradicion-argentina)
+> Si quieres tener más detalles sobre el mate, te lo contamos en uno de nuestros post anteriores: [El mate, alma y tradición de Argentina](https://viajesvidaia.com/es/blog/mate-alma-tradicion-argentina)
 
 ## El tango y su sensualidad
 
@@ -345,7 +345,7 @@ También podéis escuchar la versión de Andrés Calamaro 🙂
 
 Con todo esto que os he contado hoy… ¿no te dan ganas de visitar Argentina?`,
         imageAlt: 'Murales de Messi y Maradona en un escaparate del barrio de La Boca, Buenos Aires',
-        metaTitle: 'Costumbres argentinas que te enamorarán | Viajes Vidaia',
+        metaTitle: 'Costumbres argentinas que te enamorarán',
         metaDescription: 'Asado, mate, tango y fútbol: descubre las costumbres más auténticas de Argentina de la mano de alguien que la conoce y la ama. ¡Te vas a querer ir ya!',
       }
     },
@@ -388,7 +388,7 @@ El verano es especialmente bueno si tu prioridad es visitar la Patagonia argenti
 
 Si tu viaje incluye cataratas y norte, se puede hacer perfectamente en verano, pero con un estilo distinto: madrugar, hacer descansos, y diseñar actividades pensando en el sol del mediodía. Ahí es donde una planificación a medida marca la diferencia entre “me lo he pasado bien” y “me lo he pasado bien, pero agotado”.
 
-> Si alguna de estas épocas encaja contigo, en **Viajes Vidaia** diseñamos tu [Viaje Organizado a Argentina](/es/destinos/argentina/) totalmente a medida, adaptado a tus fechas, ritmo y preferencias, para que aproveches la primavera en el destino que mejor se ajuste a tu idea de viaje. [¿Hablamos y empezamos a planificarlo?](/es/itinerarios/personalizar)
+> Si alguna de estas épocas encaja contigo, en **Viajes Vidaia** diseñamos tu [Viaje Organizado a Argentina](https://viajesvidaia.com/es/destinos/argentina/) totalmente a medida, adaptado a tus fechas, ritmo y preferencias, para que aproveches la primavera en el destino que mejor se ajuste a tu idea de viaje. [¿Hablamos y empezamos a planificarlo?](https://viajesvidaia.com/es/itinerarios/personalizar)
 
 ## Otoño: disfrutar de un país increíble y sin prisa
 
@@ -428,13 +428,13 @@ Hay viajeros que quieren vivir *Argentina desde lo urbano*: bodegones, barrios, 
 
 Si estás pensando en un Viaje Organizado a Argentina, ¡Viajes Vidaia es tu agencia! La temporada influye, pero sobre todo influye cómo diseñamos tu ruta. Más allá de elegir la mejor época para viajar a Argentina, lo realmente importante es construir un itinerario equilibrado, adaptado a tu ritmo y a lo que quieres vivir. Argentina es inmensa, las distancias existen y afectan, y un viaje bien planificado marca la diferencia entre “ver mucho” y disfrutarlo de verdad.
 
-En **Viajes Vidaia** no creemos en viajes acelerados o enlatados. Si dispones de 10–12 días, lo ideal es concentrarse en una gran zona bien combinada, como Buenos Aires + Iguazú o Buenos Aires + una Patagonia seleccionada. Si tienes 15 días o más, podemos diseñar algo más completo como el recorrido [Argentina de Sur a Norte](/es/itinerarios/argentina-sur-norte). Y si cuentas con tres semanas y espíritu aventurero, rutas como [Grandes Escenarios de Argentina](/es/itinerarios/grandes-escenarios-argentina) o [Contrastes Argentinos](/es/itinerarios/contrastes-argentinos) permiten descubrir el país con profundidad y sin prisas.
+En **Viajes Vidaia** no creemos en viajes acelerados o enlatados. Si dispones de 10–12 días, lo ideal es concentrarse en una gran zona bien combinada, como Buenos Aires + Iguazú o Buenos Aires + una Patagonia seleccionada. Si tienes 15 días o más, podemos diseñar algo más completo como el recorrido [Argentina de Sur a Norte](https://viajesvidaia.com/es/itinerarios/argentina-sur-norte). Y si cuentas con tres semanas y espíritu aventurero, rutas como [Grandes Escenarios de Argentina](https://viajesvidaia.com/es/itinerarios/grandes-escenarios-argentina) o [Contrastes Argentinos](https://viajesvidaia.com/es/itinerarios/contrastes-argentinos) permiten descubrir el país con profundidad y sin prisas.
 
 La clave de un Viaje Organizado a Argentina no es abarcar todo (sería imposible!), **sino elegir bien y personalizar cada etapa* para que vivas el mate, las peñas, los asados, la Patagonia o el norte con la intensidad que buscas. Tú decides el estilo; nosotros lo convertimos en un viaje a medida.
 
-¿Te vienes? [Quiero organizar mi viaje a Argentina](/es/destinos/argentina/).`,
-        imageAlt: 'Cerro de los Siete Colores en Purmamarca, Argentina, uno de los paisajes del norte argentino',
-        metaTitle: 'Guía de la mejor época para viajar a Argentina | Viajes Vidaia',
+¿Te vienes? [Quiero organizar mi viaje a Argentina](https://viajesvidaia.com/es/destinos/argentina/).`,
+        imageAlt: 'El Hornocal, montaña de catorce colores en Humahuaca, Jujuy, Argentina',
+        metaTitle: 'Guía de la mejor época para viajar a Argentina',
         metaDescription: 'Descubre la mejor época para viajar a Argentina según tus preferencias: Patagonia, Iguazú, norte argentino, ciudades, nieve, trekking y clima por estaciones.',
       }
     },
@@ -536,8 +536,8 @@ Ahora que ya tienes claro todo lo que implica viajar a Chile, si quieres conocer
 
 Recuerda, tu lo deseas y, ¡nosotros lo hacemos realidad!`,
         imageAlt: 'Torres del Paine en Chile al amanecer, uno de los paisajes más espectaculares de la Patagonia chilena',
-        metaTitle: 'Requisitos para Viajar a Chile desde España | Viajes Vidaia',
-        metaDescription: 'Descubre los requisitos para viajar a Chile desde España: pasaporte, visado, seguro, vacunas, seguridad, documentación y todo lo necesario para entrar a Chile sin problemas.',
+        metaTitle: 'Requisitos para Viajar a Chile desde España',
+        metaDescription: 'Descubre los requisitos para viajar a Chile: pasaporte, visado, seguro, vacunas, documentación y todo lo necesario para disfrutar tu viaje sin problemas.',
       }
     },
     imageKey: 'BLOG.REQUISITOS_CHILE',

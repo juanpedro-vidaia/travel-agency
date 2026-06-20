@@ -76,9 +76,9 @@ export const STATIC_CONTENT = {
     },
     footer: {
       brand: {
-        description: 'Agencia de viajes personalizados especializada en Argentina, Chile y Bolivia. Diseñamos cada itinerario desde cero — para que sea tuyo de verdad.',
+        description: 'Especialistas en viajes a medida en Sudamérica: Argentina, Chile, Bolivia y Perú. Diseñamos itinerarios personalizados para ti. ',
         email: 'info@viajesvidaia.com',
-        location: 'España · Argentina · Chile',
+        location: 'Madrid, España',
         instagramAriaLabel: 'Instagram de Viajes Vidaia',
         facebookAriaLabel: 'Facebook de Viajes Vidaia',
       },
@@ -97,21 +97,22 @@ export const STATIC_CONTENT = {
       legal: {
         legalNotice: 'Aviso legal',
         privacyPolicy: 'Política de privacidad',
+        conditionsPolicy: 'Condiciones de contratación',
         cookiesPolicy: 'Política de cookies',
         officialAgencyInfo: 'Agencia de viajes oficial{br}CICMA n.º 4641{br}Comunidad de Madrid',
       },
-      copyright: '© 2026 Viajes Vidaia · Todos los derechos reservados',
+      copyright: '© 2026 Viajes Vidaia · Choquequirao · Todos los derechos reservados',
     },
     home: {
       metadata: {
-        title: 'Viajes Vidaia — Expertos en viajes a medida en Sudamérica',
-        description: 'Agencia especializada en viajes a medida a Argentina, Chile, Bolivia y Perú. Diseñamos tu itinerario desde cero: vuelos, alojamiento, actividades y seguro. Sin paquetes cerrados, te hacemos una propuesta personalizada.',
+        title: 'Viajes a medida por Sudamérica',
+        description: 'Diseñamos tu viaje a medida a Argentina, Chile, Bolivia y Perú. Circuitos personalizados. Cuéntanos tu idea y te asesoramos.',
       },
       hero: {
-        tagline: 'Argentina · Chile · Bolivia',
-        title: 'Somos {br} {span} Viajes Vidaia',
+        tagline: 'Argentina · Chile · Bolivia · Perú',
+        title: 'Somos Viajes Vidaia{br} {span} Diseñamos tu viaje a medida por Sudamérica',
         titleEmphasized: '',
-        description: 'Agencia de viajes boutique especializada en viajes a medida por Argentina, Chile, Perú, Bolivia y Ecuador. Diseñamos cada itinerario contigo. Viajes personalizados a tu ritmo.',
+        description: 'Agencia de viajes boutique especializada en viajes a medida por Argentina, Chile, Bolivia y Perú. Circuitos personalizados a tu ritmo.',
       },
       faqSection: {
         title: 'Preguntas frecuentes',
@@ -122,13 +123,13 @@ export const STATIC_CONTENT = {
       header: {
         overline: '¿Por qué Vidaia?',
         title: '¿Qué incluye un viaje a medida con Viajes Vidaia?',
-        subtitle: 'En Vidaia no te vendemos un destino — te ayudamos a vivir una experiencia que de verdad te cambia.',
+        subtitle: 'En Vidaia no te vendemos un destino: escuchamos cómo viajas y construimos un viaje que solo tiene sentido para ti.',
       },
       items: [
         {
           iconName: 'Compass',
           title: 'Viajes únicos',
-          description: 'Nada de catálogos ni paquetes de agencia. Cada itinerario nace de una conversación contigo y se construye desde cero.',
+          description: 'Nada de catálogos ni paquetes cerrados. Cada itinerario nace de una conversación contigo y se construye desde cero.',
         },
         {
           iconName: 'Heart',
@@ -138,12 +139,12 @@ export const STATIC_CONTENT = {
         {
           iconName: 'Leaf',
           title: 'Turismo sostenible',
-          description: 'Viajamos con respeto por los ecosistemas y las comunidades. Huella mínima, experiencia máxima y conciencia en cada paso.',
+          description: 'Viajamos con respeto por los ecosistemas y las comunidades. Queremos que tu paso por cada lugar deje más de lo que se lleva.',
         },
         {
           iconName: 'Users',
           title: 'Apoyo local',
-          description: 'Trabajamos con guías, hospedajes y operadores locales de confianza. Tu viaje impulsa directamente a las personas del lugar.',
+          description: 'Trabajamos con guías, alojamientos y operadores locales de confianza. Tu viaje impulsa directamente a las personas del lugar.',
         },
       ],
     },
@@ -203,8 +204,8 @@ export const STATIC_CONTENT = {
     ctaSection: {
       overline: 'Empecemos',
       title: '¿Hablamos?',
-      subtitle: 'Cuéntanos qué tienes en mente — un destino, una fecha, una idea loca — y diseñamos juntos el viaje que siempre quisiste hacer.',
-      note: 'Sin compromiso. Sin formularios interminables. Solo una charla.',
+      subtitle: 'Cuéntanos qué tienes en mente: un destino, una fecha, una idea loca... y diseñamos juntos el viaje a Sudamérica que siempre quisiste hacer.',
+      note: 'Sin compromiso · Sin formularios interminables  ·  Solo una charla para empezar.',
       email: 'info@viajesvidaia.com',
     },
     destinationsSection: {
@@ -220,8 +221,8 @@ export const STATIC_CONTENT = {
     },
     honeymoonPage: {
       metadata: {
-        title: 'Lunas de Miel a medida en Sudamérica | Viajes Vidaia',
-        description: 'Diseñamos lunas de miel únicas y personalizadas en Argentina, Chile, Bolivia y Sudamérica. Sin paquetes cerrados, sin itinerarios estándar.',
+        title: 'Lunas de Miel a medida por Sudamérica',
+        description: 'Diseñamos lunas de miel únicas y personalizadas en Argentina, Chile, Bolivia y Perú. Circuitos a medida en destinos que conocemos. Cuéntanos vuestra idea.',
       },
       hero: {
         overline: '💍 Viajes Vidaia · Lunas de Miel',
@@ -301,22 +302,10 @@ export const STATIC_CONTENT = {
         subtitle: 'Primera reunión gratuita y sin compromiso',
       },
     },
-    quotePage: {
-      metadata: {
-        title: 'Solicitar presupuesto — Viajes Vidaia',
-        description: 'Cuéntanos tu viaje soñado en solo 2 minutos y diseñamos un itinerario personalizado para ti. Especialistas en Argentina, Chile y Bolivia.',
-      },
-      header: {
-        overline: 'Viajes únicos · A tu medida',
-        title: 'Expertos en Diseñar Viajes Únicos en Sudamérica',
-        quote: '“Como no hay dos personas o grupos iguales, {br} tampoco hay dos viajes iguales.”',
-        description: 'Cuéntanos vuestro viaje deseado para poder diseñar una experiencia personalizada. Creamos recuerdos inolvidables, diseñados a medida para vosotros.',
-      },
-    },
     privacyPage: {
       metadata: {
-        title: 'Política de Privacidad | Viajes Vidaia',
-        description: 'Política de privacidad de Viajes Vidaia.',
+        title: 'Política de Privacidad',
+        description: 'Información sobre cómo Viajes Vidaia trata tus datos personales conforme al RGPD y la LOPDGDD.',
       },
       title: 'Política de Privacidad',
       lastUpdated: '12 de mayo de 2026',
@@ -506,8 +495,8 @@ export const STATIC_CONTENT = {
     },
     cookiesPage: {
       metadata: {
-        title: 'Política de Cookies | Viajes Vidaia',
-        description: 'Política de cookies de Viajes Vidaia.',
+        title: 'Política de Cookies',
+        description: 'Información sobre la política de cookies de Viajes Vidaia.',
       },
       title: 'Política de Cookies',
       lastUpdated: '12 de mayo de 2026',
@@ -674,8 +663,8 @@ export const STATIC_CONTENT = {
     },
     legalNoticePage: {
       metadata: {
-        title: 'Aviso Legal | Viajes Vidaia',
-        description: 'Aviso legal de Viajes Vidaia.',
+        title: 'Aviso Legal',
+        description: 'Información sobre como Viajes Vidaia da cumplimiento a las obligaciones dispuestas en la LSSICE.',
       },
       title: 'Aviso Legal',
       lastUpdated: '12 de mayo de 2026',
@@ -756,14 +745,376 @@ export const STATIC_CONTENT = {
         },
       ],
     },
+    conditionsPage: {
+      metadata: {
+        title: 'Condiciones de Contratación',
+        description: 'Condiciones generales de contratación de los viajes combinados de Viajes Vidaia: información precontractual, pagos, modificaciones, cancelaciones y garantía.',
+      },
+      title: 'Condiciones Generales de Contratación de Viajes Combinados',
+      lastUpdated: '19 de junio de 2026',
+      sections: [
+        {
+          heading: 'DATOS IDENTIFICATIVOS',
+          items: [
+            {
+              label: 'Denominación social',
+              value: 'VIAJES VIDAIA S.R.L',
+            },
+            {
+              label: 'CIF',
+              value: 'B-55455380',
+            },
+            {
+              label: 'Domicilio',
+              value: 'Calle Bahía de Algeciras Nº1, 28033-Madrid',
+            },
+            {
+              label: 'Teléfono',
+              value: '+34 676 97 29 48',
+            },
+            {
+              label: 'Email',
+              value: 'info@viajesvidaia.com',
+            },
+            {
+              label: 'Nombre del dominio',
+              value: 'viajesvidaia.com',
+            },
+            {
+              label: 'Identificador Registral único de la Sociedad (IRUS)',
+              value: '1000422147558',
+            },
+          ],
+        },
+        {
+          heading: 'I. Formulario de información normalizada para contratos de viaje combinado',
+          paragraphs: [
+            'La combinación de servicios de viaje que se le ofrece es un viaje combinado en el sentido del texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y otras leyes complementarias, aprobado por Real Decreto Legislativo 1/2007, de 16 de noviembre.',
+            'Por lo tanto, usted gozará de todos los derechos que se aplican en el marco de la UE a los viajes combinados. Viajes Vidaia será plenamente responsable de la correcta ejecución del viaje combinado en su conjunto.',
+            'Además, como exige la legislación, Viajes Vidaia está cubierta por una garantía para reembolsar los pagos realizados y, si el transporte está incluido en el viaje, asegurar su repatriación en caso de que incurra en insolvencia.',
+            'Principales derechos en virtud del texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y otras leyes complementarias, aprobado por Real Decreto Legislativo 1/2007, de 16 de noviembre:',
+          ],
+          bullets: [
+            'Los viajeros recibirán toda la información esencial sobre el viaje combinado antes de celebrar el contrato de viaje combinado.',
+            'Siempre habrá como mínimo un empresario responsable de la correcta ejecución de todos los servicios de viaje incluidos en el contrato.',
+            'Se proporcionará a los viajeros un número de teléfono de emergencia o los datos de un punto de contacto donde puedan contactar con Viajes Vidaia.',
+            'Los viajeros podrán ceder el viaje combinado a otra persona, con un preaviso razonable y, en su caso, con sujeción al pago de gastos adicionales.',
+            'El precio del viaje combinado sólo se podrá aumentar si se producen gastos específicos (por ejemplo, en los precios de combustible) y está expresamente estipulado en el contrato, y en ningún caso en los últimos veinte días anteriores al inicio del viaje combinado. Si el aumento de precio excede del ocho por ciento del precio del viaje combinado, el viajero podrá poner fin al contrato. Si Viajes Vidaia se reserva el derecho de aumentar el precio, el viajero tendrá derecho a una reducción del precio si disminuyen los gastos correspondientes.',
+            'Los viajeros podrán poner fin al contrato sin pagar ninguna penalización y obtener el reembolso completo de todos los pagos realizados si se modifica significativamente alguno de los elementos esenciales del viaje combinado que no sea el precio. Si Viajes Vidaia cancela el viaje combinado antes de su inicio, los viajeros tendrán derecho al reembolso de los pagos realizados y, cuando proceda, a una compensación.',
+            'En circunstancias excepcionales, por ejemplo en caso de que en el lugar de destino existan graves problemas de seguridad que puedan afectar al viaje combinado, los viajeros podrán poner fin al contrato antes del inicio del viaje combinado, sin pagar ninguna penalización.',
+            'Además, los viajeros podrán poner fin al contrato en cualquier momento antes del inicio del viaje combinado mediante el pago de una penalización por terminación que sea adecuada y justificable.',
+            'Si, después del inicio del viaje combinado, no pueden prestarse elementos significativos del mismo, deberán ofrecerse al viajero fórmulas alternativas adecuadas, sin coste adicional. Los viajeros podrán poner fin al contrato sin pagar ninguna penalización en caso de no ejecución de los servicios cuando ello afecte sustancialmente a la ejecución del viaje combinado y Viajes Vidaia no consiga solucionar el problema.',
+            'Los viajeros también tendrán derecho a una reducción del precio y/o a una indemnización por daños y perjuicios en caso de no ejecución o ejecución incorrecta de los servicios de viaje.',
+            'Viajes Vidaia deberá proporcionar asistencia al viajero en caso de que este se encuentre en dificultades.',
+            'Si Viajes Vidaia incurre en insolvencia se procederá al reembolso de los pagos. En caso de que Viajes Vidaia incurra en insolvencia después del inicio del viaje combinado y este incluya el transporte, se garantizará la repatriación de los viajeros. Viajes Vidaia ha suscrito una garantía de protección frente a la insolvencia con una entidad garante, cuyos datos se detallan en el apartado II. Si se deniegan servicios debido a la insolvencia de Viajes Vidaia, los viajeros podrán ponerse en contacto con dicha entidad o, en su caso, con la autoridad competente.',
+          ],
+          trailingParagraph: 'Texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y otras leyes complementarias, aprobado por Real Decreto Legislativo 1/2007, de 16 de noviembre (https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555).',
+        },
+        {
+          heading: 'II. Garantía de protección',
+          paragraphs: [
+            'Viajes Vidaia ha suscrito una garantía de protección frente a la insolvencia con la compañía Markel Insurance SE.',
+            'Si se denegaran servicios debido a la insolvencia de Viajes Vidaia, los viajeros podrán ponerse en contacto con dicha entidad o, en su caso, con la autoridad competente.',
+          ],
+          items: [
+            {
+              label: 'Aseguradora',
+              value: 'Markel Insurance SE',
+            },
+            {
+              label: 'Nº de póliza',
+              value: '024S00473CAV',
+            },
+            {
+              label: 'Dirección',
+              value: 'Plaza Pablo Ruiz Picasso, 1, Planta 35, 28020 Madrid',
+            },
+            {
+              label: 'Email',
+              value: 'markel.espa@markel.com',
+            },
+            {
+              label: 'Teléfono',
+              value: '917 886 150',
+            },
+          ],
+        },
+        {
+          heading: 'III. Condiciones generales — Contratación del viaje combinado',
+          paragraphs: [
+            'A los efectos de estas Condiciones Generales, se entenderá por «VIAJERO» tanto la persona que actúa como CONTRATANTE PRINCIPAL del viaje combinado como el resto de pasajeros o beneficiarios incluidos en la reserva, con independencia de que no hayan firmado individualmente el contrato.',
+            'Viajes Vidaia actúa como organizador y coordinador del viaje combinado. Salvo que se indique expresamente otra cosa en las condiciones particulares o en la documentación del viaje, Viajes Vidaia no presta materialmente por sí misma los servicios de transporte, alojamiento, actividades, excursiones u otros servicios turísticos incluidos en el viaje, que serán ejecutados por proveedores independientes seleccionados a tal efecto. Todo ello sin perjuicio de la responsabilidad que corresponda a Viajes Vidaia frente al VIAJERO en los términos legalmente aplicables al contrato de viaje combinado, así como de su derecho de repetición frente al prestador o tercero responsable.',
+          ],
+        },
+        {
+          heading: '1. Información precontractual',
+          paragraphs: [
+            'Antes de que el VIAJERO quede obligado por cualquier contrato de viaje combinado u oferta correspondiente, Viajes Vidaia entregará al VIAJERO el formulario de información normalizada para los contratos de viaje combinado, así como el resto de características e información del viaje de acuerdo con lo establecido en la legislación vigente.',
+            'Las personas con movilidad reducida que deseen recibir información precisa sobre la idoneidad del viaje de acuerdo con sus necesidades especiales, a fin de valorar la posibilidad y viabilidad de contratar el viaje de acuerdo con las características del mismo, deberán poner en conocimiento de Viajes Vidaia tal situación para que se les pueda facilitar información a tal efecto.',
+            'Según lo establecido en el Reglamento CE 1107/2006, se entiende como persona de movilidad reducida toda persona cuya movilidad para participar en el viaje se halle reducida por motivos de discapacidad física (sensorial o locomotriz, permanente o temporal), discapacidad o deficiencia intelectual, o cualquier otra causa de discapacidad, o por la edad, y cuya situación requiera una atención adecuada y la adaptación a sus necesidades particulares del servicio puesto a disposición de los demás participantes en el viaje.',
+            'La información precontractual facilitada al VIAJERO conforme a los apartados a), c), d), e) y g) del artículo 153.1 del Real Decreto Legislativo 1/2007 formará parte integrante del contrato de viaje combinado y no se modificará salvo que Viajes Vidaia y el VIAJERO lo acuerden expresamente. Viajes Vidaia, antes de celebrarse el contrato de viaje combinado, comunicará al VIAJERO de manera clara, comprensible y destacada todos los cambios de la información precontractual.',
+          ],
+        },
+        {
+          heading: '2. Información sobre disposiciones aplicables a pasaportes, visados y vacunas',
+          paragraphs: [
+            '1. Viajes Vidaia tiene el deber de informar sobre las formalidades sanitarias necesarias para el viaje y la estancia, así como sobre las condiciones aplicables a los VIAJEROS en materia de pasaportes y de visados, incluido el tiempo aproximado para la obtención de los visados, y responderá de la corrección de la información que facilite.',
+            '2. El VIAJERO deberá obtener la documentación necesaria para realizar el viaje, incluido el pasaporte y los visados y la referida a las formalidades sanitarias. Todos los daños que puedan derivarse de la falta de esa documentación serán de su cuenta, y en particular los gastos producidos por la interrupción del viaje y su eventual repatriación.',
+            '3. Si Viajes Vidaia acepta el encargo del VIAJERO de tramitar los visados necesarios para alguno de los destinos previstos en el itinerario, podrá exigir el cobro del coste del visado así como de los gastos de gestión por los trámites que deba realizar ante la representación diplomática o consular correspondiente. En este caso, Viajes Vidaia responderá de los daños que le sean imputables.',
+          ],
+        },
+        {
+          heading: '3. Solicitud de reserva',
+          paragraphs: [
+            'El VIAJERO que desea contratar un viaje combinado realiza una «solicitud de reserva». Tras esa solicitud, Viajes Vidaia se compromete a realizar las gestiones oportunas para obtener la confirmación de la reserva.',
+            'Si el VIAJERO solicita la elaboración de una propuesta de un viaje combinado a medida, Viajes Vidaia podrá exigir el abono de una cantidad para la confección del proyecto. Si el VIAJERO acepta la oferta de viaje combinado elaborada por Viajes Vidaia, la suma entregada se imputará al precio del viaje.',
+            'Si Viajes Vidaia ha aceptado gestionar la reserva será responsable de los errores técnicos que se produzcan en el sistema de reservas que le sean atribuibles y de los errores cometidos durante el proceso de reserva.',
+            'Viajes Vidaia no será responsable de los errores de la reserva atribuibles al VIAJERO o que sean causados por circunstancias inevitables y extraordinarias.',
+          ],
+        },
+        {
+          heading: '4. Confirmación de la reserva',
+          paragraphs: [
+            'La perfección del contrato de viaje combinado se produce con la confirmación de la reserva. Desde ese instante el contrato de viaje combinado es de obligado cumplimiento para ambas partes.',
+          ],
+        },
+        {
+          heading: '5. Calendario de pago',
+          paragraphs: [
+            '1. El calendario de pagos está reflejado en este mismo contrato en el apartado Forma de Pago.',
+            '2. Si el VIAJERO no cumple con el calendario de pagos, Viajes Vidaia podrá resolver el contrato y aplicar las reglas establecidas para la resolución del viaje por el VIAJERO antes de la salida prevista en la Cláusula 13.',
+          ],
+        },
+        {
+          heading: 'Reglas aplicables a las prestaciones del viaje combinado',
+          paragraphs: [],
+        },
+        {
+          heading: '6. Prestaciones',
+          paragraphs: [
+            'Las prestaciones que integran el contrato de viaje combinado resultan de la información proporcionada al consumidor en la información precontractual y no se modificarán salvo que Viajes Vidaia y el VIAJERO lo acuerden expresamente según lo previsto en la Cláusula 1.3.',
+            'Con antelación al inicio del viaje, Viajes Vidaia proporcionará al VIAJERO los recibos, vales y billetes necesarios para la prestación de servicios.',
+          ],
+        },
+        {
+          heading: '7. Alojamiento',
+          paragraphs: [
+            'Salvo que otra cosa se indique en la información precontractual o en las condiciones particulares del contrato:',
+            'En relación con aquellos países en los que existe clasificación oficial de establecimientos hoteleros o de cualquier otro tipo de alojamiento, el folleto recoge la clasificación turística que se otorga en el correspondiente país.',
+            'El horario de ocupación de las habitaciones depende de las normas establecidas en cada país y alojamiento.',
+            'Las habitaciones o camarotes triples o cuádruples son generalmente habitaciones dobles a las que se añade una o dos camas, que suelen ser un sofá-cama o un plegatín, excepto en ciertos establecimientos donde en lugar de camas adicionales se emplean dos camas más grandes.',
+          ],
+        },
+        {
+          heading: '8. Transporte',
+          paragraphs: [
+            '1. El VIAJERO debe presentarse en el lugar indicado para la salida con la antelación indicada por Viajes Vidaia.',
+            '2. La pérdida o daño que se produzca en relación con el equipaje de mano u otros objetos que el VIAJERO lleve consigo serán de su exclusiva cuenta y riesgo mientras se encuentren bajo la custodia del VIAJERO.',
+          ],
+        },
+        {
+          heading: '9. Otros servicios',
+          paragraphs: [
+            '1. Por regla general, el régimen de pensión completa incluye desayuno continental, almuerzo, cena y alojamiento. El régimen de media pensión, salvo que se indique de otro modo, incluye desayuno continental, cena y alojamiento. Por regla general, dichas comidas no incluyen las bebidas.',
+            '2. Las dietas especiales (vegetarianas o de regímenes especiales) sólo se garantizan si así constan en las necesidades especiales aceptadas por Viajes Vidaia en el contrato de viaje combinado.',
+            '3. La presencia de mascotas sólo será aceptada si así consta en las necesidades especiales aceptadas por Viajes Vidaia en el contrato de viaje combinado.',
+          ],
+        },
+        {
+          heading: 'Derechos y obligaciones de las partes antes del inicio del viaje',
+          paragraphs: [],
+        },
+        {
+          heading: '10. Modificación del contrato',
+          paragraphs: [
+            '1. Viajes Vidaia sólo podrá modificar las cláusulas del contrato antes del inicio del viaje si el cambio es insignificante y Viajes Vidaia informa al VIAJERO de dicho cambio en soporte duradero de manera clara, comprensible y destacada.',
+            '2. Si antes del inicio del viaje Viajes Vidaia se ve obligada a realizar cambios sustanciales de alguna de las principales características de los servicios del viaje o no puede cumplir con algún requisito especial del VIAJERO previamente aceptado, Viajes Vidaia lo pondrá en conocimiento del VIAJERO sin demora, de forma clara, comprensible y destacada, en soporte duradero, y la comunicación deberá contener:',
+            'a) Las modificaciones sustanciales propuestas y, si procede, su repercusión en el precio.',
+            'b) Un plazo razonable para que el VIAJERO informe de su decisión.',
+            'c) La indicación de que si el VIAJERO no comunica la decisión en el plazo indicado se entenderá que rechaza la modificación sustancial y que, por lo tanto, opta por resolver el contrato sin penalización alguna.',
+            'd) Si Viajes Vidaia puede ofrecerlo, el viaje combinado sustitutivo ofrecido y su precio.',
+            'El VIAJERO podrá optar entre aceptar la modificación propuesta o resolver el contrato sin penalización. Si el VIAJERO opta por resolver el contrato podrá aceptar un viaje combinado sustitutivo que, en su caso, le ofrezca Viajes Vidaia. Dicho viaje sustitutivo deberá ser, a ser posible, de calidad equivalente o superior.',
+            'Si la modificación del contrato o el viaje sustitutivo dan lugar a un viaje de calidad o coste inferior, el VIAJERO tiene derecho a una reducción adecuada del precio.',
+            'En el caso de que el VIAJERO opte por resolver el contrato sin penalización o no acepte el viaje combinado sustitutivo ofrecido, Viajes Vidaia reembolsará todos los pagos realizados en concepto del viaje en un plazo no superior a catorce días naturales a partir de la fecha de resolución del contrato. A estos efectos, se aplicará lo dispuesto en los apartados 2 al 6 de la Cláusula 22.',
+          ],
+        },
+        {
+          heading: '11. Revisión del precio',
+          paragraphs: [
+            '1. Los precios sólo podrán incrementarse por parte de Viajes Vidaia hasta los 20 días naturales previos a la salida. Además, dicho incremento sólo se podrá llevar a cabo para ajustar el importe del precio del viaje a las variaciones:',
+            'a) De los tipos de cambio de divisa aplicables al viaje organizado.',
+            'b) Del precio de los transportes de pasajeros derivado del combustible o de otras formas de energía.',
+            'c) Del nivel de los impuestos o tasas sobre los servicios de viaje incluidos en el contrato, exigidos por terceros que no están directamente involucrados en la ejecución del viaje combinado, incluidas las tasas, impuestos y recargos turísticos, de aterrizaje y de embarque o desembarque en puertos y aeropuertos.',
+            '2. En el contrato se indicará la fecha en la que se han calculado los conceptos expuestos en el apartado anterior para que el VIAJERO tenga conocimiento de la referencia para calcular las revisiones de precio.',
+            '3. Viajes Vidaia notificará el aumento al VIAJERO, de forma clara y comprensible, con una justificación de este incremento, y le proporcionará su cálculo en soporte duradero a más tardar 20 días antes del inicio del viaje.',
+            '4. Sólo en el supuesto de que el incremento del precio suponga un aumento superior al 8 % del precio del viaje, el VIAJERO podrá resolver el contrato sin penalización. En tal caso será aplicable lo dispuesto en la Cláusula 10.',
+            '5. El VIAJERO tendrá derecho a una reducción del precio del viaje por variaciones producidas en los conceptos detallados en los apartados a), b) y c) de la Cláusula 11.1. En tales casos, Viajes Vidaia deducirá de dicha reducción del precio los gastos administrativos reales de reembolso al VIAJERO.',
+          ],
+        },
+        {
+          heading: '12. Cesión de la reserva',
+          paragraphs: [
+            '1. El VIAJERO podrá ceder su reserva a una persona que reúna todas las condiciones requeridas, en el folleto, programa u oferta de viaje combinado y en el contrato, para realizar el viaje combinado.',
+            '2. La cesión deberá ser comunicada, en soporte duradero, a Viajes Vidaia con una antelación mínima de 7 días naturales a la fecha de inicio del viaje. Viajes Vidaia únicamente podrá repercutir al VIAJERO los costes efectivamente soportados a causa de la cesión.',
+            '3. En todo caso, el VIAJERO y la persona a quien haya cedido la reserva responden solidariamente ante Viajes Vidaia del pago del resto del precio, así como de cualquier comisión, recargo y otros costes adicionales que pudiera haber causado la cesión.',
+          ],
+        },
+        {
+          heading: '13. Resolución del viaje por el VIAJERO antes de la salida del viaje',
+          paragraphs: [
+            'El VIAJERO podrá resolver el contrato en cualquier momento previo al inicio del viaje y, en tal caso, Viajes Vidaia podrá exigirle que pague una penalización que sea adecuada y justificable. En el contrato se podrá especificar una penalización tipo que sea razonable, basada en la antelación de la resolución del contrato con respecto al inicio del viaje y en el ahorro de costes y los ingresos esperados por la utilización alternativa de los servicios de viaje.',
+            'Si en el contrato no se prevé una penalización tipo, el importe de la penalización por la resolución equivaldrá al precio del viaje combinado menos el ahorro de costes y los ingresos derivados de la utilización alternativa de los servicios de viaje.',
+            'Por lo que en tales casos, Viajes Vidaia reembolsará cualquier pago que se hubiera realizado por el viaje combinado, menos la penalización correspondiente.',
+            'No obstante, si concurren circunstancias inevitables y extraordinarias en el destino o en las inmediaciones que afecten significativamente a la ejecución del viaje o al transporte de los pasajeros al lugar de destino, el VIAJERO podrá resolver el contrato antes de su inicio sin penalización alguna y con derecho a reembolso de todos los pagos a cuenta del viaje que hubiera efectuado.',
+            'Dichos reembolsos o devoluciones se realizarán al VIAJERO, descontando la penalización correspondiente en el caso del apartado 1 anterior, en un plazo no superior a 14 días naturales después de la terminación del contrato de viaje combinado.',
+          ],
+        },
+        {
+          heading: '14. Cancelación del viaje por Viajes Vidaia antes de la salida del viaje',
+          paragraphs: [
+            'Si Viajes Vidaia cancela el contrato por causas no imputables al VIAJERO, deberá reintegrar la totalidad de los pagos realizados por el VIAJERO en un plazo no superior a 14 días naturales desde la terminación del contrato. Viajes Vidaia no será responsable de pagar ninguna compensación adicional al VIAJERO si la cancelación se debe a que:',
+            'a) El número de personas inscritas para el viaje combinado es inferior al número mínimo especificado en el contrato y Viajes Vidaia notifica al VIAJERO la cancelación en el plazo fijado en el mismo, que a más tardar será de: 20 días antes del inicio en caso de viajes de más de 6 días de duración; 7 días en viajes de entre 2 y 6 días; 48 horas en viajes de menos de 2 días.',
+            'b) Viajes Vidaia se ve en la imposibilidad de ejecutar el contrato por circunstancias inevitables y extraordinarias y se notifica la cancelación al VIAJERO sin demora indebida antes del inicio del viaje combinado.',
+          ],
+        },
+        {
+          heading: '15. Desistimiento antes del inicio del viaje en contratos celebrados fuera del establecimiento',
+          paragraphs: [
+            'En el caso de contratos celebrados fuera del establecimiento (entendiéndose como tales aquellos definidos en el artículo 92.2 del Real Decreto Legislativo 1/2007), el VIAJERO podrá desistir del viaje contratado por cualquier causa y sin penalización, con derecho a devolución del precio abonado en concepto del viaje, dentro de los 14 días siguientes a la celebración del contrato.',
+          ],
+        },
+        {
+          heading: 'Derechos y obligaciones de las partes después del inicio del viaje',
+          paragraphs: [],
+        },
+        {
+          heading: '16. Deber de comunicación de cualquier falta de conformidad del contrato',
+          paragraphs: [
+            'Si el VIAJERO observa que cualquiera de los servicios incluidos en el viaje no se ejecuta de conformidad con el contrato, el VIAJERO deberá informar de la falta de conformidad a Viajes Vidaia sin demora indebida, teniendo en cuenta las circunstancias del caso.',
+            'Se entiende como falta de conformidad la no ejecución o la ejecución incorrecta de los servicios de viaje incluidos en un contrato de viaje combinado.',
+          ],
+        },
+        {
+          heading: '17. Subsanación de cualquier falta de conformidad y no prestación de una parte significativa de los servicios de viaje',
+          paragraphs: [
+            'Si cualquiera de los servicios incluidos en el viaje no se ejecuta de conformidad con el contrato, Viajes Vidaia deberá subsanar la falta de conformidad, excepto si resulta imposible o tiene un coste desproporcionado, teniendo en cuenta la gravedad de la falta de conformidad y el valor de los servicios del viaje afectados. En caso de que no se subsane la falta de conformidad será de aplicación lo dispuesto en la Cláusula 22.',
+            'Si no concurre ninguna de las excepciones anteriores y una falta de conformidad no se subsana en un plazo razonable establecido por el VIAJERO, o Viajes Vidaia se niega a subsanarla, o requiere de solución inmediata, el propio VIAJERO podrá hacerlo y solicitar el reembolso de los gastos necesarios a tal efecto.',
+            'Cuando una proporción significativa de los servicios del viaje no pueda prestarse según lo convenido en el contrato, Viajes Vidaia ofrecerá sin coste adicional fórmulas alternativas adecuadas para la normal continuación del viaje y, también, cuando el regreso del VIAJERO al lugar de salida no se efectúe según lo acordado.',
+            'Dichas fórmulas alternativas, a ser posible, deberán ser de calidad equivalente o superior y, si fueran de calidad inferior, Viajes Vidaia aplicará una reducción adecuada del precio.',
+            'El VIAJERO sólo podrá rechazar las alternativas ofrecidas si no son comparables a lo acordado en el viaje combinado o si la reducción de precio es inadecuada.',
+            'Cuando una falta de conformidad afecte sustancialmente a la ejecución del viaje y Viajes Vidaia no la haya subsanado en un plazo razonable establecido por el VIAJERO, éste podrá poner fin al contrato sin pagar ninguna penalización y solicitar, en su caso, tanto una reducción del precio como una indemnización por los daños y perjuicios causados, de acuerdo con lo establecido en la Cláusula 22.',
+            'Si no es posible encontrar fórmulas de viaje alternativas, o el VIAJERO las rechaza por no ser comparables a lo acordado en el viaje o por ser inadecuada la reducción de precio ofrecida, el VIAJERO tendrá derecho tanto a una reducción de precio como a una indemnización por daños y perjuicios, sin que se ponga fin al contrato de viaje combinado, de acuerdo con lo establecido en la Cláusula 22.',
+            'En los casos detallados en los apartados anteriores, si el viaje combinado incluye el transporte de pasajeros, Viajes Vidaia estará también obligada a ofrecer la repatriación al VIAJERO en un transporte equivalente, sin dilaciones indebidas y sin coste adicional.',
+          ],
+        },
+        {
+          heading: '18. Imposibilidad de garantizar el retorno por circunstancias inevitables y extraordinarias',
+          paragraphs: [
+            '1. Si es imposible garantizar el retorno del VIAJERO según lo previsto en el contrato debido a circunstancias inevitables y extraordinarias, Viajes Vidaia asumirá el coste del alojamiento que sea necesario, de ser posible de categoría equivalente, por un período no superior a tres noches por VIAJERO, salvo que en la normativa europea de derechos de los pasajeros se establezca un período distinto.',
+            '2. La limitación de costes establecida en el apartado anterior no será aplicable a las personas con discapacidad o movilidad reducida (tal y como se definen en la Cláusula 1.2 anterior) ni a sus acompañantes, a mujeres embarazadas, a menores no acompañados, ni tampoco a las personas con necesidad de asistencia médica específica, si sus necesidades particulares han sido participadas a Viajes Vidaia al menos 48 horas antes del inicio del viaje.',
+          ],
+        },
+        {
+          heading: '19. Deber de colaboración del VIAJERO al normal desarrollo del viaje',
+          paragraphs: [
+            'El VIAJERO deberá seguir las indicaciones que le facilite Viajes Vidaia o sus representantes locales para la adecuada ejecución del viaje, así como las reglamentaciones que son de general aplicación a los usuarios de los servicios comprendidos en el viaje combinado. En particular, en los viajes en grupo guardará el debido respeto a los demás participantes y observará una conducta que no perjudique el normal desarrollo del viaje.',
+          ],
+        },
+        {
+          heading: '20. Deber de asistencia de Viajes Vidaia',
+          paragraphs: [
+            'Viajes Vidaia está obligada a proporcionar una asistencia adecuada y sin demora indebida al VIAJERO en dificultades, especialmente en el caso de circunstancias extraordinarias e inevitables. En concreto, dicha asistencia debe consistir en:',
+            'a) Suministro de información adecuada de servicios sanitarios, autoridades locales y asistencia consular.',
+            'b) Asistencia al VIAJERO para establecer comunicaciones a distancia y la ayuda para encontrar fórmulas alternativas.',
+            'Si la dificultad se ha originado intencionadamente o por negligencia del VIAJERO, Viajes Vidaia podrá facturar un recargo razonable por dicha asistencia al VIAJERO. Dicho recargo no podrá superar los costes reales en los que haya incurrido Viajes Vidaia.',
+          ],
+        },
+        {
+          heading: 'Responsabilidad contractual por cumplimiento defectuoso o incumplimiento',
+          paragraphs: [],
+        },
+        {
+          heading: '21. Responsabilidad de Viajes Vidaia',
+          paragraphs: [
+            '1. Viajes Vidaia responderá frente al VIAJERO del correcto cumplimiento de los servicios de viaje incluidos en el contrato en función de las obligaciones que le correspondan por su ámbito de gestión del viaje combinado, con independencia de que estos servicios los deba ejecutar ella misma u otros prestadores.',
+            '2. No obstante lo anterior, el VIAJERO podrá dirigir las reclamaciones por el incumplimiento o cumplimiento defectuoso de los servicios que integran el viaje combinado ante Viajes Vidaia, que quedará obligada a informar sobre el régimen de responsabilidad existente, a tramitar la reclamación de forma directa o mediante remisión a quien corresponda en función del ámbito de gestión, así como a informar de la evolución de la misma al VIAJERO aunque esté fuera de su ámbito de gestión.',
+            '3. En estos supuestos, le corresponderá a Viajes Vidaia la carga de la prueba de que ha actuado diligentemente en la gestión de la reclamación y, en cualquier caso, de que ha iniciado la gestión de la misma con carácter inmediato tras su recepción.',
+            '4. Viajes Vidaia tendrá el derecho de repetición frente a quien le sea imputable el incumplimiento o cumplimiento defectuoso del contrato en función de su respectivo ámbito de gestión del viaje combinado.',
+            '5. Cuando Viajes Vidaia abone una compensación, en función de su ámbito de gestión, conceda una reducción del precio o cumpla las demás obligaciones que impone la ley, podrá solicitar el resarcimiento a terceros que hayan contribuido a que se produjera el hecho que dio lugar a la compensación, a la reducción del precio o al cumplimiento de otras obligaciones.',
+          ],
+        },
+        {
+          heading: '22. Derecho a reducción del precio, indemnización y limitaciones',
+          paragraphs: [
+            '1. El VIAJERO tendrá derecho a una reducción del precio adecuada por cualquier periodo durante el cual haya habido una falta de conformidad.',
+            '2. El VIAJERO tendrá derecho a recibir una indemnización adecuada de Viajes Vidaia por cualquier daño o perjuicio que sufra como consecuencia de cualquier falta de conformidad del contrato.',
+            '3. El VIAJERO no tendrá derecho a una indemnización por daños y perjuicios si Viajes Vidaia demuestra que la falta de conformidad es: a) imputable al VIAJERO; b) imputable a un tercero ajeno a la prestación de los servicios contratados e imprevisible o inevitable; o c) debida a circunstancias inevitables y extraordinarias.',
+            '4. Cuando las prestaciones del contrato de viaje combinado estén regidas por convenios internacionales, las limitaciones acerca del alcance o condiciones de pago de indemnizaciones por los prestadores de servicios incluidos en el viaje aplicarán a Viajes Vidaia.',
+            '5. Cuando las prestaciones del contrato de viaje combinado no estén regidas por convenios internacionales: (i) no se podrán limitar contractualmente las indemnizaciones que en su caso pueda corresponder pagar a Viajes Vidaia por daños corporales o por perjuicios causados de forma intencionada o por negligencia; y (ii) el resto de indemnizaciones que pueda tener que pagar Viajes Vidaia quedarán limitadas al triple del precio total del viaje combinado.',
+            '6. La indemnización o reducción de precio concedida en virtud del Real Decreto Legislativo 1/2007 y la concedida en virtud de los reglamentos y convenios internacionales relacionados en el artículo 165.5 del mismo Real Decreto Legislativo 1/2007 se deducirán una de la otra a fin de evitar exceso de indemnización.',
+          ],
+        },
+        {
+          heading: 'Reclamaciones y acciones derivadas del contrato',
+          paragraphs: [],
+        },
+        {
+          heading: '23. Ley aplicable',
+          paragraphs: [
+            'Este contrato de viaje combinado se rige por lo acordado entre las partes y por lo establecido en estas condiciones generales, en las normas autonómicas vigentes y aplicables, así como por lo dispuesto en el Real Decreto Legislativo 1/2007, de 16 de noviembre, por el que se aprueba el texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y otras leyes complementarias.',
+          ],
+        },
+        {
+          heading: '24. Reclamaciones a Viajes Vidaia',
+          paragraphs: [
+            '1. Sin perjuicio de las acciones legales que le asisten, el VIAJERO podrá efectuar por escrito reclamaciones por la no ejecución o la ejecución deficiente del contrato ante Viajes Vidaia, en las direcciones postales y/o de correo electrónico informadas a tal efecto.',
+            '2. En el plazo máximo de 30 días, Viajes Vidaia deberá contestar por escrito las reclamaciones formuladas.',
+          ],
+        },
+        {
+          heading: '25. Resolución alternativa de conflictos',
+          paragraphs: [
+            '1. En cualquier momento, el consumidor y Viajes Vidaia podrán recabar la mediación de la administración competente o de los organismos que se constituyan a tal efecto para hallar por sí mismos una solución del conflicto que sea satisfactoria para ambas partes.',
+            '2. El consumidor podrá dirigir sus reclamaciones a la Junta Arbitral de Consumo que sea competente. El conflicto se podrá someter a arbitraje si Viajes Vidaia se hubiese adherido previamente al sistema arbitral de consumo (en cuyo caso Viajes Vidaia avisará debidamente de ello al consumidor) o si Viajes Vidaia, pese a no estar adherida, acepta la solicitud de arbitraje del consumidor.',
+            'No pueden ser objeto del arbitraje de consumo las reclamaciones en las que concurran intoxicación, lesión, muerte o existan indicios racionales de delito.',
+            'En caso de celebrarse un arbitraje de consumo, el laudo que dicte el tribunal arbitral designado por la Junta Arbitral de Consumo resolverá la reclamación presentada con carácter definitivo y será vinculante para ambas partes.',
+            '3. Si Viajes Vidaia está adherida a algún sistema de resolución alternativa de litigios o está obligada a ello por alguna norma o código de conducta, informará de tal circunstancia al VIAJERO antes de la formalización del contrato de viaje combinado.',
+          ],
+        },
+        {
+          heading: '26. Acciones judiciales',
+          paragraphs: [
+            '1. Si la controversia no está sometida a arbitraje de consumo, el VIAJERO podrá reclamar en vía judicial.',
+            '2. Las acciones judiciales derivadas del contrato de viaje combinado prescriben por el transcurso del plazo de dos años.',
+          ],
+        },
+        {
+          heading: 'IV. Reclamaciones tras el viaje',
+          paragraphs: [
+            'El VIAJERO podrá dirigir sus reclamaciones a la dirección postal y/o correo electrónico que consta en el encabezamiento de este contrato.',
+          ],
+        },
+        {
+          heading: 'V. Tratamiento de datos personales',
+          paragraphs: [
+            'Reglamento Europeo de Protección de Datos 2016/679 y Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales.',
+            'Responsable: Viajes Vidaia (Viajes Vidaia S.R.L.), con domicilio en C/ Bahía de Algeciras, 1, bloque 10, 2C, 28033, Madrid. Finalidad: prestación del servicio solicitado en este contrato de viajes combinados, así como la gestión administrativa y contable, y el envío de información comercial de su interés. Legitimación: relación contractual y/o consentimiento. Conservación: sus datos se conservarán mientras se mantenga la relación contractual o durante los años necesarios para cumplir con las obligaciones legales. Destinatarios: sus datos serán conservados bajo estrictas medidas de seguridad que garanticen la confidencialidad y la seguridad de los mismos. Estos podrán ser comunicados a otras entidades del sector turístico implicadas en los supuestos en que sea estrictamente necesario para la gestión y organización de los servicios turísticos contratados por el usuario o por una obligación legal. Las entidades a las que se podrá comunicar sus datos son: compañías aseguradoras, proveedores nacionales y extranjeros, compañías aéreas y de transporte, establecimientos hoteleros, entidades financieras, etc.',
+            'Viajes Vidaia S.R.L. podrá realizar transferencias internacionales de datos personales fuera del Espacio Económico Europeo (EEE) siempre con sujeción a las restricciones contractuales relativas a confidencialidad y seguridad de los datos contenidas en las leyes y normas relativas a la protección de datos de carácter personal. En ningún caso sus datos personales serán cedidos a terceros no autorizados a tratarlos que no garanticen la protección completa de sus datos.',
+            'Derechos: puede ejercer los derechos de acceso, rectificación, supresión, limitación, portabilidad u oposición, o consultar información adicional, en esta agencia o a través de la siguiente dirección de correo electrónico: info@viajesvidaia.com.',
+            'En el caso de que los datos personales fueran aportados por persona distinta del viajero, que actúe en calidad de representante de éste, dicho representante garantiza que ha informado del contenido de la presente cláusula al titular de los datos que facilita y que ha obtenido su autorización explícita para facilitar sus datos a Viajes Vidaia S.R.L. con las finalidades señaladas.',
+            'Real Decreto 933/2021: conforme a lo dispuesto en el Real Decreto 933/2021, de 26 de octubre, por el que se establecen las obligaciones de registro documental e información de las personas físicas o jurídicas que contratan actividades de hospedaje y alquiler de vehículos a motor, los datos que se recojan en aplicación de dicha normativa podrán ser accesibles a la policía y a las autoridades públicas en el desempeño de sus respectivas competencias en el ámbito de prevención, detección e investigación del delito que tengan asignadas. No se procederá a la comunicación a terceros de los datos personales recogidos en virtud de la citada norma, excepto por obligación legal o requerimiento judicial.',
+          ],
+        },
+      ],
+    },
     viajesPage: {
       metadata: {
-        title: 'Viajes a Sudamérica a medida | Viajes Vidaia',
-        description: 'Viajes personalizados a Argentina, Chile y Bolivia. Diseñamos cada itinerario desde cero adaptado a tus gustos, fechas y presupuesto. Sin paquetes estándar.',
+        title: 'Viajes personalizados por Sudamérica',
+        description: 'Diseñamos itinerarios a medida por Argentina, Chile, Bolivia y Perú, adaptados a tus gustos, fechas y presupuesto. Te preparamos una propuesta personalizada.',
       },
       hero: {
-        title: 'Viajes Vidaia',
-        subtitle: 'Si sueñas con viajar a nuestros destinos Vidaia de América del Sur pero no sabes por dónde empezar, nosotros te ayudamos.',
+        title: 'Itinerarios a medida por Sudamérica',
+        subtitle: 'Inspírate con nuestros viajes modelo y crea tu propio itinerario con nosotros.',
         ctaPrimary: 'Solicitar viaje a medida',
         ctaSecondary: 'Buscar viajes',
         slides: [
@@ -787,30 +1138,30 @@ export const STATIC_CONTENT = {
       },
       servicios: {
         missionTitle: 'Nuestra misión',
-        missionText: 'Nuestra misión es hacer realidad el viaje ideal de cada persona. Somos una agencia boutique especializada en Sudamérica: conocemos los destinos desde adentro, hemos recorrido cada ruta que ofrecemos y ponemos ese conocimiento al servicio de tu aventura.',
+        missionText: 'Hacer realidad el viaje ideal de cada persona que quiere descubrir Sudamérica. Somos una agencia boutique especializada en itinerarios a medida: hemos recorrido las rutas que ofrecemos y conocemos los destinos desde dentro. Desde la primera conversación ponemos ese conocimiento en el diseño de tu viaje.',
         cardsTitle: '¿Por qué viajar con Vidaia?',
         cards: [
           {
             emoji: '🧭',
-            title: 'Planificación personalizada',
-            description: 'Cada viaje será único y exclusivo pensando siempre en tus necesidades, gustos y preferencias.',
+            title: 'Pensado para ti',
+            description: 'Diseñamos cada viaje en torno a cómo y cuándo quieres viajar: tu ritmo e intereses, y lo que no quieres perderte.',
           },
           {
             emoji: '⭐',
-            title: 'Excelencia e innovación',
-            description: 'Amplio conocimiento especializado en los destinos que ofrecemos y acceso a destinos exclusivos. Búsqueda continua de nuevos destinos.',
+            title: 'Conocemos el terreno',
+            description: 'Hemos recorrido las rutas que ofrecemos y buscamos rincones y experiencias nuevas para ti. Te llevamos a lugares que no salen en cualquier catálogo.',
           },
           {
             emoji: '🤝',
-            title: 'Compromiso y mejora continua',
-            description: 'Asesoramiento profesional y soporte continuo a nuestros clientes. Aprendemos de nuestros clientes.',
+            title: 'Contigo en todo el viaje',
+            description: 'Te asesoramos y escuchamos antes, durante y después del viaje. Cada viaje nos enseña a hacer mejor el siguiente.',
           },
         ],
       },
       buscador: {
         headerPill: 'Itinerarios recomendados',
         headerTitle: 'Explora y personaliza nuestra selección de itinerarios.',
-        headerSubtitle: 'Inspírate con alguna de nuestras rutas y adáptalas a tu ritmo, intereses y forma de viajar.',
+        headerSubtitle: 'Inspírate con nuestras rutas y adáptalas a tu ritmo, intereses y forma de viajar.',
         searchPlaceholder: 'Buscar por destino, duración, actividad…',
         advancedFilters: 'Filtros avanzados',
         resetFilters: 'Limpiar filtros',
@@ -830,7 +1181,7 @@ export const STATIC_CONTENT = {
         steps: [
           {
             title: '¡Nuestra primera cita!',
-            description: 'Una vez que recibimos tu solicitud, la estudiaremos y tendremos una reunión online de 30 minutos contigo para conocerte mejor. Queremos entender qué es lo que te hace feliz cuando viajas, tus imprescindibles, tu presupuesto, la duración de tu viaje, etc. Al ser nuestra primera cita, nos tenemos que conocer. El objetivo es entender tus necesidades y que nos conozcas. Si te gusta nuestra manera de trabajar pasaremos a la siguiente fase.',
+            description: 'Cuando recibimos tu solicitud, la estudiamos y concertamos una videollamada de 30 minutos para conocernos. Queremos saber qué te hace disfrutar cuando viajas, tus imprescindibles, el presupuesto y los días de los que dispones. Si te encaja nuestra forma de trabajar, pasamos a la siguiente fase.',
           },
           {
             title: 'Segunda ronda, ¡empieza la magia!',
@@ -838,11 +1189,11 @@ export const STATIC_CONTENT = {
           },
           {
             title: 'La hora de decidir, ¿te hemos conquistado?',
-            description: 'Si la propuesta te encaja, revisamos contigo aquellos aspectos del viaje que quieras mejorar, te asesoramos para cerrar un viaje único adaptado completamente a tus deseos. Cuando cerremos el plan te enviaremos el contrato del viaje combinado con el itinerario acordado y el calendario de pagos. Nuestro equipo de soporte trabajará en las reservas para hacer realidad el viaje.',
+            description: 'Si la propuesta te encaja, repasamos contigo lo que quieras cambiar y la afinamos hasta dejar el viaje a tu gusto. Cuando lo cerramos, te enviamos el contrato del viaje combinado con el itinerario acordado y el calendario de pagos, y nuestro equipo se pone con las reservas.',
           },
           {
             title: 'La mejor parte de todas…',
-            description: 'Ya tienes los billetes, te hemos entregado la ruta, se han reservado las excursiones, los alojamientos y ahora sólo queda lo mejor de todo: ¡que disfrutes de tu viaje por Argentina, Chile, Bolivia o el próximo destino Vidaia que diseñemos juntos!',
+            description: 'Ya tienes los billetes, te hemos entregado la ruta, se han reservado las excursiones, los alojamientos y ahora solo queda lo mejor de todo: ¡que disfrutes de tu viaje por Argentina, Chile, Bolivia o el próximo destino Vidaia que diseñemos juntos!',
           },
         ],
       },
@@ -852,10 +1203,12 @@ export const STATIC_CONTENT = {
       },
     },
     destinationPage: {
+      metaTitleTemplate: 'Viajes a medida por {country}',
+      metaDescriptionSuffix: ' Cuéntanos tu idea.',
       hero: {
         taglineTemplate: 'Viajes Vidaia · {country}',
-        titleTemplate: 'Viajes a {country}',
-        descriptionSuffix: ' — diseñamos tu aventura a medida.',
+        titleTemplate: 'Viajes a medida por {country}',
+        descriptionSuffix: '. Cuentanos tus imprescidibles y te asesoramos. ',
         quote: 'Cada viaje que diseñamos nace de escucharte a ti.',
       },
       section: {
@@ -928,20 +1281,29 @@ export const STATIC_CONTENT = {
       },
     },
     blogPage: {
+      metadata: {
+        title: 'Blog de viajes',
+        description: 'Guías de viaje, consejos prácticos e inspiración para descubrir Argentina, Chile, Bolivia y Perú. Encuentra tu inspiración para viajar a Sudamérica.',
+      },
+      hero: {
+        badge: 'Blog de Viajes',
+        title: 'Historias desde el fin del mundo',
+        subtitle: 'Guías de viaje, consejos prácticos e inspiración para descubrir Argentina, Chile, Bolivia y Perú sin filtros.',
+      },
       backButton: 'Volver al blog',
       readingTimeLabel: 'min de lectura',
       readingTimeShort: 'min',
     },
     formularioPersonalizado: {
       metadata: {
-        genericTitle: 'Personaliza tu viaje a Sudamérica — Viajes Vidaia',
-        genericDescription: 'Diseña tu viaje a medida a Argentina, Chile, Bolivia y Perú. Presupuesto personalizado y gratuito en menos de 24 horas.',
-        itineraryTitleTemplate: 'Personalizar {title} — Viajes Vidaia',
-        itineraryDescriptionTemplate: 'Adapta el itinerario {title} a tu medida: fechas, grupo, experiencias y presupuesto.',
+        genericTitle: 'Presupuesto para tu viaje por Sudamérica',
+        genericDescription: 'Diseña tu viaje a medida por Argentina, Chile, Bolivia y Perú. Pide tu presupuesto personalizado y gratuito, adaptado a tus fechas e intereses.',
+        itineraryTitleTemplate: 'Personalizar {shortTitle}',
+        itineraryDescriptionTemplate: 'Adapta el itinerario {shortTitle} a tu medida: fechas, grupo, experiencias y presupuesto.',
       },
       hero: {
-        genericTitle: 'Expertos en diseñar viajes únicos en Sudamérica',
-        genericSubtitle: 'Creamos recuerdos inolvidables, diseñados a medida para vosotros.',
+        genericTitle: 'Diseñamos contigo tu viaje a medida por Sudamérica',
+        genericSubtitle: 'Tú nos cuentas qué buscas y nosotros le damos forma.',
         itineraryTitlePrefix: 'Personalizar viaje: ',
         customizingLabel: 'Personalizando',
         personalizar: 'Personalizar',
@@ -1189,7 +1551,7 @@ export const STATIC_CONTENT = {
     },
     privacyPage: {
       metadata: {
-        title: 'Privacy Policy | Viajes Vidaia',
+        title: 'Privacy Policy',
         description: 'Privacy policy of Viajes Vidaia.',
       },
       title: 'Política de Privacidad',
@@ -1380,7 +1742,7 @@ export const STATIC_CONTENT = {
     },
     cookiesPage: {
       metadata: {
-        title: 'Política de Cookies | Viajes Vidaia',
+        title: 'Política de Cookies',
         description: 'Política de cookies de Viajes Vidaia.',
       },
       title: 'Política de Cookies',
@@ -1548,7 +1910,7 @@ export const STATIC_CONTENT = {
     },
     legalNoticePage: {
       metadata: {
-        title: 'Aviso Legal | Viajes Vidaia',
+        title: 'Aviso Legal',
         description: 'Aviso legal de Viajes Vidaia.',
       },
       title: 'Aviso Legal',
@@ -1643,10 +2005,10 @@ export const STATIC_CONTENT = {
     },
     formularioPersonalizado: {
       metadata: {
-        genericTitle: 'Customize your South America trip — Viajes Vidaia',
+        genericTitle: 'Customize your South America trip',
         genericDescription: 'Design your tailor-made trip to Argentina, Chile, Bolivia and Peru. Free personalized quote in less than 24 hours.',
-        itineraryTitleTemplate: 'Customize {title} — Viajes Vidaia',
-        itineraryDescriptionTemplate: 'Tailor the {title} itinerary to your needs: dates, group, experiences and budget.',
+        itineraryTitleTemplate: 'Customize {shortTitle}',
+        itineraryDescriptionTemplate: 'Tailor the {shortTitle} itinerary to your needs: dates, group, experiences and budget.',
       },
       hero: {
         genericTitle: 'Experts in designing unique trips in South America',

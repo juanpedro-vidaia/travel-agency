@@ -30,9 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const country = getCountryBySlug(slug)
   if (!country) return {}
   const c = (country.content[lang as keyof typeof country.content] ?? country.content.es)
+  const destinationContent = getStaticContent(lang).destinationPage
   return buildMetadata({
-    title: c.metaTitle,
-    description: c.metaDescription,
+    title: renderTemplate(destinationContent.metaTitleTemplate, { country: c.name }),
+    description: c.metaDescription + destinationContent.metaDescriptionSuffix,
     path: `/${lang}/destinos/${slug}`,
     lang,
   })

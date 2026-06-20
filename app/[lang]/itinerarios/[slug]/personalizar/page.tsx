@@ -9,6 +9,8 @@ import { getCountriesOrdered, getCountryBySlug } from '@/lib/services/countriesS
 import { getFeaturedDestinationsGrouped } from '@/lib/services/destinationsService'
 import JsonLd from '@/components/scripts/JsonLd'
 import FormularioPersonalizado from '@/components/forms/FormularioPersonalizado'
+import { getShortTitle } from '@/lib/helpers/contentHelpers'
+import { getAsset } from '@/lib/data/assets'
 
 interface Props {
   params: Promise<{ lang: string; slug: string }>
@@ -21,13 +23,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const itinerary = getItinerary(slug)
   const t = STATIC_CONTENT[lang as keyof typeof STATIC_CONTENT]?.formularioPersonalizado
   if (!itinerary || !t) return {}
-  const title = t.metadata.itineraryTitleTemplate.replace('{title}', itinerary.content.es.title)
-  const description = t.metadata.itineraryDescriptionTemplate.replace('{title}', itinerary.content.es.title)
+  const shortTitle = getShortTitle(itinerary.content.es.title)
+  const title = t.metadata.itineraryTitleTemplate.replace('{shortTitle}', shortTitle)
+  const description = t.metadata.itineraryDescriptionTemplate.replace('{shortTitle}', shortTitle)
+  const trip = getTripBySlug(slug)
   return buildMetadata({
     title,
     description,
     path: `/${lang}/itinerarios/${slug}/personalizar`,
     lang,
+    ogImage: trip ? getAsset(trip.imageKey).url : undefined,
+    robots: { index: false, follow: true },
   })
 }
 

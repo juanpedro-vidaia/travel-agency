@@ -117,7 +117,7 @@ Los servicios son funciones puras que filtran y transforman los datos de `lib/da
 | Fichero | Funciones |
 |---|---|
 | `contentHelpers.ts` | `getStaticContent(lang)`, `getCommonUI(lang)`, `renderTemplate(template, vars)`, `formatPrice(price)` |
-| `seo.ts` | `buildMetadata({ title, description, path, lang, ogImage?, ogType?, publishedTime? })` — genera Metadata completo con OG, Twitter Card, canonical y hreflang. `publishedTime` solo se emite con `ogType: 'article'` (blog posts). **Todas** las páginas usan este helper — incluidas legales y blog posts; no construir metadata a mano. |
+| `seo.ts` | `buildMetadata({ title, description, path, lang, ogImage?, ogType?, publishedTime?, robots? })` — genera Metadata completo con OG, Twitter Card, canonical y hreflang. `publishedTime` solo se emite con `ogType: 'article'` (blog posts); `robots` permite forzar directivas por página (p. ej. `{ index: false, follow: true }` en `/itinerarios/[slug]/personalizar`). El `title` se devuelve como string plano: la marca la añade el `title.template` del root (ver D23) — no incluir "Viajes Vidaia" en el dato. **Todas** las páginas usan este helper — incluidas legales y blog posts; no construir metadata a mano. |
 
 ---
 
@@ -395,6 +395,16 @@ PR develop → main  →  re-corre CI (gate; bloquea el merge si falla)
 
 `.nvmrc` fija Node **24** para alinear local / CI / Vercel. Al cambiar de versión, actualizar los tres puntos a la vez (`.nvmrc`, `node-version` en el workflow, y el panel de Vercel).
 
+### Indexación (solo producción)
+
+Solo el deployment de producción sobre `viajesvidaia.com` se indexa; previews y `*.vercel.app` quedan fuera. Tres piezas (ver **D24** en DECISIONS.md):
+
+- **`app/robots.ts`** env-aware (`VERCEL_ENV`): fuera de producción `Disallow: /`; en producción `allow` + `sitemap` + `host`.
+- **`proxy.ts`**: fuera de producción añade `X-Robots-Tag: noindex, nofollow`; en producción redirige `308` el host `*.vercel.app` → host canónico de `BASE_URL`.
+- **`app/layout.tsx`**: `metadataBase: new URL(BASE_URL)` (origen de canonicals/OG relativos).
+
+En local sin `VERCEL_ENV` el sitio se comporta como "no producción" (`Disallow: /` + `noindex`): es lo esperado, no un fallo.
+
 ---
 
 ## Convenciones del proyecto
@@ -437,3 +447,5 @@ PR develop → main  →  re-corre CI (gate; bloquea el merge si falla)
 8. **Toda página usa `buildMetadata()`** de `lib/helpers/seo.ts` en su `generateMetadata` — nunca construir el objeto Metadata a mano. Es el único punto que garantiza canonical, hreflang y OG consistentes.
 
 9. **Contenido generado que enumere países/destinos/viajes se deriva de los servicios** (`getCountriesOrdered()`, etc.), nunca se hardcodea — aplica a manifest, llms.txt y schemas (ver D20).
+
+10. **El `<title>` no lleva la marca en los datos.** "Viajes Vidaia" lo añade una sola vez el `title.template` del root layout; los `title`/`metaTitle` de `staticContent`/`countries`/`trips`/`itineraries`/`posts` van sin marca (ver D23).

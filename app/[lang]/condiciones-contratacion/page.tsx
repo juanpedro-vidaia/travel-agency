@@ -1,0 +1,87 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
+import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
+import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
+import { buildMetadata } from '@/lib/helpers/seo'
+
+interface Props {
+  params: Promise<{ lang: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params
+  const content = getStaticContent(lang)
+  return buildMetadata({
+    title: content.conditionsPage.metadata.title,
+    description: content.conditionsPage.metadata.description,
+    path: `/${lang}/condiciones-contratacion`,
+    lang,
+  })
+}
+
+export function generateStaticParams() {
+  return ENABLED_LANGUAGES.map(lang => ({ lang }))
+}
+
+export default async function CondicionesContratacionPage({ params }: Props) {
+  const { lang } = await params
+  const content = getStaticContent(lang).conditionsPage
+  const ui = getCommonUI(lang)
+
+  return (
+    <main className="min-h-screen bg-white pt-28 pb-12 md:pb-20">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Link
+          href={`/${lang}`}
+          className="inline-flex items-center gap-2 text-sm text-vidaia-charcoal/70 hover:text-vidaia-primary mb-8 md:mb-10 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          {ui.labels.backToHome}
+        </Link>
+
+        <h1 className="font-heading text-3xl sm:text-5xl font-bold text-vidaia-dark mb-8 md:mb-10">
+          {content.title}
+        </h1>
+
+        <div className="prose prose-gray max-w-none text-vidaia-charcoal/80 leading-relaxed space-y-6">
+          {content.sections.map((section, i) => (
+            <div key={i}>
+              <h2>{section.heading}</h2>
+
+              {section.items && (
+                <ul>
+                  {section.items.map((item, j) => (
+                    <li key={j}>
+                      <strong>{item.label}:</strong> {item.value}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {section.paragraphs && section.paragraphs.map((paragraph, j) => (
+                <p key={j}>{paragraph}</p>
+              ))}
+
+              {section.bullets && (
+                <ul>
+                  {section.bullets.map((bullet, j) => (
+                    <li key={j}>{bullet}</li>
+                  ))}
+                </ul>
+              )}
+
+              {section.trailingParagraph && (
+                <p>{section.trailingParagraph}</p>
+              )}
+            </div>
+          ))}
+
+          <p className="text-sm text-vidaia-charcoal/60">
+            Última actualización: {content.lastUpdated}
+          </p>
+        </div>
+      </div>
+    </main>
+  )
+}
