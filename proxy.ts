@@ -8,8 +8,13 @@ export function proxy(request: NextRequest) {
   const vercelEnv = process.env.VERCEL_ENV
   const canonicalHost = new URL(BASE_URL).host
 
-  // Producción: el alias *.vercel.app del deployment se pliega al dominio real (308).
-  if (vercelEnv === 'production' && host !== canonicalHost && host.endsWith('.vercel.app')) {
+  // Producción: una vez el dominio canónico apunte a ESTE proyecto en Vercel, plegar
+  // el alias *.vercel.app al dominio real (308). Desactivado por defecto: hasta que se
+  // haga el cutover del dominio (hoy viajesvidaia.com sirve la web antigua en otro host),
+  // redirigir mandaría a la web vieja. Activar con REDIRECT_VERCEL_TO_CANONICAL=true
+  // en Vercel (scope Production) tras apuntar el dominio aquí.
+  const foldVercelAlias = process.env.REDIRECT_VERCEL_TO_CANONICAL === 'true'
+  if (vercelEnv === 'production' && foldVercelAlias && host !== canonicalHost && host.endsWith('.vercel.app')) {
     const url = new URL(request.url)
     url.protocol = 'https:'
     url.host = canonicalHost
