@@ -400,7 +400,7 @@ PR develop → main  →  re-corre CI (gate; bloquea el merge si falla)
 Solo el deployment de producción sobre `viajesvidaia.com` se indexa; previews y `*.vercel.app` quedan fuera. Tres piezas (ver **D24** en DECISIONS.md):
 
 - **`app/robots.ts`** env-aware (`VERCEL_ENV`): fuera de producción `Disallow: /`; en producción `allow` + `sitemap` + `host`.
-- **`proxy.ts`**: fuera de producción añade `X-Robots-Tag: noindex, nofollow`; en producción redirige `308` el host `*.vercel.app` → host canónico de `BASE_URL`.
+- **`proxy.ts`**: fuera de producción añade `X-Robots-Tag: noindex, nofollow`; en producción redirige `308` el host `*.vercel.app` → host canónico de `BASE_URL` **solo si `REDIRECT_VERCEL_TO_CANONICAL=true`** (off por defecto hasta que el dominio apunte a este proyecto en Vercel — ver addendum en D24).
 - **`app/layout.tsx`**: `metadataBase: new URL(BASE_URL)` (origen de canonicals/OG relativos).
 
 En local sin `VERCEL_ENV` el sitio se comporta como "no producción" (`Disallow: /` + `noindex`): es lo esperado, no un fallo.

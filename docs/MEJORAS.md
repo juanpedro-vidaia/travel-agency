@@ -690,7 +690,7 @@ async headers() {
 
 **Implementado (solo lo que faltaba; sitemap y los canonicals de `buildMetadata` ya estaban bien):**
 - `app/robots.ts` env-aware: `VERCEL_ENV !== 'production'` → `Disallow: /`; producción → `allow` + `sitemap` + `host`.
-- `proxy.ts`: en no-producción añade `X-Robots-Tag: noindex, nofollow`; en producción redirige `308` cualquier host `*.vercel.app` → `viajesvidaia.com`.
+- `proxy.ts`: en no-producción añade `X-Robots-Tag: noindex, nofollow`; en producción redirige `308` cualquier host `*.vercel.app` → `viajesvidaia.com`. **(El `308` quedó gateado tras `REDIRECT_VERCEL_TO_CANONICAL=true`, off por defecto, porque el dominio aún sirve la web antigua en otro host — ver addendum en D24. Activarlo tras el cutover del dominio a Vercel.)**
 - `app/layout.tsx`: `metadataBase: new URL(BASE_URL)`.
 
 ### M45 — Limpieza de metadatos SEO (marca, H1, plantillas)

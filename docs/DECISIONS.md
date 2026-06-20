@@ -498,3 +498,6 @@ Tras desplegar el script nativo, el validador mostró TODOS los schemas duplicad
 **Consecuencias:**
 - Cualquier ruta nueva hereda el comportamiento (robots global + proxy con matcher que cubre las páginas HTML).
 - Si se añade un idioma o subdominio, revisar el matcher del proxy y la lógica de host.
+
+**Addendum (20/06/2026) — el `308` de `*.vercel.app` queda gateado tras `REDIRECT_VERCEL_TO_CANONICAL`:**
+Al subir a producción se vio que `viajesvidaia.com` **todavía no apunta a este proyecto de Vercel** — lo sirve el host antiguo (`Server: hcdn`, la web actual). Con el `308` activo, el alias `*.vercel.app` de producción redirigía a esa web vieja, impidiendo revisar el deploy nuevo. Por eso el `308` ahora requiere `process.env.REDIRECT_VERCEL_TO_CANONICAL === 'true'` (off por defecto). Plan de cutover: (1) apuntar `viajesvidaia.com` a este proyecto en Vercel (Settings → Domains, como dominio de producción); (2) poner `REDIRECT_VERCEL_TO_CANONICAL=true` en el scope Production de Vercel; (3) redeploy. Mientras tanto, la revisión del contenido nuevo se hace en la URL `*.vercel.app` (preview de `develop` no redirige, y producción tampoco con el flag off).
