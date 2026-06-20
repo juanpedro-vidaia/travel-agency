@@ -26,3 +26,14 @@ export function formatPrice(price: number, locale = 'es-ES'): string {
   return price.toLocaleString(locale)
 }
 
+/**
+ * Returns the part of an itinerary title before the colon (without it), trimmed.
+ * Useful to keep metadata titles within length limits.
+ * @example getShortTitle('Chile e Isla de Pascua: de las viñas del Maipo…') → 'Chile e Isla de Pascua'
+ * Falls back to the full title when there is no ':'.
+ */
+export function getShortTitle(title: string): string {
+  const idx = title.indexOf(':')
+  return idx === -1 ? title : title.slice(0, idx).trim()
+}
+

@@ -16,6 +16,7 @@ import { LanguageProvider } from '@/lib/context/LanguageContext'
 import { getCountriesOrdered } from '@/lib/services/countriesService'
 import { getDestinations } from '@/lib/services/destinationsService'
 import { buildOrganizationSchema, buildWebSiteSchema, buildPageSchema } from '@/lib/schema'
+import { BASE_URL } from '@/lib/config/site'
 import './globals.css'
 
 const inter = Inter({
@@ -32,6 +33,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
     default: 'Viajes Vidaia — El viaje de tu vida hecho realidad',
     template: '%s | Viajes Vidaia',

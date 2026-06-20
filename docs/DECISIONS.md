@@ -459,3 +459,42 @@ Tras desplegar el script nativo, el validador mostró TODOS los schemas duplicad
 **Consecuencias:**
 - El mapa no aparece en el HTML inicial — se hidrata en el cliente
 - Ligero flash de layout al cargar el mapa (el espacio ya está reservado con `height` fijo)
+
+---
+
+## D23 — La marca "Viajes Vidaia" en el `<title>` se añade solo vía `title.template`
+
+**Fecha:** 2026-06-20
+
+**Decisión:** Ningún `title`/`metaTitle` almacenado en los datos (`staticContent.ts`, `countries.ts`, `trips.ts`, `itineraries.ts`, `posts.ts`) incluye "Viajes Vidaia". El sufijo de marca lo añade **una sola vez** el `title.template` (`'%s | Viajes Vidaia'`) del root layout (`app/layout.tsx`).
+
+**Contexto:** La auditoría SEO detectó que muchos títulos llevaban "— Viajes Vidaia" o "| Viajes Vidaia" en el propio dato y, al aplicarles el template del root, la marca se renderizaba **dos veces** (p. ej. `Viajes a Argentina — Viajes Vidaia | Viajes Vidaia`), además de salirse del rango de longitud.
+
+**Consecuencias / regla:**
+- Al añadir cualquier página/itinerario/post/país, el `title`/`metaTitle` va **sin** marca; el template la pone.
+- Los títulos de destino se generan por plantilla (`destinationPage.metaTitleTemplate`), no con un `metaTitle` por país (eliminado de `countries.ts`).
+- `buildMetadata` devuelve el `title` como string plano (recibe el template del root); `openGraph.title` usa ese valor base sin marca — tampoco se duplica.
+
+---
+
+## D24 — Indexación restringida al deployment de producción
+
+**Fecha:** 2026-06-20
+
+**Decisión:** Solo el deployment de producción sobre el dominio real `viajesvidaia.com` se indexa. Las preview deployments y la URL `*.vercel.app` no se indexan.
+
+**Implementación (tres piezas, ver M44 en MEJORAS.md):**
+1. `app/robots.ts` es env-aware (`process.env.VERCEL_ENV`): fuera de producción devuelve `Disallow: /` (sin sitemap); en producción `allow: /` + `sitemap` + `host`.
+2. `proxy.ts`: en `VERCEL_ENV !== 'production'` añade `X-Robots-Tag: noindex, nofollow` a la respuesta (cinturón-y-tirantes con el robots.txt); en producción, si el host entrante es `*.vercel.app`, redirige `308` al host canónico de `BASE_URL`.
+3. `app/layout.tsx`: `metadataBase: new URL(BASE_URL)` — fija el origen de canonicals/OG relativos al dominio real (los de `buildMetadata` ya eran absolutos).
+
+**Razonamiento:**
+- `VERCEL_ENV` distingue production/preview por deployment sin configuración extra.
+- El `308` pliega el alias `*.vercel.app` de producción en el dominio canónico (evita contenido duplicado indexable); `robots.txt` no bloquea esa URL para que el bot pueda leer la redirección.
+- Doble señal (robots.txt + `X-Robots-Tag`) cubre crawlers que solo respetan una u otra.
+
+**Verificación:** En local sin `VERCEL_ENV`: `/robots.txt` → `Disallow: /`, `/es` → `X-Robots-Tag: noindex, nofollow`. Con `VERCEL_ENV=production`: `/robots.txt` → `allow` + sitemap + host, `/es` sin `X-Robots-Tag`. El `308` solo se comprueba en el deployment (host `*.vercel.app`).
+
+**Consecuencias:**
+- Cualquier ruta nueva hereda el comportamiento (robots global + proxy con matcher que cubre las páginas HTML).
+- Si se añade un idioma o subdominio, revisar el matcher del proxy y la lógica de host.

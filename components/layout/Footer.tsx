@@ -142,6 +142,11 @@ export default function Footer() {
                 </LangLink>
               </li>
               <li>
+                <LangLink href="/condiciones-contratacion" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  {footerContent.legal.conditionsPolicy}
+                </LangLink>
+              </li>
+              <li>
                 <LangLink href="/cookies" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {footerContent.legal.cookiesPolicy}
                 </LangLink>

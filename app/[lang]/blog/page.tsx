@@ -16,9 +16,10 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
+  const { metadata } = getStaticContent(lang).blogPage
   return buildMetadata({
-    title: 'Blog de viajes — Viajes Vidaia',
-    description: 'Guías de viaje, consejos prácticos e inspiración para descubrir Argentina, Chile y Bolivia. Escritos por quienes los han recorrido de verdad.',
+    title: metadata.title,
+    description: metadata.description,
     path: `/${lang}/blog`,
     lang,
   })
@@ -31,6 +32,7 @@ export function generateStaticParams() {
 export default async function BlogPage({ params }: Props) {
   const { lang } = await params
   const blogContent = getStaticContent(lang).blogPage
+  const { metadata, hero } = blogContent
 
   const allPosts = getAllPosts()
   const featured = getFeaturedPost()
@@ -39,8 +41,8 @@ export default async function BlogPage({ params }: Props) {
   return (
     <>
       <JsonLd data={buildCollectionPageSchema(lang, {
-        name: 'Blog de viajes — Viajes Vidaia',
-        description: 'Guías de viaje, consejos prácticos e inspiración para descubrir Argentina, Chile y Bolivia.',
+        name: metadata.title,
+        description: metadata.description,
         path: '/blog',
         items: allPosts.map(p => ({ name: p.content.es.title, path: `/blog/${p.slug}` })),
       })} id="ld-blog" />
@@ -51,13 +53,13 @@ export default async function BlogPage({ params }: Props) {
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-6">
-            Blog de Viajes
+            {hero.badge}
           </span>
           <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-5 sm:mb-6 text-balance">
-            Historias desde el fin del mundo
+            {hero.title}
           </h1>
           <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto text-balance">
-            Guías honestas, consejos prácticos e inspiración para descubrir Argentina, Chile y Bolivia sin filtros.
+            {hero.subtitle}
           </p>
         </div>
       </section>

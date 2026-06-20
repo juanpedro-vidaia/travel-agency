@@ -665,3 +665,64 @@ async headers() {
 - Nuevo `lib/schema/buildCollectionPageSchema.ts`
 
 **Solución:** Emitir `CollectionPage` con `mainEntity: ItemList` donde cada `ListItem` apunta a la URL del trip/post. Integrar en el `@graph` existente vía `buildPageSchema`.
+
+---
+
+## 📋 Sesión SEO + indexación (20/06/2026)
+
+> Cambios derivados de la auditoría `Downloads/auditoria-resultado-vidaia.md`. Los pendientes (M46-M48) salen de esa auditoría.
+
+### M43 — Página de Condiciones Generales de Contratación (viaje combinado)
+> ✅ COMPLETADO 20/06/2026 — cierra **CF1** de la auditoría.
+
+**Problema:** Faltaba la página legal obligatoria en España de "Condiciones Generales de Contratación de Viajes Combinados" (RD-ley 23/2018 / TRLGDCU). El sitio ya vende viaje combinado (lo menciona el proceso de `/viajes`) pero no había página pública.
+
+**Implementado:**
+- Nueva ruta `/condiciones-contratacion` (`app/[lang]/condiciones-contratacion/page.tsx`), mismo patrón que el resto de legales (`buildMetadata`, `generateStaticParams`, render de secciones).
+- Contenido en `staticContent.ts` → `conditionsPage` (datos identificativos, formulario de información normalizada, garantía Markel, cláusulas 1-26, tratamiento de datos con RD 933/2021).
+- Enlace en el footer (columna Legal, entre Privacidad y Cookies) + entrada en `app/sitemap.ts`.
+- Reemplazos del texto fuente: ORGANIZADOR / AGENCIA / minorista → "Viajes Vidaia".
+
+### M44 — Indexación restringida a producción
+> ✅ COMPLETADO 20/06/2026 — verificado en local (robots.txt + `X-Robots-Tag` en ambos entornos). Ver **D24** en DECISIONS.md.
+
+**Problema:** `robots.ts` era estático (`allow: /` siempre) y nada impedía indexar las preview deployments ni la URL `*.vercel.app` → riesgo de indexación de previews y contenido duplicado.
+
+**Implementado (solo lo que faltaba; sitemap y los canonicals de `buildMetadata` ya estaban bien):**
+- `app/robots.ts` env-aware: `VERCEL_ENV !== 'production'` → `Disallow: /`; producción → `allow` + `sitemap` + `host`.
+- `proxy.ts`: en no-producción añade `X-Robots-Tag: noindex, nofollow`; en producción redirige `308` cualquier host `*.vercel.app` → `viajesvidaia.com`.
+- `app/layout.tsx`: `metadataBase: new URL(BASE_URL)`.
+
+### M45 — Limpieza de metadatos SEO (marca, H1, plantillas)
+> ✅ COMPLETADO 20/06/2026 — cierra QW1 y la tabla por página de la auditoría. Ver **D23**.
+
+- **Marca única en `<title>`:** ningún `title`/`metaTitle` de los datos incluye ya "Viajes Vidaia"; la añade una sola vez el `template` del root layout. Revisados home, viajes, lunas, legales, blog, posts, itinerarios y destinos.
+- **Destinos:** title y H1 por plantilla — `destinationPage.metaTitleTemplate` (`Viajes a medida por {country}`) + `metaDescriptionSuffix`; eliminado el `metaTitle` por país de `countries.ts`.
+- **Personalizar:** nuevo helper `getShortTitle()` (`contentHelpers.ts`); `/itinerarios/[slug]/personalizar` usa `Personalizar {shortTitle}`, `robots: noindex,follow` y `og:image` del trip; `/itinerarios/personalizar` `index,follow`. `buildMetadata` extendido con `robots?`.
+- **H1 con keyword:** home y `/viajes` (antes el H1 de viajes era solo "Viajes Vidaia").
+- **Blog index** migrado a `staticContent.blogPage` (metadata + hero, sin texto hardcodeado).
+- **Descripciones legales** ampliadas; **erratas** corregidas (doble espacio en Argentina, "nos llevó" en el post de Iguazú); **`quotePage`** (código muerto) eliminado.
+
+### M46 — GEO por destino: bloques citables + autoría (E-E-A-T)
+> 🟡 PENDIENTE — de la auditoría (CF3).
+
+**Qué falta:** Reforzar la comprensión por buscadores generativos en las landings de país con bloques **pregunta-respuesta** y datos explícitos citables (mejor época, duración media, presupuesto orientativo, dificultad), y estructurar la **autoría** de los posts (`author` ya existe en el modelo `Post`) aprovechando las bios reales de Lau y Jupe ("hemos recorrido…").
+
+### M47 — Verificación post-deploy de la auditoría SEO/GEO
+> 🟢 PENDIENTE — comprobaciones que solo se pueden hacer sobre el deploy.
+
+- Validar los schemas en **Rich Results Test** tras la limpieza de titles.
+- Confirmar el `308` de `*.vercel.app` → dominio real en el deployment.
+- Verificar que la cuenta `@viajesvidaia` (Twitter/X del `twitter:site`) existe, o ajustar el handle.
+- Comprobar que el banner de consentimiento bloquea GA4 antes de aceptar, y el render en móvil.
+- Ya resueltos del checklist: `og-default.jpg` (M02), favicons/manifest (M37), 404 con marca (M33), `/`→`/es` (M31), CWV baseline (M24).
+- `AggregateRating`: intencionadamente **NO** se añade (testimonios de muestra) — ver M38 / D21.
+
+### M48 — `docs/CONTENT.md` y `README.md` desfasados — poner al día antes de PROD
+> 🟡 PENDIENTE (decidido 20/06/2026: no se hace hoy).
+
+**Problema:** Ambos documentan el modelo de datos antiguo:
+- Estructura de país plana (`name`, `metaTitle`…) en lugar de la real `content: { es: { … } }`.
+- `metaTitle` por país (ya eliminado: el title de destino se genera por plantilla — ver M45/D23) y `metaTitle` de post con sufijo de marca (ahora la marca la añade el template; no debe ir en el dato).
+
+**Solución:** Antes de subir a producción, alinear los ejemplos de "añadir país / post" con el modelo `content.es`, quitar `metaTitle` de país y mostrar los `metaTitle` de post sin sufijo de marca.

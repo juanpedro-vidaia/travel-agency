@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...langUrls('/blog',               0.8, 'weekly'),
     ...langUrls('/aviso-legal',        0.3, 'yearly'),
     ...langUrls('/privacidad',         0.3, 'yearly'),
+    ...langUrls('/condiciones-contratacion', 0.3, 'yearly'),
     ...langUrls('/cookies',            0.3, 'yearly'),
   ]
 

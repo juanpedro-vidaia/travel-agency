@@ -94,7 +94,7 @@ const itineraries: Itinerary[] = [
         description: 'Argentina sorprende en cada etapa, y este viaje lo recorre de norte a sur. Las Cataratas del Iguazú desde el lado argentino y el brasileño, la Península Valdés con sus ballenas francas australes, el Glaciar Perito Moreno avanzando sobre el Lago Argentino y el Canal Beagle en Ushuaia, donde el continente se acaba. Trece días de paisajes que no se parecen entre sí.',
         heroTitleMobile: 'Viaje a los Paisajes Naturales de Argentina',
         descriptionMobile: '13 días por las Cataratas del Iguazú, las ballenas de Península Valdés, el Glaciar Perito Moreno y el Canal Beagle en Ushuaia.',
-        metaTitle: 'Viaje a los Paisajes Naturales de Argentina — Viajes Vidaia',
+        metaTitle: 'Viaje a los Paisajes Naturales de Argentina',
         metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Argentina a medida: Iguazú, Península de Valdés, Buenos Aires, El Calafate y Ushuaia. 13 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.PAISAJES_NATURALES_IGUAZU', location: 'Cataratas del Iguazú' },
@@ -172,7 +172,7 @@ const itineraries: Itinerary[] = [
       },
       {
         dayNumber: 4,
-        destinationId: 'puerto-madryn',
+        destinationId: 'peninsula-valdes',
         dayType: 'activity',
         content: {
           es: {
@@ -344,7 +344,7 @@ const itineraries: Itinerary[] = [
         description: 'Chile engaña en el mapa y sorprende en cada etapa. Santiago como puerta de entrada, las viñas del Maipo y Casablanca, el desierto de Atacama con sus salares, géiseres y cielos nocturnos, y al final del vuelo, una isla perdida en el Pacífico con moáis mirando al horizonte desde hace siglos. Trece días, tres paisajes que no tienen nada que ver entre sí.',
         heroTitleMobile: 'Viaje a Chile e Isla de Pascua',
         descriptionMobile: 'Santiago, las viñas del Maipo, el desierto de Atacama y los moáis de Rapa Nui. 13 días por tres paisajes completamente distintos.',
-        metaTitle: 'Viaje a Chile e Isla de Pascua — Viajes Vidaia',
+        metaTitle: 'Viaje a Chile e Isla de Pascua',
         metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Chile a medida: Santiago, San Pedro de Atacama y Rapa Nui. 13 días por tres mundos distintos. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.ESENCIAS_CHILE_MOAIS', location: 'Ahu Tongariki · Isla de Pascua' },
@@ -579,8 +579,8 @@ const itineraries: Itinerary[] = [
         description: 'El viaje largo por Argentina, el que permite llegar a todos los rincones sin renunciar a nada. Buenos Aires como punto de partida, Ushuaia y el Canal Beagle, el Glaciar Perito Moreno y los picos del Chaltén en la Patagonia. Los lagos de Bariloche y San Martín de los Andes se recorren a vuestro aire, y las Cataratas del Iguazú como cierre. 22 días que demuestran que Argentina no se agota en un solo viaje.',
         heroTitleMobile: 'Viaje a los Grandes Escenarios de Argentina',
         descriptionMobile: '22 días por la Patagonia completa: Ushuaia, Perito Moreno, El Chaltén, Bariloche y las Cataratas del Iguazú.',
-        metaTitle: 'Viaje a la Patagonia Argentina y a Iguazú — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Argentina a medida: Buenos Aires, Ushuaia, El Calafate, El Chaltén, Bariloche y las Cataratas del Iguazú. 22 días. Cuéntanos tu idea.',
+        metaTitle: 'Viaje a la Patagonia Argentina y a Iguazú',
+        metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Argentina a medida: Buenos Aires, Ushuaia, El Calafate, El Chaltén, Bariloche e Iguazú. 22 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.GRANDES_ESCENARIOS_FITZ_ROY', location: 'Fitz Roy · El Chaltén' },
           { imageKey: 'ITINERARIES.GRANDES_ESCENARIOS_USHUAIA', location: 'Canal Beagle · Ushuaia' },
@@ -956,8 +956,8 @@ const itineraries: Itinerary[] = [
         description: 'Argentina en invierno tiene una lógica propia. El norte andino de Salta y la Quebrada de Humahuaca con sus colores ocres y su cultura viva, la selva subtropical de Iguazú con las cataratas en pleno caudal, Buenos Aires con su ritmo urbano, y la Patagonia en su versión más austera: Ushuaia bajo la nieve y el Perito Moreno avanzando sobre el lago. 16 días que recorren los extremos del mismo país en su mejor temporada.',
         heroTitleMobile: 'Viaje a Argentina en invierno: de norte al Fin del mundo.',
         descriptionMobile: '16 días de contrastes: norte andino, cataratas, Buenos Aires, Ushuaia y glaciares.',
-        metaTitle: 'Viaje a Argentina en Invierno Austral — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Argentina en invierno a medida: Salta, Purmamarca, Iguazú, Buenos Aires, Ushuaia y El Calafate. 16 días. Cuéntanos tu idea.',
+        metaTitle: 'Viaje a Argentina en Invierno Austral',
+        metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Argentina en invierno a medida: Salta y Jujuy, Iguazú, Buenos Aires, Ushuaia y El Calafate. 16 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_SALTA', location: 'Cerro de los Siete Colores · Purmamarca' },
           { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_IGUAZU', location: 'Cataratas del Iguazú' },
@@ -1241,8 +1241,8 @@ const itineraries: Itinerary[] = [
         description: 'Un recorrido de sur a norte que pone en perspectiva la dimensión real de Argentina. Buenos Aires como punto de partida, el Canal Beagle y el Parque Nacional en Ushuaia, el Glaciar Perito Moreno en El Calafate, los lagos y volcanes de Bariloche, y las Cataratas del Iguazú como destino final. 16 días en los que el país cambia de carácter en cada etapa.',
         heroTitleMobile: 'Viaje a Argentina de Sur a Norte',
         descriptionMobile: '16 días de Buenos Aires a Ushuaia, glaciares, Bariloche e Iguazú.',
-        metaTitle: 'Viaje a Argentina de Sur a Norte — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Argentina a medida: Buenos Aires, Ushuaia, El Calafate, Bariloche y las Cataratas del Iguazú. 16 días de sur a norte. Cuéntanos tu idea.',
+        metaTitle: 'Viaje a Argentina de Sur a Norte',
+        metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Argentina a medida: Buenos Aires, Ushuaia, El Calafate, Bariloche y las Cataratas del Iguazú. 16 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.SUR_NORTE_USHUAIA', location: 'Canal Beagle · Ushuaia' },
           { imageKey: 'ITINERARIES.SUR_NORTE_MORENO', location: 'Glaciar Perito Moreno · El Calafate' },
@@ -1537,8 +1537,8 @@ const itineraries: Itinerary[] = [
         description: 'En 21 días Argentina cambia de cara en cada etapa: el bullicio de Buenos Aires, la quietud del noroeste andino por Tucumán, Cafayate, Salta y Purmamarca. El frío seco de la Patagonia en Ushuaia y El Calafate. Y el estruendo húmedo de las Cataratas del Iguazú. De los salares al Perito Moreno, de los viñedos a la selva subtropical. El viaje largo que lo tiene todo.',
         heroTitleMobile: 'Viaje a Argentina: glaciares, selva y salares.',
         descriptionMobile: '21 días del noroeste andino al Fin del Mundo y las Cataratas.',
-        metaTitle: 'Viaje a Argentina: glaciares, selva y salares — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Argentina a medida: Buenos Aires, Salta, Purmamarca, Ushuaia, El Calafate e Iguazú. 21 días de contrastes. Cuéntanos tu idea.',
+        metaTitle: 'Viaje a Argentina: glaciares, selva y salares',
+        metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Argentina a medida: Buenos Aires, Salta, Purmamarca, Ushuaia, El Calafate e Iguazú. 21 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.CONTRASTES_SALINAS', location: 'Salinas Grandes · Jujuy' },
           { imageKey: 'ITINERARIES.CONTRASTES_CAFAYATE', location: 'Valles Calchaquíes · Cafayate' },
@@ -1906,8 +1906,8 @@ const itineraries: Itinerary[] = [
         description: 'Tres países, tres culturas del vino y tres ciudades con carácter propio. Santiago con los valles de Casablanca y Maipo a menos de una hora, Mendoza con sus bodegas frente a la cordillera y el Valle de Uco como gran argumento, Buenos Aires con su vida porteña y sus noches de tango, y Montevideo con su rambla y sus bodegas boutique junto al Río de la Plata. Trece días que se recorren despacio, con tiempo para sentarse a la mesa.',
         heroTitleMobile: 'Viaje por los viñedos del Cono Sur',
         descriptionMobile: '13 días por Santiago, Mendoza, Buenos Aires y Montevideo: viñedos, bodegas boutique, cenas maridadas y cultura porteña.',
-        metaTitle: 'Viaje por los Viñedos del Cono Sur — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos tu viaje por Chile, Argentina y Uruguay a medida: Santiago, Mendoza, Buenos Aires y Montevideo. 13 días de vino y gastronomía. Cuéntanos tu idea.',
+        metaTitle: 'Viaje por los Viñedos de Argentina y Chile',
+        metaDescription: 'En Viajes Vidaia diseñamos tu viaje por Chile, Argentina y Uruguay a medida: Santiago, Mendoza, Buenos Aires y Montevideo. 13 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.CAPITALES_VINO_MENDOZA', location: 'Valle de Uco · Mendoza' },
           { imageKey: 'ITINERARIES.CAPITALES_VINO_SANTIAGO', location: 'Santiago de Chile' },
@@ -2177,7 +2177,7 @@ const itineraries: Itinerary[] = [
         description: 'Perú tiene una profundidad histórica y natural que pocas rutas consiguen abarcar en 14 días. Lima como puerta de entrada — con su centro colonial, Miraflores sobre el Pacífico y una cocina que merece el viaje por sí sola. Paracas y las Islas Ballestas para ver la fauna marina de cerca, con la opción de sobrevolar las Líneas de Nazca. Arequipa y el Cañón del Colca, con sus pueblos andinos y el vuelo de los cóndores. El Lago Titicaca y las islas flotantes de los Uros. Y el final que todo viajero a Perú termina queriendo: Cusco, el Valle Sagrado y Machu Picchu.',
         heroTitleMobile: 'Viaje a lo mejor de Perú: de Lima al Machu Picchu',
         descriptionMobile: '14 días por lo mejor del Perú: Lima, las Islas Ballestas, el Cañón del Colca, el Lago Titicaca, Cusco y Machu Picchu.',
-        metaTitle: 'Viaje a lo mejor de Perú — Viajes Vidaia',
+        metaTitle: 'Viaje a lo mejor de Perú',
         metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Perú a medida: Lima, Paracas, Arequipa, Cañón del Colca, Lago Titicaca, Cusco y Machu Picchu. 14 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.PERU_MACHU_PICCHU', location: 'Ciudadela Inca de Machu Picchu' },
@@ -2438,7 +2438,7 @@ const itineraries: Itinerary[] = [
         description: 'Pocos países concentran tanta variedad en tan poco ancho de tierra. Este viaje de 17 días recorre Chile de sur a norte y termina en mitad del Pacífico: Torres del Paine y los glaciares de Puerto Natales, los lagos y volcanes de Puerto Varas con una parada en Chiloé, el desierto de Atacama con sus salares y géiseres, y al final un vuelo de cinco horas hasta Rapa Nui y sus moáis. Cuatro destinos diferentes, unidos por el mismo país.',
         heroTitleMobile: 'Viaje a Chile de punta a punta.',
         descriptionMobile: '17 días por lo mejor de Chile: Santiago, Torres del Paine, los lagos del sur, Atacama y los moais de Rapa Nui.',
-        metaTitle: 'Viaje a Chile Completo: Patagonia, Lagos, Atacama y Rapa Nui — Viajes Vidaia',
+        metaTitle: 'Viaje a Chile: Patagonia, Atacama y Rapa Nui',
         metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Chile a medida: Santiago, Torres del Paine, Puerto Varas, San Pedro de Atacama y Rapa Nui. 17 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.CHILE_COMPLETO_TORRES', location: 'Torres del Paine, Patagonia' },
@@ -2762,8 +2762,8 @@ const itineraries: Itinerary[] = [
         description: 'Bolivia de arriba abajo y sin prisas. Santa Cruz y sus tierras bajas tropicales, las ciudades coloniales de Sucre y Potosí, el altiplano extremo de la Reserva Eduardo Avaroa con sus lagunas de colores, el Salar de Uyuni y sus doce mil kilómetros cuadrados de sal, La Paz con la ceremonia de la Pachamama, y el Lago Titicaca con la Isla del Sol. Trece días que atraviesan Bolivia de este a oeste y de las tierras bajas a los cuatro mil ochocientos metros.',
         heroTitleMobile: 'Bolivia Infinita: Colores que Cuentan Historias',
         descriptionMobile: '13 días desde Santa Cruz hasta el Lago Titicaca, pasando por el Salar de Uyuni, las lagunas del Lípez y La Paz.',
-        metaTitle: 'Bolivia Infinita: Salar, Sucre y Lago Titicaca — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos viajes a Bolivia completamente a medida: Salar de Uyuni, Sucre, La Paz, Lago Titicaca y mucho más. Cuéntanos tu idea.',
+        metaTitle: 'Bolivia Infinita: del Salar al Lago Titicaca',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Bolivia completamente a medida: Salar de Uyuni, Sucre, La Paz, Lago Titicaca y mucho más. 13 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_SALAR', location: 'Salar de Uyuni, Bolivia' },
           { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_LAGUNA_COLORADA', location: 'Laguna Colorada, Reserva Eduardo Avaroa' },
@@ -3017,8 +3017,8 @@ const itineraries: Itinerary[] = [
         description: 'Un viaje que cruza dos países y tres mundos distintos. Bolivia del altiplano más árido al blanco absoluto del Salar: Santa Cruz tropical, ciudades coloniales de Sucre y Potosí, las lagunas de colores de la Reserva Eduardo Avaroa y la inmensidad del Salar de Uyuni. Luego Chile: el desierto de Atacama con sus géiseres, sus lagunas altiplánicas y el Valle de la Luna. Y finalmente Rapa Nui, los moáis y el Pacífico, con Santiago como cierre cosmopolita.',
         heroTitleMobile: 'Bolivia y Chile: del Salar a Rapa Nui',
         descriptionMobile: '15 días de Bolivia a Chile: Salar de Uyuni, Atacama, Isla de Pascua y Santiago.',
-        metaTitle: 'Bolivia y Chile: Salar, Atacama y Rapa Nui — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos viajes a Bolivia y Chile completamente a medida: Salar de Uyuni, Atacama, Isla de Pascua y Santiago. Cuéntanos tu idea.',
+        metaTitle: 'Bolivia y Chile: Salar de Uyuni y Rapa Nui',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Bolivia y Chile completamente a medida: Salar de Uyuni, Atacama, Isla de Pascua y Santiago. 15 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.SALAR_PASCUA_UYUNI', location: 'Salar de Uyuni · Bolivia' },
           { imageKey: 'ITINERARIES.SALAR_PASCUA_LAGUNA_COLORADA', location: 'Laguna Colorada · Lípez boliviano' },

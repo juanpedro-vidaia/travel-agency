@@ -2,7 +2,6 @@ export interface CountryContent {
   name: string
   description: string
   heroAlt: string
-  metaTitle: string
   metaDescription: string
 }
 
@@ -33,8 +32,7 @@ const countries: Country[] = [
         name: 'Argentina',
         description: 'Hasta que no conoces Argentina no descubres lo que cabe en un solo país: el norte y sus montañas de colores, la selva subtropical y las cataratas, los viñedos frente a la cordillera de Mendoza y Cafayate, los campos de piedra pómez de Catamarca, el Perito Moreno y los picos del Chaltén, la Península Valdés con sus ballenas, orcas y pingüinos. Y todavía quedaría mucho por contar. Argentina merece varios viajes, ¿te apetece alguna combinación inédita?',
         heroAlt: 'El Chaltén, Patagonia argentina',
-        metaTitle: 'Viajes a Argentina — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos viajes a Argentina completamente a medida: Patagonia, Ushuaia, Iguazú,  Buenos Aires, Salta y mucho más. Cuéntanos tu idea.',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Argentina completamente a medida: Patagonia, Ushuaia, Iguazú, Buenos Aires, Salta y mucho más.',
       }
     },
     flag: '🇦🇷',
@@ -53,8 +51,7 @@ const countries: Country[] = [
         name: 'Chile',
         description: 'Chile engaña en el mapa. Parece un hilo y resulta ser un mundo. Al norte, el Atacama; más abajo, valles con viñedos y la cordillera de fondo. Luego la Patagonia se despliega despacio: los lagos y los ríos de la Araucanía, los fiordos navegables, los glaciares del sur. Y cuando crees que ya lo entiendes, recuerdas que Chile también tiene una isla perdida en el Pacífico, con moais mirando al horizonte desde hace siglos. Chile no se abarca en un solo viaje. ¿Por dónde quieres empezar?',
         heroAlt: 'Torres del Paine, Chile',
-        metaTitle: 'Viajes a Chile — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos viajes a Chile personalizados: Atacama, Torres del Paine, Carretera Austral, Isla de Pascua y mucho más. Cuéntanos tu idea.',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Chile personalizados: Atacama, Torres del Paine, Carretera Austral, Isla de Pascua y mucho más.',
       }
     },
     flag: '🇨🇱',
@@ -73,8 +70,7 @@ const countries: Country[] = [
         name: 'Bolivia',
         description: 'Bolivia engancha de una forma que no te esperas. Vendrás emocionado de amanecer en el Salar de Uyuni y recorrer la inmensidad del Altiplano, y te irás queriendo volver a la Cordillera Real, con ansia por ver el volcán Sajama, con ilusión por haber comido en los mercados de Sucre y Potosí, contando a tus amigos que no se pierdan las montañas de Samaipata o los cañones de Toro Toro. Bolivia es de esos destinos que te cambian el orden de las prioridades. ¿Te gustaría que te preparáramos algo sorprendente?',
         heroAlt: 'Salar de Uyuni, Bolivia',
-        metaTitle: 'Viajes a Bolivia — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos viajes a Bolivia personalizados: Salar de Uyuni, Samaipata, Sucre, La Paz, el Lago Titicaca y mucho más. Cuéntanos tu idea.',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Bolivia personalizados: Salar de Uyuni, Samaipata, Sucre, La Paz, el Lago Titicaca y mucho más.',
       }
     },
     flag: '🇧🇴',
@@ -93,8 +89,7 @@ const countries: Country[] = [
         name: 'Perú',
         description: 'Perú tiene una profundidad histórica y natural que pocos países pueden igualar. Te llevaremos a Kuelap, la fortaleza perdida entre nubes, a Choquequirao, el Machu Picchu sin turistas, a Cajamarca y Arequipa. Al Amazonas desde Iquitos, a la reserva de Pacaya Samiria. A la Cordillera Blanca, con el Artesonraju y el Alpamayo, que para muchos son las montañas más bonitas del mundo. Y sí, también a Machu Picchu y al Valle Sagrado, que se merece cada uno de los viajeros que la visitan. Y si encima comes en un mercado local, Perú ya no te lo quita nadie. ¿Qué te gustaría probar?',
         heroAlt: 'Machu Picchu, Perú',
-        metaTitle: 'Viajes a Perú — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos viajes a Perú completamente a medida: Machu Picchu, Cusco, Valle Sagrado, Arequipa, Huaraz, Iquitos y mucho más. Cuéntanos tu idea.',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Perú completamente a medida: Machu Picchu, Cusco, Valle Sagrado, Arequipa, Huaraz, Iquitos y mucho más.',
       }
     },
     flag: '🇵🇪',
@@ -113,8 +108,7 @@ const countries: Country[] = [
         name: 'Uruguay',
         description: 'Uruguay, el pequeño gran país del Cono Sur, sorprende con su vibrante capital Montevideo, su rambla frente al Río de la Plata y una floreciente tradición vitivinícola en valles como Canelones y Maldonado.',
         heroAlt: 'Montevideo, Uruguay',
-        metaTitle: 'Viajes a Uruguay — Viajes Vidaia',
-        metaDescription: 'En Viajes Vidaia diseñamos viajes a Uruguay personalizados. Combinamos el destino con Argentina y Brasil. Montevideo, Colonia y mucho más. Cuéntanos tu idea.',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Uruguay personalizados. Combinamos el destino con Argentina y Brasil. Montevideo, Colonia y mucho más.',
       }
     },
     flag: '🇺🇾',

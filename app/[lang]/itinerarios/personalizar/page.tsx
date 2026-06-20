@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t.metadata.genericDescription,
     path: `/${lang}/itinerarios/personalizar`,
     lang,
+    robots: { index: true, follow: true },
   })
 }
 
