@@ -24,6 +24,7 @@ export const COMMON_UI = {
       backToHome: 'Volver al inicio',
     },
     map: {
+      overline: 'Ruta del viaje',
       title: 'Recorrido en el mapa',
       subtitle: 'Haz clic en cada destino para ver los detalles de la estancia',
     },
@@ -110,9 +111,9 @@ export const STATIC_CONTENT = {
       },
       hero: {
         tagline: 'Argentina · Chile · Bolivia · Perú',
-        title: 'Somos Viajes Vidaia{br} {span} Diseñamos tu viaje a medida por Sudamérica',
+        title: 'Diseñamos tu viaje a medida por Sudamérica{br} {span}Somos Viajes Vidaia',
         titleEmphasized: '',
-        description: 'Agencia de viajes boutique especializada en viajes a medida por Argentina, Chile, Bolivia y Perú. Circuitos personalizados a tu ritmo.',
+        description: 'Agencia de viajes boutique especializada en viajes a medida',
       },
       faqSection: {
         title: 'Preguntas frecuentes',
@@ -187,6 +188,7 @@ export const STATIC_CONTENT = {
     },
     instagramBanner: {
       header: {
+        overline: 'Redes Sociales',
         title: 'Síguenos en Instagram {span}',
         instagramHandle: '@viajesvidaia',
         subtitle: 'Inspiración para tu próximo viaje',
@@ -233,6 +235,7 @@ export const STATIC_CONTENT = {
         paragraph: 'No hay dos parejas iguales, ¿por qué debería serlo vuestro viaje?{br}{br}En Viajes Vidaia diseñamos lunas de miel completamente personalizadas, pensadas desde cero para vosotros. Sin paquetes cerrados, sin itinerarios estándar. Solo experiencias que encajen con vuestra forma de viajar, vuestro ritmo y lo que realmente os hace ilusión.',
       },
       whatMakesUsDifferent: {
+        overline: '¿Por qué Vidaia?',
         title: '✨ ¿Qué hace diferente vuestra luna de miel con nosotros?',
         subtitle: 'Cada detalle pensado para vosotros, desde el primer día hasta el último',
         features: [
@@ -259,6 +262,7 @@ export const STATIC_CONTENT = {
         ],
       },
       howWeDesignIt: {
+        overline: '¿Cómo trabajamos?',
         title: '💬 ¿Cómo lo diseñamos?',
         subtitle: 'Un proceso sencillo y pensado para que todo sea fácil',
         steps: [
@@ -281,6 +285,7 @@ export const STATIC_CONTENT = {
         ],
       },
       whyCustomHoneymoon: {
+        overline: 'Propuesta de valor',
         title: '💎 ¿Por qué una luna de miel a medida?',
         reasons: [
           'Porque es vuestro viaje.',
@@ -290,6 +295,7 @@ export const STATIC_CONTENT = {
         ],
       },
       honeymoonIdeas: {
+        overline: 'Itinerarios',
         title: '🌎 Ideas de lunas de miel',
         subtitle: 'Todos nuestros viajes se adaptan completamente — esto es solo el punto de partida',
       },
@@ -298,6 +304,7 @@ export const STATIC_CONTENT = {
         subtitle: 'Las preguntas más habituales de las parejas que nos escriben',
       },
       finalCta: {
+        overline: 'Empecemos',
         title: 'Empieza a diseñar vuestra luna de miel',
         subtitle: 'Primera reunión gratuita y sin compromiso',
       },
@@ -1137,8 +1144,10 @@ export const STATIC_CONTENT = {
         ],
       },
       servicios: {
+        missionOverline: 'Misión',
         missionTitle: 'Nuestra misión',
         missionText: 'Hacer realidad el viaje ideal de cada persona que quiere descubrir Sudamérica. Somos una agencia boutique especializada en itinerarios a medida: hemos recorrido las rutas que ofrecemos y conocemos los destinos desde dentro. Desde la primera conversación ponemos ese conocimiento en el diseño de tu viaje.',
+        cardsOverline: '¿Por qué Vidaia?',
         cardsTitle: '¿Por qué viajar con Vidaia?',
         cards: [
           {
@@ -1176,6 +1185,7 @@ export const STATIC_CONTENT = {
         emptyCta: 'Solicitar presupuesto a medida',
       },
       comoTrabajamos: {
+        overline: 'Paso a paso',
         title: '¿Cómo trabajamos?',
         subtitle: 'Solicita tu presupuesto o agenda una llamada con nosotros y nos encargamos del resto.',
         steps: [
@@ -1212,6 +1222,7 @@ export const STATIC_CONTENT = {
         quote: 'Cada viaje que diseñamos nace de escucharte a ti.',
       },
       section: {
+        overlineTemplate: 'Itinerarios {country}',
         titleTemplate: 'Itinerarios por {country}',
         subtitle: 'Todos son puntos de partida — los adaptamos a tus fechas, ritmo y presupuesto',
       },
@@ -1223,6 +1234,7 @@ export const STATIC_CONTENT = {
       },
       backButton: 'Explorar otros destinos',
       cta: {
+        overline: 'Empecemos',
         title: 'El viaje que imaginas todavía está por hacer',
         descriptionTemplate: 'Porque las mejores rutas nacen de vuestros sueños. Cuéntanos vuestra idea y diseñaremos una experiencia única por {country}, completamente a vuestra medida.',
         button: 'Solicitar mi viaje a medida',
@@ -1247,6 +1259,7 @@ export const STATIC_CONTENT = {
       },
       backToCountryTemplate: 'Ver más viajes a {country}',
       accordion: {
+        overline: 'Programa',
         title: 'Itinerario día a día',
         subtitle: 'Haz clic en cada día para ver los detalles',
         freeDayLabel: 'DÍA LIBRE',
@@ -1256,6 +1269,7 @@ export const STATIC_CONTENT = {
         excludesLabel: 'No incluye:',
       },
       hotels: {
+        overline: 'Dónde dormiréis',
         title: 'Alojamientos recomendados',
         subtitle: 'Seleccionados por su calidad, ubicación y relación calidad-precio',
         disclaimer: '*Los hoteles mostrados son orientativos. Adaptamos el alojamiento a tu presupuesto y preferencias.',
@@ -1265,6 +1279,7 @@ export const STATIC_CONTENT = {
         title: '¿Quieres enriquecer tu viaje?',
       },
       relatedTrips: {
+        overline: 'Itinerarios recomendados',
         title: 'También te pueden interesar',
         subtitle: 'Viajes con experiencias similares o complementarias',
       },

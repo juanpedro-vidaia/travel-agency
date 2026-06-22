@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'
+import SectionHeader from '@/components/sections/SectionHeader'
 
 export default function QuienesSomos() {
   const { content, ui } = useLanguage()
@@ -16,22 +16,11 @@ export default function QuienesSomos() {
     <section id="quienes-somos" className="py-12 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-xl mx-auto mb-8 md:mb-16 text-center">
-          <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
-            {sectionContent.header.overline}
-          </span>
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-vidaia-dark mb-3 sm:mb-4 leading-tight">
-            {sectionContent.header.title.split('{br}').map((part, index) => (
-              <React.Fragment key={index}>
-                {part}
-                {index === 0 && <br />}
-              </React.Fragment>
-            ))}
-          </h2>
-          <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
-            {sectionContent.header.subtitle}
-          </p>
-        </div>
+        <SectionHeader
+          overline={sectionContent.header.overline}
+          title={sectionContent.header.title}
+          subtitle={sectionContent.header.subtitle}
+        />
 
         {/* Team cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-14">

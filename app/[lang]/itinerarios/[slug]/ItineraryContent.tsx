@@ -31,6 +31,7 @@ import type { ResolvedFAQ } from '@/lib/services/faqsService'
 import { formatPrice, renderTemplate } from '@/lib/helpers/contentHelpers'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import FaqSection from '@/components/sections/FaqSection'
+import SectionHeader from '@/components/sections/SectionHeader'
 import ItineraryHeroCarousel from './ItineraryHeroCarousel'
 import ItineraryDayAccordion from './ItineraryDayAccordion'
 import ItineraryHotels from './ItineraryHotels'
@@ -149,10 +150,7 @@ export default function ItineraryContent({
       {/* ── MAPA DEL ITINERARIO ───────────────────────────────────────────────── */}
       <section className="hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
-            {ui.map.title}
-          </h2>
-          <p className="text-center text-vidaia-charcoal/70 text-sm mb-8">{ui.map.subtitle}</p>
+          <SectionHeader overline={ui.map.overline} title={ui.map.title} subtitle={ui.map.subtitle} />
           <ItineraryMap
             accommodationStops={resolvedItinerary.accommodationStops}
             destCoords={destCoords}
@@ -172,12 +170,7 @@ export default function ItineraryContent({
       {optionalsWithIcons.length > 0 && (
         <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-amber-50">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-amber-700 font-semibold tracking-widest uppercase text-xs mb-3">
-              {content.optionals.overline}
-            </p>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-6 md:mb-12">
-              {content.optionals.title}
-            </h2>
+            <SectionHeader overline={content.optionals.overline} title={content.optionals.title} />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
               {optionalsWithIcons.map(({ Icon, title, description }) => (
                 <div
@@ -209,9 +202,9 @@ export default function ItineraryContent({
       {/* ── PRECIO ────────────────────────────────────────────────────────────── */}
       <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
         <div className="max-w-2xl mx-auto">
-          <p className="text-vidaia-earth uppercase tracking-widest text-xs font-semibold mb-4">
+          <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-5">
             {content.price.overline}
-          </p>
+          </span>
           {trip.priceFrom != null && trip.priceFrom > 0 && (
             <p className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold mb-1">
               {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom) })}

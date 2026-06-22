@@ -5,6 +5,7 @@ import { getAsset } from '@/lib/data/assets'
 import type { Country } from '@/lib/data/countries'
 import type { Destination } from '@/lib/data/destinations'
 import DestinationsSectionExpand from '@/components/sections/DestinationsSectionExpand'
+import SectionHeader from '@/components/sections/SectionHeader'
 
 export type DestinationsSectionContent = {
   homePill: string
@@ -67,15 +68,7 @@ export default function DestinationsSection({ variant, content, countries, desti
   return (
     <section id="destinations-section" className="py-12 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 md:mb-14">
-          <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
-            {pill}
-          </span>
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-vidaia-dark mb-3 sm:mb-4">
-            {title}
-          </h2>
-          <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">{subtitle}</p>
-        </div>
+        <SectionHeader overline={pill} title={title} subtitle={subtitle} />
 
         {variant === 'home' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

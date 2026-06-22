@@ -5,6 +5,7 @@ import { Star } from 'lucide-react'
 import { getFeaturedTestimonials } from '@/lib/services/testimonialsService'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { getAsset } from '@/lib/data/assets'
+import SectionHeader from '@/components/sections/SectionHeader'
 
 export default function TestimonialsSection() {
   const { content, language } = useLanguage()
@@ -18,17 +19,11 @@ export default function TestimonialsSection() {
     <section className="py-12 md:py-24 bg-vidaia-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-8 md:mb-14">
-          <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
-            {sectionContent.header.overline}
-          </span>
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-vidaia-dark mb-3 sm:mb-4">
-            {sectionContent.header.title}
-          </h2>
-          <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
-            {sectionContent.header.subtitle}
-          </p>
-        </div>
+        <SectionHeader
+          overline={sectionContent.header.overline}
+          title={sectionContent.header.title}
+          subtitle={sectionContent.header.subtitle}
+        />
 
         {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">

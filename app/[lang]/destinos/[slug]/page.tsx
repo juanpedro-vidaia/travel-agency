@@ -19,6 +19,7 @@ import type { CountrySlug } from '@/lib/data/countries'
 import { buildPageSchema, buildTouristDestinationSchema, buildFAQSchema, buildBreadcrumbSchema } from '@/lib/schema'
 import { getAsset } from '@/lib/data/assets'
 import { renderTemplate } from '@/lib/helpers/contentHelpers'
+import SectionHeader from '@/components/sections/SectionHeader'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 
 interface Props {
@@ -110,10 +111,11 @@ export default async function CountryPage({ params }: Props) {
       {trips.length > 0 && (
         <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-              {renderTemplate(content.section.titleTemplate, { country: countryName })}
-            </h2>
-            <p className="text-center text-vidaia-charcoal/70 text-sm mb-8 md:mb-14">{content.section.subtitle}</p>
+            <SectionHeader
+              overline={renderTemplate(content.section.overlineTemplate, { country: countryName })}
+              title={renderTemplate(content.section.titleTemplate, { country: countryName })}
+              subtitle={content.section.subtitle}
+            />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {trips.map((trip) => (
@@ -145,7 +147,10 @@ export default async function CountryPage({ params }: Props) {
       {/* ── CTA FINAL ── */}
       <section className="py-14 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
         <div className="max-w-xl mx-auto">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">{content.cta.title}</h2>
+          <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-5">
+            {content.cta.overline}
+          </span>
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold mb-4 leading-tight">{content.cta.title}</h2>
           <p className="text-white/65 text-lg mb-10 leading-relaxed">
             {renderTemplate(content.cta.descriptionTemplate, { country: countryName })}
           </p>

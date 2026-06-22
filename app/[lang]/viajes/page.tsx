@@ -79,8 +79,10 @@ export default async function ViajesPage({ params }: Props) {
 
       {/* 2 — Misión + Servicios */}
       <ViajesServicios
+        missionOverline={page.servicios.missionOverline}
         missionTitle={page.servicios.missionTitle}
         missionText={page.servicios.missionText}
+        cardsOverline={page.servicios.cardsOverline}
         cardsTitle={page.servicios.cardsTitle}
         cards={page.servicios.cards}
       />
@@ -105,6 +107,7 @@ export default async function ViajesPage({ params }: Props) {
 
       {/* 4 — Cómo trabajamos */}
       <ViajesComoTrabajamos
+        overline={page.comoTrabajamos.overline}
         title={page.comoTrabajamos.title}
         subtitle={page.comoTrabajamos.subtitle}
         steps={page.comoTrabajamos.steps}

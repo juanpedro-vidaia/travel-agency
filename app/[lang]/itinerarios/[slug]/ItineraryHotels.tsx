@@ -6,6 +6,7 @@ import { Bed, Star, Calendar } from 'lucide-react'
 import { getAsset } from '@/lib/data/assets'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import type { ResolvedItinerary } from '@/lib/services/itinerariesService'
+import SectionHeader from '@/components/sections/SectionHeader'
 
 interface Props {
   resolvedItinerary: ResolvedItinerary
@@ -41,12 +42,7 @@ export default function ItineraryHotels({ resolvedItinerary, destinationNames }:
   return (
     <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
-          {content.hotels.title}
-        </h2>
-        <p className="text-center text-vidaia-charcoal/70 text-sm mb-6 md:mb-12">
-          {content.hotels.subtitle}
-        </p>
+        <SectionHeader overline={content.hotels.overline} title={content.hotels.title} subtitle={content.hotels.subtitle} />
 
         <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 -mx-4 md:mx-0 px-4 md:px-0 pb-4 md:pb-0">
           {hotelCards.map((hotel, index) => (

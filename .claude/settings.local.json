@@ -17,7 +17,9 @@
       "Bash(curl -s http://localhost:3000/es)",
       "PowerShell($html = Invoke-WebRequest -Uri \"http://localhost:3000/es\" -UseBasicParsing; if \\($html.Content -match \"lightwidget\"\\) { \"✓ LightWidget iframe found in SSR HTML\" } else { \"✗ Not found\" })",
       "Bash(node -e \"require\\('@eslint/eslintrc'\\); console.log\\('ok'\\)\")",
-      "Bash(Remove-Item \"c:\\\\Users\\\\juanpedro.martin\\\\travel-agency\\\\.eslintrc.json\")"
+      "Bash(Remove-Item \"c:\\\\Users\\\\juanpedro.martin\\\\travel-agency\\\\.eslintrc.json\")",
+      "Bash(git merge *)",
+      "Bash(echo \"eslint exit: $?\")"
     ],
     "additionalDirectories": [
       "/Users/jupemartin/Viajes Vidaia Code/travel-agency/app/[lang]/destinos/[slug]"
