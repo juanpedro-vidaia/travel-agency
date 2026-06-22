@@ -6,6 +6,7 @@ import { getHoneymoonTrips } from '@/lib/services/tripsService'
 import { getFAQsByPage } from '@/lib/services/faqsService'
 import TripCard from '@/components/ui/TripCard'
 import FaqSection from '@/components/sections/FaqSection'
+import SectionHeader from '@/components/sections/SectionHeader'
 import JsonLd from '@/components/scripts/JsonLd'
 import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
 import { buildFAQSchema, buildCollectionPageSchema, buildPageSchema } from '@/lib/schema'
@@ -113,12 +114,11 @@ export default async function LunasDeMielPage({ params }: Props) {
       {/* ── SECCIÓN 1: QUÉ NOS DIFERENCIA ── */}
       <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-            {content.whatMakesUsDifferent.title}
-          </h2>
-          <p className="text-center text-vidaia-charcoal/70 text-sm mb-8 md:mb-14">
-            {content.whatMakesUsDifferent.subtitle}
-          </p>
+          <SectionHeader
+            overline={content.whatMakesUsDifferent.overline}
+            title={content.whatMakesUsDifferent.title}
+            subtitle={content.whatMakesUsDifferent.subtitle}
+          />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {content.whatMakesUsDifferent.features.map((feature) => (
               <div key={feature.title} className="bg-vidaia-sand rounded-2xl p-7 border border-vidaia-light hover:border-vidaia-earth hover:shadow-md transition-all">
@@ -134,12 +134,11 @@ export default async function LunasDeMielPage({ params }: Props) {
       {/* ── SECCIÓN 2: CÓMO LO DISEÑAMOS ── */}
       <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-            {content.howWeDesignIt.title}
-          </h2>
-          <p className="text-center text-vidaia-charcoal/70 text-sm mb-16">
-            {content.howWeDesignIt.subtitle}
-          </p>
+          <SectionHeader
+            overline={content.howWeDesignIt.overline}
+            title={content.howWeDesignIt.title}
+            subtitle={content.howWeDesignIt.subtitle}
+          />
           <div className="hidden md:block relative">
             <div className="absolute top-5 left-[calc(12.5%-1px)] right-[calc(12.5%-1px)] h-px border-t-2 border-dashed border-vidaia-light" />
             <div className="grid grid-cols-4 gap-6">
@@ -178,9 +177,7 @@ export default async function LunasDeMielPage({ params }: Props) {
       {/* ── SECCIÓN 3: POR QUÉ A MEDIDA ── */}
       <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-8 md:mb-12">
-            {content.whyCustomHoneymoon.title}
-          </h2>
+          <SectionHeader overline={content.whyCustomHoneymoon.overline} title={content.whyCustomHoneymoon.title} />
           <ul className="space-y-5 text-left">
             {content.whyCustomHoneymoon.reasons.map((reason, i) => (
               <li key={i} className="flex items-center gap-4">
@@ -196,12 +193,11 @@ export default async function LunasDeMielPage({ params }: Props) {
       {honeymoonTrips.length > 0 && (
         <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
           <div className="max-w-6xl mx-auto">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-              {content.honeymoonIdeas.title}
-            </h2>
-            <p className="text-center text-vidaia-charcoal/70 text-sm mb-8 md:mb-14">
-              {content.honeymoonIdeas.subtitle}
-            </p>
+            <SectionHeader
+              overline={content.honeymoonIdeas.overline}
+              title={content.honeymoonIdeas.title}
+              subtitle={content.honeymoonIdeas.subtitle}
+            />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {honeymoonTrips.map((trip) => (
                 <TripCard
@@ -232,7 +228,10 @@ export default async function LunasDeMielPage({ params }: Props) {
       <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-vidaia-dark via-[#2a5060] to-vidaia-primary text-white text-center">
         <div className="max-w-2xl mx-auto">
           <Heart className="w-10 h-10 text-vidaia-earth mx-auto mb-6" fill="currentColor" />
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{content.finalCta.title}</h2>
+          <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-5">
+            {content.finalCta.overline}
+          </span>
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold mb-4 leading-tight">{content.finalCta.title}</h2>
           <p className="text-white/70 text-lg mb-10">{content.finalCta.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

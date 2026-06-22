@@ -5,6 +5,7 @@ import { useState, useMemo, useCallback } from 'react'
 import { Search, SlidersHorizontal, X } from 'lucide-react'
 import TripCard from '@/components/ui/TripCard'
 import LangLink from '@/components/ui/LangLink'
+import SectionHeader from '@/components/sections/SectionHeader'
 import { searchTrips, MAX_DAYS, MIN_PRICE, MAX_PRICE, type TripFilters } from '@/lib/search/tripSearchIndex'
 import { TAG_CONFIG, type TripTag } from '@/lib/data/tagConfig'
 import type { Trip } from '@/lib/data/trips'
@@ -168,17 +169,7 @@ export default function ViajesBuscador({
       <div className="max-w-6xl mx-auto">
 
         {/* ── Cabecera ── */}
-        <div className="text-center mb-8 md:mb-14">
-          <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
-            {strings.headerPill}
-          </span>
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-vidaia-dark mb-3 sm:mb-4">
-            {strings.headerTitle}
-          </h2>
-          <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto">
-            {strings.headerSubtitle}
-          </p>
-        </div>
+        <SectionHeader overline={strings.headerPill} title={strings.headerTitle} subtitle={strings.headerSubtitle} />
 
         {/* ── Zona A: search bar ── */}
         <div className="flex flex-col sm:flex-row gap-3 mb-4">

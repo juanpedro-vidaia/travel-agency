@@ -1,24 +1,22 @@
+import SectionHeader from '@/components/sections/SectionHeader'
+
 interface Step {
   title: string
   description: string
 }
 
 interface ViajesComoTrabajamosProps {
+  overline: string
   title: string
   subtitle: string
   steps: Step[]
 }
 
-export default function ViajesComoTrabajamos({ title, subtitle, steps }: ViajesComoTrabajamosProps) {
+export default function ViajesComoTrabajamos({ overline, title, subtitle, steps }: ViajesComoTrabajamosProps) {
   return (
     <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
       <div className="max-w-5xl mx-auto">
-        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-          {title}
-        </h2>
-        <p className="text-center text-vidaia-charcoal/70 text-sm mb-8 md:mb-16">
-          {subtitle}
-        </p>
+        <SectionHeader overline={overline} title={title} subtitle={subtitle} />
 
         {/* Desktop — horizontal timeline */}
         <div className="hidden md:block relative">

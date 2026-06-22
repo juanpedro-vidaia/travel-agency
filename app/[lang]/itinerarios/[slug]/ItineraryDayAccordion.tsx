@@ -28,6 +28,7 @@ import {
   TreePalm,
   type LucideIcon,
 } from 'lucide-react'
+import SectionHeader from '@/components/sections/SectionHeader'
 import type { ResolvedItinerary } from '@/lib/services/itinerariesService'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 
@@ -112,12 +113,7 @@ export default function ItineraryDayAccordion({ resolvedItinerary, destinationNa
   return (
     <section className="py-10 md:py-16 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
       <div className="max-w-3xl mx-auto">
-        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold text-vidaia-dark mb-2 text-center">
-          {content.accordion.title}
-        </h2>
-        <p className="text-center text-vidaia-charcoal/70 mb-6 md:mb-10 text-sm">
-          {content.accordion.subtitle}
-        </p>
+        <SectionHeader overline={content.accordion.overline} title={content.accordion.title} subtitle={content.accordion.subtitle} />
 
         <div className="space-y-2">
           {itineraryDays.map((day) => {

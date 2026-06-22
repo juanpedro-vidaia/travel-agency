@@ -1,5 +1,6 @@
 import { Compass, Star, Users } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import SectionHeader from '@/components/sections/SectionHeader'
 
 interface Card {
   title: string
@@ -7,8 +8,10 @@ interface Card {
 }
 
 interface ViajesServiciosProps {
+  missionOverline: string
   missionTitle: string
   missionText: string
+  cardsOverline: string
   cardsTitle: string
   cards: Card[]
 }
@@ -16,13 +19,16 @@ interface ViajesServiciosProps {
 // Icons match the order of the three cards in staticContent.viajesPage.servicios.cards
 const CARD_ICONS: LucideIcon[] = [Compass, Star, Users]
 
-export default function ViajesServicios({ missionTitle, missionText, cardsTitle, cards }: ViajesServiciosProps) {
+export default function ViajesServicios({ missionOverline, missionTitle, missionText, cardsOverline, cardsTitle, cards }: ViajesServiciosProps) {
   return (
     <>
       {/* ── Misión ── */}
       <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-cream">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-4 sm:mb-6">
+          <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full mb-5">
+            {missionOverline}
+          </span>
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-5xl font-bold text-vidaia-dark mb-4 sm:mb-6 leading-tight">
             {missionTitle}
           </h2>
           <p className="text-vidaia-charcoal/80 text-base sm:text-xl leading-relaxed">
@@ -34,10 +40,8 @@ export default function ViajesServicios({ missionTitle, missionText, cardsTitle,
       {/* ── Cards de servicios ── */}
       <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-vidaia-sand">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-vidaia-dark mb-2 text-center">
-            {cardsTitle}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 md:mt-14">
+          <SectionHeader overline={cardsOverline} title={cardsTitle} />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {cards.map((card, i) => {
               const Icon = CARD_ICONS[i] ?? Compass
               return (
