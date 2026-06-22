@@ -307,8 +307,10 @@ export const ASSETS = {
   'ITINERARIES.SUR_NORTE_USHUAIA':             { url: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop', alt: 'FOTO MIA DE BAHIA LAPATÍA U OTRA DE USHUAIA' },
 
   // ── Logos ─────────────────────────────────────────────────────────────────────
-  'LOGO.COLOR':   { url: '/images/logo/viajes-vidaia-logo-color.jpg', alt: 'Viajes Vidaia' },
-  'LOGO.DEFAULT': { url: '/images/logo/viajes-vidaia-logo.png', alt: 'Viajes Vidaia' },
+  'LOGO.BLANCO':        { url: '/images/logo/viajes-vidaia-logo-blanco.png', alt: 'Viajes Vidaia' },
+  'LOGO.NEGRO':         { url: '/images/logo/viajes-vidaia-logo-negro.png', alt: 'Viajes Vidaia' },
+  'LOGO.REDONDO_TEAL':  { url: '/images/logo/viajes-vidaia-redondo-teal.png', alt: 'Viajes Vidaia' },
+  'LOGO.CUADRADO_TEAL': { url: '/images/logo/viajes-vidaia-cuadrado-teal.png', alt: 'Viajes Vidaia' },
 
   // ── Team ──────────────────────────────────────────────────────────────────────
   'TEAM.JUPE':            { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/c_crop,g_north_west,h_652,w_652,x_548,y_142/foto-jupe-borobudur-indonesia_hxbmvh.jpg', alt: 'Jupe, asesor de Viajes Vidaia, en Borobudur, Isla de Java en Indonesia' },

@@ -17,7 +17,7 @@ export default function Footer() {
   const { openPreferences } = useConsent()
   const { content, language } = useLanguage()
   const footerContent = content.footer
-  const logoColorAsset = getAsset('LOGO.COLOR')
+  const logoAsset = getAsset('LOGO.BLANCO')
 
   return (
     <footer className="bg-vidaia-charcoal text-gray-400">
@@ -28,11 +28,11 @@ export default function Footer() {
           <div>
             <LangLink href="/" className="inline-block mb-5">
               <Image
-                src={logoColorAsset.url}
-                alt={logoColorAsset.alt}
-                width={160}
-                height={44}
-                className="h-10 w-auto object-contain"
+                src={logoAsset.url}
+                alt={logoAsset.alt}
+                width={480}
+                height={132}
+                className="h-16 w-auto object-contain"
               />
             </LangLink>
 

@@ -44,7 +44,7 @@ Por tanto, el ancho "mínimo" de la tabla aplica **solo si la imagen vive única
 | `TEAM.*` (retratos) | `QuienesSomos.tsx` equipo | `112px` | 112 | **400×400** (margen futuro) | 1:1 |
 | `BLOG`/`TRIPS` miniatura | `PostContent.tsx` viaje relacionado | `64px` | 64 | **160×160** | 1:1 |
 | `TESTIMONIALS.*` | `TestimonialsSection.tsx` | `44px` | 44 | **128×128** (se elimina con M38) | 1:1 |
-| `LOGO.*` | `Header.tsx`, `Footer.tsx` | fijo 160×44 (alto 40–56px) | ~160 | **SVG** ideal, o PNG **480×132** | — |
+| `LOGO.*` (BLANCO / NEGRO / REDONDO_TEAL / CUADRADO_TEAL) | `Header.tsx` (swap por scroll: BLANCO sobre hero oscuro, NEGRO al scrollear), `Footer.tsx` (BLANCO), `buildOrganizationSchema` (CUADRADO_TEAL) | wordmark fijo 160×44; badges cuadrado/redondo | ~160 | PNG transparente (wordmark **480×132**; badge ≥512×512) | — |
 | `FLAGS.*` / flagcdn | varios selectores | fijo 20×15 | 20 | — (externo, sin acción) | — |
 
 ---

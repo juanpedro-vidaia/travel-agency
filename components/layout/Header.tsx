@@ -19,7 +19,7 @@ export default function Header() {
   const { openContactModal } = useContactModal()
   const { content, ui, language } = useLanguage()
   const headerContent = content.header
-  const logoAsset = getAsset('LOGO.DEFAULT')
+  const logoAsset = getAsset(scrolled ? 'LOGO.NEGRO' : 'LOGO.BLANCO')
   const navItems = [
     { key: 'viajes', label: headerContent.nav.trips },
     { key: 'blog', label: headerContent.nav.blog }
