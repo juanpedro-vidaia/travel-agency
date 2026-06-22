@@ -9,3 +9,6 @@ next-env.d.ts
 # Gestor de paquetes: este proyecto usa npm (package-lock.json)
 pnpm-lock.yaml
 yarn.lock
+
+# Config local del harness de Claude Code (permisos por máquina)
+.claude/settings.local.json
