@@ -17,7 +17,7 @@ export function buildOrganizationSchema(countries: Country[], destinations: Dest
     '@id': `${BASE_URL}/#organization`,
     name: 'Viajes Vidaia',
     url: BASE_URL,
-    logo: `${BASE_URL}/images/logo/viajes-vidaia-logo.png`,
+    logo: `${BASE_URL}/images/logo/viajes-vidaia-cuadrado-teal.png`,
     image: `${BASE_URL}/images/og-default.jpg`,
     telephone: CONTACT.phone,
     email: 'info@viajesvidaia.com',
