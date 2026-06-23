@@ -11,7 +11,16 @@
       "PowerShell($html = Invoke-WebRequest -Uri \"http://localhost:3000/es/itinerarios/bolivia-chile-salar-pascua\" -UseBasicParsing; $idx = $html.Content.IndexOf\\(\"AggregateOffer\"\\); $html.Content.Substring\\([Math]::Max\\(0,$idx-100\\), 400\\))",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3002/es)",
       "Bash(curl -s http://localhost:3002/es)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(npx eslint *)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(git add *)",
+      "Bash(git reset *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(grep -E 'origin/\\(main|develop\\)$')",
+      "Bash(gh pr *)",
+      "Bash(git fetch *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\juanpedro.martin"

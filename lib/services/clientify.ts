@@ -199,6 +199,13 @@ const ACCOMMODATION_MAP: Record<string, string> = {
   'surprise': 'Sorpréndeme',
 }
 
+const GROUP_TYPE_MAP: Record<string, string> = {
+  'solo':    'Solo',
+  'pareja':  'Pareja',
+  'familia': 'Familia',
+  'amigos':  'Grupo de amigos',
+}
+
 
 function buildPresupuestoContactPayload(data: FormPayload) {
   const [firstName, ...rest] = data.nombre.trim().split(' ')
@@ -220,7 +227,8 @@ function buildPresupuestoContactPayload(data: FormPayload) {
       { field: 'motivo_viaje',         value: data.motivo.join(', ') },
       { field: 'pasajeros_adultos',    value: String(data.adultos) },
       { field: 'pasajeros_menores',    value: String(data.menores) },
-      { field: 'tipo_grupo',           value: data.groupType ?? '' },
+      { field: 'itinerario_web_referencia', value: data.itinerarySlug ?? '' },
+      { field: 'tipo_grupo',           value: GROUP_TYPE_MAP[data.groupType ?? ''] ?? '' },
       { field: 'aeropuerto_origen',    value: data.departureAirport },
       { field: 'tipo_experiencia',     value: data.experiences.join(', ') },
       { field: 'tipo_alojamientos',    value: ACCOMMODATION_MAP[data.accommodation ?? ''] ?? '' },

@@ -17,7 +17,7 @@ interface ItineraryData {
   id: string
   slug: string
   title: string
-  countryId: string
+  countryIds: string[]
   countryName: string
   countrySlug: string
   countryFlagCode: string
@@ -77,7 +77,7 @@ export default function FormularioPersonalizado({
   const [step, setStep] = useState<1 | 2 | 3>(1)
   const [submitError, setSubmitError] = useState<string | null>(null)
 
-  const preselectedCountries = itineraryData ? [itineraryData.countryId] : []
+  const preselectedCountries = itineraryData?.countryIds ?? []
   const preselectedDestinations = itineraryData?.destinationIds ?? []
   const preselectedExperiences = itineraryData?.tags ?? []
 

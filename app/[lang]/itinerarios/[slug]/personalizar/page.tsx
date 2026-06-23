@@ -52,9 +52,10 @@ export default async function PersonalizarItinerarioPage({ params }: Props) {
   const t = STATIC_CONTENT[lang as keyof typeof STATIC_CONTENT]?.formularioPersonalizado
   if (!itinerary || !trip || !t) notFound()
 
-  // Resolve primary country
+  // Resolve primary country (for breadcrumb display)
   const primaryCountryId = Array.isArray(trip.country) ? trip.country[0] : trip.country
   const country = getCountryBySlug(primaryCountryId)
+  const countryIds = Array.isArray(trip.country) ? trip.country : [trip.country]
 
   // Extract unique destination IDs from itinerary days (skip transit-only days without destination)
   const destinationIds = [...new Set(
@@ -65,7 +66,7 @@ export default async function PersonalizarItinerarioPage({ params }: Props) {
     id: itinerary.id,
     slug: itinerary.slug,
     title: itinerary.content.es.title,
-    countryId: primaryCountryId,
+    countryIds,
     countryName: country?.content.es.name ?? primaryCountryId,
     countrySlug: country?.slug ?? primaryCountryId,
     countryFlagCode: country?.flagCode ?? '',
