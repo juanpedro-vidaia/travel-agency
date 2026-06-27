@@ -1,18 +1,11 @@
 'use client'
 
-import Image from 'next/image'
-import { Star } from 'lucide-react'
-import { getFeaturedTestimonials } from '@/lib/services/testimonialsService'
+import Script from 'next/script'
 import { useLanguage } from '@/lib/hooks/useLanguage'
-import { getAsset } from '@/lib/data/assets'
 import SectionHeader from '@/components/sections/SectionHeader'
 
 export default function TestimonialsSection() {
-  const { content, language } = useLanguage()
-  const testimonials = getFeaturedTestimonials()
-
-  if (testimonials.length === 0) return null
-
+  const { content } = useLanguage()
   const sectionContent = content.testimonialsSection
 
   return (
@@ -25,49 +18,12 @@ export default function TestimonialsSection() {
           subtitle={sectionContent.header.subtitle}
         />
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.map((testimonial) => {
-            const testimonialImage = getAsset(testimonial.imageKey)
-            const t = testimonial.content[language as keyof typeof testimonial.content] ?? testimonial.content.es
-            return (
-              <article
-                key={testimonial.id}
-                className="bg-white rounded-2xl p-7 shadow-xs hover:shadow-md transition-shadow duration-300 flex flex-col"
-              >
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-5">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-vidaia-earth text-vidaia-earth" />
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <p className="text-vidaia-charcoal/80 text-sm leading-relaxed flex-1 mb-6">
-                  &ldquo;{t.text}&rdquo;
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center gap-3 pt-5 border-t border-vidaia-light/60">
-                  <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0">
-                    <Image
-                      src={testimonialImage.url}
-                      alt={t.name}
-                      fill
-                      className="object-cover"
-                      sizes="44px"
-                    />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-vidaia-dark text-sm">{t.name}</p>
-                    <p className="text-xs text-gray-400">{t.location}</p>
-                    <p className="text-xs text-vidaia-primary font-medium mt-0.5">{t.trip}</p>
-                  </div>
-                </div>
-              </article>
-            )
-          })}
-        </div>
+        {/* Google Reviews — Elfsight widget */}
+        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" id="elfsight-platform" />
+        <div
+          className="elfsight-app-fd4557ec-7381-4f49-9315-445105893b4c"
+          data-elfsight-app-lazy
+        />
       </div>
     </section>
   )

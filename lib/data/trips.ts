@@ -382,8 +382,8 @@ const trips: Trip[] = [
     active: true,
     hasItinerary: true,
     tags: ['culture', 'nature', 'adventure'],
-    includesInternationalFlights: false,
-    includesDomesticFlights: false,
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
     relatedTrips: [
       { slug: 'bolivia-infinita', es: { reason: 'Itinerario mas completo en Bolvia' } },
     ],

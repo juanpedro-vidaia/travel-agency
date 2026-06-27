@@ -961,7 +961,7 @@ const itineraries: Itinerary[] = [
         heroImages: [
           { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_SALTA', location: 'Cerro de los Siete Colores · Purmamarca' },
           { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_IGUAZU', location: 'Cataratas del Iguazú' },
-          { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_USHUAIA', location: 'Canal Beagle · Ushuaia' },
+          { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_USHUAIA', location: 'Parque Nacional de Tierra de Fuego · Ushuaia' },
           { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_MORENO', location: 'Glaciar Perito Moreno · El Calafate' },
         ],
       }
@@ -1542,7 +1542,7 @@ const itineraries: Itinerary[] = [
         heroImages: [
           { imageKey: 'ITINERARIES.CONTRASTES_SALINAS', location: 'Salinas Grandes · Jujuy' },
           { imageKey: 'ITINERARIES.CONTRASTES_CAFAYATE', location: 'Valles Calchaquíes · Cafayate' },
-          { imageKey: 'ITINERARIES.CONTRASTES_USHUAIA', location: 'Faro Les Eclaireurs · Ushuaia' },
+          { imageKey: 'ITINERARIES.CONTRASTES_USHUAIA', location: 'Laguna Esmeralda · Ushuaia' },
           { imageKey: 'ITINERARIES.CONTRASTES_MORENO', location: 'Glaciar Perito Moreno · El Calafate' },
           { imageKey: 'ITINERARIES.CONTRASTES_IGUAZU', location: 'Cataratas del Iguazú' },
         ],

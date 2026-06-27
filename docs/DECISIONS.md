@@ -440,8 +440,7 @@ Tras desplegar el script nativo, el validador mostró TODOS los schemas duplicad
 - Evita invertir en schema sobre una sección que va a desaparecer
 
 **Consecuencias:**
-- Bloqueado por negocio: perfil de Google Business con reseñas + elección de proveedor de widget
-- Al implementar: eliminar `TestimonialsSection`, `testimonials.ts`, `testimonialsService.ts` y assets `TESTIMONIALS.*`
+- ✅ Implementado 27/06/2026 (ver M38): widget de Elfsight (Google Reviews) en `TestimonialsSection`. Se conservó la sección (pill + título) y se eliminaron `testimonials.ts`, `testimonialsService.ts` y los assets `TESTIMONIALS.*`.
 
 ---
 

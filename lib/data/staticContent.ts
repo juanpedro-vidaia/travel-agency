@@ -183,7 +183,7 @@ export const STATIC_CONTENT = {
       header: {
         overline: 'Testimonios',
         title: 'Opiniones de viajeros Vidaia: experiencias reales',
-        subtitle: 'Cada viaje es único — estos son sus protagonistas',
+        subtitle: 'Reseñas reales de viajeros en Google',
       },
     },
     instagramBanner: {

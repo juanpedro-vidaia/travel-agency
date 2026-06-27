@@ -607,19 +607,7 @@ async headers() {
 
 ### M38 — Sustituir TestimonialsSection por widget de Google Reviews
 
-> ⚠️ REDEFINIDO 11/06/2026 — El objetivo original (schema Review/AggregateRating sobre los testimonios estáticos) se descarta: la sección de testimonios es **temporal** y se sustituirá por un widget de Google Reviews con reseñas reales.
-
-**Pendiente de negocio antes de implementar:**
-1. Perfil de Google Business activo y con reseñas
-2. Elegir proveedor de widget (Elfsight, etc. — mismo patrón de integración que LightWidget en M17)
-3. Decidir ubicación/diseño en home y en /viajes
-
-**Al implementar:**
-- Eliminar `components/sections/TestimonialsSection.tsx`, `lib/data/testimonials.ts` y los assets `TESTIMONIALS.*` de `assets.ts`
-- Quitar el componente de `app/[lang]/page.tsx` y `app/[lang]/viajes/page.tsx`
-- Las reseñas de Google traen su propio rich data verificable — no hace falta schema manual
-
-**Precaución:** Google exige que las reseñas sean verificables y no autogeneradas — por eso el widget de Google Reviews es mejor señal que el markup manual sobre testimonios estáticos.
+> ✅ COMPLETADO 27/06/2026 — `TestimonialsSection.tsx` ahora carga el widget de Google Reviews de Elfsight (app `fd4557ec-…`) en lugar de las tarjetas estáticas. Se **conservó la sección con su pill + título** (no se eliminó entera como se planteó originalmente); solo se sustituyeron las tarjetas y se actualizó el subtítulo a "Reseñas reales de viajeros en Google". Eliminados `lib/data/testimonials.ts`, `lib/services/testimonialsService.ts` y los assets `TESTIMONIALS.*`. El widget carga con `next/script` `strategy="lazyOnload"` + `data-elfsight-app-lazy` (mismo patrón que LightWidget en M17), solo en home y /viajes. Las reseñas de Google traen su propio rich data verificable — sin schema manual.
 
 ---
 

@@ -22,7 +22,6 @@ lib/services/
   destinationsService.ts → getDestinationById()
   hotelsService.ts       → getHotelById()
   activitiesService.ts   → getActivityById()
-  testimonialsService.ts → getFeaturedTestimonials()
 ```
 
 ---

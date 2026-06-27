@@ -96,7 +96,6 @@ Los servicios son funciones puras que filtran y transforman los datos de `lib/da
 | `activitiesService.ts` | `getActivityById()` |
 | `hotelsService.ts` | `getHotelById()` |
 | `postsService.ts` | `getAllPosts()`, `getRecentPosts(n)`, `getFeaturedPost()`, `getPostBySlug()` |
-| `testimonialsService.ts` | `getFeaturedTestimonials()` |
 | `clientify.ts` | `pushContactToClientify()`, `pushNewsletterToClientify()`, `pushPresupuestoToClientify()` + payload builders (activo) |
 | `resend.ts` | `sendNotificationEmail()` — notificación email best-effort de formularios (activo) |
 
@@ -260,7 +259,6 @@ const asset = getAsset('COUNTRIES.ARGENTINA_HERO')
 | `ITINERARIES.*` | Imágenes del carousel de itinerarios |
 | `VIAJES_HERO_*` | Imágenes del carousel de la página /viajes |
 | `BLOG.*` | Imágenes de posts del blog |
-| `TESTIMONIALS.*` | Fotos de testimonios (a eliminar con M38 — Google Reviews) |
 | `HOTELS.*` | Fotos de hoteles |
 | `TEAM.*` | Fotos del equipo |
 | `HOME.HERO_BG` | Fondo del hero de la home |
