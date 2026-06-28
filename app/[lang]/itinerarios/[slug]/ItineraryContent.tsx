@@ -101,6 +101,8 @@ export default function ItineraryContent({
 
   const requestHref = `/itinerarios/${slug}/personalizar`
 
+  const hasPrice = trip.priceFrom != null && trip.priceFrom > 0
+
   // ── Datos clave (bloque citable para GEO) ──────────────────────────────────
   const kf = content.keyFacts
   const bestSeason = formatBestMonths(trip.bestMonths)
@@ -248,15 +250,21 @@ export default function ItineraryContent({
       <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
         <div className="max-w-2xl mx-auto">
           <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-5">
-            {content.price.overline}
+            {hasPrice ? content.price.overline : content.price.consultOverline}
           </span>
-          {trip.priceFrom != null && trip.priceFrom > 0 && (
-            <p className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold mb-1">
-              {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom) })}
+          {hasPrice ? (
+            <>
+              <p className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold mb-1">
+                {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom!) })}
+              </p>
+              <p className="text-white/75 text-sm mb-2">{content.price.perPersonLabel}</p>
+              <p className="text-white/60 text-xs mb-12">{content.price.priceNote}</p>
+            </>
+          ) : (
+            <p className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-12">
+              {content.price.consultText}
             </p>
           )}
-          <p className="text-white/75 text-sm mb-2">{content.price.perPersonLabel}</p>
-          <p className="text-white/60 text-xs mb-12">{content.price.priceNote}</p>
           <LangLink
             href={requestHref}
             className="inline-flex items-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"

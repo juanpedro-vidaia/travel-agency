@@ -1297,7 +1297,9 @@ export const STATIC_CONTENT = {
         overline: 'Precio orientativo',
         fromTemplate: 'Desde {price}€',
         perPersonLabel: 'por persona',
-        priceNote: 'En habitación doble · Vuelos internos incluidos · Alojamiento incluido',
+        priceNote: 'En habitación doble · Vuelos internacionales e internos incluidos · Alojamiento incluido · Seguro de viaje y anulación incluido',
+        consultOverline: 'Solicitar presupuesto',
+        consultText: 'Consultar precio personalizado',
         ctaButton: 'Solicitar mi presupuesto personalizado',
       },
       faqSection: {
