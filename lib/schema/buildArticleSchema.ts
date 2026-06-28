@@ -1,4 +1,5 @@
 import { BASE_URL } from '@/lib/config/site'
+import { buildPersonNode, type PersonMember } from './buildPersonSchema'
 
 export function buildArticleSchema(post: {
   title: string
@@ -8,6 +9,8 @@ export function buildArticleSchema(post: {
   updatedAt?: string
   imageUrl?: string
   url: string
+  /** Real author (E-E-A-T). When omitted, the Organization is credited as author. */
+  author?: PersonMember
 }) {
   return {
     '@context': 'https://schema.org',
@@ -19,7 +22,7 @@ export function buildArticleSchema(post: {
     dateModified: new Date(post.updatedAt ?? post.publishedAt).toISOString(),
     url: post.url,
     mainEntityOfPage: post.url,
-    author: { '@id': `${BASE_URL}/#organization` },
+    author: post.author ? buildPersonNode(post.author) : { '@id': `${BASE_URL}/#organization` },
     publisher: { '@id': `${BASE_URL}/#organization` },
   }
 }

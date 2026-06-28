@@ -579,7 +579,7 @@ async headers() {
 
 ### M29 — `sizes` en componentes `<Image>` (auditoría manual)
 
-> ⏸️ EN ESPERA (decidido 11/06/2026) — No abordar hasta que **todas las imágenes finales estén subidas** (incluye los `url_mobile` de M20), para hacer la auditoría una sola vez y no repetirla.
+> ✅ AUDITADO 28/06/2026 (imágenes finales subidas en TRIPS, CARDS, ITINERARIOS, HEROS) — **Sin cambios de código necesarios.** Revisados los ~21 componentes con `<Image>`: los de grid/contenido declaran `sizes` acordes a su ancho real (cards 3-col `…33vw`, post destacado `50vw`, portada con cap `1280px`, miniaturas/banderas con `width`/`height` fijos), los heroes son full-width (`100vw`), y todos usan `object-cover`. No hay ningún `fill` sin `sizes` (las banderas/logo de Header/Footer/LanguageSwitch/ViajesBuscador/Paso1ElViaje usan dimensiones fijas). Queda solo la confirmación visual de M30 en navegador y re-medir LCP en PSI tras el cutover.
 
 **Requiere:** Revisar cada `<Image>` del proyecto y comparar el `sizes` declarado con el ancho real del elemento en cada breakpoint.
 
@@ -601,7 +601,7 @@ async headers() {
 
 **Solución si se detecta distorsión:** Usar `object-fit: cover` con contenedor de proporción fija (`aspect-ratio` en CSS o clase Tailwind `aspect-[x/y]`), o `fill` con contenedor de altura explícita.
 
-**Estado:** Sin confirmar — pendiente inspección visual en producción.
+**Estado:** Revisado a nivel de código 28/06/2026 — todos los `<Image>` usan `object-cover` con contenedor de tamaño/proporción fijo (cards, fotos de equipo en `QuienesSomos`, banderas), por lo que no debería haber distorsión. **Pendiente solo la inspección visual** en mobile + desktop sobre el deploy (parte de M47).
 
 ---
 
@@ -692,25 +692,28 @@ async headers() {
 - **Descripciones legales** ampliadas; **erratas** corregidas (doble espacio en Argentina, "nos llevó" en el post de Iguazú); **`quotePage`** (código muerto) eliminado.
 
 ### M46 — GEO por destino: bloques citables + autoría (E-E-A-T)
-> 🟡 PENDIENTE — de la auditoría (CF3).
+> 🟡 EN PROGRESO — de la auditoría (CF3). Redefinido: el "bloque Q&A" ya estaba cubierto por el FAQ (visible `FaqSection` + `FAQPage` schema), así que M46 se reduce a (a) datos citables y (b) autoría.
 
-**Qué falta:** Reforzar la comprensión por buscadores generativos en las landings de país con bloques **pregunta-respuesta** y datos explícitos citables (mejor época, duración media, presupuesto orientativo, dificultad), y estructurar la **autoría** de los posts (`author` ya existe en el modelo `Post`) aprovechando las bios reales de Lau y Jupe ("hemos recorrido…").
+**Hecho 28/06/2026 — bloque "Datos clave" del itinerario:**
+- `<dl>` visible bajo el hero en `ItineraryContent.tsx` con duración, precio desde, mejor época, países y dificultad. Datos ya existentes en `trips.ts` (`days`/`nights`/`priceFrom`/`bestMonths`) + nuevo campo `difficulty?` (config en `tagConfig.ts`, `DIFFICULTY_CONFIG`).
+- Helper `formatBestMonths()` en `contentHelpers.ts` (comprime meses en rangos, maneja vuelta de año y año completo → "Todo el año").
+- Schema: `buildTouristTripSchema` añade `additionalProperty: PropertyValue[]` (duración, mejor época, dificultad); el precio ya iba en `offers`. Labels en `staticContent.itineraryPage.keyFacts`.
+
+**Pendiente:**
+1. **Datos citables a nivel de país** (`/destinos/[slug]`): bloque "Claves para viajar a {país}" con datos editoriales nuevos (mejor época, duración recomendada, presupuesto orientativo, dificultad general).
+2. **Autoría E-E-A-T en posts:** `author` ('Lau'/'Jupe') ya está en los 7 posts, pero `buildArticleSchema` aún atribuye `author` a la **Organización**, no a una `Person`, y no hay byline visible en `PostContent`. Falta: mapear `author` → `Person` (bios reales de `quienesSomos.teamMembers`) en el schema + byline visible en el post.
 
 ### M47 — Verificación post-deploy de la auditoría SEO/GEO
 > 🟢 PENDIENTE — comprobaciones que solo se pueden hacer sobre el deploy.
 
 - Validar los schemas en **Rich Results Test** tras la limpieza de titles.
 - Confirmar el `308` de `*.vercel.app` → dominio real en el deployment.
-- Verificar que la cuenta `@viajesvidaia` (Twitter/X del `twitter:site`) existe, o ajustar el handle.
+- ~~Verificar que la cuenta `@viajesvidaia` (Twitter/X del `twitter:site`) existe~~ ✅ 28/06/2026 — no existe cuenta de X; eliminado `twitter:site` de `lib/helpers/seo.ts` (la Twitter Card se mantiene con card/title/description/image).
 - Comprobar que el banner de consentimiento bloquea GA4 antes de aceptar, y el render en móvil.
 - Ya resueltos del checklist: `og-default.jpg` (M02), favicons/manifest (M37), 404 con marca (M33), `/`→`/es` (M31), CWV baseline (M24).
 - `AggregateRating`: intencionadamente **NO** se añade (testimonios de muestra) — ver M38 / D21.
 
 ### M48 — `docs/CONTENT.md` y `README.md` desfasados — poner al día antes de PROD
-> 🟡 PENDIENTE (decidido 20/06/2026: no se hace hoy).
-
-**Problema:** Ambos documentan el modelo de datos antiguo:
-- Estructura de país plana (`name`, `metaTitle`…) en lugar de la real `content: { es: { … } }`.
-- `metaTitle` por país (ya eliminado: el title de destino se genera por plantilla — ver M45/D23) y `metaTitle` de post con sufijo de marca (ahora la marca la añade el template; no debe ir en el dato).
-
-**Solución:** Antes de subir a producción, alinear los ejemplos de "añadir país / post" con el modelo `content.es`, quitar `metaTitle` de país y mostrar los `metaTitle` de post sin sufijo de marca.
+> ✅ COMPLETADO 28/06/2026. Ambos documentos alineados con el modelo real (`content: { es: { … } }`, `imageKey`, `flagCode`/`heroImageKey`, `lat`/`lng`, tags en inglés incl. `cruise`, `accommodationStops`/`hotelsByCategory`). Quitado todo `metaTitle` con sufijo de marca (D23). Corregidas además las guías de itinerario/destino/hotel/actividad y `relatedTrips` (`{ slug, es: { reason } }`).
+>
+> **Bonus (deuda de entorno detectada al verificar):** `.env.example` tenía nombres que **no** coincidían con el código (`VV_CLIENTIFY_API_KEY` → real `VV_CLIENTIFY_API_TOKEN`; `VV_NEXT_PUBLIC_GA4_MEASUREMENT_ID` → real `NEXT_PUBLIC_GA4_MEASUREMENT_ID`), le faltaba `NEXT_PUBLIC_CLIENTIFY_CITA_URL` y estaba envuelto en fences ```` ```bash ```` (se colaban al hacer `cp .env.example .env.local`). Reescrito como fichero de entorno válido con los 5 nombres verificados en código + nota de `REDIRECT_VERCEL_TO_CANONICAL`. README alineado: Next.js 16, Node 24, integraciones activas, lista de docs (añadidos CONTENT.md e IMAGENES.md).

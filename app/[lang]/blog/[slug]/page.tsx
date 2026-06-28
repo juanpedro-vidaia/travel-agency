@@ -6,6 +6,7 @@ import type { Trip } from '@/lib/data/trips'
 import { getAsset } from '@/lib/data/assets'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import { buildMetadata } from '@/lib/helpers/seo'
+import { getStaticContent } from '@/lib/helpers/contentHelpers'
 import { BASE_URL } from '@/lib/config/site'
 import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/schema'
 import JsonLd from '@/components/scripts/JsonLd'
@@ -51,6 +52,9 @@ export default async function BlogPostPage({ params }: Props) {
 
   const es = post.content.es
   const imageUrl = getAsset(post.imageKey).url
+  const author = post.author
+    ? getStaticContent('es').quienesSomos.teamMembers.find((m) => m.name === post.author)
+    : undefined
 
   return (
     <>
@@ -61,6 +65,7 @@ export default async function BlogPostPage({ params }: Props) {
         publishedAt: post.date,
         updatedAt: post.dateUpdated,
         url: `${BASE_URL}/${lang}/blog/${post.slug}`,
+        author,
       })} />
       <JsonLd id="ld-breadcrumb" data={buildBreadcrumbSchema(lang, [
         { name: 'Inicio', path: '' },

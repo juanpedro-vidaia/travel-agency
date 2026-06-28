@@ -6,6 +6,11 @@ import LangLink from '@/components/ui/LangLink'
 import {
   ArrowLeft,
   ArrowRight,
+  Clock,
+  Wallet,
+  CalendarRange,
+  MapPin,
+  Gauge,
   Star,
   Waves,
   UtensilsCrossed,
@@ -28,7 +33,8 @@ import type { ResolvedItinerary } from '@/lib/services/itinerariesService'
 import type { Trip } from '@/lib/data/trips'
 import type { Country } from '@/lib/data/countries'
 import type { ResolvedFAQ } from '@/lib/services/faqsService'
-import { formatPrice, renderTemplate } from '@/lib/helpers/contentHelpers'
+import { formatPrice, renderTemplate, formatBestMonths } from '@/lib/helpers/contentHelpers'
+import { DIFFICULTY_CONFIG } from '@/lib/data/tagConfig'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import FaqSection from '@/components/sections/FaqSection'
 import SectionHeader from '@/components/sections/SectionHeader'
@@ -95,6 +101,22 @@ export default function ItineraryContent({
 
   const requestHref = `/itinerarios/${slug}/personalizar`
 
+  const hasPrice = trip.priceFrom != null && trip.priceFrom > 0
+
+  // ── Datos clave (bloque citable para GEO) ──────────────────────────────────
+  const kf = content.keyFacts
+  const bestSeason = formatBestMonths(trip.bestMonths)
+  const countryNames = countries.map(c => c.content.es.name).join(' · ')
+  const keyFacts: { Icon: LucideIcon; label: string; value: string }[] = [
+    { Icon: Clock, label: kf.duration, value: renderTemplate(kf.durationValueTemplate, { days: trip.days, nights: trip.nights }) },
+    ...(trip.priceFrom != null
+      ? [{ Icon: Wallet, label: kf.priceFrom, value: trip.priceFrom > 0 ? `${formatPrice(trip.priceFrom)}€` : kf.priceConsult }]
+      : []),
+    ...(bestSeason ? [{ Icon: CalendarRange, label: kf.bestSeason, value: bestSeason }] : []),
+    ...(countryNames ? [{ Icon: MapPin, label: kf.countries, value: countryNames }] : []),
+    ...(trip.difficulty ? [{ Icon: Gauge, label: kf.difficulty, value: DIFFICULTY_CONFIG[trip.difficulty].es.label }] : []),
+  ]
+
   return (
     <main className="min-h-screen bg-white pb-20 lg:pb-0">
 
@@ -123,6 +145,31 @@ export default function ItineraryContent({
           </div>
         </section>
       )}
+
+      {/* ── DATOS CLAVE ───────────────────────────────────────────────────────── */}
+      <section className="pt-8 md:pt-12 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-5">
+            <span className="inline-block px-4 py-1.5 bg-vidaia-light text-vidaia-primary text-xs font-bold uppercase tracking-widest rounded-full">
+              {kf.overline}
+            </span>
+          </div>
+          <dl className="flex flex-wrap gap-3 md:gap-4">
+            {keyFacts.map(({ Icon, label, value }) => (
+              <div
+                key={label}
+                className="flex items-start gap-3 rounded-2xl border border-gray-100 bg-vidaia-sand/50 px-4 py-3 flex-1 min-w-[150px]"
+              >
+                <Icon className="w-5 h-5 text-vidaia-primary shrink-0 mt-0.5" aria-hidden="true" />
+                <div className="min-w-0">
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-vidaia-charcoal/55">{label}</dt>
+                  <dd className="text-sm font-semibold text-vidaia-dark">{value}</dd>
+                </div>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
       {/* ── DESCRIPCIÓN ───────────────────────────────────────────────────────── */}
       <section className="py-10 md:py-16 px-4 sm:px-6 lg:px-8">
@@ -203,15 +250,21 @@ export default function ItineraryContent({
       <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-vidaia-dark text-white text-center">
         <div className="max-w-2xl mx-auto">
           <span className="inline-block px-4 py-1.5 bg-white/10 text-vidaia-earth text-xs font-bold uppercase tracking-widest rounded-full mb-5">
-            {content.price.overline}
+            {hasPrice ? content.price.overline : content.price.consultOverline}
           </span>
-          {trip.priceFrom != null && trip.priceFrom > 0 && (
-            <p className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold mb-1">
-              {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom) })}
+          {hasPrice ? (
+            <>
+              <p className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold mb-1">
+                {renderTemplate(content.price.fromTemplate, { price: formatPrice(trip.priceFrom!) })}
+              </p>
+              <p className="text-white/75 text-sm mb-2">{content.price.perPersonLabel}</p>
+              <p className="text-white/60 text-xs mb-12">{content.price.priceNote}</p>
+            </>
+          ) : (
+            <p className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-12">
+              {content.price.consultText}
             </p>
           )}
-          <p className="text-white/75 text-sm mb-2">{content.price.perPersonLabel}</p>
-          <p className="text-white/60 text-xs mb-12">{content.price.priceNote}</p>
           <LangLink
             href={requestHref}
             className="inline-flex items-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"

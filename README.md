@@ -1,6 +1,6 @@
 # Viajes Vidaia — Web
 
-Sitio web de Viajes Vidaia, agencia boutique especializada en viajes personalizados a Argentina, Chile, Bolivia y Perú. Construido con Next.js 15 (App Router), todos los contenidos son datos estáticos en TypeScript sin base de datos externa activa.
+Sitio web de Viajes Vidaia, agencia boutique especializada en viajes personalizados a Argentina, Chile, Bolivia, Perú y Uruguay. Construido con Next.js 16 (App Router), todos los contenidos son datos estáticos en TypeScript sin base de datos externa activa.
 
 ---
 
@@ -19,13 +19,13 @@ Sitio web de Viajes Vidaia, agencia boutique especializada en viajes personaliza
 | `leaflet` + `@types/leaflet` | ^1.9.4 | Mapa interactivo en itinerarios |
 | `lucide-react` | ^0.487.0 | Iconos |
 | `@tailwindcss/typography` | ^0.5.19 | Estilos para contenido Markdown |
-| `@supabase/supabase-js` | ^2.48.1 | Instalado pero inactivo (ver docs/AUDITORIA.md M04) |
+| `resend` | ^6.12.4 | Envío de emails de notificación de formularios |
 
 ---
 
 ## Requisitos previos
 
-- Node.js >= 20
+- Node.js 24 (fijado en `.nvmrc`; alinea local / CI / Vercel)
 - npm >= 10
 
 ---
@@ -69,18 +69,22 @@ Crear `.env.local` en la raíz con las siguientes variables:
 # Opcional: si no se define, GA4 simplemente no carga
 NEXT_PUBLIC_GA4_MEASUREMENT_ID=G-XXXXXXXXXX
 
-# Email — Resend (pendiente activación)
-# Necesario para que los formularios envíen emails al equipo
+# Email — Resend (activo)
+# Notificaciones de formularios; remitente web@viajesvidaia.com (dominio verificado en Resend)
 RESEND_API_KEY=re_xxxxxxxxxxxxx
 
-# CRM — Clientify (pendiente activación)
-# Necesario para registrar leads del formulario en el CRM
-CLIENTIFY_API_KEY=xxxxxxxxxxxxxxxx
+# CRM — Clientify (activo)
+# Token de la API para registrar los leads de los formularios
+VV_CLIENTIFY_API_TOKEN=xxxxxxxxxxxxxxxx
+
+# URL del formulario de cita previa de Clientify (la usa /cita-previa)
+NEXT_PUBLIC_CLIENTIFY_CITA_URL=
 ```
 
 Las variables con prefijo `NEXT_PUBLIC_` se exponen al cliente. Las demás son solo servidor.
+La lista completa y al día está en `.env.example`.
 
-> Ver `docs/AUDITORIA.md` sección 4 para más detalle sobre el estado de Clientify y Resend.
+> Si falta alguna variable, la integración correspondiente se omite con un `console.warn` y el resto del flujo sigue funcionando. Ver `docs/MEJORAS.md` — M01.
 
 ---
 
@@ -130,6 +134,8 @@ travel-agency/
 │   ├── AUDITORIA.md
 │   ├── MEJORAS.md
 │   ├── ARQUITECTURA.md
+│   ├── CONTENT.md                # Guía de gestión de contenido (añadir país/viaje/post…)
+│   ├── IMAGENES.md               # Estrategia de imágenes (sizes, assets)
 │   └── DECISIONS.md
 │
 ├── tailwind.config.ts            # Colores y tipografía personalizada
@@ -153,8 +159,7 @@ travel-agency/
          name: 'Colombia',
          description: '...',
          heroAlt: 'Cartagena de Indias, Colombia',
-         metaTitle: 'Viajes a Colombia — Viajes Vidaia',
-         metaDescription: '...',
+         metaDescription: '...',   // SIN la marca: el title se genera por plantilla (ver D23)
        }
      },
      flag: '🇨🇴',
@@ -162,6 +167,8 @@ travel-agency/
      heroImageKey: 'COUNTRIES.COLOMBIA_HERO',
      active: true,
      order: 5,
+     lat: 4.5709,
+     lng: -74.2973,
    }
    ```
 
@@ -235,8 +242,7 @@ travel-agency/
          excerpt: 'Todo lo que necesitas saber...',
          content: `## Introducción\n\nCartagena es...`,  // Markdown
          imageAlt: 'Murallas de Cartagena de Indias',
-         metaTitle: 'Guía de Cartagena — Viajes Vidaia',
-         metaDescription: '...',
+         metaDescription: '...',   // metaTitle opcional y SIN marca: el title lo da el template (ver D23)
        }
      },
      imageKey: 'BLOG.GUIA_CARTAGENA',
@@ -265,27 +271,26 @@ travel-agency/
 
 ### En producción
 
-- Sitio web completo con páginas de destinos (Argentina, Chile, Bolivia, Perú)
+- Sitio web completo con páginas de destinos (Argentina, Chile, Bolivia, Perú, Uruguay)
 - Itinerarios detallados con mapa interactivo y acordeón día a día
 - Blog con posts en Markdown
 - Página de lunas de miel
-- Formulario de personalización de viajes (multi-step)
-- Modal de contacto
-- Newsletter
+- Formulario de personalización de viajes (multi-step) → Clientify (CRM) + email (Resend)
+- Modal de contacto y newsletter → Clientify + email
 - Sistema de cookies y consentimiento (RGPD)
 - Google Analytics 4 (con consentimiento previo)
-- SEO: sitemap, robots.txt, Open Graph, Twitter Card, JSON-LD (TravelAgency)
+- Reseñas de Google vía widget de Elfsight (home y /viajes)
+- Feed de Instagram vía widget de LightWidget
+- SEO: sitemap, robots.txt, Open Graph, Twitter Card, JSON-LD (TravelAgency, WebSite, TouristTrip, Article, BreadcrumbList, CollectionPage)
 
 ### Pendiente de activar
 
 | Integración | Estado | Qué falta |
 |---|---|---|
-| **Resend** (emails) | Código listo, comentado | DNS del dominio + `RESEND_API_KEY` |
-| **Clientify CRM** (leads) | Código listo, comentado | `CLIENTIFY_API_KEY` |
-| **Instagram widget** | Grid estático | Elfsight/SnapWidget o Instagram Graph API |
-| **Idioma inglés** | Infraestructura lista | Completar traducciones en `staticContent.ts` |
+| **Cutover de dominio** | Pendiente | Apuntar `viajesvidaia.com` a Vercel + `REDIRECT_VERCEL_TO_CANONICAL=true` (ver D24) |
+| **Idioma inglés** | Infraestructura lista | Completar traducciones en `staticContent.ts` (ver M13) |
 
-> Para activar Resend y Clientify ver `docs/MEJORAS.md` — M01.
+> Resend y Clientify ya están **activos** (ver `docs/MEJORAS.md` — M01); requieren `RESEND_API_KEY` y `VV_CLIENTIFY_API_TOKEN` en las env vars de producción.
 
 ---
 

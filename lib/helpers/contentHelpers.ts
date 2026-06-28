@@ -26,6 +26,46 @@ export function formatPrice(price: number, locale = 'es-ES'): string {
   return price.toLocaleString(locale)
 }
 
+const MONTHS_SHORT_ES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+
+/**
+ * Compacts a list of best months (1-12) into readable ranges, handling year wrap.
+ * @example formatBestMonths([4,5,6,7,8,9,10,11]) → 'abr–nov'
+ * @example formatBestMonths([10,11,12,1,2,3])    → 'oct–mar'
+ * @example formatBestMonths([1..12])             → 'Todo el año'
+ */
+export function formatBestMonths(months: number[] | undefined): string {
+  if (!months?.length) return ''
+  const sorted = [...new Set(months)].filter(m => m >= 1 && m <= 12).sort((a, b) => a - b)
+  if (sorted.length === 0) return ''
+  if (sorted.length === 12) return 'Todo el año'
+
+  const ranges: [number, number][] = []
+  let start = sorted[0]
+  let prev = sorted[0]
+  for (let i = 1; i < sorted.length; i++) {
+    if (sorted[i] === prev + 1) {
+      prev = sorted[i]
+    } else {
+      ranges.push([start, prev])
+      start = sorted[i]
+      prev = sorted[i]
+    }
+  }
+  ranges.push([start, prev])
+
+  // Merge wrap-around: a range ending in December joins one starting in January.
+  if (ranges.length > 1 && ranges[0][0] === 1 && ranges[ranges.length - 1][1] === 12) {
+    const first = ranges.shift()!
+    const last = ranges.pop()!
+    ranges.push([last[0], first[1]])
+  }
+
+  return ranges
+    .map(([a, b]) => (a === b ? MONTHS_SHORT_ES[a - 1] : `${MONTHS_SHORT_ES[a - 1]}–${MONTHS_SHORT_ES[b - 1]}`))
+    .join(', ')
+}
+
 /**
  * Returns the part of an itinerary title before the colon (without it), trimmed.
  * Useful to keep metadata titles within length limits.
