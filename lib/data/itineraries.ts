@@ -960,7 +960,7 @@ const itineraries: Itinerary[] = [
         metaDescription: 'En Viajes Vidaia diseñamos tu viaje a Argentina en invierno a medida: Salta y Jujuy, Iguazú, Buenos Aires, Ushuaia y El Calafate. 16 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_SALTA', location: 'Cerro de los Siete Colores · Purmamarca' },
-          { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_IGUAZU', location: 'Cataratas del Iguazú' },
+          { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_IGUAZU', location: 'Fauna silvestre en el Parque Nacional de Iguazú' },
           { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_USHUAIA', location: 'Parque Nacional de Tierra de Fuego · Ushuaia' },
           { imageKey: 'ITINERARIES.CONTRASTES_INVIERNO_MORENO', location: 'Glaciar Perito Moreno · El Calafate' },
         ],
@@ -2769,7 +2769,7 @@ const itineraries: Itinerary[] = [
           { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_LAGUNA_COLORADA', location: 'Laguna Colorada, Reserva Eduardo Avaroa' },
           { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_SUCRE', location: 'Sucre, capital constitucional de Bolivia' },
           { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_TITICACA', location: 'Lago Titicaca, Isla del Sol' },
-          { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_LA_PAZ', location: 'La Paz, Valle de la Luna' },
+          { imageKey: 'ITINERARIES.BOLIVIA_INFINITA_LA_PAZ', location: 'La Paz' },
         ],
       }
     },
@@ -3021,10 +3021,10 @@ const itineraries: Itinerary[] = [
         metaDescription: 'En Viajes Vidaia diseñamos viajes a Bolivia y Chile completamente a medida: Salar de Uyuni, Atacama, Isla de Pascua y Santiago. 15 días. Cuéntanos tu idea.',
         heroImages: [
           { imageKey: 'ITINERARIES.SALAR_PASCUA_UYUNI', location: 'Salar de Uyuni · Bolivia' },
-          { imageKey: 'ITINERARIES.SALAR_PASCUA_LAGUNA_COLORADA', location: 'Laguna Colorada · Lípez boliviano' },
-          { imageKey: 'ITINERARIES.SALAR_PASCUA_ATACAMA', location: 'Valle de la Luna · San Pedro de Atacama' },
+          { imageKey: 'ITINERARIES.SALAR_PASCUA_LAGUNA_VERDE', location: 'Laguna Verde · Lípez boliviano' },
+          { imageKey: 'ITINERARIES.SALAR_PASCUA_ATACAMA', location: 'Geysers del Tatio · San Pedro de Atacama' },
           { imageKey: 'ITINERARIES.SALAR_PASCUA_RAPA_NUI', location: 'Ahu Tongariki · Rapa Nui' },
-          { imageKey: 'ITINERARIES.SALAR_PASCUA_SANTIAGO', location: 'Santiago de Chile · Cerro San Cristóbal' },
+          { imageKey: 'ITINERARIES.SALAR_PASCUA_SANTIAGO', location: 'Santiago de Chile · Mercado Central' },
         ],
       }
     },
@@ -3289,6 +3289,705 @@ const itineraries: Itinerary[] = [
           }
         },
         flights: ['SCL → MAD'],
+        activities: [],
+      },
+    ],
+  },
+  {
+    id: 'chile-esencial',
+    slug: 'chile-esencial',
+    content: {
+      es: {
+        title: 'Chile esencial: desierto, lagos y Patagonia sur',
+        description: 'Doce días recorriendo tres caras de Chile. El norte arranca en el desierto más árido del planeta: San Pedro de Atacama, con el Valle de la Luna, los géiseres del Tatio y las lagunas del altiplano. La zona de los Lagos trae volcanes nevados, pueblos de herencia alemana y el agua tranquila del Lago Llanquihue. Al sur, la Patagonia chilena con Puerto Natales como base para la jornada completa en Torres del Paine y, opcional, la navegación por los glaciares Balmaceda y Serrano en los Campos de Hielo Sur',
+        heroTitleMobile: 'Chile: desierto, lagos y Torres del Paine',
+        descriptionMobile: '12 días por lo esencial de Chile: Santiago, San Pedro de Atacama, Puerto Varas y Torres del Paine.',
+        metaTitle: 'Viaje a Chile: Atacama, Lagos y Patagonia',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Chile completamente a medida: San Pedro de Atacama, Santiago, Puerto Varas y Torres del Paine. 12 días. Cuéntanos tu idea.',
+        heroImages: [
+          { imageKey: 'ITINERARIES.CHILE_TORRES_PAINE', location: 'Glaciar Grey · Parque Nacional Torres del Paine' },
+          { imageKey: 'ITINERARIES.CHILE_VALLE_LUNA', location: 'Valle de la Luna · San Pedro de Atacama' },
+          { imageKey: 'ITINERARIES.CHILE_ISLA_CHILOE', location: 'Castro · Isla Chiloé' },
+          { imageKey: 'ITINERARIES.CHILE_OSORNO', location: 'Saltos de Petrohué · Volcán Osorno' },
+          { imageKey: 'ITINERARIES.CHILE_PUERTO_NATALES', location: 'Seno Última Esperanza · Puerto Natales' },
+        ],
+      }
+    },
+    featured: true,
+    active: true,
+
+    accommodationStops: [
+      { hotelsByCategory: { '3': 'hotel-capital-bellet-providencia', '4': 'hotel-hilton-doubletree-vitacura', '5': 'mandarin-oriental-santiago' }, nights: 2, defaultCategory: 4, featured: false },
+      { hotelsByCategory: { '3': 'hotel-casa-don-tomas-atacama', '4': 'cumbres-san-pedro', '5': 'tierra-atacama' }, nights: 2, defaultCategory: 4, featured: false },
+      { hotelsByCategory: { '3': 'hotel-capital-bellet-providencia', '4': 'hotel-hilton-doubletree-vitacura', '5': 'mandarin-oriental-santiago' }, nights: 1, defaultCategory: 4, featured: false },
+      { hotelsByCategory: { '3': 'wyndham-pettra-puerto-varas', '4': 'cabana-del-lago-puerto-varas' }, nights: 2, defaultCategory: 3, featured: false },
+      { hotelsByCategory: { '3': 'costaustralis-puerto-natales', '4': 'martin-gusinde-puerto-natales', '5': 'altiplanico-sur-puerto-natales' }, nights: 3, defaultCategory: 4, featured: false },
+      { hotelsByCategory: { '3': 'hotel-capital-bellet-providencia', '4': 'hotel-hilton-doubletree-vitacura' }, nights: 1, defaultCategory: 4, featured: false },
+    ],
+
+    days: [
+      {
+        dayNumber: 1,
+        destinationId: 'santiago-chile',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Llegada a Santiago y visita a la ciudad',
+            description: 'Llegada al aeropuerto de Santiago y traslado privado al hotel. City tour por el centro histórico. Alojamiento en Santiago.',
+            schedule: '08:30-13:00 hs (aprox.)',
+            duration: '4-5 horas',
+            highlights: ['Palacio de La Moneda · Plaza de Armas', 'Cerro San Cristóbal · panorámica'],
+            included: 'Traslado aeropuerto-hotel, guía privado, city tour privado',
+          }
+        },
+        flights: ['MAD → SCL'],
+        activities: [{ activityId: 'city-tour-panoramico-santiago', status: 'included' }],
+        referenceHotelId: 'hotel-hilton-doubletree-vitacura',
+      },
+      {
+        dayNumber: 2,
+        destinationId: 'san-pedro-atacama',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Vuelo a Calama y llegada a San Pedro de Atacama. Valle de la Luna',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto de Santiago para el vuelo a Calama. Recepción y traslado compartido a San Pedro de Atacama (1 h). Por la tarde, excursión al Valle de la Luna. Alojamiento en San Pedro de Atacama.',
+            schedule: '16:00-20:00 hs (aprox.)',
+            duration: 'Medio día · 4 horas',
+            highlights: ['Valle de la Luna · Cordillera de la Sal', 'Atardecer · Tres Marías'],
+            included: 'Vuelo SCL→CJC, traslado compartido Calama-San Pedro, traslado a Valle de la Luna',
+          }
+        },
+        flights: ['SCL → CJC'],
+        activities: [{ activityId: 'valle-de-la-luna', status: 'included' }],
+        referenceHotelId: 'cumbres-san-pedro',
+      },
+      {
+        dayNumber: 3,
+        destinationId: 'san-pedro-atacama',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Salar de Atacama y Lagunas Altiplánicas',
+            description: 'Desayuno en el hotel. Jornada por el Salar de Atacama y las lagunas Altiplánicas. Alojamiento en San Pedro de Atacama.',
+            schedule: '08:00-19:00 hs (aprox.)',
+            duration: 'Día completo · 11 horas',
+            highlights: ['Laguna Chaxa · flamencos', 'Lagunas Miscanti y Meñiques · 4.300 m'],
+            included: 'Excursión compartida, almuerzo incluido, entradas a sitios',
+          }
+        },
+        activities: [{ activityId: 'lagunas-altiplanicas-piedras-rojas-chaxa', status: 'included' }],
+        referenceHotelId: 'cumbres-san-pedro',
+      },
+      {
+        dayNumber: 4,
+        destinationId: 'san-pedro-atacama',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Géiseres del Tatio y vuelo de regreso a Santiago',
+            description: 'Recogida muy temprano (aprox. 04:30 h) para el campo geotérmico del Tatio a 4.200 metros. Desayuno al aire libre en el campo. Regreso a San Pedro, tarde libre y traslado compartido al aeropuerto de Calama para el vuelo a Santiago. Alojamiento en Santiago.',
+            schedule: '04:30-07:30 hs (excursión)',
+            duration: 'Medio día · 7 horas desde las 04:30 h',
+            highlights: ['Géiseres del Tatio · 4.200 m', 'Desayuno al aire libre en el altiplano'],
+            included: 'Excursión compartida, desayuno en campo, vuelo CJC→SCL, traslado aeropuerto',
+          }
+        },
+        flights: ['CJC → SCL'],
+        activities: [{ activityId: 'geysers-tatio-machuca-putana', status: 'included' }],
+        referenceHotelId: 'hotel-hilton-doubletree-vitacura',
+      },
+      {
+        dayNumber: 5,
+        destinationId: 'puerto-varas',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Vuelo a Puerto Montt y llegada a Puerto Varas. Llanquihue y Frutillar',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto de Santiago para el vuelo a Puerto Montt. Recepción y traslado compartido a Puerto Varas. Por la tarde, visita a Llanquihue y Frutillar. Alojamiento en Puerto Varas.',
+            schedule: '14:00-19:00 hs (aprox.)',
+            duration: 'Medio día · 4-5 horas',
+            highlights: ['Lago Llanquihue · volcán Osorno', 'Frutillar · arquitectura alemana'],
+            included: 'Vuelo SCL→PMC, traslado compartido, excursión compartida',
+          }
+        },
+        flights: ['SCL → PMC'],
+        activities: [{ activityId: 'llanquihue-frutillar-hd', status: 'included' }],
+        referenceHotelId: 'wyndham-pettra-puerto-varas',
+      },
+      {
+        dayNumber: 6,
+        destinationId: 'puerto-varas',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Isla Chiloé',
+            description: 'Desayuno en el hotel. Jornada completa en Isla Chiloe: Castro y Dalcahue. Alojamiento en Puerto Varas.',
+            highlights: ['Transbordador Canal de Chacao · Mercado Gastronómico tradicional de Palafitos · Castro · Dalcahue'],
+            included: 'Excursión compartida',
+          }
+        },
+        activities: [{ activityId: 'castro-dalcahue-chiloe', status: 'included' }],
+        referenceHotelId: 'wyndham-pettra-puerto-varas',
+      },
+      {
+        dayNumber: 7,
+        destinationId: 'puerto-varas',
+        dayType: 'free',
+        content: {
+          es: {
+            title: 'Puerto Varas: día libre',
+            description: 'Desayuno en el hotel. Día libre en Puerto Varas. Alojamiento en Puerto Varas.',
+          }
+        },
+        activities: [{ activityId: 'peulla-saltos-petrohue', status: 'optional' }],
+        referenceHotelId: 'wyndham-pettra-puerto-varas',
+      },
+      {
+        dayNumber: 8,
+        destinationId: 'puerto-natales',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Vuelo a Punta Arenas y traslado a Puerto Natales',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto de Puerto Montt para el vuelo a Punta Arenas. Recepción y traslado en bus de línea regular a Puerto Natales (3 horas, tickets incluidos). Tarde libre para descansar o recorrer el centro de Puerto Natales. Alojamiento en Puerto Natales.',
+            duration: '3 horas en bus (Punta Arenas-Puerto Natales)',
+            highlights: ['Puerto Natales · Seno Última Esperanza'],
+            included: 'Vuelo PMC→PUQ, bus Punta Arenas-Puerto Natales (tickets incluidos)',
+          }
+        },
+        flights: ['PMC → PUQ'],
+        activities: [],
+        referenceHotelId: 'martin-gusinde-puerto-natales',
+      },
+      {
+        dayNumber: 9,
+        destinationId: 'torres-del-paine',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Parque Nacional Torres del Paine',
+            description: 'Desayuno en el hotel. Jornada completa en el Parque Nacional Torres del Paine. Alojamiento en Puerto Natales.',
+            schedule: '07:00-18:00 hs (aprox.)',
+            duration: 'Día completo · 11 horas',
+            highlights: ['Torres del Paine · macizo', 'Lago Grey · glaciar'],
+            included: 'Excursión compartida, almuerzo incluido, entrada al parque, entrada Cueva del Milodón',
+          }
+        },
+        activities: [{ activityId: 'torres-del-paine-excursion', status: 'included' }],
+        referenceHotelId: 'martin-gusinde-puerto-natales',
+      },
+      {
+        dayNumber: 10,
+        destinationId: 'puerto-natales',
+        dayType: 'free',
+        content: {
+          es: {
+            title: 'Puerto Natales: día libre',
+            description: 'Desayuno en el hotel. Día libre en Puerto Natales. Alojamiento en Puerto Natales.',
+          }
+        },
+        activities: [{ activityId: 'glaciares-balmaceda-serrano', status: 'optional' }],
+        referenceHotelId: 'martin-gusinde-puerto-natales',
+      },
+      {
+        dayNumber: 11,
+        destinationId: 'santiago-chile',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Regreso a Santiago',
+            description: 'Desayuno en el hotel. Traslado en bus de línea regular al aeropuerto de Punta Arenas (3 horas, tickets incluidos). Vuelo a Santiago. Llegada y traslado al hotel. Noche libre en Santiago. Alojamiento en Santiago.',
+            included: 'Bus Puerto Natales-Punta Arenas (tickets incluidos), vuelo PUQ→SCL',
+          }
+        },
+        flights: ['PUQ → SCL'],
+        activities: [],
+        referenceHotelId: 'hotel-hilton-doubletree-vitacura',
+      },
+      {
+        dayNumber: 12,
+        destinationId: 'santiago-chile',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Traslado al aeropuerto. Fin del viaje',
+            description: 'Desayuno en el hotel. A la hora convenida, traslado al aeropuerto de Santiago para el vuelo internacional de regreso.',
+            included: 'Traslado hotel-aeropuerto',
+          }
+        },
+        flights: ['SCL → MAD'],
+        activities: [],
+      },
+    ],
+  },
+  {
+    id: 'cono-sur-completo-australis',
+    slug: 'cono-sur-completo-australis',
+    content: {
+      es: {
+        title: 'Cono Sur completo: de Santiago a Buenos Aires, del Cabo de Hornos a las Cataratas del Iguazú',
+        description: 'Veintiséis días entre Chile y Argentina, de norte a sur y de sur a norte. El itinerario arranca en Santiago y baja hasta la Patagonia chilena: Torres del Paine desde Puerto Natales y el Crucero Australis durante cuatro noches entre fiordos, glaciares y el Cabo de Hornos. En Ushuaia, el Parque Nacional Tierra del Fuego y la Travesía de los Lagos en 4x4. De aquí, la Patagonia argentina: el Glaciar Perito Moreno desde las pasarelas y en navegación, los volcanes y lagos de Bariloche. El cierre lo ponen las Cataratas del Iguazú y Buenos Aires, con su city tour y la tradición del asado.',
+        heroTitleMobile: 'Cono Sur: Australis, Patagonia e Iguazú',
+        descriptionMobile: '27 días de Chile y Argentina: Torres del Paine, crucero Australis por los fiordos, Ushuaia, Glaciar Perito Moreno, Bariloche, Cataratas del Iguazú y Buenos Aires.',
+        metaTitle: 'Viaje en Cono Sur: Crucero Australis y más',
+        metaDescription: 'En Viajes Vidaia diseñamos viajes a Argentina y Chile completamente a medida: Crucero Australis con Patagonia chilena y argentina. 26 días. Cuéntanos tu idea.',
+        heroImages: [
+          { imageKey: 'ITINERARIES.CONOSUR_AUSTRALIS_1', location: 'Crucero Australis · Cabo de Hornos' },
+          { imageKey: 'ITINERARIES.CONOSUR_AUSTRALIS_2', location: 'Crucero Australis · Cordillera Darwin' },
+          { imageKey: 'ITINERARIES.CONOSUR_TORRES_PAINE', location: 'Parque Nacional Torres del Paine' },
+          { imageKey: 'ITINERARIES.CONOSUR_PERITO_MORENO', location: 'Glaciar Perito Moreno · El Calafate' },
+          { imageKey: 'ITINERARIES.CONOSUR_BARILOCHE', location: 'Lago Nahuel Huapi · Bariloche' },
+          { imageKey: 'ITINERARIES.CONOSUR_BUENOS_AIRES', location: 'Buenos Aires · Puerto Madero' },
+        ],
+      }
+    },
+    featured: true,
+    active: true,
+
+    accommodationStops: [
+      { hotelsByCategory: { '3': 'nh-ciudad-de-santiago', '4': 'cumbres-lastarria', '5': 'mandarin-oriental-santiago' }, nights: 2, defaultCategory: 4, featured: false },
+      { hotelsByCategory: { '3': 'costaustralis-puerto-natales', '4': 'martin-gusinde-puerto-natales', '5': 'altiplanico-sur-puerto-natales' }, nights: 3, defaultCategory: 4, featured: false },
+      { hotelsByCategory: { '4': 'almasur-patagonia-punta-arenas' }, nights: 1, defaultCategory: 4, featured: false },
+      { hotelsByCategory: {  }, nights: 4, defaultCategory: 4, featured: true },
+      { hotelsByCategory: { '4': 'los-acebos-ushuaia', '5': 'arakur-ushuaia' }, nights: 3, defaultCategory: 4, featured: false },
+      { hotelsByCategory: { '3': 'mirador-del-lago-el-calafate', '4': 'design-suites-calafate', '5': 'eolo-patagonia' }, nights: 3, defaultCategory: 4, featured: false },
+      { hotelsByCategory: { '3': 'nahuel-huapi-bariloche', '4': 'design-suites-bariloche' }, nights: 3, defaultCategory: 4, featured: false },
+      { hotelsByCategory: { '3': 'city-falls-iguazu', '4': 'o2-hotel-iguazu', '5': 'panoramic-iguazu' }, nights: 2, defaultCategory: 4, featured: false },
+      { hotelsByCategory: { '3': 'hotel-dora-buenos-aires', '4': 'hotel-474-buenos-aires', '5': 'esplendor-buenos-aires' }, nights: 3, defaultCategory: 4, featured: false },
+    ],
+
+    days: [
+      {
+        dayNumber: 1,
+        destinationId: 'santiago-chile',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Inicio del viaje. Vuelo de Barcelona a Santiago',
+            description: 'Salida desde Barcelona a las 23:35 h para el vuelo con destino Santiago de Chile. Noche a bordo.',
+            included: 'Vuelo internacional Barcelona → Santiago',
+          }
+        },
+        flights: ['BCN → SCL'],
+        activities: [],
+      },
+      {
+        dayNumber: 2,
+        destinationId: 'santiago-chile',
+        dayType: 'free',
+        content: {
+          es: {
+            title: 'Llegada a Santiago. Día libre',
+            description: 'Llegada al aeropuerto de Santiago a las 10:05 h. Recepción y traslado privado al hotel con guía. Early check-in disponible. Día libre para descansar y un primer contacto con la ciudad. Alojamiento en Santiago.',
+            included: 'Traslado privado aeropuerto-hotel con guía',
+          }
+        },
+        activities: [],
+        referenceHotelId: 'cumbres-lastarria',
+      },
+      {
+        dayNumber: 3,
+        destinationId: 'santiago-chile',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Santiago: City Tour Parques',
+            description: 'Desayuno en el hotel. Por la mañana, city tour por los parques de Santiago. Tarde libre. Alojamiento en Santiago.',
+            schedule: '08:30-14:00 hs (aprox.)',
+            duration: 'Medio día · 5-6 horas',
+            highlights: ['Cerro San Cristóbal · panorámica', 'Parque Metropolitano · teleférico'],
+            included: 'Excursión compartida, guía en español',
+          }
+        },
+        activities: [{ activityId: 'city-tour-parques-santiago', status: 'included' }],
+        referenceHotelId: 'cumbres-lastarria',
+      },
+      {
+        dayNumber: 4,
+        destinationId: 'puerto-natales',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Vuelo a Puerto Natales. Tarde libre',
+            description: 'Desayuno en el hotel. Traslado privado al aeropuerto para el vuelo a Puerto Natales. Recepción y traslado privado al hotel. Tarde libre para recorrer esta ciudad a orillas del Seno de Última Esperanza, puerta de entrada a Torres del Paine. Alojamiento en Puerto Natales.',
+            highlights: ['Puerto Natales · Seno Última Esperanza'],
+            included: 'Vuelo SCL→PNT, traslado privado aeropuerto-hotel',
+          }
+        },
+        flights: ['SCL → PNT'],
+        activities: [],
+        referenceHotelId: 'altiplanico-sur-puerto-natales',
+      },
+      {
+        dayNumber: 5,
+        destinationId: 'torres-del-paine',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Parque Nacional Torres del Paine',
+            description: 'Desayuno en el hotel. Jornada completa en el Parque Nacional de Torres del Paine. Alojamiento en Puerto Natales.',
+            schedule: '07:00-18:00 hs (aprox.)',
+            duration: 'Día completo · 11 horas',
+            highlights: ['Torres del Paine · Cuernos', 'Lago Grey · glaciar'],
+            included: 'Excursión compartida, almuerzo incluido, entrada al parque, entrada Cueva del Milodón',
+          }
+        },
+        activities: [{ activityId: 'torres-del-paine-excursion', status: 'included' }],
+        referenceHotelId: 'altiplanico-sur-puerto-natales',
+      },
+      {
+        dayNumber: 6,
+        destinationId: 'puerto-natales',
+        dayType: 'free',
+        content: {
+          es: {
+            title: 'Puerto Natales: día libre',
+            description: 'Desayuno en el hotel. Día libre en Puerto Natales. Alojamiento en Puerto Natales.',
+          }
+        },
+        activities: [{ activityId: 'glaciares-balmaceda-serrano', status: 'optional' }],
+        referenceHotelId: 'altiplanico-sur-puerto-natales',
+      },
+      {
+        dayNumber: 7,
+        destinationId: 'punta-arenas',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Traslado a Punta Arenas',
+            description: 'Desayuno en el hotel. Traslado en bus a la terminal de Punta Arenas (3 horas). Recepción y traslado privado al hotel. Tarde libre en Punta Arenas, la ciudad más austral del mundo con más de 100.000 habitantes. Alojamiento en Punta Arenas.',
+            duration: '3 horas en bus',
+            highlights: ['Punta Arenas · Estrecho de Magallanes'],
+            included: 'Traslado en bus Puerto Natales → Punta Arenas',
+          }
+        },
+        activities: [],
+        referenceHotelId: 'almasur-patagonia-punta-arenas',
+      },
+      {
+        dayNumber: 8,
+        destinationId: 'punta-arenas',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Embarque en el Crucero Australis. Ruta Fiordos de Tierra de Fuego',
+            description: 'Desayuno en el hotel. A la hora convenida, traslado privado al muelle del Crucero Australis para el check-in. Embarque a las 18:00 h. Bienvenida de la tripulación con cóctel de capitán. El barco zarpa rumbo al sur por el Estrecho de Magallanes y el Canal Beagle. Pensión completa a bordo. Noche a bordo.',
+            schedule: '18:00 hs embarque',
+            highlights: ['Embarque Crucero Australis', 'Estrecho de Magallanes'],
+            included: 'Traslado privado hotel-muelle, crucero (pensión completa)',
+          }
+        },
+        activities: [{ activityId: 'crucero-australis-fiordos-tierra-fuego', status: 'included' }],
+      },
+      {
+        dayNumber: 9,
+        destinationId: 'punta-arenas',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Crucero Australis: Bahía Ainsworth e Islotes Tuckers',
+            description: 'Desayuno a bordo. Navegación por el Seno Almirantazgo hasta el Glaciar Marinelli en Bahía Ainsworth. Desembarco en zodiac para observar elefantes marinos, cormoranes y la "Avenida de los Glaciares". Continuación de la navegación por los fiordos de la Cordillera Darwin. Pensión completa a bordo. Noche a bordo.',
+            highlights: ['Bahía Ainsworth · elefantes marinos', 'Avenida de los Glaciares'],
+            included: 'Crucero Australis (pensión completa)',
+          }
+        },
+        activities: [],
+      },
+      {
+        dayNumber: 10,
+        destinationId: 'punta-arenas',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Crucero Australis: Glaciar Pía y Avenida de los Glaciares',
+            description: 'Desayuno a bordo. Navegación por el brazo noroeste del Canal Beagle hasta el Fiordo Pía. Desembarco en zodiac y caminata al mirador desde el que se contempla el glaciar Pía descendiendo desde la cima hasta el mar. Pensión completa a bordo. Noche a bordo.',
+            highlights: ['Glaciar Pía · lengua glaciar al mar', 'Fiordo Pía · Canal Beagle'],
+            included: 'Crucero Australis (pensión completa)',
+          }
+        },
+        activities: [],
+      },
+      {
+        dayNumber: 11,
+        destinationId: 'punta-arenas',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Crucero Australis: Cabo de Hornos y Bahía Wulaia',
+            description: 'Desayuno a bordo. Navegación por el Canal Murray hasta el Parque Nacional Cabo de Hornos, el punto más austral del continente americano donde se unen el Pacífico y el Atlántico. Desembarco en la tarde en Bahía Wulaia, antiguo asentamiento yámana rodeado de bosque magallánico. Pensión completa a bordo. Noche a bordo.',
+            highlights: ['Cabo de Hornos · punto más austral', 'Bahía Wulaia · asentamiento yámana'],
+            included: 'Crucero Australis (pensión completa)',
+          }
+        },
+        activities: [],
+      },
+      {
+        dayNumber: 12,
+        destinationId: 'ushuaia',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Desembarco del Crucero Australis. Ushuaia: día libre',
+            description: 'Desayuno a bordo. Desembarco a las 08:00 h en el muelle de Ushuaia y traslado al hotel. Tarde libre para descubrir la ciudad: el Canal Beagle, la Sierra Martial, el barrio pesquero de Puerto Almanza o el Museo Marítimo en el antiguo Presidio. Alojamiento en Ushuaia.',
+            highlights: ['Canal Beagle · Ushuaia', 'Sierra Martial · paisaje fueguino'],
+            included: 'Traslado muelle-hotel',
+          }
+        },
+        activities: [],
+        referenceHotelId: 'los-acebos-ushuaia',
+      },
+      {
+        dayNumber: 13,
+        destinationId: 'ushuaia',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Parque Nacional Tierra del Fuego y Tren del Fin del Mundo',
+            description: 'Desayuno en el hotel. Excursión al Parque Nacional Tierra del Fuego, a 12 km del centro. Alojamiento en Ushuaia.',
+            schedule: '08:00-13:00 hs (aprox.)',
+            duration: '5 horas',
+            highlights: ['Tren del Fin del Mundo · 60 min', 'Bahía Lapataia · fin Ruta Panamericana'],
+            included: 'Excursión con guía, entradas al parque y al tren incluidas',
+            excluded: 'Ticket Tren del Fin del Mundo incluido. Fotógrafo o extras en tienda de souvenirs no incluidos.',
+          }
+        },
+        activities: [
+          { activityId: 'parque-nacional-tierra-fuego', status: 'included' },
+          { activityId: 'tren-fin-del-mundo', status: 'included' },
+        ],
+        referenceHotelId: 'los-acebos-ushuaia',
+      },
+      {
+        dayNumber: 14,
+        destinationId: 'ushuaia',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Ushuaia: Travesía de los Lagos Fueguinos 4x4',
+            description: 'Desayuno en el hotel. Jornada completa en vehículos 4x4 cruzando la Cordillera de los Andes por el Paso Garibaldi. Alojamiento en Ushuaia.',
+            schedule: '08:30-17:30 hs (aprox.)',
+            duration: '8-9 horas',
+            highlights: ['Lago Fagnano · Paso Garibaldi', 'Lago Escondido · refugio de montaña'],
+            included: 'Excursión 4x4 con guía, almuerzo en refugio y traslados incluidos',
+          }
+        },
+        activities: [{ activityId: 'travesia-lagos-4x4-verano', status: 'included' }],
+        referenceHotelId: 'los-acebos-ushuaia',
+      },
+      {
+        dayNumber: 15,
+        destinationId: 'el-calafate',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Vuelo Ushuaia – El Calafate. Llegada a la Patagonia argentina',
+            description: 'Desayuno en el hotel. Mañana libre en Ushuaia. A la hora convenida, traslado al aeropuerto para el vuelo a El Calafate. Recepción y traslado al hotel. Puerta de entrada al Parque Nacional Los Glaciares y al Glaciar Perito Moreno. Alojamiento en El Calafate.',
+            highlights: ['El Calafate · Lago Argentino'],
+            included: 'Vuelo USH→FTE, traslado regular aeropuerto-hotel',
+          }
+        },
+        flights: ['USH → FTE'],
+        activities: [],
+        referenceHotelId: 'design-suites-calafate',
+      },
+      {
+        dayNumber: 16,
+        destinationId: 'el-calafate',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Glaciar Perito Moreno: pasarelas y Safari Náutico',
+            description: 'Desayuno en el hotel. Jornada completa en el Parque Nacional Los Glaciares. Alojamiento en El Calafate.',
+            schedule: '09:00-17:00 hs (aprox.)',
+            duration: 'Día completo · 8 horas',
+            highlights: ['Glaciar Perito Moreno · pasarelas', 'Safari Náutico · pared sur del glaciar'],
+            included: 'Traslados y guía bilingüe incluidos, entrada al parque, navegación Safari Náutico',
+          }
+        },
+        activities: [
+          { activityId: 'glaciar-perito-moreno', status: 'included' },
+          { activityId: 'perito-moreno-safari', status: 'included' },
+        ],
+        referenceHotelId: 'design-suites-calafate',
+      },
+      {
+        dayNumber: 17,
+        destinationId: 'el-calafate',
+        dayType: 'free',
+        content: {
+          es: {
+            title: 'El Calafate: día libre',
+            description: 'Desayuno en el hotel. Día libre en El Calafate. Alojamiento en El Calafate.',
+          }
+        },
+        activities: [{ activityId: 'estancia-nibepo-aike', status: 'optional' }],
+        referenceHotelId: 'design-suites-calafate',
+      },
+      {
+        dayNumber: 18,
+        destinationId: 'bariloche',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Vuelo El Calafate – Bariloche. Circuito Chico y Cerro Campanario',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto para el vuelo a Bariloche. Recepción y traslado al hotel. Por la tarde, Circuito Chico con ascenso al Cerro Campanario. Alojamiento en Bariloche.',
+            schedule: '14:30-18:30 hs (aprox.)',
+            duration: 'Medio día · 4 horas',
+            highlights: ['Cerro Campanario · panorámica Lagos', 'Llao Llao · península lacustre'],
+            included: 'Vuelo FTE→BRC, traslado regular, excursión con guía, aerosilla Campanario incluida',
+          }
+        },
+        flights: ['FTE → BRC'],
+        activities: [
+          { activityId: 'circuito-chico-bariloche', status: 'included' },
+          { activityId: 'cerro-campanario-bariloche', status: 'included' },
+        ],
+        referenceHotelId: 'design-suites-bariloche',
+      },
+      {
+        dayNumber: 19,
+        destinationId: 'bariloche',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'San Martín de los Andes por Ruta de los Siete Lagos',
+            description: 'Desayuno en el hotel. Jornada completa desde Bariloche hasta San Martín de los Andes por la Ruta de los Siete Lagos. Alojamiento en Bariloche.',
+            schedule: '08:00-19:00 hs (aprox.)',
+            duration: '10 horas',
+            highlights: ['Ruta Siete Lagos · bosque andino', 'San Martín de los Andes · costanera'],
+            included: 'Excursión con guía en español y traslados incluidos',
+          }
+        },
+        activities: [{ activityId: 'ruta-siete-lagos-san-martin', status: 'included' }],
+        referenceHotelId: 'design-suites-bariloche',
+      },
+      {
+        dayNumber: 20,
+        destinationId: 'bariloche',
+        dayType: 'free',
+        content: {
+          es: {
+            title: 'Bariloche: día libre',
+            description: 'Desayuno en el hotel. Día libre en Bariloche. Alojamiento en Bariloche.',
+          }
+        },
+        activities: [{ activityId: 'city-tour-panoramico-santiago', status: 'optional' }],
+        referenceHotelId: 'design-suites-bariloche',
+      },
+      {
+        dayNumber: 21,
+        destinationId: 'iguazu',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Vuelo Bariloche – Puerto Iguazú con escala en Buenos Aires',
+            description: 'Desayuno en el hotel. Traslado al aeropuerto de Bariloche para el vuelo a Buenos Aires (escala en Aeroparque). Conexión con el vuelo a Puerto Iguazú. Recepción y traslado al hotel en el extremo noreste de Argentina, donde confluyen los ríos Iguazú y Paraná en la triple frontera con Brasil y Paraguay. Alojamiento en Puerto Iguazú.',
+            highlights: ['Puerto Iguazú · selva subtropical', 'Triple frontera Argentina-Brasil-Paraguay'],
+            included: 'Vuelos BRC→AEP→IGR, traslado regular aeropuerto-hotel',
+          }
+        },
+        flights: ['BRC → AEP'],
+        activities: [],
+        referenceHotelId: 'o2-hotel-iguazu',
+      },
+      {
+        dayNumber: 22,
+        destinationId: 'iguazu',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Cataratas del Iguazú: lado argentino',
+            description: 'Desayuno en el hotel. Jornada completa en el Parque Nacional Iguazú. Alojamiento en Puerto Iguazú.',
+            schedule: '07:20-16:00 hs (aprox.)',
+            duration: '8 horas',
+            highlights: ['Garganta del Diablo · pasarela', 'Paseo Inferior · 1.200 m de saltos'],
+            included: 'Excursión compartida, guía bilingüe, entrada al parque, traslados',
+          }
+        },
+        activities: [
+          { activityId: 'cataratas-argentinas', status: 'included' },
+          { activityId: 'gran-aventura-iguazu', status: 'optional' },
+        ],
+        referenceHotelId: 'o2-hotel-iguazu',
+      },
+      {
+        dayNumber: 23,
+        destinationId: 'buenos-aires',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Cataratas brasileñas y vuelo a Buenos Aires',
+            description: 'Desayuno en el hotel. Por la mañana, visita al lado brasileño de las cataratas. Por la tarde, traslado al aeropuerto de Puerto Iguazú para el vuelo a Buenos Aires. Recepción y traslado privado con guía al hotel. Alojamiento en Buenos Aires.',
+            schedule: '08:00-14:00 hs cataratas',
+            duration: '3 horas (excursión)',
+            highlights: ['Cataratas brasileñas · panorámica 275 saltos', 'Garganta do Diablo · lado brasileño'],
+            included: 'Excursión compartida, entrada al parque brasileño, vuelo IGR→AEP, traslado privado con guía al hotel',
+          }
+        },
+        flights: ['IGR → AEP'],
+        activities: [{ activityId: 'cataratas-brasilenas', status: 'included' }],
+        referenceHotelId: 'hotel-474-buenos-aires',
+      },
+      {
+        dayNumber: 24,
+        destinationId: 'buenos-aires',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Buenos Aires: City Tour Premium',
+            description: 'Desayuno en el hotel. Por la mañana, City Tour Premium por Buenos Aires. Alojamiento en Buenos Aires.',
+            schedule: '08:55-13:00 hs (aprox.)',
+            duration: '4 horas',
+            highlights: ['Cementerio Recoleta · Evita', 'Caminito · La Boca · San Telmo'],
+            included: 'City tour con guía, traslados',
+          }
+        },
+        activities: [{ activityId: 'city-tour-premium-buenos-aires', status: 'included' }],
+        referenceHotelId: 'hotel-474-buenos-aires',
+      },
+      {
+        dayNumber: 25,
+        destinationId: 'buenos-aires',
+        dayType: 'activity',
+        content: {
+          es: {
+            title: 'Buenos Aires: Fogón Asado Experience',
+            description: 'Desayuno en el hotel. Mañana libre en Buenos Aires. Por la tarde-noche, Fogón Asado Experience en Palermo. Alojamiento en Buenos Aires.',
+            schedule: '19:30-22:30 hs (cena)',
+            duration: '2 horas 30 minutos',
+            highlights: ['Fogón Asado Experience · parrilla argentina', 'Palermo · gastronomía porteña'],
+            included: 'Cena y cóctel incluidos en Fogón Asado Experience. Traslados no incluidos.',
+            excluded: 'Traslados al restaurante no incluidos.',
+          }
+        },
+        activities: [{ activityId: 'fogon-asado-experience', status: 'included' }],
+        referenceHotelId: 'hotel-474-buenos-aires',
+      },
+      {
+        dayNumber: 26,
+        destinationId: 'buenos-aires',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Regreso a Barcelona. Fin del viaje',
+            description: 'Desayuno en el hotel. Mañana libre en Buenos Aires. A la hora convenida, traslado privado con guía al aeropuerto internacional de Ezeiza para el vuelo a Barcelona. Noche a bordo.',
+            included: 'Traslado privado con guía al aeropuerto de Ezeiza, vuelo EZE→BCN',
+          }
+        },
+        flights: ['EZE → BCN'],
+        activities: [],
+      },
+      {
+        dayNumber: 27,
+        destinationId: 'buenos-aires',
+        dayType: 'transit',
+        content: {
+          es: {
+            title: 'Llegada a Barcelona. Fin del viaje',
+            description: 'Llegada a Barcelona a las 12:20 h. Fin de los servicios de Viajes Vidaia.',
+          }
+        },
         activities: [],
       },
     ],

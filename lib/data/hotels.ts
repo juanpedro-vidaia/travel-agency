@@ -1345,6 +1345,118 @@ const hotels: Hotel[] = [
     imageKey: 'HOTELS.HILTON_DOUBLETREE_VITACURA',
     active: true,
   },
+  {
+    id: 'wyndham-pettra-puerto-varas',
+    destinationId: 'puerto-varas',
+    content: {
+      es: {
+        name: 'Wyndham Pettra Puerto Varas',
+        categoryLabel: 'Superior',
+        description: 'Hotel de cadena internacional situado en el centro de Puerto Varas, a pocos pasos del lago Llanquihue y del volcán Osorno. Habitaciones estándar amplias con todas las comodidades, desayuno incluido y buena conexión con las excursiones de la zona.',
+      }
+    },
+    category: 3,
+    imageKey: 'HOTELS.WYNDHAM_PETTRA_PUERTO_VARAS',
+    active: true,
+  },
+  {
+    id: 'martin-gusinde-puerto-natales',
+    destinationId: 'puerto-natales',
+    content: {
+      es: {
+        name: 'Hotel Martín Gusinde',
+        categoryLabel: 'Boutique',
+        description: 'Hotel boutique en el centro de Puerto Natales, a orillas del Seno de Última Esperanza. Nombrado en honor al etnólogo y explorador alemán que documentó la cultura kawésqar, combina diseño contemporáneo con materiales locales. Punto de partida ideal para Torres del Paine.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.MARTIN_GUSINDE_PUERTO_NATALES',
+    active: true,
+  },
+  {
+    id: 'almasur-patagonia-punta-arenas',
+    destinationId: 'punta-arenas',
+    content: {
+      es: {
+        name: 'Almasur Patagonia Hotel',
+        categoryLabel: 'Boutique',
+        description: 'Hotel boutique en el centro histórico de Punta Arenas. Ocupa una casona restaurada con vistas al Estrecho de Magallanes. Diseño interior que mezcla materiales patagónicos con confort contemporáneo, a pasos del cementerio municipal y del muelle de embarque del Crucero Australis.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.ALMASUR_PATAGONIA_PUNTA_ARENAS',
+    active: true,
+  },
+  {
+    id: 'los-acebos-ushuaia',
+    destinationId: 'ushuaia',
+    content: {
+      es: {
+        name: 'Los Acebos Ushuaia Hotel',
+        categoryLabel: 'Superior',
+        description: 'Hotel de montaña situado en la ladera del cerro, a veinte minutos del centro de Ushuaia, con vistas directas al Canal Beagle y la Sierra Martial. Habitaciones estándar con vista al bosque subantártico, desayuno buffet y acceso a los senderos del entorno.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.LOS_ACEBOS_USHUAIA',
+    active: true,
+  },
+  {
+    id: 'design-suites-calafate',
+    destinationId: 'el-calafate',
+    content: {
+      es: {
+        name: 'Design Suites Calafate',
+        categoryLabel: 'Boutique',
+        description: 'Hotel de diseño en el centro de El Calafate con vistas al Lago Argentino. Arquitectura contemporánea con grandes ventanales que enmarcan el paisaje patagónico. A pocos minutos de los principales restaurantes y a 80 kilómetros del Glaciar Perito Moreno.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.DESIGN_SUITES_CALAFATE',
+    active: true,
+  },
+  {
+    id: 'design-suites-bariloche',
+    destinationId: 'bariloche',
+    content: {
+      es: {
+        name: 'Design Suites Bariloche',
+        categoryLabel: 'Superior',
+        description: 'Hotel situado en la Avenida Bustillo a 2,5 kilómetros del centro de Bariloche, con vistas al lago Nahuel Huapi. Punto de partida habitual para el Circuito Chico y la Ruta de los Siete Lagos. Habitaciones dobles clásicas con desayuno buffet incluido.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.DESIGN_SUITES_BARILOCHE',
+    active: true,
+  },
+  {
+    id: 'o2-hotel-iguazu',
+    destinationId: 'iguazu',
+    content: {
+      es: {
+        name: 'O2 Hotel Iguazú',
+        categoryLabel: 'Superior',
+        description: 'Hotel moderno en el centro de Puerto Iguazú, a pocos minutos del acceso al Parque Nacional. Habitaciones dobles estándar con desayuno incluido. Piscina exterior y buena conexión con los traslados a las cataratas argentinas y brasileñas.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.O2_HOTEL_IGUAZU',
+    active: true,
+  },
+  {
+    id: 'hotel-474-buenos-aires',
+    destinationId: 'buenos-aires',
+    content: {
+      es: {
+        name: 'Hotel 474 Buenos Aires',
+        categoryLabel: 'Superior',
+        description: 'Hotel céntrico en el microcentro de Buenos Aires, en la calle San Martín 474, a pasos del Obelisco, la Avenida Corrientes y el Teatro Colón. Habitaciones dobles con desayuno incluido. Bien conectado con todos los barrios del circuito turístico porteño.',
+      }
+    },
+    category: 4,
+    imageKey: 'HOTELS.HOTEL_474_BUENOS_AIRES',
+    active: true,
+  },
 ]
 
 export default hotels

@@ -5,6 +5,7 @@ export const TRIP_TAGS = {
   RELAX: 'relax',
   CULTURE: 'culture',
   GASTRONOMY: 'gastronomy',
+  CRUISE: 'cruise',
 } as const
 
 export type TripTag = typeof TRIP_TAGS[keyof typeof TRIP_TAGS]
@@ -16,4 +17,5 @@ export const TAG_CONFIG: Record<TripTag, { icon: string; es: { label: string }; 
   relax:      { icon: '🌅', es: { label: 'Relax' } },
   culture:    { icon: '🏛', es: { label: 'Cultura' } },
   gastronomy: { icon: '🍷', es: { label: 'Gastronomía' } },
+  cruise:     { icon: '🚢', es: { label: 'Crucero' } },
 }

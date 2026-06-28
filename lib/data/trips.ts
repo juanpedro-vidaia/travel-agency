@@ -1,26 +1,10 @@
 import type { CountrySlug as Country } from './countries'
+import type { TripTag } from './tagConfig'
 
 // ── Tags ──────────────────────────────────────────────────────────────────────
-
-export const TRIP_TAGS = {
-  NATURE: 'nature',
-  WILDLIFE: 'wildlife',
-  ADVENTURE: 'adventure',
-  RELAX: 'relax',
-  CULTURE: 'culture',
-  GASTRONOMY: 'gastronomy',
-} as const
-
-export type TripTag = typeof TRIP_TAGS[keyof typeof TRIP_TAGS]
-
-export const TAG_CONFIG: Record<TripTag, { icon: string; es: { label: string }; en?: { label: string } }> = {
-  nature: { icon: '🌿', es: { label: 'Naturaleza' } },
-  wildlife: { icon: '🐋', es: { label: 'Vida salvaje' } },
-  adventure: { icon: '🏔', es: { label: 'Aventura' } },
-  relax: { icon: '🌅', es: { label: 'Relax' } },
-  culture: { icon: '🏛', es: { label: 'Cultura' } },
-  gastronomy: { icon: '🍷', es: { label: 'Gastronomía' } },
-}
+// Fuente única de verdad en ./tagConfig — se re-exporta aquí por compatibilidad
+export { TRIP_TAGS, TAG_CONFIG } from './tagConfig'
+export type { TripTag }
 
 // ── Season & best months (future use — not rendered) ──────────────────────────
 
@@ -102,7 +86,7 @@ const trips: Trip[] = [
     country: 'argentina',
     days: 13,
     nights: 11,
-    priceFrom: 0,
+    priceFrom: 3895,
     imageKey: 'TRIPS.ARGENTINA_NATURAL_PAISAJES',
     featured: true,
     active: true,
@@ -132,7 +116,7 @@ const trips: Trip[] = [
     country: 'argentina',
     days: 20,
     nights: 19,
-    priceFrom: 0,
+    priceFrom: 5225,
     imageKey: 'TRIPS.CONTRASTES_ARGENTINOS',
     featured: true,
     active: true,
@@ -163,7 +147,7 @@ const trips: Trip[] = [
     country: 'chile',
     days: 12,
     nights: 10,
-    priceFrom: 0,
+    priceFrom: 5290,
     imageKey: 'TRIPS.CHILE_ISLA_PASCUA',
     featured: true,
     active: true,
@@ -192,7 +176,7 @@ const trips: Trip[] = [
     country: 'argentina',
     days: 21,
     nights: 20,
-    priceFrom: 5500,
+    priceFrom: 5325,
     imageKey: 'TRIPS.GRANDES_ESCENARIOS_ARGENTINA',
     featured: true,
     active: true,
@@ -217,7 +201,7 @@ const trips: Trip[] = [
     country: 'argentina',
     days: 15,
     nights: 13,
-    priceFrom: 0,
+    priceFrom: 4655,
     imageKey: 'TRIPS.CONTRASTES_ARGENTINOS_INVIERNO',
     featured: true,
     active: true,
@@ -245,7 +229,7 @@ const trips: Trip[] = [
     country: 'argentina',
     days: 15,
     nights: 14,
-    priceFrom: 0,
+    priceFrom: 4655,
     imageKey: 'TRIPS.ARGENTINA_SUR_NORTE',
     featured: true,
     active: true,
@@ -270,7 +254,7 @@ const trips: Trip[] = [
     country: ['chile', 'argentina', 'uruguay'],
     days: 13,
     nights: 12,
-    priceFrom: 0,
+    priceFrom: 4750,
     imageKey: 'TRIPS.CAPITALES_DEL_VINO',
     featured: true,
     active: true,
@@ -320,7 +304,7 @@ const trips: Trip[] = [
     country: 'chile',
     days: 17,
     nights: 16,
-    priceFrom: 0,
+    priceFrom: 5980,
     imageKey: 'TRIPS.CHILE_COMPLETO',
     featured: true,
     active: true,
@@ -348,7 +332,7 @@ const trips: Trip[] = [
     country: 'bolivia',
     days: 13,
     nights: 12,
-    priceFrom: 0,
+    priceFrom: 4865,
     imageKey: 'TRIPS.BOLIVIA_INFINITA',
     featured: true,
     active: true,
@@ -376,7 +360,7 @@ const trips: Trip[] = [
     country: ['bolivia', 'chile'],
     days: 15,
     nights: 14,
-    priceFrom: 4818,
+    priceFrom: 5575,
     imageKey: 'TRIPS.BOLIVIA_CHILE_SALAR_PASCUA',
     featured: true,
     active: true,
@@ -391,6 +375,66 @@ const trips: Trip[] = [
     season: 'all-year',
     bestMonths: [4, 5, 6, 7, 8, 9, 10, 11],
     ranking: 85,
+  },
+  {
+    id: 'chile-esencial',
+    slug: 'chile-esencial',
+    content: {
+      es: {
+        title: 'Chile esencial: desierto, lagos y Patagonia sur',
+        subtitle: 'Santiago · San Pedro de Atacama · Puerto Varas · Puerto Natales · Torres del Paine',
+      }
+    },
+    country: 'chile',
+    days: 12,
+    nights: 11,
+    priceFrom: 4895,
+    imageKey: 'TRIPS.CHILE_ESENCIAL',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+    tags: ['nature', 'adventure'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
+    relatedTrips: [
+      { slug: 'esencias-chile-isla-pascua', es: { reason: 'Itinerario con norte e Isla de Pascua' } },
+      { slug: 'chile-completo', es: { reason: 'Circuito completo con Isla de Pascua' } },
+      { slug: 'argentina-sur-norte', es: { reason: 'Itinerario similar en Argentina' } },
+    ],
+    honeymoonFeatured: false,
+    season: 'summer',
+    bestMonths: [1, 2, 3, 4, 10, 11, 12],
+    ranking: 100,
+  },
+  {
+    id: 'cono-sur-completo-australis',
+    slug: 'cono-sur-completo-australis',
+    content: {
+      es: {
+        title: 'Cono Sur completo: de Santiago a Buenos Aires, del Cabo de Hornos a las Cataratas del Iguazú',
+        subtitle: 'Santiago · Puerto Natales · Punta Arenas · Crucero Australis · Ushuaia · El Calafate · Bariloche · Iguazú · Buenos Aires',
+      }
+    },
+    country: ['chile', 'argentina'],
+    days: 27,
+    nights: 26,
+    priceFrom: 10525,
+    imageKey: 'TRIPS.CONO_SUR_COMPLETO_AUSTRALIS',
+    featured: true,
+    active: true,
+    hasItinerary: true,
+    tags: ['cruise', 'nature', 'wildlife', 'culture'],
+    includesInternationalFlights: true,
+    includesDomesticFlights: true,
+    relatedTrips: [
+      { slug: 'capitales-del-vino', es: { reason: 'Para quienes quieren combinar Chile y Argentina por los grandes viñedos del Cono Sur' } },
+      { slug: 'grandes-escenarios-argentina', es: { reason: 'Versión concentrada en la Patagonia argentina: Calafate, Bariloche e Iguazú' } },
+      { slug: 'chile-esencial', es: { reason: 'Versión esencial de con Patagonia chilena' } },
+    ],
+    honeymoonFeatured: false,
+    season: 'summer',
+    bestMonths: [10, 11, 12, 1, 2, 3],
+    ranking: 80,
   },
 ]
 

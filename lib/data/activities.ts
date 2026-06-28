@@ -1346,6 +1346,62 @@ const activities: Activity[] = [
     icon: 'Snowflake',
     active: true,
   },
+  {
+    id: 'llanquihue-frutillar-hd',
+    destinationId: 'puerto-varas',
+    content: {
+      es: {
+        name: 'Llanquihue y Frutillar · Medio día',
+        description: 'Recorrido por la orilla sur del lago Llanquihue visitando dos de los pueblos con mayor impronta de la colonización alemana. En Llanquihue, nacimiento del río Maullín y ribera del lago con vistas al volcán Calbuco. En Frutillar, casas de época, el Teatro del Lago y el paseo costero con panorámicas al Osorno y el Puntiagudo.',
+      }
+    },
+    duration: 'Medio día · 4-5 horas',
+    imageKey: 'ACTIVITIES.LLANQUIHUE_FRUTILLAR',
+    icon: 'Mountain',
+    active: true,
+  },
+  {
+    id: 'city-tour-parques-santiago',
+    destinationId: 'santiago-chile',
+    content: {
+      es: {
+        name: 'City Tour Parques · Santiago · Cerro San Cristóbal y Parque Bicentenario',
+        description: 'Recorrido por los parques más importantes de Santiago combinando el Parque Forestal y el barrio Bellavista con la subida al Parque Metropolitano en teleférico hasta el Cerro San Cristóbal —segundo punto más alto de la capital—, desde donde se domina la ciudad y, en días despejados, la cordillera. Siguiente parada en el Parque Bicentenario, 27 hectáreas de zona verde en el sector oriente con lagunas y áreas de actividad.',
+      }
+    },
+    duration: 'Medio día · 5-6 horas · 08:30-14:00 hs',
+    imageKey: 'ACTIVITIES.CITY_TOUR_PARQUES_SANTIAGO',
+    icon: 'TreePine',
+    active: true,
+  },
+  {
+    id: 'crucero-australis-fiordos-tierra-fuego',
+    destinationId: 'punta-arenas',
+    content: {
+      es: {
+        name: 'Crucero Australis: Ruta Fiordos de Tierra de Fuego',
+        description: 'Navegación de cuatro noches entre Punta Arenas y Ushuaia a bordo del Crucero Australis, con pensión completa incluida. El recorrido atraviesa el Estrecho de Magallanes y el Canal Beagle con desembarcos en zodiac: Bahía Ainsworth e Islotes Tuckers (elefantes marinos y "Avenida de los Glaciares"), Glaciar Pía y su lengua principal desde mirador, y el Cabo de Hornos —punto más austral del continente— con desembarco en la Bahía Wulaia. Guías naturalistas a bordo en cada parada.',
+      }
+    },
+    duration: '4 noches · 5 días a bordo',
+    imageKey: 'ACTIVITIES.CRUCERO_AUSTRALIS',
+    icon: 'Waves',
+    active: true,
+  },
+  {
+    id: 'peulla-saltos-petrohue',
+    destinationId: 'puerto-varas',
+    content: {
+      es: {
+        name: 'Peulla y Saltos de Petrohué',
+        description: 'Recorrido desde Puerto Varas hasta el Parque Nacional Vicente Pérez Rosales con dos paradas principales: el Centro de Ski y Montaña del Volcán Osorno a 1.240 metros, con vistas al Calbuco, el lago Llanquihue y el Pacífico, y los Saltos del Río Petrohué, donde el agua turquesa cae entre coladas de lava solidificada a orillas del Lago Todos los Santos. Caminata suave por los senderos del parque entre bosque siempre verde.',
+      }
+    },
+    duration: 'Día completo · 09:0-18:00 hs',
+    imageKey: 'ACTIVITIES.SALTOS_PETROHUE',
+    icon: 'Waves',
+    active: true,
+  },
 ]
 
 export default activities
