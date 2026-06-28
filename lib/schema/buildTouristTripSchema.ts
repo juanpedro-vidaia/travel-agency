@@ -3,6 +3,8 @@ import type { Destination } from '@/lib/data/destinations'
 import type { ResolvedDay } from '@/lib/services/itinerariesService'
 import { BASE_URL } from '@/lib/config/site'
 import { getAsset } from '@/lib/data/assets'
+import { DIFFICULTY_CONFIG } from '@/lib/data/tagConfig'
+import { formatBestMonths } from '@/lib/helpers/contentHelpers'
 
 export function buildTouristTripSchema(
   trip: Trip,
@@ -45,6 +47,16 @@ export function buildTouristTripSchema(
     }
   })
 
+  // Citable facts without a native schema.org property → additionalProperty (GEO).
+  const bestSeason = formatBestMonths(trip.bestMonths)
+  const additionalProperty = [
+    { '@type': 'PropertyValue', name: 'Duración', value: `${trip.days} días` },
+    ...(bestSeason ? [{ '@type': 'PropertyValue', name: 'Mejor época', value: bestSeason }] : []),
+    ...(trip.difficulty
+      ? [{ '@type': 'PropertyValue', name: 'Dificultad', value: DIFFICULTY_CONFIG[trip.difficulty].es.label }]
+      : []),
+  ]
+
   return {
     '@context': 'https://schema.org',
     '@type': 'TouristTrip',
@@ -53,6 +65,7 @@ export function buildTouristTripSchema(
     image: getAsset(trip.imageKey).url,
     url: `${BASE_URL}/es/itinerarios/${trip.slug}`,
     provider: { '@id': `${BASE_URL}/#organization` },
+    additionalProperty,
     subTrip,
     ...(trip.priceFrom != null && trip.priceFrom > 0 && {
       offers: {

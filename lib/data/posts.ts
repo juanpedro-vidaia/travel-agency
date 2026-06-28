@@ -39,7 +39,7 @@ export interface Post {
   }
   imageKey: string
   date: string           // ISO: "2026-04-18"
-  dateUpdated?: string   // ISO — set when a post is revised after publishing
+  dateUpdated?: string   // ISO — set when a post is revised after publishing (alimenta dateModified del schema)
   category: PostCategory
   tags: string[]
   readingTime: number    // minutes
@@ -98,6 +98,7 @@ Puede que en parte la conexión **Vidaia** naciera allí…`,
     featured: true,
     active: true,
     relatedTripSlugs: ['paisajes-naturales-argentina', 'argentina-sur-norte', 'contrastes-argentinos-invierno'],
+    author: 'Lau',
   },
   {
     slug: 'mate-alma-tradicion-argentina',
@@ -192,6 +193,7 @@ Con sus múltiples beneficios para la salud y su capacidad para unir a las perso
     featured: true,
     active: true,
     relatedTripSlugs: ['paisajes-naturales-argentina', 'grandes-escenarios-argentina', 'capitales-del-vino'],
+    author: 'Jupe',
   },
   {
     slug: 'desierto-de-atacama-en-chile',
@@ -239,6 +241,7 @@ Desde Viajes Vidaia nos encantaría prepararte un viaje personalizado a este inc
     featured: true,
     active: true,
     relatedTripSlugs: ['chile-completo', 'bolivia-chile-salar-pascua', 'bolivia-infinita'],
+    author: 'Jupe',
   },
   {
     slug: 'carretera-austral-chile',
@@ -294,6 +297,7 @@ Caleta Tortel es única en el mundo por su sistema de pasarelas de madera que co
     featured: true,
     active: true,
     relatedTripSlugs: ['chile-completo', 'esencias-chile-isla-pascua', 'bolivia-chile-salar-pascua'],
+    author: 'Jupe',
   },
   {
     slug: 'costumbres-argentinas',
@@ -357,6 +361,7 @@ Con todo esto que os he contado hoy… ¿no te dan ganas de visitar Argentina?`,
     featured: true,
     active: true,
     relatedTripSlugs: ['contrastes-argentinos', 'argentina-sur-norte', 'capitales-del-vino'],
+    author: 'Lau',
   },
   {
     slug: 'mejores-epocas-viajar-argentina',
@@ -446,6 +451,7 @@ La clave de un Viaje Organizado a Argentina no es abarcar todo (sería imposible
     featured: true,
     active: true,
     relatedTripSlugs: ['contrastes-argentinos-invierno', 'grandes-escenarios-argentina', 'capitales-del-vino'],
+    author: 'Lau',
   },
   {
     slug: 'requisitos-viajar-a-chile',
@@ -548,6 +554,7 @@ Recuerda, tu lo deseas y, ¡nosotros lo hacemos realidad!`,
     featured: true,
     active: true,
     relatedTripSlugs: ['chile-completo', 'esencias-chile-isla-pascua', 'bolivia-chile-salar-pascua'],
+    author: 'Lau',
   },
 ]
 

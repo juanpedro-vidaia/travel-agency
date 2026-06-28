@@ -4,13 +4,14 @@
 
 ```
 lib/data/
-  countries.ts      → países (Argentina, Chile, Bolivia)
-  trips.ts          → tarjetas de viaje + tipos TripTag, TAG_CONFIG, RelatedTrip
+  countries.ts      → países (Argentina, Chile, Bolivia, Perú, Uruguay)
+  trips.ts          → tarjetas de viaje + tipo RelatedTrip (re-exporta TripTag/TAG_CONFIG de tagConfig.ts)
+  tagConfig.ts      → TRIP_TAGS, TripTag y TAG_CONFIG (fuente única; importable sin arrastrar el array de trips)
   itineraries.ts    → itinerarios completos día a día (solo contenido)
-  destinations.ts   → destinos/ciudades + tipo Country
+  destinations.ts   → destinos/ciudades
   hotels.ts         → hoteles por destino
   activities.ts     → actividades por destino
-  testimonials.ts   → testimonios de clientes
+  assets.ts         → URLs y alt de todas las imágenes (clave → { url, url_mobile?, alt })
 
 lib/services/
   countriesService.ts    → getCountries(), getCountryBySlug()
@@ -34,20 +35,31 @@ Edita **`lib/data/countries.ts`** y añade un objeto al array:
 {
   id: 'peru',
   slug: 'peru',
-  name: 'Perú',
+  content: {
+    es: {
+      name: 'Perú',
+      description: 'Descripción del país...',
+      heroAlt: 'Machu Picchu, Perú',
+      metaDescription: 'Descripción SEO del país...',  // SIN la marca; el title lo genera una plantilla
+    },
+  },
   flag: '🇵🇪',
-  flagCode: 'pe',           // código ISO 3166-1 alpha-2 (para la imagen de bandera)
-  description: 'Descripción del país...',
-  heroImage: 'https://images.unsplash.com/...',
-  heroAlt: 'Machu Picchu, Perú',
-  active: true,             // false = no aparece en menú ni sitemap
-  order: 4,                 // orden en el menú de destinos
-  metaTitle: 'Viajes a Perú — Viajes Vidaia',
-  metaDescription: 'Descripción SEO del país...',
+  flagCode: 'pe',                 // código ISO 3166-1 alpha-2 (para la imagen de bandera)
+  heroImageKey: 'COUNTRIES.PERU_HERO',  // clave de assets.ts (no una URL directa)
+  active: true,                  // false = no aparece en menú ni sitemap
+  order: 4,                      // orden en el menú de destinos
+  lat: -9.19,                    // coordenadas del país (centro) para el schema
+  lng: -75.0152,
 }
 ```
 
-La página `/destinos/peru` se genera automáticamente desde `app/destinos/[slug]/page.tsx`.
+> **Sin `metaTitle` por país** (eliminado del modelo). El `<title>` de destino se genera por plantilla
+> (`destinationPage.metaTitleTemplate` → "Viajes a medida por {country}") y la marca "Viajes Vidaia" la
+> añade una sola vez el `title.template` del root layout. Ver D23/M45 en `docs/`.
+
+Añade también el asset del hero en `lib/data/assets.ts` (`'COUNTRIES.PERU_HERO': { url, alt }`) y la bandera (`'FLAGS.PE'`).
+
+La página `/destinos/peru` se genera automáticamente desde `app/[lang]/destinos/[slug]/page.tsx`.
 El país aparece en el menú, el footer y el sitemap sin tocar ningún otro archivo.
 
 ---
@@ -60,25 +72,29 @@ El país aparece en el menú, el footer y el sitemap sin tocar ningún otro arch
 {
   id: 'mi-nuevo-viaje',                 // kebab-case, único
   slug: 'mi-nuevo-viaje',               // igual que el id
-  title: 'Título del viaje',
-  subtitle: 'Ciudad A · Ciudad B · Ciudad C',
+  content: {
+    es: {
+      title: 'Título del viaje',
+      subtitle: 'Ciudad A · Ciudad B · Ciudad C',
+    },
+  },
   country: 'argentina',                 // un país o array: ['argentina', 'chile']
   days: 10,                             // días totales
   nights: 9,                            // noches totales
-  priceFrom: 3200,                      // precio referencia por persona en hab. doble
-  image: 'https://images.unsplash.com/...',
+  priceFrom: 3200,                      // precio referencia por persona en hab. doble (0 = "consultar")
+  imageKey: 'TRIPS.MI_NUEVO_VIAJE',     // clave de assets.ts (no una URL directa)
   featured: false,                      // true = aparece en FeaturedDestinations (home)
   active: true,
   hasItinerary: false,                  // sin página propia de itinerario
-  tags: ['naturaleza', 'aventura'],     // ver TRIP_TAGS en trips.ts
-  includesFlightsInternational: true,
-  includesFlightsInternal: false,
+  tags: ['nature', 'adventure'],        // ver TAG_CONFIG en tagConfig.ts
+  includesInternationalFlights: true,
+  includesDomesticFlights: false,
   relatedTrips: [],                     // array vacío si no hay relacionados
 }
 ```
 
-**Tags disponibles** (`TripTag`):
-`naturaleza` · `vida-salvaje` · `aventura` · `relax` · `cultura` · `gastronomia`
+**Tags disponibles** (`TripTag`, definidos en `lib/data/tagConfig.ts`):
+`nature` · `wildlife` · `adventure` · `relax` · `culture` · `gastronomy` · `cruise`
 
 **Campos opcionales**:
 ```ts
@@ -114,13 +130,13 @@ al final de la página de itinerario:
 
 ```ts
 relatedTrips: [
-  { slug: 'esencias-chile-isla-pascua', reason: 'Combina con paisajes únicos del Cono Sur' },
-  { slug: 'patagonia-sur-a-norte',      reason: 'Profundiza en la Patagonia argentina' },
+  { slug: 'esencias-chile-isla-pascua', es: { reason: 'Combina con paisajes únicos del Cono Sur' } },
+  { slug: 'argentina-sur-norte',        es: { reason: 'Profundiza en la Patagonia argentina' } },
 ],
 ```
 
 - `slug` debe coincidir con el `slug` de otro Trip activo.
-- `reason` es el texto que aparece en la card con el icono 💡.
+- `es.reason` es el texto que aparece en la card con el icono 💡.
 - Si el slug no existe o el trip está inactivo, la card se omite silenciosamente.
 
 ---
@@ -137,29 +153,39 @@ Requiere dos pasos:
 {
   id: 'mi-nuevo-viaje',
   slug: 'mi-nuevo-viaje',         // debe coincidir con trips.ts
-  title: 'Título completo del itinerario',
-  description: 'Descripción del itinerario...',
+  content: {
+    es: {
+      title: 'Título completo del itinerario',
+      description: 'Descripción del itinerario...',
+      heroImages: [
+        { imageKey: 'ITINERARIES.MI_VIAJE_DIA1', location: 'Nombre del lugar' },  // clave de assets.ts
+      ],
+      // heroTitleMobile?, descriptionMobile?, metaTitle?, metaDescription? (opcionales, sin marca)
+    },
+  },
   featured: true,                 // true = aparece en secciones "featured"
   active: true,
-  heroImages: [
-    { src: 'https://...', alt: 'Alt text', location: 'Nombre del lugar' },
-  ],
-  hotelStops: [
+  accommodationStops: [
     {
-      hotelByCategory: { '3': 'hotel-id-3', '4': 'hotel-id-4', '5': 'hotel-id-5' },
+      hotelsByCategory: { '3': 'hotel-id-3', '4': 'hotel-id-4', '5': 'hotel-id-5' },  // IDs de hotels.ts
       nights: 3,
       dates: '17-20 sep',         // opcional, solo para display
       defaultCategory: 4,         // categoría base para el precio de referencia
+      featured: true,             // mostrar este stop en la sección de hoteles
     },
   ],
   days: [
     {
       dayNumber: 1,
-      destinationId: 'el-calafate',
-      dayType: 'transit',         // 'transit' | 'activity' | 'free'
-      title: 'Llegada a El Calafate',
-      description: 'Descripción del día...',
-      schedule: 'Tarde libre',
+      destinationId: 'el-calafate',   // opcional: omitir en días solo de tránsito
+      dayType: 'transit',             // 'transit' | 'activity' | 'free'
+      content: {
+        es: {
+          title: 'Llegada a El Calafate',
+          description: 'Descripción del día...',
+          schedule: 'Tarde libre',    // opcional
+        },
+      },
       referenceHotelId: 'hotel-id-4',
       activities: [
         { activityId: 'id-actividad', status: 'included' },  // 'included' | 'optional'
@@ -170,7 +196,7 @@ Requiere dos pasos:
 ```
 
 > **Nota**: `subtitle`, `priceFrom`, `days` y `nights` ya **no** van en `itineraries.ts`
-> — vienen del Trip con el mismo slug.
+> — vienen del Trip con el mismo slug. Las imágenes se referencian por `imageKey` (clave de `assets.ts`), nunca como URL directa.
 
 La página `/itinerarios/mi-nuevo-viaje` se genera automáticamente.
 **No hay que crear ningún archivo nuevo.**
@@ -187,11 +213,18 @@ Edita **`lib/data/destinations.ts`**:
 {
   id: 'el-chalten',
   slug: 'el-chalten',
-  name: 'El Chaltén',
   country: 'argentina',
-  description: 'Descripción breve del destino.',
-  image: 'https://images.unsplash.com/...',
+  content: {
+    es: {
+      name: 'El Chaltén',
+      description: 'Descripción breve del destino.',
+    },
+  },
+  imageKey: 'DESTINATIONS.EL_CHALTEN',   // clave de assets.ts
   active: true,
+  featured: true,                        // opcional: destaca en las cards de país
+  lat: -49.3315,                         // opcional: coordenadas para el mapa/schema
+  lng: -72.886,
 }
 ```
 
@@ -208,10 +241,15 @@ Edita **`lib/data/hotels.ts`**:
 {
   id: 'mi-hotel',
   destinationId: 'el-calafate',   // debe existir en destinations.ts
-  name: 'Nombre del Hotel',
+  content: {
+    es: {
+      name: 'Nombre del Hotel',
+      categoryLabel: 'Boutique',  // opcional: Superior, Boutique, Lodge...
+      description: '...',         // opcional
+    },
+  },
   category: 4,                    // 3, 4 o 5
-  categoryLabel: 'Boutique',      // opcional: Superior, Boutique, Lujo...
-  image: 'https://images.unsplash.com/...',
+  imageKey: 'HOTELS.MI_HOTEL',    // clave de assets.ts
   active: true,
 }
 ```
@@ -226,10 +264,16 @@ Edita **`lib/data/activities.ts`**:
 {
   id: 'mi-actividad',
   destinationId: 'ushuaia',
-  name: 'Nombre de la actividad',
-  description: 'Descripción detallada.',
-  duration: '4 horas · Salida 09:00 hs',
-  priceFrom: 85,    // solo para opcionales; omitir si es incluida
+  content: {
+    es: {
+      name: 'Nombre de la actividad',
+      description: 'Descripción detallada.',
+    },
+  },
+  duration: '4 horas · Salida 09:00 hs',  // opcional
+  priceFrom: 85,                          // opcional: solo para opcionales; omitir si es incluida
+  imageKey: 'ACTIVITIES.MI_ACTIVIDAD',    // opcional: clave de assets.ts
+  icon: 'Binoculars',                     // opcional: nombre de icono Lucide para la card
   active: true,
 }
 ```

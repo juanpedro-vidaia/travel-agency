@@ -28,6 +28,9 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
   const [copied, setCopied] = useState(false)
   const es = post.content.es
   const postImageUrl = getAsset(post.imageKey).url
+  const author = post.author
+    ? content.quienesSomos.teamMembers.find((m) => m.name === post.author)
+    : undefined
 
   useEffect(() => {
     if (copied) {
@@ -89,6 +92,18 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
           <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-8">{es.excerpt}</p>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 pb-8 border-b border-gray-100">
+            {author && (
+              <LangLink href="/#quienes-somos" className="group flex items-center gap-2">
+                {author.imageKey && (
+                  <span className="relative w-7 h-7 rounded-full overflow-hidden shrink-0">
+                    <Image src={getAsset(author.imageKey).url} alt={author.name} fill className="object-cover" sizes="28px" />
+                  </span>
+                )}
+                <span className="text-gray-500 group-hover:text-vidaia-primary transition-colors">
+                  {blogContent.authorPrefix} <span className="font-semibold text-vidaia-dark">{author.name}</span>
+                </span>
+              </LangLink>
+            )}
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
               {formatDate(post.date)}

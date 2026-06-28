@@ -1249,6 +1249,16 @@ export const STATIC_CONTENT = {
         night: 'noche',
         nights: 'noches',
       },
+      keyFacts: {
+        overline: 'Datos clave',
+        duration: 'Duración',
+        durationValueTemplate: '{days} días · {nights} noches',
+        priceFrom: 'Precio desde',
+        priceConsult: 'Consultar',
+        bestSeason: 'Mejor época',
+        countries: 'Países',
+        difficulty: 'Dificultad',
+      },
       hero: {
         eyebrowPrefix: 'Viajes Vidaia · Itinerario a medida',
         ctaButton: 'Quiero este viaje a medida',
@@ -1308,6 +1318,7 @@ export const STATIC_CONTENT = {
       backButton: 'Volver al blog',
       readingTimeLabel: 'min de lectura',
       readingTimeShort: 'min',
+      authorPrefix: 'Por',
     },
     formularioPersonalizado: {
       metadata: {

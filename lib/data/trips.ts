@@ -1,10 +1,10 @@
 import type { CountrySlug as Country } from './countries'
-import type { TripTag } from './tagConfig'
+import type { TripTag, TripDifficulty } from './tagConfig'
 
 // ── Tags ──────────────────────────────────────────────────────────────────────
 // Fuente única de verdad en ./tagConfig — se re-exporta aquí por compatibilidad
-export { TRIP_TAGS, TAG_CONFIG } from './tagConfig'
-export type { TripTag }
+export { TRIP_TAGS, TAG_CONFIG, DIFFICULTY_CONFIG } from './tagConfig'
+export type { TripTag, TripDifficulty }
 
 // ── Season & best months (future use — not rendered) ──────────────────────────
 
@@ -62,8 +62,10 @@ export interface Trip {
   honeymoonFeatured?: boolean
   /** Future use — best season to travel. */
   season?: TripSeason
-  /** Future use — best months (1-12). */
+  /** Best months to travel (1-12). Rendered in the "Datos clave" block. */
   bestMonths?: number[]
+  /** Optional physical difficulty, shown in the "Datos clave" block. */
+  difficulty?: TripDifficulty
   /**
    * Sort order for the /viajes grid (higher = first).
    * Trips without a value are treated as 0.

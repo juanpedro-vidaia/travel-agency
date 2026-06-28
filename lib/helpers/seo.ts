@@ -62,7 +62,6 @@ export function buildMetadata({
       title,
       description,
       images: [ogImage],
-      site: '@viajesvidaia',
     },
   }
 }
