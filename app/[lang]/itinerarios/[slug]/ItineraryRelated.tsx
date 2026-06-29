@@ -76,7 +76,7 @@ export default function ItineraryRelated({ relatedTrips, mainTrip }: Props) {
                       className={`inline-flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-full transition-colors ${
                         related.hasItinerary
                           ? 'bg-vidaia-primary hover:bg-vidaia-dark text-white'
-                          : 'bg-vidaia-earth hover:bg-vidaia-brown text-white'
+                          : 'bg-vidaia-earthDark hover:bg-vidaia-brown text-white'
                       }`}
                     >
                       {cta}

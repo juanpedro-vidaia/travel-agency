@@ -87,7 +87,7 @@ export default function ContactFAB() {
       id: 'callback',
       icon: <PhoneCall className="w-5 h-5 text-white" />,
       label: 'Te llamamos',
-      bg: 'bg-vidaia-earth hover:bg-vidaia-brown',
+      bg: 'bg-vidaia-earthDark hover:bg-vidaia-brown',
       ariaLabel: 'Solicitar que te llamemos',
       action: handleTeCallamos,
     },

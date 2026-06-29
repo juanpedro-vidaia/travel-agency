@@ -128,7 +128,7 @@ export default function ItineraryDayAccordion({ resolvedItinerary, destinationNa
                 >
                   <span
                     className={`shrink-0 font-heading font-bold text-lg w-11 h-11 rounded-full flex items-center justify-center ${
-                      isOpen ? 'bg-vidaia-earth text-white' : 'bg-vidaia-light text-vidaia-dark'
+                      isOpen ? 'bg-vidaia-earthDark text-white' : 'bg-vidaia-light text-vidaia-dark'
                     }`}
                   >
                     {day.day}

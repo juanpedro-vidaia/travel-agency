@@ -83,7 +83,7 @@ export default async function LunasDeMielPage({ params }: Props) {
               href={CONTACT.meetingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
+              className="inline-flex items-center justify-center gap-2 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
             >
               {ui.buttons.freeMeeting}
             </Link>
@@ -239,7 +239,7 @@ export default async function LunasDeMielPage({ params }: Props) {
               href={CONTACT.meetingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
+              className="inline-flex items-center justify-center gap-2 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
             >
               {ui.buttons.freeMeeting}
             </Link>

@@ -136,8 +136,8 @@ export default function Header() {
             href="/itinerarios/personalizar"
             className={`hidden md:inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
               scrolled
-                ? 'bg-vidaia-earth text-white hover:bg-vidaia-brown shadow-xs'
-                : 'bg-vidaia-earth/90 text-white hover:bg-vidaia-earth'
+                ? 'bg-vidaia-earthDark text-white hover:bg-vidaia-brown shadow-xs'
+                : 'bg-vidaia-earthDark/95 text-white hover:bg-vidaia-earthDark'
             }`}
           >
             {ui.buttons.requestQuote}
@@ -216,7 +216,7 @@ export default function Header() {
             <div className="pt-3 border-t border-gray-100">
               <LangLink
                 href="/itinerarios/personalizar"
-                className="block w-full text-center px-4 py-3.5 bg-vidaia-earth text-white font-semibold rounded-xl text-sm"
+                className="block w-full text-center px-4 py-3.5 bg-vidaia-earthDark text-white font-semibold rounded-xl text-sm"
                 onClick={() => setMobileOpen(false)}
               >
                 {ui.buttons.requestQuote}

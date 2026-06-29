@@ -238,7 +238,7 @@ export default function FormularioPersonalizado({
                   <button
                     type="button"
                     onClick={goNext}
-                    className="flex-1 py-3.5 bg-vidaia-primary hover:bg-vidaia-mid text-white font-bold text-sm rounded-2xl transition-all shadow-xs hover:shadow-md active:scale-[0.98]"
+                    className="flex-1 py-3.5 bg-vidaia-primary hover:bg-vidaia-dark text-white font-bold text-sm rounded-2xl transition-all shadow-xs hover:shadow-md active:scale-[0.98]"
                   >
                     {t.buttons.next}
                   </button>
@@ -246,7 +246,7 @@ export default function FormularioPersonalizado({
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 py-3.5 bg-vidaia-earth hover:bg-vidaia-brown text-white font-bold text-sm rounded-2xl transition-all shadow-xs hover:shadow-md active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="flex-1 py-3.5 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-bold text-sm rounded-2xl transition-all shadow-xs hover:shadow-md active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? t.buttons.sending : t.buttons.send}
                   </button>
@@ -265,7 +265,7 @@ export default function FormularioPersonalizado({
               type="submit"
               disabled={isSubmitting}
               onClick={methods.handleSubmit(onSubmit)}
-              className="w-full flex items-center justify-center gap-2 py-3.5 bg-vidaia-earth hover:bg-vidaia-brown text-white font-bold text-base rounded-2xl transition-colors disabled:opacity-60"
+              className="w-full flex items-center justify-center gap-2 py-3.5 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-bold text-base rounded-2xl transition-colors disabled:opacity-60"
             >
               {isSubmitting ? t.buttons.sending : t.buttons.send}
             </button>

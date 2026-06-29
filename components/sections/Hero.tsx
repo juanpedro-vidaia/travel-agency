@@ -78,7 +78,7 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
           <LangLink
             href="/itinerarios/personalizar"
-            className="inline-flex items-center gap-2.5 px-8 py-4 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
+            className="inline-flex items-center gap-2.5 px-8 py-4 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold rounded-full text-base transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
           >
             {ui.buttons.requestQuote}
             <ArrowRight className="w-5 h-5" />

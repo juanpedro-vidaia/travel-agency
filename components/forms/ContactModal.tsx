@@ -316,7 +316,7 @@ export default function ContactModal() {
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="w-full bg-vidaia-earth hover:bg-vidaia-brown disabled:opacity-60 text-white font-semibold py-4 rounded-2xl transition-colors text-sm mt-2"
+                  className="w-full bg-vidaia-earthDark hover:bg-vidaia-brown disabled:opacity-60 text-white font-semibold py-4 rounded-2xl transition-colors text-sm mt-2"
                 >
                   {status === 'submitting' ? t.submittingButton : t.submitButton}
                 </button>

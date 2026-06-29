@@ -156,7 +156,7 @@ export default async function CountryPage({ params }: Props) {
           </p>
           <Link
             href={`/${lang}/itinerarios/personalizar`}
-            className="inline-flex items-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
+            className="inline-flex items-center gap-2 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
           >
             {content.cta.button}
             <ArrowRight className="w-5 h-5" />

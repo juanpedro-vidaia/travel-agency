@@ -72,7 +72,7 @@ export default function TripCard({ trip, lang, strings }: TripCardProps) {
             )}
             <Link
               href={infoHref}
-              className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-vidaia-earth hover:bg-vidaia-brown text-white transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-2.5 rounded-full bg-vidaia-earthDark hover:bg-vidaia-brown text-white transition-colors"
             >
               {strings.requestInfoLabel}
               <ArrowRight className="w-4 h-4" />
@@ -128,7 +128,7 @@ export default function TripCard({ trip, lang, strings }: TripCardProps) {
             className={`inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full transition-colors ${
               trip.hasItinerary
                 ? 'bg-vidaia-primary hover:bg-vidaia-dark text-white'
-                : 'bg-vidaia-earth hover:bg-vidaia-brown text-white'
+                : 'bg-vidaia-earthDark hover:bg-vidaia-brown text-white'
             }`}
           >
             {ctaLabel}
