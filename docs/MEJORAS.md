@@ -609,6 +609,8 @@ async headers() {
 
 > ✅ COMPLETADO 27/06/2026 — `TestimonialsSection.tsx` ahora carga el widget de Google Reviews de Elfsight (app `fd4557ec-…`) en lugar de las tarjetas estáticas. Se **conservó la sección con su pill + título** (no se eliminó entera como se planteó originalmente); solo se sustituyeron las tarjetas y se actualizó el subtítulo a "Reseñas reales de viajeros en Google". Eliminados `lib/data/testimonials.ts`, `lib/services/testimonialsService.ts` y los assets `TESTIMONIALS.*`. El widget carga con `next/script` `strategy="lazyOnload"` + `data-elfsight-app-lazy` (mismo patrón que LightWidget en M17), solo en home y /viajes. Las reseñas de Google traen su propio rich data verificable — sin schema manual.
 
+> 🔭 **Mejora futura (M38b):** sustituir el widget de Elfsight por una sección propia que consuma la **Google Business Profile API**. Motivo: `googleReviews.js` de Elfsight pesa ~523 KiB de JS de terceros (Lighthouse marca cache TTL ineficiente, no controlable por nosotros). Con API propia: render estático/SSG, cero JS de terceros, control del peso y posibilidad de emitir nuestro propio schema `Review`/`AggregateRating` con datos reales verificables. Decisión 29/06/2026: por ahora se mantiene el widget (resuelve el corto plazo); se migrará a get propio de reviews a futuro.
+
 ---
 
 ### M39 — Sin schema `WebSite` (GEO)

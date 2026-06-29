@@ -214,6 +214,7 @@ export const STATIC_CONTENT = {
       },
       callToAction: 'Ver más en @viajesvidaia',
       instagramUrl: 'https://www.instagram.com/viajesvidaia',
+      iframeTitle: 'Feed de Instagram de Viajes Vidaia',
     },
     blogSection: {
       header: {
