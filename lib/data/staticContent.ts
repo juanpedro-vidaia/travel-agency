@@ -186,6 +186,25 @@ export const STATIC_CONTENT = {
         subtitle: 'Reseñas reales de viajeros en Google',
       },
     },
+    llmsTxt: {
+      title: 'Viajes Vidaia',
+      // {countries} lo rellena el route con los nombres de país activos
+      summaryTemplate: 'Agencia de viajes especializada en Sudamérica. Diseñamos viajes a medida a {countries} para viajeros españoles. No vendemos paquetes cerrados: cada viaje se construye desde cero según las fechas, el ritmo y los intereses del cliente.',
+      specialties: 'Especialistas en: Patagonia, Cataratas del Iguazú, Salar de Uyuni, Machu Picchu, Atacama, Buenos Aires, lunas de miel en Sudamérica.',
+      destinationsHeading: 'Destinos',
+      // {destinations} = destinos del país, lo rellena el route
+      destinationLineTemplate: 'Viajes personalizados a {destinations} | Viajes Vidaia',
+      itinerariesHeading: 'Itinerarios destacados',
+      generalHeading: 'Información general',
+      generalLinks: [
+        { label: 'Sobre nosotros',         path: '#quienes-somos', description: 'el equipo de Viajes Vidaia' },
+        { label: 'Cómo trabajamos',        path: '/viajes',        description: 'proceso de reserva paso a paso' },
+        { label: 'Viajes de luna de miel', path: '/lunas-de-miel', description: 'propuestas especiales para parejas' },
+        { label: 'Blog',                   path: '/blog',          description: 'experiencias y consejos de viaje' },
+      ],
+      optionalHeading: 'Optional',
+      sitemapLabel: 'Sitemap',
+    },
     instagramBanner: {
       header: {
         overline: 'Redes Sociales',

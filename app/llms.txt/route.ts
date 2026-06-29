@@ -3,51 +3,57 @@ import { getDestinationsByCountry } from '@/lib/services/destinationsService'
 import { getActiveTrips } from '@/lib/services/tripsService'
 import type { CountrySlug } from '@/lib/data/countries'
 import { BASE_URL } from '@/lib/config/site'
+import { getStaticContent, renderTemplate } from '@/lib/helpers/contentHelpers'
+
+// Todo el contenido es estático en build-time → prerenderizar como fichero estático.
+export const dynamic = 'force-static'
 
 export function GET() {
+  const t = getStaticContent('es').llmsTxt
   const countries = getCountriesOrdered()
   const trips = getActiveTrips()
-  const featured = trips.filter((t) => t.featured && t.hasItinerary)
+  const featured = trips.filter((tr) => tr.featured && tr.hasItinerary)
   const BASE = `${BASE_URL}/es`
 
   const destinationsSection = countries
     .map((c) => {
-      const dests = getDestinationsByCountry(c.slug as CountrySlug)
-        .map((d) => d.content.es.name)
-      return `- [${c.content.es.name}](${BASE}/destinos/${c.slug}): Viajes personalizados a ${dests.join(', ')} | Viajes Vidaia`
+      const dests = getDestinationsByCountry(c.slug as CountrySlug).map((d) => d.content.es.name)
+      const line = renderTemplate(t.destinationLineTemplate, { destinations: dests.join(', ') })
+      return `- [${c.content.es.name}](${BASE}/destinos/${c.slug}): ${line}`
     })
     .join('\n')
 
   const itinerariesSection = featured
-    .map((t) => `- [${t.content.es.title}](${BASE}/itinerarios/${t.slug}): ${t.content.es.subtitle}`)
+    .map((tr) => `- [${tr.content.es.title}](${BASE}/itinerarios/${tr.slug}): ${tr.content.es.subtitle}`)
     .join('\n')
 
   const countryNames = countries.map((c) => c.content.es.name).join(', ')
 
-  const content = `# Viajes Vidaia
+  const generalSection = t.generalLinks
+    .map((l) => `- [${l.label}](${BASE}${l.path}): ${l.description}`)
+    .join('\n')
 
-> Agencia de viajes especializada en Sudamérica. Diseñamos viajes a medida a ${countryNames} para viajeros españoles. No vendemos paquetes cerrados: cada viaje se construye desde cero según las fechas, el ritmo y los intereses del cliente.
+  const content = `# ${t.title}
 
-Especialistas en: Patagonia, Cataratas del Iguazú, Salar de Uyuni, Machu Picchu, Atacama, Buenos Aires, lunas de miel en Sudamérica.
+> ${renderTemplate(t.summaryTemplate, { countries: countryNames })}
 
-## Destinos
+${t.specialties}
+
+## ${t.destinationsHeading}
 
 ${destinationsSection}
 
-## Itinerarios destacados
+## ${t.itinerariesHeading}
 
 ${itinerariesSection}
 
-## Información general
+## ${t.generalHeading}
 
-- [Sobre nosotros](${BASE}#quienes-somos): el equipo de Viajes Vidaia
-- [Cómo trabajabamos](${BASE}/viajes): proceso de reserva paso a paso
-- [Viajes de luna de miel](${BASE}/lunas-de-miel): propuestas especiales para parejas
-- [Blog](${BASE}/blog): experiencias y consejos de viaje
+${generalSection}
 
-## Optional
+## ${t.optionalHeading}
 
-- [Sitemap](${BASE_URL}/sitemap.xml)
+- [${t.sitemapLabel}](${BASE_URL}/sitemap.xml)
 `
 
   return new Response(content, {
