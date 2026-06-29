@@ -158,13 +158,13 @@ export default function ItineraryContent({
             {keyFacts.map(({ Icon, label, value }) => (
               <div
                 key={label}
-                className="flex items-start gap-3 rounded-2xl border border-gray-100 bg-vidaia-sand/50 px-4 py-3 flex-1 min-w-[150px]"
+                className="rounded-2xl border border-gray-100 bg-vidaia-sand/50 px-4 py-3 flex-1 min-w-[150px]"
               >
-                <Icon className="w-5 h-5 text-vidaia-primary shrink-0 mt-0.5" aria-hidden="true" />
-                <div className="min-w-0">
-                  <dt className="text-xs font-semibold uppercase tracking-wide text-vidaia-charcoal/55">{label}</dt>
-                  <dd className="text-sm font-semibold text-vidaia-dark">{value}</dd>
-                </div>
+                <dt className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-vidaia-charcoal/55">
+                  <Icon className="w-4 h-4 text-vidaia-primary shrink-0" aria-hidden="true" />
+                  {label}
+                </dt>
+                <dd className="text-sm font-semibold text-vidaia-dark mt-1">{value}</dd>
               </div>
             ))}
           </dl>
