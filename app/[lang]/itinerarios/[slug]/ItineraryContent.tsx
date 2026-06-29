@@ -180,7 +180,7 @@ export default function ItineraryContent({
           </p>
           <LangLink
             href={requestHref}
-            className="hidden md:inline-flex items-center gap-2 mt-8 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base sm:text-lg"
+            className="hidden md:inline-flex items-center gap-2 mt-8 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base sm:text-lg"
           >
             {content.hero.ctaButton}
             <ArrowRight className="w-5 h-5" />
@@ -267,7 +267,7 @@ export default function ItineraryContent({
           )}
           <LangLink
             href={requestHref}
-            className="inline-flex items-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
+            className="inline-flex items-center gap-2 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
           >
             {content.price.ctaButton}
             <ArrowRight className="w-5 h-5" />
@@ -277,7 +277,7 @@ export default function ItineraryContent({
 
       <LangLink
         href={requestHref}
-        className="fixed bottom-6 left-4 right-[80px] z-50 lg:hidden flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-6 py-3.5 rounded-full transition-colors text-sm sm:text-base"
+        className="fixed bottom-6 left-4 right-[80px] z-50 lg:hidden flex items-center justify-center gap-2 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold px-6 py-3.5 rounded-full transition-colors text-sm sm:text-base"
       >
         <span className="w-5 h-5 sm:hidden" /> {/* espaciador invisible */}
         <span>{content.hero.ctaButton}</span>

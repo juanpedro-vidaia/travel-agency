@@ -90,8 +90,8 @@ export default function CookieConsentManager() {
                   Usamos cookies necesarias para el funcionamiento del sitio y, con tu permiso, cookies de analitica para mejorar nuestros servicios.
                   Puedes aceptar, rechazar o configurar tus preferencias.
                 </p>
-                <p className="text-xs text-vidaia-charcoal/60 mt-2">
-                  Más información en nuestra <LangLink href="/cookies" className="underline hover:text-vidaia-primary">Política de cookies</LangLink>.
+                <p className="text-xs text-vidaia-charcoal/80 mt-2">
+                  Más información en nuestra <LangLink href="/cookies" className="underline font-medium text-vidaia-dark hover:text-vidaia-primary">Política de cookies</LangLink>.
                 </p>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function CookieConsentManager() {
               <button
                 type="button"
                 onClick={acceptAll}
-                className="px-4 py-2.5 rounded-xl bg-vidaia-earth hover:bg-vidaia-brown text-white text-sm font-semibold transition-colors"
+                className="px-4 py-2.5 rounded-xl bg-vidaia-earthDark hover:bg-vidaia-brown text-white text-sm font-semibold transition-colors"
               >
                 Aceptar todo
               </button>
@@ -187,7 +187,7 @@ export default function CookieConsentManager() {
               <button
                 type="button"
                 onClick={() => savePreferences(preferences)}
-                className="px-4 py-2.5 rounded-xl bg-vidaia-earth hover:bg-vidaia-brown text-white text-sm font-semibold transition-colors"
+                className="px-4 py-2.5 rounded-xl bg-vidaia-earthDark hover:bg-vidaia-brown text-white text-sm font-semibold transition-colors"
               >
                 Guardar preferencias
               </button>

@@ -12,6 +12,7 @@ import { getStaticContent, getCommonUI } from '@/lib/helpers/contentHelpers'
 import { buildFAQSchema, buildCollectionPageSchema, buildPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/helpers/seo'
 import { getAsset } from '@/lib/data/assets'
+import { CONTACT } from '@/lib/config/contact'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 import React from 'react'
 
@@ -79,10 +80,10 @@ export default async function LunasDeMielPage({ params }: Props) {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 w-full sm:w-auto max-w-sm sm:max-w-none">
             <Link
-              href="https://reuniones.clientify.com/#/viajesvidaia/hablemos30min?v2=true"
+              href={CONTACT.meetingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
+              className="inline-flex items-center justify-center gap-2 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-base"
             >
               {ui.buttons.freeMeeting}
             </Link>
@@ -235,10 +236,10 @@ export default async function LunasDeMielPage({ params }: Props) {
           <p className="text-white/70 text-lg mb-10">{content.finalCta.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="https://reuniones.clientify.com/#/viajesvidaia/hablemos30min?v2=true"
+              href={CONTACT.meetingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
+              className="inline-flex items-center justify-center gap-2 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold px-10 py-5 rounded-full transition-colors text-lg"
             >
               {ui.buttons.freeMeeting}
             </Link>

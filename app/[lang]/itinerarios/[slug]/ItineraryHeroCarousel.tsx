@@ -118,7 +118,7 @@ export default function ItineraryHeroCarousel({ slug, resolvedItinerary, trip, c
 
         <LangLink
           href={requestHref}
-          className="hidden lg:inline-flex items-center gap-2 mt-10 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
+          className="hidden lg:inline-flex items-center gap-2 mt-10 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold px-8 py-4 rounded-full transition-colors text-lg"
         >
           {content.hero.ctaButton}
           <ArrowRight className="w-5 h-5" />

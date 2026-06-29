@@ -100,7 +100,7 @@ export const STATIC_CONTENT = {
         privacyPolicy: 'Política de privacidad',
         conditionsPolicy: 'Condiciones de contratación',
         cookiesPolicy: 'Política de cookies',
-        officialAgencyInfo: 'Agencia de viajes oficial{br}CICMA n.º 4641{br}Comunidad de Madrid',
+        officialAgencyInfo: 'Agencia de viajes oficial{br}CICMA n.º 4641{br}CIF: B55455380{br}Comunidad de Madrid',
       },
       copyright: '© 2026 Viajes Vidaia · Choquequirao · Todos los derechos reservados',
     },
@@ -186,6 +186,39 @@ export const STATIC_CONTENT = {
         subtitle: 'Reseñas reales de viajeros en Google',
       },
     },
+    llmsTxt: {
+      title: 'Viajes Vidaia',
+      summaryTemplate: 'Agencia de viajes boutique especializada en Sudamérica. Diseñamos viajes a medida a {countries}. No vendemos paquetes cerrados: cada viaje se construye desde cero según las fechas, el ritmo y los intereses del cliente.',
+      specialties: 'Especialistas en: Patagonia argentina y chilena, Cataratas del Iguazú, Salar de Uyuni y Bolivia, Machu Picchu y el Valle Sagrado, la amazonía peruana, el desierto de Atacama y el norte de Argentina, Buenos Aires, trekkings en Argentina y Chile y lunas de miel en Sudamérica.',
+      destinationsHeading: 'Destinos',
+      destinationLineTemplate: 'Viajes personalizados a {destinations} | Viajes Vidaia',
+      itinerariesHeading: 'Itinerarios destacados',
+      generalHeading: 'Información general',
+      generalLinks: [
+        {
+          label: 'Sobre nosotros',
+          path: '#quienes-somos',
+          description: 'el equipo de Viajes Vidaia',
+        },
+        {
+          label: 'Cómo trabajamos',
+          path: '/viajes',
+          description: 'proceso de reserva paso a paso',
+        },
+        {
+          label: 'Viajes de luna de miel',
+          path: '/lunas-de-miel',
+          description: 'propuestas especiales para parejas',
+        },
+        {
+          label: 'Blog',
+          path: '/blog',
+          description: 'experiencias y consejos de viaje',
+        },
+      ],
+      optionalHeading: 'Optional',
+      sitemapLabel: 'Sitemap',
+    },
     instagramBanner: {
       header: {
         overline: 'Redes Sociales',
@@ -195,6 +228,7 @@ export const STATIC_CONTENT = {
       },
       callToAction: 'Ver más en @viajesvidaia',
       instagramUrl: 'https://www.instagram.com/viajesvidaia',
+      iframeTitle: 'Feed de Instagram de Viajes Vidaia',
     },
     blogSection: {
       header: {
@@ -1545,7 +1579,7 @@ export const STATIC_CONTENT = {
       messagePlaceholder: 'Cuéntanos brevemente qué tienes en mente',
       privacyPrefix: 'He leído y acepto la',
       privacyLink: 'política de privacidad',
-      commercialText: 'Acepto recibir información comercial y ofertas exclusivas de Viajes Vidaia',
+      commercialText: 'Acepto suscribirme a la newsletter de Viajes Vidaia',
       submitButton: 'Quiero asesoramiento personalizado',
       submittingButton: 'Enviando…',
       successTitle: '¡Recibido!',

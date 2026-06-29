@@ -41,6 +41,7 @@ export default function InstagramBanner() {
         <Script src="https://cdn.lightwidget.com/widgets/lightwidget.js" strategy="afterInteractive" />
         <iframe
           src="https://cdn.lightwidget.com/widgets/7113b98ca17856d2acf211e0680b259e.html"
+          title={sectionContent.iframeTitle}
           scrolling="no"
           className="lightwidget-widget"
           style={{ width: '100%', border: 0, overflow: 'hidden', minHeight: '300px' }}

@@ -1,8 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { Instagram, Facebook, Mail, MapPin } from 'lucide-react'
+import { Instagram, Facebook, Mail, MapPin, Phone } from 'lucide-react'
 import { getCountries } from '@/lib/services/countriesService'
+import { CONTACT } from '@/lib/config/contact'
 import { useContactModal } from '@/lib/context/ContactModalContext'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { useConsent } from '@/lib/hooks/useConsent'
@@ -42,6 +43,10 @@ export default function Footer() {
 
             <div className="space-y-2.5 mb-7">
               <div className="flex items-center gap-2.5 text-sm">
+                <Phone className="w-4 h-4 text-vidaia-earth shrink-0" />
+                <a href={`tel:${CONTACT.phoneClean}`} className="hover:text-white transition-colors">{CONTACT.phone}</a>
+              </div>
+              <div className="flex items-center gap-2.5 text-sm">
                 <Mail className="w-4 h-4 text-vidaia-earth shrink-0" />
                 <ObfuscatedEmail user="info" domain="viajesvidaia.com" className="hover:text-white transition-colors" />
               </div>
@@ -62,7 +67,9 @@ export default function Footer() {
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/people/Viajes-Vidaia/61575032903618/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={footerContent.brand.facebookAriaLabel}
                 className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 hover:bg-vidaia-primary text-gray-400 hover:text-white transition-all duration-200"
               >

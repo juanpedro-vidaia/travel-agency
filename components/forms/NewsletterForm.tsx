@@ -154,7 +154,7 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-vidaia-earth hover:bg-vidaia-brown text-white font-semibold rounded-xl text-sm transition-all duration-200 disabled:opacity-60"
+          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-semibold rounded-xl text-sm transition-all duration-200 disabled:opacity-60"
         >
           {status === 'submitting' ? (
             <><Loader2 className="w-4 h-4 animate-spin" /> {t.submittingButton}</>

@@ -5,8 +5,6 @@ import { MessageCircle, X, Phone, PhoneCall, Calendar } from 'lucide-react'
 import { useContactModal } from '@/lib/context/ContactModalContext'
 import { CONTACT } from '@/lib/config/contact'
 
-const MEETING_URL = 'https://reuniones.clientify.com/#/viajesvidaia/hablemos30min?v2=true'
-
 export default function ContactFAB() {
   const [isOpen,      setIsOpen]      = useState(false)
   const [copied,      setCopied]      = useState(false)
@@ -58,7 +56,8 @@ export default function ContactFAB() {
   }, [openContactModal])
 
   const handleCitaPrevia = useCallback(() => {
-    window.open(MEETING_URL, '_blank', 'noopener,noreferrer')
+    // Enlace directo de cliente: la URL lleva fragmento #/ que un redirect del servidor perdería.
+    window.open(CONTACT.meetingUrl, '_blank', 'noopener,noreferrer')
     setIsOpen(false)
   }, [])
 
@@ -88,7 +87,7 @@ export default function ContactFAB() {
       id: 'callback',
       icon: <PhoneCall className="w-5 h-5 text-white" />,
       label: 'Te llamamos',
-      bg: 'bg-vidaia-earth hover:bg-vidaia-brown',
+      bg: 'bg-vidaia-earthDark hover:bg-vidaia-brown',
       ariaLabel: 'Solicitar que te llamemos',
       action: handleTeCallamos,
     },

@@ -22,7 +22,7 @@ export default function NotFound() {
         </p>
         <LangLink
           href="/"
-          className="inline-flex items-center justify-center px-8 py-3.5 bg-vidaia-earth hover:bg-vidaia-brown text-white font-bold text-sm rounded-2xl transition-all shadow-xs hover:shadow-md"
+          className="inline-flex items-center justify-center px-8 py-3.5 bg-vidaia-earthDark hover:bg-vidaia-brown text-white font-bold text-sm rounded-2xl transition-all shadow-xs hover:shadow-md"
         >
           {t.cta}
         </LangLink>

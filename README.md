@@ -76,9 +76,6 @@ RESEND_API_KEY=re_xxxxxxxxxxxxx
 # CRM — Clientify (activo)
 # Token de la API para registrar los leads de los formularios
 VV_CLIENTIFY_API_TOKEN=xxxxxxxxxxxxxxxx
-
-# URL del formulario de cita previa de Clientify (la usa /cita-previa)
-NEXT_PUBLIC_CLIENTIFY_CITA_URL=
 ```
 
 Las variables con prefijo `NEXT_PUBLIC_` se exponen al cliente. Las demás son solo servidor.
