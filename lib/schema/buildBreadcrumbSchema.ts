@@ -14,7 +14,8 @@ export function buildBreadcrumbSchema(lang: string, items: BreadcrumbItem[]) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      ...(item.path ? { item: `${BASE_URL}/${lang}${item.path}` } : {}),
+      // path === '' es la home (item = BASE_URL/lang); path === undefined es la página actual (se omite item)
+      ...(item.path !== undefined ? { item: `${BASE_URL}/${lang}${item.path}` } : {}),
     })),
   }
 }
