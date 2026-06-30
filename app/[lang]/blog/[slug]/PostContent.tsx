@@ -64,7 +64,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
       <ViewTracker event="blog_post_view" params={{ post_slug: post.slug, post_title: es.title }} />
       <ReadingProgress />
 
-      <article className="pt-24 md:pt-28 pb-12 md:pb-16">
+      <article className="pt-28 md:pt-32 pb-12 md:pb-16">
         <header className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
           <LangLink
             href="/blog"

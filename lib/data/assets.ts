@@ -85,6 +85,12 @@ export const ASSETS = {
   'ACTIVITIES.CITY_TOUR_PARQUES_SANTIAGO':         { url: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=600&h=400&fit=crop', alt: 'Cerro San Cristóbal con vista panorámica de Santiago' },
   'ACTIVITIES.CRUCERO_AUSTRALIS':                  { url: 'https://images.unsplash.com/photo-1531761535209-180cb5547b5f?q=80&w=600&h=400&fit=crop', alt: 'Crucero Australis navegando por los fiordos de Tierra de Fuego' },
   'ACTIVITIES.LLANQUIHUE_FRUTILLAR':               { url: 'https://images.unsplash.com/photo-1601065427440-fb6f0ca5d2a4?q=80&w=600&h=400&fit=crop', alt: 'Frutillar con el volcán Osorno al fondo, Lago Llanquihue' },
+  'ACTIVITIES.CAMINATA_SELVA_AMAZONICA':           { url: 'https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?q=80&w=600&h=400&fit=crop', alt: 'Sendero entre árboles en la selva amazónica peruana' },
+  'ACTIVITIES.PASEO_NOCTURNO_CANOA':               { url: 'https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?q=80&w=600&h=400&fit=crop', alt: 'Canoa en río amazónico al anochecer con reflejo en el agua' },
+  'ACTIVITIES.NAVEGACION_AMAZONAS_DELFINES':       { url: 'https://images.unsplash.com/photo-1559827291-72ebf3d825ff?q=80&w=600&h=400&fit=crop', alt: 'Delfín rosado del río Amazonas asomando a la superficie' },
+  'ACTIVITIES.PESCA_PIRANAS_LAGOS':                { url: 'https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?q=80&w=600&h=400&fit=crop', alt: 'Lago de aguas negras en la selva amazónica de Iquitos' },
+  'ACTIVITIES.CAMINATA_NOCTURNA_SELVA':            { url: 'https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?q=80&w=600&h=400&fit=crop', alt: 'Interior de selva densa de noche, Amazonia peruana' },
+  'ACTIVITIES.AVISTAMIENTO_AVES_AMAZONIA':         { url: 'https://images.unsplash.com/photo-1444464666168-49d633b86797?q=80&w=600&h=400&fit=crop', alt: 'Guacamayo rojo posado en rama, selva amazónica de Iquitos' },
 
   // ── Blog posts ────────────────────────────────────────────────────────────────
   'BLOG.ATACAMA_CHILE':         { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/desierto-atacama/laguna-miscanti-desierto-atacama-chile-jupe-201905.jpg', alt: 'Laguna Miscanti en el Desierto de Atacama, Chile' },
@@ -144,6 +150,7 @@ export const ASSETS = {
   'DESTINATIONS.OJO_DE_PERDIZ':     { url: 'https://images.unsplash.com/photo-1641234332283-af77dfe995c7?q=80&w=800', alt: 'Desierto de Siloli, Lípez boliviano' },
   'DESTINATIONS.SAN_PEDRO_QUEMEZ':  { url: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800', alt: 'Altiplano boliviano, San Pedro de Quemez' },
   'DESTINATIONS.ISLA_DEL_SOL':      { url: 'https://images.unsplash.com/photo-1567551568791-efe6b0b4e24e?q=80&w=800', alt: 'Isla del Sol, Lago Titicaca, Bolivia' },
+  'DESTINATIONS.IQUITOS':           { url: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=600&h=400&fit=crop', alt: 'Malecón de Iquitos con el río Amazonas al fondo, Amazonia peruana' },
 
   // ── Flags (via flagcdn.com) ───────────────────────────────────────────────────
   'FLAGS.AR': { url: 'https://flagcdn.com/20x15/ar.png', alt: 'Argentina' },
@@ -260,6 +267,8 @@ export const ASSETS = {
   'HOTELS.MARTIN_GUSINDE_PUERTO_NATALES':   { url: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=600&h=400&fit=crop', alt: 'Hotel Martín Gusinde en Puerto Natales, fachada patagónica' },
   'HOTELS.O2_HOTEL_IGUAZU':                 { url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=600&h=400&fit=crop', alt: 'O2 Hotel Iguazú fachada moderna en Puerto Iguazú' },
   'HOTELS.WYNDHAM_PETTRA_PUERTO_VARAS':     { url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=600&h=400&fit=crop', alt: 'Hotel Wyndham Pettra Puerto Varas con vistas al lago' },
+  'HOTELS.MUYUNA_AMAZON_LODGE':             { url: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=600&h=400&fit=crop', alt: 'Cabaña de lodge amazónico integrada en la selva, Iquitos' },
+  'HOTELS.CASA_MOREY_IQUITOS':              { url: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=600&h=400&fit=crop', alt: 'Fachada colonial de Casa Morey con azulejos portugueses, Iquitos' },
 
   // ── Itinerary hero images ─────────────────────────────────────────────────────
   'ITINERARIES.BOLIVIA_INFINITA_LA_PAZ':          { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/bolivia/la-paz/la-paz-teleferico-jupe072009.jpg', alt: 'La Paz desde el teleférico, con el nevado Illimani al fondo' },
@@ -307,6 +316,11 @@ export const ASSETS = {
   'ITINERARIES.SALAR_PASCUA_RAPA_NUI':            { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/isla-de-pascua/moais-rapa-nui-h-1-miguel-cuenca.jpg', alt: 'Moais en Rapa Nui, Isla de Pascua, Chile', url_mobile: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/isla-de-pascua/moais-rapa-nui-v-1-miguel-cuenca.jpg' },
   'ITINERARIES.SALAR_PASCUA_SANTIAGO':            { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/chile/santiago-central/mercado-central-santiago-chile.jpg', alt: 'Mercado Central de Santiago de Chile' },
   'ITINERARIES.SALAR_PASCUA_UYUNI':               { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/bolivia/salar-uyuni/salar-uyuni-4x4-seco-marta-villagran-202605.jpg', alt: 'Coche 4x4 en el Salar de Uyuni seco, en mayo, Bolivia' },
+  'ITINERARIES.PERU_CONTRASTES_MACHU_PICCHU':     { url: 'https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=800&h=600&fit=crop', alt: 'Machu Picchu al amanecer con las montañas andinas al fondo, Perú' },
+  'ITINERARIES.PERU_CONTRASTES_AMAZONIA':         { url: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800&h=600&fit=crop', alt: 'Selva amazónica en Iquitos con río y vegetación densa, Perú' },
+  'ITINERARIES.PERU_CONTRASTES_BALLESTAS':        { url: 'https://images.unsplash.com/photo-1548574504-68a2e5e84e70?q=80&w=800&h=600&fit=crop', alt: 'Lobos marinos en las Islas Ballestas, costa de Paracas, Perú' },
+  'ITINERARIES.PERU_CONTRASTES_CUSCO':            { url: 'https://images.unsplash.com/photo-1580654712603-eb43273aff33?q=80&w=800&h=600&fit=crop', alt: 'Plaza de Armas de Cusco con la Catedral al atardecer, Perú' },
+  'ITINERARIES.PERU_CONTRASTES_VALLE_SAGRADO':    { url: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=800&h=600&fit=crop', alt: 'Fortaleza inca de Ollantaytambo en el Valle Sagrado, Cusco' },
 
   // ── Itineraries ───────────────────────────────────────────────────────────────
   'ITINERARIES.CONTRASTES_CAFAYATE':           { url: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/norte-argentino/vinedo-cafayate-salta-argentina.jpg', alt: 'Viñedo y bodega en los Valles Calchaquíes, Cafayate, Salta, Argentina' },
@@ -336,7 +350,7 @@ export const ASSETS = {
 
   // ── Team ──────────────────────────────────────────────────────────────────────
   'TEAM.JUPE':            { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/c_crop,g_north_west,h_652,w_652,x_548,y_142/foto-jupe-borobudur-indonesia_hxbmvh.jpg', alt: 'Jupe, asesor de Viajes Vidaia, en Borobudur, Isla de Java en Indonesia' },
-  'TEAM.LANDSCAPE_PHOTO': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/c_crop,g_north_west,h_633,w_1991,x_257,y_577/IMG_1651_1_apzpg6.jpg', alt: 'Mirador de las Cataratas del Iguzú, desde el lado brasileño. Laura y Jupe de Vidaia contemplan el lado argentino de las cataratas.' },
+  'TEAM.LANDSCAPE_PHOTO': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/c_crop,g_north_west,h_633,w_1991,x_257,y_577/IMG_1651_1_apzpg6.jpg', alt: 'Mirador de las Cataratas del Iguzú, desde el lado brasileño.' },
   'TEAM.LAU':             { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/ar_1:1,c_auto/IMG_1047_cupyq4.jpg', alt: 'Lau, asesora de Viajes Vidaia, en Salinas Grandes, Salta y Jujuy, Argentina' },
 
   // ── Trips ─────────────────────────────────────────────────────────────────────
@@ -353,6 +367,7 @@ export const ASSETS = {
   'TRIPS.CONTRASTES_ARGENTINOS_INVIERNO': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780411565/norte-argentino-jujuy-salinas-grandes-lau-082019_hvklzv.jpg', alt: 'Salinas Grandes en la Quebrada de Humahuaca, Jujuy, Argentina' },
   'TRIPS.GRANDES_ESCENARIOS_ARGENTINA':   { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1778096630/fizt-roy-laguna-de-los-tres-el-chalten-patagonia-argentina-jupe-042019.jpg', alt: 'Fitz Roy desde la Laguna de los Tres, El Chaltén, Parque Nacional Los Glaciares, Patagonia, Argentina' },
   'TRIPS.LO_MEJOR_DE_PERU':               { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1780415879/machu-picchu-valle-sagrado-peru-062019-jupe_biv04c.jpg', alt: 'Machu Picchu, ciudadela inca Patrimonio UNESCO, Perú' },
+  'TRIPS.PERU_CONTRASTES_IQUITOS':        { url: 'https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=1200&h=600&fit=crop', alt: 'Ciudadela inca de Machu Picchu entre la niebla, Perú' },
 
   // ── Viajes hero carousel ──────────────────────────────────────────────────────
   'VIAJES_HERO_ARGENTINA': { url: 'https://res.cloudinary.com/dny6gct6o/image/upload/v1779727561/lago-nahuel-huapi-bariloche-jupe-052019_z8g7uo.jpg', alt: 'Lago Nahuel Huapi desde el Cerro Campanario con el Cerro López al fondo, Bariloche, Argentina', url_mobile: 'https://pfezxbdacmqscsbvohjv.supabase.co/storage/v1/object/public/viajes-vidaia-media-content/argentina/patagonia/brazo-tristeza-lago-nahuel-huapi-rio-negro-argentina.jpg' },

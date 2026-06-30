@@ -30,7 +30,7 @@ export default async function CondicionesContratacionPage({ params }: Props) {
   const ui = getCommonUI(lang)
 
   return (
-    <main className="min-h-screen bg-white pt-28 pb-12 md:pb-20">
+    <main className="min-h-screen bg-white pt-28 md:pt-32 pb-12 md:pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href={`/${lang}`}

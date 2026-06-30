@@ -59,7 +59,7 @@ export default function Header() {
             alt={logoAsset.alt}
             width={160}
             height={44}
-            className="h-10 md:h-14 w-auto object-contain"
+            className="h-[60px] md:h-20 w-auto object-contain"
             priority
           />
         </LangLink>
