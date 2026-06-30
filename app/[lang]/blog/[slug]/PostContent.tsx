@@ -15,6 +15,7 @@ import type { Trip } from '@/lib/data/trips'
 import { formatDate } from '@/lib/services/postsService'
 import { getAsset } from '@/lib/data/assets'
 import { useLanguage } from '@/lib/hooks/useLanguage'
+import ViewTracker from '@/components/analytics/ViewTracker'
 
 interface Props {
   post: Post
@@ -60,6 +61,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
 
   return (
     <>
+      <ViewTracker event="blog_post_view" params={{ post_slug: post.slug, post_title: es.title }} />
       <ReadingProgress />
 
       <article className="pt-24 md:pt-28 pb-12 md:pb-16">

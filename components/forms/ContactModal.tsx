@@ -5,6 +5,7 @@ import { X, Phone } from 'lucide-react'
 import { useContactModal } from '@/lib/context/ContactModalContext'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import { CONTACT } from '@/lib/config/contact'
+import { trackEvent } from '@/lib/analytics/trackEvent'
 import ObfuscatedEmail from '@/components/ui/ObfuscatedEmail'
 import LangLink from '@/components/ui/LangLink'
 
@@ -88,6 +89,7 @@ export default function ContactModal() {
         body: JSON.stringify({ ...form, form_source: 'contact-modal' }),
       })
       const data = await res.json()
+      if (data.ok) trackEvent('form_submit_contacto', { form_location: window.location.pathname })
       setStatus(data.ok ? 'success' : 'error')
     } catch {
       setStatus('error')
@@ -135,6 +137,7 @@ export default function ContactModal() {
           {/* Phone CTA */}
           <a
             href={`tel:${CONTACT.phoneClean}`}
+            onClick={() => trackEvent('phone_click', { click_location: window.location.pathname })}
             className="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/15 rounded-2xl px-4 py-2.5 transition-colors mb-3"
           >
             <span className="w-7 h-7 rounded-full bg-vidaia-earth/20 flex items-center justify-center shrink-0">

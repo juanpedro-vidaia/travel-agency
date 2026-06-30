@@ -4,6 +4,7 @@ import { useState, useEffect, startTransition } from 'react'
 import { Mail, CheckCircle, Loader2 } from 'lucide-react'
 import LangLink from '@/components/ui/LangLink'
 import { useLanguage } from '@/lib/hooks/useLanguage'
+import { trackEvent } from '@/lib/analytics/trackEvent'
 
 const STORAGE_KEY = 'vidaia_newsletter_subscribed'
 
@@ -40,6 +41,7 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
       })
       if (!res.ok) throw new Error('Error')
       localStorage.setItem(STORAGE_KEY, '1')
+      trackEvent('form_submit_newsletter', { form_location: window.location.pathname })
       setStatus('success')
     } catch {
       setStatus('error')

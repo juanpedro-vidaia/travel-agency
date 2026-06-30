@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useForm, FormProvider, type SubmitHandler, type Resolver } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { formSchema, STEP_FIELDS, type FormPayload } from '@/lib/form-utils'
+import { trackEvent } from '@/lib/analytics/trackEvent'
 import StepIndicator from './FormularioPersonalizado/StepIndicator'
 import BreadcrumbPersonalizar from './FormularioPersonalizado/BreadcrumbPersonalizar'
 import Paso1ElViaje from './FormularioPersonalizado/Paso1ElViaje'
@@ -137,6 +138,10 @@ export default function FormularioPersonalizado({
         }),
       })
       if (res.ok) {
+        trackEvent('form_submit_quote', {
+          form_location: window.location.pathname,
+          trip_slug: itineraryData?.slug,
+        })
         router.push(successPath)
       } else {
         setSubmitError(t.error.generic)

@@ -20,6 +20,7 @@ import { buildPageSchema, buildTouristDestinationSchema, buildFAQSchema, buildBr
 import { getAsset } from '@/lib/data/assets'
 import { renderTemplate } from '@/lib/helpers/contentHelpers'
 import SectionHeader from '@/components/sections/SectionHeader'
+import ViewTracker from '@/components/analytics/ViewTracker'
 import { ENABLED_LANGUAGES } from '@/lib/config/languages.config'
 
 interface Props {
@@ -64,6 +65,7 @@ export default async function CountryPage({ params }: Props) {
 
   return (
     <>
+      <ViewTracker event="destination_view" params={{ destination_slug: slug }} />
       <JsonLd data={buildPageSchema(
         buildTouristDestinationSchema(country, countryDests),
         buildBreadcrumbSchema(lang, [

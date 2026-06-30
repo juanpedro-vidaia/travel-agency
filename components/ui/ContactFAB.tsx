@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { MessageCircle, X, Phone, PhoneCall, Calendar } from 'lucide-react'
 import { useContactModal } from '@/lib/context/ContactModalContext'
 import { CONTACT } from '@/lib/config/contact'
+import { trackEvent } from '@/lib/analytics/trackEvent'
 
 export default function ContactFAB() {
   const [isOpen,      setIsOpen]      = useState(false)
@@ -32,12 +33,14 @@ export default function ContactFAB() {
   }, [])
 
   const handleWhatsApp = useCallback(() => {
+    trackEvent('whatsapp_click', { click_location: window.location.pathname })
     const msg = encodeURIComponent('Hola! Me gustaría información sobre vuestros viajes a medida.')
     window.open(`https://wa.me/${CONTACT.phoneWhatsApp}?text=${msg}`, '_blank', 'noopener,noreferrer')
     setIsOpen(false)
   }, [])
 
   const handlePhone = useCallback(() => {
+    trackEvent('phone_click', { click_location: window.location.pathname })
     const isMobile = /Mobi|Android/i.test(navigator.userAgent)
     if (isMobile) {
       window.location.href = `tel:${CONTACT.phoneClean}`
@@ -56,6 +59,7 @@ export default function ContactFAB() {
   }, [openContactModal])
 
   const handleCitaPrevia = useCallback(() => {
+    trackEvent('cita_previa_click', { click_location: window.location.pathname })
     // Enlace directo de cliente: la URL lleva fragmento #/ que un redirect del servidor perdería.
     window.open(CONTACT.meetingUrl, '_blank', 'noopener,noreferrer')
     setIsOpen(false)

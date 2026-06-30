@@ -34,6 +34,7 @@ import type { Trip } from '@/lib/data/trips'
 import type { Country } from '@/lib/data/countries'
 import type { ResolvedFAQ } from '@/lib/services/faqsService'
 import { formatPrice, renderTemplate, formatBestMonths } from '@/lib/helpers/contentHelpers'
+import ViewTracker from '@/components/analytics/ViewTracker'
 import { DIFFICULTY_CONFIG } from '@/lib/data/tagConfig'
 import { useLanguage } from '@/lib/hooks/useLanguage'
 import FaqSection from '@/components/sections/FaqSection'
@@ -119,6 +120,7 @@ export default function ItineraryContent({
 
   return (
     <main className="min-h-screen bg-white pb-20 lg:pb-0">
+      <ViewTracker event="trip_view" params={{ trip_slug: slug, trip_title: trip.content.es.title }} />
 
       {/* ── HERO CAROUSEL ─────────────────────────────────────────────────────── */}
       <ItineraryHeroCarousel
