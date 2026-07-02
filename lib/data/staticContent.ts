@@ -111,9 +111,9 @@ export const STATIC_CONTENT = {
       },
       hero: {
         tagline: 'Argentina · Chile · Bolivia · Perú',
-        title: 'Diseñamos tu viaje a medida por Sudamérica{br} {span}Somos Viajes Vidaia',
+        title: 'Diseñamos tu viaje a medida por Sudamérica{br} {span}Viajes Vidaia',
         titleEmphasized: '',
-        description: 'Agencia de viajes boutique especializada en viajes a medida',
+        description: '',
       },
       faqSection: {
         title: 'Preguntas frecuentes',
@@ -1181,7 +1181,7 @@ export const STATIC_CONTENT = {
       servicios: {
         missionOverline: 'Misión',
         missionTitle: 'Nuestra misión',
-        missionText: 'Hacer realidad el viaje ideal de cada persona que quiere descubrir Sudamérica. Somos una agencia boutique especializada en itinerarios a medida: hemos recorrido las rutas que ofrecemos y conocemos los destinos desde dentro. Desde la primera conversación ponemos ese conocimiento en el diseño de tu viaje.',
+        missionText: 'Hacer realidad el viaje ideal de cada persona que quiere descubrir Sudamérica. Somos una agencia especializada en itinerarios a medida: hemos recorrido las rutas que ofrecemos y conocemos los destinos desde dentro. Desde la primera conversación ponemos ese conocimiento en el diseño de tu viaje.',
         cardsOverline: '¿Por qué Vidaia?',
         cardsTitle: '¿Por qué viajar con Vidaia?',
         cards: [
@@ -1253,7 +1253,7 @@ export const STATIC_CONTENT = {
       hero: {
         taglineTemplate: 'Viajes Vidaia · {country}',
         titleTemplate: 'Viajes a medida por {country}',
-        descriptionSuffix: '. Cuentanos tus imprescidibles y te asesoramos. ',
+        descriptionSuffix: '. Cuentanos tus imprescindibles y te asesoramos. ',
         quote: 'Cada viaje que diseñamos nace de escucharte a ti.',
       },
       section: {

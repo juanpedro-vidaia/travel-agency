@@ -2,6 +2,7 @@ export interface CountryContent {
   name: string
   description: string
   heroAlt: string
+  metaTitle: string
   metaDescription: string
 }
 
@@ -49,7 +50,7 @@ const countries: Country[] = [
     content: {
       es: {
         name: 'Chile',
-        description: 'Chile engaña en el mapa. Parece un hilo y resulta ser un mundo. Al norte, el Atacama; más abajo, valles con viñedos y la cordillera de fondo. Luego la Patagonia se despliega despacio: los lagos y los ríos de la Araucanía, los fiordos navegables, los glaciares del sur. Y cuando crees que ya lo entiendes, recuerdas que Chile también tiene una isla perdida en el Pacífico, con moais mirando al horizonte desde hace siglos. Chile no se abarca en un solo viaje. ¿Por dónde quieres empezar?',
+        description: 'Chile engaña en el mapa. Parece un hilo y resulta ser un mundo. Al norte, el Atacama; más abajo, valles con viñedos y la cordillera de fondo. Luego la Patagonia se despliega despacio: los lagos y los ríos de la Araucanía, los fiordos navegables, los glaciares del sur. Y cuando crees que ya lo entiendes, recuerdas que Chile también tiene una isla perdida en el Pacífico, con moais mirando al horizonte desde hace siglos. Chile es para vivirlo. ¿Por dónde quieres empezar?',
         heroAlt: 'Torres del Paine, Chile',
         metaDescription: 'En Viajes Vidaia diseñamos viajes a Chile personalizados: Atacama, Torres del Paine, Carretera Austral, Isla de Pascua y mucho más.',
       }
@@ -68,7 +69,7 @@ const countries: Country[] = [
     content: {
       es: {
         name: 'Bolivia',
-        description: 'Bolivia engancha de una forma que no te esperas. Vendrás emocionado de amanecer en el Salar de Uyuni y recorrer la inmensidad del Altiplano, y te irás queriendo volver a la Cordillera Real, con ansia por ver el volcán Sajama, con ilusión por haber comido en los mercados de Sucre y Potosí, contando a tus amigos que no se pierdan las montañas de Samaipata o los cañones de Toro Toro. Bolivia es de esos destinos que te cambian el orden de las prioridades. ¿Te gustaría que te preparáramos algo sorprendente?',
+        description: 'Bolivia te sorprenderá de una forma que no te esperas. Nunca olvidarás el amanecer en el Salar de Uyuni o la inmensidad del Altiplano, y te irás queriendo regresar a la Cordillera Real y al volcán Sajama, con los recuerdos de haber comido en los mercados de Sucre y Potosí, contando a tus amigos que no se pierdan las montañas de Samaipata o los cañones de Toro Toro. ¿Te gustaría que te preparáramos algo sorprendente?',
         heroAlt: 'Salar de Uyuni, Bolivia',
         metaDescription: 'En Viajes Vidaia diseñamos viajes a Bolivia personalizados: Salar de Uyuni, Samaipata, Sucre, La Paz, el Lago Titicaca y mucho más.',
       }
