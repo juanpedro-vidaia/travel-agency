@@ -107,6 +107,7 @@ export default function FormularioPersonalizado({
       nombre: '',
       email: '',
       telefono: '',
+      website: '',
     },
   })
 
@@ -129,6 +130,7 @@ export default function FormularioPersonalizado({
       const res = await fetch('/api/forms/presupuesto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: AbortSignal.timeout(12_000),
         body: JSON.stringify({
           ...data,
           referrer: document.referrer || undefined,

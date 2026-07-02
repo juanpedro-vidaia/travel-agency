@@ -12,10 +12,11 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
   return buildMetadata({
-    title: '¡Solicitud recibida! — Viajes Vidaia',
+    title: '¡Solicitud recibida!',
     description: 'Hemos recibido tu solicitud de viaje personalizado. Nos pondremos en contacto contigo en menos de 48 horas.',
     path: `/${lang}/itinerarios/personalizar/exito`,
     lang,
+    robots: { index: false, follow: true },
   })
 }
 

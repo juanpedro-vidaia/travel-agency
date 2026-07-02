@@ -80,16 +80,19 @@ export default async function ItineraryPage({ params }: Props) {
       .map(d => [d.id, { name: d.content.es.name, lat: d.lat, lng: d.lng }])
   )
 
+  // Una sola fuente de verdad: mismos items para el schema y el breadcrumb visible
+  const breadcrumbItems = [
+    { name: 'Inicio', path: '' },
+    { name: 'Viajes', path: '/viajes' },
+    { name: trip.content.es.title },
+  ]
+
   return (
     <>
       <JsonLd data={buildPageSchema(
         ...tripSchemas,
         ...faqSchemas,
-        buildBreadcrumbSchema(lang, [
-          { name: 'Inicio', path: '' },
-          { name: 'Viajes', path: '/viajes' },
-          { name: trip.content.es.title },
-        ]),
+        buildBreadcrumbSchema(lang, breadcrumbItems),
       )} id="ld-itinerary" />
       <ItineraryContent
         slug={slug}
@@ -101,6 +104,7 @@ export default async function ItineraryPage({ params }: Props) {
         destinationNames={destinationNames}
         destCoords={destCoords}
         faqs={itineraryFaqs}
+        breadcrumbs={breadcrumbItems}
       />
     </>
   )

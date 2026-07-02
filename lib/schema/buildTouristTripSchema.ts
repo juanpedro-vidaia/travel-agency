@@ -73,10 +73,9 @@ export function buildTouristTripSchema(
         priceCurrency: 'EUR',
         lowPrice: trip.priceFrom,
         availability: 'https://schema.org/MadeToOrder',
-        seller: {
-          '@type': 'TravelAgency',
-          name: 'Viajes Vidaia',
-        },
+        // Referencia al Organization del root layout — un nodo TravelAgency inline
+        // duplicaba LocalBusiness/Organization en el Rich Results Test
+        seller: { '@id': `${BASE_URL}/#organization` },
       },
     }),
   }

@@ -719,3 +719,233 @@ async headers() {
 > ✅ COMPLETADO 28/06/2026. Ambos documentos alineados con el modelo real (`content: { es: { … } }`, `imageKey`, `flagCode`/`heroImageKey`, `lat`/`lng`, tags en inglés incl. `cruise`, `accommodationStops`/`hotelsByCategory`). Quitado todo `metaTitle` con sufijo de marca (D23). Corregidas además las guías de itinerario/destino/hotel/actividad y `relatedTrips` (`{ slug, es: { reason } }`).
 >
 > **Bonus (deuda de entorno detectada al verificar):** `.env.example` tenía nombres que **no** coincidían con el código (`VV_CLIENTIFY_API_KEY` → real `VV_CLIENTIFY_API_TOKEN`; `VV_NEXT_PUBLIC_GA4_MEASUREMENT_ID` → real `NEXT_PUBLIC_GA4_MEASUREMENT_ID`), le faltaba `NEXT_PUBLIC_CLIENTIFY_CITA_URL` y estaba envuelto en fences ```` ```bash ```` (se colaban al hacer `cp .env.example .env.local`). Reescrito como fichero de entorno válido con los 5 nombres verificados en código + nota de `REDIRECT_VERCEL_TO_CANONICAL`. README alineado: Next.js 16, Node 24, integraciones activas, lista de docs (añadidos CONTENT.md e IMAGENES.md).
+
+---
+
+## 📋 Auditoría completa (02/07/2026)
+
+> Resultado de la auditoría de Seguridad + SEO/GEO + Mejoras generales. Detalle completo, verificación de M32–M48 y falsos positivos descartados en `docs/AUDITORIA-2026-07.md`. Todos los hallazgos verificados manualmente contra el código (rama `develop`, commit `5f3fadd`).
+
+### M49 — 🔴 Escapar HTML en las plantillas de email de notificación
+> ✅ COMPLETADO 02/07/2026 — `escapeHtml()` en `lib/form-utils.ts`, aplicado a todo valor de usuario en las tres plantillas (presupuesto, contacto, newsletter). En `idea` se escapa primero y luego se convierten los `\n` en `<br>`.
+
+**Problema:** Los tres endpoints interpolan datos del usuario directamente en el HTML del email al equipo, sin escape de entidades. Un bot puede inyectar HTML arbitrario en los emails internos (suplantación de contenido / phishing dirigido al equipo) o romper el render de la tabla.
+
+**Archivos afectados:**
+- `lib/form-utils.ts` — `buildPresupuestoEmailHtml()`: `nombre`, `email` (también dentro de `href="mailto:..."`), `idea`
+- `app/api/forms/contacto/route.ts:8-17` — `buildEmailHtml()`: todos los campos
+- `app/api/forms/newsletter/route.ts:26` — `full_name` y `email` en el `<p>` inline
+
+**Solución:** Helper compartido en `lib/form-utils.ts` y aplicarlo a todo valor de usuario en las tres plantillas:
+```typescript
+export function escapeHtml(text: string): string {
+  const map: Record<string, string> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }
+  return text.replace(/[&<>"']/g, (c) => map[c])
+}
+// idea: escapar PRIMERO, luego los <br>: escapeHtml(data.idea).replace(/\n/g, '<br>')
+```
+
+---
+
+### M50 — 🔴 `/api/forms/contacto` no valida ninguna entrada (y newsletter a medias)
+> ✅ COMPLETADO 02/07/2026 — `contactoSchema` y `newsletterSchema` en `lib/form-utils.ts` (límites de longitud, `email()`, `preferred_time` como enum de los 4 valores de la UI, `privacy: z.literal(true)`). Ambas rutas usan `safeParse` y responden 400 (contacto con `fieldErrors`, mismo patrón que presupuesto; newsletter mantiene su shape de respuesta). El `replyTo` ya solo recibe emails validados.
+
+**Problema:** `app/api/forms/contacto/route.ts:24` hace `await request.json() as ContactoPayload` — un cast de TypeScript, no validación. Cualquier payload llega tal cual a Clientify y al email (incluido `replyTo` sin validar). El newsletter (`newsletter/route.ts:10-17`) valida presencia + regex laxa de email, pero `full_name` no tiene tipo/longitud garantizados. Presupuesto es el patrón correcto (Zod `formSchema.safeParse`, `presupuesto/route.ts:14`).
+
+**Archivos afectados:**
+- `app/api/forms/contacto/route.ts`
+- `app/api/forms/newsletter/route.ts`
+- `lib/form-utils.ts` (ubicación natural de los nuevos schemas)
+
+**Solución:** Schema Zod por endpoint (mismo patrón que presupuesto): `contactoSchema` (full_name/email/phone/preferred_time/message con `.max()`, `privacy: z.literal(true)`) y `newsletterSchema` (`z.string().email()`, `full_name` con `.min(1).max(...)`). Responder 400 con `fieldErrors` como hace presupuesto.
+
+---
+
+### M51 — 🟡 Anti-spam en los formularios: honeypot + rate limiting
+> ✅ COMPLETADO 02/07/2026 (fases 1 y 2) — **Honeypot**: campo `website` oculto (off-screen, `tabindex=-1`, `aria-hidden`) en los 3 formularios; si llega relleno, la ruta responde éxito silencioso sin tocar Clientify/Resend. **Rate limit**: `lib/services/rateLimit.ts` (en memoria por instancia, 5 req/10 min por endpoint+IP, respuesta 429). Turnstile (fase 3) queda para si el spam real lo justifica tras el lanzamiento.
+
+**Problema:** Los tres endpoints son públicos sin ninguna fricción para bots: ni honeypot, ni rate limit, ni CAPTCHA. Un bot puede inundar Clientify de contactos falsos y quemar cuota de Resend.
+
+**Archivos afectados:**
+- `app/api/forms/{presupuesto,contacto,newsletter}/route.ts`
+- Formularios cliente: `ContactModal.tsx`, `FormularioPersonalizado/`, `NewsletterForm`
+
+**Solución (por fases):**
+1. **Honeypot** (coste UX cero): campo oculto (`position:absolute; left:-9999px`, `tabindex="-1"`, `autocomplete="off"`); si llega relleno → responder `{ ok: true }` silencioso sin llamar a Clientify/Resend.
+2. **Rate limit básico** por IP (`x-forwarded-for`) — en Vercel sin Redis, un Map en memoria por instancia ya corta ráfagas; si se quiere persistente, Upstash/Vercel KV.
+3. **Turnstile** (Cloudflare, gratis) solo si el spam real lo justifica tras el lanzamiento.
+
+---
+
+### M52 — 🟡 No loggear PII de los leads
+> ✅ COMPLETADO 02/07/2026 — Los tres endpoints loggean solo datos no personales (origen, preferencia de llamada, itinerario, países, fecha). Los errores de `clientify.ts` loggean solo el status HTTP, sin el cuerpo de la respuesta. Nota: si algún día hay que depurar los custom fields de Clientify de nuevo, loggear el cuerpo temporalmente en local, nunca en producción.
+
+**Problema:** Los logs de Vercel (accesibles a todo el equipo, con retención) guardan hoy datos personales de cada lead:
+- `contacto/route.ts:37` — `JSON.stringify(data, null, 2)` con el lead completo (nombre, email, teléfono, mensaje)
+- `presupuesto/route.ts:35-42` y `newsletter/route.ts:29` — nombre y email
+- `lib/services/clientify.ts:124,177,283` — los errores incluyen el cuerpo completo de la respuesta de Clientify (puede ecoar datos del contacto)
+
+**Solución:** Loggear solo lo no personal (origen, itinerario, timestamp, status). En clientify.ts, loggear solo `status` sin el cuerpo. Clientify es la fuente de verdad del lead — el log no necesita duplicarlo.
+
+---
+
+### M53 — 🟡 Dependencias: 3 vulnerabilidades moderate en `npm audit`
+> 🟡 PARCIAL 02/07/2026 — `js-yaml` resuelto con `npm audit fix`. **Pendiente postcss**, y ojo: el rango vulnerable del advisory (`next 9.3.4-canary.0 – 16.3.0-canary.5`) **incluye la última stable de Next a día de hoy (16.2.10)** — actualizar Next ahora no lo cierra. Queda en espera de una release de Next que empaquete postcss ≥ 8.5.10 (previsiblemente 16.3.0 stable). Riesgo real bajo mientras tanto: solo afecta al build, no procesa input de usuario. Comprobar con `npm audit` tras cada actualización de Next.
+
+**Problema (medido 02/07/2026):**
+- ~~`js-yaml` 4.0.0–4.1.1 (transitiva, tooling) — DoS cuadrático.~~ ✅ resuelto con `npm audit fix`.
+- `postcss` <8.5.10 **bundled dentro de `next`** — XSS en el stringify de CSS (solo afecta al build, riesgo real bajo).
+
+**Solución:**
+1. ~~`npm audit fix` (arregla js-yaml, no-breaking).~~ ✅
+2. Para postcss: actualizar Next cuando salga una release con postcss ≥ 8.5.10. **NO usar `npm audit fix --force`** — propone un downgrade absurdo a `next@9.3.3`.
+3. Re-ejecutar `npm audit` tras cada actualización.
+
+---
+
+### M54 — 🟢 Content-Security-Policy (empezar en Report-Only)
+
+**Problema:** Los headers de M36 están bien, pero falta CSP — la única defensa en profundidad contra inyección de scripts. No es trivial: hay que permitir GA4 (googletagmanager, google-analytics), Elfsight, LightWidget, widget de Clientify, Supabase Storage, flagcdn y los `<style>` inline de `experimental.inlineCss`.
+
+**Archivos afectados:** `next.config.ts`
+
+**Solución:** Añadir primero `Content-Security-Policy-Report-Only` con la whitelist de los proveedores activos, observar violaciones en consola/reportes durante unos días de uso real, y solo entonces promover a `Content-Security-Policy`. HSTS no hace falta (lo pone Vercel).
+
+---
+
+### M55 — 🟢 Quitar `twitter.site: '@viajesvidaia'` del root layout (remate de M47)
+> ✅ COMPLETADO 02/07/2026 — clave `site` eliminada del bloque `twitter` de `app/layout.tsx`.
+
+**Problema:** M47 verificó que la cuenta de X no existe y eliminó `twitter:site` de `lib/helpers/seo.ts`, pero el metadata del root layout conserva `site: '@viajesvidaia'` (`app/layout.tsx:59`).
+
+**Solución:** Eliminar la clave `site` del bloque `twitter` del layout (la card se mantiene con `card: 'summary_large_image'`). 1 línea.
+
+---
+
+### M56 — 🟡 Breadcrumbs visibles en itinerarios, destinos y posts
+> ✅ COMPLETADO 02/07/2026 — `components/ui/Breadcrumbs.tsx` (mismo shape de items que `buildBreadcrumbSchema` — una sola fuente de verdad definida en cada page.tsx). Itinerarios: en la franja bajo el hero, sobre las pills "Volver al país". Destinos: bajo el hero, antes del botón volver. Posts: **sustituye** al enlace "Volver al blog" (el crumb "Blog" cumple esa función). Pendiente revisión visual en navegador (mobile + desktop).
+
+**Problema:** Las tres plantillas emiten `BreadcrumbList` en JSON-LD (M25) pero no muestran breadcrumbs al usuario. Google prefiere structured data respaldado por contenido visible, y es navegación útil en páginas profundas.
+
+**Archivos afectados:**
+- `app/[lang]/itinerarios/[slug]/page.tsx`, `app/[lang]/destinos/[slug]/page.tsx`, `app/[lang]/blog/[slug]/page.tsx`
+- Patrón a reutilizar: `components/forms/FormularioPersonalizado/BreadcrumbPersonalizar.tsx` (`<nav aria-label>` + `<ol>`)
+
+**Solución:** Componente `Breadcrumbs` compartido que reciba los mismos items que ya se pasan a `buildBreadcrumbSchema` (una sola fuente de verdad para schema y UI). Ojo con el hero: en páginas con header transparente, colocarlo bajo el hero o con contraste adecuado.
+
+---
+
+### M57 — 🟡 Frescura visible en el blog: `article:modified_time` + `<time>`
+> ✅ COMPLETADO 02/07/2026 — `buildMetadata` acepta `modifiedTime` (emitido solo con `ogType: 'article'`); el post pasa `dateUpdated ?? date`. En PostContent la fecha va en `<time dateTime>` y aparece "Actualizado el …" cuando existe `dateUpdated` (label en `staticContent.blogPage.updatedPrefix`, es+en). Nota: el byline de autor con foto (pendiente de M46) resultó estar **ya implementado** en PostContent — M46 queda solo con los datos citables por país.
+
+**Problema:** `buildArticleSchema` ya emite `dateModified` (M40), pero (a) `buildMetadata` no emite el meta `article:modified_time` — solo `publishedTime` — y (b) el post no muestra ninguna fecha visible con `<time datetime="...">`. Señal de frescura para Google y motores generativos. Complementa el pendiente de autoría de M46.
+
+**Archivos afectados:**
+- `lib/helpers/seo.ts` — añadir `modifiedTime?: string` a `SeoOptions`, emitirlo con `ogType: 'article'`
+- `app/[lang]/blog/[slug]/page.tsx` — pasar `dateUpdated ?? date`
+- `app/[lang]/blog/[slug]/PostContent.tsx` — fecha visible con `<time>` (+ "Actualizado: …" si `dateUpdated` existe)
+
+---
+
+### M58 — 🟢 Micro-mejoras GEO: schemas, twitter alt, noindex de éxito, llms.txt
+> ✅ COMPLETADO 02/07/2026 — Todos los items de la tabla: `@id` en CollectionPage; `description` + `image` en cada TouristAttraction (datos ya existentes en `destinations.ts`); `alt` en la imagen de la Twitter card; `robots: noindex, follow` en las dos páginas de éxito (además se les quitó el "— Viajes Vidaia" del title, que se duplicaba con el template — resto de M45); sección `## Equipo` en llms.txt con nombre, rol y bio completa de Lau y Jupe (autoría E-E-A-T).
+
+> 🔄 **Item del seller resuelto 02/07/2026 (y de otra forma):** el usuario detectó en Rich Results Test que las páginas de itinerario mostraban **dos LocalBusiness / dos Organization** — uno completo (el del root layout) y otro casi vacío con warnings (telephone/priceRange/address/image missing). Causa: `offers.seller` creaba un nodo `TravelAgency` inline anónimo con solo `name`. Fix: `seller: { '@id': BASE_URL/#organization }` — referencia al Organization completo del layout, igual que ya hacía `provider`. Mejor que añadir `url` (lo propuesto originalmente): elimina el nodo duplicado en vez de rellenarlo.
+
+**Problema:** Conjunto de propiedades de bajo coste con los datos ya disponibles (mismo espíritu que M40):
+
+| Qué | Dónde |
+|---|---|
+| `@id` en `CollectionPage` (enlazable desde el `@graph`) | `lib/schema/buildCollectionPageSchema.ts` |
+| ~~`url: BASE_URL` en `offers.seller`~~ ✅ resuelto vía `@id` (ver nota) | `lib/schema/buildTouristTripSchema.ts` |
+| `image`/`description` en cada `TouristAttraction` de `includesAttraction` | `lib/schema/buildTouristDestinationSchema.ts` |
+| `alt` en la imagen de la Twitter card (`images: [{ url, alt }]`) | `lib/helpers/seo.ts` |
+| `robots: noindex, follow` en las páginas de éxito (precedente: M45 en `personalizar/[slug]`) | `app/[lang]/contacto/exito/page.tsx`, `app/[lang]/itinerarios/personalizar/exito/page.tsx` |
+| Sección `## Equipo` (Lau y Jupe: nombre, rol, bio corta) para reforzar autoría E-E-A-T | `app/llms.txt/route.ts` |
+
+**Solución:** Spreads condicionales de 1-3 líneas por item; sin cambios de datos.
+
+---
+
+### M59 — 🔴 Asset `ACTIVITIES.TODO_GLACIARES` referenciado pero inexistente
+> ✅ COMPLETADO 02/07/2026 — Añadido a `assets.ts`. ⚠️ **Placeholder de Unsplash** (la misma foto que `ESTANCIA_CRISTINA_CALAFATE`, temática Lago Argentino/Upsala) — sustituir por foto real en el bucket de Supabase junto con el resto de actividades pendientes. Verificado también que `getAsset()` no revienta con claves inexistentes (cae a `/images/placeholder.jpg` con warning en dev) y que la actividad `todo-glaciares` aún no se usa en ningún itinerario.
+
+**Problema:** `lib/data/activities.ts:269` referencia `imageKey: 'ACTIVITIES.TODO_GLACIARES'`, que no existe en `lib/data/assets.ts` (verificado por grep). Cualquier itinerario que incluya esa actividad ("Todo Glaciares: Traslados y Navegación") renderiza imagen rota o falla según el comportamiento de `getAsset()` con claves inexistentes.
+
+**Solución:** Añadir el asset a `assets.ts` con URL + alt reales, o retirar la actividad si no se usa. Es además el caso de ejemplo perfecto para el validador de M62.
+
+---
+
+### M60 — 🟢 `SearchBar.tsx` es código muerto
+> ✅ COMPLETADO 02/07/2026 — borrado. Recuperable del historial de git si algún día se quiere un buscador.
+
+**Problema:** `components/ui/SearchBar.tsx` (111 líneas) no se importa desde ningún fichero (verificado por grep). Su submit es un `console.log` con TODO "conectar con búsqueda real o ruta /destinos".
+
+**Solución:** Borrarlo. Si algún día se quiere buscador, se recupera del historial de git — mantenerlo "por si acaso" solo confunde (mismo criterio que M04 con supabase.ts).
+
+---
+
+### M61 — 🟡 Error boundaries con marca (`error.tsx` + `global-error.tsx`)
+> ✅ COMPLETADO 02/07/2026 — `app/error.tsx` con el patrón visual de la 404 (degradado oscuro, i18n vía `staticContent.errorPage`, botón Reintentar con `reset()` + enlace a home). `app/global-error.tsx` con estilos inline y texto fijo en español — sustituye al root layout entero, así que no tiene providers ni CSS global disponibles. Para probarlos en dev: lanzar un `throw` temporal en cualquier página.
+
+**Problema:** Existe `app/not-found.tsx` (M33) pero no `app/error.tsx` ni `app/global-error.tsx`. Un error de runtime muestra la pantalla genérica de Next.js sin logo, navegación ni recuperación.
+
+**Solución:** Crear ambos como Client Components (requisito de Next.js) con el mismo tratamiento visual que la 404 (degradado `from-vidaia-charcoal to-vidaia-dark`), botón "Reintentar" (`reset()`) y enlaces a home/viajes. `global-error.tsx` debe incluir sus propios `<html>`/`<body>`.
+
+---
+
+### M62 — 🟡 Validación de integridad de los datos en build
+
+**Problema:** Los ficheros de `lib/data/` se referencian por IDs/slugs/keys sin ninguna comprobación: trip → itinerario, itinerario → hoteles/actividades/destinos, `imageKey` → assets. Los errores solo aparecen en runtime (M59 es un caso real). La planificación de Supabase ya detectó dos más (A-01: actividades huérfanas; A-02: `referenceHotelId` incorrectos).
+
+**Archivos afectados:** nuevo `scripts/validate-data.ts` + `package.json`
+
+**Solución:** Script que cargue todos los ficheros de datos y verifique referencias cruzadas + `imageKey` contra `assets.ts` (y de propina: coordenadas numéricas válidas, slugs únicos). Engancharlo al build (`"build": "tsx scripts/validate-data.ts && next build"`) para que CI (M42) falle con un mensaje claro. Beneficio doble: deja los datos limpios para el seed de la migración Supabase.
+
+---
+
+### M63 — 🟡 Robustez y UX de formularios
+> ✅ COMPLETADO 02/07/2026 — (1) Teléfono validado con `PHONE_RE` en `formSchema` (opcional: vacío OK) y `contactoSchema` (obligatorio), con error inline y mensaje `phoneInvalid` en staticContent. (2) Corrección del diagnóstico: el multistep **ya tenía** errores inline por campo (`FieldError` + `validationMessages`); solo faltaba el del teléfono. (3) `AbortSignal.timeout(12s)` en los fetch de los 3 formularios; los mensajes de error ya incluían el email de fallback. (4) ContactModal migrado a react-hook-form + `contactoSchema` (mismo schema cliente/servidor), con errores inline y `noValidate` — mismo patrón que presupuesto.
+
+**Problema:** Cuatro gaps en el flujo de captura de leads (el activo más crítico del negocio):
+1. `telefono` acepta cualquier string — sin regex de formato → teléfonos incontactables en el CRM (`lib/form-utils.ts`).
+2. El multistep no muestra errores inline por campo — el usuario no sabe qué corregir (`FormularioPersonalizado/`).
+3. Los `fetch` del cliente no tienen timeout ni mensaje de fallback con vía alternativa ("escríbenos a info@…") — si Vercel falla, el lead se pierde en silencio (`ContactModal.tsx:82-97`, `FormularioPersonalizado.tsx:126-152`).
+4. `ContactModal` gestiona estado a mano con `useState` en vez de react-hook-form + Zod — inconsistente con presupuesto y sin validación cliente.
+
+**Solución:** (1) `telefono: z.string().regex(/^\+?[\d\s\-()]{7,}$/, 'phoneInvalid')` + mensaje en `staticContent`; (2) `errors.campo?.message` bajo cada campo (RHF ya lo expone); (3) `AbortSignal.timeout(10_000)` + mensaje de error con email de contacto; (4) migrar ContactModal a RHF + el `contactoSchema` de M50 (compartido cliente/servidor).
+
+---
+
+### M64 — 🟢 Accesibilidad: focus trap, skip-link, sliders
+
+**Problema:**
+1. `ContactModal` enfoca el primer input y cierra con ESC (bien), pero no atrapa el foco (se puede tabular fuera del modal abierto) ni lo restaura al elemento disparador al cerrar.
+2. Sin skip-link "Saltar a contenido" antes del Header — usuarios de teclado/lector atraviesan toda la navegación en cada página.
+3. Dual range de `ViajesBuscador.tsx` — dos `<input type="range">` superpuestos sin `aria-label` con el valor actual.
+
+**Solución:** (1) Focus trap manual (Tab/Shift+Tab en primer/último focusable) o `<dialog>` nativo + guardar/restaurar `document.activeElement`; (2) `<a href="#main-content" className="sr-only focus:not-sr-only ...">` en el root layout + `id="main-content"` en el main; (3) `aria-label={`Mínimo (${min} días)`}` / máximo en cada input.
+
+---
+
+### M65 — 🟢 DX: typecheck separado en CI + reglas ESLint
+> ✅ COMPLETADO 02/07/2026 — `npx tsc --noEmit` añadido al CI entre lint y build. ESLint: `no-console: warn` con `allow: ['info', 'warn', 'error']` (los logs intencionados de las rutas pasaron a `console.info`; los `console.log` accidentales avisan). La warning que queda en SearchBar.tsx desaparecerá con M60.
+
+**Problema:** CI (M42) corre `lint` → `build`; los errores de tipos solo aparecen mezclados en el build. ESLint usa solo `core-web-vitals` — sin `no-console` (habría cazado los logs de PII de M52).
+
+**Archivos afectados:** `.github/workflows/ci.yml`, `eslint.config.mjs`
+
+**Solución:** Paso `npx tsc --noEmit` entre lint y build; añadir `'no-console': ['warn', { allow: ['warn', 'error'] }]` al config de ESLint.
+
+---
+
+### M66 — 🟢 Tests mínimos de la lógica crítica
+
+**Problema:** Cero tests en el proyecto. No bloquea el lanzamiento (el sitio es SSG y el build valida mucho), pero hay tres piezas de lógica pura donde una regresión sería silenciosa y cara.
+
+**Solución:** Vitest (nativo con TS, sin config de Babel) con los tres suites de más valor/coste:
+1. Schemas Zod de `lib/form-utils.ts` (+ los nuevos de M50) — payloads válidos/ inválidos/maliciosos.
+2. `formatBestMonths()` de `contentHelpers.ts` — rangos, vuelta de año, año completo.
+3. Conversión de fechas/timezone de `lib/services/clientify.ts`.
+
+Añadir `npm test` al CI (M65). El validador de datos de M62 cubre el resto del terreno.

@@ -216,6 +216,7 @@ export const STATIC_CONTENT = {
           description: 'experiencias y consejos de viaje',
         },
       ],
+      teamHeading: 'Equipo',
       optionalHeading: 'Optional',
       sitemapLabel: 'Sitemap',
     },
@@ -1355,6 +1356,7 @@ export const STATIC_CONTENT = {
       readingTimeLabel: 'min de lectura',
       readingTimeShort: 'min',
       authorPrefix: 'Por',
+      updatedPrefix: 'Actualizado el',
     },
     formularioPersonalizado: {
       metadata: {
@@ -1517,6 +1519,7 @@ export const STATIC_CONTENT = {
         nameRequired: 'El nombre es obligatorio',
         emailRequired: 'El email es obligatorio',
         emailInvalid: 'Introduce un email válido',
+        phoneInvalid: 'Introduce un teléfono válido',
         privacyRequired: 'Debes aceptar la política de privacidad',
       },
       success: {
@@ -1552,6 +1555,14 @@ export const STATIC_CONTENT = {
       title: '¿Hablamos?',
       callUs: 'Llámanos al',
       subtitle: 'O te llamamos cuando te venga mejor. Adelántanos un poco sobre tu viaje soñado.',
+      validation: {
+        nameRequired: 'El nombre es obligatorio',
+        emailRequired: 'El email es obligatorio',
+        emailInvalid: 'Introduce un email válido',
+        phoneRequired: 'El teléfono es obligatorio',
+        phoneInvalid: 'Introduce un teléfono válido',
+        privacyRequired: 'Debes aceptar la política de privacidad',
+      },
       fullNameLabel: 'Nombre completo',
       fullNamePlaceholder: 'Tu nombre y apellidos',
       emailLabel: 'Email',
@@ -1602,6 +1613,12 @@ export const STATIC_CONTENT = {
       linkViajes: 'Ver viajes',
       linkBlog: 'Ir al blog',
     },
+    errorPage: {
+      title: 'Algo no ha salido bien',
+      subtitle: 'Ha ocurrido un error inesperado. Puedes reintentarlo o volver al inicio; si el problema persiste, escríbenos a info@viajesvidaia.com.',
+      retry: 'Reintentar',
+      cta: 'Volver al inicio',
+    },
   },
   en: {
     notFoundPage: {
@@ -1610,6 +1627,12 @@ export const STATIC_CONTENT = {
       cta: 'Back to home',
       linkViajes: 'See trips',
       linkBlog: 'Go to blog',
+    },
+    errorPage: {
+      title: 'Something went wrong',
+      subtitle: 'An unexpected error occurred. You can retry or go back home; if the problem persists, email us at info@viajesvidaia.com.',
+      retry: 'Retry',
+      cta: 'Back to home',
     },
     privacyPage: {
       metadata: {
@@ -2064,6 +2087,8 @@ export const STATIC_CONTENT = {
       backButton: 'Back to blog',
       readingTimeLabel: 'min read',
       readingTimeShort: 'min',
+      authorPrefix: 'By',
+      updatedPrefix: 'Updated on',
     },
     formularioPersonalizado: {
       metadata: {
@@ -2226,6 +2251,7 @@ export const STATIC_CONTENT = {
         nameRequired: 'Name is required',
         emailRequired: 'Email is required',
         emailInvalid: 'Please enter a valid email',
+        phoneInvalid: 'Please enter a valid phone number',
         privacyRequired: 'You must accept the privacy policy',
       },
       success: {
@@ -2261,6 +2287,14 @@ export const STATIC_CONTENT = {
       title: "Let's talk?",
       callUs: 'Call us at',
       subtitle: 'Or we can call you at a convenient time. Tell us a little about your dream trip.',
+      validation: {
+        nameRequired: 'Name is required',
+        emailRequired: 'Email is required',
+        emailInvalid: 'Please enter a valid email',
+        phoneRequired: 'Phone number is required',
+        phoneInvalid: 'Please enter a valid phone number',
+        privacyRequired: 'You must accept the privacy policy',
+      },
       fullNameLabel: 'Full name',
       fullNamePlaceholder: 'Your full name',
       emailLabel: 'Email',

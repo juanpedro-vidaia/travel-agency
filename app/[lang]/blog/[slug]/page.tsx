@@ -37,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ogImage: getAsset(post.imageKey).url,
     ogType: 'article',
     publishedTime: post.date,
+    modifiedTime: post.dateUpdated ?? post.date,
   })
 }
 
@@ -56,6 +57,13 @@ export default async function BlogPostPage({ params }: Props) {
     ? getStaticContent('es').quienesSomos.teamMembers.find((m) => m.name === post.author)
     : undefined
 
+  // Una sola fuente de verdad: mismos items para el schema y el breadcrumb visible
+  const breadcrumbItems = [
+    { name: 'Inicio', path: '' },
+    { name: 'Blog', path: '/blog' },
+    { name: es.title },
+  ]
+
   return (
     <>
       <JsonLd id="ld-article" data={buildArticleSchema({
@@ -67,12 +75,8 @@ export default async function BlogPostPage({ params }: Props) {
         url: `${BASE_URL}/${lang}/blog/${post.slug}`,
         author,
       })} />
-      <JsonLd id="ld-breadcrumb" data={buildBreadcrumbSchema(lang, [
-        { name: 'Inicio', path: '' },
-        { name: 'Blog', path: '/blog' },
-        { name: es.title },
-      ])} />
-      <PostContent post={post} relatedPosts={relatedPosts} relatedTrips={relatedTrips} />
+      <JsonLd id="ld-breadcrumb" data={buildBreadcrumbSchema(lang, breadcrumbItems)} />
+      <PostContent post={post} relatedPosts={relatedPosts} relatedTrips={relatedTrips} breadcrumbs={breadcrumbItems} />
     </>
   )
 }

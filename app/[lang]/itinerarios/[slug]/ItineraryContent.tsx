@@ -33,6 +33,7 @@ import type { ResolvedItinerary } from '@/lib/services/itinerariesService'
 import type { Trip } from '@/lib/data/trips'
 import type { Country } from '@/lib/data/countries'
 import type { ResolvedFAQ } from '@/lib/services/faqsService'
+import Breadcrumbs, { type BreadcrumbItem } from '@/components/ui/Breadcrumbs'
 import { formatPrice, renderTemplate, formatBestMonths } from '@/lib/helpers/contentHelpers'
 import ViewTracker from '@/components/analytics/ViewTracker'
 import { DIFFICULTY_CONFIG } from '@/lib/data/tagConfig'
@@ -74,6 +75,7 @@ interface Props {
   destinationNames: Record<string, string>
   destCoords: Record<string, { name: string; lat: number; lng: number }>
   faqs: ResolvedFAQ[]
+  breadcrumbs: BreadcrumbItem[]
 }
 
 export default function ItineraryContent({
@@ -86,6 +88,7 @@ export default function ItineraryContent({
   destinationNames,
   destCoords,
   faqs,
+  breadcrumbs,
 }: Props) {
   const { content: pageContent, ui } = useLanguage()
   const content = pageContent.itineraryPage
@@ -130,23 +133,26 @@ export default function ItineraryContent({
         countries={countries}
       />
 
-      {/* ── VOLVER AL PAÍS ────────────────────────────────────────────────────── */}
-      {countries.length > 0 && (
-        <section className="py-3 md:py-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
-          <div className="max-w-7xl mx-auto flex flex-wrap gap-3">
-            {countries.map((country) => (
-              <LangLink
-                key={country.slug}
-                href={`/destinos/${country.slug}`}
-                className="inline-flex items-center gap-2 text-sm font-medium text-vidaia-charcoal/65 hover:text-vidaia-primary border border-gray-200 hover:border-vidaia-primary rounded-full px-4 py-2 transition-colors"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                {renderTemplate(content.backToCountryTemplate, { country: country.content.es.name })}
-              </LangLink>
-            ))}
-          </div>
-        </section>
-      )}
+      {/* ── BREADCRUMB + VOLVER AL PAÍS ───────────────────────────────────────── */}
+      <section className="py-3 md:py-5 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto space-y-3">
+          <Breadcrumbs items={breadcrumbs} />
+          {countries.length > 0 && (
+            <div className="flex flex-wrap gap-3">
+              {countries.map((country) => (
+                <LangLink
+                  key={country.slug}
+                  href={`/destinos/${country.slug}`}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-vidaia-charcoal/65 hover:text-vidaia-primary border border-gray-200 hover:border-vidaia-primary rounded-full px-4 py-2 transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  {renderTemplate(content.backToCountryTemplate, { country: country.content.es.name })}
+                </LangLink>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* ── DATOS CLAVE ───────────────────────────────────────────────────────── */}
       <section className="pt-8 md:pt-12 px-4 sm:px-6 lg:px-8 bg-white">

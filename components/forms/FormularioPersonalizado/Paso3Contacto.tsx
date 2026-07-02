@@ -89,9 +89,18 @@ export default function Paso3Contacto({ t, validationMessages }: Paso3Props) {
             autoComplete="tel"
             placeholder={t.phonePlaceholder}
             {...register('telefono')}
-            className={inputCls}
+            className={errors.telefono ? inputErrorCls : inputCls}
           />
+          <FieldError message={err('telefono')} />
           <p className="mt-1.5 text-xs text-gray-400">{t.phoneHelper}</p>
+        </div>
+
+        {/* Honeypot anti-spam — invisible para humanos, los bots lo rellenan */}
+        <div aria-hidden="true" className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden">
+          <label>
+            No rellenar este campo
+            <input type="text" tabIndex={-1} autoComplete="off" {...register('website')} />
+          </label>
         </div>
 
         {/* Privacidad */}

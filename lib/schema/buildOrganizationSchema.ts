@@ -5,7 +5,7 @@ import { BASE_URL } from '@/lib/config/site'
 
 const SOCIAL_LINKS = [
   'https://www.instagram.com/viajesvidaia',
-  'https://www.facebook.com/viajesvidaia',
+  'https://www.facebook.com/people/Viajes-Vidaia/61575032903618/',
 ]
 
 export function buildOrganizationSchema(countries: Country[], destinations: Destination[]) {

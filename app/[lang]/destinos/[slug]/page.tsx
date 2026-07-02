@@ -8,6 +8,7 @@ import { getTripsByCountry } from '@/lib/services/tripsService'
 import { getCountryBySlug, getCountries } from '@/lib/services/countriesService'
 import { getFAQsByPage } from '@/lib/services/faqsService'
 import TripCard from '@/components/ui/TripCard'
+import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import DestinationBackButton from '@/app/[lang]/destinos/[slug]/DestinationBackButton'
 import DestinationHeroImage from '@/app/[lang]/destinos/[slug]/DestinationHeroImage'
 import FaqSection from '@/components/sections/FaqSection'
@@ -63,16 +64,19 @@ export default async function CountryPage({ params }: Props) {
 
   const countryDests = getDestinationsByCountry(country.slug as CountrySlug)
 
+  // Una sola fuente de verdad: mismos items para el schema y el breadcrumb visible
+  const breadcrumbItems = [
+    { name: 'Inicio', path: '' },
+    { name: 'Viajes', path: '/viajes' },
+    { name: countryName },
+  ]
+
   return (
     <>
       <ViewTracker event="destination_view" params={{ destination_slug: slug }} />
       <JsonLd data={buildPageSchema(
         buildTouristDestinationSchema(country, countryDests),
-        buildBreadcrumbSchema(lang, [
-          { name: 'Inicio', path: '' },
-          { name: 'Viajes', path: '/viajes' },
-          { name: countryName },
-        ]),
+        buildBreadcrumbSchema(lang, breadcrumbItems),
         ...(destinationFaqs.length > 0 ? [buildFAQSchema(destinationFaqs.map(f => f.es))] : []),
       )} id="ld-destination" />
       <main className="min-h-screen bg-white">
@@ -94,7 +98,10 @@ export default async function CountryPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── VOLVER ── */}
+      {/* ── BREADCRUMB + VOLVER ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
       <Suspense fallback={null}>
         <DestinationBackButton lang={lang} label={content.backButton} />
       </Suspense>

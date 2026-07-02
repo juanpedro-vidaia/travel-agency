@@ -121,7 +121,8 @@ export async function pushContactToClientify(data: ContactoPayload & { privacy: 
   })
 
   if (!contactRes.ok) {
-    throw new Error(`[Clientify] Contact failed (${contactRes.status}): ${await contactRes.text()}`)
+    // Solo status: el cuerpo de la respuesta puede ecoar datos del contacto (PII)
+    throw new Error(`[Clientify] Contact failed (${contactRes.status})`)
   }
 
   const { id: contactId } = await contactRes.json() as { id: number }
@@ -134,7 +135,7 @@ export async function pushContactToClientify(data: ContactoPayload & { privacy: 
   })
 
   if (!taskRes.ok) {
-    console.error('[Clientify] Task creation failed:', await taskRes.text())
+    console.error(`[Clientify] Task creation failed (${taskRes.status})`)
   }
 }
 
@@ -174,7 +175,7 @@ export async function pushNewsletterToClientify(data: NewsletterPayload & { priv
   })
 
   if (!contactRes.ok) {
-    throw new Error(`[Clientify] Newsletter contact failed (${contactRes.status}): ${await contactRes.text()}`)
+    throw new Error(`[Clientify] Newsletter contact failed (${contactRes.status})`)
   }
 }
 
@@ -280,7 +281,7 @@ export async function pushPresupuestoToClientify(data: FormPayload): Promise<voi
   })
 
   if (!contactRes.ok) {
-    throw new Error(`[Clientify] Presupuesto contact failed (${contactRes.status}): ${await contactRes.text()}`)
+    throw new Error(`[Clientify] Presupuesto contact failed (${contactRes.status})`)
   }
 
   const { id: contactId } = await contactRes.json() as { id: number }
@@ -299,7 +300,7 @@ export async function pushPresupuestoToClientify(data: FormPayload): Promise<voi
   })
 
   if (!dealRes.ok) {
-    console.error('[Clientify] Deal creation failed:', await dealRes.text())
+    console.error(`[Clientify] Deal creation failed (${dealRes.status})`)
     return
   }
 
@@ -315,6 +316,6 @@ export async function pushPresupuestoToClientify(data: FormPayload): Promise<voi
     }),
   })
   if (!noteRes.ok) {
-    console.error('[Clientify] Deal note failed:', await noteRes.text())
+    console.error(`[Clientify] Deal note failed (${noteRes.status})`)
   }
 }

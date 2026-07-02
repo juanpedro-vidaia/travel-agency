@@ -9,7 +9,8 @@ import { getStaticContent, renderTemplate } from '@/lib/helpers/contentHelpers'
 export const dynamic = 'force-static'
 
 export function GET() {
-  const t = getStaticContent('es').llmsTxt
+  const content_es = getStaticContent('es')
+  const t = content_es.llmsTxt
   const countries = getCountriesOrdered()
   const trips = getActiveTrips()
   const featured = trips.filter((tr) => tr.featured && tr.hasItinerary)
@@ -33,6 +34,11 @@ export function GET() {
     .map((l) => `- [${l.label}](${BASE}${l.path}): ${l.description}`)
     .join('\n')
 
+  // Autoría E-E-A-T: quiénes diseñan los viajes y escriben el contenido
+  const teamSection = content_es.quienesSomos.teamMembers
+    .map((m) => `- **${m.name}** — ${m.role}. ${m.bio.join(' ')}`)
+    .join('\n')
+
   const content = `# ${t.title}
 
 > ${renderTemplate(t.summaryTemplate, { countries: countryNames })}
@@ -50,6 +56,10 @@ ${itinerariesSection}
 ## ${t.generalHeading}
 
 ${generalSection}
+
+## ${t.teamHeading}
+
+${teamSection}
 
 ## ${t.optionalHeading}
 

@@ -18,12 +18,14 @@ export function buildCollectionPageSchema(
   lang: string,
   { name, description, path, items }: CollectionPageOptions
 ) {
+  const pageUrl = `${BASE_URL}/${lang}${path}`
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
+    '@id': `${pageUrl}#collection`,
     name,
     description,
-    url: `${BASE_URL}/${lang}${path}`,
+    url: pageUrl,
     inLanguage: lang,
     mainEntity: {
       '@type': 'ItemList',

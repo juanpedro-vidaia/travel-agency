@@ -61,6 +61,7 @@ export const ASSETS = {
   'ACTIVITIES.SALINAS_GRANDES_PURMAMARCA':         { url: 'https://images.unsplash.com/photo-1565793979533-9d26fda3d7f5?w=600&h=400&fit=crop', alt: 'Salinas Grandes, Jujuy, Argentina' },
   'ACTIVITIES.SECRETO_TANGO_SOCIETY':              { url: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800', alt: 'Show de tango íntimo en Buenos Aires' },
   'ACTIVITIES.SOBREVUELO_NAZCA':                   { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800', alt: 'Sobrevuelo a las Líneas de Nazca' },
+  'ACTIVITIES.TODO_GLACIARES':                     { url: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&h=400&fit=crop', alt: 'Navegación entre témpanos hacia el Glaciar Spegazzini, Lago Argentino' },
   'ACTIVITIES.TORRES_DEL_PAINE':                   { url: 'https://images.unsplash.com/photo-1601042880671-4b1e8e1e14c4?q=80&w=800', alt: 'Parque Nacional Torres del Paine · Patagonia' },
   'ACTIVITIES.TOUR_BODEGA_BOUZA':                  { url: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=800', alt: 'Bodega Bouza, Montevideo' },
   'ACTIVITIES.VALLE_CASABLANCA_VINAS':             { url: 'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?q=80&w=800', alt: 'Viñedos del Valle de Casablanca, Chile' },

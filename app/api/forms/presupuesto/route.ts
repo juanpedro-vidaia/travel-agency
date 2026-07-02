@@ -2,8 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 import { formSchema, buildPresupuestoEmailHtml } from '@/lib/form-utils'
 import { pushPresupuestoToClientify } from '@/lib/services/clientify'
 import { sendNotificationEmail } from '@/lib/services/resend'
+import { isRateLimited, getClientIp } from '@/lib/services/rateLimit'
 
 export async function POST(request: NextRequest) {
+  if (isRateLimited(`presupuesto:${getClientIp(request.headers)}`)) {
+    return NextResponse.json({ ok: false, error: 'Demasiadas solicitudes' }, { status: 429 })
+  }
+
   let body: unknown
   try {
     body = await request.json()
@@ -21,6 +26,11 @@ export async function POST(request: NextRequest) {
 
   const data = parsed.data
 
+  // Honeypot relleno = bot → éxito silencioso sin tocar Clientify/Resend
+  if (data.website) {
+    return NextResponse.json({ ok: true }, { status: 201 })
+  }
+
   // ── Clientify ────────────────────────────────────────────────────────────────
   await pushPresupuestoToClientify(data)
 
@@ -32,14 +42,13 @@ export async function POST(request: NextRequest) {
     html:    buildPresupuestoEmailHtml(data),
   })
 
-  console.log('[forms/presupuesto] Nueva solicitud:', JSON.stringify({
+  // Sin PII (nombre/email): el lead completo vive en Clientify, no en los logs
+  console.info('[forms/presupuesto] Nueva solicitud:', JSON.stringify({
     origen: data.origin,
     itinerario: data.itinerarySlug,
-    nombre: data.nombre,
-    email: data.email,
     paises: data.countries,
     fecha: data.dateStart,
-  }, null, 2))
+  }))
 
   return NextResponse.json({ ok: true }, { status: 201 })
 }

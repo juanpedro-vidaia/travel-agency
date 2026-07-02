@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import LangLink from '@/components/ui/LangLink'
-import { ArrowLeft, Clock, Calendar, Share2, Twitter, Facebook, Link2, ArrowRight } from 'lucide-react'
+import Breadcrumbs, { type BreadcrumbItem } from '@/components/ui/Breadcrumbs'
+import { Clock, Calendar, Share2, Twitter, Facebook, Link2, ArrowRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import ReadingProgress from '@/components/ui/ReadingProgress'
@@ -21,9 +22,10 @@ interface Props {
   post: Post
   relatedPosts: Post[]
   relatedTrips: Trip[]
+  breadcrumbs: BreadcrumbItem[]
 }
 
-export default function PostContent({ post, relatedPosts, relatedTrips }: Props) {
+export default function PostContent({ post, relatedPosts, relatedTrips, breadcrumbs }: Props) {
   const { content } = useLanguage()
   const blogContent = content.blogPage
   const [copied, setCopied] = useState(false)
@@ -66,13 +68,7 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
 
       <article className="pt-28 md:pt-32 pb-12 md:pb-16">
         <header className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-          <LangLink
-            href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-vidaia-primary transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            {blogContent.backButton}
-          </LangLink>
+          <Breadcrumbs items={breadcrumbs} className="mb-8" />
 
           <div className="relative h-64 sm:h-96 lg:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl mb-8 md:mb-12">
             <Image
@@ -108,8 +104,13 @@ export default function PostContent({ post, relatedPosts, relatedTrips }: Props)
             )}
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
-              {formatDate(post.date)}
+              <time dateTime={post.date}>{formatDate(post.date)}</time>
             </span>
+            {post.dateUpdated && (
+              <span className="flex items-center gap-1.5">
+                {blogContent.updatedPrefix} <time dateTime={post.dateUpdated}>{formatDate(post.dateUpdated)}</time>
+              </span>
+            )}
             <span className="flex items-center gap-1.5">
               <Clock className="w-4 h-4" />
               {post.readingTime} {blogContent.readingTimeLabel}

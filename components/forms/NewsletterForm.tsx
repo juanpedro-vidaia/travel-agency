@@ -17,7 +17,7 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
   const t = content.newsletter
 
   const [alreadySubscribed, setAlreadySubscribed] = useState(false)
-  const [form, setForm] = useState({ full_name: '', email: '', privacy: false, commercial: false })
+  const [form, setForm] = useState({ full_name: '', email: '', privacy: false, commercial: false, website: '' })
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -37,6 +37,7 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
       const res = await fetch('/api/forms/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: AbortSignal.timeout(12_000),
         body: JSON.stringify(form),
       })
       if (!res.ok) throw new Error('Error')
@@ -75,6 +76,20 @@ export default function NewsletterForm({ variant }: NewsletterFormProps) {
       <p className="text-gray-500 text-sm mb-6">{t.subtitle}</p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Honeypot anti-spam — invisible para humanos, los bots lo rellenan */}
+        <div aria-hidden="true" className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden">
+          <label>
+            No rellenar este campo
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={form.website}
+              onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))}
+            />
+          </label>
+        </div>
+
         <div>
           <label className="block text-sm font-medium text-vidaia-dark mb-1.5">
             {t.fullNameLabel} *
